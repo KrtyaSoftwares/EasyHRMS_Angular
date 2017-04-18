@@ -1,0 +1,136 @@
+﻿<nav id="sidebar">
+    <div id="main-menu">
+        <ul class="sidebar-nav">
+            <li> <a routerLink="/dashboard" [routerLinkActive]="['router-link-active']"><i class="fa fa-dashboard"></i><span class="sidebar-text">Dashboard</span></a> </li>
+
+            <li [routerLinkActive]="['router-link-active']">
+                <a (click)="addExpandClass('crm')">
+                    <i class="glyph-icon flaticon-bars31"></i><span class="sidebar-text">CRM</span><span class="fa arrow"></span>
+               </a>
+                <ul class="submenu collapse" [class.in]="showMenu === 'crm'">
+                    <li>
+                        <a [routerLink]="['/crm']"><span>Oppurtunity</span></a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/crm/liveposition']"><span>Live Position</span></a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/crm/enquiry']"><span>Enquiry</span></a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/crm/report']"><span>Report</span></a>
+                    </li>
+                </ul>
+            </li>
+            <li [routerLinkActive]="['router-link-active']">
+                <a (click)="addExpandClass('employee')">
+                    <i class="glyph-icon flaticon-group44"></i><span class="sidebar-text">Employee</span>
+                    <span class="fa arrow"></span>
+               </a>
+                <ul class="submenu collapse" [class.in]="showMenu === 'employee'">
+                    <li>
+                        <a [routerLink]="['/employee']"><span>List View</span></a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/employee/leave']"><span>Leave</span></a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/employee/salary']"><span>Salary</span></a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/employee/report']"><span>Report</span></a>
+                    </li>
+                </ul>
+            </li>
+            <li [routerLinkActive]="['router-link-active']">
+                <a (click)="addExpandClass('appraisal')">
+                    <i class="glyph-icon flaticon-forms"></i><span class="sidebar-text">Appraisal</span><span class="fa arrow"></span>
+                </a>
+                <ul class="submenu collapse" [class.in]="showMenu === 'appraisal'">
+                    <li>
+                        <a [routerLink]="['/appraisal']"><span>List View</span></a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/appraisal/setting']"><span>Setting</span></a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/appraisal/kpi']"><span>KPI</span></a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/appraisal/review']"><span>Review</span></a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/appraisal/report']"><span>Report</span></a>
+                    </li>
+                </ul>
+            </li>
+            <li [routerLinkActive]="['router-link-active']">
+                <a (click)="addExpandClass('recruitment')"><i class="glyph-icon flaticon-hands-shake"></i><span class="sidebar-text">Recruitment</span><span class="fa arrow"></span></a>
+                <ul class="submenu collapse" [class.in]="showMenu === 'recruitment'">
+                    <li>
+                        <a [routerLink]="['/recruitment']"><span>List View</span></a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/recruitment/applicants']"><span>Applicants</span></a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/recruitment/meetingcalendar']"><span>Meeting Calendar</span></a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/recruitment/interviewlists']"><span>Interview List</span></a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/recruitment/reports']"><span>Report</span></a>
+                    </li>
+                </ul>
+            </li>
+            <li [routerLinkActive]="['router-link-active']">
+                <a (click)="addExpandClass('leave')"><i class="glyph-icon flaticon-email"></i><span class="sidebar-text">Leave & Attendance</span><span class="fa arrow"></span></a>
+                <ul class="submenu collapse" [class.in]="showMenu === 'leave'">
+                    <li>
+                        <a [routerLink]="['/leaveandattendance']"><span>Leave List View</span></a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/leaveandattendance/leavestructure']"><span>Leave Structure</span></a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/leaveandattendance/holidays']"><span>Holiday</span></a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/leaveandattendance/attendance']"><span>Attendance</span></a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/leaveandattendance/misspunch']"><span>MissPunch</span></a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/leaveandattendance/reports']"><span>Report</span></a>
+                    </li>
+                </ul>
+            </li>
+            <li [routerLinkActive]="['router-link-active']">
+                <a (click)="addExpandClass('payroll')"><i class="glyph-icon flaticon-pages"></i><span class="sidebar-text">Payroll</span><span class="fa arrow"></span></a>
+                <ul class="submenu collapse" [class.in]="showMenu === 'payroll'">
+                    <li>
+                        <a [routerLink]="['/payroll']"><span>List View</span></a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/payroll/alert']"><span>Alert</span></a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/payroll/setting']"><span>Setting</span></a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/payroll/adjustment']"><span>Adjustment</span></a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/payroll/claim']"><span>Claim & Advance Request</span></a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/payroll/reports']"><span>Report</span></a>
+                    </li>
+                </ul>
+            </li>
+            <li> <a [routerLink]="['/lookup']" [routerLinkActive]="['router-link-active']"><i class="glyph-icon flaticon-world"></i><span class="sidebar-text">Lookups</span></a> </li>
+        </ul>
+    </div>
+</nav>
