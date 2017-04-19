@@ -17,7 +17,7 @@ import { AppComponent } from './app.component';
         FormsModule,
         HttpModule,
         AppRoutes,
-        CoreModule.forRoot()
+        CoreModule.forRoot(),
     ],
 
     declarations: [

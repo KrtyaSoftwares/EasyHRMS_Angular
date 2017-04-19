@@ -5,7 +5,7 @@
   "main": "wwwroot/index.html",
   "author": "",
   "license": "ISC",
-    "repository": {
+  "repository": {
     "type": "git",
     "url": "https://github.com/damienbod/Angular2WebpackVisualStudio.git"
   },
@@ -22,25 +22,25 @@
     "test": "karma start"
   },
   "dependencies": {
-   "@angular/common": "4.0.2",
+    "@angular/animations": "4.0.2",
+    "@angular/common": "4.0.2",
     "@angular/compiler": "4.0.2",
     "@angular/compiler-cli": "4.0.2",
-    "@angular/platform-server": "4.0.2",
     "@angular/core": "4.0.2",
     "@angular/forms": "4.0.2",
     "@angular/http": "4.0.2",
     "@angular/platform-browser": "4.0.2",
     "@angular/platform-browser-dynamic": "4.0.2",
+    "@angular/platform-server": "4.0.2",
     "@angular/router": "4.0.2",
     "@angular/upgrade": "4.0.2",
-    "@angular/animations": "4.0.2",
     "angular-in-memory-web-api": "0.3.1",
+    "bootstrap": "^3.3.7",
     "core-js": "2.4.1",
+    "ie-shim": "~0.1.0",
     "reflect-metadata": "0.1.10",
     "rxjs": "5.3.0",
-    "zone.js": "0.8.5",
-    "bootstrap": "^3.3.7",
-    "ie-shim": "~0.1.0"
+    "zone.js": "0.8.5"
   },
   "devDependencies": {
     "@types/node": "7.0.12",

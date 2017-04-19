@@ -1,35 +1,43 @@
-<app-page-header [heading]="'Employee Leave'" [icon]="'fa fa-users'"></app-page-header>
-<div class="row">
-  <div class="col-md-3 col-sm-3 col-xs-12 ">
-    <label class="bold" >Employee</label>
-    <select class="form-control">
-      <option>-- Select --</option>
-    </select>
-  </div>
-  <div class="col-md-3 col-sm-3 col-xs-12 ">
-    <label class="bold" >Leave Structure</label>
-    <select class="form-control">
-      <option>-- Select --</option>
-    </select>
-  </div>
-</div>
-
-<div class="row">
-    <div class="col col-xl-12 col-lg-12">
-        <div class="card mb-3">
-            <div class="card-header">Employee Leave table</div>
-            <div class="card-block table-responsive">
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                          <th><strong>Employee Name</strong> </th>
-                          <th><strong>Branch</strong> </th>
-                          <th><strong>Department</strong> </th>
-                          <th><strong>CL(Monthly)</strong></th>
-                          <th><strong>Total Leave(Monthly)</strong></th>
-                          <th><strong>Total Leave(Yearly)</strong></th>
-                          <th><strong>CF</strong></th>
-                        </tr>
+<div id="main-content" >
+    <div class="row m-t-10">
+      <div class="col-md-12">
+        <div class="panel panel-default">
+          <div class="panel-heading text-right">
+            <button type="button" class="btn btn-sm btn-icon btn-rounded btn-default"><i class="fa fa-question"></i> </button>
+          </div>
+          <div class="panel-body">
+           
+            <div class="row">
+              <div class="col-md-3 col-sm-3 col-xs-12 ">
+                <label class="bold" >Employee</label>
+                <select class="form-control">
+                  <option>-- Select --</option>
+                </select>
+              </div>
+              <div class="col-md-3 col-sm-3 col-xs-12 ">
+                <label class="bold" >Leave Structure</label>
+                <select class="form-control">
+                  <option>-- Select --</option>
+                </select>
+              </div>
+              
+              
+            </div>
+            
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="table-responsive">
+                  <table class="table table-bordered table-striped table-hover">
+                    <thead class="no-bd">
+                      <tr>
+                        <th><strong>Employee Name</strong> </th>
+                        <th><strong>Branch</strong> </th>
+                        <th><strong>Department</strong> </th>
+                        <th><strong>CL(Monthly)</strong></th>
+                        <th><strong>Total Leave(Monthly)</strong></th>
+                        <th><strong>Total Leave(Yearly)</strong></th>
+                        <th><strong>CF</strong></th>
+                      </tr>
                     </thead>
                     <tbody class="no-bd-y">
                       <tr>
@@ -88,9 +96,12 @@
                       </tr>
                      
                     </tbody>
-                </table>
+                  </table>
+                </div>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
-    
-</div>
+  </div>
