@@ -6,49 +6,101 @@
             <button type="button" class="btn btn-sm btn-icon btn-rounded btn-default"><i class="fa fa-question"></i> </button>
           </div>
           <div class="panel-body">
-           
-            
-            <div class="row">
-                                <div class="col-md-12 col-sm-12 col-xs-12">                                 
-                                   
-                                    <div class="form-horizontal" >
-                                    <div class="boder-btm">
-                  <h3 class="panel-title">Branch Info</h3>
-                </div>
-                <div class="m-b-30">
-                  <div class="form-group">
-                    <label class="col-sm-2 control-label">Branch Name <span class="asterisk">*</span></label>
-                    <div class="col-sm-4">
-                      <input type="text" class="form-control" >
-                    </div>
-                    <label class="col-sm-2 control-label">Branch Address </label>
-                    <div class="col-sm-4">
-                      <input type="text" class="form-control" >
-                    </div>
+           <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">                                 
+                <div class="form-horizontal" >
+                  <div class="boder-btm">
+                    <h3 class="panel-title">Branch Info</h3>
                   </div>
-                  <div class="form-group">
-                    <label class="col-sm-2 control-label">Branch City </label>
-                    <div class="col-sm-4">
-                      <input type="text" class="form-control" >
-                    </div>
-                    <label class="col-sm-2 control-label">Branch State </label>
-                    <div class="col-sm-4">
-                      <input type="text" class="form-control" >
-                    </div>
+                  <div class="m-b-30">
+                    <form (ngSubmit)="onSubmit()" [formGroup]="form">
+                        <div *ngFor="let question of cols; let i = index">
+                            <div class="form-group">
+                              <label class="col-sm-2 control-label">{{question.text}} <span *ngIf="question.required" class="asterisk">*</span></label>
+                              <div [ngSwitch]="question.controlType"  class="col-sm-4">
+                                <div *ngSwitchCase="'textbox'"><input class="form-control" type="{{question.type}}" id="{{question.key}}" [formControlName]="question.key"></div>
+                                  <div *ngSwitchCase="'dropdown'" >
+                                    <select [formControlName]="question.key" class="form-control">
+                                        <option *ngFor="let o of question.options" [value]="o.key">{{o.value}}</option>
+                                    </select>
+                                  </div>
+                              </div>
+                              <div class="errorMessage" *ngIf="!form.controls[question.key].valid">*required</div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <button type="submit" [disabled]="!form.valid">Save</button>
+                        </div>
+                    </form>
+                    <div class="form-row">
+                      <div *ngIf="payLoad"><strong>The form contains the following values</strong></div>
+                      <div>
+                          {{payLoad}}
+                      </div>
                   </div>
-                  <div class="form-group">
-                    <div class="col-sm-10 col-sm-offset-2">
-                      <button class="btn btn-primary m-b-10" onclick="javascript:$('#form1').parsley('validate');">Update</button>
-                      <button type="reset" class="btn btn-default m-b-10">Cancel</button>
+                    <!--<div class="form-group">
+                      <label class="col-sm-2 control-label">Branch Name <span class="asterisk">*</span></label>
+                      <div class="col-sm-4">
+                        <input type="text" class="form-control" >
+                      </div>
+                      <label class="col-sm-2 control-label">Branch Address </label>
+                      <div class="col-sm-4">
+                        <input type="text" class="form-control" >
+                      </div>
                     </div>
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label">Branch City </label>
+                      <div class="col-sm-4">
+                        <input type="text" class="form-control" >
+                      </div>
+                      <label class="col-sm-2 control-label">Branch State </label>
+                      <div class="col-sm-4">
+                        <input type="text" class="form-control" >
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="col-sm-10 col-sm-offset-2">
+                        <button class="btn btn-primary m-b-10" onclick="javascript:$('#form1').parsley('validate');">Update</button>
+                        <button type="reset" class="btn btn-default m-b-10">Cancel</button>
+                      </div>
+                    </div>-->
                   </div>
-                </div>
-									</div>
-				</div>
+								</div>
+				      </div>
            </div>
-            
           </div>
         </div>
       </div>
     </div>
+
+    <!-- Dynamic Form Start -->
+    <!--<div>
+    <form (ngSubmit)="onSubmit()" [formGroup]="form">
+        <div *ngFor="let question of cols" class="form-group">
+            <label class="col-sm-2 control-label">{{question.text}} <span *ngIf="question.required" class="asterisk">*</span></label>
+            <div [ngSwitch]="question.controlType"  class="col-sm-4">
+                <div *ngSwitchCase="'textbox'"><input class="form-control" type="{{question.type}}" id="{{question.key}}" [formControlName]="question.key"></div>
+                <div *ngSwitchCase="'dropdown'" >
+                    <select [formControlName]="question.key" class="form-control">
+                        <option *ngFor="let o of question.options" [value]="o.key">{{o.value}}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="errorMessage" *ngIf="!form.controls[question.key].valid">*required</div>
+        </div>
+
+        <div class="form-row">
+            <button type="submit" [disabled]="!form.valid">Save</button>
+        </div>
+    </form>
+  </div>-->
+  <!-- Dynamic Form End -->
+
+
   </div>
+
+
+
+  
