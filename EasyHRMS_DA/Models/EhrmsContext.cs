@@ -6,7 +6,9 @@ namespace EasyHRMS_DA.Models
 {
     public partial class EhrmsContext : DbContext
     {
+        public virtual DbSet<Currency> Currency { get; set; }
         public virtual DbSet<EmpData> EmpData { get; set; }
+        public virtual DbSet<FormBuilder> FormBuilder { get; set; }
         public virtual DbSet<Holiday> Holiday { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -17,6 +19,17 @@ namespace EasyHRMS_DA.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Currency>(entity =>
+            {
+                entity.Property(e => e.CurrencyId).HasColumnName("CurrencyID");
+
+                entity.Property(e => e.CurrencyName).HasMaxLength(50);
+
+                entity.Property(e => e.CurrencyShortName).HasMaxLength(50);
+
+                entity.Property(e => e.CurrencySymbol).HasMaxLength(50);
+            });
+
             modelBuilder.Entity<EmpData>(entity =>
             {
                 entity.Property(e => e.Id).HasColumnName("id");
@@ -24,6 +37,19 @@ namespace EasyHRMS_DA.Models
                 entity.Property(e => e.Name).HasMaxLength(50);
 
                 entity.Property(e => e.Status).HasMaxLength(50);
+            });
+
+            modelBuilder.Entity<FormBuilder>(entity =>
+            {
+                entity.Property(e => e.DefaultValue).HasMaxLength(50);
+
+                entity.Property(e => e.FieldName).HasMaxLength(50);
+
+                entity.Property(e => e.FieldType).HasMaxLength(50);
+
+                entity.Property(e => e.FormName).HasMaxLength(50);
+
+                entity.Property(e => e.OptionValue).HasMaxLength(500);
             });
 
             modelBuilder.Entity<Holiday>(entity =>
