@@ -8,6 +8,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Angular2WebpackVisualStudio.Repositories.Things;
 using Angular2WebpackVisualStudio.Models;
+using Microsoft.EntityFrameworkCore;
+using EasyHRMS_DA.Models;
 
 namespace Angular2WebpackVisualStudio
 {
@@ -43,6 +45,10 @@ namespace Angular2WebpackVisualStudio
             // Add framework services.
             services.AddSingleton<IThingsRepository, ThingsRepository>();
             services.AddMvc();
+
+            //var connection = @"Server=SAMIR-PC;Database=Ehrms;user id=sa;password=pass#123;Trusted_Connection=True;";
+            var connection = Configuration.GetConnectionString("DefaultConnection");
+            services.AddDbContext<EhrmsContext>(options => options.UseSqlServer(connection));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
