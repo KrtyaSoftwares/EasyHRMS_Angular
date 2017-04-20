@@ -3,10 +3,14 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { LookupComponent } from './components/lookup.component';
 import { HolidayComponent } from './holiday/holiday.component';
+import { BranchComponent } from './branch/branch.component';
+import { FormComponent } from './branch/form/form.component';
 
 const routes: Routes = [
     { path: '', component: LookupComponent },
     { path: 'holiday', component: HolidayComponent },
+    { path: 'branch', component: BranchComponent },
+    { path: 'branch/form', component: FormComponent },
 ];
 
 @NgModule({

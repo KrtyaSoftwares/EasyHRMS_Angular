@@ -6,6 +6,8 @@ const routes: Routes = [
     {
         path: '', component: LayoutComponent,
         children: [
+            { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' },
+            { path: 'myprofile', loadChildren: './myprofile/myprofile.module#MyprofileModule' },
             { path: 'employee', loadChildren: './employee/employee.module#EmployeeModule' },
             { path: 'appraisal', loadChildren: './appraisal/appraisal.module#AppraisalModule' },
             { path: 'lookup', loadChildren: './lookup/lookup.module#LookupModule' },

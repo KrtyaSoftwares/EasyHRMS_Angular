@@ -1,22 +1,33 @@
-<div class="login-page">
-    <div class="row">
-        <div class="col-md-4 push-md-4">
-            <img src="assets/images/logo.png" width="150px" class="user-avatar" />
-            <h1>SB Admin BS 4 Angular2</h1>
-            <form role="form">
-                <div class="form-content">
-                    <div class="form-group">
-                        <input type="text" ng-model="name" class="form-control input-underline input-lg" id="" placeholder="Email">
+<div class="container" id="login-block">
+        <div class="row">
+            <div class="col-sm-6 col-md-4 col-sm-offset-3 col-md-offset-4">
+                <div class="login-box clearfix animated flipInY">                    
+                    <div class="login-logo">
+                        <a href="#?login-theme-3">
+                            <img src="developer_assets/img/logo-login.png" alt="Easy HRMS">
+                        </a>
                     </div>
-
-                    <div class="form-group">
-                        <input type="password" class="form-control input-underline input-lg" id="" placeholder="Password">
+                    <hr>
+                    <div class="login-form">
+                        <!-- BEGIN ERROR BOX -->
+                        <div class="alert alert-danger hide">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
+                            <h4>Error!</h4>
+                            Your Error Message goes here
+                        </div>
+                        <!-- END ERROR BOX -->
+                        <form action="#" method="post">
+                            <input type="text" placeholder="Username" class="input-field form-control user" />
+                            <input type="password" placeholder="Password" class="input-field form-control password" />
+                            <button type="submit" class="btn btn-login">Login</button>
+                        </form>
+                        <div class="login-links">
+                            <a [routerLink]="['/forgotpassword']">Forgot password?</a>
+                           
+                        </div>
                     </div>
                 </div>
-                <a class="btn rounded-btn" [routerLink]="['/dashboard']"> Log in </a>
-                &nbsp;
-                <a class="btn rounded-btn" [routerLink]="['/signup']">Register</a>
-            </form>
+                
+            </div>
         </div>
     </div>
-</div>
