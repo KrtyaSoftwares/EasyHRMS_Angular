@@ -10,6 +10,8 @@ namespace EasyHRMS_DA.Models
         public virtual DbSet<EmpData> EmpData { get; set; }
         public virtual DbSet<FormBuilder> FormBuilder { get; set; }
         public virtual DbSet<Holiday> Holiday { get; set; }
+        public virtual DbSet<LookupData> LookupData { get; set; }
+        public virtual DbSet<LookupMaster> LookupMaster { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -59,6 +61,20 @@ namespace EasyHRMS_DA.Models
                 entity.Property(e => e.HolidayDate).HasColumnType("date");
 
                 entity.Property(e => e.HolidayDesc).HasMaxLength(150);
+            });
+
+            modelBuilder.Entity<LookupData>(entity =>
+            {
+                entity.Property(e => e.FieldName)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.Value).HasMaxLength(50);
+            });
+
+            modelBuilder.Entity<LookupMaster>(entity =>
+            {
+                entity.Property(e => e.LookupName).HasMaxLength(50);
             });
         }
     }
