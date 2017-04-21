@@ -37,13 +37,17 @@ namespace EasyHRMS_Angular.Controllers
                     list = _context.FormBuilder.Select(x => new FormBuilderVM()
                     {
                         Id = x.Id,
+                        FormId = x.FormId,
                         FormName = x.FormName,
+                        DisplayName = x.DisplayName,
                         FieldName = x.FieldName,
                         FieldType = x.FieldType,
                         IsRequire = x.IsRequire,
                         FieldOrder = x.FieldOrder,
                         OptionValue = x.OptionValue,
-                        DefaultValue = x.DefaultValue
+                        DefaultValue = x.DefaultValue,
+                        Validator = x.Validator,
+                        Placeholder = x.Placeholder
                     }).ToList();
                     result = new
                     {
@@ -81,13 +85,17 @@ namespace EasyHRMS_Angular.Controllers
                     list = _context.FormBuilder.Where(x => x.FormId == id).Select(x => new FormBuilderVM()
                     {
                         Id = x.Id,
+                        FormId = x.FormId,
                         FormName = x.FormName,
+                        DisplayName = x.DisplayName,
                         FieldName = x.FieldName,
                         FieldType = x.FieldType,
                         IsRequire = x.IsRequire,
                         FieldOrder = x.FieldOrder,
                         OptionValue = x.OptionValue,
-                        DefaultValue = x.DefaultValue
+                        DefaultValue = x.DefaultValue,
+                        Validator = x.Validator,
+                        Placeholder = x.Placeholder
                     }).ToList();
                     result = new
                     {
