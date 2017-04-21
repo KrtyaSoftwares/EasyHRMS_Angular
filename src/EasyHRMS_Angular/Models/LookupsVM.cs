@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace EasyHRMS_DA.Models
+namespace EasyHRMS_Angular.Models
 {
-    public partial class LookupMaster
+    public class LookupsVM
     {
         public int Id { get; set; }
         public string LookupName { get; set; }
         public int? LookupId { get; set; }
         public string Category { get; set; }
         public bool? IsActive { get; set; }
+        public string Header { get; set; }
     }
 }
