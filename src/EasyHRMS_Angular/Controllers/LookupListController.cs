@@ -31,6 +31,7 @@ namespace EasyHRMS_Angular.Controllers
             //Holiday objHoliday = null;
             List<LookupListVM> lookuplist = new List<LookupListVM>();
             List<ListActionVM> actionlist = new List<ListActionVM>();
+            List<LookupDataVM> LookupData = new List<LookupDataVM>();
             try
             {
                 using (_context)
@@ -55,10 +56,20 @@ namespace EasyHRMS_Angular.Controllers
                         Route = x.Route
                     }).ToList();
 
+                    LookupData = _context.LookupData.Where(x => x.LookupId == id).Select(x => new LookupDataVM()
+                    {
+                        Id = x.Id,
+                        LookupId = x.LookupId,
+                        RowId = x.RowId,
+                        FieldName = x.FieldName,
+                        Value = x.Value,
+                    }).ToList();
+
                     result = new
                     {
                         lookuplist,
                         actionlist,
+                        LookupData,
                         error = "0",
                         msg = "Success"
                     };
@@ -71,6 +82,7 @@ namespace EasyHRMS_Angular.Controllers
                 {
                     lookuplist,
                     actionlist,
+                    LookupData,
                     error = "1",
                     msg = "Error"
                 };
