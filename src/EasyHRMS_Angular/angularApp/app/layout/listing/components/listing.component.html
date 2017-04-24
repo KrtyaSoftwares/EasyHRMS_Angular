@@ -1,0 +1,29 @@
+<div *ngIf="record_not_exists">No Form found.</div>
+    <div *ngIf="!record_not_exists" class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped table-hover">
+            <thead class="no-bd">
+                <tr>
+                <th *ngFor="let heading of lookuplist; let i = index"><strong>{{heading.displayName}}</strong> </th>
+                <th><strong>Action</strong></th>                        
+                </tr>
+            </thead>
+            <tbody class="no-bd-y">
+                <tr *ngFor="let hero of filter_Array">
+                <td *ngFor="let h of hero">{{h.value}} </td>
+                <td>
+                    <button
+                    *ngFor="let act of actionlist"
+                    type="button"
+                    [ngClass]="act.action == 'Edit' ? 'btn btn-sm btn-warning' : 'btn btn-sm btn-danger'"
+                    title="{{act.action}}">
+                    <i [ngClass]="act.action == 'Edit' ? 'fa fa-pencil' : 'fa fa-remove'"></i>
+                    </button>
+                </td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+        </div>
+    </div>

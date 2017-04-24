@@ -9,19 +9,29 @@ import { HolidayComponent } from './holiday/holiday.component';
 import { BranchComponent } from './branch/branch.component';
 import { FormComponent } from './branch//form/form.component';
 
+import { FormbuilderModule } from '../formbuilder/formbuilder.module';
+import { ListingModule } from '../listing/listing.module';
+
+import { ListsService } from '../../core/services/lists-data';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
     LookupRoutingModule,
-    PageHeaderModule
+    PageHeaderModule,
+    FormbuilderModule,
+    ListingModule
   ],
   declarations: [
     LookupComponent,
     HolidayComponent,
     BranchComponent,
-    FormComponent
+    FormComponent,
+  ],
+  providers : [
+    ListsService
   ]
 })
 export class LookupModule { }

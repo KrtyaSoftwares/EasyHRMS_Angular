@@ -15,6 +15,8 @@ const routes: Routes = [
             { path: 'recruitment', loadChildren: './recruitment/recruitment.module#RecruitmentModule' },
             { path: 'leaveandattendance', loadChildren: './leaveandattendance/leaveandattendance.module#LeaveandattendanceModule' },
             { path: 'payroll', loadChildren: './payroll/payroll.module#PayrollModule' },
+            { path: 'formbuilder', loadChildren: './formbuilder/formbuilder.module#FormbuilderModule' },
+            { path: 'listing', loadChildren: './listing/listing.module#ListingModule' },
         ]
     }
 ];

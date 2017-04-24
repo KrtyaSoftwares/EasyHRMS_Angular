@@ -11,6 +11,7 @@ const routes: Routes = [
     { path: 'holiday', component: HolidayComponent },
     { path: 'branch', component: BranchComponent },
     { path: 'branch/form', component: FormComponent },
+    { path: 'branch/form/:id', component: FormComponent },
 ];
 
 @NgModule({

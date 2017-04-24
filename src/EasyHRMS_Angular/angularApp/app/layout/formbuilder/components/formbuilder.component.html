@@ -1,0 +1,56 @@
+<div id="main-content" >
+    <div class="row m-t-10">
+      <div class="col-md-12">
+        <div class="panel panel-default">
+          <div class="panel-heading text-right">
+            <button type="button" class="btn btn-sm btn-icon btn-rounded btn-default"><i class="fa fa-question"></i> </button>
+          </div>
+          <div class="panel-body">
+           <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">                                 
+                <div class="form-horizontal" >
+                  <div class="boder-btm">
+                    <h3 class="panel-title">Branch Info</h3>
+                  </div>
+                  <div *ngIf="record_not_exists">No Form found.</div>
+                  <div *ngIf="!record_not_exists" class="m-b-30">
+                    <form (ngSubmit)="onSubmit()" [formGroup]="form" *ngIf="form">
+                        <div *ngFor="let question of final_result; let i = index">
+                            <div class="form-group">
+                              <label class="col-sm-2 control-label">
+                                  {{question.displayName ? question.displayName : question.fieldName}} <span *ngIf="question.isRequire" class="asterisk">*</span>
+                              </label>
+                              <div [ngSwitch]="question.fieldType"  class="col-sm-4">
+                                <div *ngSwitchCase="'Text'">
+                                  <input 
+                                      class="form-control" 
+                                      type="{{question.fieldType}}" 
+                                      id="{{question.fieldName}}" 
+                                      [formControlName]="question.fieldName">
+                                </div>
+                              </div>
+                              <div 
+                                  class="errorMessage" 
+                                  *ngIf="!form.controls[question.fieldName].valid">*required</div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <button type="submit" [disabled]="!form.valid">Save</button>
+                        </div>
+                    </form>
+                    <div class="form-row">
+                      <div *ngIf="payLoad"><strong>The form contains the following values</strong></div>
+                      <div>
+                          {{payLoad}}
+                      </div>
+                  </div>
+                  </div>
+                </div>
+		          </div>
+           </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>  
