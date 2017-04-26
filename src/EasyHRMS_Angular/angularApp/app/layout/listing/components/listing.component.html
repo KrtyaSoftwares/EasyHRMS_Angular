@@ -1,29 +1,49 @@
-<div *ngIf="record_not_exists">No Form found.</div>
-    <div *ngIf="!record_not_exists" class="row">
-        <div class="col-md-12 col-sm-12 col-xs-12">
-        <div class="table-responsive">
-            <table class="table table-bordered table-striped table-hover">
-            <thead class="no-bd">
-                <tr>
-                <th *ngFor="let heading of lookuplist; let i = index"><strong>{{heading.displayName}}</strong> </th>
-                <th><strong>Action</strong></th>                        
-                </tr>
-            </thead>
-            <tbody class="no-bd-y">
-                <tr *ngFor="let hero of filter_Array">
-                <td *ngFor="let h of hero">{{h.value}} </td>
-                <td>
-                    <button
-                    *ngFor="let act of actionlist"
-                    type="button"
-                    [ngClass]="act.action == 'Edit' ? 'btn btn-sm btn-warning' : 'btn btn-sm btn-danger'"
-                    title="{{act.action}}">
-                    <i [ngClass]="act.action == 'Edit' ? 'fa fa-pencil' : 'fa fa-remove'"></i>
-                    </button>
-                </td>
-                </tr>
-            </tbody>
-            </table>
+<div id="main-content" >
+    <div class="row m-t-10">
+      <div class="col-md-12">
+        <div class="panel panel-default">
+          <div class="panel-heading text-right">
+            <button type="button" class="btn btn-sm btn-icon btn-rounded btn-default"><i class="fa fa-question"></i> </button>
+          </div>
+          <div class="panel-body">
+           <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12 text-right">
+                <button [routerLink]="['/lookup/form/' + lookup]" class="btn btn-primary m-b-10" >Add</button>
+              </div>
+            </div>
+            
+            <div *ngIf="record_not_exists">No Form found.</div>
+                <div *ngIf="!record_not_exists" class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped table-hover">
+                        <thead class="no-bd">
+                            <tr>
+                            <th *ngFor="let heading of lookuplist; let i = index"><strong>{{heading.displayName}}</strong> </th>
+                            <th><strong>Action</strong></th>                        
+                            </tr>
+                        </thead>
+                        <tbody class="no-bd-y">
+                            <tr *ngFor="let hero of filter_Array">
+                            <td *ngFor="let h of hero">{{h.value}} </td>
+                            <td>
+                                <button
+                                    *ngFor="let act of actionlist"
+                                    type="button"
+                                    [routerLink]="act.action == 'Edit' ? ['/lookup/form/'+ lookup + '/' + hero[0]['rowId']] : ['/lookup/delete/' + lookup + '/' + hero[0]['rowId']]"
+                                    [ngClass]="act.action == 'Edit' ? 'btn btn-sm btn-warning' : 'btn btn-sm btn-danger'"
+                                    title="{{act.action}}">
+                                    <i [ngClass]="act.action == 'Edit' ? 'fa fa-pencil' : 'fa fa-remove'"></i>
+                                </button>
+                            </td>
+                            </tr>
+                        </tbody>
+                        </table>
+                    </div>
+                    </div>
+                </div>
         </div>
+                </div>
+            </div>
+            </div>
         </div>
-    </div>

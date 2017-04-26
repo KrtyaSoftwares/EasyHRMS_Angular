@@ -14,29 +14,34 @@
                   </div>
                   <div *ngIf="record_not_exists">No Form found.</div>
                   <div *ngIf="!record_not_exists" class="m-b-30">
-                    <form (ngSubmit)="onSubmit()" [formGroup]="form" *ngIf="form">
-                        <div *ngFor="let question of final_result; let i = index">
+                    <form 
+                        *ngIf="form"
+                        (ngSubmit)="onSubmit(form.value, form.valid)" 
+                        [formGroup]="form" 
+                        novalidate>
+                         <div *ngFor="let question of final_result; let i = index">
                             <div class="form-group">
-                              <label class="col-sm-2 control-label">
-                                  {{question.displayName ? question.displayName : question.fieldName}} <span *ngIf="question.isRequire" class="asterisk">*</span>
-                              </label>
-                              <div [ngSwitch]="question.fieldType"  class="col-sm-4">
-                                <div *ngSwitchCase="'Text'">
-                                  <input 
-                                      class="form-control" 
-                                      type="{{question.fieldType}}" 
-                                      id="{{question.fieldName}}" 
-                                      [formControlName]="question.fieldName">
+                                <label for="inputEmail3" class="col-md-4 col-sm-4 control-label">
+                                  {{question.displayName ? question.displayName : question.fieldName}}
+                                </label>
+                                <div class="col-md-6 col-sm-6" [ngSwitch]="question.fieldType">
+                                  <div *ngSwitchCase="'Text'">
+                                      <input 
+                                        class="form-control" 
+                                        type="{{question.fieldType}}"
+                                        [formControlName]="question.fieldName" 
+                                        [(ngModel)]="question.custom_value">
+                                  </div>
+                                        <div 
+                                          class="alert alert-danger" 
+                                          *ngIf="!form.get([question.fieldName]).valid">
+                                          *{{question.fieldName}} is required
+                                        </div>
                                 </div>
-                              </div>
-                              <div 
-                                  class="errorMessage" 
-                                  *ngIf="!form.controls[question.fieldName].valid">*required</div>
-                            </div>
+                          </div>
                         </div>
-
                         <div class="form-row">
-                            <button type="submit" [disabled]="!form.valid">Save</button>
+                            <button class="btn btn-primary m-b-10" type="submit" >Save</button>
                         </div>
                     </form>
                     <div class="form-row">

@@ -5,14 +5,17 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LookupComponent } from './components/lookup.component';
 import { LookupRoutingModule } from './lookup-routing.module';
 import { PageHeaderModule } from './../../shared';
-import { HolidayComponent } from './holiday/holiday.component';
-import { BranchComponent } from './branch/branch.component';
-import { FormComponent } from './branch//form/form.component';
+
+import { LookupListsComponent } from './components/list/lookup-lists.component';
+import { FormComponent } from './components/form/form.component';
+import { DeleteComponent } from './components/delete/delete.component';
 
 import { FormbuilderModule } from '../formbuilder/formbuilder.module';
 import { ListingModule } from '../listing/listing.module';
 
 import { ListsService } from '../../core/services/lists-data';
+import { LookupService } from '../../core/services/lookup.service';
+
 
 @NgModule({
   imports: [
@@ -26,12 +29,13 @@ import { ListsService } from '../../core/services/lists-data';
   ],
   declarations: [
     LookupComponent,
-    HolidayComponent,
-    BranchComponent,
+    LookupListsComponent,
     FormComponent,
+    DeleteComponent
   ],
   providers : [
-    ListsService
+    ListsService,
+    LookupService
   ]
 })
 export class LookupModule { }

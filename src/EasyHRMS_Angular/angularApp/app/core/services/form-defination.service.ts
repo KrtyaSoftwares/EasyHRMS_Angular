@@ -30,6 +30,11 @@ export class FormsService {
             .get(this.actionUrl + 'FormBuilder/GetFBFieldSetByFormID/' + id)
             .map(res => <Forms>res.json());
     }
+    public GetTableData = (lookup: number, id: number): Observable<Forms> => {
+        return this.http
+            .get(this.actionUrl + 'LookupData/GetLRowDataByLRID/' + lookup + '/' + id)
+            .map(res => <Forms>res.json());
+    }
 
     public Add = (id: any, data: any): Observable<Forms> => {
         let toAdd = JSON.stringify(data);
@@ -37,13 +42,14 @@ export class FormsService {
             .map(res => <Forms>res.json());
     }
 
-    public Update = (id: number, itemToUpdate: any): Observable<Forms> => {
-        return this.http
-            .put(this.actionUrl + id, JSON.stringify(itemToUpdate), { headers: this.headers })
+    public Update = (id: number, data: any): Observable<Forms> => {
+        let toAdd = JSON.stringify(data);
+        return this.http.post(this.actionUrl + 'LookupData/UpdateLookupRowData/' + id, toAdd, { headers: this.headers })
             .map(res => <Forms>res.json());
     }
-
-    // public Delete = (id: number): Observable<any> => {
-    //     return this.http.delete(this.actionUrl + id);
-    // }
+    public Delete = (lookup: number, rowId: number): Observable<Forms> => {
+        return this.http
+            .get(this.actionUrl + 'LookupData/DeleteLookupRowData/' + lookup + '/' + rowId)
+            .map(res => <Forms>res.json());
+    }
 }

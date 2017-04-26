@@ -41,7 +41,7 @@ namespace EasyHRMS_Angular.Controllers
                         LookupId = x.LookupId,
                         Category = x.Category,
                         IsActive = x.IsActive,
-                        Header = x.Header
+                        Header = x.Header,
                     }).ToList();
                     result = new
                     {

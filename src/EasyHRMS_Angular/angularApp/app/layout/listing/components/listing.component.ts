@@ -40,6 +40,9 @@ export class ListingComponent implements OnInit {
             this.filter_Array = this.groupBy(this.filterLookupData, 'rowId');
         });
   }
+  delete() {
+
+  }
   groupBy(collection: any, property: any) {
     let i = 0, val, index,
         values = [], result = [];
