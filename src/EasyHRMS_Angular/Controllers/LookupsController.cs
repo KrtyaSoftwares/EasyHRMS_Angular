@@ -42,6 +42,7 @@ namespace EasyHRMS_Angular.Controllers
                         Category = x.Category,
                         IsActive = x.IsActive,
                         Header = x.Header,
+                        ImageUrl = x.ImageUrl
                     }).ToList();
                     result = new
                     {

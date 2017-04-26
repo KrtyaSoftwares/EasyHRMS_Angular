@@ -10,6 +10,15 @@ using Angular2WebpackVisualStudio.Repositories.Things;
 using Angular2WebpackVisualStudio.Models;
 using Microsoft.EntityFrameworkCore;
 using EasyHRMS_DA.Models;
+//using Microsoft.IdentityModel.Tokens;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using EasyHRMS_Angular.Models;
+using Microsoft.AspNetCore.Diagnostics;
+using Newtonsoft.Json;
 
 namespace Angular2WebpackVisualStudio
 {
@@ -44,11 +53,33 @@ namespace Angular2WebpackVisualStudio
 
             // Add framework services.
             services.AddSingleton<IThingsRepository, ThingsRepository>();
-            services.AddMvc();
 
             //var connection = @"Server=SAMIR-PC;Database=Ehrms;user id=sa;password=pass#123;Trusted_Connection=True;";
             var connection = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<EhrmsContext>(options => options.UseSqlServer(connection));
+
+            //// Add EF services to the services container.
+            //services.AddEntityFramework(Configuration)
+            //  .AddSqlServer()
+            //  .AddDbContext<ApplicationDbContext>();
+            // Add Identity services to the services container.
+            //services.AddIdentity<ApplicationUser, IdentityRole>(Configuration)
+            //  .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            services.AddIdentity<ApplicationUser, IdentityRole>()
+             .AddEntityFrameworkStores<EhrmsContext>();
+
+            // Enable the use of an [Authorize("Bearer")] attribute on methods and classes to protect.
+            services.AddAuthorization(auth =>
+            {
+                auth.AddPolicy("Bearer", new AuthorizationPolicyBuilder()
+                    .AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme‌​)
+                    .RequireAuthenticatedUser().Build());
+            });
+
+            services.AddMvc();
+
+          
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -78,12 +109,65 @@ namespace Angular2WebpackVisualStudio
             app.UseDefaultFiles();
             app.UseStaticFiles();
 
+            //start token settings
+            #region Handle Exception 
+            app.UseExceptionHandler(appBuilder =>
+            {
+                appBuilder.Use(async (context, next) =>
+                {
+                    var error = context.Features[typeof(IExceptionHandlerFeature)] as IExceptionHandlerFeature;
+
+                    if (error != null && error.Error is SecurityTokenExpiredException)
+                    {
+                        context.Response.StatusCode = 401;
+                        context.Response.ContentType = "application/json";
+
+                        await context.Response.WriteAsync(JsonConvert.SerializeObject(new RequestResult
+                        {
+                            State = RequestState.NotAuth,
+                            Msg = "token expired"
+                        }));
+                    }
+                    else if (error != null && error.Error != null)
+                    {
+                        context.Response.StatusCode = 500;
+                        context.Response.ContentType = "application/json";
+                        await context.Response.WriteAsync(JsonConvert.SerializeObject(new RequestResult
+                        {
+                            State = RequestState.Failed,
+                            Msg = error.Error.Message
+                        }));
+                    }
+                    else await next();
+                });
+            });
+            #endregion
+
+            #region UseJwtBearerAuthentication 
+            app.UseJwtBearerAuthentication(new JwtBearerOptions()
+            {
+                TokenValidationParameters = new TokenValidationParameters()
+                {
+                    IssuerSigningKey = TokenAuthOption.Key,
+                    ValidAudience = TokenAuthOption.Audience,
+                    ValidIssuer = TokenAuthOption.Issuer,
+                    ValidateIssuerSigningKey = true,
+                    ValidateLifetime = true,
+                    ClockSkew = TimeSpan.FromMinutes(0)
+                }
+            });
+            #endregion
+
+            //end token settings
+
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            //DbInitializer.Initialize(ctx);
         }
     }
 }
