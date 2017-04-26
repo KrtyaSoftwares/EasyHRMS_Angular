@@ -13,5 +13,6 @@ namespace EasyHRMS_Angular.Models
         public string Category { get; set; }
         public bool? IsActive { get; set; }
         public string Header { get; set; }
+        public string ImageUrl { get; set; }
     }
 }
