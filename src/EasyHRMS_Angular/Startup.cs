@@ -68,6 +68,8 @@ namespace Angular2WebpackVisualStudio
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
              .AddEntityFrameworkStores<EhrmsContext>();
+            // services.AddIdentity<ApplicationUser, IdentityRole<int>>()
+            // .AddEntityFrameworkStores<EhrmsContext,Int>().AddDefaultTokenProviders();
 
             // Enable the use of an [Authorize("Bearer")] attribute on methods and classes to protect.
             services.AddAuthorization(auth =>
@@ -108,6 +110,9 @@ namespace Angular2WebpackVisualStudio
 
             app.UseDefaultFiles();
             app.UseStaticFiles();
+
+            //Identity 
+            app.UseIdentity();
 
             //start token settings
             #region Handle Exception 

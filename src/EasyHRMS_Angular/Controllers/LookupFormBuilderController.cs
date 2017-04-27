@@ -9,7 +9,7 @@ using EasyHRMS_Angular.Models;
 namespace EasyHRMS_Angular.Controllers
 {
     [Route("api/[controller]")]
-    public class FormBuilderController : Controller
+    public class LookupFormBuilderController : Controller
     {
         //public IActionResult Index()
         //{
@@ -18,23 +18,23 @@ namespace EasyHRMS_Angular.Controllers
 
         private readonly EhrmsContext _context;
 
-        public FormBuilderController(EhrmsContext context)
+        public LookupFormBuilderController(EhrmsContext context)
         {
             _context = context;
         }
 
-        // GET: api/FormBuilder/getAllEmp
-        [HttpGet("getAllFormB"), Produces("application/json")]
-        public object getAllFormB()
+        // GET: api/FormBuilder/GetAllFormB
+        [HttpGet("GetAllFormB"), Produces("application/json")]
+        public object GetAllFormB()
         {
-            List<FormBuilderVM> list = new List<FormBuilderVM>();
+            List<LookupFormBuilderVM> list = new List<LookupFormBuilderVM>();
 
             object result = null;
             try
             {
                 using (_context)
                 {
-                    list = _context.FormBuilder.Select(x => new FormBuilderVM()
+                    list = _context.LookupFormBuilder.Select(x => new LookupFormBuilderVM()
                     {
                         Id = x.Id,
                         FormId = x.FormId,
@@ -76,13 +76,13 @@ namespace EasyHRMS_Angular.Controllers
         {
             object result = null;
             //Holiday objHoliday = null;
-            List<FormBuilderVM> list = new List<FormBuilderVM>();
+            List<LookupFormBuilderVM> list = new List<LookupFormBuilderVM>();
             try
             {
                 using (_context)
                 {
                     //objHoliday = _context.Holiday.FirstOrDefault(x => x.HolidayId == id);
-                    list = _context.FormBuilder.Where(x => x.FormId == id).Select(x => new FormBuilderVM()
+                    list = _context.LookupFormBuilder.Where(x => x.FormId == id).Select(x => new LookupFormBuilderVM()
                     {
                         Id = x.Id,
                         FormId = x.FormId,

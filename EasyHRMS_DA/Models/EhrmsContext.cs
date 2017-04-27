@@ -16,10 +16,14 @@ namespace EasyHRMS_DA.Models
         public virtual DbSet<Currency> Currency { get; set; }
         public virtual DbSet<EmpData> EmpData { get; set; }
         public virtual DbSet<EmployeeDetails> EmployeeDetails { get; set; }
-        public virtual DbSet<FormBuilder> FormBuilder { get; set; }
+        public virtual DbSet<FormField> FormField { get; set; }
+        public virtual DbSet<FormTab> FormTab { get; set; }
+        public virtual DbSet<Forms> Forms { get; set; }
         public virtual DbSet<Holiday> Holiday { get; set; }
         public virtual DbSet<ListAction> ListAction { get; set; }
+        public virtual DbSet<ListSearch> ListSearch { get; set; }
         public virtual DbSet<LookupData> LookupData { get; set; }
+        public virtual DbSet<LookupFormBuilder> LookupFormBuilder { get; set; }
         public virtual DbSet<LookupList> LookupList { get; set; }
         public virtual DbSet<Lookups> Lookups { get; set; }
 
@@ -155,82 +159,88 @@ namespace EasyHRMS_DA.Models
 
                 entity.Property(e => e.EmployeeId).HasColumnName("EmployeeID");
 
-                entity.Property(e => e.AccountNumber).HasMaxLength(100);
+                entity.Property(e => e.F1).HasMaxLength(500);
 
-                entity.Property(e => e.AlternateMobile).HasMaxLength(50);
+                entity.Property(e => e.F10).HasMaxLength(500);
 
-                entity.Property(e => e.BankBranchName).HasMaxLength(200);
+                entity.Property(e => e.F11).HasMaxLength(500);
 
-                entity.Property(e => e.BankName).HasMaxLength(200);
+                entity.Property(e => e.F12).HasMaxLength(500);
 
-                entity.Property(e => e.BirthDate).HasColumnType("date");
+                entity.Property(e => e.F13).HasMaxLength(500);
 
-                entity.Property(e => e.BloodGroup).HasMaxLength(100);
+                entity.Property(e => e.F14).HasMaxLength(500);
 
-                entity.Property(e => e.Branch).HasMaxLength(100);
+                entity.Property(e => e.F15).HasMaxLength(500);
 
-                entity.Property(e => e.Citizenship).HasMaxLength(100);
+                entity.Property(e => e.F16).HasMaxLength(500);
 
-                entity.Property(e => e.CitizenshipCountry).HasMaxLength(100);
+                entity.Property(e => e.F17).HasMaxLength(500);
 
-                entity.Property(e => e.City).HasMaxLength(100);
+                entity.Property(e => e.F18).HasMaxLength(500);
 
-                entity.Property(e => e.Country).HasMaxLength(100);
+                entity.Property(e => e.F19).HasMaxLength(500);
 
-                entity.Property(e => e.Department).HasMaxLength(100);
+                entity.Property(e => e.F2).HasMaxLength(500);
 
-                entity.Property(e => e.EmailId)
-                    .HasColumnName("EmailID")
-                    .HasMaxLength(100);
+                entity.Property(e => e.F20).HasMaxLength(500);
 
-                entity.Property(e => e.EmployeeCode).HasMaxLength(250);
+                entity.Property(e => e.F21).HasMaxLength(500);
 
-                entity.Property(e => e.FatherHusbandName).HasMaxLength(100);
+                entity.Property(e => e.F22).HasMaxLength(500);
 
-                entity.Property(e => e.FirstName).HasMaxLength(100);
+                entity.Property(e => e.F23).HasMaxLength(500);
 
-                entity.Property(e => e.Gender).HasMaxLength(10);
+                entity.Property(e => e.F24).HasMaxLength(500);
 
-                entity.Property(e => e.Grade).HasMaxLength(100);
+                entity.Property(e => e.F25).HasMaxLength(500);
 
-                entity.Property(e => e.GuardianMobile).HasMaxLength(50);
+                entity.Property(e => e.F26).HasMaxLength(500);
 
-                entity.Property(e => e.JobProfile).HasMaxLength(250);
+                entity.Property(e => e.F27).HasMaxLength(500);
 
-                entity.Property(e => e.JobTitle).HasMaxLength(250);
+                entity.Property(e => e.F28).HasMaxLength(500);
 
-                entity.Property(e => e.JoiningDate).HasColumnType("date");
+                entity.Property(e => e.F29).HasMaxLength(500);
 
-                entity.Property(e => e.LandlinePhone).HasMaxLength(50);
+                entity.Property(e => e.F3).HasMaxLength(500);
 
-                entity.Property(e => e.LastDayOfJob).HasColumnType("date");
+                entity.Property(e => e.F30).HasMaxLength(500);
 
-                entity.Property(e => e.LastName).HasMaxLength(100);
+                entity.Property(e => e.F31).HasMaxLength(500);
 
-                entity.Property(e => e.ManagerTeamLeaderId).HasColumnName("ManagerTeamLeaderID");
+                entity.Property(e => e.F32).HasMaxLength(500);
 
-                entity.Property(e => e.MaritalStatus).HasMaxLength(100);
+                entity.Property(e => e.F33).HasMaxLength(500);
 
-                entity.Property(e => e.MobileNumber).HasMaxLength(50);
+                entity.Property(e => e.F34).HasMaxLength(500);
 
-                entity.Property(e => e.MotherName).HasMaxLength(100);
+                entity.Property(e => e.F35).HasMaxLength(500);
 
-                entity.Property(e => e.PersonalMobile).HasMaxLength(50);
+                entity.Property(e => e.F36).HasMaxLength(500);
 
-                entity.Property(e => e.Pincode).HasMaxLength(50);
+                entity.Property(e => e.F37).HasMaxLength(500);
 
-                entity.Property(e => e.Position).HasMaxLength(100);
+                entity.Property(e => e.F38).HasMaxLength(500);
 
-                entity.Property(e => e.Qualification).HasMaxLength(250);
+                entity.Property(e => e.F39).HasMaxLength(500);
 
-                entity.Property(e => e.State).HasMaxLength(100);
+                entity.Property(e => e.F4).HasMaxLength(500);
 
-                entity.Property(e => e.UserRoleId)
-                    .HasColumnName("UserRoleID")
-                    .HasMaxLength(450);
+                entity.Property(e => e.F40).HasMaxLength(500);
+
+                entity.Property(e => e.F5).HasMaxLength(500);
+
+                entity.Property(e => e.F6).HasMaxLength(500);
+
+                entity.Property(e => e.F7).HasMaxLength(500);
+
+                entity.Property(e => e.F8).HasMaxLength(500);
+
+                entity.Property(e => e.F9).HasMaxLength(500);
             });
 
-            modelBuilder.Entity<FormBuilder>(entity =>
+            modelBuilder.Entity<FormField>(entity =>
             {
                 entity.Property(e => e.DefaultValue).HasMaxLength(50);
 
@@ -240,13 +250,29 @@ namespace EasyHRMS_DA.Models
 
                 entity.Property(e => e.FieldType).HasMaxLength(50);
 
-                entity.Property(e => e.FormName).HasMaxLength(50);
-
                 entity.Property(e => e.OptionValue).HasMaxLength(500);
 
                 entity.Property(e => e.Placeholder).HasMaxLength(100);
 
                 entity.Property(e => e.Validator).HasMaxLength(100);
+            });
+
+            modelBuilder.Entity<FormTab>(entity =>
+            {
+                entity.Property(e => e.Category).HasMaxLength(50);
+
+                entity.Property(e => e.TabName).HasMaxLength(50);
+            });
+
+            modelBuilder.Entity<Forms>(entity =>
+            {
+                entity.Property(e => e.DisplayName)
+                    .IsRequired()
+                    .HasColumnType("nchar(50)");
+
+                entity.Property(e => e.FormName)
+                    .IsRequired()
+                    .HasColumnType("nchar(50)");
             });
 
             modelBuilder.Entity<Holiday>(entity =>
@@ -269,6 +295,13 @@ namespace EasyHRMS_DA.Models
                     .HasMaxLength(50);
             });
 
+            modelBuilder.Entity<ListSearch>(entity =>
+            {
+                entity.Property(e => e.FieldName).HasMaxLength(50);
+
+                entity.Property(e => e.FieldType).HasMaxLength(50);
+            });
+
             modelBuilder.Entity<LookupData>(entity =>
             {
                 entity.Property(e => e.FieldName)
@@ -276,6 +309,25 @@ namespace EasyHRMS_DA.Models
                     .HasMaxLength(50);
 
                 entity.Property(e => e.Value).HasMaxLength(50);
+            });
+
+            modelBuilder.Entity<LookupFormBuilder>(entity =>
+            {
+                entity.Property(e => e.DefaultValue).HasMaxLength(50);
+
+                entity.Property(e => e.DisplayName).HasMaxLength(50);
+
+                entity.Property(e => e.FieldName).HasMaxLength(50);
+
+                entity.Property(e => e.FieldType).HasMaxLength(50);
+
+                entity.Property(e => e.FormName).HasMaxLength(50);
+
+                entity.Property(e => e.OptionValue).HasMaxLength(500);
+
+                entity.Property(e => e.Placeholder).HasMaxLength(100);
+
+                entity.Property(e => e.Validator).HasMaxLength(100);
             });
 
             modelBuilder.Entity<LookupList>(entity =>

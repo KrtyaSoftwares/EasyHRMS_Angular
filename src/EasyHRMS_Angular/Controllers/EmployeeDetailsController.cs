@@ -34,49 +34,49 @@ namespace EasyHRMS_Angular.Controllers
             {
                 using (_context)
                 {
-                    list = _context.EmployeeDetails.Select(x => new EmployeeDetailsVM()
-                    {
-                        EmployeeId = x.EmployeeId,
-                        EmployeeCode = x.EmployeeCode,
-                        FirstName = x.FirstName,
-                        LastName = x.LastName,
-                        EmailId = x.EmailId,
-                        MobileNumber = x.MobileNumber,
-                        Gender = x.Gender,
-                        BirthDate = x.BirthDate,
-                        MaritalStatus = x.MaritalStatus,
-                        FatherHusbandName = x.FatherHusbandName,
-                        MotherName = x.MotherName,
-                        BloodGroup = x.BloodGroup,
-                        Citizenship = x.Citizenship,
-                        CitizenshipCountry = x.CitizenshipCountry,
-                        Department = x.Department,
-                        Branch = x.Branch,
-                        UserRoleId = x.UserRoleId,
-                        Qualification = x.Qualification,
-                        JobTitle = x.JobTitle,
-                        ManagerTeamLeaderId = x.ManagerTeamLeaderId,
-                        JoiningDate = x.JoiningDate,
-                        JobProfile = x.JobProfile,
-                        Position = x.Position,
-                        Grade = x.Grade,
-                        TotalExperience = x.TotalExperience,
-                        LastDayOfJob = x.LastDayOfJob,
-                        IsActive = x.IsActive,
-                        ResidentAddress = x.ResidentAddress,
-                        PermanantAddress = x.PermanantAddress,
-                        Country = x.Country,
-                        State = x.State,
-                        City = x.City,
-                        Pincode = x.Pincode,
-                        PersonalMobile = x.PersonalMobile,
-                        AlternateMobile = x.AlternateMobile,
-                        LandlinePhone = x.LandlinePhone,
-                        GuardianMobile = x.GuardianMobile,
-                        BankName = x.BankName,
-                        BankBranchName = x.BankBranchName,
-                        AccountNumber = x.AccountNumber
-                    }).ToList();
+                    //list = _context.EmployeeDetails.Select(x => new EmployeeDetailsVM()
+                    //{
+                    //    EmployeeId = x.EmployeeId,
+                    //    EmployeeCode = x.EmployeeCode,
+                    //    FirstName = x.FirstName,
+                    //    LastName = x.LastName,
+                    //    EmailId = x.EmailId,
+                    //    MobileNumber = x.MobileNumber,
+                    //    Gender = x.Gender,
+                    //    BirthDate = x.BirthDate,
+                    //    MaritalStatus = x.MaritalStatus,
+                    //    FatherHusbandName = x.FatherHusbandName,
+                    //    MotherName = x.MotherName,
+                    //    BloodGroup = x.BloodGroup,
+                    //    Citizenship = x.Citizenship,
+                    //    CitizenshipCountry = x.CitizenshipCountry,
+                    //    Department = x.Department,
+                    //    Branch = x.Branch,
+                    //    UserRoleId = x.UserRoleId,
+                    //    Qualification = x.Qualification,
+                    //    JobTitle = x.JobTitle,
+                    //    ManagerTeamLeaderId = x.ManagerTeamLeaderId,
+                    //    JoiningDate = x.JoiningDate,
+                    //    JobProfile = x.JobProfile,
+                    //    Position = x.Position,
+                    //    Grade = x.Grade,
+                    //    TotalExperience = x.TotalExperience,
+                    //    LastDayOfJob = x.LastDayOfJob,
+                    //    IsActive = x.IsActive,
+                    //    ResidentAddress = x.ResidentAddress,
+                    //    PermanantAddress = x.PermanantAddress,
+                    //    Country = x.Country,
+                    //    State = x.State,
+                    //    City = x.City,
+                    //    Pincode = x.Pincode,
+                    //    PersonalMobile = x.PersonalMobile,
+                    //    AlternateMobile = x.AlternateMobile,
+                    //    LandlinePhone = x.LandlinePhone,
+                    //    GuardianMobile = x.GuardianMobile,
+                    //    BankName = x.BankName,
+                    //    BankBranchName = x.BankBranchName,
+                    //    AccountNumber = x.AccountNumber
+                    //}).ToList();
                     result = new
                     {
                         list,
@@ -194,50 +194,50 @@ namespace EasyHRMS_Angular.Controllers
                     try
                     {
                         var entityUpdate = _context.EmployeeDetails.FirstOrDefault(x => x.EmployeeId == id);
-                        if (entityUpdate != null)
-                        {
-                            entityUpdate.EmployeeCode = model.EmployeeCode;
-                            entityUpdate.FirstName = model.FirstName;
-                            entityUpdate.LastName = model.LastName;
-                            entityUpdate.EmailId = model.EmailId;
-                            entityUpdate.MobileNumber = model.MobileNumber;
-                            entityUpdate.Gender = model.Gender;
-                            entityUpdate.BirthDate = model.BirthDate;
-                            entityUpdate.MaritalStatus = model.MaritalStatus;
-                            entityUpdate.FatherHusbandName = model.FatherHusbandName;
-                            entityUpdate.MotherName = model.MotherName;
-                            entityUpdate.BloodGroup = model.BloodGroup;
-                            entityUpdate.Citizenship = model.Citizenship;
-                            entityUpdate.CitizenshipCountry = model.CitizenshipCountry;
-                            entityUpdate.Department = model.Department;
-                            entityUpdate.Branch = model.Branch;
-                            entityUpdate.UserRoleId = model.UserRoleId;
-                            entityUpdate.Qualification = model.Qualification;
-                            entityUpdate.JobTitle = model.JobTitle;
-                            entityUpdate.ManagerTeamLeaderId = model.ManagerTeamLeaderId;
-                            entityUpdate.JoiningDate = model.JoiningDate;
-                            entityUpdate.JobProfile = model.JobProfile;
-                            entityUpdate.Position = model.Position;
-                            entityUpdate.Grade = model.Grade;
-                            entityUpdate.TotalExperience = model.TotalExperience;
-                            entityUpdate.LastDayOfJob = model.LastDayOfJob;
-                            entityUpdate.IsActive = model.IsActive;
-                            entityUpdate.ResidentAddress = model.ResidentAddress;
-                            entityUpdate.PermanantAddress = model.PermanantAddress;
-                            entityUpdate.Country = model.Country;
-                            entityUpdate.State = model.State;
-                            entityUpdate.City = model.City;
-                            entityUpdate.Pincode = model.Pincode;
-                            entityUpdate.PersonalMobile = model.PersonalMobile;
-                            entityUpdate.AlternateMobile = model.AlternateMobile;
-                            entityUpdate.LandlinePhone = model.LandlinePhone;
-                            entityUpdate.GuardianMobile = model.GuardianMobile;
-                            entityUpdate.BankName = model.BankName;
-                            entityUpdate.BankBranchName = model.BankBranchName;
-                            entityUpdate.AccountNumber = model.AccountNumber;
+                        //if (entityUpdate != null)
+                        //{
+                        //    entityUpdate.EmployeeCode = model.EmployeeCode;
+                        //    entityUpdate.FirstName = model.FirstName;
+                        //    entityUpdate.LastName = model.LastName;
+                        //    entityUpdate.EmailId = model.EmailId;
+                        //    entityUpdate.MobileNumber = model.MobileNumber;
+                        //    entityUpdate.Gender = model.Gender;
+                        //    entityUpdate.BirthDate = model.BirthDate;
+                        //    entityUpdate.MaritalStatus = model.MaritalStatus;
+                        //    entityUpdate.FatherHusbandName = model.FatherHusbandName;
+                        //    entityUpdate.MotherName = model.MotherName;
+                        //    entityUpdate.BloodGroup = model.BloodGroup;
+                        //    entityUpdate.Citizenship = model.Citizenship;
+                        //    entityUpdate.CitizenshipCountry = model.CitizenshipCountry;
+                        //    entityUpdate.Department = model.Department;
+                        //    entityUpdate.Branch = model.Branch;
+                        //    entityUpdate.UserRoleId = model.UserRoleId;
+                        //    entityUpdate.Qualification = model.Qualification;
+                        //    entityUpdate.JobTitle = model.JobTitle;
+                        //    entityUpdate.ManagerTeamLeaderId = model.ManagerTeamLeaderId;
+                        //    entityUpdate.JoiningDate = model.JoiningDate;
+                        //    entityUpdate.JobProfile = model.JobProfile;
+                        //    entityUpdate.Position = model.Position;
+                        //    entityUpdate.Grade = model.Grade;
+                        //    entityUpdate.TotalExperience = model.TotalExperience;
+                        //    entityUpdate.LastDayOfJob = model.LastDayOfJob;
+                        //    entityUpdate.IsActive = model.IsActive;
+                        //    entityUpdate.ResidentAddress = model.ResidentAddress;
+                        //    entityUpdate.PermanantAddress = model.PermanantAddress;
+                        //    entityUpdate.Country = model.Country;
+                        //    entityUpdate.State = model.State;
+                        //    entityUpdate.City = model.City;
+                        //    entityUpdate.Pincode = model.Pincode;
+                        //    entityUpdate.PersonalMobile = model.PersonalMobile;
+                        //    entityUpdate.AlternateMobile = model.AlternateMobile;
+                        //    entityUpdate.LandlinePhone = model.LandlinePhone;
+                        //    entityUpdate.GuardianMobile = model.GuardianMobile;
+                        //    entityUpdate.BankName = model.BankName;
+                        //    entityUpdate.BankBranchName = model.BankBranchName;
+                        //    entityUpdate.AccountNumber = model.AccountNumber;
 
-                            _context.SaveChanges();
-                        }
+                        //    _context.SaveChanges();
+                        //}
                         _ctxTransaction.Commit();
                         message = "Entry Updated";
                         errorcode = "0";
@@ -283,50 +283,50 @@ namespace EasyHRMS_Angular.Controllers
                         if (id != 0)
                         {
                             var entityUpdate = _context.EmployeeDetails.FirstOrDefault(x => x.EmployeeId == id);
-                            if (entityUpdate != null)
-                            {
-                                entityUpdate.EmployeeCode = model.EmployeeCode;
-                                entityUpdate.FirstName = model.FirstName;
-                                entityUpdate.LastName = model.LastName;
-                                entityUpdate.EmailId = model.EmailId;
-                                entityUpdate.MobileNumber = model.MobileNumber;
-                                entityUpdate.Gender = model.Gender;
-                                entityUpdate.BirthDate = model.BirthDate;
-                                entityUpdate.MaritalStatus = model.MaritalStatus;
-                                entityUpdate.FatherHusbandName = model.FatherHusbandName;
-                                entityUpdate.MotherName = model.MotherName;
-                                entityUpdate.BloodGroup = model.BloodGroup;
-                                entityUpdate.Citizenship = model.Citizenship;
-                                entityUpdate.CitizenshipCountry = model.CitizenshipCountry;
-                                entityUpdate.Department = model.Department;
-                                entityUpdate.Branch = model.Branch;
-                                entityUpdate.UserRoleId = model.UserRoleId;
-                                entityUpdate.Qualification = model.Qualification;
-                                entityUpdate.JobTitle = model.JobTitle;
-                                entityUpdate.ManagerTeamLeaderId = model.ManagerTeamLeaderId;
-                                entityUpdate.JoiningDate = model.JoiningDate;
-                                entityUpdate.JobProfile = model.JobProfile;
-                                entityUpdate.Position = model.Position;
-                                entityUpdate.Grade = model.Grade;
-                                entityUpdate.TotalExperience = model.TotalExperience;
-                                entityUpdate.LastDayOfJob = model.LastDayOfJob;
-                                entityUpdate.IsActive = model.IsActive;
-                                entityUpdate.ResidentAddress = model.ResidentAddress;
-                                entityUpdate.PermanantAddress = model.PermanantAddress;
-                                entityUpdate.Country = model.Country;
-                                entityUpdate.State = model.State;
-                                entityUpdate.City = model.City;
-                                entityUpdate.Pincode = model.Pincode;
-                                entityUpdate.PersonalMobile = model.PersonalMobile;
-                                entityUpdate.AlternateMobile = model.AlternateMobile;
-                                entityUpdate.LandlinePhone = model.LandlinePhone;
-                                entityUpdate.GuardianMobile = model.GuardianMobile;
-                                entityUpdate.BankName = model.BankName;
-                                entityUpdate.BankBranchName = model.BankBranchName;
-                                entityUpdate.AccountNumber = model.AccountNumber;
+                            //if (entityUpdate != null)
+                            //{
+                            //    entityUpdate.EmployeeCode = model.EmployeeCode;
+                            //    entityUpdate.FirstName = model.FirstName;
+                            //    entityUpdate.LastName = model.LastName;
+                            //    entityUpdate.EmailId = model.EmailId;
+                            //    entityUpdate.MobileNumber = model.MobileNumber;
+                            //    entityUpdate.Gender = model.Gender;
+                            //    entityUpdate.BirthDate = model.BirthDate;
+                            //    entityUpdate.MaritalStatus = model.MaritalStatus;
+                            //    entityUpdate.FatherHusbandName = model.FatherHusbandName;
+                            //    entityUpdate.MotherName = model.MotherName;
+                            //    entityUpdate.BloodGroup = model.BloodGroup;
+                            //    entityUpdate.Citizenship = model.Citizenship;
+                            //    entityUpdate.CitizenshipCountry = model.CitizenshipCountry;
+                            //    entityUpdate.Department = model.Department;
+                            //    entityUpdate.Branch = model.Branch;
+                            //    entityUpdate.UserRoleId = model.UserRoleId;
+                            //    entityUpdate.Qualification = model.Qualification;
+                            //    entityUpdate.JobTitle = model.JobTitle;
+                            //    entityUpdate.ManagerTeamLeaderId = model.ManagerTeamLeaderId;
+                            //    entityUpdate.JoiningDate = model.JoiningDate;
+                            //    entityUpdate.JobProfile = model.JobProfile;
+                            //    entityUpdate.Position = model.Position;
+                            //    entityUpdate.Grade = model.Grade;
+                            //    entityUpdate.TotalExperience = model.TotalExperience;
+                            //    entityUpdate.LastDayOfJob = model.LastDayOfJob;
+                            //    entityUpdate.IsActive = model.IsActive;
+                            //    entityUpdate.ResidentAddress = model.ResidentAddress;
+                            //    entityUpdate.PermanantAddress = model.PermanantAddress;
+                            //    entityUpdate.Country = model.Country;
+                            //    entityUpdate.State = model.State;
+                            //    entityUpdate.City = model.City;
+                            //    entityUpdate.Pincode = model.Pincode;
+                            //    entityUpdate.PersonalMobile = model.PersonalMobile;
+                            //    entityUpdate.AlternateMobile = model.AlternateMobile;
+                            //    entityUpdate.LandlinePhone = model.LandlinePhone;
+                            //    entityUpdate.GuardianMobile = model.GuardianMobile;
+                            //    entityUpdate.BankName = model.BankName;
+                            //    entityUpdate.BankBranchName = model.BankBranchName;
+                            //    entityUpdate.AccountNumber = model.AccountNumber;
 
-                                _context.SaveChanges();
-                            }
+                            //    _context.SaveChanges();
+                            //}
                             _ctxTransaction.Commit();
                             message = "Entry Updated";
                         }

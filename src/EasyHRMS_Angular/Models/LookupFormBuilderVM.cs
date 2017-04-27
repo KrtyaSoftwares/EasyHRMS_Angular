@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace EasyHRMS_Angular.Models
 {
-    public class FormBuilderVM
+    public class LookupFormBuilderVM
     {
         public int Id { get; set; }
         public int FormId { get; set; }
