@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using EasyHRMS_DA.Models;
 using EasyHRMS_Angular.Models;
+using System.Reflection;
 
 namespace EasyHRMS_Angular.Controllers
 {
@@ -23,17 +24,18 @@ namespace EasyHRMS_Angular.Controllers
             _context = context;
         }
 
-        // GET: api/Emp/getAllEmployee
-        [HttpGet("getAllEmployee"), Produces("application/json")]
-        public object getAllEmployee()
+        // GET: api/Emp/GetAllEmployee
+        [HttpGet("GetAllEmployee"), Produces("application/json")]
+        public object GetAllEmployee()
         {
-            List<EmployeeDetailsVM> list = new List<EmployeeDetailsVM>();
-
+            //List<EmployeeDetailsVM> list = new List<EmployeeDetailsVM>();
+            List<EmployeeDetails> list = new List<EmployeeDetails>();
             object result = null;
             try
             {
                 using (_context)
                 {
+                    list = _context.EmployeeDetails.ToList();
                     //list = _context.EmployeeDetails.Select(x => new EmployeeDetailsVM()
                     //{
                     //    EmployeeId = x.EmployeeId,
@@ -94,7 +96,7 @@ namespace EasyHRMS_Angular.Controllers
                     error = "1",
                     msg = "Error",
                     excp = ex.ToString()
-            };
+                };
             }
             return result;
         }
@@ -194,6 +196,19 @@ namespace EasyHRMS_Angular.Controllers
                     try
                     {
                         var entityUpdate = _context.EmployeeDetails.FirstOrDefault(x => x.EmployeeId == id);
+                        if (entityUpdate != null)
+                        {
+                            PropertyInfo[] propertiesEU = entityUpdate.GetType().GetProperties();
+                            foreach (PropertyInfo pi in propertiesEU)
+                            {
+                                if (pi.Name != "EmployeeID")
+                                {
+                                    pi.SetValue(entityUpdate, pi.GetValue(model));
+                                    //var xl = pi.GetValue(entityUpdate);
+                                }
+                            }
+                            _context.SaveChanges();
+                        }
                         //if (entityUpdate != null)
                         //{
                         //    entityUpdate.EmployeeCode = model.EmployeeCode;
@@ -283,6 +298,17 @@ namespace EasyHRMS_Angular.Controllers
                         if (id != 0)
                         {
                             var entityUpdate = _context.EmployeeDetails.FirstOrDefault(x => x.EmployeeId == id);
+                            if (entityUpdate != null)
+                            {
+                                PropertyInfo[] propertiesEU = entityUpdate.GetType().GetProperties();
+                                foreach (PropertyInfo pi in propertiesEU)
+                                {
+                                   pi.SetValue(entityUpdate, pi.GetValue(model));
+                                }
+                                _context.SaveChanges();
+                            }
+
+
                             //if (entityUpdate != null)
                             //{
                             //    entityUpdate.EmployeeCode = model.EmployeeCode;
@@ -329,6 +355,7 @@ namespace EasyHRMS_Angular.Controllers
                             //}
                             _ctxTransaction.Commit();
                             message = "Entry Updated";
+                            errorcode = "0";
                         }
                         else
                         {
