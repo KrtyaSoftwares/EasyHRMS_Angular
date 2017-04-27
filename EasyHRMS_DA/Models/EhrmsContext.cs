@@ -1,10 +1,14 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace EasyHRMS_DA.Models
 {
     public partial class EhrmsContext : DbContext
+    //public partial class EhrmsContext : IdentityDbContext<ApplicationUser>
+
+    //public partial class EhrmsContext : IdentityDbContext<ApplicationUser>
     {
         public virtual DbSet<AspNetRoleClaims> AspNetRoleClaims { get; set; }
         public virtual DbSet<AspNetRoles> AspNetRoles { get; set; }
