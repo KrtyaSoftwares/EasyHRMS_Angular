@@ -14,8 +14,7 @@ export class LookupComponent implements OnInit {
     private _route: ActivatedRoute,
     private _lookupService: LookupService
   ) { }
-
-  ngOnInit() {
+ngOnInit() {
     this.GetAll();
   }
 

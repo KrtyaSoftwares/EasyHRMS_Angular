@@ -54,75 +54,15 @@
                                         </tr>
                                     </thead>
                                     <tbody class="no-bd-y">
-                                        <tr>
-                                            <td>Prashant Kapse </td>
-                                            <td>Kailashnagar</td>
-                                            <td>Software development (Kailashnagar)</td>
-                                            <td>Mobile App developer</td>
-                                            <td>PrashantKapse@krtya.co.in</td>
-                                            <td>BE</td>
+                                        <tr *ngFor="let rec of results">
+                                            <td> {{rec.firstName}} {{rec.lastName}} </td>
+                                            <td>{{rec.branch}}</td>
+                                            <td>{{rec.department}}</td>
+                                            <td>{{rec.position}}</td>
+                                            <td>{{rec.emailId}}</td>
+                                            <td>{{rec.qualification}}</td>
                                             <td>
-                                                <button [routerLink]="['/employee/edit']" type="button" class="btn btn-sm btn-warning" title="Edit"><i class="fa fa-pencil"></i></button>
-                                                <button type="button" class="btn btn-sm btn-danger" title="Delete"><i class="fa fa-remove"></i></button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Prashant Kapse </td>
-                                            <td>Kailashnagar</td>
-                                            <td>Software development (Kailashnagar)</td>
-                                            <td>Mobile App developer</td>
-                                            <td>PrashantKapse@krtya.co.in</td>
-                                            <td>BE</td>
-                                            <td>
-                                                <button [routerLink]="['/employee/edit']" type="button" class="btn btn-sm btn-warning" title="Edit"><i class="fa fa-pencil"></i></button>
-                                                <button type="button" class="btn btn-sm btn-danger" title="Delete"><i class="fa fa-remove"></i></button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Prashant Kapse </td>
-                                            <td>Kailashnagar</td>
-                                            <td>Software development (Kailashnagar)</td>
-                                            <td>Mobile App developer</td>
-                                            <td>PrashantKapse@krtya.co.in</td>
-                                            <td>BE</td>
-                                            <td>
-                                                <button [routerLink]="['/employee/edit']" type="button" class="btn btn-sm btn-warning" title="Edit"><i class="fa fa-pencil"></i></button>
-                                                <button type="button" class="btn btn-sm btn-danger" title="Delete"><i class="fa fa-remove"></i></button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Prashant Kapse </td>
-                                            <td>Kailashnagar</td>
-                                            <td>Software development (Kailashnagar)</td>
-                                            <td>Mobile App developer</td>
-                                            <td>PrashantKapse@krtya.co.in</td>
-                                            <td>BE</td>
-                                            <td>
-                                                <button [routerLink]="['/employee/edit']" type="button" class="btn btn-sm btn-warning" title="Edit"><i class="fa fa-pencil"></i></button>
-                                                <button type="button" class="btn btn-sm btn-danger" title="Delete"><i class="fa fa-remove"></i></button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Prashant Kapse </td>
-                                            <td>Kailashnagar</td>
-                                            <td>Software development (Kailashnagar)</td>
-                                            <td>Mobile App developer</td>
-                                            <td>PrashantKapse@krtya.co.in</td>
-                                            <td>BE</td>
-                                            <td>
-                                                <button [routerLink]="['/employee/edit']" type="button" class="btn btn-sm btn-warning" title="Edit"><i class="fa fa-pencil"></i></button>
-                                                <button type="button" class="btn btn-sm btn-danger" title="Delete"><i class="fa fa-remove"></i></button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Prashant Kapse </td>
-                                            <td>Kailashnagar</td>
-                                            <td>Software development (Kailashnagar)</td>
-                                            <td>Mobile App developer</td>
-                                            <td>PrashantKapse@krtya.co.in</td>
-                                            <td>BE</td>
-                                            <td>
-                                                <button [routerLink]="['/employee/edit']" type="button" class="btn btn-sm btn-warning" title="Edit"><i class="fa fa-pencil"></i></button>
+                                                <button [routerLink]="['/employee/edit/'+ rec.employeeId ]" type="button" class="btn btn-sm btn-warning" title="Edit"><i class="fa fa-pencil"></i></button>
                                                 <button type="button" class="btn btn-sm btn-danger" title="Delete"><i class="fa fa-remove"></i></button>
                                             </td>
                                         </tr>

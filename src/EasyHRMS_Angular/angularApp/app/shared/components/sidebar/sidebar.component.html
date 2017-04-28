@@ -2,26 +2,6 @@
     <div id="main-menu">
         <ul class="sidebar-nav">
             <li> <a routerLink="/dashboard" [routerLinkActive]="['router-link-active']"><i class="fa fa-dashboard"></i><span class="sidebar-text">Dashboard</span></a> </li>
-
-            <li [routerLinkActive]="['router-link-active']">
-                <a (click)="addExpandClass('crm')">
-                    <i class="glyph-icon flaticon-bars31"></i><span class="sidebar-text">CRM</span><span class="fa arrow"></span>
-               </a>
-                <ul class="submenu collapse" [class.in]="showMenu === 'crm'">
-                    <li>
-                        <a [routerLink]="['/crm']"><span>Oppurtunity</span></a>
-                    </li>
-                    <li>
-                        <a [routerLink]="['/crm/liveposition']"><span>Live Position</span></a>
-                    </li>
-                    <li>
-                        <a [routerLink]="['/crm/enquiry']"><span>Enquiry</span></a>
-                    </li>
-                    <li>
-                        <a [routerLink]="['/crm/reports']"><span>Report</span></a>
-                    </li>
-                </ul>
-            </li>
             <li [routerLinkActive]="['router-link-active']">
                 <a (click)="addExpandClass('employee')">
                     <i class="glyph-icon flaticon-group44"></i><span class="sidebar-text">Employee</span>

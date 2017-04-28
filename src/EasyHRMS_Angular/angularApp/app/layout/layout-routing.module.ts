@@ -17,6 +17,7 @@ const routes: Routes = [
             { path: 'payroll', loadChildren: './payroll/payroll.module#PayrollModule' },
             { path: 'formbuilder', loadChildren: './formbuilder/formbuilder.module#FormbuilderModule' },
             { path: 'listing', loadChildren: './listing/listing.module#ListingModule' },
+            { path: 'general-listing', loadChildren: './general-listing/general-listing.module#GeneralListingModule' },
         ]
     }
 ];

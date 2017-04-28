@@ -21,6 +21,9 @@ import { ActiveemployeeComponent } from './report/activeemployee/activeemployee.
 import { WorkanniversaryComponent } from './report/workanniversary/workanniversary.component';
 import { BirthdayComponent } from './report/birthday/birthday.component';
 
+import { EmployeeService } from '../../core/services/employee.service';
+import { GeneralFormsService } from '../../core/services/general-forms.service';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -44,6 +47,10 @@ import { BirthdayComponent } from './report/birthday/birthday.component';
     ActiveemployeeComponent,
     WorkanniversaryComponent,
     BirthdayComponent
+  ],
+  providers: [
+    EmployeeService,
+    GeneralFormsService
   ]
 })
 export class EmployeeModule { }
