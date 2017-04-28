@@ -1,29 +1,15 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace EasyHRMS_DA.Models
 {
     public partial class EhrmsContext : DbContext
-    //public partial class EhrmsContext : IdentityDbContext<ApplicationUser>
-
-    //public partial class EhrmsContext : IdentityDbContext<ApplicationUser>
     {
-        public virtual DbSet<AspNetRoleClaims> AspNetRoleClaims { get; set; }
-        public virtual DbSet<AspNetRoles> AspNetRoles { get; set; }
-        public virtual DbSet<AspNetUserClaims> AspNetUserClaims { get; set; }
-        public virtual DbSet<AspNetUserLogins> AspNetUserLogins { get; set; }
-        public virtual DbSet<AspNetUserRoles> AspNetUserRoles { get; set; }
-        public virtual DbSet<AspNetUserTokens> AspNetUserTokens { get; set; }
-        public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
-        public virtual DbSet<Currency> Currency { get; set; }
-        public virtual DbSet<EmpData> EmpData { get; set; }
         public virtual DbSet<EmployeeDetails> EmployeeDetails { get; set; }
         public virtual DbSet<FormField> FormField { get; set; }
         public virtual DbSet<FormTab> FormTab { get; set; }
         public virtual DbSet<Forms> Forms { get; set; }
-        public virtual DbSet<Holiday> Holiday { get; set; }
         public virtual DbSet<ListAction> ListAction { get; set; }
         public virtual DbSet<ListSearch> ListSearch { get; set; }
         public virtual DbSet<LookupData> LookupData { get; set; }
@@ -40,120 +26,9 @@ namespace EasyHRMS_DA.Models
             : base(options) { }
         public EhrmsContext() { }
 
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<AspNetRoleClaims>(entity =>
-            {
-                entity.Property(e => e.RoleId)
-                    .IsRequired()
-                    .HasMaxLength(450);
-
-                entity.HasOne(d => d.Role)
-                    .WithMany(p => p.AspNetRoleClaims)
-                    .HasForeignKey(d => d.RoleId);
-            });
-
-            modelBuilder.Entity<AspNetRoles>(entity =>
-            {
-                entity.Property(e => e.Id).HasMaxLength(450);
-
-                entity.Property(e => e.Name).HasMaxLength(256);
-
-                entity.Property(e => e.NormalizedName).HasMaxLength(256);
-            });
-
-            modelBuilder.Entity<AspNetUserClaims>(entity =>
-            {
-                entity.Property(e => e.UserId)
-                    .IsRequired()
-                    .HasMaxLength(450);
-
-                entity.HasOne(d => d.User)
-                    .WithMany(p => p.AspNetUserClaims)
-                    .HasForeignKey(d => d.UserId);
-            });
-
-            modelBuilder.Entity<AspNetUserLogins>(entity =>
-            {
-                entity.HasKey(e => new { e.LoginProvider, e.ProviderKey })
-                    .HasName("PK_AspNetUserLogins");
-
-                entity.Property(e => e.LoginProvider).HasMaxLength(450);
-
-                entity.Property(e => e.ProviderKey).HasMaxLength(450);
-
-                entity.Property(e => e.UserId)
-                    .IsRequired()
-                    .HasMaxLength(450);
-
-                entity.HasOne(d => d.User)
-                    .WithMany(p => p.AspNetUserLogins)
-                    .HasForeignKey(d => d.UserId);
-            });
-
-            modelBuilder.Entity<AspNetUserRoles>(entity =>
-            {
-                entity.HasKey(e => new { e.UserId, e.RoleId })
-                    .HasName("PK_AspNetUserRoles");
-
-                entity.Property(e => e.UserId).HasMaxLength(450);
-
-                entity.Property(e => e.RoleId).HasMaxLength(450);
-
-                entity.HasOne(d => d.Role)
-                    .WithMany(p => p.AspNetUserRoles)
-                    .HasForeignKey(d => d.RoleId);
-
-                entity.HasOne(d => d.User)
-                    .WithMany(p => p.AspNetUserRoles)
-                    .HasForeignKey(d => d.UserId);
-            });
-
-            modelBuilder.Entity<AspNetUserTokens>(entity =>
-            {
-                entity.HasKey(e => new { e.UserId, e.LoginProvider, e.Name })
-                    .HasName("PK_AspNetUserTokens");
-
-                entity.Property(e => e.UserId).HasMaxLength(450);
-
-                entity.Property(e => e.LoginProvider).HasMaxLength(450);
-
-                entity.Property(e => e.Name).HasMaxLength(450);
-            });
-
-            modelBuilder.Entity<AspNetUsers>(entity =>
-            {
-                entity.Property(e => e.Id).HasMaxLength(450);
-
-                entity.Property(e => e.Email).HasMaxLength(256);
-
-                entity.Property(e => e.NormalizedEmail).HasMaxLength(256);
-
-                entity.Property(e => e.NormalizedUserName).HasMaxLength(256);
-
-                entity.Property(e => e.UserName).HasMaxLength(256);
-            });
-
-            modelBuilder.Entity<Currency>(entity =>
-            {
-                entity.Property(e => e.CurrencyId).HasColumnName("CurrencyID");
-
-                entity.Property(e => e.CurrencyName).HasMaxLength(50);
-
-                entity.Property(e => e.CurrencyShortName).HasMaxLength(50);
-
-                entity.Property(e => e.CurrencySymbol).HasMaxLength(50);
-            });
-
-            modelBuilder.Entity<EmpData>(entity =>
-            {
-                entity.Property(e => e.Id).HasColumnName("id");
-
-                entity.Property(e => e.Name).HasMaxLength(50);
-
-                entity.Property(e => e.Status).HasMaxLength(50);
-            });
-
             modelBuilder.Entity<EmployeeDetails>(entity =>
             {
                 entity.HasKey(e => e.EmployeeId)
@@ -272,20 +147,11 @@ namespace EasyHRMS_DA.Models
             {
                 entity.Property(e => e.DisplayName)
                     .IsRequired()
-                    .HasColumnType("nchar(50)");
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.FormName)
                     .IsRequired()
-                    .HasColumnType("nchar(50)");
-            });
-
-            modelBuilder.Entity<Holiday>(entity =>
-            {
-                entity.Property(e => e.HolidayId).HasColumnName("HolidayID");
-
-                entity.Property(e => e.HolidayDate).HasColumnType("date");
-
-                entity.Property(e => e.HolidayDesc).HasMaxLength(150);
+                    .HasMaxLength(50);
             });
 
             modelBuilder.Entity<ListAction>(entity =>

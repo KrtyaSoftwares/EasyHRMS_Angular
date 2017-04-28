@@ -66,8 +66,9 @@ namespace Angular2WebpackVisualStudio
             //services.AddIdentity<ApplicationUser, IdentityRole>(Configuration)
             //  .AddEntityFrameworkStores<ApplicationDbContext>();
 
-            services.AddIdentity<ApplicationUser, IdentityRole>()
-             .AddEntityFrameworkStores<EhrmsContext>();
+            //services.AddIdentity<ApplicationUser, IdentityRole>()
+            // .AddEntityFrameworkStores<EhrmsContext>();
+
             // services.AddIdentity<ApplicationUser, IdentityRole<int>>()
             // .AddEntityFrameworkStores<EhrmsContext,Int>().AddDefaultTokenProviders();
 
@@ -112,7 +113,7 @@ namespace Angular2WebpackVisualStudio
             app.UseStaticFiles();
 
             //Identity 
-            app.UseIdentity();
+            //app.UseIdentity();
 
             //start token settings
             #region Handle Exception 

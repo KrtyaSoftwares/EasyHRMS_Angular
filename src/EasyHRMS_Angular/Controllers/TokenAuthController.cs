@@ -19,177 +19,177 @@ namespace EasyHRMS_Angular.Controllers
     public class AccountController : Controller
     {
 
-        private readonly UserManager<ApplicationUser> _userManager;
-        private readonly SignInManager<ApplicationUser> _signInManager;
+        //private readonly UserManager<ApplicationUser> _userManager;
+        //private readonly SignInManager<ApplicationUser> _signInManager;
 
-        public AccountController(
-            UserManager<ApplicationUser> userManager,
-            SignInManager<ApplicationUser> signInManager)
-        {
-            _userManager = userManager;
-            _signInManager = signInManager;
-        }
+        //public AccountController(
+        //    UserManager<ApplicationUser> userManager,
+        //    SignInManager<ApplicationUser> signInManager)
+        //{
+        //    _userManager = userManager;
+        //    _signInManager = signInManager;
+        //}
 
 
-        [HttpPost("Login")]
-        [AllowAnonymous]
+        //[HttpPost("Login")]
+        //[AllowAnonymous]
         //[ValidateAntiForgeryToken]
         //public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = null)
-        public async Task<IActionResult> Login(LoginViewModel model)
-        {
+        //public async Task<IActionResult> Login(LoginViewModel model)
+        //{
             //ViewData["ReturnUrl"] = returnUrl;
-            if (ModelState.IsValid)
-            {
+           // if (ModelState.IsValid)
+            //{
                 // This doesn't count login failures towards account lockout
                 // To enable password failures to trigger account lockout, set lockoutOnFailure: true
-                var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, lockoutOnFailure: false);
-                if (result.Succeeded)
-                {
+                //var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, lockoutOnFailure: false);
+                //if (result.Succeeded)
+                //{
 
                     // _logger.LogInformation(1, "User logged in.");
                     //return RedirectToLocal(returnUrl);
 
-                    //start token code
-                    var requestAt = DateTime.Now;
-                    var expiresIn = requestAt + TokenAuthOption.ExpiresSpan;
-                    User tokenUser = new User()
-                    {
-                        Username = model.Email,
-                        Password = model.Password
-                    };
-                    var token = GenerateToken(tokenUser, expiresIn);
+                    //start
+                   // var requestAt = DateTime.Now;
+                   // var expiresIn = requestAt + TokenAuthOption.ExpiresSpan;
+                   // User tokenUser = new User()
+                   // {
+                       // Username = model.Email,
+                       // Password = model.Password
+                    //};
+                    //var token = GenerateToken(tokenUser, expiresIn);
 
-                    return Json(new RequestResult
-                    {
-                        State = RequestState.Success,
-                        Data = new
-                        {
-                            requertAt = requestAt,
-                            expiresIn = TokenAuthOption.ExpiresSpan.TotalSeconds,
-                            tokeyType = TokenAuthOption.TokenType,
-                            accessToken = token
-                        }
-                    });
-                    //End token code
+                    //return Json(new RequestResult
+                    //{
+                        //State = RequestState.Success,
+                       // Data = new
+                        //{
+                           // requertAt = requestAt,
+                           // expiresIn = TokenAuthOption.ExpiresSpan.TotalSeconds,
+                            //tokeyType = TokenAuthOption.TokenType,
+                            //accessToken = token
+                        //}
+                    //});
+                    //End
 
-                }
+               // }
                 //if (result.RequiresTwoFactor)
                 //{
                 //    return RedirectToAction(nameof(SendCode), new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
                 //}
-                if (result.IsLockedOut)
-                {
+                //if (result.IsLockedOut)
+                //{
                     //_logger.LogWarning(2, "User account locked out.");
                     //return View("Lockout");
-                    return Json(new RequestResult
-                    {
-                        State = RequestState.Failed,
-                        Msg = "Username Lockout"
-                    });
-                }
-                else
-                {
+                    //return Json(new RequestResult
+                    //{
+                    //    State = RequestState.Failed,
+                    //    Msg = "Username Lockout"
+                    //});
+               // }
+                //else
+                //{
                     //ModelState.AddModelError(string.Empty, "Invalid login attempt.");
                     //return View(model);
-                    return Json(new RequestResult
-                    {
-                        State = RequestState.Failed,
-                        Msg = "Username or password is invalid"
-                    });
-                }
-            }
+                   // return Json(new RequestResult
+                   // {
+                       // State = RequestState.Failed,
+                       // Msg = "Username or password is invalid"
+                    //});
+                //}
+            //}
 
             // If we got this far, something failed, redisplay form
             //return View(model);
-            return Json(new RequestResult
-            {
-                State = RequestState.Failed,
-                Msg = "Invalid login attempt."
-            });
-        }
+        //    return Json(new RequestResult
+        //    {
+        //        State = RequestState.Failed,
+        //        Msg = "Invalid login attempt."
+        //    });
+        //}
 
         // POST: /Account/Register
-        [HttpPost("Register")]
-        [AllowAnonymous]
+        //[HttpPost("Register")]
+        //[AllowAnonymous]
         //[ValidateAntiForgeryToken]
         //public async Task<IActionResult> Register(RegisterViewModel model, string returnUrl = null)
-        public async Task<IActionResult> Register([FromBody] RegisterViewModel model)
-        {
+        //public async Task<IActionResult> Register([FromBody] RegisterViewModel model)
+        //{
             //ViewData["ReturnUrl"] = returnUrl;
-            if (ModelState.IsValid)
-            {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+            //if (ModelState.IsValid)
+            //{
+            //    var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 //var result = await _userManager.CreateAsync(user, model.Password);
-                var result = await _userManager.CreateAsync(user, model.Password);
-                if (result.Succeeded)
+                //var result = await _userManager.CreateAsync(user, model.Password);
+                //if (result.Succeeded)
                 //if (result)
-                {
+                //{
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=532713
                     // Send an email with this link
                     //var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     //var callbackUrl = Url.Action(nameof(ConfirmEmail), "Account", new { userId = user.Id, code = code }, protocol: HttpContext.Request.Scheme);
                     //await _emailSender.SendEmailAsync(model.Email, "Confirm your account",
                     //    $"Please confirm your account by clicking this link: <a href='{callbackUrl}'>link</a>");
-                    await _signInManager.SignInAsync(user, isPersistent: false);
+                    //await _signInManager.SignInAsync(user, isPersistent: false);
                     //_logger.LogInformation(3, "User created a new account with password.");
                     //return RedirectToLocal(returnUrl);
 
-                    //start token code
-                    var requestAt = DateTime.Now;
-                    var expiresIn = requestAt + TokenAuthOption.ExpiresSpan;
-                    User tokenUser = new User()
-                    {
-                        Username = model.Email,
-                        Password = model.Password
-                    };
-                    var token = GenerateToken(tokenUser, expiresIn);
+                    //start
+                    //var requestAt = DateTime.Now;
+                    //var expiresIn = requestAt + TokenAuthOption.ExpiresSpan;
+                    //User tokenUser = new User()
+                    //{
+                    //    Username = model.Email,
+                    //    Password = model.Password
+                    //};
+                    //var token = GenerateToken(tokenUser, expiresIn);
 
-                    return Json(new RequestResult
-                    {
-                        State = RequestState.Success,
-                        Data = new
-                        {
-                            requertAt = requestAt,
-                            expiresIn = TokenAuthOption.ExpiresSpan.TotalSeconds,
-                            tokeyType = TokenAuthOption.TokenType,
-                            accessToken = token
-                        }
-                    });
-                    //End token code
+                    //return Json(new RequestResult
+                    //{
+                    //    State = RequestState.Success,
+                    //    Data = new
+                    //    {
+                    //        requertAt = requestAt,
+                    //        expiresIn = TokenAuthOption.ExpiresSpan.TotalSeconds,
+                    //        tokeyType = TokenAuthOption.TokenType,
+                    //        accessToken = token
+                    //    }
+                    //});
+                    //End
 
-                }
+                //}
                 //AddErrors(result);
-                return Json(new RequestResult
-                {
-                    State = RequestState.Failed,
-                    Msg = "Username or password is invalid"
-                });
-            }
+            //    return Json(new RequestResult
+            //    {
+            //        State = RequestState.Failed,
+            //        Msg = "Username or password is invalid"
+            //    });
+            //}
 
             // If we got this far, something failed, redisplay form
             //return View(model);
-            return Json(new RequestResult
-            {
-                State = RequestState.Failed,
-                Msg = "Username or password is invalid"
-            });
-        }
+        //    return Json(new RequestResult
+        //    {
+        //        State = RequestState.Failed,
+        //        Msg = "Username or password is invalid"
+        //    });
+        //}
 
         //
         // POST: /Account/Logout
-        [HttpPost("Logout")]
+        //[HttpPost("Logout")]
         //[ValidateAntiForgeryToken]
-        public async Task<IActionResult> Logout()
-        {
-            await _signInManager.SignOutAsync();
+        //public async Task<IActionResult> Logout()
+        //{
+        //    await _signInManager.SignOutAsync();
             //_logger.LogInformation(4, "User logged out.");
             //return RedirectToAction(nameof(HomeController.Index), "Home");
-            return Json(new RequestResult
-            {
-                State = RequestState.Failed,
-                Msg = "Logout Successfull"
-            });
-        }
+        //    return Json(new RequestResult
+        //    {
+        //        State = RequestState.Failed,
+        //        Msg = "Logout Successfull"
+        //    });
+        //}
 
 
 
