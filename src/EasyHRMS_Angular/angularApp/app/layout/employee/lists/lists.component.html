@@ -44,25 +44,15 @@
                                 <table class="table table-bordered table-striped table-hover">
                                     <thead class="no-bd">
                                         <tr>
-                                            <th><strong>Name</strong> </th>
-                                            <th><strong>Branch</strong> </th>
-                                            <th><strong>Department</strong> </th>
-                                            <th><strong>Job Post</strong></th>
-                                            <th><strong>Email</strong></th>
-                                            <th><strong>Qualification</strong></th>
+                                            <th *ngFor="let fields of _FilteredfieldsHeading"><strong> {{fields.displayName}} </strong> </th>
                                             <th><strong>Action</strong></th>
                                         </tr>
                                     </thead>
                                     <tbody class="no-bd-y">
-                                        <tr *ngFor="let rec of results">
-                                            <td> {{rec.firstName}} {{rec.lastName}} </td>
-                                            <td>{{rec.branch}}</td>
-                                            <td>{{rec.department}}</td>
-                                            <td>{{rec.position}}</td>
-                                            <td>{{rec.emailId}}</td>
-                                            <td>{{rec.qualification}}</td>
+                                        <tr *ngFor="let rec of _data;let i = index">
+                                            <td *ngFor="let r of rec"> {{r.val}} </td>
                                             <td>
-                                                <button [routerLink]="['/employee/edit/'+ rec.employeeId ]" type="button" class="btn btn-sm btn-warning" title="Edit"><i class="fa fa-pencil"></i></button>
+                                                <button [routerLink]="['/employee/edit/' + lookup + '/' + rec[0]['id'] ]" type="button" class="btn btn-sm btn-warning" title="Edit"><i class="fa fa-pencil"></i></button>
                                                 <button type="button" class="btn btn-sm btn-danger" title="Delete"><i class="fa fa-remove"></i></button>
                                             </td>
                                         </tr>
