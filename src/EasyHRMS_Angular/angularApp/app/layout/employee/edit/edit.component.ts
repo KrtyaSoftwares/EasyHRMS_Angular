@@ -17,7 +17,8 @@ import { GeneralDataModel } from '../../../models/general-data.model';
 })
 export class EditComponent implements OnInit {
   _generalDataModel = new GeneralDataModel();
-  generalFormId = 1;
+  generalFormId: number;
+  Id: number;
   allResults: any = {};
   _tabLists: any [] = [];
   _fieldLists: any [] = [];
@@ -35,8 +36,13 @@ export class EditComponent implements OnInit {
     private _generalFormsService: GeneralFormsService
   ) { }
   ngOnInit() {
+
+    this._route.params.subscribe(params => {
+        this.generalFormId = params['formid'];
+        this.Id = params['id'];
+    });
     this.getFormDefination(this.generalFormId);
-    this.getFormData(this.generalFormId);
+    this.getFormData(this.Id);
   }
   getFormData(id: number) {
     this._generalFormsService

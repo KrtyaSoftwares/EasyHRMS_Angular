@@ -8,7 +8,8 @@ import { ReportComponent } from './report/report.component';
 
 const routes: Routes = [
     { path: '', component: ListsComponent },
-    { path: 'edit/:id', component: EditComponent },
+    { path: 'edit/:formid/', component: EditComponent },
+    { path: 'edit/:formid/:id', component: EditComponent },
     { path: 'leave', component: LeaveComponent },
     { path: 'salary', component: SalaryComponent },
     { path: 'report', component: ReportComponent },
