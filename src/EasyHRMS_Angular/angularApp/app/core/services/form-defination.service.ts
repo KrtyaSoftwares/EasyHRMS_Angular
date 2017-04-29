@@ -19,7 +19,7 @@ export class FormsService {
         this.headers.append('Content-Type', 'application/json');
         this.headers.append('Accept', 'application/json');
     }
-
+    
     // public GetAll = (): Observable<Forms[]> => {
     //     return this.http.post(this.actionUrl + 'all/', '', { headers: this.headers })
     //     .map((response: Response) => <Thing[]>response.json());
