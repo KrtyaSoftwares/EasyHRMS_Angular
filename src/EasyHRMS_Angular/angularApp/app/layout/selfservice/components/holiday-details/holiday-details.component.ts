@@ -9,7 +9,7 @@ import { LookupDataModel } from '../../../../models/lookup-data.model';
   //styleUrls: ['./holiday-details.component.css']
 })
 export class HolidayDetailsComponent implements OnInit {
-    lookup: number = 1;
+    lookup = 1;
     lookupdata: any;
     lookupdataByRow: any;
     //public lookupdata: LookupDataModel[] = [];
@@ -24,7 +24,6 @@ export class HolidayDetailsComponent implements OnInit {
           .GetLookUpData(lookup)
           .subscribe(
           data => {
-              
               this.lookupdata = data.list;
               console.log(this.lookupdata);
               this.lookupdataByRow = this.groupBy(this.lookupdata, function (item: any) {
@@ -39,9 +38,9 @@ export class HolidayDetailsComponent implements OnInit {
           });
   }
 
-  groupBy(array: any, f:any) {
-       let groups:any = {};
-      array.forEach(function (o:any) {
+  groupBy ( array: any, f: any ) {
+       let groups: any = {};
+      array.forEach(function (o: any) {
           let group = JSON.stringify(f(o));
           groups[group] = groups[group] || [];
           groups[group].push(o);

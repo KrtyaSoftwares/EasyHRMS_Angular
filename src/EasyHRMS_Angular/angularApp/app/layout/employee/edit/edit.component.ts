@@ -1,13 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { PersonalformComponent } from './personalform/personalform.component';
-import { ContactformComponent } from './contactform/contactform.component';
-import { BankformComponent } from './bankform/bankform.component';
-import { ExperienceformComponent } from './experienceform/experienceform.component';
-import { SalaryformComponent } from './salaryform/salaryform.component';
-import { LeaveformComponent } from './leaveform/leaveform.component';
-
 import { GeneralFormsService } from '../../../core/services/general-forms.service';
 import { GeneralDataModel } from '../../../models/general-data.model';
 
