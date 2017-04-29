@@ -23,7 +23,7 @@ namespace EasyHRMS_Angular.Controllers
             _context = context;
         }
 
-        // GET: api/FormBuilder/GetAllFormB
+        // GET: api/LookupFormBuilder/GetAllFormB
         [HttpGet("GetAllFormB"), Produces("application/json")]
         public object GetAllFormB()
         {
@@ -70,7 +70,7 @@ namespace EasyHRMS_Angular.Controllers
             return result;
         }
 
-        // GET api/FormBuilder/GetFBFieldSetByFormID/5
+        // GET api/LookupFormBuilder/GetFBFieldSetByFormID/5
         [HttpGet("GetFBFieldSetByFormID/{id}"), Produces("application/json")]
         public object GetFBFieldSetByFormID(int id)
         {

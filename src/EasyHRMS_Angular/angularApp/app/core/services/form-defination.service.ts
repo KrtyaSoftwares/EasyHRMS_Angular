@@ -32,7 +32,7 @@ export class FormsService {
     }
     public GetTableData = (lookup: number, id: number): Observable<Forms> => {
         return this.http
-            .get(this.actionUrl + 'LookupFormBuilder/GetLRowDataByLRID/' + lookup + '/' + id)
+            .get(this.actionUrl + 'LookupData/GetLRowDataByLRID/' + lookup + '/' + id)
             .map(res => <Forms>res.json());
     }
 

@@ -9,6 +9,7 @@ const routes: Routes = [
             { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' },
             { path: 'myprofile', loadChildren: './myprofile/myprofile.module#MyprofileModule' },
             { path: 'employee', loadChildren: './employee/employee.module#EmployeeModule' },
+            { path: 'selfservice', loadChildren: './selfservice/selfservice.module#SelfserviceModule' },
             { path: 'appraisal', loadChildren: './appraisal/appraisal.module#AppraisalModule' },
             { path: 'lookup', loadChildren: './lookup/lookup.module#LookupModule' },
             { path: 'crm', loadChildren: './crm/crm.module#CrmModule' },
