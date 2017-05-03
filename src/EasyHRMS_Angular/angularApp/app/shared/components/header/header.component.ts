@@ -1,5 +1,4 @@
 ﻿import { Component, OnInit } from '@angular/core';
-import { CustomHeadingComponent } from './custom-heading/custom-heading.component';
 
 @Component({
     selector: 'app-header',
