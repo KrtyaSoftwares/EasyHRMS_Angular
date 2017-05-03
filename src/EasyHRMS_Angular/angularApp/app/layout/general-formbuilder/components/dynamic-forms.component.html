@@ -34,7 +34,7 @@
           <div 
               class="alert alert-danger" 
               [hidden]="form.get([fields.fieldName]).valid || (form.get([fields.fieldName]).pristine && !submitted)">
-              *{{fields.fieldName}} is required
+              * {{fields.displayName}} is required
             </div>
         </div>
       </div>

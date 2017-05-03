@@ -12,6 +12,7 @@ export class DynamicFormsComponent implements OnInit {
   @Input('tabnumber') tabnumber: number;
   @Input('data') data: any[] = [];
   @Output() childSubmitData: EventEmitter<any> = new EventEmitter<any>();
+  public submitted: boolean;
   constructor(
     private fb: FormBuilder,
     private _router: Router,
@@ -39,6 +40,11 @@ export class DynamicFormsComponent implements OnInit {
     this.form = this.fb.group(group);
   }
   onSubmit(value: any, isValid: boolean) {
-    this.childSubmitData.emit(this.form.value);
+      this.submitted = true;
+      if (isValid == false) {
+          return false;
+      } else {
+        this.childSubmitData.emit(this.form.value);
+      }
   }
 }
