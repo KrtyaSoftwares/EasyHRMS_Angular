@@ -34,7 +34,7 @@
                                   </div>
                                         <div 
                                           class="alert alert-danger" 
-                                          *ngIf="!form.get([question.fieldName]).valid">
+                                          [hidden]="form.get([question.fieldName]).valid || (form.get([question.fieldName]).pristine && !submitted)">
                                           *{{question.fieldName}} is required
                                         </div>
                                 </div>

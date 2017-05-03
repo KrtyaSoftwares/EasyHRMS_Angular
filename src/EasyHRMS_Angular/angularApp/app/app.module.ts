@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-
 import { CoreModule } from './core/core.module';
 
 import { Configuration } from './app.constants';
@@ -17,7 +16,7 @@ import { AppComponent } from './app.component';
         FormsModule,
         HttpModule,
         AppRoutes,
-        CoreModule.forRoot(),
+        CoreModule.forRoot()
     ],
 
     declarations: [
