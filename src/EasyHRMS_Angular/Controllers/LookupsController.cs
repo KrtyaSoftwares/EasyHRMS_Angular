@@ -16,9 +16,9 @@ namespace EasyHRMS_Angular.Controllers
         //    return View();
         //}
 
-        private readonly EhrmsContext _context;
+        private readonly Ehrms_ng2Context _context;
 
-        public LookupsController(EhrmsContext context)
+        public LookupsController(Ehrms_ng2Context context)
         {
             _context = context;
         }

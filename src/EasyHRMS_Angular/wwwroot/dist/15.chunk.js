@@ -1,11 +1,11 @@
 webpackJsonp([15],{
 
-/***/ 370:
+/***/ 372:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app_constants__ = __webpack_require__(67);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(66);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__(98);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__);
@@ -49,12 +49,47 @@ LookupDataService = __decorate([
 
 /***/ }),
 
-/***/ 415:
+/***/ 416:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_services_common_lookup_data_service__ = __webpack_require__(370);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ChangepasswordComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var ChangepasswordComponent = (function () {
+    function ChangepasswordComponent() {
+    }
+    ChangepasswordComponent.prototype.ngOnInit = function () {
+    };
+    return ChangepasswordComponent;
+}());
+ChangepasswordComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* Component */])({
+        selector: 'app-changepassword',
+        template: __webpack_require__(522),
+    }),
+    __metadata("design:paramtypes", [])
+], ChangepasswordComponent);
+
+
+
+/***/ }),
+
+/***/ 417:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_services_common_lookup_data_service__ = __webpack_require__(372);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HolidayDetailsComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -71,6 +106,7 @@ var HolidayDetailsComponent = (function () {
     function HolidayDetailsComponent(lookupDataService) {
         this.lookupDataService = lookupDataService;
         this.lookup = 1;
+        this.lookupdata = [];
     }
     HolidayDetailsComponent.prototype.ngOnInit = function () {
         this.getHolidayLookupData(this.lookup);
@@ -81,11 +117,12 @@ var HolidayDetailsComponent = (function () {
             .GetLookUpData(lookup)
             .subscribe(function (data) {
             _this.lookupdata = data.list;
-            console.log(_this.lookupdata);
+            _this.lookupdata = _this.lookupdata.filter(function (ele) {
+                return ele.fieldName != 'IsActive';
+            });
             _this.lookupdataByRow = _this.groupBy(_this.lookupdata, function (item) {
                 return item.rowId;
             });
-            console.log(_this.lookupdataByRow);
         });
     };
     HolidayDetailsComponent.prototype.groupBy = function (array, f) {
@@ -102,9 +139,9 @@ var HolidayDetailsComponent = (function () {
     return HolidayDetailsComponent;
 }());
 HolidayDetailsComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["b" /* Component */])({
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* Component */])({
         selector: 'app-holiday-details',
-        template: __webpack_require__(518),
+        template: __webpack_require__(523),
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__core_services_common_lookup_data_service__["a" /* LookupDataService */]])
 ], HolidayDetailsComponent);
@@ -113,11 +150,11 @@ HolidayDetailsComponent = __decorate([
 
 /***/ }),
 
-/***/ 416:
+/***/ 418:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SelfserviceComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -137,9 +174,9 @@ var SelfserviceComponent = (function () {
     return SelfserviceComponent;
 }());
 SelfserviceComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["b" /* Component */])({
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* Component */])({
         selector: 'app-selfservice',
-        template: __webpack_require__(519),
+        template: __webpack_require__(524),
     }),
     __metadata("design:paramtypes", [])
 ], SelfserviceComponent);
@@ -148,14 +185,15 @@ SelfserviceComponent = __decorate([
 
 /***/ }),
 
-/***/ 452:
+/***/ 462:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(171);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_selfservice_component__ = __webpack_require__(416);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_holiday_details_holiday_details_component__ = __webpack_require__(415);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_selfservice_component__ = __webpack_require__(418);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_holiday_details_holiday_details_component__ = __webpack_require__(417);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_changepassword_changepassword_component__ = __webpack_require__(416);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SelfserviceRoutingModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -167,9 +205,20 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
 var routes = [
-    { path: '', component: __WEBPACK_IMPORTED_MODULE_2__components_selfservice_component__["a" /* SelfserviceComponent */] },
+    {
+        path: '', component: __WEBPACK_IMPORTED_MODULE_2__components_selfservice_component__["a" /* SelfserviceComponent */],
+        children: [
+            { path: 'myprofile', loadChildren: function () { return new Promise(function (resolve) { __webpack_require__.e/* require.ensure */(19).then((function (require) { resolve(__webpack_require__(459)['MyprofileModule']); }).bind(null, __webpack_require__)).catch(__webpack_require__.oe); }); } },
+            { path: 'mysalary', loadChildren: function () { return new Promise(function (resolve) { __webpack_require__.e/* require.ensure */(18).then((function (require) { resolve(__webpack_require__(461)['MysalaryModule']); }).bind(null, __webpack_require__)).catch(__webpack_require__.oe); }); } },
+            { path: 'myleaves', loadChildren: function () { return new Promise(function (resolve) { __webpack_require__.e/* require.ensure */(16).then((function (require) { resolve(__webpack_require__(457)['MyleavesModule']); }).bind(null, __webpack_require__)).catch(__webpack_require__.oe); }); } },
+            { path: 'myadvancesclaim', loadChildren: function () { return new Promise(function (resolve) { __webpack_require__.e/* require.ensure */(21).then((function (require) { resolve(__webpack_require__(452)['MyadvancesclaimModule']); }).bind(null, __webpack_require__)).catch(__webpack_require__.oe); }); } },
+            { path: 'myattendance', loadChildren: function () { return new Promise(function (resolve) { __webpack_require__.e/* require.ensure */(20).then((function (require) { resolve(__webpack_require__(454)['MyattendanceModule']); }).bind(null, __webpack_require__)).catch(__webpack_require__.oe); }); } },
+        ]
+    },
     { path: 'holidaysdetails', component: __WEBPACK_IMPORTED_MODULE_3__components_holiday_details_holiday_details_component__["a" /* HolidayDetailsComponent */] },
+    { path: 'changepassword', component: __WEBPACK_IMPORTED_MODULE_4__components_changepassword_changepassword_component__["a" /* ChangepasswordComponent */] },
 ];
 var SelfserviceRoutingModule = (function () {
     function SelfserviceRoutingModule() {
@@ -187,17 +236,18 @@ SelfserviceRoutingModule = __decorate([
 
 /***/ }),
 
-/***/ 453:
+/***/ 463:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__(52);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_selfservice_component__ = __webpack_require__(416);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_holiday_details_holiday_details_component__ = __webpack_require__(415);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__selfservice_routing_module__ = __webpack_require__(452);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__core_services_common_lookup_data_service__ = __webpack_require__(370);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_selfservice_component__ = __webpack_require__(418);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_holiday_details_holiday_details_component__ = __webpack_require__(417);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_changepassword_changepassword_component__ = __webpack_require__(416);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__selfservice_routing_module__ = __webpack_require__(462);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__core_services_common_lookup_data_service__ = __webpack_require__(372);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SelfserviceModule", function() { return SelfserviceModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -205,6 +255,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -220,14 +271,15 @@ SelfserviceModule = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["a" /* NgModule */])({
         imports: [
             __WEBPACK_IMPORTED_MODULE_1__angular_common__["a" /* CommonModule */],
-            __WEBPACK_IMPORTED_MODULE_4__selfservice_routing_module__["a" /* SelfserviceRoutingModule */]
+            __WEBPACK_IMPORTED_MODULE_5__selfservice_routing_module__["a" /* SelfserviceRoutingModule */]
         ],
         declarations: [
             __WEBPACK_IMPORTED_MODULE_2__components_selfservice_component__["a" /* SelfserviceComponent */],
-            __WEBPACK_IMPORTED_MODULE_3__components_holiday_details_holiday_details_component__["a" /* HolidayDetailsComponent */]
+            __WEBPACK_IMPORTED_MODULE_3__components_holiday_details_holiday_details_component__["a" /* HolidayDetailsComponent */],
+            __WEBPACK_IMPORTED_MODULE_4__components_changepassword_changepassword_component__["a" /* ChangepasswordComponent */]
         ],
         providers: [
-            __WEBPACK_IMPORTED_MODULE_5__core_services_common_lookup_data_service__["a" /* LookupDataService */]
+            __WEBPACK_IMPORTED_MODULE_6__core_services_common_lookup_data_service__["a" /* LookupDataService */]
         ]
     })
 ], SelfserviceModule);
@@ -236,17 +288,24 @@ SelfserviceModule = __decorate([
 
 /***/ }),
 
-/***/ 518:
+/***/ 522:
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  holiday-details works!\n</p>\n\n<div class=\"row m-t-10\">\r\n    <div class=\"col-md-12\">\r\n        <div class=\"panel panel-default\">\r\n            <div class=\"panel-heading text-right\">\r\n\r\n                <div class=\"btn-group text-left\">\r\n                    <button class=\"btn btn-success dropdown-toggle\" data-toggle=\"dropdown\">\r\n                        Export <i class=\"fa fa-angle-down\"></i>\r\n                    </button>\r\n                    <ul class=\"dropdown-menu pull-right\">\r\n                        <li>\r\n                            <a href=\"\">Print</a>\r\n                        </li>\r\n                        <li>\r\n                            <a href=\"\">Export to PDF</a>\r\n                        </li>\r\n                        <li>\r\n                            <a href=\"\">Export to XLS</a>\r\n                        </li>\r\n                        <li>\r\n                            <a href=\"\">Export to CSV</a>\r\n                        </li>\r\n                        <li>\r\n                            <a href=\"\">Export to DOC</a>\r\n                        </li>\r\n                    </ul>\r\n                </div>\r\n                <button type=\"button\" class=\"btn btn-sm btn-icon btn-rounded btn-default\">\r\n                    <i class=\"fa fa-question\"></i>\r\n                </button>\r\n\r\n            </div>\r\n            <div class=\"panel-body\">\r\n                <div class=\"row\">\r\n                    <div class=\"col-md-12 col-sm-12 col-xs-12 table-responsive\">\r\n                        <table class=\"table table-bordered table-striped table-hover\">\r\n                            <thead class=\"no-bd\">\r\n                                <tr>\r\n                                    <th>\r\n                                        <strong>Holiday Date</strong>\r\n                                    </th>\r\n                                    <th>\r\n                                        <strong>Holiday Discription</strong>\r\n                                    </th>\r\n\r\n                                </tr>\r\n                            </thead>\r\n                            <tbody class=\"no-bd-y\">\r\n                                <tr *ngFor=\"let lookupdta of lookupdataByRow; let i = index\">\r\n                                    <td *ngFor=\"let lookupdta1 of lookupdta\">{{lookupdta1.value}}</td>\r\n                                    <!--<td *ngIf=\"lookupdta.fieldName == 'HolidayDate'\">{{lookupdta.value}}</td>\r\n                                    <td *ngIf=\"lookupdta.fieldName == 'HolidayDesc'\">{{lookupdta.value}}</td>-->\r\n                                </tr>\r\n                                <tr>\r\n                                    <td>31/12/2016</td>\r\n                                    <td>Adjustment 1-January-2017 New Year</td>\r\n                                </tr>\r\n                                <tr>\r\n                                    <td>07/01/2017</td>\r\n                                    <td>1st Saturday Off(January)</td>\r\n                                </tr>\r\n                                <tr>\r\n                                    <td>14/01/2017</td>\r\n                                    <td>Kite Festival</td>\r\n                                </tr>\r\n                                <tr>\r\n                                    <td>21/01/2017</td>\r\n                                    <td>3rd Saturday Off(January)</td>\r\n                                </tr>\r\n                                <tr>\r\n                                    <td>26/01/2017</td>\r\n                                    <td>Republic Day</td>\r\n                                </tr>\r\n                                <tr>\r\n                                    <td>04/02/2017</td>\r\n                                    <td>1st Saturday off (February)</td>\r\n                                </tr>\r\n                                <tr>\r\n                                    <td>18/02/2017</td>\r\n                                    <td>3rd Saturday off (February)</td>\r\n                                </tr>\r\n                                <tr>\r\n                                    <td>31/12/2016</td>\r\n                                    <td>Adjustment 1-January-2017 New Year</td>\r\n                                </tr>\r\n                                <tr>\r\n                                    <td>07/01/2017</td>\r\n                                    <td>1st Saturday Off(January)</td>\r\n                                </tr>\r\n                                <tr>\r\n                                    <td>14/01/2017</td>\r\n                                    <td>Kite Festival</td>\r\n                                </tr>\r\n                                <tr>\r\n                                    <td>21/01/2017</td>\r\n                                    <td>3rd Saturday Off(January)</td>\r\n                                </tr>\r\n                                <tr>\r\n                                    <td>26/01/2017</td>\r\n                                    <td>Republic Day</td>\r\n                                </tr>\r\n                                <tr>\r\n                                    <td>04/02/2017</td>\r\n                                    <td>1st Saturday off (February)</td>\r\n                                </tr>\r\n                                <tr>\r\n                                    <td>18/02/2017</td>\r\n                                    <td>3rd Saturday off (February)</td>\r\n                                </tr>\r\n\r\n                            </tbody>\r\n                        </table>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n\r\n</div>\n"
+module.exports = "<p>\n  changepassword works!\n</p>\n"
 
 /***/ }),
 
-/***/ 519:
+/***/ 523:
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  selfservice works!\n</p>\n"
+module.exports = "<!--<p>\n  holiday-details works!\n</p>-->\n\n<div class=\"row m-t-10\">\r\n    <div class=\"col-md-12\">\r\n        <div class=\"panel panel-default\">\r\n            <div class=\"panel-heading text-right\">\r\n\r\n                <div class=\"btn-group text-left\">\r\n                    <button class=\"btn btn-success dropdown-toggle\" data-toggle=\"dropdown\">\r\n                        Export <i class=\"fa fa-angle-down\"></i>\r\n                    </button>\r\n                    <ul class=\"dropdown-menu pull-right\">\r\n                        <li>\r\n                            <a href=\"\">Print</a>\r\n                        </li>\r\n                        <li>\r\n                            <a href=\"\">Export to PDF</a>\r\n                        </li>\r\n                        <li>\r\n                            <a href=\"\">Export to XLS</a>\r\n                        </li>\r\n                        <li>\r\n                            <a href=\"\">Export to CSV</a>\r\n                        </li>\r\n                        <li>\r\n                            <a href=\"\">Export to DOC</a>\r\n                        </li>\r\n                    </ul>\r\n                </div>\r\n                <button type=\"button\" class=\"btn btn-sm btn-icon btn-rounded btn-default\">\r\n                    <i class=\"fa fa-question\"></i>\r\n                </button>\r\n\r\n            </div>\r\n            <div class=\"panel-body\">\r\n                <div class=\"row\">\r\n                    <div class=\"col-md-12 col-sm-12 col-xs-12 table-responsive\">\r\n                        <table class=\"table table-bordered table-striped table-hover\">\r\n                            <thead class=\"no-bd\">\r\n                                <tr>\r\n                                    <th>\r\n                                        <strong>Holiday Date</strong>\r\n                                    </th>\r\n                                    <th>\r\n                                        <strong>Holiday Discription</strong>\r\n                                    </th>\r\n\r\n                                </tr>\r\n                            </thead>\r\n                            <tbody class=\"no-bd-y\">\r\n                                <tr *ngFor=\"let lookupdta of lookupdataByRow; let i = index\">\r\n                                    <td *ngFor=\"let lookupdta1 of lookupdta\" ><span *ngIf=\"lookupdta1.fieldName != 'IsActive'\">{{lookupdta1.value}}</span></td>\r\n                                    <!--<td *ngIf=\"lookupdta.fieldName == 'HolidayDate'\">{{lookupdta.value}}</td>\r\n                                    <td *ngIf=\"lookupdta.fieldName == 'HolidayDesc'\">{{lookupdta.value}}</td>-->\r\n                                </tr>\r\n                                <!--<tr>\r\n                                    <td>31/12/2016</td>\r\n                                    <td>Adjustment 1-January-2017 New Year</td>\r\n                                </tr>\r\n                                <tr>\r\n                                    <td>07/01/2017</td>\r\n                                    <td>1st Saturday Off(January)</td>\r\n                                </tr>\r\n                                <tr>\r\n                                    <td>14/01/2017</td>\r\n                                    <td>Kite Festival</td>\r\n                                </tr>\r\n                                <tr>\r\n                                    <td>21/01/2017</td>\r\n                                    <td>3rd Saturday Off(January)</td>\r\n                                </tr>\r\n                                <tr>\r\n                                    <td>26/01/2017</td>\r\n                                    <td>Republic Day</td>\r\n                                </tr>\r\n                                <tr>\r\n                                    <td>04/02/2017</td>\r\n                                    <td>1st Saturday off (February)</td>\r\n                                </tr>\r\n                                <tr>\r\n                                    <td>18/02/2017</td>\r\n                                    <td>3rd Saturday off (February)</td>\r\n                                </tr>\r\n                                <tr>\r\n                                    <td>31/12/2016</td>\r\n                                    <td>Adjustment 1-January-2017 New Year</td>\r\n                                </tr>\r\n                                <tr>\r\n                                    <td>07/01/2017</td>\r\n                                    <td>1st Saturday Off(January)</td>\r\n                                </tr>\r\n                                <tr>\r\n                                    <td>14/01/2017</td>\r\n                                    <td>Kite Festival</td>\r\n                                </tr>\r\n                                <tr>\r\n                                    <td>21/01/2017</td>\r\n                                    <td>3rd Saturday Off(January)</td>\r\n                                </tr>\r\n                                <tr>\r\n                                    <td>26/01/2017</td>\r\n                                    <td>Republic Day</td>\r\n                                </tr>\r\n                                <tr>\r\n                                    <td>04/02/2017</td>\r\n                                    <td>1st Saturday off (February)</td>\r\n                                </tr>\r\n                                <tr>\r\n                                    <td>18/02/2017</td>\r\n                                    <td>3rd Saturday off (February)</td>\r\n                                </tr>-->\r\n\r\n                            </tbody>\r\n                        </table>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n\r\n</div>\n"
+
+/***/ }),
+
+/***/ 524:
+/***/ (function(module, exports) {
+
+module.exports = "<p>\n  selfservice works!\n</p>\n<router-outlet></router-outlet>"
 
 /***/ })
 

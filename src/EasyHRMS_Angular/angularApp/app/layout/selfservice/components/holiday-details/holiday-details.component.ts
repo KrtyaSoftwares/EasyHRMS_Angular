@@ -10,7 +10,7 @@ import { LookupDataModel } from '../../../../models/lookup-data.model';
 })
 export class HolidayDetailsComponent implements OnInit {
     lookup = 1;
-    lookupdata: any;
+    lookupdata: any = [];
     lookupdataByRow: any;
     //public lookupdata: LookupDataModel[] = [];
     constructor(private lookupDataService: LookupDataService) { }
@@ -25,13 +25,20 @@ export class HolidayDetailsComponent implements OnInit {
           .subscribe(
           data => {
               this.lookupdata = data.list;
-              console.log(this.lookupdata);
+              //console.log(this.lookupdata);
+              this.lookupdata = this.lookupdata.filter((ele: any) => {
+                  return ele.fieldName != 'IsActive';
+              });
+              //this.lookupdata.forEach(function (o: any) {
+              //    delete o.IsActive;
+              //});
+              //console.log(this.lookupdata);
               this.lookupdataByRow = this.groupBy(this.lookupdata, function (item: any) {
 
                   return item.rowId;
                   // return [item.sensupporterid._id];
               });
-              console.log(this.lookupdataByRow);
+              //console.log(this.lookupdataByRow);
               //this.record = data;
               //this.singleRecord = this.record['list'];
               //this.array_merge();

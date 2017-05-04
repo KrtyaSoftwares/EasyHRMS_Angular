@@ -7,6 +7,7 @@ namespace EasyHRMS_DA.Models
     public partial class EhrmsContext : DbContext
     {
         public virtual DbSet<EmployeeDetails> EmployeeDetails { get; set; }
+        public virtual DbSet<EmployeeLeave> EmployeeLeave { get; set; }
         public virtual DbSet<FormField> FormField { get; set; }
         public virtual DbSet<FormTab> FormTab { get; set; }
         public virtual DbSet<Forms> Forms { get; set; }
@@ -118,7 +119,18 @@ namespace EasyHRMS_DA.Models
 
                 entity.Property(e => e.F9).HasMaxLength(500);
             });
+            modelBuilder.Entity<EmployeeLeave>(entity =>
+            {
+                entity.ToTable("Employee_Leave");
 
+                entity.Property(e => e.CreateDate).HasColumnType("datetime");
+
+                entity.Property(e => e.FromDate).HasColumnType("date");
+
+                entity.Property(e => e.Status).HasMaxLength(50);
+
+                entity.Property(e => e.ToDate).HasColumnType("date");
+            });
             modelBuilder.Entity<FormField>(entity =>
             {
                 entity.Property(e => e.DefaultValue).HasMaxLength(50);

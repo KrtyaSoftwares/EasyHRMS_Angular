@@ -56,7 +56,7 @@ namespace Angular2WebpackVisualStudio
 
             //var connection = @"Server=SAMIR-PC;Database=Ehrms;user id=sa;password=pass#123;Trusted_Connection=True;";
             var connection = Configuration.GetConnectionString("DefaultConnection");
-            services.AddDbContext<EhrmsContext>(options => options.UseSqlServer(connection));
+            services.AddDbContext<Ehrms_ng2Context>(options => options.UseSqlServer(connection));
 
             //// Add EF services to the services container.
             //services.AddEntityFramework(Configuration)

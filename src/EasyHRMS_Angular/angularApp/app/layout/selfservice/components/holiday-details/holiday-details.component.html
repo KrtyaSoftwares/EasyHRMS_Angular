@@ -1,6 +1,6 @@
-<p>
+<!--<p>
   holiday-details works!
-</p>
+</p>-->
 
 <div class="row m-t-10">
     <div class="col-md-12">
@@ -51,11 +51,11 @@
                             </thead>
                             <tbody class="no-bd-y">
                                 <tr *ngFor="let lookupdta of lookupdataByRow; let i = index">
-                                    <td *ngFor="let lookupdta1 of lookupdta">{{lookupdta1.value}}</td>
+                                    <td *ngFor="let lookupdta1 of lookupdta" ><span *ngIf="lookupdta1.fieldName != 'IsActive'">{{lookupdta1.value}}</span></td>
                                     <!--<td *ngIf="lookupdta.fieldName == 'HolidayDate'">{{lookupdta.value}}</td>
                                     <td *ngIf="lookupdta.fieldName == 'HolidayDesc'">{{lookupdta.value}}</td>-->
                                 </tr>
-                                <tr>
+                                <!--<tr>
                                     <td>31/12/2016</td>
                                     <td>Adjustment 1-January-2017 New Year</td>
                                 </tr>
@@ -110,7 +110,7 @@
                                 <tr>
                                     <td>18/02/2017</td>
                                     <td>3rd Saturday off (February)</td>
-                                </tr>
+                                </tr>-->
 
                             </tbody>
                         </table>

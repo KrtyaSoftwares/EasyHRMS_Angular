@@ -7,7 +7,7 @@ const routes: Routes = [
         path: '', component: LayoutComponent,
         children: [
             { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' },
-            { path: 'myprofile', loadChildren: './myprofile/myprofile.module#MyprofileModule' },
+            //{ path: 'myprofile', loadChildren: './myprofile/myprofile.module#MyprofileModule' },
             { path: 'employee', loadChildren: './employee/employee.module#EmployeeModule' },
             { path: 'selfservice', loadChildren: './selfservice/selfservice.module#SelfserviceModule' },
             { path: 'appraisal', loadChildren: './appraisal/appraisal.module#AppraisalModule' },

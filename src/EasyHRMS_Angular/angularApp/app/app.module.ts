@@ -11,6 +11,10 @@ import { AppRoutes } from './app.routes';
 
 import { AppComponent } from './app.component';
 
+import { CommonDataService } from './core/services/common/common-data.service';
+ //import { HeaderComponent } from './shared';
+
+
 @NgModule({
     imports: [
         BrowserModule,
@@ -21,8 +25,11 @@ import { AppComponent } from './app.component';
     ],
 
     declarations: [
-        AppComponent
+        AppComponent,
+        //HeaderComponent
     ],
+
+    providers: [CommonDataService],
 
     bootstrap: [AppComponent],
 })

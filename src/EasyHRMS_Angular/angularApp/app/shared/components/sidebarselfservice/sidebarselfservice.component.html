@@ -1,0 +1,38 @@
+<!--<p>
+  sidebarselfservice works!
+</p>-->
+
+<nav id="sidebar">
+    <div id="main-menu">
+        <ul class="sidebar-nav">
+            <li> <a routerLink="/dashboard" [routerLinkActive]="['router-link-active']"><i class="fa fa-dashboard"></i><span class="sidebar-text">Dashboard</span></a> </li>
+            <!--<li [routerLinkActive]="['router-link-active']">
+                <a (click)="addExpandClass('employee')">
+                    <i class="glyph-icon flaticon-group44"></i><span class="sidebar-text">Employee</span>
+                    <span class="fa arrow"></span>
+                </a>
+                <ul class="submenu collapse" [class.in]="showMenu === 'employee'">
+                    <li>
+                        <a [routerLink]="['/employee']"><span>List View</span></a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/employee/leave']"><span>Leave</span></a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/employee/salary']"><span>Salary</span></a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/employee/report']"><span>Report</span></a>
+                    </li>
+                </ul>
+            </li>-->
+            <li> <a routerLink="/selfservice/myprofile" [routerLinkActive]="['router-link-active']"><i class="glyph-icon flaticon-account"></i><span class="sidebar-text">My Profile </span></a> </li>
+            <li> <a routerLink="/selfservice/holidaysdetails" [routerLinkActive]="['router-link-active']"><i class="glyph-icon flaticon-calendar5"></i><span class="sidebar-text">Holiday Details</span></a> </li>
+            <li> <a routerLink="/selfservice/mysalary" [routerLinkActive]="['router-link-active']"><i class="glyph-icon flaticon-doc2"></i><span class="sidebar-text">My Salary</span></a> </li>
+            <li> <a routerLink="/selfservice/myleaves" [routerLinkActive]="['router-link-active']"><i class="glyph-icon flaticon-email"></i><span class="sidebar-text">My Leaves</span></a> </li>
+            <li> <a routerLink="/selfservice/myadvancesclaim" [routerLinkActive]="['router-link-active']"><i class="glyph-icon flaticon-forms"></i><span class="sidebar-text">My Advances/Claim</span></a> </li>
+            <li> <a routerLink="/selfservice/myattendance" [routerLinkActive]="['router-link-active']"><i class="glyph-icon flaticon-pages"></i><span class="sidebar-text">My Attendance</span></a> </li>
+            <li> <a [routerLink]="['/selfservice/changepassword']" [routerLinkActive]="['router-link-active']"><i class="glyph-icon flaticon-world"></i><span class="sidebar-text">Change Password</span></a> </li>
+        </ul>
+    </div>
+</nav>

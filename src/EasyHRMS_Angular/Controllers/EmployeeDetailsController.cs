@@ -17,14 +17,14 @@ namespace EasyHRMS_Angular.Controllers
         //    return View();
         //}
 
-        private readonly EhrmsContext _context;
+        private readonly Ehrms_ng2Context _context;
 
-        public EmployeeDetailsController(EhrmsContext context)
+        public EmployeeDetailsController(Ehrms_ng2Context context)
         {
             _context = context;
         }
 
-        // GET: api/Emp/GetAllEmployee
+        // GET: api/EmployeeDetails/GetAllEmployee
         [HttpGet("GetAllEmployee"), Produces("application/json")]
         public object GetAllEmployee()
         {
@@ -101,7 +101,7 @@ namespace EasyHRMS_Angular.Controllers
             return result;
         }
 
-        // GET api/Contact/GetEmployeeByID/5
+        // GET api/EmployeeDetails/GetEmployeeByID/5
         [HttpGet("GetEmployeeByID/{id}"), Produces("application/json")]
         public object GetEmployeeByID(int id)
         {
@@ -135,7 +135,7 @@ namespace EasyHRMS_Angular.Controllers
             return result;
         }
 
-        // POST api/Emp/CreateEmployee
+        // POST api/EmployeeDetails/CreateEmployee
         [HttpPost, Route("CreateEmployee"), Produces("application/json")]
         public object CreateEmployee([FromBody]EmployeeDetails model)
         {
@@ -180,7 +180,7 @@ namespace EasyHRMS_Angular.Controllers
             return result;
         }
 
-        // PUT api/Emp/UpdateEmployee/5
+        // PUT api/EmployeeDetails/UpdateEmployee/5
         [HttpPost, Route("UpdateEmployee/{id}")]
         public object UpdateEmployee(int id, [FromBody]EmployeeDetails model)
         {
@@ -201,7 +201,7 @@ namespace EasyHRMS_Angular.Controllers
                             PropertyInfo[] propertiesEU = entityUpdate.GetType().GetProperties();
                             foreach (PropertyInfo pi in propertiesEU)
                             {
-                                if (pi.Name != "EmployeeID")
+                                if (pi.Name != "EmployeeId")
                                 {
                                     pi.SetValue(entityUpdate, pi.GetValue(model));
                                     //var xl = pi.GetValue(entityUpdate);
@@ -277,7 +277,7 @@ namespace EasyHRMS_Angular.Controllers
         }
 
 
-        // POST api/Emp/CreateUpdateEmployee
+        // POST api/EmployeeDetails/CreateUpdateEmployee
         [HttpPost, Route("CreateUpdateEmployee/{id}"), Produces("application/json")]
         public object CreateUpdateEmployee(int id, [FromBody]EmployeeDetails model)
         {
@@ -303,7 +303,10 @@ namespace EasyHRMS_Angular.Controllers
                                 PropertyInfo[] propertiesEU = entityUpdate.GetType().GetProperties();
                                 foreach (PropertyInfo pi in propertiesEU)
                                 {
-                                   pi.SetValue(entityUpdate, pi.GetValue(model));
+                                    if (pi.Name != "EmployeeId")
+                                    {
+                                        pi.SetValue(entityUpdate, pi.GetValue(model));
+                                    }
                                 }
                                 _context.SaveChanges();
                             }
@@ -388,7 +391,7 @@ namespace EasyHRMS_Angular.Controllers
             return result;
         }
 
-        // DELETE api/Contact/DeleteEmployeeByID/5
+        // DELETE api/EmployeeDetails/DeleteEmployeeByID/5
         [HttpGet, Route("DeleteEmployeeByID/{id}")]
         public object DeleteEmployeeByID(int id)
         {

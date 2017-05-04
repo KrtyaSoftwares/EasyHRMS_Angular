@@ -6,10 +6,8 @@ import { Component, OnInit } from '@angular/core';
   //styleUrls: ['./selfservice.component.css']
 })
 export class SelfserviceComponent implements OnInit {
-
   constructor() { }
-
   ngOnInit() {
-  }
 
+  }
 }
