@@ -19,10 +19,10 @@ const routes: Routes = [
             { path: 'formbuilder', loadChildren: './formbuilder/formbuilder.module#FormbuilderModule' },
             { path: 'listing', loadChildren: './listing/listing.module#ListingModule' },
             { path: 'general-listing', loadChildren: './general-listing/general-listing.module#GeneralListingModule' },
+            { path: 'general-formbuilder', loadChildren: './general-formbuilder/general-formbuilder.module#GeneralFormbuilderModule' },
         ]
     }
 ];
-
 @NgModule({
     imports: [RouterModule.forChild(routes)],
     exports: [RouterModule]

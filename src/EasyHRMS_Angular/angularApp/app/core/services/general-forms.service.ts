@@ -46,11 +46,11 @@ export class GeneralFormsService {
     //         .map(res => <Forms>res.json());
     // }
 
-    // public Update = (id: number, data: any): Observable<Forms> => {
-    //     let toAdd = JSON.stringify(data);
-    //     return this.http.post(this.actionUrl + 'LookupData/UpdateLookupRowData/' + id, toAdd, { headers: this.headers })
-    //         .map(res => <Forms>res.json());
-    // }
+    public Update = (id: number, data: any, url: any): Observable<GeneralFormsModel> => {
+        let toAdd = JSON.stringify(data);
+        return this.http.post(this.actionUrl + url + id, toAdd, { headers: this.headers })
+            .map(res => <GeneralFormsModel>res.json());
+    }
     // public Delete = (lookup: number, rowId: number): Observable<Forms> => {
     //     return this.http
     //         .get(this.actionUrl + 'LookupData/DeleteLookupRowData/' + lookup + '/' + rowId)

@@ -8,7 +8,6 @@ import { FormbuilderRoutingModule } from './formbuilder-routing.module';
   imports: [
     CommonModule,
     FormbuilderRoutingModule,
-    CommonModule,
     FormsModule,
     ReactiveFormsModule,
   ],

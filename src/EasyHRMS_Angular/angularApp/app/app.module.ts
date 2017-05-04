@@ -3,8 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-
 import { CoreModule } from './core/core.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { Configuration } from './app.constants';
 import { AppRoutes } from './app.routes';
@@ -22,6 +22,7 @@ import { CommonDataService } from './core/services/common/common-data.service';
         HttpModule,
         AppRoutes,
         CoreModule.forRoot(),
+        BrowserAnimationsModule
     ],
 
     declarations: [

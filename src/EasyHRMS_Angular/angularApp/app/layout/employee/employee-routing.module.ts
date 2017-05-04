@@ -5,7 +5,6 @@ import { EditComponent } from './edit/edit.component';
 import { LeaveComponent } from './leave/leave.component';
 import { SalaryComponent } from './salary/salary.component';
 import { ReportComponent } from './report/report.component';
-
 const routes: Routes = [
     { path: '', component: ListsComponent },
     { path: 'edit/:formid/', component: EditComponent },
@@ -14,7 +13,6 @@ const routes: Routes = [
     { path: 'salary', component: SalaryComponent },
     { path: 'report', component: ReportComponent },
 ];
-
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]

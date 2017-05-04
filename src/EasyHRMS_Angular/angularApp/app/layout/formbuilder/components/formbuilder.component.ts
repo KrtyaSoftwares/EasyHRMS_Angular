@@ -119,11 +119,12 @@ addTableData(id: any, data: any) {
   }
   array_merge() {
     for (let i in this.final_result) {
-        for (let j in this.singleRecord) {
+        for ( let j in this.singleRecord ) {
             if (this.singleRecord[j].fieldName == this.final_result[i].fieldName) {
                 this.final_result[i]['custom_value'] = this.singleRecord[j]['value'];
             }
         }
     }
+    //console.log(this.final_result);
  }
 }

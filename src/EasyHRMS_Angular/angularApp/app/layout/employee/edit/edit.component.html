@@ -1,6 +1,7 @@
 <div id="main-content" >
     <div class="row m-t-10">
       <div class="col-md-12">
+
         <div class="">
           <ul id="myTab2" class="nav nav-tabs nav-dark">
             <li *ngFor="let tab of final_array;let i = index">
@@ -12,20 +13,11 @@
               <div class="text-right m-b-20">
 	              <button type="button" class="btn btn-sm btn-icon btn-rounded btn-default"><i class="fa fa-question"></i> </button>
               </div>
-              <div class="form-horizontal" *ngFor="let category of tab">
-                <div class="boder-btm">
-                    <h3 class="panel-title"> {{category.category_name}}  </h3>
-                </div>
-                <div class="m-b-30">
-                    <div class="form-group" *ngFor="let fields of category['custom_obj']">
-                      <label class="col-sm-2 control-label"> {{fields.displayName}}  <span class="asterisk">*</span> </label>
-                      <div class="col-sm-4">
-                        <input type="text" value="{{fields.value}}" parsley-minlength="3" class="form-control" required>
-                        <small>Last Employee ID 3</small> 
-                      </div>
-                    </div>
-                  </div>
-              </div>
+               <app-dynamic-forms 
+                    [tabnumber]="i" 
+                    [data]="tab"
+                    (childSubmitData)="getSubmittedData($event)"> 
+                </app-dynamic-forms>
             </div>
           </div>
         </div>

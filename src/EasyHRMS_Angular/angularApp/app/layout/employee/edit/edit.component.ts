@@ -1,15 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { GeneralFormsService } from '../../../core/services/general-forms.service';
-import { GeneralDataModel } from '../../../models/general-data.model';
 
 @Component({
   selector: 'app-edit',
   templateUrl: './edit.component.html',
 })
 export class EditComponent implements OnInit {
-  _generalDataModel = new GeneralDataModel();
   generalFormId: number;
   Id: number;
   allResults: any = {};
@@ -23,7 +21,10 @@ export class EditComponent implements OnInit {
   formId: number;
   _formDataObj: any = {};
   _formData: any []= [];
+  _db_submit: any = {};
+  url: string;
   constructor(
+    private fb: FormBuilder,
     private _router: Router,
     private _route: ActivatedRoute,
     private _generalFormsService: GeneralFormsService
@@ -43,7 +44,7 @@ export class EditComponent implements OnInit {
           .subscribe(
           data => {
             this._formDataObj = data;
-            this._generalDataModel = this._formDataObj['objEmployee'];
+            this._db_submit = this._formDataObj['objEmployee'];
             this._formData.push(this._formDataObj['objEmployee']);
           });
   }
@@ -103,7 +104,6 @@ export class EditComponent implements OnInit {
               this._mixArray[index].push(group);
             }
             this.final_array = this.stripUndefined(this._mixArray);
-            console.log(this.final_array);
             setTimeout(function() {
               document.getElementById('maintab_1').click();
             }, 500);
@@ -129,5 +129,26 @@ export class EditComponent implements OnInit {
       result.push( Array.isArray(item) && !item.length ? this.stripUndefined(item) : item );
       return result;
     }, []);
+  }
+  getSubmittedData(submit_data: any) {
+    for (let key in this._db_submit) {
+        for (let submitKey in submit_data) {
+            if ( key == submitKey.toLowerCase()) {
+                this._db_submit[key] = submit_data[submitKey];
+            }
+        }
+    }
+    if (this.generalFormId == 1) {
+      this.url = 'EmployeeDetails/UpdateEmployee/';
+    }
+    this._generalFormsService
+          .Update(this.generalFormId, this._db_submit, this.url)
+          .subscribe(
+          data => {
+            if (this.generalFormId == 1) {
+              console.log(data);
+              //this._router.navigate(['/employee']);
+            }
+          });
   }
 }

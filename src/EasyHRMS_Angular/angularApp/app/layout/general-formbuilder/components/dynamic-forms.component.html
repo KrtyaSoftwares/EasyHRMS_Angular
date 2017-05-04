@@ -1,0 +1,51 @@
+<form  (ngSubmit)="onSubmit(form.value, form.valid)" [formGroup]="form" novalidate>
+<div class="form-horizontal" *ngFor="let category of data">
+    <div class="boder-btm">
+        <h3 class="panel-title"> {{category.category_name}}  </h3>
+    </div>
+    <div class="m-b-30">
+      <div class="form-group" *ngFor="let fields of category['custom_obj']">
+        <div [ngSwitch]="fields.fieldType">
+          <label class="col-sm-2 control-label"> {{fields.displayName}}  <span class="asterisk">*</span> </label>
+          <div class="col-sm-4" *ngSwitchCase="'Text'">
+            <input class="form-control" type="text" [formControlName]="fields.fieldName" [(ngModel)]="fields.value">
+          </div>
+          <div class="col-sm-4" *ngSwitchCase="'Bit'">
+            <div class="radio" *ngFor="let opt of fields.optionValue">
+              <label>
+                <input 
+                    type="radio" 
+                    [value]="opt.key"
+                    [formControlName]="fields.fieldName" 
+                    [checked]="fields.value === opt.key">
+                {{opt.value}}
+              </label>
+            </div>
+          </div>
+          <div class="col-sm-4" *ngSwitchCase="'Dropdown'">
+               <select class="form-control" [id]="fields.id" [formControlName]="fields.fieldName">
+                  <option  value="" selected>Select</option>
+                  <option *ngFor="let opt of fields.optionValue" [value]="opt.key">{{opt.value}}</option>
+                </select>
+          </div>
+          <div class="col-sm-4" *ngSwitchCase="'Textarea'">
+              <textarea [formControlName]="fields.fieldName" [(ngModel)]="fields.value" rows="10" cols="55"> </textarea>
+          </div>
+          <div class="col-sm-4" *ngSwitchCase="'Date'">
+              <p-calendar [formControlName]="fields.fieldName" [showIcon]="true"></p-calendar> 
+              <span style="margin-left:35px">{{fields.value|date}}</span>
+          </div>
+          <div 
+              class="alert alert-danger" 
+              [hidden]="form.get([fields.fieldName]).valid || (form.get([fields.fieldName]).pristine && !submitted)">
+              * {{fields.displayName}} is required
+            </div>
+        </div>
+      </div>
+    </div>
+</div>
+<div class="form-row">
+    <button class="btn btn-primary m-b-10" type="submit" >Save</button>
+    <p-growl [value]="msgs"></p-growl>
+</div>
+</form>
