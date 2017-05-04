@@ -47,6 +47,7 @@ export class DynamicFormsComponent implements OnInit {
   onSubmit(value: any, isValid: boolean) {
       this.submitted = true;
       if (isValid == false) {
+          this.msgs.push({severity:'error', summary:'Error Message', detail:'Validation failed'});
           return false;
       } else {
         this.childSubmitData.emit(this.form.value);
