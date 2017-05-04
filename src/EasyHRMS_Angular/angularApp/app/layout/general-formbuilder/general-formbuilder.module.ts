@@ -6,6 +6,8 @@ import { GeneralFormbuilderComponent } from './components/general-formbuilder.co
 import { DynamicFormsComponent } from './components/dynamic-forms.component';
 
 import { GeneralFormbuilderRoutingModule } from './general-formbuilder-routing.module';
+import { GrowlModule,
+          CalendarModule } from 'primeng/primeng';
 
 @NgModule({
   imports: [
@@ -13,6 +15,8 @@ import { GeneralFormbuilderRoutingModule } from './general-formbuilder-routing.m
     GeneralFormbuilderRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    GrowlModule,
+    CalendarModule
   ],
   exports: [
     GeneralFormbuilderComponent,

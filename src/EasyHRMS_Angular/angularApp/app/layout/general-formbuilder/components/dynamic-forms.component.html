@@ -31,6 +31,10 @@
           <div class="col-sm-4" *ngSwitchCase="'Textarea'">
               <textarea [formControlName]="fields.fieldName" [(ngModel)]="fields.value" rows="10" cols="55"> </textarea>
           </div>
+          <div class="col-sm-4" *ngSwitchCase="'Date'">
+              <p-calendar [formControlName]="fields.fieldName" [(ngModel)]="fields.value" [showIcon]="true"></p-calendar> 
+              <span style="margin-left:35px">{{fields.value|date}}</span>
+          </div>
           <div 
               class="alert alert-danger" 
               [hidden]="form.get([fields.fieldName]).valid || (form.get([fields.fieldName]).pristine && !submitted)">
@@ -42,5 +46,6 @@
 </div>
 <div class="form-row">
     <button class="btn btn-primary m-b-10" type="submit" >Save</button>
+    <p-growl [value]="msgs"></p-growl>
 </div>
 </form>

@@ -2,17 +2,21 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { GeneralFormsService } from '../../../core/services/general-forms.service';
+import {Message} from 'primeng/primeng';
 
 @Component({
   selector: 'app-dynamic-forms',
   templateUrl: './dynamic-forms.component.html',
 })
 export class DynamicFormsComponent implements OnInit {
+
   form: FormGroup;
   @Input('tabnumber') tabnumber: number;
   @Input('data') data: any[] = [];
   @Output() childSubmitData: EventEmitter<any> = new EventEmitter<any>();
   public submitted: boolean;
+  msgs: Message[] = [];
+  value: Date;
   constructor(
     private fb: FormBuilder,
     private _router: Router,
@@ -20,6 +24,7 @@ export class DynamicFormsComponent implements OnInit {
     private _generalFormsService: GeneralFormsService
   ) {}
   ngOnInit() {
+    console.log(this.data);
     this.makeForms();
   }
   makeForms() {
@@ -45,6 +50,7 @@ export class DynamicFormsComponent implements OnInit {
           return false;
       } else {
         this.childSubmitData.emit(this.form.value);
+        this.msgs.push ({severity: 'info', summary: 'Updated', detail: 'Information has been updated successfully!!!'});
       }
   }
 }
