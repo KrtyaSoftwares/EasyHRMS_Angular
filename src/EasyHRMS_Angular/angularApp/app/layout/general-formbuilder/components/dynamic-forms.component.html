@@ -15,7 +15,7 @@
               <label>
                 <input 
                     type="radio" 
-                    [value]="opt.key" 
+                    [value]="opt.key"
                     [formControlName]="fields.fieldName" 
                     [checked]="fields.value === opt.key">
                 {{opt.value}}
@@ -32,7 +32,7 @@
               <textarea [formControlName]="fields.fieldName" [(ngModel)]="fields.value" rows="10" cols="55"> </textarea>
           </div>
           <div class="col-sm-4" *ngSwitchCase="'Date'">
-              <p-calendar [formControlName]="fields.fieldName" [(ngModel)]="fields.value" [showIcon]="true"></p-calendar> 
+              <p-calendar [formControlName]="fields.fieldName" [showIcon]="true"></p-calendar> 
               <span style="margin-left:35px">{{fields.value|date}}</span>
           </div>
           <div 
