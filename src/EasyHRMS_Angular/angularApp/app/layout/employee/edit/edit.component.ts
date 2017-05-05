@@ -20,7 +20,7 @@ export class EditComponent implements OnInit {
   final_array: any[] = [];
   formId: number;
   _formDataObj: any = {};
-  _formData: any []= [];
+  _formData: any [] = [];
   _db_submit: any = {};
   url: string;
   constructor(
@@ -77,9 +77,9 @@ export class EditComponent implements OnInit {
                 if ( tab_catId == fields_catId ) {
                   let val_index = this._fieldLists[j]['fieldName'].toLowerCase();
                   let value = '';
-                  if (this._formData[0]) {
-                    value = this._formData[0][val_index];
-                  }
+                   if (this._formData[0]) {
+                     value = this._formData[0][val_index];
+                   }
                   nested_group = {
                     defaultValue: this._fieldLists[j]['defaultValue'],
                     displayName: this._fieldLists[j]['displayName'],

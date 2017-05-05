@@ -1,17 +1,20 @@
-import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 
 import { EmployeeService } from '../../../core/services/employee.service';
 import { EmployeeModel } from '../../../models/employeee.model';
 
 import { GeneralFormsService } from '../../../core/services/general-forms.service';
 import { GeneralDataModel } from '../../../models/general-data.model';
+import { Message} from 'primeng/primeng';
 
 @Component({
   selector: 'app-lists',
   templateUrl: './lists.component.html',
 })
 export class ListsComponent implements OnInit {
+  _generalDataModel = new GeneralDataModel();
   result_lists: any = {};
   _resultsData: any[] = [];
   _fieldLists: any[] = [];
@@ -22,12 +25,22 @@ export class ListsComponent implements OnInit {
   _Filteredfields: any[] = [];
   _data: any[] = [];
   lookup = 1;
+  form: FormGroup;
+  public submitted: boolean;
+  msgs: Message[] = [];
   constructor(
+    private fb: FormBuilder,
     private _router: Router,
     private _route: ActivatedRoute,
     private _generalFormsService: GeneralFormsService,
     private _employeeService: EmployeeService
-  ) { }
+  ) {
+    this.form = fb.group({
+        'f2': [this._generalDataModel.f2, Validators.required],
+        'f3': [this._generalDataModel.f3, Validators.required],
+        'f4': [this._generalDataModel.f4, Validators.required],
+    });
+  }
 
   ngOnInit() {
     this.getListingFields(this.lookup);
@@ -81,5 +94,41 @@ export class ListsComponent implements OnInit {
       result.push( Array.isArray(item) && !item.length ? this.stripUndefined(item) : item );
       return result;
     }, []);
+  }
+
+   onSubmit(value: any, isValid: boolean) {
+      this.submitted = true;
+      if (isValid == false) {
+          return false;
+      } else {
+        this._generalDataModel.f2 = value.f2;
+        this._generalDataModel.f3 = value.f3;
+        this._generalDataModel.f4 = value.f4;
+        let url = 'EmployeeDetails/CreateEmployee';
+        this._generalFormsService
+          .Add(this._generalDataModel, url)
+          .subscribe(
+          data => {
+            this.msgs.push ({severity: 'info', summary: 'Updated', detail: 'Information has been Added successfully!!!'});
+            document.getElementById('close_model').click();
+            this.reset();
+          });
+      }
+  }
+  delete(id: number) {
+     let url = 'EmployeeDetails/DeleteEmployeeByID';
+     this._generalFormsService
+          .Delete(id, url)
+          .subscribe(
+            data => {
+            this.msgs.push ({severity: 'info', summary: 'Deleted', detail: 'Employee has been Deleted successfully!!!'});
+            this.reset();
+          });
+  }
+  reset() {
+   this._selectedfieldsHeading = [];
+   this._Filteredfields = [];
+   this._data = [];
+   this.getListingFields(this.lookup);
   }
 }

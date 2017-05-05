@@ -21,6 +21,8 @@ import { GeneralFormsService } from '../../core/services/general-forms.service';
 
 import { GeneralFormbuilderModule } from '../general-formbuilder/general-formbuilder.module';
 
+import { GrowlModule } from 'primeng/primeng';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -28,7 +30,8 @@ import { GeneralFormbuilderModule } from '../general-formbuilder/general-formbui
     ReactiveFormsModule,
     EmployeeRoutingModule,
     PageHeaderModule,
-    GeneralFormbuilderModule
+    GeneralFormbuilderModule,
+    GrowlModule
   ],
   declarations: [
     ListsComponent,
