@@ -29,15 +29,16 @@ export class EditComponent implements OnInit {
     private _route: ActivatedRoute,
     private _generalFormsService: GeneralFormsService
   ) { }
+
   ngOnInit() {
 
     this._route.params.subscribe(params => {
         this.generalFormId = params['formid'];
         this.Id = params['id'];
     });
-    this.getFormDefination(this.generalFormId);
     this.getFormData(this.Id);
   }
+
   getFormData(id: number) {
     this._generalFormsService
           .GetFormData(id)
@@ -46,8 +47,10 @@ export class EditComponent implements OnInit {
             this._formDataObj = data;
             this._db_submit = this._formDataObj['objEmployee'];
             this._formData.push(this._formDataObj['objEmployee']);
+            this.getFormDefination(this.generalFormId);
           });
   }
+
   getFormDefination(id: number) {
       this._generalFormsService
           .GetSingle(id)
@@ -77,7 +80,7 @@ export class EditComponent implements OnInit {
                 if ( tab_catId == fields_catId ) {
                   let val_index = this._fieldLists[j]['fieldName'].toLowerCase();
                   let value = '';
-                   if (this._formData[0]) {
+                  if (this._formData[0]) {
                      value = this._formData[0][val_index];
                    }
                   nested_group = {
@@ -124,6 +127,7 @@ export class EditComponent implements OnInit {
     }
     return result;
   }
+
   stripUndefined (arr: any[]) {
     return arr.reduce(function (result, item) {
       result.push( Array.isArray(item) && !item.length ? this.stripUndefined(item) : item );
@@ -142,7 +146,7 @@ export class EditComponent implements OnInit {
       this.url = 'EmployeeDetails/UpdateEmployee/';
     }
     this._generalFormsService
-          .Update(this.generalFormId, this._db_submit, this.url)
+          .Update(this.Id, this._db_submit, this.url)
           .subscribe(
           data => {
             if (this.generalFormId == 1) {

@@ -6,6 +6,7 @@ import { EmployeeService } from '../../../core/services/employee.service';
 import { EmployeeModel } from '../../../models/employeee.model';
 
 import { GeneralFormsService } from '../../../core/services/general-forms.service';
+import { PagerService }        from '../../../core/services/common/pager.service';
 import { GeneralDataModel } from '../../../models/general-data.model';
 import { Message} from 'primeng/primeng';
 
@@ -28,12 +29,20 @@ export class ListsComponent implements OnInit {
   form: FormGroup;
   public submitted: boolean;
   msgs: Message[] = [];
+
+  // pager object
+    pager: any = {};
+
+  // paged items
+    pagedItems: any[];
+
   constructor(
     private fb: FormBuilder,
     private _router: Router,
     private _route: ActivatedRoute,
     private _generalFormsService: GeneralFormsService,
-    private _employeeService: EmployeeService
+    private _employeeService: EmployeeService,
+    private pagerService: PagerService
   ) {
     this.form = fb.group({
         'f2': [this._generalDataModel.f2, Validators.required],
@@ -87,6 +96,8 @@ export class ListsComponent implements OnInit {
                this._data[i].push(group);
              }
            }
+           //initialize to page 1
+           this.setPage(1);
         });
   }
   stripUndefined (arr: any[]) {
@@ -131,4 +142,16 @@ export class ListsComponent implements OnInit {
    this._data = [];
    this.getListingFields(this.lookup);
   }
+
+  setPage(page: number) {
+
+        if (page < 1 || page > this.pager.totalPages) {
+            return;
+        }
+        // get pager object from service
+        this.pager = this.pagerService.getPager(this._data.length, page);
+        // get current page of items
+        this.pagedItems = this._data.slice(this.pager.startIndex, this.pager.endIndex + 1);
+    }
+
 }

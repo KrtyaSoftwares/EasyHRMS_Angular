@@ -20,7 +20,7 @@ import { EmployeeService } from '../../core/services/employee.service';
 import { GeneralFormsService } from '../../core/services/general-forms.service';
 
 import { GeneralFormbuilderModule } from '../general-formbuilder/general-formbuilder.module';
-
+import { PagerService } from '../../core/services/common/pager.service';
 import { GrowlModule } from 'primeng/primeng';
 
 @NgModule({
@@ -45,7 +45,8 @@ import { GrowlModule } from 'primeng/primeng';
   ],
   providers: [
     EmployeeService,
-    GeneralFormsService
+    GeneralFormsService,
+    PagerService
   ]
 })
 export class EmployeeModule { }
