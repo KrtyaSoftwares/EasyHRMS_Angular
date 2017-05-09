@@ -42,7 +42,7 @@ namespace EasyHRMS_Angular.Controllers
                         RowId = x.RowId,
                         FieldName = x.FieldName,
                         Value = x.Value,
-                    }).ToList();
+                    }).OrderBy(x => x.Id).ToList();
                     result = new
                     {
                         list,
@@ -85,7 +85,7 @@ namespace EasyHRMS_Angular.Controllers
                         RowId = x.RowId,
                         FieldName = x.FieldName,
                         Value = x.Value,
-                    }).ToList();
+                    }).OrderBy(x => x.Id).ToList();
                     
                     result = new
                     {
