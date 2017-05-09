@@ -32,11 +32,36 @@
                                         [formControlName]="question.fieldName" 
                                         [(ngModel)]="question.custom_value">
                                   </div>
-                                        <div 
-                                          class="alert alert-danger" 
-                                          [hidden]="form.get([question.fieldName]).valid || (form.get([question.fieldName]).pristine && !submitted)">
-                                          *{{question.fieldName}} is required
-                                        </div>
+                                  <div class="col-sm-4" *ngSwitchCase="'Bit'">
+                                    <div class="radio" *ngFor="let opt of question.optionValue">
+                                      <label>
+                                        <input 
+                                            type="radio" 
+                                            value="{{opt.key}}"
+                                            [formControlName]="question.fieldName" 
+                                            [(ngModel)]="question.value">
+                                        {{opt.value}}
+                                      </label>
+                                    </div>
+                                  </div>
+                                  <div class="col-sm-4" *ngSwitchCase="'Dropdown'">
+                                      <select class="form-control" [formControlName]="question.fieldName" [(ngModel)]="question.value">
+                                          <option  value="" selected>Select</option>
+                                          <option  value= {{opt.key}} *ngFor="let opt of question.optionValue">{{opt.value}}</option>
+                                        </select>
+                                  </div>
+                                  <div class="col-sm-4" *ngSwitchCase="'Textarea'">
+                                      <textarea [formControlName]="question.fieldName" [(ngModel)]="question.value" rows="10" cols="55"> </textarea>
+                                  </div>
+                                  <div class="col-sm-4" *ngSwitchCase="'datetime'">
+                                      <p-calendar [formControlName]="question.fieldName" [showIcon]="true" [(ngModel)]="question.value"></p-calendar> 
+                                      <span style="margin-left:35px">{{question.value|date}}</span>
+                                  </div>
+                                  <div 
+                                    class="alert alert-danger" 
+                                    [hidden]="form.get([question.fieldName]).valid || (form.get([question.fieldName]).pristine && !submitted)">
+                                    *{{question.fieldName}} is required
+                                  </div>
                                 </div>
                           </div>
                         </div>

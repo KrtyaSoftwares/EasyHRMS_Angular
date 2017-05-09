@@ -100,6 +100,7 @@ addTableData(id: any, data: any) {
             } else {
                 this.record_not_exists = false;
             }
+            console.log(this.final_result);
             if (this.rowId) {
                 this.getTableData(this.lookup, this.rowId);
             }
@@ -107,6 +108,17 @@ addTableData(id: any, data: any) {
             let i = 0;
             this.final_result.forEach((form: any) => {
                 this.final_result[i]['custom_value'] = '';
+
+                if (form.fieldType == 'Dropdown' || form.fieldType == 'Bit') {
+                    let optionVal = JSON.parse(form.optionValue);
+                    form.optionValue = optionVal;
+                }
+                if (form.fieldType == 'Date') {
+                    if (form.value !== '') {
+                        form.value = this.convertDate(form.value);
+                    }
+                }
+
                 if (form.isRequire) {
                     group[form.fieldName] = ['', Validators.required];
                 } else {
@@ -127,4 +139,9 @@ addTableData(id: any, data: any) {
     }
     //console.log(this.final_result);
  }
+ convertDate(inputFormat: any) {
+        function pad(s: any) { return (s < 10) ? '0' + s : s; }
+        let d = new Date(inputFormat);
+        return [pad(d.getMonth() + 1), pad(d.getDate()), d.getFullYear()].join('/');
+    }
 }

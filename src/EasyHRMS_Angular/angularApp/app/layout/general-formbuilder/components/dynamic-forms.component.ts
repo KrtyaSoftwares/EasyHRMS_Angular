@@ -3,6 +3,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { GeneralFormsService } from '../../../core/services/general-forms.service';
 import { Message} from 'primeng/primeng';
+import { BasicValidators } from '../../../shared';
 @Component({
   selector: 'app-dynamic-forms',
   templateUrl: './dynamic-forms.component.html',
