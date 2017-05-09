@@ -23,6 +23,8 @@ import { GeneralFormbuilderModule } from '../general-formbuilder/general-formbui
 import { PagerService } from '../../core/services/common/pager.service';
 import { GrowlModule } from 'primeng/primeng';
 
+import { GeneralListingModule } from '../general-listing/general-listing.module';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -31,7 +33,8 @@ import { GrowlModule } from 'primeng/primeng';
     EmployeeRoutingModule,
     PageHeaderModule,
     GeneralFormbuilderModule,
-    GrowlModule
+    GrowlModule,
+    GeneralListingModule
   ],
   declarations: [
     ListsComponent,

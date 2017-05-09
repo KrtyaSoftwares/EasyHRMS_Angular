@@ -19,13 +19,13 @@
                         <table class="table table-bordered table-striped table-hover">
                         <thead class="no-bd">
                             <tr>
-                            <th *ngFor="let heading of lookuplist; let i = index"><strong>{{heading.displayName}}</strong> </th>
+                            <th *ngFor="let heading of _FilteredfieldsHeading; let i = index"><strong>{{heading.displayName}}</strong> </th>
                             <th><strong>Action</strong></th>                        
                             </tr>
                         </thead>
                         <tbody class="no-bd-y">
-                            <tr *ngFor="let hero of filter_Array">
-                            <td *ngFor="let h of hero">{{h.value}} </td>
+                            <tr *ngFor="let hero of pagedItems">
+                                <td *ngFor="let h of hero">{{h.value}} </td>
                             <td>
                                 <button
                                     *ngFor="let act of actionlist"
@@ -39,6 +39,23 @@
                             </tr>
                         </tbody>
                         </table>
+                        <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+                            <li [ngClass]="{disabled:pager.currentPage === 1}">
+                                <a (click)="setPage(1)">First</a>
+                            </li>
+                            <li [ngClass]="{disabled:pager.currentPage === 1}">
+                                <a (click)="setPage(pager.currentPage - 1)">Previous</a>
+                            </li>
+                            <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+                                <a (click)="setPage(page)">{{page}}</a>
+                            </li>
+                            <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                                <a (click)="setPage(pager.currentPage + 1)">Next</a>
+                            </li>
+                            <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                                <a (click)="setPage(pager.totalPages)">Last</a>
+                            </li>
+                        </ul>
                     </div>
                     </div>
                 </div>

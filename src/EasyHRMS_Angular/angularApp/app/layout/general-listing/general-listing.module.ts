@@ -8,6 +8,9 @@ import { GeneralListingRoutingModule } from './general-listing-routing.module';
     CommonModule,
     GeneralListingRoutingModule
   ],
+  exports: [
+    GeneralListingComponent
+  ],
   declarations: [GeneralListingComponent]
 })
 export class GeneralListingModule { }
