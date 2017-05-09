@@ -11,13 +11,14 @@
             <input class="form-control" type="text" [formControlName]="fields.fieldName" [(ngModel)]="fields.value">
           </div>
           <div class="col-sm-4" *ngSwitchCase="'Bit'">
-            <div class="radio" *ngFor="let opt of fields.optionValue">
+            {{fields.value}}
+            <div class="radio" *ngFor="let opt of fields.optionValue; let idx = index">
               <label>
                 <input 
                     type="radio" 
                     [value]="opt.key"
                     [formControlName]="fields.fieldName" 
-                    [checked]="fields.value === opt.key">
+                    [attr.checked]="idx == 1">
                 {{opt.value}}
               </label>
             </div>
@@ -25,14 +26,14 @@
           <div class="col-sm-4" *ngSwitchCase="'Dropdown'">
                <select class="form-control" [id]="fields.id" [formControlName]="fields.fieldName">
                   <option  value="" selected>Select</option>
-                  <option *ngFor="let opt of fields.optionValue" [value]="opt.key">{{opt.value}}</option>
+                  <option  [ngValue]="opt.key" *ngFor="let opt of fields.optionValue; let idx = index" [attr.selected]="idx == 1">{{opt.value}}</option>
                 </select>
           </div>
           <div class="col-sm-4" *ngSwitchCase="'Textarea'">
               <textarea [formControlName]="fields.fieldName" [(ngModel)]="fields.value" rows="10" cols="55"> </textarea>
           </div>
           <div class="col-sm-4" *ngSwitchCase="'Date'">
-              <p-calendar [formControlName]="fields.fieldName" [showIcon]="true"></p-calendar> 
+              <p-calendar [formControlName]="fields.fieldName" [showIcon]="true" [(ngModel)]="fields.value"></p-calendar> 
               <span style="margin-left:35px">{{fields.value|date}}</span>
           </div>
           <div 

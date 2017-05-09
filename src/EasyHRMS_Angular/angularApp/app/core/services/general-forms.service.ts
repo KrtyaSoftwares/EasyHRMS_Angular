@@ -40,20 +40,20 @@ export class GeneralFormsService {
     //         .map(res => <Forms>res.json());
     // }
 
-    // public Add = (id: any, data: any): Observable<Forms> => {
-    //     let toAdd = JSON.stringify(data);
-    //     return this.http.post(this.actionUrl + 'LookupData/CreateLookupRowData/' + id, toAdd, { headers: this.headers })
-    //         .map(res => <Forms>res.json());
-    // }
+    public Add = (data: any, url: any): Observable<GeneralFormsModel> => {
+        let toAdd = JSON.stringify(data);
+        return this.http.post(this.actionUrl + url, toAdd, { headers: this.headers })
+            .map(res => <GeneralFormsModel>res.json());
+    }
 
     public Update = (id: number, data: any, url: any): Observable<GeneralFormsModel> => {
         let toAdd = JSON.stringify(data);
         return this.http.post(this.actionUrl + url + id, toAdd, { headers: this.headers })
             .map(res => <GeneralFormsModel>res.json());
     }
-    // public Delete = (lookup: number, rowId: number): Observable<Forms> => {
-    //     return this.http
-    //         .get(this.actionUrl + 'LookupData/DeleteLookupRowData/' + lookup + '/' + rowId)
-    //         .map(res => <Forms>res.json());
-    // }
+    public Delete = (Id: number, url: any): Observable<GeneralFormsModel> => {
+        return this.http
+            .get(this.actionUrl + url + '/' + Id)
+            .map(res => <GeneralFormsModel>res.json());
+    }
 }

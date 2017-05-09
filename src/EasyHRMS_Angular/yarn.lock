@@ -75,6 +75,10 @@
   version "6.0.68"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-6.0.68.tgz#0c43b6b8b9445feb86a0fbd3457e3f4bc591e66d"
 
+"@types/underscore@^1.8.0":
+  version "1.8.0"
+  resolved "https://registry.yarnpkg.com/@types/underscore/-/underscore-1.8.0.tgz#7a22ef584d6fe59af2e407bae079e2b7f8a5102f"
+
 abbrev@1:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/abbrev/-/abbrev-1.1.0.tgz#d0554c2256636e2f56e7c2e5ad183f859428d81f"
@@ -3923,6 +3927,10 @@ typescript@2.2.2:
   version "2.2.2"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.2.2.tgz#606022508479b55ffa368b58fee963a03dfd7b0c"
 
+typing@^0.1.9:
+  version "0.1.9"
+  resolved "https://registry.yarnpkg.com/typing/-/typing-0.1.9.tgz#1e6c95235852474d077c1363eaa48d9293ea9440"
+
 uglify-js@2.8.x, uglify-js@^2.8.5:
   version "2.8.11"
   resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-2.8.11.tgz#11a51c43d810b47bc00aee4d512cb3947ddd1ac4"
@@ -3942,6 +3950,10 @@ uid-number@~0.0.6:
 ultron@1.0.x:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/ultron/-/ultron-1.0.2.tgz#ace116ab557cd197386a4e88f4685378c8b2e4fa"
+
+underscore@^1.8.3:
+  version "1.8.3"
+  resolved "https://registry.yarnpkg.com/underscore/-/underscore-1.8.3.tgz#4f3fb53b106e6097fcf9cb4109f2a5e9bdfa5022"
 
 uniq@^1.0.1:
   version "1.0.1"
