@@ -4,14 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using EasyHRMS_DA.Models;
-using EasyHRMS_Angular.Models;
-using System.Reflection;
-using System.Diagnostics;
 
 namespace EasyHRMS_Angular.Controllers
 {
-    [Route("api/[controller]")]
-    public class EmployeeLeaveController : Controller
+    public class TaskTemplateController : Controller
     {
         //public IActionResult Index()
         //{
@@ -20,24 +16,23 @@ namespace EasyHRMS_Angular.Controllers
 
         private readonly Ehrms_ng2Context _context;
 
-        public EmployeeLeaveController(Ehrms_ng2Context context)
+        public TaskTemplateController(Ehrms_ng2Context context)
         {
             _context = context;
         }
 
-        // GET: api/EmployeeLeave/GetAllEmployeeLeave
-        [HttpGet("GetAllEmployeeLeave"), Produces("application/json")]
-        public object GetAllEmployeeLeave()
+        // GET: api/TaskTemplate/GetAllTaskTemplate
+        [HttpGet("GetAllTaskTemplate"), Produces("application/json")]
+        public object GetAllTaskTemplate()
         {
-            //List<EmployeeLeaveVM> list = new List<EmployeeLeaveVM>();
-            List<EmployeeLeave> list = new List<EmployeeLeave>();
+            List<EmailTemplate> list = new List<EmailTemplate>();
             object result = null;
             try
             {
                 using (_context)
                 {
-                    list = _context.EmployeeLeave.ToList();
-                   
+                    list = _context.EmailTemplate.ToList();
+
                     result = new
                     {
                         list,
@@ -62,33 +57,22 @@ namespace EasyHRMS_Angular.Controllers
 
 
 
-        // GET api/EmployeeLeave/GetEmployeeLeaveByEmployeeId/5
-        [HttpGet("GetEmployeeLeaveByEmployeeId/{id}"), Produces("application/json")]
-        public object GetEmployeeLeaveByEmployeeId(int id)
+        // GET api/TaskTemplate/GetTaskTemplateById/5
+        [HttpGet("GetTaskTemplateById/{id}"), Produces("application/json")]
+        public object GetTaskTemplateById(int id)
         {
             object result = null;
-            //Holiday objHoliday = null;
-            List<EmployeeLeave> list = new List<EmployeeLeave>();
+
+            EmailTemplate objEmailTemplate = new EmailTemplate();
             try
             {
                 using (_context)
                 {
-                    //objHoliday = _context.Holiday.FirstOrDefault(x => x.HolidayId == id);
-                    list = _context.EmployeeLeave.Where(x => x.EmployeeId == id).Select(x => new EmployeeLeave()
-                    {
-                        Id = x.Id,
-                        EmployeeId = x.EmployeeId,
-                        FromDate = x.FromDate,
-                        ToDate = x.ToDate,
-                        LeaveTypeId = x.LeaveTypeId,
-                        Status = x.Status,
-                        LeaveReason = x.LeaveReason,
-                        CreateDate = x.CreateDate,
-                        IsHalfDay = x.IsHalfDay
-                    }).ToList();
+                    objEmailTemplate = _context.EmailTemplate.FirstOrDefault(x => x.Id == id);
+
                     result = new
                     {
-                        list,
+                        objEmailTemplate,
                         error = "0",
                         msg = "Success"
                     };
@@ -99,7 +83,7 @@ namespace EasyHRMS_Angular.Controllers
                 ex.ToString();
                 result = new
                 {
-                    list,
+                    objEmailTemplate,
                     error = "1",
                     msg = "Error"
                 };
@@ -107,9 +91,9 @@ namespace EasyHRMS_Angular.Controllers
             return result;
         }
 
-        // POST api/EmployeeLeave/CreateEmployeeLeave
-        [HttpPost, Route("CreateEmployeeLeave"), Produces("application/json")]
-        public object CreateEmployeeLeave([FromBody]EmployeeLeave model)
+        // POST api/TaskTemplate/CreateTaskTemplate
+        [HttpPost, Route("CreateTaskTemplate"), Produces("application/json")]
+        public object CreateTaskTemplate([FromBody]EmailTemplate model)
         {
 
             object result = null;
@@ -126,10 +110,7 @@ namespace EasyHRMS_Angular.Controllers
                 {
                     try
                     {
-                        Debug.WriteLine(model.ToDate);
-                        Debug.WriteLine(model.FromDate);
-                        model.CreateDate = DateTime.Now;
-                        _context.EmployeeLeave.Add(model);
+                        _context.EmailTemplate.Add(model);
                         //await _ctx.SaveChangesAsync();
                         _context.SaveChanges();
                         _ctxTransaction.Commit();
@@ -157,9 +138,9 @@ namespace EasyHRMS_Angular.Controllers
         }
 
 
-        // PUT api/EmployeeLeave/UpdateEmployeeLeave/5
-        [HttpPost, Route("UpdateEmployeeLeave/{id}")]
-        public object UpdateEmployeeLeave(int id, [FromBody]EmployeeLeave model)
+        // PUT api/TaskTemplate/UpdateTaskTemplate/5
+        [HttpPost, Route("UpdateTaskTemplate/{id}")]
+        public object UpdateTaskTemplate(int id, [FromBody]EmailTemplate model)
         {
             object result = null; string message = ""; string errorcode = ""; string excp = "";
             if (model == null)
@@ -172,7 +153,7 @@ namespace EasyHRMS_Angular.Controllers
                 {
                     try
                     {
-                        var entityUpdate = _context.EmployeeLeave.FirstOrDefault(x => x.Id == id);
+                        var entityUpdate = _context.EmailTemplate.FirstOrDefault(x => x.Id == id);
                         //if (entityUpdate != null)
                         //{
                         //    PropertyInfo[] propertiesEU = entityUpdate.GetType().GetProperties();
@@ -189,14 +170,9 @@ namespace EasyHRMS_Angular.Controllers
 
                         if (entityUpdate != null)
                         {
-                            entityUpdate.EmployeeId = model.EmployeeId;
-                            entityUpdate.FromDate = model.FromDate;
-                            entityUpdate.ToDate = model.ToDate;
-                            entityUpdate.LeaveTypeId = model.LeaveTypeId;
-                            entityUpdate.Status = model.Status;
-                            entityUpdate.LeaveReason = model.LeaveReason;
-                            entityUpdate.CreateDate = model.CreateDate;
-                            entityUpdate.IsHalfDay = model.IsHalfDay;
+                            entityUpdate.FormName = model.FormName;
+                            entityUpdate.TemplateName = model.TemplateName;
+                            entityUpdate.Message = model.Message;
 
                             _context.SaveChanges();
                         }
@@ -225,9 +201,9 @@ namespace EasyHRMS_Angular.Controllers
         }
 
 
-        // POST api/EmployeeLeave/CreateUpdateEmployeeLeave
-        [HttpPost, Route("CreateUpdateEmployeeLeave/{id}"), Produces("application/json")]
-        public object CreateUpdateEmployeeLeave(int id, [FromBody]EmployeeLeave model)
+        // POST api/TaskTemplate/CreateUpdateTaskTemplate
+        [HttpPost, Route("CreateUpdateTaskTemplate/{id}"), Produces("application/json")]
+        public object CreateUpdateTaskTemplate(int id, [FromBody]EmailTemplate model)
         {
             object result = null;
             string message = "";
@@ -245,7 +221,7 @@ namespace EasyHRMS_Angular.Controllers
                     {
                         if (id != 0)
                         {
-                            var entityUpdate = _context.EmployeeLeave.FirstOrDefault(x => x.Id == id);
+                            var entityUpdate = _context.EmailTemplate.FirstOrDefault(x => x.Id == id);
                             //if (entityUpdate != null)
                             //{
                             //    PropertyInfo[] propertiesEU = entityUpdate.GetType().GetProperties();
@@ -259,14 +235,9 @@ namespace EasyHRMS_Angular.Controllers
 
                             if (entityUpdate != null)
                             {
-                                entityUpdate.EmployeeId = model.EmployeeId;
-                                entityUpdate.FromDate = model.FromDate;
-                                entityUpdate.ToDate = model.ToDate;
-                                entityUpdate.LeaveTypeId = model.LeaveTypeId;
-                                entityUpdate.Status = model.Status;
-                                entityUpdate.LeaveReason = model.LeaveReason;
-                                entityUpdate.CreateDate = model.CreateDate;
-                                entityUpdate.IsHalfDay = model.IsHalfDay;
+                                entityUpdate.FormName = model.FormName;
+                                entityUpdate.TemplateName = model.TemplateName;
+                                entityUpdate.Message = model.Message;
 
                                 _context.SaveChanges();
                             }
@@ -276,7 +247,7 @@ namespace EasyHRMS_Angular.Controllers
                         }
                         else
                         {
-                            _context.EmployeeLeave.Add(model);
+                            _context.EmailTemplate.Add(model);
                             //await _ctx.SaveChangesAsync();
                             _context.SaveChanges();
                             _ctxTransaction.Commit();
@@ -305,9 +276,9 @@ namespace EasyHRMS_Angular.Controllers
             return result;
         }
 
-        // DELETE api/EmployeeLeave/DeleteEmployeeLeaveByID/5
-        [HttpGet, Route("DeleteEmployeeLeaveByID/{id}")]
-        public object DeleteEmployeeLeaveByID(int id)
+        // DELETE api/TaskTemplate/DeleteTaskTemplateById/5
+        [HttpGet, Route("DeleteTaskTemplateById/{id}")]
+        public object DeleteTaskTemplateById(int id)
         {
             object result = null;
             string message = "";
@@ -319,10 +290,10 @@ namespace EasyHRMS_Angular.Controllers
                 {
                     try
                     {
-                        var idToRemove = _context.EmployeeLeave.SingleOrDefault(x => x.Id == id);
+                        var idToRemove = _context.EmailTemplate.SingleOrDefault(x => x.Id == id);
                         if (idToRemove != null)
                         {
-                            _context.EmployeeLeave.Remove(idToRemove);
+                            _context.EmailTemplate.Remove(idToRemove);
                             _context.SaveChanges();
                         }
                         _ctxTransaction.Commit();
@@ -347,7 +318,6 @@ namespace EasyHRMS_Angular.Controllers
             }
             return result;
         }
-        
 
     }
 }

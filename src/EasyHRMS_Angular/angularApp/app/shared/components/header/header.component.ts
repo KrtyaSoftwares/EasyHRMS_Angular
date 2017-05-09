@@ -1,5 +1,4 @@
 ﻿import { Component, OnInit } from '@angular/core';
-import { CustomHeadingComponent } from './custom-heading/custom-heading.component';
 import { Router } from '@angular/router';
 import { CommonDataService } from './../../../core/services/common/common-data.service';
 

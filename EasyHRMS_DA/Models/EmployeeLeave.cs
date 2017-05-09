@@ -5,7 +5,7 @@ namespace EasyHRMS_DA.Models
 {
     public partial class EmployeeLeave
     {
-        public int EmployeeLeaveId { get; set; }
+        public int Id { get; set; }
         public int EmployeeId { get; set; }
         public DateTime? FromDate { get; set; }
         public DateTime? ToDate { get; set; }

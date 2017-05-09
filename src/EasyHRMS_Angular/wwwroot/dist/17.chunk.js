@@ -1,89 +1,6 @@
 webpackJsonp([17],{
 
-/***/ 363:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_services_lists_data__ = __webpack_require__(364);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ListingComponent; });
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-var ListingComponent = (function () {
-    function ListingComponent(_listsService) {
-        this._listsService = _listsService;
-        this.results = {};
-        this.filter_Array = [];
-        this.record_not_exists = false;
-    }
-    ListingComponent.prototype.ngOnInit = function () {
-        this.getAll(this.lookup);
-    };
-    ListingComponent.prototype.getAll = function (id) {
-        var _this = this;
-        this._listsService.GetAll(id)
-            .subscribe(function (data) {
-            _this.results = data;
-            _this.lookuplist = _this.results['lookuplist'];
-            _this.actionlist = _this.results['actionlist'];
-            _this.lookupData = _this.results['lookupData'];
-            _this.filterLookupData = _this.lookupData.sort(function (a, b) {
-                return a.rowId - b.rowId;
-            });
-            if (_this.lookuplist.length == 0) {
-                _this.record_not_exists = true;
-            }
-            else {
-                _this.record_not_exists = false;
-            }
-            _this.filter_Array = _this.groupBy(_this.filterLookupData, 'rowId');
-        });
-    };
-    ListingComponent.prototype.delete = function () {
-    };
-    ListingComponent.prototype.groupBy = function (collection, property) {
-        var i = 0, val, index, values = [], result = [];
-        for (; i < collection.length; i++) {
-            val = collection[i][property];
-            index = values.indexOf(val);
-            if (index > -1) {
-                result[index].push(collection[i]);
-            }
-            else {
-                values.push(val);
-                result.push([collection[i]]);
-            }
-        }
-        return result;
-    };
-    return ListingComponent;
-}());
-__decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["p" /* Input */])('lookup'),
-    __metadata("design:type", String)
-], ListingComponent.prototype, "lookup", void 0);
-ListingComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* Component */])({
-        selector: 'app-listing',
-        template: __webpack_require__(371),
-    }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__core_services_lists_data__["a" /* ListsService */]])
-], ListingComponent);
-
-
-
-/***/ }),
-
-/***/ 364:
+/***/ 441:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -92,7 +9,7 @@ ListingComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(66);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__(98);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ListsService; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LookupDataService; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -106,14 +23,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var ListsService = (function () {
-    function ListsService(http, configuration) {
+var LookupDataService = (function () {
+    function LookupDataService(http, configuration) {
         var _this = this;
         this.http = http;
         this.configuration = configuration;
-        this.GetAll = function (id) {
+        this.GetLookUpData = function (lookupid) {
             return _this.http
-                .get(_this.actionUrl + 'LookupList/GetLookupListDataByLookupID/' + id)
+                .get(_this.actionUrl + 'LookupData/GetLookupDataByLookupID/' + lookupid)
                 .map(function (res) { return res.json(); });
         };
         this.actionUrl = configuration.Server + 'api/';
@@ -121,25 +38,163 @@ var ListsService = (function () {
         this.headers.append('Content-Type', 'application/json');
         this.headers.append('Accept', 'application/json');
     }
-    return ListsService;
+    return LookupDataService;
 }());
-ListsService = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["e" /* Injectable */])(),
+LookupDataService = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Injectable"])(),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_http__["c" /* Http */], __WEBPACK_IMPORTED_MODULE_0__app_constants__["a" /* Configuration */]])
-], ListsService);
+], LookupDataService);
 
 
 
 /***/ }),
 
-/***/ 368:
+/***/ 496:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ChangepasswordComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var ChangepasswordComponent = (function () {
+    function ChangepasswordComponent() {
+    }
+    ChangepasswordComponent.prototype.ngOnInit = function () {
+    };
+    return ChangepasswordComponent;
+}());
+ChangepasswordComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'app-changepassword',
+        template: __webpack_require__(602),
+    }),
+    __metadata("design:paramtypes", [])
+], ChangepasswordComponent);
+
+
+
+/***/ }),
+
+/***/ 497:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_services_common_lookup_data_service__ = __webpack_require__(441);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HolidayDetailsComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var HolidayDetailsComponent = (function () {
+    function HolidayDetailsComponent(lookupDataService) {
+        this.lookupDataService = lookupDataService;
+        this.lookup = 1;
+        this.lookupdata = [];
+    }
+    HolidayDetailsComponent.prototype.ngOnInit = function () {
+        this.getHolidayLookupData(this.lookup);
+    };
+    HolidayDetailsComponent.prototype.getHolidayLookupData = function (lookup) {
+        var _this = this;
+        this.lookupDataService
+            .GetLookUpData(lookup)
+            .subscribe(function (data) {
+            _this.lookupdata = data.list;
+            _this.lookupdata = _this.lookupdata.filter(function (ele) {
+                return ele.fieldName != 'IsActive';
+            });
+            _this.lookupdataByRow = _this.groupBy(_this.lookupdata, function (item) {
+                return item.rowId;
+            });
+        });
+    };
+    HolidayDetailsComponent.prototype.groupBy = function (array, f) {
+        var groups = {};
+        array.forEach(function (o) {
+            var group = JSON.stringify(f(o));
+            groups[group] = groups[group] || [];
+            groups[group].push(o);
+        });
+        return Object.keys(groups).map(function (group) {
+            return groups[group];
+        });
+    };
+    return HolidayDetailsComponent;
+}());
+HolidayDetailsComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'app-holiday-details',
+        template: __webpack_require__(603),
+    }),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__core_services_common_lookup_data_service__["a" /* LookupDataService */]])
+], HolidayDetailsComponent);
+
+
+
+/***/ }),
+
+/***/ 498:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SelfserviceComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var SelfserviceComponent = (function () {
+    function SelfserviceComponent() {
+    }
+    SelfserviceComponent.prototype.ngOnInit = function () {
+    };
+    return SelfserviceComponent;
+}());
+SelfserviceComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'app-selfservice',
+        template: __webpack_require__(604),
+    }),
+    __metadata("design:paramtypes", [])
+], SelfserviceComponent);
+
+
+
+/***/ }),
+
+/***/ 542:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(171);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_listing_component__ = __webpack_require__(363);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ListingRoutingModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_selfservice_component__ = __webpack_require__(498);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_holiday_details_holiday_details_component__ = __webpack_require__(497);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_changepassword_changepassword_component__ = __webpack_require__(496);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SelfserviceRoutingModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -149,35 +204,51 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
+
 var routes = [
-    { path: '', component: __WEBPACK_IMPORTED_MODULE_2__components_listing_component__["a" /* ListingComponent */] },
+    {
+        path: '', component: __WEBPACK_IMPORTED_MODULE_2__components_selfservice_component__["a" /* SelfserviceComponent */],
+        children: [
+            { path: 'myprofile', loadChildren: function () { return new Promise(function (resolve) { __webpack_require__.e/* require.ensure */(20).then((function (require) { resolve(__webpack_require__(539)['MyprofileModule']); }).bind(null, __webpack_require__)).catch(__webpack_require__.oe); }); } },
+            { path: 'mysalary', loadChildren: function () { return new Promise(function (resolve) { __webpack_require__.e/* require.ensure */(19).then((function (require) { resolve(__webpack_require__(541)['MysalaryModule']); }).bind(null, __webpack_require__)).catch(__webpack_require__.oe); }); } },
+            { path: 'myleaves', loadChildren: function () { return new Promise(function (resolve) { __webpack_require__.e/* require.ensure */(9).then((function (require) { resolve(__webpack_require__(537)['MyleavesModule']); }).bind(null, __webpack_require__)).catch(__webpack_require__.oe); }); } },
+            { path: 'myadvancesclaim', loadChildren: function () { return new Promise(function (resolve) { __webpack_require__.e/* require.ensure */(22).then((function (require) { resolve(__webpack_require__(532)['MyadvancesclaimModule']); }).bind(null, __webpack_require__)).catch(__webpack_require__.oe); }); } },
+            { path: 'myattendance', loadChildren: function () { return new Promise(function (resolve) { __webpack_require__.e/* require.ensure */(21).then((function (require) { resolve(__webpack_require__(534)['MyattendanceModule']); }).bind(null, __webpack_require__)).catch(__webpack_require__.oe); }); } },
+        ]
+    },
+    { path: 'holidaysdetails', component: __WEBPACK_IMPORTED_MODULE_3__components_holiday_details_holiday_details_component__["a" /* HolidayDetailsComponent */] },
+    { path: 'changepassword', component: __WEBPACK_IMPORTED_MODULE_4__components_changepassword_changepassword_component__["a" /* ChangepasswordComponent */] },
 ];
-var ListingRoutingModule = (function () {
-    function ListingRoutingModule() {
+var SelfserviceRoutingModule = (function () {
+    function SelfserviceRoutingModule() {
     }
-    return ListingRoutingModule;
+    return SelfserviceRoutingModule;
 }());
-ListingRoutingModule = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["a" /* NgModule */])({
-        imports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* RouterModule */].forChild(routes)],
-        exports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* RouterModule */]]
+SelfserviceRoutingModule = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
+        imports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["RouterModule"].forChild(routes)],
+        exports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["RouterModule"]]
     })
-], ListingRoutingModule);
+], SelfserviceRoutingModule);
 
 
 
 /***/ }),
 
-/***/ 369:
+/***/ 543:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__(52);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_listing_component__ = __webpack_require__(363);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__listing_routing_module__ = __webpack_require__(368);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ListingModule", function() { return ListingModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_selfservice_component__ = __webpack_require__(498);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_holiday_details_holiday_details_component__ = __webpack_require__(497);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_changepassword_changepassword_component__ = __webpack_require__(496);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__selfservice_routing_module__ = __webpack_require__(542);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__core_services_common_lookup_data_service__ = __webpack_require__(441);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SelfserviceModule", function() { return SelfserviceModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -188,32 +259,53 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var ListingModule = (function () {
-    function ListingModule() {
+
+
+
+var SelfserviceModule = (function () {
+    function SelfserviceModule() {
     }
-    return ListingModule;
+    return SelfserviceModule;
 }());
-ListingModule = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["a" /* NgModule */])({
+SelfserviceModule = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
         imports: [
-            __WEBPACK_IMPORTED_MODULE_1__angular_common__["a" /* CommonModule */],
-            __WEBPACK_IMPORTED_MODULE_3__listing_routing_module__["a" /* ListingRoutingModule */]
+            __WEBPACK_IMPORTED_MODULE_1__angular_common__["CommonModule"],
+            __WEBPACK_IMPORTED_MODULE_5__selfservice_routing_module__["a" /* SelfserviceRoutingModule */]
         ],
-        exports: [
-            __WEBPACK_IMPORTED_MODULE_2__components_listing_component__["a" /* ListingComponent */]
+        declarations: [
+            __WEBPACK_IMPORTED_MODULE_2__components_selfservice_component__["a" /* SelfserviceComponent */],
+            __WEBPACK_IMPORTED_MODULE_3__components_holiday_details_holiday_details_component__["a" /* HolidayDetailsComponent */],
+            __WEBPACK_IMPORTED_MODULE_4__components_changepassword_changepassword_component__["a" /* ChangepasswordComponent */]
         ],
-        declarations: [__WEBPACK_IMPORTED_MODULE_2__components_listing_component__["a" /* ListingComponent */]]
+        providers: [
+            __WEBPACK_IMPORTED_MODULE_6__core_services_common_lookup_data_service__["a" /* LookupDataService */]
+        ]
     })
-], ListingModule);
+], SelfserviceModule);
 
 
 
 /***/ }),
 
-/***/ 371:
+/***/ 602:
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"main-content\" >\r\n    <div class=\"row m-t-10\">\r\n      <div class=\"col-md-12\">\r\n        <div class=\"panel panel-default\">\r\n          <div class=\"panel-heading text-right\">\r\n            <button type=\"button\" class=\"btn btn-sm btn-icon btn-rounded btn-default\"><i class=\"fa fa-question\"></i> </button>\r\n          </div>\r\n          <div class=\"panel-body\">\r\n           <div class=\"row\">\r\n              <div class=\"col-md-12 col-sm-12 col-xs-12 text-right\">\r\n                <button [routerLink]=\"['/lookup/form/' + lookup]\" class=\"btn btn-primary m-b-10\" >Add</button>\r\n              </div>\r\n            </div>\r\n            \r\n            <div *ngIf=\"record_not_exists\">No Form found.</div>\r\n                <div *ngIf=\"!record_not_exists\" class=\"row\">\r\n                    <div class=\"col-md-12 col-sm-12 col-xs-12\">\r\n                    <div class=\"table-responsive\">\r\n                        <table class=\"table table-bordered table-striped table-hover\">\r\n                        <thead class=\"no-bd\">\r\n                            <tr>\r\n                            <th *ngFor=\"let heading of lookuplist; let i = index\"><strong>{{heading.displayName}}</strong> </th>\r\n                            <th><strong>Action</strong></th>                        \r\n                            </tr>\r\n                        </thead>\r\n                        <tbody class=\"no-bd-y\">\r\n                            <tr *ngFor=\"let hero of filter_Array\">\r\n                            <td *ngFor=\"let h of hero\">{{h.value}} </td>\r\n                            <td>\r\n                                <button\r\n                                    *ngFor=\"let act of actionlist\"\r\n                                    type=\"button\"\r\n                                    [routerLink]=\"act.action == 'Edit' ? ['/lookup/form/'+ lookup + '/' + hero[0]['rowId']] : ['/lookup/delete/' + lookup + '/' + hero[0]['rowId']]\"\r\n                                    [ngClass]=\"act.action == 'Edit' ? 'btn btn-sm btn-warning' : 'btn btn-sm btn-danger'\"\r\n                                    title=\"{{act.action}}\">\r\n                                    <i [ngClass]=\"act.action == 'Edit' ? 'fa fa-pencil' : 'fa fa-remove'\"></i>\r\n                                </button>\r\n                            </td>\r\n                            </tr>\r\n                        </tbody>\r\n                        </table>\r\n                    </div>\r\n                    </div>\r\n                </div>\r\n        </div>\r\n                </div>\r\n            </div>\r\n            </div>\r\n        </div>"
+module.exports = "<p>\n  changepassword works!\n</p>\n"
+
+/***/ }),
+
+/***/ 603:
+/***/ (function(module, exports) {
+
+module.exports = "<!--<p>\n  holiday-details works!\n</p>-->\n<div id=\"main-content\">\r\n    <div class=\"row m-t-10\">\r\n        <div class=\"col-md-12\">\r\n            <div class=\"panel panel-default\">\r\n                <div class=\"panel-heading text-right\">\r\n\r\n                    <div class=\"btn-group text-left\">\r\n                        <button class=\"btn btn-success dropdown-toggle\" data-toggle=\"dropdown\">\r\n                            Export <i class=\"fa fa-angle-down\"></i>\r\n                        </button>\r\n                        <ul class=\"dropdown-menu pull-right\">\r\n                            <li>\r\n                                <a href=\"\">Print</a>\r\n                            </li>\r\n                            <li>\r\n                                <a href=\"\">Export to PDF</a>\r\n                            </li>\r\n                            <li>\r\n                                <a href=\"\">Export to XLS</a>\r\n                            </li>\r\n                            <li>\r\n                                <a href=\"\">Export to CSV</a>\r\n                            </li>\r\n                            <li>\r\n                                <a href=\"\">Export to DOC</a>\r\n                            </li>\r\n                        </ul>\r\n                    </div>\r\n                    <button type=\"button\" class=\"btn btn-sm btn-icon btn-rounded btn-default\">\r\n                        <i class=\"fa fa-question\"></i>\r\n                    </button>\r\n\r\n                </div>\r\n                <div class=\"panel-body\">\r\n                    <div class=\"row\">\r\n                        <div class=\"col-md-12 col-sm-12 col-xs-12 table-responsive\">\r\n                            <table class=\"table table-bordered table-striped table-hover\">\r\n                                <thead class=\"no-bd\">\r\n                                    <tr>\r\n                                        <th>\r\n                                            <strong>Holiday Date</strong>\r\n                                        </th>\r\n                                        <th>\r\n                                            <strong>Holiday Discription</strong>\r\n                                        </th>\r\n\r\n                                    </tr>\r\n                                </thead>\r\n                                <tbody class=\"no-bd-y\">\r\n                                    <tr *ngFor=\"let lookupdta of lookupdataByRow; let i = index\">\r\n                                        <td *ngFor=\"let lookupdta1 of lookupdta\"><span *ngIf=\"lookupdta1.fieldName != 'IsActive'\">{{lookupdta1.value}}</span></td>\r\n                                        <!--<td *ngIf=\"lookupdta.fieldName == 'HolidayDate'\">{{lookupdta.value}}</td>\r\n                                        <td *ngIf=\"lookupdta.fieldName == 'HolidayDesc'\">{{lookupdta.value}}</td>-->\r\n                                    </tr>\r\n                                    <!--<tr>\r\n                                        <td>31/12/2016</td>\r\n                                        <td>Adjustment 1-January-2017 New Year</td>\r\n                                    </tr>\r\n                                    <tr>\r\n                                        <td>07/01/2017</td>\r\n                                        <td>1st Saturday Off(January)</td>\r\n                                    </tr>\r\n                                    <tr>\r\n                                        <td>14/01/2017</td>\r\n                                        <td>Kite Festival</td>\r\n                                    </tr>\r\n                                    <tr>\r\n                                        <td>21/01/2017</td>\r\n                                        <td>3rd Saturday Off(January)</td>\r\n                                    </tr>\r\n                                    <tr>\r\n                                        <td>26/01/2017</td>\r\n                                        <td>Republic Day</td>\r\n                                    </tr>\r\n                                    <tr>\r\n                                        <td>04/02/2017</td>\r\n                                        <td>1st Saturday off (February)</td>\r\n                                    </tr>\r\n                                    <tr>\r\n                                        <td>18/02/2017</td>\r\n                                        <td>3rd Saturday off (February)</td>\r\n                                    </tr>\r\n                                    <tr>\r\n                                        <td>31/12/2016</td>\r\n                                        <td>Adjustment 1-January-2017 New Year</td>\r\n                                    </tr>\r\n                                    <tr>\r\n                                        <td>07/01/2017</td>\r\n                                        <td>1st Saturday Off(January)</td>\r\n                                    </tr>\r\n                                    <tr>\r\n                                        <td>14/01/2017</td>\r\n                                        <td>Kite Festival</td>\r\n                                    </tr>\r\n                                    <tr>\r\n                                        <td>21/01/2017</td>\r\n                                        <td>3rd Saturday Off(January)</td>\r\n                                    </tr>\r\n                                    <tr>\r\n                                        <td>26/01/2017</td>\r\n                                        <td>Republic Day</td>\r\n                                    </tr>\r\n                                    <tr>\r\n                                        <td>04/02/2017</td>\r\n                                        <td>1st Saturday off (February)</td>\r\n                                    </tr>\r\n                                    <tr>\r\n                                        <td>18/02/2017</td>\r\n                                        <td>3rd Saturday off (February)</td>\r\n                                    </tr>-->\r\n\r\n                                </tbody>\r\n                            </table>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n\r\n    </div>\r\n</div>"
+
+/***/ }),
+
+/***/ 604:
+/***/ (function(module, exports) {
+
+module.exports = "<!--<p>\n  selfservice works!\n</p>-->\n<router-outlet></router-outlet>"
 
 /***/ })
 

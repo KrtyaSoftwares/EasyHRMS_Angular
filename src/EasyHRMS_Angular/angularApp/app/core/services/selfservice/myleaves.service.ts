@@ -32,6 +32,18 @@ export class MyLeaveService {
             .map(res => <any>res.json());
     }
 
+    public GetEmployeeLeaveByEmployeeId = (id: number): Observable<any> => {
+        return this.http
+            .get(this.actionUrl + 'EmployeeLeave/GetEmployeeLeaveByEmployeeId/' + id)
+            .map(res => <any>res.json());
+    }
+
+    public AddEmployeeLeave = (data: any): Observable<any> => {
+        let toAdd = JSON.stringify(data);
+        return this.http.post(this.actionUrl + 'EmployeeLeave/CreateEmployeeLeave/', toAdd, { headers: this.headers })
+            .map(res => <any>res.json());
+    }
+
     public DeleteEmployeeLeave = (id: number): Observable<any> => {
         console.log(id);
         return this.http

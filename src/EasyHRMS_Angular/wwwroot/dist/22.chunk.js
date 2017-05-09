@@ -1,11 +1,11 @@
 webpackJsonp([22],{
 
-/***/ 394:
+/***/ 499:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GeneralListingComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyadvancesclaimComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -16,33 +16,33 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
-var GeneralListingComponent = (function () {
-    function GeneralListingComponent() {
+var MyadvancesclaimComponent = (function () {
+    function MyadvancesclaimComponent() {
     }
-    GeneralListingComponent.prototype.ngOnInit = function () {
+    MyadvancesclaimComponent.prototype.ngOnInit = function () {
     };
-    return GeneralListingComponent;
+    return MyadvancesclaimComponent;
 }());
-GeneralListingComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* Component */])({
-        selector: 'app-general-listing',
-        template: __webpack_require__(500),
+MyadvancesclaimComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'app-myadvancesclaim',
+        template: __webpack_require__(605),
     }),
     __metadata("design:paramtypes", [])
-], GeneralListingComponent);
+], MyadvancesclaimComponent);
 
 
 
 /***/ }),
 
-/***/ 440:
+/***/ 531:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(171);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_general_listing_component__ = __webpack_require__(394);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GeneralListingRoutingModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_myadvancesclaim_component__ = __webpack_require__(499);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyAdvancesClaimRoutingModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -53,34 +53,34 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 var routes = [
-    { path: '', component: __WEBPACK_IMPORTED_MODULE_2__components_general_listing_component__["a" /* GeneralListingComponent */] },
+    { path: '', component: __WEBPACK_IMPORTED_MODULE_2__components_myadvancesclaim_component__["a" /* MyadvancesclaimComponent */] },
 ];
-var GeneralListingRoutingModule = (function () {
-    function GeneralListingRoutingModule() {
+var MyAdvancesClaimRoutingModule = (function () {
+    function MyAdvancesClaimRoutingModule() {
     }
-    return GeneralListingRoutingModule;
+    return MyAdvancesClaimRoutingModule;
 }());
-GeneralListingRoutingModule = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["a" /* NgModule */])({
-        imports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* RouterModule */].forChild(routes)],
-        exports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* RouterModule */]]
+MyAdvancesClaimRoutingModule = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
+        imports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["RouterModule"].forChild(routes)],
+        exports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["RouterModule"]]
     })
-], GeneralListingRoutingModule);
+], MyAdvancesClaimRoutingModule);
 
 
 
 /***/ }),
 
-/***/ 441:
+/***/ 532:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__(52);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_general_listing_component__ = __webpack_require__(394);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__general_listing_routing_module__ = __webpack_require__(440);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GeneralListingModule", function() { return GeneralListingModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__myadvancesclaim_routing_module__ = __webpack_require__(531);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_myadvancesclaim_component__ = __webpack_require__(499);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MyadvancesclaimModule", function() { return MyadvancesclaimModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -91,29 +91,29 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var GeneralListingModule = (function () {
-    function GeneralListingModule() {
+var MyadvancesclaimModule = (function () {
+    function MyadvancesclaimModule() {
     }
-    return GeneralListingModule;
+    return MyadvancesclaimModule;
 }());
-GeneralListingModule = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["a" /* NgModule */])({
+MyadvancesclaimModule = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
         imports: [
-            __WEBPACK_IMPORTED_MODULE_1__angular_common__["a" /* CommonModule */],
-            __WEBPACK_IMPORTED_MODULE_3__general_listing_routing_module__["a" /* GeneralListingRoutingModule */]
+            __WEBPACK_IMPORTED_MODULE_1__angular_common__["CommonModule"],
+            __WEBPACK_IMPORTED_MODULE_2__myadvancesclaim_routing_module__["a" /* MyAdvancesClaimRoutingModule */]
         ],
-        declarations: [__WEBPACK_IMPORTED_MODULE_2__components_general_listing_component__["a" /* GeneralListingComponent */]]
+        declarations: [__WEBPACK_IMPORTED_MODULE_3__components_myadvancesclaim_component__["a" /* MyadvancesclaimComponent */]]
     })
-], GeneralListingModule);
+], MyadvancesclaimModule);
 
 
 
 /***/ }),
 
-/***/ 500:
+/***/ 605:
 /***/ (function(module, exports) {
 
-module.exports = "<p>\r\n  general-listing works!\r\n</p>\r\n"
+module.exports = "<p>\n  myadvancesclaim works!\n</p>\n"
 
 /***/ })
 

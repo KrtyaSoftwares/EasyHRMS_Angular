@@ -1,42 +1,176 @@
 webpackJsonp([24],{
 
-/***/ 388:
+/***/ 375:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DashboardComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_router__ = __webpack_require__(171);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(172);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__core_services_form_defination_service__ = __webpack_require__(174);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FormbuilderComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
 
-var DashboardComponent = (function () {
-    function DashboardComponent() {
+
+
+
+var FormbuilderComponent = (function () {
+    function FormbuilderComponent(fb, _router, _route, formsService) {
+        this.fb = fb;
+        this._router = _router;
+        this._route = _route;
+        this.formsService = formsService;
+        this.result = {};
+        this.createArray = [];
+        this.final_result = [];
+        this.forms = [];
+        this.record = {};
+        this.singleRecord = [];
+        this.record_not_exists = false;
     }
-    return DashboardComponent;
+    FormbuilderComponent.prototype.ngOnInit = function () {
+        this.getTableDefination(this.lookup);
+    };
+    FormbuilderComponent.prototype.getTableData = function (lookup, id) {
+        var _this = this;
+        this.formsService
+            .GetTableData(lookup, id)
+            .subscribe(function (data) {
+            _this.record = data;
+            _this.singleRecord = _this.record['list'];
+            _this.array_merge();
+        });
+    };
+    FormbuilderComponent.prototype.onSubmit = function (value, isValid) {
+        this.submitted = true;
+        if (isValid == false) {
+            return false;
+        }
+        else {
+            this.createArray = [];
+            var rowId = void 0;
+            var id = void 0;
+            var cnt = 0;
+            for (var key in this.form.value) {
+                if (this.rowId) {
+                    rowId = this.singleRecord[0]['rowId'];
+                    id = this.singleRecord[cnt]['id'];
+                }
+                var value_1 = this.form.value[key];
+                var tempObj = {
+                    'lookupId': this.lookup,
+                    'fieldName': key,
+                    'rowId': this.rowId ? rowId : 0,
+                    'id': this.rowId ? id : 0,
+                    'value': value_1
+                };
+                this.createArray.push(tempObj);
+                cnt++;
+            }
+            if (this.rowId) {
+                this.updateTableData(this.lookup, this.createArray);
+            }
+            else {
+                this.addTableData(this.lookup, this.createArray);
+            }
+        }
+    };
+    FormbuilderComponent.prototype.addTableData = function (id, data) {
+        var _this = this;
+        this.formsService
+            .Add(id, data)
+            .subscribe(function (data) {
+            _this._router.navigate(['/lookup/lists/' + _this.lookup]);
+        });
+    };
+    FormbuilderComponent.prototype.updateTableData = function (id, data) {
+        var _this = this;
+        this.formsService
+            .Update(id, data)
+            .subscribe(function (data) {
+            _this._router.navigate(['/lookup/lists/' + _this.lookup]);
+        });
+    };
+    FormbuilderComponent.prototype.getTableDefination = function (id) {
+        var _this = this;
+        this.formsService.GetSingle(id)
+            .subscribe(function (data) {
+            _this.result = data;
+            _this.final_result = _this.result['list'];
+            if (_this.final_result.length == 0) {
+                _this.record_not_exists = true;
+            }
+            else {
+                _this.record_not_exists = false;
+            }
+            if (_this.rowId) {
+                _this.getTableData(_this.lookup, _this.rowId);
+            }
+            var group = {};
+            var i = 0;
+            _this.final_result.forEach(function (form) {
+                _this.final_result[i]['custom_value'] = '';
+                if (form.isRequire) {
+                    group[form.fieldName] = ['', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required];
+                }
+                else {
+                    group[form.fieldName] = [];
+                }
+                i++;
+            });
+            _this.form = _this.fb.group(group);
+        });
+    };
+    FormbuilderComponent.prototype.array_merge = function () {
+        for (var i in this.final_result) {
+            for (var j in this.singleRecord) {
+                if (this.singleRecord[j].fieldName == this.final_result[i].fieldName) {
+                    this.final_result[i]['custom_value'] = this.singleRecord[j]['value'];
+                }
+            }
+        }
+    };
+    return FormbuilderComponent;
 }());
-DashboardComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* Component */])({
-        selector: 'app-dashboard',
-        template: __webpack_require__(491),
-    })
-], DashboardComponent);
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Input"])('lookup'),
+    __metadata("design:type", Number)
+], FormbuilderComponent.prototype, "lookup", void 0);
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Input"])('rowId'),
+    __metadata("design:type", Number)
+], FormbuilderComponent.prototype, "rowId", void 0);
+FormbuilderComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Component"])({
+        selector: 'app-formbuilder',
+        template: __webpack_require__(449)
+    }),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormBuilder"],
+        __WEBPACK_IMPORTED_MODULE_0__angular_router__["Router"],
+        __WEBPACK_IMPORTED_MODULE_0__angular_router__["ActivatedRoute"],
+        __WEBPACK_IMPORTED_MODULE_3__core_services_form_defination_service__["a" /* FormsService */]])
+], FormbuilderComponent);
 
 
 
 /***/ }),
 
-/***/ 433:
+/***/ 442:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(171);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_dashboard_component__ = __webpack_require__(388);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DashboardRoutingModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_formbuilder_component__ = __webpack_require__(375);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FormbuilderRoutingModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -47,35 +181,35 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 var routes = [
-    { path: '', component: __WEBPACK_IMPORTED_MODULE_2__components_dashboard_component__["a" /* DashboardComponent */] }
+    { path: '', component: __WEBPACK_IMPORTED_MODULE_2__components_formbuilder_component__["a" /* FormbuilderComponent */] },
 ];
-var DashboardRoutingModule = (function () {
-    function DashboardRoutingModule() {
+var FormbuilderRoutingModule = (function () {
+    function FormbuilderRoutingModule() {
     }
-    return DashboardRoutingModule;
+    return FormbuilderRoutingModule;
 }());
-DashboardRoutingModule = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["a" /* NgModule */])({
-        imports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* RouterModule */].forChild(routes)],
-        exports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* RouterModule */]]
+FormbuilderRoutingModule = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
+        imports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["RouterModule"].forChild(routes)],
+        exports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["RouterModule"]]
     })
-], DashboardRoutingModule);
+], FormbuilderRoutingModule);
 
 
 
 /***/ }),
 
-/***/ 434:
+/***/ 443:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__(52);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__dashboard_routing_module__ = __webpack_require__(433);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_dashboard_component__ = __webpack_require__(388);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__shared__ = __webpack_require__(361);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DashboardModule", function() { return DashboardModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(172);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_formbuilder_component__ = __webpack_require__(375);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__formbuilder_routing_module__ = __webpack_require__(442);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FormbuilderModule", function() { return FormbuilderModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -87,32 +221,34 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var DashboardModule = (function () {
-    function DashboardModule() {
+var FormbuilderModule = (function () {
+    function FormbuilderModule() {
     }
-    return DashboardModule;
+    return FormbuilderModule;
 }());
-DashboardModule = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["a" /* NgModule */])({
+FormbuilderModule = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
         imports: [
-            __WEBPACK_IMPORTED_MODULE_1__angular_common__["a" /* CommonModule */],
-            __WEBPACK_IMPORTED_MODULE_2__dashboard_routing_module__["a" /* DashboardRoutingModule */],
-            __WEBPACK_IMPORTED_MODULE_4__shared__["e" /* StatModule */],
+            __WEBPACK_IMPORTED_MODULE_1__angular_common__["CommonModule"],
+            __WEBPACK_IMPORTED_MODULE_4__formbuilder_routing_module__["a" /* FormbuilderRoutingModule */],
+            __WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormsModule"],
+            __WEBPACK_IMPORTED_MODULE_2__angular_forms__["ReactiveFormsModule"],
         ],
-        declarations: [
-            __WEBPACK_IMPORTED_MODULE_3__components_dashboard_component__["a" /* DashboardComponent */],
-        ]
+        exports: [
+            __WEBPACK_IMPORTED_MODULE_3__components_formbuilder_component__["a" /* FormbuilderComponent */]
+        ],
+        declarations: [__WEBPACK_IMPORTED_MODULE_3__components_formbuilder_component__["a" /* FormbuilderComponent */]]
     })
-], DashboardModule);
+], FormbuilderModule);
 
 
 
 /***/ }),
 
-/***/ 491:
+/***/ 449:
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"main-content\" class=\"dashboard\">\r\n          <div class=\"row m-t-20\">\r\n            <div class=\"col-md-3 col-sm-12\">\r\n              <div class=\"panel no-bd bd-3 panel-stat\">\r\n                <div class=\"panel-body bg-blue p-15\">\r\n                  <div class=\"row m-b-6\">\r\n                    <div class=\"col-xs-3\">\r\n                      <i class=\"glyph-icon flaticon-incomes\"></i>\r\n                    </div>\r\n                     <div class=\"col-xs-9\">\r\n                      <small class=\"stat-title\">This Month Salary</small>\r\n                      <h1 class=\"m-0 w-500\">27,300</h1>\r\n                    </div>  \r\n                  </div>\r\n                  <div class=\"row\">\r\n                    <div class=\"col-xs-6\">\r\n                      <small class=\"stat-title\">Previous Month</small>\r\n                      <h3 class=\"m-0 w-500\">39,000</h3>\r\n                    </div>\r\n                    <div class=\"col-xs-6\">\r\n                      <small class=\"stat-title\">This Month Days</small>\r\n                      <h3 class=\"m-0 w-500\">21</h3>\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n              </div>\r\n            </div>\r\n            <div class=\"col-md-3 col-sm-12\">\r\n              <div class=\"panel no-bd bd-3 panel-stat\">\r\n                <div class=\"panel-body bg-red p-15\">\r\n                  <div class=\"row m-b-6\">\r\n                    <div class=\"col-xs-3\">\r\n                      <i class=\"glyph-icon flaticon-educational\"></i>\r\n                    </div>\r\n                     <div class=\"col-xs-9\">\r\n                      <small class=\"stat-title\">Leave Status</small>\r\n                      <h1 class=\"m-0 w-500\">In Progress</h1>\r\n                    </div>  \r\n                  </div>\r\n                  <div class=\"row\">\r\n                    <div class=\"col-xs-6\">\r\n                      <small class=\"stat-title\">Leave Request</small>\r\n                      <h3 class=\"m-0 w-500\">18 Feb 17</h3>\r\n                    </div>\r\n                    <div class=\"col-xs-6\">\r\n                      <small class=\"stat-title\">Remaining Leave</small>\r\n                      <h3 class=\"m-0 w-500\">21</h3>\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n              </div>\r\n            </div>\r\n            <div class=\"col-md-3 col-sm-12\">\r\n              <div class=\"panel no-bd bd-3 panel-stat\">\r\n                <div class=\"panel-body bg-green p-15\">\r\n                  <div class=\"row m-b-6\">\r\n                    <div class=\"col-xs-3\">\r\n                      <i class=\"glyph-icon flaticon-educational\"></i>\r\n                    </div>\r\n                     <div class=\"col-xs-9\">\r\n                      <small class=\"stat-title\">Current Month Attendance</small>\r\n                      <h1 class=\"m-0 w-500\">22</h1>\r\n                    </div>  \r\n                  </div>\r\n                  <div class=\"row\">\r\n                    <div class=\"col-xs-6\">\r\n                      <small class=\"stat-title\">Prev. Month Attn.</small>\r\n                      <h3 class=\"m-0 w-500\">25</h3>\r\n                    </div>\r\n                    <div class=\"col-xs-6\">\r\n                      <small class=\"stat-title\">Cur. Working Days</small>\r\n                      <h3 class=\"m-0 w-500\">25</h3>\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n              </div>\r\n            </div>\r\n            <div class=\"col-md-3 col-sm-12\">\r\n              <div class=\"panel no-bd bd-3 panel-stat\">\r\n                <div class=\"panel-body bg-dark p-15\">\r\n                  <div class=\"row m-b-6\">\r\n                    <div class=\"col-xs-3\">\r\n                      <i class=\"glyph-icon flaticon-incomes\"></i>\r\n                    </div>\r\n                     <div class=\"col-xs-9\">\r\n                      <small class=\"stat-title\">This Year Holidays</small>\r\n                      <h1 class=\"m-0 w-500\">18</h1>\r\n                    </div>  \r\n                  </div>\r\n                  <div class=\"row\">\r\n                    <div class=\"col-xs-6\">\r\n                      <small class=\"stat-title\">This month</small>\r\n                      <h3 class=\"m-0 w-500\">5</h3>\r\n                    </div>\r\n                    <div class=\"col-xs-6\t\">\r\n                      <small class=\"stat-title\">Next Holiday</small>\r\n                      <h3 class=\"m-0 w-500\">27 Feb 17</h3>\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n              </div>\r\n            </div>\r\n          </div>\r\n          \r\n          <div class=\"row\">\r\n            <div class=\"col-md-4\">\r\n              <div class=\"panel no-bd bg-green\">\r\n                <div class=\"panel-heading clearfix pos-rel\">\r\n                  <div class=\"pos-abs t-10 l-15 f-18\"><i class=\"fa fa-list\"></i></div>\r\n                  <h2 class=\"panel-title width-100p text-center w-500 f-20 carrois\">To Do List</h2>\r\n                  <div class=\"pos-abs t-10 r-5 f-18 cursor-pointer\"><div class=\"glyph-icon flaticon-plus16 f-32\"></div></div>\r\n                </div>\r\n                <div class=\"panel-body bg-green p-t-0 p-b-10\">\r\n                  <div class=\"row\">\r\n                    <div class=\"col-md-12\">\r\n                      <div class=\"row m-b-10\">\r\n                        <input class=\"form-control\" id=\"new-todo\" placeholder=\"What needs to be done?\" type=\"text\" class=\"span8\" />\r\n                      </div>\r\n                      <div class=\"row\" id=\"task-manager\">\r\n                        <div class=\"m-b-10\">\r\n                          <a href=\"#\" class=\"pos-rel c-white p-r-10 p-l-30 m-l-10\">\r\n                            <input class=\"my_checkbox_all\" type=\"checkbox\" data-style=\"flat-red\">Check All\r\n                          </a>\r\n                          <div class=\"pull-right\">\r\n                            <a href=\"#\" class=\"create-task c-white p-r-10\"><i class=\"fa fa-plus-circle\"></i> Create Task</a>\r\n                            <a href=\"#\" class=\"delete-task c-white p-r-10\"><i class=\"fa fa-minus-circle\"></i> Delete All Tasks</a>\r\n                          </div>                        </div>\r\n                        <ul id=\"sortable-todo\">  \r\n                          <li class=\"sortable col-md-12 p-10 m-b-10 bd-3 bg-opacity-20 h-40 fade in\">\r\n                            <a href=\"#\" class=\"pull-right c-white p-l-10\" data-dismiss=\"alert\"><i class=\"fa fa-times f-18\"></i></a>\r\n                            <a href=\"#\" class=\"pull-right c-white\" data-dismiss=\"alert\"><i class=\"fa fa-pencil f-18\"></i></a>\r\n                            <div class=\"sortable-item\">\r\n                              <div class=\"pos-rel\">\r\n                                <input tabindex=\"13\" type=\"checkbox\" class=\"pull-left task-item\" data-style=\"flat-red\">\r\n                              </div>\r\n                              <div class=\"p-l-30 pull-left\">\r\n                                Find beautiful templates\r\n                              </div>\r\n                            </div>\r\n                          </li>\r\n                          <li class=\"sortable col-md-12 p-10 m-b-10 bd-3 bg-opacity-20 h-40 fade in\">\r\n                            <a href=\"#\" class=\"pull-right c-white p-l-10\" data-dismiss=\"alert\"><i class=\"fa fa-times f-18\"></i></a>\r\n                            <a href=\"#\" class=\"pull-right c-white\" data-dismiss=\"alert\"><i class=\"fa fa-pencil f-18\"></i></a>\r\n                            <div class=\"sortable-item\">\r\n                              <div class=\"pos-rel\">\r\n                                <input tabindex=\"13\" type=\"checkbox\" class=\"pull-left task-item\" data-style=\"flat-red\">\r\n                              </div>\r\n                              <div class=\"p-l-30 pull-left\">\r\n                                Create new design\r\n                              </div>\r\n                            </div>\r\n                          </li>\r\n                          <li class=\"sortable col-md-12 p-10 m-b-10 bd-3 bg-opacity-20 h-40 fade in\">\r\n                            <a href=\"#\" class=\"pull-right c-white p-l-10\" data-dismiss=\"alert\"><i class=\"fa fa-times f-18\"></i></a>\r\n                            <a href=\"#\" class=\"pull-right c-white\" data-dismiss=\"alert\"><i class=\"fa fa-pencil f-18\"></i></a>\r\n                            <div class=\"sortable-item\">\r\n                              <div class=\"pos-rel\">\r\n                                <input tabindex=\"13\" type=\"checkbox\" class=\"pull-left task-item\" data-style=\"flat-red\">\r\n                              </div>\r\n                              <div class=\"p-l-30 pull-left\">\r\n                                Go to Shop\r\n                              </div>\r\n                            </div>\r\n                          </li>\r\n                          <li class=\"sortable col-md-12 p-10 m-b-10 bd-3 bg-opacity-20 h-40 fade in\">\r\n                            <a href=\"#\" class=\"pull-right c-white p-l-10\" data-dismiss=\"alert\"><i class=\"fa fa-times f-18\"></i></a>\r\n                            <a href=\"#\" class=\"pull-right c-white\" data-dismiss=\"alert\"><i class=\"fa fa-pencil f-18\"></i></a>\r\n                            <div class=\"sortable-item\">\r\n                              <div class=\"pos-rel\">\r\n                                <input tabindex=\"13\" type=\"checkbox\" class=\"pull-left task-item\" data-style=\"flat-red\">\r\n                              </div>\r\n                              <div class=\"p-l-30 pull-left\">\r\n                                Buy a new bike\r\n                              </div>\r\n                            </div>\r\n                          </li>\r\n                          <li class=\"sortable col-md-12 p-10 m-b-10 bd-3 bg-opacity-20 h-40 fade in\">\r\n                            <a href=\"#\" class=\"pull-right c-white p-l-10\" data-dismiss=\"alert\"><i class=\"fa fa-times f-18\"></i></a>\r\n                            <a href=\"#\" class=\"pull-right c-white\" data-dismiss=\"alert\"><i class=\"fa fa-pencil f-18\"></i></a>\r\n                            <div class=\"sortable-item\">\r\n                              <div class=\"pos-rel\">\r\n                                <input tabindex=\"13\" type=\"checkbox\" class=\"pull-left\" data-style=\"flat-red\">\r\n                              </div>\r\n                              <div class=\"p-l-30 pull-left\">\r\n                                Write a book\r\n                              </div>\r\n                            </div>\r\n                          </li>\r\n                       </ul>\r\n                      </div>\r\n                      <div class=\"row\">\r\n                        <div id=\"todo-stats\"></div>\r\n                      </div>\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n              </div>\r\n            </div>\r\n            <div class=\"col-md-4\">\r\n              <div class=\"panel panel-default\">\r\n                <div class=\"panel-heading clearfix pos-rel\">\r\n                  <div class=\"pos-abs t-10 l-15 f-18 c-gray\"><i class=\"fa fa-search\"></i></div>\r\n                  <h2 class=\"panel-title width-100p c-blue text-center w-500 f-20 carrois\">Contact</h2>\r\n                  <div class=\"pos-abs t-10 r-5 f-18 c-blue cursor-pointer\"><div class=\"glyph-icon flaticon-plus16 f-32\"></div></div>\r\n                </div>\r\n                <div class=\"panel-body messages\">\r\n                  <div class=\"row\">\r\n                    <div class=\"col-md-12 col-sm-12 col-xs-12\">\r\n                      <div class=\"withScroll\" data-height=\"320\">\r\n                        <a href=\"#\" class=\"message-item media\">\r\n                          <div class=\"media\">\r\n                            <img src=\"developer_assets/img/avatars/avatar1.png\" alt=\"avatar 1\" width=\"40\" class=\"pull-left\">\r\n                            <div class=\"media-body\">\r\n                              <div class=\"pull-left\">\r\n                                <p class=\"c-dark m-0\"><strong>John Snow</strong></p>\r\n                                <p class=\"c-gray m-0\">cameso@it.com</p>\r\n                              </div>\r\n                              <div class=\"pull-right f-18 p-t-10\">\r\n                                <i rel=\"tooltip\" title=\"add to favs\" data-placement=\"left\" class=\"favs fa fa-star-o p-r-10\"></i>\r\n                                <i rel=\"tooltip\" title=\"send email\" data-placement=\"left\" class=\"fa fa-envelope-o p-r-10\"></i>\r\n                                <i rel=\"tooltip\" title=\"show phone\" data-placement=\"left\"  class=\"fa fa-phone\"></i>\r\n                              </div>\r\n                            </div>\r\n                          </div>\r\n                        </a>\r\n                        <a href=\"#\" class=\"message-item media\">\r\n                          <div class=\"media\">\r\n                            <img src=\"developer_assets/img/avatars/avatar2.png\" alt=\"avatar 2\" width=\"40\" class=\"pull-left\">\r\n                            <div class=\"media-body\">\r\n                              <div class=\"pull-left\">\r\n                                <p class=\"c-dark m-0\"><strong>Jerry Smith</strong></p>\r\n                                <p class=\"c-gray m-0\">bugomi@vigu.com</p>\r\n                              </div>\r\n                              <div class=\"pull-right f-18 p-t-10\">\r\n                                <i rel=\"tooltip\" title=\"remove from favs\" data-placement=\"left\" class=\"favs fa fa-star p-r-10 c-orange\"></i>\r\n                                <i rel=\"tooltip\" title=\"send email\" data-placement=\"left\" class=\"fa fa-envelope-o p-r-10\"></i>\r\n                                <i rel=\"tooltip\" title=\"show phone\" data-placement=\"left\" title=\"show phone\" class=\"fa fa-phone\"></i>\r\n                              </div>\r\n                            </div>\r\n                          </div>\r\n                        </a>\r\n                        <a href=\"#\" class=\"message-item media\">\r\n                          <div class=\"media\">\r\n                            <img src=\"developer_assets/img/avatars/avatar3.png\" alt=\"avatar 3\" width=\"40\" class=\"pull-left\">\r\n                            <div class=\"media-body\">\r\n                              <div class=\"pull-left\">\r\n                                <p class=\"c-dark m-0\"><strong>John Snow</strong></p>\r\n                                <p class=\"c-gray m-0\">cameso@it.com</p>\r\n                              </div>\r\n                              <div class=\"pull-right f-18 p-t-10\">\r\n                                <i rel=\"tooltip\" title=\"add to favs\" data-placement=\"left\" class=\"favs fa fa-star-o p-r-10\"></i>\r\n                                <i rel=\"tooltip\" title=\"send email\" data-placement=\"left\" class=\"fa fa-envelope-o p-r-10\"></i>\r\n                                <i rel=\"tooltip\" title=\"show address\" data-placement=\"left\" class=\"fa fa-home\"></i>\r\n                              </div>\r\n                            </div>\r\n                          </div>\r\n                        </a>\r\n                        <a href=\"#\" class=\"message-item media\">\r\n                          <div class=\"media\">\r\n                            <img src=\"developer_assets/img/avatars/avatar4.png\" alt=\"avatar 4\" width=\"40\" class=\"pull-left\">\r\n                            <div class=\"media-body\">\r\n                              <div class=\"pull-left\">\r\n                                <p class=\"c-dark m-0\"><strong>Jerry Smith</strong></p>\r\n                                <p class=\"c-gray m-0\">bugomi@vigu.com</p>\r\n                              </div>\r\n                              <div class=\"pull-right f-18 p-t-10\">\r\n                                <i rel=\"tooltip\" title=\"add to favs\" data-placement=\"left\" class=\"favs fa fa-star-o p-r-10\"></i>\r\n                                <i rel=\"tooltip\" title=\"send email\" data-placement=\"left\" class=\"fa fa-envelope-o p-r-10\"></i>\r\n                                <i rel=\"tooltip\" title=\"show phone\" data-placement=\"left\" class=\"fa fa-phone\"></i>\r\n                              </div>\r\n                            </div>\r\n                          </div>\r\n                        </a>\r\n                        <a href=\"#\" class=\"message-item media\">\r\n                          <div class=\"media\">\r\n                            <img src=\"developer_assets/img/avatars/avatar5.png\" alt=\"avatar 5\" width=\"40\" class=\"pull-left\">\r\n                            <div class=\"media-body\">\r\n                              <div class=\"pull-left\">\r\n                                <p class=\"c-dark m-0\"><strong>John Snow</strong></p>\r\n                                <p class=\"c-gray m-0\">cameso@it.com</p>\r\n                              </div>\r\n                              <div class=\"pull-right f-18 p-t-10\">\r\n                                <i rel=\"tooltip\" title=\"add to favs\" data-placement=\"left\" class=\"favs fa fa-star-o p-r-10\"></i>\r\n                                <i rel=\"tooltip\" title=\"send email\" data-placement=\"left\" class=\"fa fa-envelope-o p-r-10\"></i>\r\n                                <i rel=\"tooltip\" title=\"show address\" data-placement=\"left\" class=\"fa fa-home\"></i>\r\n                              </div>\r\n                            </div>\r\n                          </div>\r\n                        </a>\r\n                        <a href=\"#\" class=\"message-item media\">\r\n                          <div class=\"media\">\r\n                            <img src=\"developer_assets/img/avatars/avatar6.png\" alt=\"avatar 6\" width=\"40\" class=\"pull-left\">\r\n                            <div class=\"media-body\">\r\n                              <div class=\"pull-left\">\r\n                                <p class=\"c-dark m-0\"><strong>Jerry Smith</strong></p>\r\n                                <p class=\"c-gray m-0\">bugomi@vigu.com</p>\r\n                              </div>\r\n                              <div class=\"pull-right f-18 p-t-10\">\r\n                                <i rel=\"tooltip\" title=\"add to favs\" data-placement=\"left\" class=\"favs fa fa-star-o p-r-10\"></i>\r\n                                <i rel=\"tooltip\" title=\"send email\" data-placement=\"left\" class=\"fa fa-envelope-o p-r-10\"></i>\r\n                                <i rel=\"tooltip\" title=\"show phone\" data-placement=\"left\" class=\"fa fa-phone\"></i>\r\n                              </div>\r\n                            </div>\r\n                          </div>\r\n                        </a>                        \r\n                      </div>\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n              </div>\r\n            </div>\r\n            <div class=\"col-md-4\">\r\n              <div class=\"panel panel-default\">\r\n                <div class=\"panel-heading clearfix pos-rel\">\r\n                  \r\n                  <h2 class=\"panel-title width-100p c-blue text-center w-500 f-20 carrois\">Recent Holidays</h2>\r\n                  \r\n                </div>\r\n                <div class=\"panel-body messages\">\r\n                  <div class=\"row\">\r\n                    <div class=\"col-md-12 col-sm-12 col-xs-12\">\r\n                      <div class=\"withScroll table-responsive\" data-height=\"320\" >\r\n                      <table class=\"table table-bordered table-striped table-hover m-b-0\">\r\n                                        <thead class=\"no-bd\">\r\n                                            <tr>                                               \r\n                                                <th><strong>Holiday Date</strong>\r\n                                                </th>\r\n                                                <th><strong>Holiday Discription</strong>\r\n                                                </th>\r\n                                               \r\n                                            </tr>\r\n                                        </thead>\r\n                                        <tbody class=\"no-bd-y\">\r\n                                            <tr>\r\n                                                <td>31/12/2016</td>\r\n                                                <td>Adjustment 1-January-2017 New Year</td>\r\n                                            </tr>\r\n                                            <tr>\r\n                                                <td>07/01/2017</td>\r\n                                                <td>1st Saturday Off(January)</td>\r\n                                            </tr>\r\n                                            <tr>\r\n                                                <td>14/01/2017</td>\r\n                                                <td>Kite Festival</td>\r\n                                            </tr>\r\n                                            <tr>\r\n                                                <td>21/01/2017</td>\r\n                                                <td>3rd Saturday Off(January)</td>\r\n                                            </tr>\r\n                                            <tr>\r\n                                                <td>26/01/2017</td>\r\n                                                <td>Republic Day</td>\r\n                                            </tr>\r\n                                            <tr>\r\n                                                <td>04/02/2017</td>\r\n                                                <td>1st Saturday off (February)</td>\r\n                                            </tr>\r\n                                            <tr>\r\n                                                <td>18/02/2017</td>\r\n                                                <td>3rd Saturday off (February)</td>\r\n                                            </tr>\r\n                                            <tr>\r\n                                                <td>31/12/2016</td>\r\n                                                <td>Adjustment 1-January-2017 New Year</td>\r\n                                            </tr> \r\n                                                                                       \r\n                                        </tbody>\r\n                                    </table>\r\n                                    \r\n                      </div>\r\n                      <div class=\"m-10\"><a href=\"#\">View More</a></div>\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n              </div>\r\n            </div>\r\n          </div>\r\n          <div class=\"row\">\r\n            \r\n            <div class=\"col-lg-12 m-b-20\">\r\n              <div class=\"modal fade\" id=\"event-modal\">\r\n                <div class=\"modal-dialog\">\r\n                  <div class=\"modal-content\">\r\n                    <div class=\"modal-header\">\r\n                      <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button>\r\n                      <h4 class=\"modal-title\"><strong>Manage</strong> my events</h4>\r\n                    </div>\r\n                    <div class=\"modal-body\">\r\n                      <p></p>\r\n                    </div>\r\n                    <div class=\"modal-footer\">\r\n                      <button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Close</button>\r\n                      <button type=\"button\" class=\"btn btn-success save-event\">Create event</button>\r\n                      <button type=\"button\" class=\"btn btn-danger delete-event\"  data-dismiss=\"modal\">Delete</button>\r\n                    </div>\r\n                  </div><!-- /.modal-content -->\r\n                </div><!-- /.modal-dialog -->\r\n              </div><!-- /.modal -->\r\n              <div id=\"external-events\" class=\"bg-white row m-0\">\r\n                \r\n                <div class=\"col-md-7  p-0 no-bd\">\r\n                  <div class=\"widget bg-white\">\r\n                  \r\n                  <div class=\"widget-body p-b-0\">\r\n                      <div class=\"row\">\r\n                       \r\n                        <div class=\"col-md-12 col-sm-12 col-xs-12\">\r\n                          <h2 class=\"panel-title width-100p c-blue w-500 f-20 carrois\" id=\"calender-current-day\">Events Manager</h2>\r\n                          <div id=\"calendar\"></div>\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n                <div class=\"col-md-4 p-0\">\r\n                  <div class=\"widget bg-gray-l\">\r\n                  <div class=\"widget-body p-b-0\">\r\n                      <div class=\"row\">\r\n                        <div class=\"col-md-12 col-sm-12 col-xs-12\">\r\n                         \r\n                          <div id='external-events'>\r\n                            <br><br><br>\r\n                              <div class=\"external-event bg-green\" data-class=\"bg-green\" style=\"position: relative;\">\r\n                                <i class=\"fa fa-move\"></i>Birthday\r\n                              </div>\r\n                              <div class=\"external-event bg-purple\" data-class=\"bg-purple\" style=\"position: relative;\">\r\n                                <i class=\"fa fa-move\"></i>Anniversary\r\n                              </div>\r\n                              <div class=\"external-event bg-red\" data-class=\"bg-red\" style=\"position: relative;\">\r\n                                <i class=\"fa fa-move\"></i>Work\r\n                              </div>\r\n                              <div class=\"external-event bg-blue\" data-class=\"bg-blue\" style=\"position: relative;\">\r\n                                <i class=\"fa fa-move\"></i>Children\r\n                              </div>\r\n                          </div>\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n              </div>\r\n            </div>\r\n          </div>\r\n          \r\n        </div>"
+module.exports = "<div id=\"main-content\" >\r\n    <div class=\"row m-t-10\">\r\n      <div class=\"col-md-12\">\r\n        <div class=\"panel panel-default\">\r\n          <div class=\"panel-heading text-right\">\r\n            <button type=\"button\" class=\"btn btn-sm btn-icon btn-rounded btn-default\"><i class=\"fa fa-question\"></i> </button>\r\n          </div>\r\n          <div class=\"panel-body\">\r\n           <div class=\"row\">\r\n              <div class=\"col-md-12 col-sm-12 col-xs-12\">                                 \r\n                <div class=\"form-horizontal\" >\r\n                  <div class=\"boder-btm\">\r\n                    <h3 class=\"panel-title\">Branch Info</h3>\r\n                  </div>\r\n                  <div *ngIf=\"record_not_exists\">No Form found.</div>\r\n                  <div *ngIf=\"!record_not_exists\" class=\"m-b-30\">\r\n                    <form \r\n                        *ngIf=\"form\"\r\n                        (ngSubmit)=\"onSubmit(form.value, form.valid)\" \r\n                        [formGroup]=\"form\" \r\n                        novalidate>\r\n                         <div *ngFor=\"let question of final_result; let i = index\">\r\n                            <div class=\"form-group\">\r\n                                <label for=\"inputEmail3\" class=\"col-md-4 col-sm-4 control-label\">\r\n                                  {{question.displayName ? question.displayName : question.fieldName}}\r\n                                </label>\r\n                                <div class=\"col-md-6 col-sm-6\" [ngSwitch]=\"question.fieldType\">\r\n                                  <div *ngSwitchCase=\"'Text'\">\r\n                                      <input \r\n                                        class=\"form-control\" \r\n                                        type=\"{{question.fieldType}}\"\r\n                                        [formControlName]=\"question.fieldName\" \r\n                                        [(ngModel)]=\"question.custom_value\">\r\n                                  </div>\r\n                                        <div \r\n                                          class=\"alert alert-danger\" \r\n                                          [hidden]=\"form.get([question.fieldName]).valid || (form.get([question.fieldName]).pristine && !submitted)\">\r\n                                          *{{question.fieldName}} is required\r\n                                        </div>\r\n                                </div>\r\n                          </div>\r\n                        </div>\r\n                        <div class=\"form-row\">\r\n                            <button class=\"btn btn-primary m-b-10\" type=\"submit\" >Save</button>\r\n                        </div>\r\n                    </form>\r\n                    <div class=\"form-row\">\r\n                      <div *ngIf=\"payLoad\"><strong>The form contains the following values</strong></div>\r\n                      <div>\r\n                          {{payLoad}}\r\n                      </div>\r\n                  </div>\r\n                  </div>\r\n                </div>\r\n\t\t          </div>\r\n           </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n</div>  "
 
 /***/ })
 
