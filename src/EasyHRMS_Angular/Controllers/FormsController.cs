@@ -100,7 +100,8 @@ namespace EasyHRMS_Angular.Controllers
                         Placeholder = x.Placeholder,
                         IsActive = x.IsActive,
                         IsVisibleInList = x.IsVisibleInList,
-                        ListOrder = x.ListOrder
+                        ListOrder = x.ListOrder,
+                        LookupId = x.LookupId
                     }).ToList();
                     result = new
                     {

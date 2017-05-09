@@ -1,11 +1,11 @@
 ﻿export class EmployeeLeaveModel {
-    employeeLeaveId: number;
+    id: number;
     employeeId: number;
     fromDate: Date;
     toDate: Date;
-    LeaveReason: string;
-    LeaveTypeId: number;
+    leaveReason: string;
+    leaveTypeId: number;
     status: string;
-    CreateDate: Date;
-    IsHalfDay: Boolean;
+    createDate: Date;
+    isHalfDay: Boolean;
 }

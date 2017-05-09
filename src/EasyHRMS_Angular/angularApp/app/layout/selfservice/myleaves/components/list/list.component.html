@@ -21,50 +21,95 @@
                             <h3 class="panel-title m-t-20">New Leave Request</h3>
                         </div>
                         <div class="col-md-6 col-sm-6 col-xs-6 text-right">
-                            <button class="btn btn-primary m-b-10" data-toggle="modal" data-target="#modal-basic">New Leave</button>
+                            <button class="btn btn-primary m-b-10" data-toggle="modal" data-target="#modal-basic" (click)="initModel()">New Leave</button>
                             <div class="modal fade text-left" id="modal-basic" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                            <button type="button" class="close" id="closeModal" data-dismiss="modal" aria-hidden="true">&times;</button>
                                             <h4 class="modal-title" id="myModalLabel"><strong>New Leave Request</strong> </h4>
                                         </div>
                                         <div class="modal-body">
-                                            <form class="form-horizontal" id="form1" parsley-validate>
+                                            <form class="form-horizontal" id="leaveform" name="leaveform" [formGroup]="employeeLeaveForm" (ngSubmit)="onSubmit(employeeLeaveForm.value, employeeLeaveForm.valid)" novalidate>
                                                 <div class="form-group">
                                                     <label class="col-sm-4 control-label">
                                                         From  <span class="asterisk">*</span>
                                                     </label>
                                                     <div class="col-sm-8">
-                                                        <input type="text" class="form-control" required>
+                                                        <p-calendar dateFormat="dd/mm/yy" formControlName="fromDate" [showIcon]="true" [(ngModel)]="_EmployeeLeaveModel.fromDate"></p-calendar>
+                                                        <!--<span style="margin-left:35px">{{fields.value|date}}</span>-->
+                                                        <!--<input type="text" class="form-control" required>-->
+                                                        <div class="alert alert-danger"
+                                                             [hidden]="employeeLeaveForm.get('fromDate').valid || (employeeLeaveForm.get('fromDate').pristine && !submitted)">
+                                                            * From Date is required
+                                                        </div>
                                                     </div>
-
+                                                    
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="col-sm-4 control-label">
                                                         To  <span class="asterisk">*</span>
                                                     </label>
                                                     <div class="col-sm-8">
-                                                        <input type="text" class="form-control" required>
+                                                        <p-calendar dateFormat="dd/mm/yy" [minDate]="_EmployeeLeaveModel.fromDate" formControlName="toDate" [showIcon]="true" [(ngModel)]="_EmployeeLeaveModel.toDate"></p-calendar>
+                                                        <!--<span style="margin-left:35px">{{fields.value|date}}</span>-->
+                                                        <!--<input type="text" class="form-control" required>-->
+                                                        <div class="alert alert-danger"
+                                                             [hidden]="employeeLeaveForm.get('toDate').valid || (employeeLeaveForm.get('toDate').pristine && !submitted)">
+                                                            * To Date is required
+                                                        </div>
                                                     </div>
-
+                                                    
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-4 control-label">
+                                                        leave Type <span class="asterisk">*</span>
+                                                    </label>
+                                                    <div class="col-sm-8">
+                                                        <select [(ngModel)]="_EmployeeLeaveModel.leaveTypeId" formControlName="leaveTypeId" class="form-control">
+                                                            <option value="">--Select--</option>
+                                                            <option *ngFor="let leave of _leaveTypesList" value={{leave.key}}>{{leave.name}}</option>
+                                                        </select>
+                                                        <!--<input type="text" class="form-control" required>-->
+                                                        <div class="alert alert-danger"
+                                                             [hidden]="employeeLeaveForm.get('leaveTypeId').valid || (employeeLeaveForm.get('leaveTypeId').pristine && !submitted)">
+                                                            * Leave Type is required
+                                                        </div>
+                                                    </div>
+                                                    
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="col-sm-4 control-label">
                                                         Reason <span class="asterisk">*</span>
                                                     </label>
                                                     <div class="col-sm-8">
-                                                        <textarea rows="5" class="form-control valid" placeholder="" parsley-minwords="3" required></textarea>
+                                                        <textarea rows="5" [(ngModel)]="_EmployeeLeaveModel.leaveReason" formControlName="leaveReason" class="form-control valid" placeholder="" required></textarea>
                                                     </div>
                                                 </div>
-
-
-
+                                                <!--<div class="form-group">
+                                                    <label class="col-sm-4 control-label">
+                                                        Status <span class="asterisk">*</span>
+                                                    </label>
+                                                    <div class="col-sm-8">
+                                                        <select [(ngModel)]="_EmployeeLeaveModel.status" formControlName="status" class="form-control">
+                                                            <option value="">--Select--</option>
+                                                            <option *ngFor="let leave of leaveStatusList" value={{leave.name}}>{{leave.name}}</option>
+                                                        </select>
+                                                    </div>
+                                                </div>-->
+                                                <div class="form-group">
+                                                    <label class="col-sm-4 control-label">
+                                                        Is Half Day <span class="asterisk">*</span>
+                                                    </label>
+                                                    <div class="col-sm-2">
+                                                        <input type="checkbox" [(ngModel)]="_EmployeeLeaveModel.isHalfDay" formControlName="isHalfDay" class="form-control">
+                                                    </div>
+                                                </div>
                                             </form>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-primary" onclick="javascript:$('#form1').parsley('validate');">Save</button>
-
+                                            <!--<button type="button" class="btn btn-primary" onclick="javascript:$('#form1').parsley('validate');">Save</button>-->
+                                            <button type="submit" class="btn btn-primary" (click)="onSubmit(employeeLeaveForm.value, employeeLeaveForm.valid)">Submit</button>
 
                                         </div>
                                     </div>
@@ -130,18 +175,18 @@
                                     </tr>
                                 </thead>
                                 <tbody class="no-bd-y">
-                                    <tr  *ngFor="let rec of _employeeLeaveListGroupByMonth;let i = index">
+                                    <!--<tr  *ngFor="let rec of _employeeLeaveListGroupByMonth;let i = index">
 
                                         <td>{{rec[0].fromDate| date: 'MMMM,y'}}</td>
-                                        <td>{{getTotalLeave(rec)}}</td>
+                                        <td>3.00</td>
                                         <td>4.50</td>
-                                    </tr>
+                                    </tr>-->
                                     <tr>
                                         <td>September, 2015</td>
                                         <td>3.00</td>
                                         <td>4.50</td>
                                     </tr>
-                                    <!--<tr>
+                                    <tr>
                                         <td>October, 2015</td>
                                         <td>1.00</td>
                                         <td>4.50</td>
@@ -155,7 +200,7 @@
                                         <td>December, 2015</td>
                                         <td>00.00</td>
                                         <td>4.50</td>
-                                    </tr>-->
+                                    </tr>
 
                                 </tbody>
                             </table>
@@ -166,9 +211,6 @@
         </div>
 
     </div>
-
-
-
 
 
 </div>

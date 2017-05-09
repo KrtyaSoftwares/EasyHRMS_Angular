@@ -20,5 +20,6 @@ namespace EasyHRMS_DA.Models
         public bool? IsActive { get; set; }
         public bool? IsVisibleInList { get; set; }
         public int? ListOrder { get; set; }
+        public int? LookupId { get; set; }
     }
 }

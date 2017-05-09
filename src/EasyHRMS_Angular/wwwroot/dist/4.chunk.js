@@ -1,14 +1,14 @@
 webpackJsonp([4],{
 
-/***/ 358:
+/***/ 361:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__(52);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__login_routing_module__ = __webpack_require__(464);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_login_component__ = __webpack_require__(424);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__login_routing_module__ = __webpack_require__(544);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_login_component__ = __webpack_require__(504);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoginModule", function() { return LoginModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -26,9 +26,9 @@ var LoginModule = (function () {
     return LoginModule;
 }());
 LoginModule = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["a" /* NgModule */])({
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
         imports: [
-            __WEBPACK_IMPORTED_MODULE_1__angular_common__["a" /* CommonModule */],
+            __WEBPACK_IMPORTED_MODULE_1__angular_common__["CommonModule"],
             __WEBPACK_IMPORTED_MODULE_2__login_routing_module__["a" /* LoginRoutingModule */]
         ],
         declarations: [__WEBPACK_IMPORTED_MODULE_3__components_login_component__["a" /* LoginComponent */]]
@@ -39,7 +39,7 @@ LoginModule = __decorate([
 
 /***/ }),
 
-/***/ 424:
+/***/ 504:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -63,9 +63,9 @@ var LoginComponent = (function () {
     return LoginComponent;
 }());
 LoginComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* Component */])({
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-login',
-        template: __webpack_require__(531),
+        template: __webpack_require__(611),
     }),
     __metadata("design:paramtypes", [])
 ], LoginComponent);
@@ -74,13 +74,13 @@ LoginComponent = __decorate([
 
 /***/ }),
 
-/***/ 464:
+/***/ 544:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(171);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_login_component__ = __webpack_require__(424);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_login_component__ = __webpack_require__(504);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginRoutingModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -100,9 +100,9 @@ var LoginRoutingModule = (function () {
     return LoginRoutingModule;
 }());
 LoginRoutingModule = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["a" /* NgModule */])({
-        imports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* RouterModule */].forChild(routes)],
-        exports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* RouterModule */]]
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
+        imports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["RouterModule"].forChild(routes)],
+        exports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["RouterModule"]]
     })
 ], LoginRoutingModule);
 
@@ -110,7 +110,7 @@ LoginRoutingModule = __decorate([
 
 /***/ }),
 
-/***/ 531:
+/***/ 611:
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"container\" id=\"login-block\">\r\n        <div class=\"row\">\r\n            <div class=\"col-sm-6 col-md-4 col-sm-offset-3 col-md-offset-4\">\r\n                <div class=\"login-box clearfix animated flipInY\">                    \r\n                    <div class=\"login-logo\">\r\n                        <a href=\"#?login-theme-3\">\r\n                            <img src=\"developer_assets/img/logo-login.png\" alt=\"Easy HRMS\">\r\n                        </a>\r\n                    </div>\r\n                    <hr>\r\n                    <div class=\"login-form\">\r\n                        <!-- BEGIN ERROR BOX -->\r\n                        <div class=\"alert alert-danger hide\">\r\n                            <button type=\"button\" class=\"close\" data-dismiss=\"alert\">×</button>\r\n                            <h4>Error!</h4>\r\n                            Your Error Message goes here\r\n                        </div>\r\n                        <!-- END ERROR BOX -->\r\n                        <form action=\"#\" method=\"post\">\r\n                            <input type=\"text\" placeholder=\"Username\" class=\"input-field form-control user\" />\r\n                            <input type=\"password\" placeholder=\"Password\" class=\"input-field form-control password\" />\r\n                            <button type=\"submit\" class=\"btn btn-login\">Login</button>\r\n                        </form>\r\n                        <div class=\"login-links\">\r\n                            <a [routerLink]=\"['/forgotpassword']\">Forgot password?</a>\r\n                           \r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                \r\n            </div>\r\n        </div>\r\n    </div>"

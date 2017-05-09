@@ -1,11 +1,11 @@
 webpackJsonp([21],{
 
-/***/ 419:
+/***/ 500:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyadvancesclaimComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyattendanceComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -16,33 +16,33 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
-var MyadvancesclaimComponent = (function () {
-    function MyadvancesclaimComponent() {
+var MyattendanceComponent = (function () {
+    function MyattendanceComponent() {
     }
-    MyadvancesclaimComponent.prototype.ngOnInit = function () {
+    MyattendanceComponent.prototype.ngOnInit = function () {
     };
-    return MyadvancesclaimComponent;
+    return MyattendanceComponent;
 }());
-MyadvancesclaimComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* Component */])({
-        selector: 'app-myadvancesclaim',
-        template: __webpack_require__(525),
+MyattendanceComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'app-myattendance',
+        template: __webpack_require__(606),
     }),
     __metadata("design:paramtypes", [])
-], MyadvancesclaimComponent);
+], MyattendanceComponent);
 
 
 
 /***/ }),
 
-/***/ 451:
+/***/ 533:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(171);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_myadvancesclaim_component__ = __webpack_require__(419);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyAdvancesClaimRoutingModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_myattendance_component__ = __webpack_require__(500);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyAttendanceRoutingModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -53,34 +53,34 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 var routes = [
-    { path: '', component: __WEBPACK_IMPORTED_MODULE_2__components_myadvancesclaim_component__["a" /* MyadvancesclaimComponent */] },
+    { path: '', component: __WEBPACK_IMPORTED_MODULE_2__components_myattendance_component__["a" /* MyattendanceComponent */] },
 ];
-var MyAdvancesClaimRoutingModule = (function () {
-    function MyAdvancesClaimRoutingModule() {
+var MyAttendanceRoutingModule = (function () {
+    function MyAttendanceRoutingModule() {
     }
-    return MyAdvancesClaimRoutingModule;
+    return MyAttendanceRoutingModule;
 }());
-MyAdvancesClaimRoutingModule = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["a" /* NgModule */])({
-        imports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* RouterModule */].forChild(routes)],
-        exports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* RouterModule */]]
+MyAttendanceRoutingModule = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
+        imports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["RouterModule"].forChild(routes)],
+        exports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["RouterModule"]]
     })
-], MyAdvancesClaimRoutingModule);
+], MyAttendanceRoutingModule);
 
 
 
 /***/ }),
 
-/***/ 452:
+/***/ 534:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__(52);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__myadvancesclaim_routing_module__ = __webpack_require__(451);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_myadvancesclaim_component__ = __webpack_require__(419);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MyadvancesclaimModule", function() { return MyadvancesclaimModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__myattendance_routing_module__ = __webpack_require__(533);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_myattendance_component__ = __webpack_require__(500);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MyattendanceModule", function() { return MyattendanceModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -91,29 +91,29 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var MyadvancesclaimModule = (function () {
-    function MyadvancesclaimModule() {
+var MyattendanceModule = (function () {
+    function MyattendanceModule() {
     }
-    return MyadvancesclaimModule;
+    return MyattendanceModule;
 }());
-MyadvancesclaimModule = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["a" /* NgModule */])({
+MyattendanceModule = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
         imports: [
-            __WEBPACK_IMPORTED_MODULE_1__angular_common__["a" /* CommonModule */],
-            __WEBPACK_IMPORTED_MODULE_2__myadvancesclaim_routing_module__["a" /* MyAdvancesClaimRoutingModule */]
+            __WEBPACK_IMPORTED_MODULE_1__angular_common__["CommonModule"],
+            __WEBPACK_IMPORTED_MODULE_2__myattendance_routing_module__["a" /* MyAttendanceRoutingModule */]
         ],
-        declarations: [__WEBPACK_IMPORTED_MODULE_3__components_myadvancesclaim_component__["a" /* MyadvancesclaimComponent */]]
+        declarations: [__WEBPACK_IMPORTED_MODULE_3__components_myattendance_component__["a" /* MyattendanceComponent */]]
     })
-], MyadvancesclaimModule);
+], MyattendanceModule);
 
 
 
 /***/ }),
 
-/***/ 525:
+/***/ 606:
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  myadvancesclaim works!\n</p>\n"
+module.exports = "<p>\n  myattendance works!\n</p>\n"
 
 /***/ })
 

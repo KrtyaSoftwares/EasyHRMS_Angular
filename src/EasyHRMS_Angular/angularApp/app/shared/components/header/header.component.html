@@ -31,6 +31,7 @@
                     </ul>
                 </li>
                 <!-- END NOTIFICATION DROPDOWN -->
+                <li *ngIf="!showSelfServiceLink"> <a [routerLink]="['/dashboard']" (click)="showEmployeeLinkV(true)"> <i class="glyph-icon flaticon-settings21"></i>  </a> </li>
                 <!-- BEGIN USER DROPDOWN -->
                 <li class="dropdown" id="user-header">
                     <a href="#" class="dropdown-toggle c-white" data-toggle="dropdown" data-hover="dropdown" data-close-others="true"> <img src="developer_assets/img/avatars/avatar2.png" alt="user avatar" width="30" class="p-r-5"> <span class="username">Bob Nilson</span> <i class="fa fa-angle-down p-r-10"></i> </a>

@@ -7,7 +7,7 @@ namespace EasyHRMS_Angular.Models
 {
     public class EmployeeLeaveVM
     {
-        public int EmployeeLeaveId { get; set; }
+        public int Id { get; set; }
         public int EmployeeId { get; set; }
         public DateTime? FromDate { get; set; }
         public DateTime? ToDate { get; set; }
@@ -18,10 +18,4 @@ namespace EasyHRMS_Angular.Models
         public bool? IsHalfDay { get; set; }
     }
 
-    public class EmployeeLeaveDetail
-    {
-        public DateTime? Month { get; set; }
-        public int TotalLeaves { get; set; }
-        public int Carryforward { get; set; }
-    }
 }
