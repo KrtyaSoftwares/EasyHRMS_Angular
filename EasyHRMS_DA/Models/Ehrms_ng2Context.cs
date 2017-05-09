@@ -29,7 +29,7 @@ namespace EasyHRMS_DA.Models
         //    #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
         //    optionsBuilder.UseSqlServer(@"Server=win-2012\sql2014; Initial Catalog = Ehrms-ng2; User ID = sa;Password = pass#123;");
         //}
-        public Ehrms_ng2Context(DbContextOptions<EhrmsContext> options) 
+        public Ehrms_ng2Context(DbContextOptions<Ehrms_ng2Context> options) 
             : base(options) { }
         public Ehrms_ng2Context() { }
 
