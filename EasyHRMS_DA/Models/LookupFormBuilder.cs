@@ -17,5 +17,6 @@ namespace EasyHRMS_DA.Models
         public string DefaultValue { get; set; }
         public string Validator { get; set; }
         public string Placeholder { get; set; }
+        public bool? IsDisplayInDd { get; set; }
     }
 }

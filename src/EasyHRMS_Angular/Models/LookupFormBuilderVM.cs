@@ -19,5 +19,6 @@ namespace EasyHRMS_Angular.Models
         public string DefaultValue { get; set; }
         public string Validator { get; set; }
         public string Placeholder { get; set; }
+        public bool? IsDisplayInDd { get; set; }
     }
 }

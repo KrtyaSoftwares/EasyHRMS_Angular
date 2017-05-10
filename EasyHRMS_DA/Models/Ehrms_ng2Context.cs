@@ -239,6 +239,8 @@ namespace EasyHRMS_DA.Models
 
                 entity.Property(e => e.FormName).HasMaxLength(50);
 
+                entity.Property(e => e.IsDisplayInDd).HasColumnName("IsDisplayInDD");
+
                 entity.Property(e => e.OptionValue).HasMaxLength(500);
 
                 entity.Property(e => e.Placeholder).HasMaxLength(100);

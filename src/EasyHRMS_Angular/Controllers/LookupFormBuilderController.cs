@@ -47,7 +47,8 @@ namespace EasyHRMS_Angular.Controllers
                         OptionValue = x.OptionValue,
                         DefaultValue = x.DefaultValue,
                         Validator = x.Validator,
-                        Placeholder = x.Placeholder
+                        Placeholder = x.Placeholder,
+                        IsDisplayInDd = x.IsDisplayInDd
                     }).ToList();
                     result = new
                     {
@@ -95,7 +96,8 @@ namespace EasyHRMS_Angular.Controllers
                         OptionValue = x.OptionValue,
                         DefaultValue = x.DefaultValue,
                         Validator = x.Validator,
-                        Placeholder = x.Placeholder
+                        Placeholder = x.Placeholder,
+                        IsDisplayInDd = x.IsDisplayInDd
                     }).ToList();
                     result = new
                     {

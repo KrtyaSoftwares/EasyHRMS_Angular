@@ -123,9 +123,8 @@ namespace EasyHRMS_Angular.Controllers
         public object GetLookupDataByFormIDInBulk(int id = 0)
         {
             object result = null;
-            //Holiday objHoliday = null;
-
-
+            
+            
             List<LookupDataVM> list = new List<LookupDataVM>();
             List<LookupDataListVM> listoflookups = new List<LookupDataListVM>();
             List<FormField> FormFieldlist = new List<FormField>();
@@ -133,6 +132,15 @@ namespace EasyHRMS_Angular.Controllers
             {
                 using (_context)
                 {
+                    List<string> DisplayInDD = new List<string>();
+                    List<LookupFormBuilder> lookupFormBilderlist = _context.LookupFormBuilder.Where(x => x.IsDisplayInDd != null && x.IsDisplayInDd == true ).ToList();
+                    if(lookupFormBilderlist.Count > 0)
+                    {
+                        foreach (var FormField in lookupFormBilderlist)
+                        {
+                            DisplayInDD.Add(FormField.FieldName);
+                        }
+                    }
                     if (id != 0)
                     {
                         FormFieldlist = _context.FormField.Where(y => y.FormId == id && y.OptionValue == null && y.LookupId != null).ToList();
@@ -142,17 +150,35 @@ namespace EasyHRMS_Angular.Controllers
                     {
                         foreach (var FormField in FormFieldlist)
                         {
-                            //string Lookupname = _context.Lookups.Where(y => y.LookupId == id).FirstOrDefault().LookupName;
-                            list = _context.LookupData.Where(x => x.LookupId == FormField.LookupId).Select(x => new LookupDataVM()
+                            if(DisplayInDD.Count > 0)
                             {
-                                Id = x.Id,
-                                LookupId = x.LookupId,
-                                RowId = x.RowId,
-                                FieldName = x.FieldName,
-                                Value = x.Value,
-                            }).OrderBy(x => x.Id).ToList();
-                            
-                            listoflookups.Add(new LookupDataListVM() { Lookupid = FormField.LookupId, LdataList = list });
+                                //string Lookupname = _context.Lookups.Where(y => y.LookupId == id).FirstOrDefault().LookupName;
+                                list = _context.LookupData.Where(x => x.LookupId == FormField.LookupId && DisplayInDD.Contains(x.FieldName)).Select(x => new LookupDataVM()
+                                {
+                                    Id = x.Id,
+                                    LookupId = x.LookupId,
+                                    RowId = x.RowId,
+                                    FieldName = x.FieldName,
+                                    Value = x.Value,
+                                }).OrderBy(x => x.Id).ToList();
+
+                                listoflookups.Add(new LookupDataListVM() { Lookupid = FormField.LookupId, LdataList = list });
+                            }
+                            else
+                            {
+                                //string Lookupname = _context.Lookups.Where(y => y.LookupId == id).FirstOrDefault().LookupName;
+                                list = _context.LookupData.Where(x => x.LookupId == FormField.LookupId).Select(x => new LookupDataVM()
+                                {
+                                    Id = x.Id,
+                                    LookupId = x.LookupId,
+                                    RowId = x.RowId,
+                                    FieldName = x.FieldName,
+                                    Value = x.Value,
+                                }).OrderBy(x => x.Id).ToList();
+
+                                listoflookups.Add(new LookupDataListVM() { Lookupid = FormField.LookupId, LdataList = list });
+                            }
+                           
                         }
                     }
                     result = new
