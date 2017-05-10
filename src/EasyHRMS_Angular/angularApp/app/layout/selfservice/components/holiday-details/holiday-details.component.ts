@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { LookupDataService } from '../../../../core/services/common/lookup-data.service';
-import { LookupDataModel } from '../../../../models/lookup-data.model';
+import { LookupDataModel } from '../../../../models/lookup/lookup-data.model';
 
 @Component({
   selector: 'app-holiday-details',

@@ -16,8 +16,8 @@ import { ActiveemployeeComponent } from './report/activeemployee/activeemployee.
 import { WorkanniversaryComponent } from './report/workanniversary/workanniversary.component';
 import { BirthdayComponent } from './report/birthday/birthday.component';
 
-import { EmployeeService } from '../../core/services/employee.service';
-import { GeneralFormsService } from '../../core/services/general-forms.service';
+import { EmployeeService } from '../../core/services/employee/employee.service';
+import { GeneralFormsService } from '../../core/services/general/general-forms.service';
 
 import { GeneralFormbuilderModule } from '../general-formbuilder/general-formbuilder.module';
 import { PagerService } from '../../core/services/common/pager.service';

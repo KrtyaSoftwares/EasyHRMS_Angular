@@ -1,4 +1,4 @@
-﻿import { LookupDataModel } from './../../../models/lookup-data.model';
+﻿import { LookupDataModel } from './../../../models/lookup/lookup-data.model';
 import { Configuration } from './../../../app.constants';
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers } from '@angular/http';

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { LookupService } from '../../../core/services/lookup.service';
+import { LookupService } from '../../../core/services/lookup/lookup.service';
 @Component({
   selector: 'app-lookup',
   templateUrl: './lookup.component.html',

@@ -13,8 +13,8 @@ import { DeleteComponent } from './components/delete/delete.component';
 import { FormbuilderModule } from '../formbuilder/formbuilder.module';
 import { ListingModule } from '../listing/listing.module';
 
-import { ListsService } from '../../core/services/lists-data';
-import { LookupService } from '../../core/services/lookup.service';
+import { ListsService } from '../../core/services/lookup/lists-data';
+import { LookupService } from '../../core/services/lookup/lookup.service';
 
 
 @NgModule({

@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
-import { GeneralFormsService } from '../../../core/services/general-forms.service';
+import { GeneralFormsService } from '../../../core/services/general/general-forms.service';
 
 @Component({
   selector: 'app-edit',

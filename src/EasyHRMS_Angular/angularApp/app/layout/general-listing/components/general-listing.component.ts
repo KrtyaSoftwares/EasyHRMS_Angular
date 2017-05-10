@@ -1,8 +1,8 @@
 import { Component, OnInit, Input, AfterViewChecked } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { GeneralFormsService } from '../../../core/services/general-forms.service';
+import { GeneralFormsService } from '../../../core/services/general/general-forms.service';
 import { PagerService }        from '../../../core/services/common/pager.service';
-import { EmployeeService } from '../../../core/services/employee.service';
+import { EmployeeService } from '../../../core/services/employee/employee.service';
 import { Message} from 'primeng/primeng';
 
 @Component({

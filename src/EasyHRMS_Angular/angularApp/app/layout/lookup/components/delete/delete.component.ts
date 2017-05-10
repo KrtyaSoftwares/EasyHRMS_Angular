@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormsService } from '../../../../core/services/form-defination.service';
+import { FormsService } from '../../../../core/services/lookup/form-defination.service';
 @Component({
   selector: 'app-delete',
   templateUrl: './delete.component.html',

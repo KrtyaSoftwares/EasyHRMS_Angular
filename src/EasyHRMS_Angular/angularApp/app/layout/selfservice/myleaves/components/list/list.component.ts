@@ -10,7 +10,7 @@ import { Message } from 'primeng/primeng';
 
 import { MyLeaveService } from '../../../../../core/services/selfservice/myleaves.service';
 import { LookupDataService } from '../../../../../core/services/common/lookup-data.service';
-import { EmployeeLeaveModel } from '../../../../../models/employeeleave.model';
+import { EmployeeLeaveModel } from '../../../../../models/employee/employeeleave.model';
 
 @Component({
   selector: 'app-list',
@@ -121,7 +121,6 @@ export class ListComponent implements OnInit {
       this._EmployeeLeaveModel.status = 'InProgress';
       //this._EmployeeLeaveModel.leaveTypeId = 1;
       //this._EmployeeLeaveModel.fromDate.setHours(0, 0, 0, 0).toString(yyyy-mm-dd hh:mm:ss);
-      
       this._EmployeeLeaveModel.fromDate.setHours(0, 0, 0, 0);
       this._EmployeeLeaveModel.toDate.setHours(0, 0, 0, 0);
       this._EmployeeLeaveModel.fromDate.toDateString();

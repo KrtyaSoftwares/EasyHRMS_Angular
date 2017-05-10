@@ -1,4 +1,4 @@
-﻿import { EmployeeLeaveModel } from './../../../models/employeeleave.model';
+﻿import { EmployeeLeaveModel } from './../../../models/employee/employeeleave.model';
 import { Configuration } from './../../../app.constants';
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers } from '@angular/http';

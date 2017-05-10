@@ -1,4 +1,4 @@
-﻿import { EmployeeModel } from './../../../models/employeee.model';
+﻿import { EmployeeModel } from './../../../models/employee/employeee.model';
 import { Configuration } from './../../../app.constants';
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers } from '@angular/http';

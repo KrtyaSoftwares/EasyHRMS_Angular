@@ -1,9 +1,9 @@
 import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
-import { FormsService } from '../../../core/services/form-defination.service';
-import { Forms } from '../../../models/forms';
-import { Data } from '../../../models/data';
+import { FormsService } from '../../../core/services/lookup/form-defination.service';
+import { Forms } from '../../../models/lookup/forms';
+import { Data } from '../../../models/lookup/data';
 @Component({
   selector: 'app-formbuilder',
   templateUrl: './formbuilder.component.html'

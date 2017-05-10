@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, AfterViewChecked } from '@angular/core';
-import { ListsService } from '../../../core/services/lists-data';
-import { Data } from '../../../models/data';
+import { ListsService } from '../../../core/services/lookup/lists-data';
+import { Data } from '../../../models/lookup/data';
 import { PagerService } from '../../../core/services/common/pager.service';
 
 @Component({

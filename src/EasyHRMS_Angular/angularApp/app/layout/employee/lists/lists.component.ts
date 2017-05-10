@@ -2,12 +2,12 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 
-import { EmployeeService } from '../../../core/services/employee.service';
-import { EmployeeModel } from '../../../models/employeee.model';
+import { EmployeeService } from '../../../core/services/employee/employee.service';
+import { EmployeeModel } from '../../../models/employee/employeee.model';
 
-import { GeneralFormsService } from '../../../core/services/general-forms.service';
+import { GeneralFormsService } from '../../../core/services/general/general-forms.service';
 // import { PagerService }        from '../../../core/services/common/pager.service';
-import { GeneralDataModel } from '../../../models/general-data.model';
+import { GeneralDataModel } from '../../../models/general/general-data.model';
 import { Message} from 'primeng/primeng';
 import { BasicValidators } from '../../../shared';
 @Component({

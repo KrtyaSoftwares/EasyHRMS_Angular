@@ -1,4 +1,4 @@
-<form  (ngSubmit)="onSubmit(form.value, form.valid)" [formGroup]="form" novalidate>
+<form *ngIf="form"  (ngSubmit)="onSubmit(form.value, form.valid)" [formGroup]="form" novalidate>
 <div class="form-horizontal" *ngFor="let category of data">
     <div class="boder-btm">
         <h3 class="panel-title"> {{category.category_name}}  </h3>
