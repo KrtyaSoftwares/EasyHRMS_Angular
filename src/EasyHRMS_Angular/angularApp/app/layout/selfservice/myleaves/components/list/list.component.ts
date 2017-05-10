@@ -112,13 +112,11 @@ export class ListComponent implements OnInit {
           });
   }
   onSubmit(value: any, isValid: boolean) {
-      debugger;
       this.submitted = true;
       if (isValid == false) {
           this.msgs.push({ severity: 'error', summary: 'Error Message', detail: 'Validation failed' });
           return false;
       }
-      
       this._EmployeeLeaveModel.employeeId = 1;
       this._EmployeeLeaveModel.status = 'InProgress';
       //this._EmployeeLeaveModel.leaveTypeId = 1;
@@ -135,10 +133,10 @@ export class ListComponent implements OnInit {
               //this.msgs_success = [];
               if (isValid) {
                   this.msgs.push({ severity: 'info', summary: 'Saved.', detail: 'Info has been Saved Successfully.' });
+              } else {
+                this.msgs.push({ severity: 'error', summary: 'Error Message', detail: 'Validation failed' });
               }
-              else
-                  this.msgs.push({ severity: 'error', summary: 'Error Message', detail: 'Validation failed' });
-          }, response => {
+         }, response => {
               if (response.status == 404) {
                   console.log('execution failed');
                   return false;
@@ -149,8 +147,6 @@ export class ListComponent implements OnInit {
   initModel() {
       this._EmployeeLeaveModel = new EmployeeLeaveModel();
   }
-
-  
 
   DeleteLeave(id: number) {
       this._leaveService
