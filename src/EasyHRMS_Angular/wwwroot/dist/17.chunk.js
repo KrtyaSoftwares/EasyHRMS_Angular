@@ -1,60 +1,11 @@
 webpackJsonp([17],{
 
-/***/ 441:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app_constants__ = __webpack_require__(67);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(66);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__(98);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LookupDataService; });
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-var LookupDataService = (function () {
-    function LookupDataService(http, configuration) {
-        var _this = this;
-        this.http = http;
-        this.configuration = configuration;
-        this.GetLookUpData = function (lookupid) {
-            return _this.http
-                .get(_this.actionUrl + 'LookupData/GetLookupDataByLookupID/' + lookupid)
-                .map(function (res) { return res.json(); });
-        };
-        this.actionUrl = configuration.Server + 'api/';
-        this.headers = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Headers */]();
-        this.headers.append('Content-Type', 'application/json');
-        this.headers.append('Accept', 'application/json');
-    }
-    return LookupDataService;
-}());
-LookupDataService = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Injectable"])(),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_http__["c" /* Http */], __WEBPACK_IMPORTED_MODULE_0__app_constants__["a" /* Configuration */]])
-], LookupDataService);
-
-
-
-/***/ }),
-
-/***/ 496:
+/***/ 470:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ChangepasswordComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EnquiryComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -65,32 +16,31 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
-var ChangepasswordComponent = (function () {
-    function ChangepasswordComponent() {
+var EnquiryComponent = (function () {
+    function EnquiryComponent() {
     }
-    ChangepasswordComponent.prototype.ngOnInit = function () {
+    EnquiryComponent.prototype.ngOnInit = function () {
     };
-    return ChangepasswordComponent;
+    return EnquiryComponent;
 }());
-ChangepasswordComponent = __decorate([
+EnquiryComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'app-changepassword',
-        template: __webpack_require__(602),
+        selector: 'app-enquiry',
+        template: __webpack_require__(572),
     }),
     __metadata("design:paramtypes", [])
-], ChangepasswordComponent);
+], EnquiryComponent);
 
 
 
 /***/ }),
 
-/***/ 497:
+/***/ 471:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_services_common_lookup_data_service__ = __webpack_require__(441);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HolidayDetailsComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LivepositionComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -101,154 +51,154 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
-
-var HolidayDetailsComponent = (function () {
-    function HolidayDetailsComponent(lookupDataService) {
-        this.lookupDataService = lookupDataService;
-        this.lookup = 1;
-        this.lookupdata = [];
+var LivepositionComponent = (function () {
+    function LivepositionComponent() {
     }
-    HolidayDetailsComponent.prototype.ngOnInit = function () {
-        this.getHolidayLookupData(this.lookup);
+    LivepositionComponent.prototype.ngOnInit = function () {
     };
-    HolidayDetailsComponent.prototype.getHolidayLookupData = function (lookup) {
-        var _this = this;
-        this.lookupDataService
-            .GetLookUpData(lookup)
-            .subscribe(function (data) {
-            _this.lookupdata = data.list;
-            _this.lookupdata = _this.lookupdata.filter(function (ele) {
-                return ele.fieldName != 'IsActive';
-            });
-            _this.lookupdataByRow = _this.groupBy(_this.lookupdata, function (item) {
-                return item.rowId;
-            });
-        });
-    };
-    HolidayDetailsComponent.prototype.groupBy = function (array, f) {
-        var groups = {};
-        array.forEach(function (o) {
-            var group = JSON.stringify(f(o));
-            groups[group] = groups[group] || [];
-            groups[group].push(o);
-        });
-        return Object.keys(groups).map(function (group) {
-            return groups[group];
-        });
-    };
-    return HolidayDetailsComponent;
+    return LivepositionComponent;
 }());
-HolidayDetailsComponent = __decorate([
+LivepositionComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'app-holiday-details',
-        template: __webpack_require__(603),
-    }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__core_services_common_lookup_data_service__["a" /* LookupDataService */]])
-], HolidayDetailsComponent);
-
-
-
-/***/ }),
-
-/***/ 498:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SelfserviceComponent; });
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-var SelfserviceComponent = (function () {
-    function SelfserviceComponent() {
-    }
-    SelfserviceComponent.prototype.ngOnInit = function () {
-    };
-    return SelfserviceComponent;
-}());
-SelfserviceComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'app-selfservice',
-        template: __webpack_require__(604),
+        selector: 'app-liveposition',
+        template: __webpack_require__(573),
     }),
     __metadata("design:paramtypes", [])
-], SelfserviceComponent);
+], LivepositionComponent);
 
 
 
 /***/ }),
 
-/***/ 542:
+/***/ 472:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(171);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_selfservice_component__ = __webpack_require__(498);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_holiday_details_holiday_details_component__ = __webpack_require__(497);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_changepassword_changepassword_component__ = __webpack_require__(496);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SelfserviceRoutingModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return OppurtunityComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var OppurtunityComponent = (function () {
+    function OppurtunityComponent() {
+    }
+    OppurtunityComponent.prototype.ngOnInit = function () {
+    };
+    return OppurtunityComponent;
+}());
+OppurtunityComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'app-oppurtunity',
+        template: __webpack_require__(574),
+    }),
+    __metadata("design:paramtypes", [])
+], OppurtunityComponent);
+
+
+
+/***/ }),
+
+/***/ 473:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ReportComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var ReportComponent = (function () {
+    function ReportComponent() {
+    }
+    ReportComponent.prototype.ngOnInit = function () {
+    };
+    return ReportComponent;
+}());
+ReportComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'app-report',
+        template: __webpack_require__(575),
+    }),
+    __metadata("design:paramtypes", [])
+], ReportComponent);
+
+
+
+/***/ }),
+
+/***/ 516:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(172);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__oppurtunity_oppurtunity_component__ = __webpack_require__(472);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__liveposition_liveposition_component__ = __webpack_require__(471);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__enquiry_enquiry_component__ = __webpack_require__(470);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__report_report_component__ = __webpack_require__(473);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CrmRoutingModule; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
 
 
 
 
 
 var routes = [
-    {
-        path: '', component: __WEBPACK_IMPORTED_MODULE_2__components_selfservice_component__["a" /* SelfserviceComponent */],
-        children: [
-            { path: 'myprofile', loadChildren: function () { return new Promise(function (resolve) { __webpack_require__.e/* require.ensure */(20).then((function (require) { resolve(__webpack_require__(539)['MyprofileModule']); }).bind(null, __webpack_require__)).catch(__webpack_require__.oe); }); } },
-            { path: 'mysalary', loadChildren: function () { return new Promise(function (resolve) { __webpack_require__.e/* require.ensure */(19).then((function (require) { resolve(__webpack_require__(541)['MysalaryModule']); }).bind(null, __webpack_require__)).catch(__webpack_require__.oe); }); } },
-            { path: 'myleaves', loadChildren: function () { return new Promise(function (resolve) { __webpack_require__.e/* require.ensure */(9).then((function (require) { resolve(__webpack_require__(537)['MyleavesModule']); }).bind(null, __webpack_require__)).catch(__webpack_require__.oe); }); } },
-            { path: 'myadvancesclaim', loadChildren: function () { return new Promise(function (resolve) { __webpack_require__.e/* require.ensure */(22).then((function (require) { resolve(__webpack_require__(532)['MyadvancesclaimModule']); }).bind(null, __webpack_require__)).catch(__webpack_require__.oe); }); } },
-            { path: 'myattendance', loadChildren: function () { return new Promise(function (resolve) { __webpack_require__.e/* require.ensure */(21).then((function (require) { resolve(__webpack_require__(534)['MyattendanceModule']); }).bind(null, __webpack_require__)).catch(__webpack_require__.oe); }); } },
-        ]
-    },
-    { path: 'holidaysdetails', component: __WEBPACK_IMPORTED_MODULE_3__components_holiday_details_holiday_details_component__["a" /* HolidayDetailsComponent */] },
-    { path: 'changepassword', component: __WEBPACK_IMPORTED_MODULE_4__components_changepassword_changepassword_component__["a" /* ChangepasswordComponent */] },
+    { path: '', component: __WEBPACK_IMPORTED_MODULE_2__oppurtunity_oppurtunity_component__["a" /* OppurtunityComponent */] },
+    { path: 'liveposition', component: __WEBPACK_IMPORTED_MODULE_3__liveposition_liveposition_component__["a" /* LivepositionComponent */] },
+    { path: 'enquiry', component: __WEBPACK_IMPORTED_MODULE_4__enquiry_enquiry_component__["a" /* EnquiryComponent */] },
+    { path: 'reports', component: __WEBPACK_IMPORTED_MODULE_5__report_report_component__["a" /* ReportComponent */] },
 ];
-var SelfserviceRoutingModule = (function () {
-    function SelfserviceRoutingModule() {
+var CrmRoutingModule = (function () {
+    function CrmRoutingModule() {
     }
-    return SelfserviceRoutingModule;
+    return CrmRoutingModule;
 }());
-SelfserviceRoutingModule = __decorate([
+CrmRoutingModule = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
         imports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["RouterModule"].forChild(routes)],
         exports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["RouterModule"]]
     })
-], SelfserviceRoutingModule);
+], CrmRoutingModule);
 
 
 
 /***/ }),
 
-/***/ 543:
+/***/ 517:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__(52);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_selfservice_component__ = __webpack_require__(498);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_holiday_details_holiday_details_component__ = __webpack_require__(497);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_changepassword_changepassword_component__ = __webpack_require__(496);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__selfservice_routing_module__ = __webpack_require__(542);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__core_services_common_lookup_data_service__ = __webpack_require__(441);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SelfserviceModule", function() { return SelfserviceModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__crm_routing_module__ = __webpack_require__(516);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared__ = __webpack_require__(374);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__oppurtunity_oppurtunity_component__ = __webpack_require__(472);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__liveposition_liveposition_component__ = __webpack_require__(471);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__enquiry_enquiry_component__ = __webpack_require__(470);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__report_report_component__ = __webpack_require__(473);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CrmModule", function() { return CrmModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -262,50 +212,57 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var SelfserviceModule = (function () {
-    function SelfserviceModule() {
+
+var CrmModule = (function () {
+    function CrmModule() {
     }
-    return SelfserviceModule;
+    return CrmModule;
 }());
-SelfserviceModule = __decorate([
+CrmModule = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
         imports: [
             __WEBPACK_IMPORTED_MODULE_1__angular_common__["CommonModule"],
-            __WEBPACK_IMPORTED_MODULE_5__selfservice_routing_module__["a" /* SelfserviceRoutingModule */]
+            __WEBPACK_IMPORTED_MODULE_2__crm_routing_module__["a" /* CrmRoutingModule */],
+            __WEBPACK_IMPORTED_MODULE_3__shared__["d" /* PageHeaderModule */]
         ],
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_2__components_selfservice_component__["a" /* SelfserviceComponent */],
-            __WEBPACK_IMPORTED_MODULE_3__components_holiday_details_holiday_details_component__["a" /* HolidayDetailsComponent */],
-            __WEBPACK_IMPORTED_MODULE_4__components_changepassword_changepassword_component__["a" /* ChangepasswordComponent */]
-        ],
-        providers: [
-            __WEBPACK_IMPORTED_MODULE_6__core_services_common_lookup_data_service__["a" /* LookupDataService */]
+            __WEBPACK_IMPORTED_MODULE_4__oppurtunity_oppurtunity_component__["a" /* OppurtunityComponent */],
+            __WEBPACK_IMPORTED_MODULE_5__liveposition_liveposition_component__["a" /* LivepositionComponent */],
+            __WEBPACK_IMPORTED_MODULE_6__enquiry_enquiry_component__["a" /* EnquiryComponent */],
+            __WEBPACK_IMPORTED_MODULE_7__report_report_component__["a" /* ReportComponent */]
         ]
     })
-], SelfserviceModule);
+], CrmModule);
 
 
 
 /***/ }),
 
-/***/ 602:
+/***/ 572:
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  changepassword works!\n</p>\n"
+module.exports = "<p>\r\n  enquiry works!\r\n</p>\r\n"
 
 /***/ }),
 
-/***/ 603:
+/***/ 573:
 /***/ (function(module, exports) {
 
-module.exports = "<!--<p>\n  holiday-details works!\n</p>-->\n<div id=\"main-content\">\r\n    <div class=\"row m-t-10\">\r\n        <div class=\"col-md-12\">\r\n            <div class=\"panel panel-default\">\r\n                <div class=\"panel-heading text-right\">\r\n\r\n                    <div class=\"btn-group text-left\">\r\n                        <button class=\"btn btn-success dropdown-toggle\" data-toggle=\"dropdown\">\r\n                            Export <i class=\"fa fa-angle-down\"></i>\r\n                        </button>\r\n                        <ul class=\"dropdown-menu pull-right\">\r\n                            <li>\r\n                                <a href=\"\">Print</a>\r\n                            </li>\r\n                            <li>\r\n                                <a href=\"\">Export to PDF</a>\r\n                            </li>\r\n                            <li>\r\n                                <a href=\"\">Export to XLS</a>\r\n                            </li>\r\n                            <li>\r\n                                <a href=\"\">Export to CSV</a>\r\n                            </li>\r\n                            <li>\r\n                                <a href=\"\">Export to DOC</a>\r\n                            </li>\r\n                        </ul>\r\n                    </div>\r\n                    <button type=\"button\" class=\"btn btn-sm btn-icon btn-rounded btn-default\">\r\n                        <i class=\"fa fa-question\"></i>\r\n                    </button>\r\n\r\n                </div>\r\n                <div class=\"panel-body\">\r\n                    <div class=\"row\">\r\n                        <div class=\"col-md-12 col-sm-12 col-xs-12 table-responsive\">\r\n                            <table class=\"table table-bordered table-striped table-hover\">\r\n                                <thead class=\"no-bd\">\r\n                                    <tr>\r\n                                        <th>\r\n                                            <strong>Holiday Date</strong>\r\n                                        </th>\r\n                                        <th>\r\n                                            <strong>Holiday Discription</strong>\r\n                                        </th>\r\n\r\n                                    </tr>\r\n                                </thead>\r\n                                <tbody class=\"no-bd-y\">\r\n                                    <tr *ngFor=\"let lookupdta of lookupdataByRow; let i = index\">\r\n                                        <td *ngFor=\"let lookupdta1 of lookupdta\"><span *ngIf=\"lookupdta1.fieldName != 'IsActive'\">{{lookupdta1.value}}</span></td>\r\n                                        <!--<td *ngIf=\"lookupdta.fieldName == 'HolidayDate'\">{{lookupdta.value}}</td>\r\n                                        <td *ngIf=\"lookupdta.fieldName == 'HolidayDesc'\">{{lookupdta.value}}</td>-->\r\n                                    </tr>\r\n                                    <!--<tr>\r\n                                        <td>31/12/2016</td>\r\n                                        <td>Adjustment 1-January-2017 New Year</td>\r\n                                    </tr>\r\n                                    <tr>\r\n                                        <td>07/01/2017</td>\r\n                                        <td>1st Saturday Off(January)</td>\r\n                                    </tr>\r\n                                    <tr>\r\n                                        <td>14/01/2017</td>\r\n                                        <td>Kite Festival</td>\r\n                                    </tr>\r\n                                    <tr>\r\n                                        <td>21/01/2017</td>\r\n                                        <td>3rd Saturday Off(January)</td>\r\n                                    </tr>\r\n                                    <tr>\r\n                                        <td>26/01/2017</td>\r\n                                        <td>Republic Day</td>\r\n                                    </tr>\r\n                                    <tr>\r\n                                        <td>04/02/2017</td>\r\n                                        <td>1st Saturday off (February)</td>\r\n                                    </tr>\r\n                                    <tr>\r\n                                        <td>18/02/2017</td>\r\n                                        <td>3rd Saturday off (February)</td>\r\n                                    </tr>\r\n                                    <tr>\r\n                                        <td>31/12/2016</td>\r\n                                        <td>Adjustment 1-January-2017 New Year</td>\r\n                                    </tr>\r\n                                    <tr>\r\n                                        <td>07/01/2017</td>\r\n                                        <td>1st Saturday Off(January)</td>\r\n                                    </tr>\r\n                                    <tr>\r\n                                        <td>14/01/2017</td>\r\n                                        <td>Kite Festival</td>\r\n                                    </tr>\r\n                                    <tr>\r\n                                        <td>21/01/2017</td>\r\n                                        <td>3rd Saturday Off(January)</td>\r\n                                    </tr>\r\n                                    <tr>\r\n                                        <td>26/01/2017</td>\r\n                                        <td>Republic Day</td>\r\n                                    </tr>\r\n                                    <tr>\r\n                                        <td>04/02/2017</td>\r\n                                        <td>1st Saturday off (February)</td>\r\n                                    </tr>\r\n                                    <tr>\r\n                                        <td>18/02/2017</td>\r\n                                        <td>3rd Saturday off (February)</td>\r\n                                    </tr>-->\r\n\r\n                                </tbody>\r\n                            </table>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n\r\n    </div>\r\n</div>"
+module.exports = "<p>\r\n  liveposition works!\r\n</p>\r\n"
 
 /***/ }),
 
-/***/ 604:
+/***/ 574:
 /***/ (function(module, exports) {
 
-module.exports = "<!--<p>\n  selfservice works!\n</p>-->\n<router-outlet></router-outlet>"
+module.exports = "<p>\r\n  oppurtunity works!\r\n</p>\r\n"
+
+/***/ }),
+
+/***/ 575:
+/***/ (function(module, exports) {
+
+module.exports = "<p>\r\n  report works!\r\n</p>\r\n"
 
 /***/ })
 

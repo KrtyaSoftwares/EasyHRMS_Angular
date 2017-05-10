@@ -81,14 +81,7 @@ namespace EasyHRMS_Angular.Controllers
                         WorkFlowId = x.WorkFlowId,
                         Action = x.Action,
                         TemplateId = x.TemplateId,
-                        ActionOrder = x.ActionOrder,
-                        FromAddress = x.FromAddress,
-                        ToAddress = x.ToAddress,
-                        Ccaddress = x.Ccaddress,
-                        Bccaddress = x.Bccaddress,
-                        ReplyToAddress = x.ReplyToAddress,
-                        EmailSubject = x.EmailSubject,
-                        Attachment = x.Attachment
+                        ActionOrder = x.ActionOrder
                     }).ToList();
                     result = new
                     {

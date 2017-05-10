@@ -1,4 +1,4 @@
-webpackJsonp([8,10],{
+webpackJsonp([8,11,19],{
 
 /***/ 364:
 /***/ (function(module, exports, __webpack_require__) {
@@ -1341,7 +1341,7 @@ exports.TreeDragDropService = TreeDragDropService;
 
 /***/ }),
 
-/***/ 372:
+/***/ 371:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1437,7 +1437,7 @@ exports.MessagesModule = MessagesModule;
 
 /***/ }),
 
-/***/ 373:
+/***/ 372:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1497,7 +1497,170 @@ exports.ProgressBarModule = ProgressBarModule;
 
 /***/ }),
 
-/***/ 374:
+/***/ 373:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(66);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(98);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_underscore__ = __webpack_require__(438);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_underscore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_underscore__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PagerService; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+
+
+
+
+var PagerService = (function () {
+    function PagerService(_http) {
+        this._http = _http;
+    }
+    PagerService.prototype.getPager = function (totalItems, currentPage, pageSize) {
+        if (currentPage === void 0) { currentPage = 1; }
+        if (pageSize === void 0) { pageSize = 10; }
+        var totalPages = Math.ceil(totalItems / pageSize);
+        var startPage, endPage;
+        if (totalPages <= 10) {
+            startPage = 1;
+            endPage = totalPages;
+        }
+        else {
+            if (currentPage <= 6) {
+                startPage = 1;
+                endPage = 10;
+            }
+            else if (currentPage + 4 >= totalPages) {
+                startPage = totalPages - 9;
+                endPage = totalPages;
+            }
+            else {
+                startPage = currentPage - 5;
+                endPage = currentPage + 4;
+            }
+        }
+        var startIndex = (currentPage - 1) * pageSize;
+        var endIndex = Math.min(startIndex + pageSize - 1, totalItems - 1);
+        var pages = __WEBPACK_IMPORTED_MODULE_3_underscore__["range"](startPage, endPage + 1);
+        return {
+            totalItems: totalItems,
+            currentPage: currentPage,
+            pageSize: pageSize,
+            totalPages: totalPages,
+            startPage: startPage,
+            endPage: endPage,
+            startIndex: startIndex,
+            endIndex: endIndex,
+            pages: pages
+        };
+    };
+    return PagerService;
+}());
+PagerService.ENDPOINT = '/api/user/:id';
+PagerService = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
+    __param(0, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Inject"])(__WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Http */])),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Http */]])
+], PagerService);
+
+
+
+/***/ }),
+
+/***/ 375:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+Object.defineProperty(exports, "__esModule", { value: true });
+__export(__webpack_require__(370));
+__export(__webpack_require__(365));
+__export(__webpack_require__(377));
+__export(__webpack_require__(378));
+__export(__webpack_require__(379));
+__export(__webpack_require__(380));
+__export(__webpack_require__(366));
+__export(__webpack_require__(382));
+__export(__webpack_require__(381));
+__export(__webpack_require__(383));
+__export(__webpack_require__(384));
+__export(__webpack_require__(385));
+__export(__webpack_require__(386));
+__export(__webpack_require__(387));
+__export(__webpack_require__(389));
+__export(__webpack_require__(390));
+__export(__webpack_require__(391));
+__export(__webpack_require__(392));
+__export(__webpack_require__(393));
+__export(__webpack_require__(388));
+__export(__webpack_require__(394));
+__export(__webpack_require__(395));
+__export(__webpack_require__(396));
+__export(__webpack_require__(397));
+__export(__webpack_require__(398));
+__export(__webpack_require__(399));
+__export(__webpack_require__(400));
+__export(__webpack_require__(401));
+__export(__webpack_require__(402));
+__export(__webpack_require__(403));
+__export(__webpack_require__(404));
+__export(__webpack_require__(405));
+__export(__webpack_require__(367));
+__export(__webpack_require__(406));
+__export(__webpack_require__(407));
+__export(__webpack_require__(408));
+__export(__webpack_require__(409));
+__export(__webpack_require__(410));
+__export(__webpack_require__(411));
+__export(__webpack_require__(371));
+__export(__webpack_require__(412));
+__export(__webpack_require__(413));
+__export(__webpack_require__(414));
+__export(__webpack_require__(369));
+__export(__webpack_require__(415));
+__export(__webpack_require__(416));
+__export(__webpack_require__(417));
+__export(__webpack_require__(418));
+__export(__webpack_require__(372));
+__export(__webpack_require__(419));
+__export(__webpack_require__(420));
+__export(__webpack_require__(421));
+__export(__webpack_require__(422));
+__export(__webpack_require__(423));
+__export(__webpack_require__(424));
+__export(__webpack_require__(425));
+__export(__webpack_require__(426));
+__export(__webpack_require__(427));
+__export(__webpack_require__(429));
+__export(__webpack_require__(428));
+__export(__webpack_require__(430));
+__export(__webpack_require__(431));
+__export(__webpack_require__(432));
+__export(__webpack_require__(433));
+__export(__webpack_require__(434));
+__export(__webpack_require__(435));
+__export(__webpack_require__(436));
+__export(__webpack_require__(437));
+//# sourceMappingURL=primeng.js.map
+
+/***/ }),
+
+/***/ 376:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1535,9 +1698,19 @@ var GeneralFormsService = (function () {
                 .get(_this.actionUrl + 'EmployeeDetails/GetEmployeeByID/' + id)
                 .map(function (res) { return res.json(); });
         };
+        this.Add = function (data, url) {
+            var toAdd = JSON.stringify(data);
+            return _this.http.post(_this.actionUrl + url, toAdd, { headers: _this.headers })
+                .map(function (res) { return res.json(); });
+        };
         this.Update = function (id, data, url) {
             var toAdd = JSON.stringify(data);
             return _this.http.post(_this.actionUrl + url + id, toAdd, { headers: _this.headers })
+                .map(function (res) { return res.json(); });
+        };
+        this.Delete = function (Id, url) {
+            return _this.http
+                .get(_this.actionUrl + url + '/' + Id)
                 .map(function (res) { return res.json(); });
         };
         this.actionUrl = configuration.Server + 'api/';
@@ -1556,43 +1729,7 @@ GeneralFormsService = __decorate([
 
 /***/ }),
 
-/***/ 376:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GeneralFormbuilderComponent; });
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-var GeneralFormbuilderComponent = (function () {
-    function GeneralFormbuilderComponent() {
-    }
-    GeneralFormbuilderComponent.prototype.ngOnInit = function () {
-        console.log('here');
-    };
-    return GeneralFormbuilderComponent;
-}());
-GeneralFormbuilderComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'app-general-formbuilder',
-        template: __webpack_require__(451),
-    }),
-    __metadata("design:paramtypes", [])
-], GeneralFormbuilderComponent);
-
-
-
-/***/ }),
-
-/***/ 378:
+/***/ 377:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1772,7 +1909,7 @@ exports.AccordionModule = AccordionModule;
 
 /***/ }),
 
-/***/ 379:
+/***/ 378:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1794,7 +1931,7 @@ var button_1 = __webpack_require__(366);
 var shared_1 = __webpack_require__(365);
 var domhandler_1 = __webpack_require__(364);
 var ObjectUtils_1 = __webpack_require__(368);
-var forms_1 = __webpack_require__(172);
+var forms_1 = __webpack_require__(171);
 exports.AUTOCOMPLETE_VALUE_ACCESSOR = {
     provide: forms_1.NG_VALUE_ACCESSOR,
     useExisting: core_1.forwardRef(function () { return AutoComplete; }),
@@ -2275,7 +2412,7 @@ exports.AutoCompleteModule = AutoCompleteModule;
 
 /***/ }),
 
-/***/ 380:
+/***/ 379:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2377,7 +2514,7 @@ exports.BlockUIModule = BlockUIModule;
 
 /***/ }),
 
-/***/ 381:
+/***/ 380:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2394,7 +2531,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(10);
 var common_1 = __webpack_require__(52);
-var router_1 = __webpack_require__(171);
+var router_1 = __webpack_require__(172);
 var Breadcrumb = (function () {
     function Breadcrumb() {
     }
@@ -2474,7 +2611,7 @@ exports.BreadcrumbModule = BreadcrumbModule;
 
 /***/ }),
 
-/***/ 382:
+/***/ 381:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2494,7 +2631,7 @@ var animations_1 = __webpack_require__(173);
 var common_1 = __webpack_require__(52);
 var button_1 = __webpack_require__(366);
 var domhandler_1 = __webpack_require__(364);
-var forms_1 = __webpack_require__(172);
+var forms_1 = __webpack_require__(171);
 exports.CALENDAR_VALUE_ACCESSOR = {
     provide: forms_1.NG_VALUE_ACCESSOR,
     useExisting: core_1.forwardRef(function () { return Calendar; }),
@@ -3552,7 +3689,7 @@ exports.CalendarModule = CalendarModule;
 
 /***/ }),
 
-/***/ 383:
+/***/ 382:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3689,7 +3826,7 @@ exports.CaptchaModule = CaptchaModule;
 
 /***/ }),
 
-/***/ 384:
+/***/ 383:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4016,7 +4153,7 @@ exports.CarouselModule = CarouselModule;
 
 /***/ }),
 
-/***/ 385:
+/***/ 384:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4150,7 +4287,7 @@ exports.ChartModule = ChartModule;
 
 /***/ }),
 
-/***/ 386:
+/***/ 385:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4167,7 +4304,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(10);
 var common_1 = __webpack_require__(52);
-var forms_1 = __webpack_require__(172);
+var forms_1 = __webpack_require__(171);
 exports.CHECKBOX_VALUE_ACCESSOR = {
     provide: forms_1.NG_VALUE_ACCESSOR,
     useExisting: core_1.forwardRef(function () { return Checkbox; }),
@@ -4304,7 +4441,7 @@ exports.CheckboxModule = CheckboxModule;
 
 /***/ }),
 
-/***/ 387:
+/***/ 386:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4324,7 +4461,7 @@ var common_1 = __webpack_require__(52);
 var shared_1 = __webpack_require__(365);
 var inputtext_1 = __webpack_require__(367);
 var domhandler_1 = __webpack_require__(364);
-var forms_1 = __webpack_require__(172);
+var forms_1 = __webpack_require__(171);
 exports.CHIPS_VALUE_ACCESSOR = {
     provide: forms_1.NG_VALUE_ACCESSOR,
     useExisting: core_1.forwardRef(function () { return Chips; }),
@@ -4515,7 +4652,7 @@ exports.ChipsModule = ChipsModule;
 
 /***/ }),
 
-/***/ 388:
+/***/ 387:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4565,7 +4702,7 @@ exports.CodeHighlighterModule = CodeHighlighterModule;
 
 /***/ }),
 
-/***/ 389:
+/***/ 388:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4854,7 +4991,7 @@ exports.ConfirmDialogModule = ConfirmDialogModule;
 
 /***/ }),
 
-/***/ 390:
+/***/ 389:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4875,7 +5012,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(10);
 var common_1 = __webpack_require__(52);
 var domhandler_1 = __webpack_require__(364);
-var router_1 = __webpack_require__(171);
+var router_1 = __webpack_require__(172);
 var ContextMenuSub = (function () {
     function ContextMenuSub(domHandler, contextMenu) {
         this.domHandler = domHandler;
@@ -5119,7 +5256,7 @@ exports.ContextMenuModule = ContextMenuModule;
 
 /***/ }),
 
-/***/ 391:
+/***/ 390:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5329,7 +5466,7 @@ exports.DataGridModule = DataGridModule;
 
 /***/ }),
 
-/***/ 392:
+/***/ 391:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5539,7 +5676,7 @@ exports.DataListModule = DataListModule;
 
 /***/ }),
 
-/***/ 393:
+/***/ 392:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5764,7 +5901,7 @@ exports.DataScrollerModule = DataScrollerModule;
 
 /***/ }),
 
-/***/ 394:
+/***/ 393:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5784,7 +5921,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(10);
 var common_1 = __webpack_require__(52);
-var forms_1 = __webpack_require__(172);
+var forms_1 = __webpack_require__(171);
 var shared_1 = __webpack_require__(365);
 var paginator_1 = __webpack_require__(369);
 var shared_2 = __webpack_require__(365);
@@ -7689,7 +7826,7 @@ exports.DataTableModule = DataTableModule;
 
 /***/ }),
 
-/***/ 395:
+/***/ 394:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8058,7 +8195,7 @@ exports.DialogModule = DialogModule;
 
 /***/ }),
 
-/***/ 396:
+/***/ 395:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8300,7 +8437,7 @@ exports.DragDropModule = DragDropModule;
 
 /***/ }),
 
-/***/ 397:
+/***/ 396:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8321,7 +8458,7 @@ var common_1 = __webpack_require__(52);
 var shared_1 = __webpack_require__(365);
 var domhandler_1 = __webpack_require__(364);
 var ObjectUtils_1 = __webpack_require__(368);
-var forms_1 = __webpack_require__(172);
+var forms_1 = __webpack_require__(171);
 exports.DROPDOWN_VALUE_ACCESSOR = {
     provide: forms_1.NG_VALUE_ACCESSOR,
     useExisting: core_1.forwardRef(function () { return Dropdown; }),
@@ -8803,7 +8940,7 @@ exports.DropdownModule = DropdownModule;
 
 /***/ }),
 
-/***/ 398:
+/***/ 397:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8822,7 +8959,7 @@ var core_1 = __webpack_require__(10);
 var common_1 = __webpack_require__(52);
 var shared_1 = __webpack_require__(365);
 var domhandler_1 = __webpack_require__(364);
-var forms_1 = __webpack_require__(172);
+var forms_1 = __webpack_require__(171);
 exports.EDITOR_VALUE_ACCESSOR = {
     provide: forms_1.NG_VALUE_ACCESSOR,
     useExisting: core_1.forwardRef(function () { return Editor; }),
@@ -8953,7 +9090,7 @@ exports.EditorModule = EditorModule;
 
 /***/ }),
 
-/***/ 399:
+/***/ 398:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9071,7 +9208,7 @@ exports.FieldsetModule = FieldsetModule;
 
 /***/ }),
 
-/***/ 400:
+/***/ 399:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9090,8 +9227,8 @@ var core_1 = __webpack_require__(10);
 var common_1 = __webpack_require__(52);
 var platform_browser_1 = __webpack_require__(40);
 var button_1 = __webpack_require__(366);
-var messages_1 = __webpack_require__(372);
-var progressbar_1 = __webpack_require__(373);
+var messages_1 = __webpack_require__(371);
+var progressbar_1 = __webpack_require__(372);
 var shared_1 = __webpack_require__(365);
 var FileUpload = (function () {
     function FileUpload(sanitizer) {
@@ -9403,7 +9540,7 @@ exports.FileUploadModule = FileUploadModule;
 
 /***/ }),
 
-/***/ 401:
+/***/ 400:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9634,7 +9771,7 @@ exports.GalleriaModule = GalleriaModule;
 
 /***/ }),
 
-/***/ 402:
+/***/ 401:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9820,7 +9957,7 @@ exports.GMapModule = GMapModule;
 
 /***/ }),
 
-/***/ 403:
+/***/ 402:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9949,7 +10086,7 @@ exports.GrowlModule = GrowlModule;
 
 /***/ }),
 
-/***/ 404:
+/***/ 403:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10063,7 +10200,7 @@ exports.InplaceModule = InplaceModule;
 
 /***/ }),
 
-/***/ 405:
+/***/ 404:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10109,7 +10246,7 @@ var core_1 = __webpack_require__(10);
 var common_1 = __webpack_require__(52);
 var domhandler_1 = __webpack_require__(364);
 var inputtext_1 = __webpack_require__(367);
-var forms_1 = __webpack_require__(172);
+var forms_1 = __webpack_require__(171);
 exports.INPUTMASK_VALUE_ACCESSOR = {
     provide: forms_1.NG_VALUE_ACCESSOR,
     useExisting: core_1.forwardRef(function () { return InputMask; }),
@@ -10626,7 +10763,7 @@ exports.InputMaskModule = InputMaskModule;
 
 /***/ }),
 
-/***/ 406:
+/***/ 405:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10643,7 +10780,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(10);
 var common_1 = __webpack_require__(52);
-var forms_1 = __webpack_require__(172);
+var forms_1 = __webpack_require__(171);
 var domhandler_1 = __webpack_require__(364);
 exports.INPUTSWITCH_VALUE_ACCESSOR = {
     provide: forms_1.NG_VALUE_ACCESSOR,
@@ -10816,7 +10953,7 @@ exports.InputSwitchModule = InputSwitchModule;
 
 /***/ }),
 
-/***/ 407:
+/***/ 406:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10944,7 +11081,7 @@ exports.InputTextareaModule = InputTextareaModule;
 
 /***/ }),
 
-/***/ 408:
+/***/ 407:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11161,7 +11298,7 @@ exports.LightboxModule = LightboxModule;
 
 /***/ }),
 
-/***/ 409:
+/***/ 408:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11181,7 +11318,7 @@ var common_1 = __webpack_require__(52);
 var shared_1 = __webpack_require__(365);
 var domhandler_1 = __webpack_require__(364);
 var ObjectUtils_1 = __webpack_require__(368);
-var forms_1 = __webpack_require__(172);
+var forms_1 = __webpack_require__(171);
 exports.LISTBOX_VALUE_ACCESSOR = {
     provide: forms_1.NG_VALUE_ACCESSOR,
     useExisting: core_1.forwardRef(function () { return Listbox; }),
@@ -11503,7 +11640,7 @@ exports.ListboxModule = ListboxModule;
 
 /***/ }),
 
-/***/ 410:
+/***/ 409:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11521,7 +11658,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(10);
 var common_1 = __webpack_require__(52);
 var domhandler_1 = __webpack_require__(364);
-var router_1 = __webpack_require__(171);
+var router_1 = __webpack_require__(172);
 var MegaMenu = (function () {
     function MegaMenu(el, domHandler, renderer) {
         this.el = el;
@@ -11655,7 +11792,7 @@ exports.MegaMenuModule = MegaMenuModule;
 
 /***/ }),
 
-/***/ 411:
+/***/ 410:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11673,7 +11810,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(10);
 var common_1 = __webpack_require__(52);
 var domhandler_1 = __webpack_require__(364);
-var router_1 = __webpack_require__(171);
+var router_1 = __webpack_require__(172);
 var Menu = (function () {
     function Menu(el, domHandler, renderer) {
         this.el = el;
@@ -11833,7 +11970,7 @@ exports.MenuModule = MenuModule;
 
 /***/ }),
 
-/***/ 412:
+/***/ 411:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11851,7 +11988,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(10);
 var common_1 = __webpack_require__(52);
 var domhandler_1 = __webpack_require__(364);
-var router_1 = __webpack_require__(171);
+var router_1 = __webpack_require__(172);
 var MenubarSub = (function () {
     function MenubarSub(domHandler) {
         this.domHandler = domHandler;
@@ -11985,7 +12122,7 @@ exports.MenubarModule = MenubarModule;
 
 /***/ }),
 
-/***/ 413:
+/***/ 412:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12004,7 +12141,7 @@ var core_1 = __webpack_require__(10);
 var common_1 = __webpack_require__(52);
 var domhandler_1 = __webpack_require__(364);
 var ObjectUtils_1 = __webpack_require__(368);
-var forms_1 = __webpack_require__(172);
+var forms_1 = __webpack_require__(171);
 exports.MULTISELECT_VALUE_ACCESSOR = {
     provide: forms_1.NG_VALUE_ACCESSOR,
     useExisting: core_1.forwardRef(function () { return MultiSelect; }),
@@ -12340,7 +12477,7 @@ exports.MultiSelectModule = MultiSelectModule;
 
 /***/ }),
 
-/***/ 414:
+/***/ 413:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12576,7 +12713,7 @@ exports.OrderListModule = OrderListModule;
 
 /***/ }),
 
-/***/ 415:
+/***/ 414:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12752,7 +12889,7 @@ exports.OverlayPanelModule = OverlayPanelModule;
 
 /***/ }),
 
-/***/ 416:
+/***/ 415:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12878,7 +13015,7 @@ exports.PanelModule = PanelModule;
 
 /***/ }),
 
-/***/ 417:
+/***/ 416:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12906,7 +13043,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(10);
 var animations_1 = __webpack_require__(173);
 var common_1 = __webpack_require__(52);
-var router_1 = __webpack_require__(171);
+var router_1 = __webpack_require__(172);
 var BasePanelMenuItem = (function () {
     function BasePanelMenuItem() {
     }
@@ -13038,7 +13175,7 @@ exports.PanelMenuModule = PanelMenuModule;
 
 /***/ }),
 
-/***/ 418:
+/***/ 417:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13238,7 +13375,7 @@ exports.PasswordModule = PasswordModule;
 
 /***/ }),
 
-/***/ 419:
+/***/ 418:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13568,7 +13705,7 @@ exports.PickListModule = PickListModule;
 
 /***/ }),
 
-/***/ 420:
+/***/ 419:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13585,7 +13722,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(10);
 var common_1 = __webpack_require__(52);
-var forms_1 = __webpack_require__(172);
+var forms_1 = __webpack_require__(171);
 exports.RADIO_VALUE_ACCESSOR = {
     provide: forms_1.NG_VALUE_ACCESSOR,
     useExisting: core_1.forwardRef(function () { return RadioButton; }),
@@ -13700,7 +13837,7 @@ exports.RadioButtonModule = RadioButtonModule;
 
 /***/ }),
 
-/***/ 421:
+/***/ 420:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13717,7 +13854,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(10);
 var common_1 = __webpack_require__(52);
-var forms_1 = __webpack_require__(172);
+var forms_1 = __webpack_require__(171);
 exports.RATING_VALUE_ACCESSOR = {
     provide: forms_1.NG_VALUE_ACCESSOR,
     useExisting: core_1.forwardRef(function () { return Rating; }),
@@ -13822,7 +13959,7 @@ exports.RatingModule = RatingModule;
 
 /***/ }),
 
-/***/ 422:
+/***/ 421:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14327,7 +14464,7 @@ exports.ScheduleModule = ScheduleModule;
 
 /***/ }),
 
-/***/ 423:
+/***/ 422:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14344,7 +14481,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(10);
 var common_1 = __webpack_require__(52);
-var forms_1 = __webpack_require__(172);
+var forms_1 = __webpack_require__(171);
 exports.SELECTBUTTON_VALUE_ACCESSOR = {
     provide: forms_1.NG_VALUE_ACCESSOR,
     useExisting: core_1.forwardRef(function () { return SelectButton; }),
@@ -14461,7 +14598,7 @@ exports.SelectButtonModule = SelectButtonModule;
 
 /***/ }),
 
-/***/ 424:
+/***/ 423:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14482,7 +14619,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(10);
 var common_1 = __webpack_require__(52);
 var domhandler_1 = __webpack_require__(364);
-var router_1 = __webpack_require__(171);
+var router_1 = __webpack_require__(172);
 var SlideMenuSub = (function () {
     function SlideMenuSub(slideMenu) {
         this.slideMenu = slideMenu;
@@ -14700,7 +14837,7 @@ exports.SlideMenuModule = SlideMenuModule;
 
 /***/ }),
 
-/***/ 425:
+/***/ 424:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14718,7 +14855,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(10);
 var common_1 = __webpack_require__(52);
 var domhandler_1 = __webpack_require__(364);
-var forms_1 = __webpack_require__(172);
+var forms_1 = __webpack_require__(171);
 exports.SLIDER_VALUE_ACCESSOR = {
     provide: forms_1.NG_VALUE_ACCESSOR,
     useExisting: core_1.forwardRef(function () { return Slider; }),
@@ -14976,7 +15113,7 @@ exports.SliderModule = SliderModule;
 
 /***/ }),
 
-/***/ 426:
+/***/ 425:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14995,7 +15132,7 @@ var core_1 = __webpack_require__(10);
 var common_1 = __webpack_require__(52);
 var inputtext_1 = __webpack_require__(367);
 var domhandler_1 = __webpack_require__(364);
-var forms_1 = __webpack_require__(172);
+var forms_1 = __webpack_require__(171);
 exports.SPINNER_VALUE_ACCESSOR = {
     provide: forms_1.NG_VALUE_ACCESSOR,
     useExisting: core_1.forwardRef(function () { return Spinner; }),
@@ -15271,7 +15408,7 @@ exports.SpinnerModule = SpinnerModule;
 
 /***/ }),
 
-/***/ 427:
+/***/ 426:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15290,7 +15427,7 @@ var core_1 = __webpack_require__(10);
 var common_1 = __webpack_require__(52);
 var domhandler_1 = __webpack_require__(364);
 var button_1 = __webpack_require__(366);
-var router_1 = __webpack_require__(171);
+var router_1 = __webpack_require__(172);
 var SplitButton = (function () {
     function SplitButton(el, domHandler, renderer, router, cd) {
         this.el = el;
@@ -15416,7 +15553,7 @@ exports.SplitButtonModule = SplitButtonModule;
 
 /***/ }),
 
-/***/ 428:
+/***/ 427:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15433,7 +15570,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(10);
 var common_1 = __webpack_require__(52);
-var router_1 = __webpack_require__(171);
+var router_1 = __webpack_require__(172);
 var Steps = (function () {
     function Steps(router) {
         this.router = router;
@@ -15519,7 +15656,7 @@ exports.StepsModule = StepsModule;
 
 /***/ }),
 
-/***/ 429:
+/***/ 428:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15537,7 +15674,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(10);
 var common_1 = __webpack_require__(52);
 var domhandler_1 = __webpack_require__(364);
-var router_1 = __webpack_require__(171);
+var router_1 = __webpack_require__(172);
 var TabMenu = (function () {
     function TabMenu() {
     }
@@ -15632,7 +15769,7 @@ exports.TabMenuModule = TabMenuModule;
 
 /***/ }),
 
-/***/ 430:
+/***/ 429:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15925,7 +16062,7 @@ exports.TabViewModule = TabViewModule;
 
 /***/ }),
 
-/***/ 431:
+/***/ 430:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15941,7 +16078,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(10);
-var forms_1 = __webpack_require__(172);
+var forms_1 = __webpack_require__(171);
 var common_1 = __webpack_require__(52);
 var domhandler_1 = __webpack_require__(364);
 var Terminal = (function () {
@@ -16038,7 +16175,7 @@ exports.TerminalModule = TerminalModule;
 
 /***/ }),
 
-/***/ 432:
+/***/ 431:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16056,7 +16193,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(10);
 var common_1 = __webpack_require__(52);
 var domhandler_1 = __webpack_require__(364);
-var router_1 = __webpack_require__(171);
+var router_1 = __webpack_require__(172);
 var TieredMenuSub = (function () {
     function TieredMenuSub(domHandler) {
         this.domHandler = domHandler;
@@ -16217,7 +16354,7 @@ exports.TieredMenuModule = TieredMenuModule;
 
 /***/ }),
 
-/***/ 433:
+/***/ 432:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16234,7 +16371,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(10);
 var common_1 = __webpack_require__(52);
-var forms_1 = __webpack_require__(172);
+var forms_1 = __webpack_require__(171);
 exports.TOGGLEBUTTON_VALUE_ACCESSOR = {
     provide: forms_1.NG_VALUE_ACCESSOR,
     useExisting: core_1.forwardRef(function () { return ToggleButton; }),
@@ -16359,7 +16496,7 @@ exports.ToggleButtonModule = ToggleButtonModule;
 
 /***/ }),
 
-/***/ 434:
+/***/ 433:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16413,7 +16550,7 @@ exports.ToolbarModule = ToolbarModule;
 
 /***/ }),
 
-/***/ 435:
+/***/ 434:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16619,7 +16756,7 @@ exports.TooltipModule = TooltipModule;
 
 /***/ }),
 
-/***/ 436:
+/***/ 435:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17318,7 +17455,7 @@ var UITreeNode_1;
 
 /***/ }),
 
-/***/ 437:
+/***/ 436:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17726,7 +17863,7 @@ exports.TreeTableModule = TreeTableModule;
 
 /***/ }),
 
-/***/ 438:
+/***/ 437:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17743,7 +17880,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(10);
 var common_1 = __webpack_require__(52);
-var forms_1 = __webpack_require__(172);
+var forms_1 = __webpack_require__(171);
 exports.TRISTATECHECKBOX_VALUE_ACCESSOR = {
     provide: forms_1.NG_VALUE_ACCESSOR,
     useExisting: core_1.forwardRef(function () { return TriStateCheckbox; }),
@@ -17855,96 +17992,1608 @@ exports.TriStateCheckboxModule = TriStateCheckboxModule;
 
 /***/ }),
 
-/***/ 439:
+/***/ 438:
 /***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;//     Underscore.js 1.8.3
+//     http://underscorejs.org
+//     (c) 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
+//     Underscore may be freely distributed under the MIT license.
 
-function __export(m) {
-    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
-}
-Object.defineProperty(exports, "__esModule", { value: true });
-__export(__webpack_require__(370));
-__export(__webpack_require__(365));
-__export(__webpack_require__(378));
-__export(__webpack_require__(379));
-__export(__webpack_require__(380));
-__export(__webpack_require__(381));
-__export(__webpack_require__(366));
-__export(__webpack_require__(383));
-__export(__webpack_require__(382));
-__export(__webpack_require__(384));
-__export(__webpack_require__(385));
-__export(__webpack_require__(386));
-__export(__webpack_require__(387));
-__export(__webpack_require__(388));
-__export(__webpack_require__(390));
-__export(__webpack_require__(391));
-__export(__webpack_require__(392));
-__export(__webpack_require__(393));
-__export(__webpack_require__(394));
-__export(__webpack_require__(389));
-__export(__webpack_require__(395));
-__export(__webpack_require__(396));
-__export(__webpack_require__(397));
-__export(__webpack_require__(398));
-__export(__webpack_require__(399));
-__export(__webpack_require__(400));
-__export(__webpack_require__(401));
-__export(__webpack_require__(402));
-__export(__webpack_require__(403));
-__export(__webpack_require__(404));
-__export(__webpack_require__(405));
-__export(__webpack_require__(406));
-__export(__webpack_require__(367));
-__export(__webpack_require__(407));
-__export(__webpack_require__(408));
-__export(__webpack_require__(409));
-__export(__webpack_require__(410));
-__export(__webpack_require__(411));
-__export(__webpack_require__(412));
-__export(__webpack_require__(372));
-__export(__webpack_require__(413));
-__export(__webpack_require__(414));
-__export(__webpack_require__(415));
-__export(__webpack_require__(369));
-__export(__webpack_require__(416));
-__export(__webpack_require__(417));
-__export(__webpack_require__(418));
-__export(__webpack_require__(419));
-__export(__webpack_require__(373));
-__export(__webpack_require__(420));
-__export(__webpack_require__(421));
-__export(__webpack_require__(422));
-__export(__webpack_require__(423));
-__export(__webpack_require__(424));
-__export(__webpack_require__(425));
-__export(__webpack_require__(426));
-__export(__webpack_require__(427));
-__export(__webpack_require__(428));
-__export(__webpack_require__(430));
-__export(__webpack_require__(429));
-__export(__webpack_require__(431));
-__export(__webpack_require__(432));
-__export(__webpack_require__(433));
-__export(__webpack_require__(434));
-__export(__webpack_require__(435));
-__export(__webpack_require__(436));
-__export(__webpack_require__(437));
-__export(__webpack_require__(438));
-//# sourceMappingURL=primeng.js.map
+(function() {
+
+  // Baseline setup
+  // --------------
+
+  // Establish the root object, `window` in the browser, or `exports` on the server.
+  var root = this;
+
+  // Save the previous value of the `_` variable.
+  var previousUnderscore = root._;
+
+  // Save bytes in the minified (but not gzipped) version:
+  var ArrayProto = Array.prototype, ObjProto = Object.prototype, FuncProto = Function.prototype;
+
+  // Create quick reference variables for speed access to core prototypes.
+  var
+    push             = ArrayProto.push,
+    slice            = ArrayProto.slice,
+    toString         = ObjProto.toString,
+    hasOwnProperty   = ObjProto.hasOwnProperty;
+
+  // All **ECMAScript 5** native function implementations that we hope to use
+  // are declared here.
+  var
+    nativeIsArray      = Array.isArray,
+    nativeKeys         = Object.keys,
+    nativeBind         = FuncProto.bind,
+    nativeCreate       = Object.create;
+
+  // Naked function reference for surrogate-prototype-swapping.
+  var Ctor = function(){};
+
+  // Create a safe reference to the Underscore object for use below.
+  var _ = function(obj) {
+    if (obj instanceof _) return obj;
+    if (!(this instanceof _)) return new _(obj);
+    this._wrapped = obj;
+  };
+
+  // Export the Underscore object for **Node.js**, with
+  // backwards-compatibility for the old `require()` API. If we're in
+  // the browser, add `_` as a global object.
+  if (true) {
+    if (typeof module !== 'undefined' && module.exports) {
+      exports = module.exports = _;
+    }
+    exports._ = _;
+  } else {
+    root._ = _;
+  }
+
+  // Current version.
+  _.VERSION = '1.8.3';
+
+  // Internal function that returns an efficient (for current engines) version
+  // of the passed-in callback, to be repeatedly applied in other Underscore
+  // functions.
+  var optimizeCb = function(func, context, argCount) {
+    if (context === void 0) return func;
+    switch (argCount == null ? 3 : argCount) {
+      case 1: return function(value) {
+        return func.call(context, value);
+      };
+      case 2: return function(value, other) {
+        return func.call(context, value, other);
+      };
+      case 3: return function(value, index, collection) {
+        return func.call(context, value, index, collection);
+      };
+      case 4: return function(accumulator, value, index, collection) {
+        return func.call(context, accumulator, value, index, collection);
+      };
+    }
+    return function() {
+      return func.apply(context, arguments);
+    };
+  };
+
+  // A mostly-internal function to generate callbacks that can be applied
+  // to each element in a collection, returning the desired result — either
+  // identity, an arbitrary callback, a property matcher, or a property accessor.
+  var cb = function(value, context, argCount) {
+    if (value == null) return _.identity;
+    if (_.isFunction(value)) return optimizeCb(value, context, argCount);
+    if (_.isObject(value)) return _.matcher(value);
+    return _.property(value);
+  };
+  _.iteratee = function(value, context) {
+    return cb(value, context, Infinity);
+  };
+
+  // An internal function for creating assigner functions.
+  var createAssigner = function(keysFunc, undefinedOnly) {
+    return function(obj) {
+      var length = arguments.length;
+      if (length < 2 || obj == null) return obj;
+      for (var index = 1; index < length; index++) {
+        var source = arguments[index],
+            keys = keysFunc(source),
+            l = keys.length;
+        for (var i = 0; i < l; i++) {
+          var key = keys[i];
+          if (!undefinedOnly || obj[key] === void 0) obj[key] = source[key];
+        }
+      }
+      return obj;
+    };
+  };
+
+  // An internal function for creating a new object that inherits from another.
+  var baseCreate = function(prototype) {
+    if (!_.isObject(prototype)) return {};
+    if (nativeCreate) return nativeCreate(prototype);
+    Ctor.prototype = prototype;
+    var result = new Ctor;
+    Ctor.prototype = null;
+    return result;
+  };
+
+  var property = function(key) {
+    return function(obj) {
+      return obj == null ? void 0 : obj[key];
+    };
+  };
+
+  // Helper for collection methods to determine whether a collection
+  // should be iterated as an array or as an object
+  // Related: http://people.mozilla.org/~jorendorff/es6-draft.html#sec-tolength
+  // Avoids a very nasty iOS 8 JIT bug on ARM-64. #2094
+  var MAX_ARRAY_INDEX = Math.pow(2, 53) - 1;
+  var getLength = property('length');
+  var isArrayLike = function(collection) {
+    var length = getLength(collection);
+    return typeof length == 'number' && length >= 0 && length <= MAX_ARRAY_INDEX;
+  };
+
+  // Collection Functions
+  // --------------------
+
+  // The cornerstone, an `each` implementation, aka `forEach`.
+  // Handles raw objects in addition to array-likes. Treats all
+  // sparse array-likes as if they were dense.
+  _.each = _.forEach = function(obj, iteratee, context) {
+    iteratee = optimizeCb(iteratee, context);
+    var i, length;
+    if (isArrayLike(obj)) {
+      for (i = 0, length = obj.length; i < length; i++) {
+        iteratee(obj[i], i, obj);
+      }
+    } else {
+      var keys = _.keys(obj);
+      for (i = 0, length = keys.length; i < length; i++) {
+        iteratee(obj[keys[i]], keys[i], obj);
+      }
+    }
+    return obj;
+  };
+
+  // Return the results of applying the iteratee to each element.
+  _.map = _.collect = function(obj, iteratee, context) {
+    iteratee = cb(iteratee, context);
+    var keys = !isArrayLike(obj) && _.keys(obj),
+        length = (keys || obj).length,
+        results = Array(length);
+    for (var index = 0; index < length; index++) {
+      var currentKey = keys ? keys[index] : index;
+      results[index] = iteratee(obj[currentKey], currentKey, obj);
+    }
+    return results;
+  };
+
+  // Create a reducing function iterating left or right.
+  function createReduce(dir) {
+    // Optimized iterator function as using arguments.length
+    // in the main function will deoptimize the, see #1991.
+    function iterator(obj, iteratee, memo, keys, index, length) {
+      for (; index >= 0 && index < length; index += dir) {
+        var currentKey = keys ? keys[index] : index;
+        memo = iteratee(memo, obj[currentKey], currentKey, obj);
+      }
+      return memo;
+    }
+
+    return function(obj, iteratee, memo, context) {
+      iteratee = optimizeCb(iteratee, context, 4);
+      var keys = !isArrayLike(obj) && _.keys(obj),
+          length = (keys || obj).length,
+          index = dir > 0 ? 0 : length - 1;
+      // Determine the initial value if none is provided.
+      if (arguments.length < 3) {
+        memo = obj[keys ? keys[index] : index];
+        index += dir;
+      }
+      return iterator(obj, iteratee, memo, keys, index, length);
+    };
+  }
+
+  // **Reduce** builds up a single result from a list of values, aka `inject`,
+  // or `foldl`.
+  _.reduce = _.foldl = _.inject = createReduce(1);
+
+  // The right-associative version of reduce, also known as `foldr`.
+  _.reduceRight = _.foldr = createReduce(-1);
+
+  // Return the first value which passes a truth test. Aliased as `detect`.
+  _.find = _.detect = function(obj, predicate, context) {
+    var key;
+    if (isArrayLike(obj)) {
+      key = _.findIndex(obj, predicate, context);
+    } else {
+      key = _.findKey(obj, predicate, context);
+    }
+    if (key !== void 0 && key !== -1) return obj[key];
+  };
+
+  // Return all the elements that pass a truth test.
+  // Aliased as `select`.
+  _.filter = _.select = function(obj, predicate, context) {
+    var results = [];
+    predicate = cb(predicate, context);
+    _.each(obj, function(value, index, list) {
+      if (predicate(value, index, list)) results.push(value);
+    });
+    return results;
+  };
+
+  // Return all the elements for which a truth test fails.
+  _.reject = function(obj, predicate, context) {
+    return _.filter(obj, _.negate(cb(predicate)), context);
+  };
+
+  // Determine whether all of the elements match a truth test.
+  // Aliased as `all`.
+  _.every = _.all = function(obj, predicate, context) {
+    predicate = cb(predicate, context);
+    var keys = !isArrayLike(obj) && _.keys(obj),
+        length = (keys || obj).length;
+    for (var index = 0; index < length; index++) {
+      var currentKey = keys ? keys[index] : index;
+      if (!predicate(obj[currentKey], currentKey, obj)) return false;
+    }
+    return true;
+  };
+
+  // Determine if at least one element in the object matches a truth test.
+  // Aliased as `any`.
+  _.some = _.any = function(obj, predicate, context) {
+    predicate = cb(predicate, context);
+    var keys = !isArrayLike(obj) && _.keys(obj),
+        length = (keys || obj).length;
+    for (var index = 0; index < length; index++) {
+      var currentKey = keys ? keys[index] : index;
+      if (predicate(obj[currentKey], currentKey, obj)) return true;
+    }
+    return false;
+  };
+
+  // Determine if the array or object contains a given item (using `===`).
+  // Aliased as `includes` and `include`.
+  _.contains = _.includes = _.include = function(obj, item, fromIndex, guard) {
+    if (!isArrayLike(obj)) obj = _.values(obj);
+    if (typeof fromIndex != 'number' || guard) fromIndex = 0;
+    return _.indexOf(obj, item, fromIndex) >= 0;
+  };
+
+  // Invoke a method (with arguments) on every item in a collection.
+  _.invoke = function(obj, method) {
+    var args = slice.call(arguments, 2);
+    var isFunc = _.isFunction(method);
+    return _.map(obj, function(value) {
+      var func = isFunc ? method : value[method];
+      return func == null ? func : func.apply(value, args);
+    });
+  };
+
+  // Convenience version of a common use case of `map`: fetching a property.
+  _.pluck = function(obj, key) {
+    return _.map(obj, _.property(key));
+  };
+
+  // Convenience version of a common use case of `filter`: selecting only objects
+  // containing specific `key:value` pairs.
+  _.where = function(obj, attrs) {
+    return _.filter(obj, _.matcher(attrs));
+  };
+
+  // Convenience version of a common use case of `find`: getting the first object
+  // containing specific `key:value` pairs.
+  _.findWhere = function(obj, attrs) {
+    return _.find(obj, _.matcher(attrs));
+  };
+
+  // Return the maximum element (or element-based computation).
+  _.max = function(obj, iteratee, context) {
+    var result = -Infinity, lastComputed = -Infinity,
+        value, computed;
+    if (iteratee == null && obj != null) {
+      obj = isArrayLike(obj) ? obj : _.values(obj);
+      for (var i = 0, length = obj.length; i < length; i++) {
+        value = obj[i];
+        if (value > result) {
+          result = value;
+        }
+      }
+    } else {
+      iteratee = cb(iteratee, context);
+      _.each(obj, function(value, index, list) {
+        computed = iteratee(value, index, list);
+        if (computed > lastComputed || computed === -Infinity && result === -Infinity) {
+          result = value;
+          lastComputed = computed;
+        }
+      });
+    }
+    return result;
+  };
+
+  // Return the minimum element (or element-based computation).
+  _.min = function(obj, iteratee, context) {
+    var result = Infinity, lastComputed = Infinity,
+        value, computed;
+    if (iteratee == null && obj != null) {
+      obj = isArrayLike(obj) ? obj : _.values(obj);
+      for (var i = 0, length = obj.length; i < length; i++) {
+        value = obj[i];
+        if (value < result) {
+          result = value;
+        }
+      }
+    } else {
+      iteratee = cb(iteratee, context);
+      _.each(obj, function(value, index, list) {
+        computed = iteratee(value, index, list);
+        if (computed < lastComputed || computed === Infinity && result === Infinity) {
+          result = value;
+          lastComputed = computed;
+        }
+      });
+    }
+    return result;
+  };
+
+  // Shuffle a collection, using the modern version of the
+  // [Fisher-Yates shuffle](http://en.wikipedia.org/wiki/Fisher–Yates_shuffle).
+  _.shuffle = function(obj) {
+    var set = isArrayLike(obj) ? obj : _.values(obj);
+    var length = set.length;
+    var shuffled = Array(length);
+    for (var index = 0, rand; index < length; index++) {
+      rand = _.random(0, index);
+      if (rand !== index) shuffled[index] = shuffled[rand];
+      shuffled[rand] = set[index];
+    }
+    return shuffled;
+  };
+
+  // Sample **n** random values from a collection.
+  // If **n** is not specified, returns a single random element.
+  // The internal `guard` argument allows it to work with `map`.
+  _.sample = function(obj, n, guard) {
+    if (n == null || guard) {
+      if (!isArrayLike(obj)) obj = _.values(obj);
+      return obj[_.random(obj.length - 1)];
+    }
+    return _.shuffle(obj).slice(0, Math.max(0, n));
+  };
+
+  // Sort the object's values by a criterion produced by an iteratee.
+  _.sortBy = function(obj, iteratee, context) {
+    iteratee = cb(iteratee, context);
+    return _.pluck(_.map(obj, function(value, index, list) {
+      return {
+        value: value,
+        index: index,
+        criteria: iteratee(value, index, list)
+      };
+    }).sort(function(left, right) {
+      var a = left.criteria;
+      var b = right.criteria;
+      if (a !== b) {
+        if (a > b || a === void 0) return 1;
+        if (a < b || b === void 0) return -1;
+      }
+      return left.index - right.index;
+    }), 'value');
+  };
+
+  // An internal function used for aggregate "group by" operations.
+  var group = function(behavior) {
+    return function(obj, iteratee, context) {
+      var result = {};
+      iteratee = cb(iteratee, context);
+      _.each(obj, function(value, index) {
+        var key = iteratee(value, index, obj);
+        behavior(result, value, key);
+      });
+      return result;
+    };
+  };
+
+  // Groups the object's values by a criterion. Pass either a string attribute
+  // to group by, or a function that returns the criterion.
+  _.groupBy = group(function(result, value, key) {
+    if (_.has(result, key)) result[key].push(value); else result[key] = [value];
+  });
+
+  // Indexes the object's values by a criterion, similar to `groupBy`, but for
+  // when you know that your index values will be unique.
+  _.indexBy = group(function(result, value, key) {
+    result[key] = value;
+  });
+
+  // Counts instances of an object that group by a certain criterion. Pass
+  // either a string attribute to count by, or a function that returns the
+  // criterion.
+  _.countBy = group(function(result, value, key) {
+    if (_.has(result, key)) result[key]++; else result[key] = 1;
+  });
+
+  // Safely create a real, live array from anything iterable.
+  _.toArray = function(obj) {
+    if (!obj) return [];
+    if (_.isArray(obj)) return slice.call(obj);
+    if (isArrayLike(obj)) return _.map(obj, _.identity);
+    return _.values(obj);
+  };
+
+  // Return the number of elements in an object.
+  _.size = function(obj) {
+    if (obj == null) return 0;
+    return isArrayLike(obj) ? obj.length : _.keys(obj).length;
+  };
+
+  // Split a collection into two arrays: one whose elements all satisfy the given
+  // predicate, and one whose elements all do not satisfy the predicate.
+  _.partition = function(obj, predicate, context) {
+    predicate = cb(predicate, context);
+    var pass = [], fail = [];
+    _.each(obj, function(value, key, obj) {
+      (predicate(value, key, obj) ? pass : fail).push(value);
+    });
+    return [pass, fail];
+  };
+
+  // Array Functions
+  // ---------------
+
+  // Get the first element of an array. Passing **n** will return the first N
+  // values in the array. Aliased as `head` and `take`. The **guard** check
+  // allows it to work with `_.map`.
+  _.first = _.head = _.take = function(array, n, guard) {
+    if (array == null) return void 0;
+    if (n == null || guard) return array[0];
+    return _.initial(array, array.length - n);
+  };
+
+  // Returns everything but the last entry of the array. Especially useful on
+  // the arguments object. Passing **n** will return all the values in
+  // the array, excluding the last N.
+  _.initial = function(array, n, guard) {
+    return slice.call(array, 0, Math.max(0, array.length - (n == null || guard ? 1 : n)));
+  };
+
+  // Get the last element of an array. Passing **n** will return the last N
+  // values in the array.
+  _.last = function(array, n, guard) {
+    if (array == null) return void 0;
+    if (n == null || guard) return array[array.length - 1];
+    return _.rest(array, Math.max(0, array.length - n));
+  };
+
+  // Returns everything but the first entry of the array. Aliased as `tail` and `drop`.
+  // Especially useful on the arguments object. Passing an **n** will return
+  // the rest N values in the array.
+  _.rest = _.tail = _.drop = function(array, n, guard) {
+    return slice.call(array, n == null || guard ? 1 : n);
+  };
+
+  // Trim out all falsy values from an array.
+  _.compact = function(array) {
+    return _.filter(array, _.identity);
+  };
+
+  // Internal implementation of a recursive `flatten` function.
+  var flatten = function(input, shallow, strict, startIndex) {
+    var output = [], idx = 0;
+    for (var i = startIndex || 0, length = getLength(input); i < length; i++) {
+      var value = input[i];
+      if (isArrayLike(value) && (_.isArray(value) || _.isArguments(value))) {
+        //flatten current level of array or arguments object
+        if (!shallow) value = flatten(value, shallow, strict);
+        var j = 0, len = value.length;
+        output.length += len;
+        while (j < len) {
+          output[idx++] = value[j++];
+        }
+      } else if (!strict) {
+        output[idx++] = value;
+      }
+    }
+    return output;
+  };
+
+  // Flatten out an array, either recursively (by default), or just one level.
+  _.flatten = function(array, shallow) {
+    return flatten(array, shallow, false);
+  };
+
+  // Return a version of the array that does not contain the specified value(s).
+  _.without = function(array) {
+    return _.difference(array, slice.call(arguments, 1));
+  };
+
+  // Produce a duplicate-free version of the array. If the array has already
+  // been sorted, you have the option of using a faster algorithm.
+  // Aliased as `unique`.
+  _.uniq = _.unique = function(array, isSorted, iteratee, context) {
+    if (!_.isBoolean(isSorted)) {
+      context = iteratee;
+      iteratee = isSorted;
+      isSorted = false;
+    }
+    if (iteratee != null) iteratee = cb(iteratee, context);
+    var result = [];
+    var seen = [];
+    for (var i = 0, length = getLength(array); i < length; i++) {
+      var value = array[i],
+          computed = iteratee ? iteratee(value, i, array) : value;
+      if (isSorted) {
+        if (!i || seen !== computed) result.push(value);
+        seen = computed;
+      } else if (iteratee) {
+        if (!_.contains(seen, computed)) {
+          seen.push(computed);
+          result.push(value);
+        }
+      } else if (!_.contains(result, value)) {
+        result.push(value);
+      }
+    }
+    return result;
+  };
+
+  // Produce an array that contains the union: each distinct element from all of
+  // the passed-in arrays.
+  _.union = function() {
+    return _.uniq(flatten(arguments, true, true));
+  };
+
+  // Produce an array that contains every item shared between all the
+  // passed-in arrays.
+  _.intersection = function(array) {
+    var result = [];
+    var argsLength = arguments.length;
+    for (var i = 0, length = getLength(array); i < length; i++) {
+      var item = array[i];
+      if (_.contains(result, item)) continue;
+      for (var j = 1; j < argsLength; j++) {
+        if (!_.contains(arguments[j], item)) break;
+      }
+      if (j === argsLength) result.push(item);
+    }
+    return result;
+  };
+
+  // Take the difference between one array and a number of other arrays.
+  // Only the elements present in just the first array will remain.
+  _.difference = function(array) {
+    var rest = flatten(arguments, true, true, 1);
+    return _.filter(array, function(value){
+      return !_.contains(rest, value);
+    });
+  };
+
+  // Zip together multiple lists into a single array -- elements that share
+  // an index go together.
+  _.zip = function() {
+    return _.unzip(arguments);
+  };
+
+  // Complement of _.zip. Unzip accepts an array of arrays and groups
+  // each array's elements on shared indices
+  _.unzip = function(array) {
+    var length = array && _.max(array, getLength).length || 0;
+    var result = Array(length);
+
+    for (var index = 0; index < length; index++) {
+      result[index] = _.pluck(array, index);
+    }
+    return result;
+  };
+
+  // Converts lists into objects. Pass either a single array of `[key, value]`
+  // pairs, or two parallel arrays of the same length -- one of keys, and one of
+  // the corresponding values.
+  _.object = function(list, values) {
+    var result = {};
+    for (var i = 0, length = getLength(list); i < length; i++) {
+      if (values) {
+        result[list[i]] = values[i];
+      } else {
+        result[list[i][0]] = list[i][1];
+      }
+    }
+    return result;
+  };
+
+  // Generator function to create the findIndex and findLastIndex functions
+  function createPredicateIndexFinder(dir) {
+    return function(array, predicate, context) {
+      predicate = cb(predicate, context);
+      var length = getLength(array);
+      var index = dir > 0 ? 0 : length - 1;
+      for (; index >= 0 && index < length; index += dir) {
+        if (predicate(array[index], index, array)) return index;
+      }
+      return -1;
+    };
+  }
+
+  // Returns the first index on an array-like that passes a predicate test
+  _.findIndex = createPredicateIndexFinder(1);
+  _.findLastIndex = createPredicateIndexFinder(-1);
+
+  // Use a comparator function to figure out the smallest index at which
+  // an object should be inserted so as to maintain order. Uses binary search.
+  _.sortedIndex = function(array, obj, iteratee, context) {
+    iteratee = cb(iteratee, context, 1);
+    var value = iteratee(obj);
+    var low = 0, high = getLength(array);
+    while (low < high) {
+      var mid = Math.floor((low + high) / 2);
+      if (iteratee(array[mid]) < value) low = mid + 1; else high = mid;
+    }
+    return low;
+  };
+
+  // Generator function to create the indexOf and lastIndexOf functions
+  function createIndexFinder(dir, predicateFind, sortedIndex) {
+    return function(array, item, idx) {
+      var i = 0, length = getLength(array);
+      if (typeof idx == 'number') {
+        if (dir > 0) {
+            i = idx >= 0 ? idx : Math.max(idx + length, i);
+        } else {
+            length = idx >= 0 ? Math.min(idx + 1, length) : idx + length + 1;
+        }
+      } else if (sortedIndex && idx && length) {
+        idx = sortedIndex(array, item);
+        return array[idx] === item ? idx : -1;
+      }
+      if (item !== item) {
+        idx = predicateFind(slice.call(array, i, length), _.isNaN);
+        return idx >= 0 ? idx + i : -1;
+      }
+      for (idx = dir > 0 ? i : length - 1; idx >= 0 && idx < length; idx += dir) {
+        if (array[idx] === item) return idx;
+      }
+      return -1;
+    };
+  }
+
+  // Return the position of the first occurrence of an item in an array,
+  // or -1 if the item is not included in the array.
+  // If the array is large and already in sort order, pass `true`
+  // for **isSorted** to use binary search.
+  _.indexOf = createIndexFinder(1, _.findIndex, _.sortedIndex);
+  _.lastIndexOf = createIndexFinder(-1, _.findLastIndex);
+
+  // Generate an integer Array containing an arithmetic progression. A port of
+  // the native Python `range()` function. See
+  // [the Python documentation](http://docs.python.org/library/functions.html#range).
+  _.range = function(start, stop, step) {
+    if (stop == null) {
+      stop = start || 0;
+      start = 0;
+    }
+    step = step || 1;
+
+    var length = Math.max(Math.ceil((stop - start) / step), 0);
+    var range = Array(length);
+
+    for (var idx = 0; idx < length; idx++, start += step) {
+      range[idx] = start;
+    }
+
+    return range;
+  };
+
+  // Function (ahem) Functions
+  // ------------------
+
+  // Determines whether to execute a function as a constructor
+  // or a normal function with the provided arguments
+  var executeBound = function(sourceFunc, boundFunc, context, callingContext, args) {
+    if (!(callingContext instanceof boundFunc)) return sourceFunc.apply(context, args);
+    var self = baseCreate(sourceFunc.prototype);
+    var result = sourceFunc.apply(self, args);
+    if (_.isObject(result)) return result;
+    return self;
+  };
+
+  // Create a function bound to a given object (assigning `this`, and arguments,
+  // optionally). Delegates to **ECMAScript 5**'s native `Function.bind` if
+  // available.
+  _.bind = function(func, context) {
+    if (nativeBind && func.bind === nativeBind) return nativeBind.apply(func, slice.call(arguments, 1));
+    if (!_.isFunction(func)) throw new TypeError('Bind must be called on a function');
+    var args = slice.call(arguments, 2);
+    var bound = function() {
+      return executeBound(func, bound, context, this, args.concat(slice.call(arguments)));
+    };
+    return bound;
+  };
+
+  // Partially apply a function by creating a version that has had some of its
+  // arguments pre-filled, without changing its dynamic `this` context. _ acts
+  // as a placeholder, allowing any combination of arguments to be pre-filled.
+  _.partial = function(func) {
+    var boundArgs = slice.call(arguments, 1);
+    var bound = function() {
+      var position = 0, length = boundArgs.length;
+      var args = Array(length);
+      for (var i = 0; i < length; i++) {
+        args[i] = boundArgs[i] === _ ? arguments[position++] : boundArgs[i];
+      }
+      while (position < arguments.length) args.push(arguments[position++]);
+      return executeBound(func, bound, this, this, args);
+    };
+    return bound;
+  };
+
+  // Bind a number of an object's methods to that object. Remaining arguments
+  // are the method names to be bound. Useful for ensuring that all callbacks
+  // defined on an object belong to it.
+  _.bindAll = function(obj) {
+    var i, length = arguments.length, key;
+    if (length <= 1) throw new Error('bindAll must be passed function names');
+    for (i = 1; i < length; i++) {
+      key = arguments[i];
+      obj[key] = _.bind(obj[key], obj);
+    }
+    return obj;
+  };
+
+  // Memoize an expensive function by storing its results.
+  _.memoize = function(func, hasher) {
+    var memoize = function(key) {
+      var cache = memoize.cache;
+      var address = '' + (hasher ? hasher.apply(this, arguments) : key);
+      if (!_.has(cache, address)) cache[address] = func.apply(this, arguments);
+      return cache[address];
+    };
+    memoize.cache = {};
+    return memoize;
+  };
+
+  // Delays a function for the given number of milliseconds, and then calls
+  // it with the arguments supplied.
+  _.delay = function(func, wait) {
+    var args = slice.call(arguments, 2);
+    return setTimeout(function(){
+      return func.apply(null, args);
+    }, wait);
+  };
+
+  // Defers a function, scheduling it to run after the current call stack has
+  // cleared.
+  _.defer = _.partial(_.delay, _, 1);
+
+  // Returns a function, that, when invoked, will only be triggered at most once
+  // during a given window of time. Normally, the throttled function will run
+  // as much as it can, without ever going more than once per `wait` duration;
+  // but if you'd like to disable the execution on the leading edge, pass
+  // `{leading: false}`. To disable execution on the trailing edge, ditto.
+  _.throttle = function(func, wait, options) {
+    var context, args, result;
+    var timeout = null;
+    var previous = 0;
+    if (!options) options = {};
+    var later = function() {
+      previous = options.leading === false ? 0 : _.now();
+      timeout = null;
+      result = func.apply(context, args);
+      if (!timeout) context = args = null;
+    };
+    return function() {
+      var now = _.now();
+      if (!previous && options.leading === false) previous = now;
+      var remaining = wait - (now - previous);
+      context = this;
+      args = arguments;
+      if (remaining <= 0 || remaining > wait) {
+        if (timeout) {
+          clearTimeout(timeout);
+          timeout = null;
+        }
+        previous = now;
+        result = func.apply(context, args);
+        if (!timeout) context = args = null;
+      } else if (!timeout && options.trailing !== false) {
+        timeout = setTimeout(later, remaining);
+      }
+      return result;
+    };
+  };
+
+  // Returns a function, that, as long as it continues to be invoked, will not
+  // be triggered. The function will be called after it stops being called for
+  // N milliseconds. If `immediate` is passed, trigger the function on the
+  // leading edge, instead of the trailing.
+  _.debounce = function(func, wait, immediate) {
+    var timeout, args, context, timestamp, result;
+
+    var later = function() {
+      var last = _.now() - timestamp;
+
+      if (last < wait && last >= 0) {
+        timeout = setTimeout(later, wait - last);
+      } else {
+        timeout = null;
+        if (!immediate) {
+          result = func.apply(context, args);
+          if (!timeout) context = args = null;
+        }
+      }
+    };
+
+    return function() {
+      context = this;
+      args = arguments;
+      timestamp = _.now();
+      var callNow = immediate && !timeout;
+      if (!timeout) timeout = setTimeout(later, wait);
+      if (callNow) {
+        result = func.apply(context, args);
+        context = args = null;
+      }
+
+      return result;
+    };
+  };
+
+  // Returns the first function passed as an argument to the second,
+  // allowing you to adjust arguments, run code before and after, and
+  // conditionally execute the original function.
+  _.wrap = function(func, wrapper) {
+    return _.partial(wrapper, func);
+  };
+
+  // Returns a negated version of the passed-in predicate.
+  _.negate = function(predicate) {
+    return function() {
+      return !predicate.apply(this, arguments);
+    };
+  };
+
+  // Returns a function that is the composition of a list of functions, each
+  // consuming the return value of the function that follows.
+  _.compose = function() {
+    var args = arguments;
+    var start = args.length - 1;
+    return function() {
+      var i = start;
+      var result = args[start].apply(this, arguments);
+      while (i--) result = args[i].call(this, result);
+      return result;
+    };
+  };
+
+  // Returns a function that will only be executed on and after the Nth call.
+  _.after = function(times, func) {
+    return function() {
+      if (--times < 1) {
+        return func.apply(this, arguments);
+      }
+    };
+  };
+
+  // Returns a function that will only be executed up to (but not including) the Nth call.
+  _.before = function(times, func) {
+    var memo;
+    return function() {
+      if (--times > 0) {
+        memo = func.apply(this, arguments);
+      }
+      if (times <= 1) func = null;
+      return memo;
+    };
+  };
+
+  // Returns a function that will be executed at most one time, no matter how
+  // often you call it. Useful for lazy initialization.
+  _.once = _.partial(_.before, 2);
+
+  // Object Functions
+  // ----------------
+
+  // Keys in IE < 9 that won't be iterated by `for key in ...` and thus missed.
+  var hasEnumBug = !{toString: null}.propertyIsEnumerable('toString');
+  var nonEnumerableProps = ['valueOf', 'isPrototypeOf', 'toString',
+                      'propertyIsEnumerable', 'hasOwnProperty', 'toLocaleString'];
+
+  function collectNonEnumProps(obj, keys) {
+    var nonEnumIdx = nonEnumerableProps.length;
+    var constructor = obj.constructor;
+    var proto = (_.isFunction(constructor) && constructor.prototype) || ObjProto;
+
+    // Constructor is a special case.
+    var prop = 'constructor';
+    if (_.has(obj, prop) && !_.contains(keys, prop)) keys.push(prop);
+
+    while (nonEnumIdx--) {
+      prop = nonEnumerableProps[nonEnumIdx];
+      if (prop in obj && obj[prop] !== proto[prop] && !_.contains(keys, prop)) {
+        keys.push(prop);
+      }
+    }
+  }
+
+  // Retrieve the names of an object's own properties.
+  // Delegates to **ECMAScript 5**'s native `Object.keys`
+  _.keys = function(obj) {
+    if (!_.isObject(obj)) return [];
+    if (nativeKeys) return nativeKeys(obj);
+    var keys = [];
+    for (var key in obj) if (_.has(obj, key)) keys.push(key);
+    // Ahem, IE < 9.
+    if (hasEnumBug) collectNonEnumProps(obj, keys);
+    return keys;
+  };
+
+  // Retrieve all the property names of an object.
+  _.allKeys = function(obj) {
+    if (!_.isObject(obj)) return [];
+    var keys = [];
+    for (var key in obj) keys.push(key);
+    // Ahem, IE < 9.
+    if (hasEnumBug) collectNonEnumProps(obj, keys);
+    return keys;
+  };
+
+  // Retrieve the values of an object's properties.
+  _.values = function(obj) {
+    var keys = _.keys(obj);
+    var length = keys.length;
+    var values = Array(length);
+    for (var i = 0; i < length; i++) {
+      values[i] = obj[keys[i]];
+    }
+    return values;
+  };
+
+  // Returns the results of applying the iteratee to each element of the object
+  // In contrast to _.map it returns an object
+  _.mapObject = function(obj, iteratee, context) {
+    iteratee = cb(iteratee, context);
+    var keys =  _.keys(obj),
+          length = keys.length,
+          results = {},
+          currentKey;
+      for (var index = 0; index < length; index++) {
+        currentKey = keys[index];
+        results[currentKey] = iteratee(obj[currentKey], currentKey, obj);
+      }
+      return results;
+  };
+
+  // Convert an object into a list of `[key, value]` pairs.
+  _.pairs = function(obj) {
+    var keys = _.keys(obj);
+    var length = keys.length;
+    var pairs = Array(length);
+    for (var i = 0; i < length; i++) {
+      pairs[i] = [keys[i], obj[keys[i]]];
+    }
+    return pairs;
+  };
+
+  // Invert the keys and values of an object. The values must be serializable.
+  _.invert = function(obj) {
+    var result = {};
+    var keys = _.keys(obj);
+    for (var i = 0, length = keys.length; i < length; i++) {
+      result[obj[keys[i]]] = keys[i];
+    }
+    return result;
+  };
+
+  // Return a sorted list of the function names available on the object.
+  // Aliased as `methods`
+  _.functions = _.methods = function(obj) {
+    var names = [];
+    for (var key in obj) {
+      if (_.isFunction(obj[key])) names.push(key);
+    }
+    return names.sort();
+  };
+
+  // Extend a given object with all the properties in passed-in object(s).
+  _.extend = createAssigner(_.allKeys);
+
+  // Assigns a given object with all the own properties in the passed-in object(s)
+  // (https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object/assign)
+  _.extendOwn = _.assign = createAssigner(_.keys);
+
+  // Returns the first key on an object that passes a predicate test
+  _.findKey = function(obj, predicate, context) {
+    predicate = cb(predicate, context);
+    var keys = _.keys(obj), key;
+    for (var i = 0, length = keys.length; i < length; i++) {
+      key = keys[i];
+      if (predicate(obj[key], key, obj)) return key;
+    }
+  };
+
+  // Return a copy of the object only containing the whitelisted properties.
+  _.pick = function(object, oiteratee, context) {
+    var result = {}, obj = object, iteratee, keys;
+    if (obj == null) return result;
+    if (_.isFunction(oiteratee)) {
+      keys = _.allKeys(obj);
+      iteratee = optimizeCb(oiteratee, context);
+    } else {
+      keys = flatten(arguments, false, false, 1);
+      iteratee = function(value, key, obj) { return key in obj; };
+      obj = Object(obj);
+    }
+    for (var i = 0, length = keys.length; i < length; i++) {
+      var key = keys[i];
+      var value = obj[key];
+      if (iteratee(value, key, obj)) result[key] = value;
+    }
+    return result;
+  };
+
+   // Return a copy of the object without the blacklisted properties.
+  _.omit = function(obj, iteratee, context) {
+    if (_.isFunction(iteratee)) {
+      iteratee = _.negate(iteratee);
+    } else {
+      var keys = _.map(flatten(arguments, false, false, 1), String);
+      iteratee = function(value, key) {
+        return !_.contains(keys, key);
+      };
+    }
+    return _.pick(obj, iteratee, context);
+  };
+
+  // Fill in a given object with default properties.
+  _.defaults = createAssigner(_.allKeys, true);
+
+  // Creates an object that inherits from the given prototype object.
+  // If additional properties are provided then they will be added to the
+  // created object.
+  _.create = function(prototype, props) {
+    var result = baseCreate(prototype);
+    if (props) _.extendOwn(result, props);
+    return result;
+  };
+
+  // Create a (shallow-cloned) duplicate of an object.
+  _.clone = function(obj) {
+    if (!_.isObject(obj)) return obj;
+    return _.isArray(obj) ? obj.slice() : _.extend({}, obj);
+  };
+
+  // Invokes interceptor with the obj, and then returns obj.
+  // The primary purpose of this method is to "tap into" a method chain, in
+  // order to perform operations on intermediate results within the chain.
+  _.tap = function(obj, interceptor) {
+    interceptor(obj);
+    return obj;
+  };
+
+  // Returns whether an object has a given set of `key:value` pairs.
+  _.isMatch = function(object, attrs) {
+    var keys = _.keys(attrs), length = keys.length;
+    if (object == null) return !length;
+    var obj = Object(object);
+    for (var i = 0; i < length; i++) {
+      var key = keys[i];
+      if (attrs[key] !== obj[key] || !(key in obj)) return false;
+    }
+    return true;
+  };
+
+
+  // Internal recursive comparison function for `isEqual`.
+  var eq = function(a, b, aStack, bStack) {
+    // Identical objects are equal. `0 === -0`, but they aren't identical.
+    // See the [Harmony `egal` proposal](http://wiki.ecmascript.org/doku.php?id=harmony:egal).
+    if (a === b) return a !== 0 || 1 / a === 1 / b;
+    // A strict comparison is necessary because `null == undefined`.
+    if (a == null || b == null) return a === b;
+    // Unwrap any wrapped objects.
+    if (a instanceof _) a = a._wrapped;
+    if (b instanceof _) b = b._wrapped;
+    // Compare `[[Class]]` names.
+    var className = toString.call(a);
+    if (className !== toString.call(b)) return false;
+    switch (className) {
+      // Strings, numbers, regular expressions, dates, and booleans are compared by value.
+      case '[object RegExp]':
+      // RegExps are coerced to strings for comparison (Note: '' + /a/i === '/a/i')
+      case '[object String]':
+        // Primitives and their corresponding object wrappers are equivalent; thus, `"5"` is
+        // equivalent to `new String("5")`.
+        return '' + a === '' + b;
+      case '[object Number]':
+        // `NaN`s are equivalent, but non-reflexive.
+        // Object(NaN) is equivalent to NaN
+        if (+a !== +a) return +b !== +b;
+        // An `egal` comparison is performed for other numeric values.
+        return +a === 0 ? 1 / +a === 1 / b : +a === +b;
+      case '[object Date]':
+      case '[object Boolean]':
+        // Coerce dates and booleans to numeric primitive values. Dates are compared by their
+        // millisecond representations. Note that invalid dates with millisecond representations
+        // of `NaN` are not equivalent.
+        return +a === +b;
+    }
+
+    var areArrays = className === '[object Array]';
+    if (!areArrays) {
+      if (typeof a != 'object' || typeof b != 'object') return false;
+
+      // Objects with different constructors are not equivalent, but `Object`s or `Array`s
+      // from different frames are.
+      var aCtor = a.constructor, bCtor = b.constructor;
+      if (aCtor !== bCtor && !(_.isFunction(aCtor) && aCtor instanceof aCtor &&
+                               _.isFunction(bCtor) && bCtor instanceof bCtor)
+                          && ('constructor' in a && 'constructor' in b)) {
+        return false;
+      }
+    }
+    // Assume equality for cyclic structures. The algorithm for detecting cyclic
+    // structures is adapted from ES 5.1 section 15.12.3, abstract operation `JO`.
+
+    // Initializing stack of traversed objects.
+    // It's done here since we only need them for objects and arrays comparison.
+    aStack = aStack || [];
+    bStack = bStack || [];
+    var length = aStack.length;
+    while (length--) {
+      // Linear search. Performance is inversely proportional to the number of
+      // unique nested structures.
+      if (aStack[length] === a) return bStack[length] === b;
+    }
+
+    // Add the first object to the stack of traversed objects.
+    aStack.push(a);
+    bStack.push(b);
+
+    // Recursively compare objects and arrays.
+    if (areArrays) {
+      // Compare array lengths to determine if a deep comparison is necessary.
+      length = a.length;
+      if (length !== b.length) return false;
+      // Deep compare the contents, ignoring non-numeric properties.
+      while (length--) {
+        if (!eq(a[length], b[length], aStack, bStack)) return false;
+      }
+    } else {
+      // Deep compare objects.
+      var keys = _.keys(a), key;
+      length = keys.length;
+      // Ensure that both objects contain the same number of properties before comparing deep equality.
+      if (_.keys(b).length !== length) return false;
+      while (length--) {
+        // Deep compare each member
+        key = keys[length];
+        if (!(_.has(b, key) && eq(a[key], b[key], aStack, bStack))) return false;
+      }
+    }
+    // Remove the first object from the stack of traversed objects.
+    aStack.pop();
+    bStack.pop();
+    return true;
+  };
+
+  // Perform a deep comparison to check if two objects are equal.
+  _.isEqual = function(a, b) {
+    return eq(a, b);
+  };
+
+  // Is a given array, string, or object empty?
+  // An "empty" object has no enumerable own-properties.
+  _.isEmpty = function(obj) {
+    if (obj == null) return true;
+    if (isArrayLike(obj) && (_.isArray(obj) || _.isString(obj) || _.isArguments(obj))) return obj.length === 0;
+    return _.keys(obj).length === 0;
+  };
+
+  // Is a given value a DOM element?
+  _.isElement = function(obj) {
+    return !!(obj && obj.nodeType === 1);
+  };
+
+  // Is a given value an array?
+  // Delegates to ECMA5's native Array.isArray
+  _.isArray = nativeIsArray || function(obj) {
+    return toString.call(obj) === '[object Array]';
+  };
+
+  // Is a given variable an object?
+  _.isObject = function(obj) {
+    var type = typeof obj;
+    return type === 'function' || type === 'object' && !!obj;
+  };
+
+  // Add some isType methods: isArguments, isFunction, isString, isNumber, isDate, isRegExp, isError.
+  _.each(['Arguments', 'Function', 'String', 'Number', 'Date', 'RegExp', 'Error'], function(name) {
+    _['is' + name] = function(obj) {
+      return toString.call(obj) === '[object ' + name + ']';
+    };
+  });
+
+  // Define a fallback version of the method in browsers (ahem, IE < 9), where
+  // there isn't any inspectable "Arguments" type.
+  if (!_.isArguments(arguments)) {
+    _.isArguments = function(obj) {
+      return _.has(obj, 'callee');
+    };
+  }
+
+  // Optimize `isFunction` if appropriate. Work around some typeof bugs in old v8,
+  // IE 11 (#1621), and in Safari 8 (#1929).
+  if (typeof /./ != 'function' && typeof Int8Array != 'object') {
+    _.isFunction = function(obj) {
+      return typeof obj == 'function' || false;
+    };
+  }
+
+  // Is a given object a finite number?
+  _.isFinite = function(obj) {
+    return isFinite(obj) && !isNaN(parseFloat(obj));
+  };
+
+  // Is the given value `NaN`? (NaN is the only number which does not equal itself).
+  _.isNaN = function(obj) {
+    return _.isNumber(obj) && obj !== +obj;
+  };
+
+  // Is a given value a boolean?
+  _.isBoolean = function(obj) {
+    return obj === true || obj === false || toString.call(obj) === '[object Boolean]';
+  };
+
+  // Is a given value equal to null?
+  _.isNull = function(obj) {
+    return obj === null;
+  };
+
+  // Is a given variable undefined?
+  _.isUndefined = function(obj) {
+    return obj === void 0;
+  };
+
+  // Shortcut function for checking if an object has a given property directly
+  // on itself (in other words, not on a prototype).
+  _.has = function(obj, key) {
+    return obj != null && hasOwnProperty.call(obj, key);
+  };
+
+  // Utility Functions
+  // -----------------
+
+  // Run Underscore.js in *noConflict* mode, returning the `_` variable to its
+  // previous owner. Returns a reference to the Underscore object.
+  _.noConflict = function() {
+    root._ = previousUnderscore;
+    return this;
+  };
+
+  // Keep the identity function around for default iteratees.
+  _.identity = function(value) {
+    return value;
+  };
+
+  // Predicate-generating functions. Often useful outside of Underscore.
+  _.constant = function(value) {
+    return function() {
+      return value;
+    };
+  };
+
+  _.noop = function(){};
+
+  _.property = property;
+
+  // Generates a function for a given object that returns a given property.
+  _.propertyOf = function(obj) {
+    return obj == null ? function(){} : function(key) {
+      return obj[key];
+    };
+  };
+
+  // Returns a predicate for checking whether an object has a given set of
+  // `key:value` pairs.
+  _.matcher = _.matches = function(attrs) {
+    attrs = _.extendOwn({}, attrs);
+    return function(obj) {
+      return _.isMatch(obj, attrs);
+    };
+  };
+
+  // Run a function **n** times.
+  _.times = function(n, iteratee, context) {
+    var accum = Array(Math.max(0, n));
+    iteratee = optimizeCb(iteratee, context, 1);
+    for (var i = 0; i < n; i++) accum[i] = iteratee(i);
+    return accum;
+  };
+
+  // Return a random integer between min and max (inclusive).
+  _.random = function(min, max) {
+    if (max == null) {
+      max = min;
+      min = 0;
+    }
+    return min + Math.floor(Math.random() * (max - min + 1));
+  };
+
+  // A (possibly faster) way to get the current timestamp as an integer.
+  _.now = Date.now || function() {
+    return new Date().getTime();
+  };
+
+   // List of HTML entities for escaping.
+  var escapeMap = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#x27;',
+    '`': '&#x60;'
+  };
+  var unescapeMap = _.invert(escapeMap);
+
+  // Functions for escaping and unescaping strings to/from HTML interpolation.
+  var createEscaper = function(map) {
+    var escaper = function(match) {
+      return map[match];
+    };
+    // Regexes for identifying a key that needs to be escaped
+    var source = '(?:' + _.keys(map).join('|') + ')';
+    var testRegexp = RegExp(source);
+    var replaceRegexp = RegExp(source, 'g');
+    return function(string) {
+      string = string == null ? '' : '' + string;
+      return testRegexp.test(string) ? string.replace(replaceRegexp, escaper) : string;
+    };
+  };
+  _.escape = createEscaper(escapeMap);
+  _.unescape = createEscaper(unescapeMap);
+
+  // If the value of the named `property` is a function then invoke it with the
+  // `object` as context; otherwise, return it.
+  _.result = function(object, property, fallback) {
+    var value = object == null ? void 0 : object[property];
+    if (value === void 0) {
+      value = fallback;
+    }
+    return _.isFunction(value) ? value.call(object) : value;
+  };
+
+  // Generate a unique integer id (unique within the entire client session).
+  // Useful for temporary DOM ids.
+  var idCounter = 0;
+  _.uniqueId = function(prefix) {
+    var id = ++idCounter + '';
+    return prefix ? prefix + id : id;
+  };
+
+  // By default, Underscore uses ERB-style template delimiters, change the
+  // following template settings to use alternative delimiters.
+  _.templateSettings = {
+    evaluate    : /<%([\s\S]+?)%>/g,
+    interpolate : /<%=([\s\S]+?)%>/g,
+    escape      : /<%-([\s\S]+?)%>/g
+  };
+
+  // When customizing `templateSettings`, if you don't want to define an
+  // interpolation, evaluation or escaping regex, we need one that is
+  // guaranteed not to match.
+  var noMatch = /(.)^/;
+
+  // Certain characters need to be escaped so that they can be put into a
+  // string literal.
+  var escapes = {
+    "'":      "'",
+    '\\':     '\\',
+    '\r':     'r',
+    '\n':     'n',
+    '\u2028': 'u2028',
+    '\u2029': 'u2029'
+  };
+
+  var escaper = /\\|'|\r|\n|\u2028|\u2029/g;
+
+  var escapeChar = function(match) {
+    return '\\' + escapes[match];
+  };
+
+  // JavaScript micro-templating, similar to John Resig's implementation.
+  // Underscore templating handles arbitrary delimiters, preserves whitespace,
+  // and correctly escapes quotes within interpolated code.
+  // NB: `oldSettings` only exists for backwards compatibility.
+  _.template = function(text, settings, oldSettings) {
+    if (!settings && oldSettings) settings = oldSettings;
+    settings = _.defaults({}, settings, _.templateSettings);
+
+    // Combine delimiters into one regular expression via alternation.
+    var matcher = RegExp([
+      (settings.escape || noMatch).source,
+      (settings.interpolate || noMatch).source,
+      (settings.evaluate || noMatch).source
+    ].join('|') + '|$', 'g');
+
+    // Compile the template source, escaping string literals appropriately.
+    var index = 0;
+    var source = "__p+='";
+    text.replace(matcher, function(match, escape, interpolate, evaluate, offset) {
+      source += text.slice(index, offset).replace(escaper, escapeChar);
+      index = offset + match.length;
+
+      if (escape) {
+        source += "'+\n((__t=(" + escape + "))==null?'':_.escape(__t))+\n'";
+      } else if (interpolate) {
+        source += "'+\n((__t=(" + interpolate + "))==null?'':__t)+\n'";
+      } else if (evaluate) {
+        source += "';\n" + evaluate + "\n__p+='";
+      }
+
+      // Adobe VMs need the match returned to produce the correct offest.
+      return match;
+    });
+    source += "';\n";
+
+    // If a variable is not specified, place data values in local scope.
+    if (!settings.variable) source = 'with(obj||{}){\n' + source + '}\n';
+
+    source = "var __t,__p='',__j=Array.prototype.join," +
+      "print=function(){__p+=__j.call(arguments,'');};\n" +
+      source + 'return __p;\n';
+
+    try {
+      var render = new Function(settings.variable || 'obj', '_', source);
+    } catch (e) {
+      e.source = source;
+      throw e;
+    }
+
+    var template = function(data) {
+      return render.call(this, data, _);
+    };
+
+    // Provide the compiled source as a convenience for precompilation.
+    var argument = settings.variable || 'obj';
+    template.source = 'function(' + argument + '){\n' + source + '}';
+
+    return template;
+  };
+
+  // Add a "chain" function. Start chaining a wrapped Underscore object.
+  _.chain = function(obj) {
+    var instance = _(obj);
+    instance._chain = true;
+    return instance;
+  };
+
+  // OOP
+  // ---------------
+  // If Underscore is called as a function, it returns a wrapped object that
+  // can be used OO-style. This wrapper holds altered versions of all the
+  // underscore functions. Wrapped objects may be chained.
+
+  // Helper function to continue chaining intermediate results.
+  var result = function(instance, obj) {
+    return instance._chain ? _(obj).chain() : obj;
+  };
+
+  // Add your own custom functions to the Underscore object.
+  _.mixin = function(obj) {
+    _.each(_.functions(obj), function(name) {
+      var func = _[name] = obj[name];
+      _.prototype[name] = function() {
+        var args = [this._wrapped];
+        push.apply(args, arguments);
+        return result(this, func.apply(_, args));
+      };
+    });
+  };
+
+  // Add all of the Underscore functions to the wrapper object.
+  _.mixin(_);
+
+  // Add all mutator Array functions to the wrapper.
+  _.each(['pop', 'push', 'reverse', 'shift', 'sort', 'splice', 'unshift'], function(name) {
+    var method = ArrayProto[name];
+    _.prototype[name] = function() {
+      var obj = this._wrapped;
+      method.apply(obj, arguments);
+      if ((name === 'shift' || name === 'splice') && obj.length === 0) delete obj[0];
+      return result(this, obj);
+    };
+  });
+
+  // Add all accessor Array functions to the wrapper.
+  _.each(['concat', 'join', 'slice'], function(name) {
+    var method = ArrayProto[name];
+    _.prototype[name] = function() {
+      return result(this, method.apply(this._wrapped, arguments));
+    };
+  });
+
+  // Extracts the result from a wrapped and chained object.
+  _.prototype.value = function() {
+    return this._wrapped;
+  };
+
+  // Provide unwrapping proxy for some methods used in engine operations
+  // such as arithmetic and JSON stringification.
+  _.prototype.valueOf = _.prototype.toJSON = _.prototype.value;
+
+  _.prototype.toString = function() {
+    return '' + this._wrapped;
+  };
+
+  // AMD registration happens at the end for compatibility with AMD loaders
+  // that may not enforce next-turn semantics on modules. Even though general
+  // practice for AMD registration is to be anonymous, underscore registers
+  // as a named module because, like jQuery, it is a base library that is
+  // popular enough to be bundled in a third party lib, but not be part of
+  // an AMD load request. Those cases could generate an error when an
+  // anonymous define() is called outside of a loader request.
+  if (true) {
+    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function() {
+      return _;
+    }.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+  }
+}.call(this));
+
 
 /***/ }),
 
-/***/ 444:
+/***/ 440:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_router__ = __webpack_require__(171);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(172);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__core_services_general_forms_service__ = __webpack_require__(374);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DynamicFormsComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GeneralFormbuilderComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var GeneralFormbuilderComponent = (function () {
+    function GeneralFormbuilderComponent() {
+    }
+    GeneralFormbuilderComponent.prototype.ngOnInit = function () {
+        console.log('here');
+    };
+    return GeneralFormbuilderComponent;
+}());
+GeneralFormbuilderComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'app-general-formbuilder',
+        template: __webpack_require__(457),
+    }),
+    __metadata("design:paramtypes", [])
+], GeneralFormbuilderComponent);
+
+
+
+/***/ }),
+
+/***/ 441:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(172);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__core_services_general_forms_service__ = __webpack_require__(376);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__core_services_common_pager_service__ = __webpack_require__(373);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__core_services_employee_service__ = __webpack_require__(443);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GeneralListingComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -17958,186 +19607,131 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var DynamicFormsComponent = (function () {
-    function DynamicFormsComponent(fb, _router, _route, _generalFormsService) {
-        this.fb = fb;
+
+var GeneralListingComponent = (function () {
+    function GeneralListingComponent(_router, _route, _generalFormsService, _employeeService, pagerService) {
         this._router = _router;
         this._route = _route;
         this._generalFormsService = _generalFormsService;
-        this.data = [];
-        this.childSubmitData = new __WEBPACK_IMPORTED_MODULE_1__angular_core__["EventEmitter"]();
+        this._employeeService = _employeeService;
+        this.pagerService = pagerService;
+        this._results = {};
+        this._fieldLists = [];
+        this._selectedfields = [];
+        this._selectedfieldsHeading = [];
+        this._FilteredfieldsHeading = [];
+        this._Filteredfields = [];
+        this.result_lists = {};
+        this._resultsData = [];
+        this._data = [];
+        this.pager = {};
         this.msgs = [];
     }
-    DynamicFormsComponent.prototype.ngOnInit = function () {
-        console.log(this.data);
-        this.makeForms();
+    GeneralListingComponent.prototype.ngOnInit = function () {
+        this.getListingFields(this.lookup);
     };
-    DynamicFormsComponent.prototype.makeForms = function () {
-        var group = {};
-        this.data.forEach(function (frm) {
-            frm['custom_obj'].forEach(function (element) {
-                if (element.fieldType == 'Dropdown' || element.fieldType == 'Bit') {
-                    var optionVal = JSON.parse(element.optionValue);
-                    element.optionValue = optionVal;
+    GeneralListingComponent.prototype.getListingFields = function (id) {
+        var _this = this;
+        this._generalFormsService
+            .GetSingle(id)
+            .subscribe(function (data) {
+            _this._results = data;
+            _this._fieldLists = _this._results['formFieldlist'];
+            for (var i = 0; i < _this._fieldLists.length; i++) {
+                if (_this._fieldLists[i]['isVisibleInList'] == true) {
+                    var index = _this._fieldLists[i]['id'];
+                    if (!_this._selectedfields[i]) {
+                        _this._selectedfields[i] = [];
+                    }
+                    _this._selectedfieldsHeading.push(_this._fieldLists[i]);
+                    _this._selectedfields[i] = _this._fieldLists[i]['fieldName'];
                 }
-                if (element.isRequire == true) {
-                    group[element.fieldName] = new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormControl"]('', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required);
-                }
-                else {
-                    group[element.fieldName] = new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormControl"]('');
-                }
-            });
+            }
+            _this._FilteredfieldsHeading = _this.stripUndefined(_this._selectedfieldsHeading);
+            _this._Filteredfields = _this.stripUndefined(_this._selectedfields);
+            _this.getAllEmployee();
         });
-        this.form = this.fb.group(group);
     };
-    DynamicFormsComponent.prototype.onSubmit = function (value, isValid) {
-        this.submitted = true;
-        if (isValid == false) {
-            this.msgs.push({ severity: 'error', summary: 'Error Message', detail: 'Validation failed' });
-            return false;
-        }
-        else {
-            this.childSubmitData.emit(this.form.value);
-            this.msgs.push({ severity: 'info', summary: 'Updated', detail: 'Information has been updated successfully!!!' });
-        }
+    GeneralListingComponent.prototype.getAllEmployee = function () {
+        var _this = this;
+        this._employeeService.GetAll()
+            .subscribe(function (data) {
+            _this.result_lists = data;
+            _this._resultsData = _this.result_lists['list'];
+            for (var i = 0; i < _this._resultsData.length; i++) {
+                if (!_this._data[i]) {
+                    _this._data[i] = [];
+                }
+                for (var j = 0; j < _this._Filteredfields.length; j++) {
+                    var field_name = _this._Filteredfields[j].toLowerCase();
+                    var field_value = _this._resultsData[i][field_name];
+                    var group = {
+                        val: field_value,
+                        id: _this._resultsData[i]['employeeId'],
+                    };
+                    _this._data[i].push(group);
+                }
+            }
+            _this.setPage(1);
+        });
     };
-    return DynamicFormsComponent;
+    GeneralListingComponent.prototype.stripUndefined = function (arr) {
+        return arr.reduce(function (result, item) {
+            result.push(Array.isArray(item) && !item.length ? this.stripUndefined(item) : item);
+            return result;
+        }, []);
+    };
+    GeneralListingComponent.prototype.setPage = function (page) {
+        if (page < 1 || page > this.pager.totalPages) {
+            return;
+        }
+        this.pager = this.pagerService.getPager(this._data.length, page);
+        this.pagedItems = this._data.slice(this.pager.startIndex, this.pager.endIndex + 1);
+    };
+    GeneralListingComponent.prototype.delete = function (id) {
+        var _this = this;
+        var url = 'EmployeeDetails/DeleteEmployeeByID';
+        this._generalFormsService
+            .Delete(id, url)
+            .subscribe(function (data) {
+            _this.msgs.push({ severity: 'info', summary: 'Deleted', detail: 'Employee has been Deleted successfully!!!' });
+            _this.reset();
+        });
+    };
+    GeneralListingComponent.prototype.reset = function () {
+        this._selectedfieldsHeading = [];
+        this._Filteredfields = [];
+        this._data = [];
+        this.getListingFields(this.lookup);
+    };
+    GeneralListingComponent.prototype.convertDate = function (inputFormat) {
+        function pad(s) { return (s < 10) ? '0' + s : s; }
+        var d = new Date(inputFormat);
+        return [pad(d.getMonth() + 1), pad(d.getDate()), d.getFullYear()].join('/');
+    };
+    return GeneralListingComponent;
 }());
 __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Input"])('tabnumber'),
-    __metadata("design:type", Number)
-], DynamicFormsComponent.prototype, "tabnumber", void 0);
-__decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Input"])('data'),
-    __metadata("design:type", Array)
-], DynamicFormsComponent.prototype, "data", void 0);
-__decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Output"])(),
-    __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1__angular_core__["EventEmitter"])
-], DynamicFormsComponent.prototype, "childSubmitData", void 0);
-DynamicFormsComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Component"])({
-        selector: 'app-dynamic-forms',
-        template: __webpack_require__(450),
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])('lookup'),
+    __metadata("design:type", String)
+], GeneralListingComponent.prototype, "lookup", void 0);
+GeneralListingComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'app-general-listing',
+        template: __webpack_require__(458),
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormBuilder"],
-        __WEBPACK_IMPORTED_MODULE_0__angular_router__["Router"],
-        __WEBPACK_IMPORTED_MODULE_0__angular_router__["ActivatedRoute"],
-        __WEBPACK_IMPORTED_MODULE_3__core_services_general_forms_service__["a" /* GeneralFormsService */]])
-], DynamicFormsComponent);
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_router__["Router"],
+        __WEBPACK_IMPORTED_MODULE_1__angular_router__["ActivatedRoute"],
+        __WEBPACK_IMPORTED_MODULE_2__core_services_general_forms_service__["a" /* GeneralFormsService */],
+        __WEBPACK_IMPORTED_MODULE_4__core_services_employee_service__["a" /* EmployeeService */],
+        __WEBPACK_IMPORTED_MODULE_3__core_services_common_pager_service__["a" /* PagerService */]])
+], GeneralListingComponent);
 
 
 
 /***/ }),
 
-/***/ 445:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(171);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_general_formbuilder_component__ = __webpack_require__(376);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GeneralFormbuilderRoutingModule; });
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-
-
-
-var routes = [
-    { path: '', component: __WEBPACK_IMPORTED_MODULE_2__components_general_formbuilder_component__["a" /* GeneralFormbuilderComponent */] },
-];
-var GeneralFormbuilderRoutingModule = (function () {
-    function GeneralFormbuilderRoutingModule() {
-    }
-    return GeneralFormbuilderRoutingModule;
-}());
-GeneralFormbuilderRoutingModule = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
-        imports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["RouterModule"].forChild(routes)],
-        exports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["RouterModule"]]
-    })
-], GeneralFormbuilderRoutingModule);
-
-
-
-/***/ }),
-
-/***/ 446:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__(52);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(172);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_general_formbuilder_component__ = __webpack_require__(376);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_dynamic_forms_component__ = __webpack_require__(444);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__general_formbuilder_routing_module__ = __webpack_require__(445);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_primeng_primeng__ = __webpack_require__(439);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_primeng_primeng___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_primeng_primeng__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GeneralFormbuilderModule", function() { return GeneralFormbuilderModule; });
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-
-
-
-
-
-
-
-var GeneralFormbuilderModule = (function () {
-    function GeneralFormbuilderModule() {
-    }
-    return GeneralFormbuilderModule;
-}());
-GeneralFormbuilderModule = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
-        imports: [
-            __WEBPACK_IMPORTED_MODULE_1__angular_common__["CommonModule"],
-            __WEBPACK_IMPORTED_MODULE_5__general_formbuilder_routing_module__["a" /* GeneralFormbuilderRoutingModule */],
-            __WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormsModule"],
-            __WEBPACK_IMPORTED_MODULE_2__angular_forms__["ReactiveFormsModule"],
-            __WEBPACK_IMPORTED_MODULE_6_primeng_primeng__["GrowlModule"],
-            __WEBPACK_IMPORTED_MODULE_6_primeng_primeng__["CalendarModule"]
-        ],
-        exports: [
-            __WEBPACK_IMPORTED_MODULE_3__components_general_formbuilder_component__["a" /* GeneralFormbuilderComponent */],
-            __WEBPACK_IMPORTED_MODULE_4__components_dynamic_forms_component__["a" /* DynamicFormsComponent */]
-        ],
-        declarations: [
-            __WEBPACK_IMPORTED_MODULE_3__components_general_formbuilder_component__["a" /* GeneralFormbuilderComponent */],
-            __WEBPACK_IMPORTED_MODULE_4__components_dynamic_forms_component__["a" /* DynamicFormsComponent */]
-        ]
-    })
-], GeneralFormbuilderModule);
-
-
-
-/***/ }),
-
-/***/ 450:
-/***/ (function(module, exports) {
-
-module.exports = "<form  (ngSubmit)=\"onSubmit(form.value, form.valid)\" [formGroup]=\"form\" novalidate>\r\n<div class=\"form-horizontal\" *ngFor=\"let category of data\">\r\n    <div class=\"boder-btm\">\r\n        <h3 class=\"panel-title\"> {{category.category_name}}  </h3>\r\n    </div>\r\n    <div class=\"m-b-30\">\r\n      <div class=\"form-group\" *ngFor=\"let fields of category['custom_obj']\">\r\n        <div [ngSwitch]=\"fields.fieldType\">\r\n          <label class=\"col-sm-2 control-label\"> {{fields.displayName}}  <span class=\"asterisk\">*</span> </label>\r\n          <div class=\"col-sm-4\" *ngSwitchCase=\"'Text'\">\r\n            <input class=\"form-control\" type=\"text\" [formControlName]=\"fields.fieldName\" [(ngModel)]=\"fields.value\">\r\n          </div>\r\n          <div class=\"col-sm-4\" *ngSwitchCase=\"'Bit'\">\r\n            <div class=\"radio\" *ngFor=\"let opt of fields.optionValue\">\r\n              <label>\r\n                <input \r\n                    type=\"radio\" \r\n                    [value]=\"opt.key\"\r\n                    [formControlName]=\"fields.fieldName\" \r\n                    [checked]=\"fields.value === opt.key\">\r\n                {{opt.value}}\r\n              </label>\r\n            </div>\r\n          </div>\r\n          <div class=\"col-sm-4\" *ngSwitchCase=\"'Dropdown'\">\r\n               <select class=\"form-control\" [id]=\"fields.id\" [formControlName]=\"fields.fieldName\">\r\n                  <option  value=\"\" selected>Select</option>\r\n                  <option *ngFor=\"let opt of fields.optionValue\" [value]=\"opt.key\">{{opt.value}}</option>\r\n                </select>\r\n          </div>\r\n          <div class=\"col-sm-4\" *ngSwitchCase=\"'Textarea'\">\r\n              <textarea [formControlName]=\"fields.fieldName\" [(ngModel)]=\"fields.value\" rows=\"10\" cols=\"55\"> </textarea>\r\n          </div>\r\n          <div class=\"col-sm-4\" *ngSwitchCase=\"'Date'\">\r\n              <p-calendar [formControlName]=\"fields.fieldName\" [showIcon]=\"true\"></p-calendar> \r\n              <span style=\"margin-left:35px\">{{fields.value|date}}</span>\r\n          </div>\r\n          <div \r\n              class=\"alert alert-danger\" \r\n              [hidden]=\"form.get([fields.fieldName]).valid || (form.get([fields.fieldName]).pristine && !submitted)\">\r\n              * {{fields.displayName}} is required\r\n            </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n</div>\r\n<div class=\"form-row\">\r\n    <button class=\"btn btn-primary m-b-10\" type=\"submit\" >Save</button>\r\n    <p-growl [value]=\"msgs\"></p-growl>\r\n</div>\r\n</form>"
-
-/***/ }),
-
-/***/ 451:
-/***/ (function(module, exports) {
-
-module.exports = "<p>\r\n  general-formbuilder works!\r\n</p>\r\n"
-
-/***/ }),
-
-/***/ 453:
+/***/ 443:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -18186,14 +19780,310 @@ EmployeeService = __decorate([
 
 /***/ }),
 
-/***/ 469:
+/***/ 448:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_router__ = __webpack_require__(172);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(171);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__core_services_general_forms_service__ = __webpack_require__(376);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DynamicFormsComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var DynamicFormsComponent = (function () {
+    function DynamicFormsComponent(fb, _router, _route, _generalFormsService) {
+        this.fb = fb;
+        this._router = _router;
+        this._route = _route;
+        this._generalFormsService = _generalFormsService;
+        this.data = [];
+        this.childSubmitData = new __WEBPACK_IMPORTED_MODULE_1__angular_core__["EventEmitter"]();
+        this.msgs = [];
+    }
+    DynamicFormsComponent.prototype.ngOnInit = function () {
+        this.makeForms();
+    };
+    DynamicFormsComponent.prototype.makeForms = function () {
+        var _this = this;
+        var group = {};
+        this.data.forEach(function (frm) {
+            frm['custom_obj'].forEach(function (element) {
+                if (element.fieldType == 'Dropdown' || element.fieldType == 'Bit') {
+                    var optionVal = JSON.parse(element.optionValue);
+                    element.optionValue = optionVal;
+                }
+                if (element.fieldType == 'Date') {
+                    if (element.value !== '') {
+                        element.value = _this.convertDate(element.value);
+                    }
+                }
+                if (element.isRequire == true) {
+                    group[element.fieldName] = new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormControl"]('', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required);
+                }
+                else {
+                    group[element.fieldName] = new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormControl"]('');
+                }
+            });
+        });
+        this.form = this.fb.group(group);
+    };
+    DynamicFormsComponent.prototype.onSubmit = function (value, isValid) {
+        this.submitted = true;
+        if (isValid == false) {
+            this.msgs.push({ severity: 'error', summary: 'Error Message', detail: 'Validation failed' });
+            return false;
+        }
+        else {
+            this.childSubmitData.emit(this.form.value);
+            this.msgs.push({ severity: 'info', summary: 'Updated', detail: 'Information has been updated successfully!!!' });
+        }
+    };
+    DynamicFormsComponent.prototype.convertDate = function (inputFormat) {
+        function pad(s) { return (s < 10) ? '0' + s : s; }
+        var d = new Date(inputFormat);
+        return [pad(d.getMonth() + 1), pad(d.getDate()), d.getFullYear()].join('/');
+    };
+    return DynamicFormsComponent;
+}());
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Input"])('tabnumber'),
+    __metadata("design:type", Number)
+], DynamicFormsComponent.prototype, "tabnumber", void 0);
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Input"])('data'),
+    __metadata("design:type", Array)
+], DynamicFormsComponent.prototype, "data", void 0);
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Output"])(),
+    __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1__angular_core__["EventEmitter"])
+], DynamicFormsComponent.prototype, "childSubmitData", void 0);
+DynamicFormsComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Component"])({
+        selector: 'app-dynamic-forms',
+        template: __webpack_require__(456),
+    }),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormBuilder"],
+        __WEBPACK_IMPORTED_MODULE_0__angular_router__["Router"],
+        __WEBPACK_IMPORTED_MODULE_0__angular_router__["ActivatedRoute"],
+        __WEBPACK_IMPORTED_MODULE_3__core_services_general_forms_service__["a" /* GeneralFormsService */]])
+], DynamicFormsComponent);
+
+
+
+/***/ }),
+
+/***/ 449:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(171);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(172);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__core_services_general_forms_service__ = __webpack_require__(374);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(172);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_general_formbuilder_component__ = __webpack_require__(440);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GeneralFormbuilderRoutingModule; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+var routes = [
+    { path: '', component: __WEBPACK_IMPORTED_MODULE_2__components_general_formbuilder_component__["a" /* GeneralFormbuilderComponent */] },
+];
+var GeneralFormbuilderRoutingModule = (function () {
+    function GeneralFormbuilderRoutingModule() {
+    }
+    return GeneralFormbuilderRoutingModule;
+}());
+GeneralFormbuilderRoutingModule = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
+        imports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["RouterModule"].forChild(routes)],
+        exports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["RouterModule"]]
+    })
+], GeneralFormbuilderRoutingModule);
+
+
+
+/***/ }),
+
+/***/ 450:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__(52);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(171);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_general_formbuilder_component__ = __webpack_require__(440);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_dynamic_forms_component__ = __webpack_require__(448);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__general_formbuilder_routing_module__ = __webpack_require__(449);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_primeng_primeng__ = __webpack_require__(375);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_primeng_primeng___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_primeng_primeng__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GeneralFormbuilderModule", function() { return GeneralFormbuilderModule; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+
+
+
+
+var GeneralFormbuilderModule = (function () {
+    function GeneralFormbuilderModule() {
+    }
+    return GeneralFormbuilderModule;
+}());
+GeneralFormbuilderModule = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
+        imports: [
+            __WEBPACK_IMPORTED_MODULE_1__angular_common__["CommonModule"],
+            __WEBPACK_IMPORTED_MODULE_5__general_formbuilder_routing_module__["a" /* GeneralFormbuilderRoutingModule */],
+            __WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormsModule"],
+            __WEBPACK_IMPORTED_MODULE_2__angular_forms__["ReactiveFormsModule"],
+            __WEBPACK_IMPORTED_MODULE_6_primeng_primeng__["GrowlModule"],
+            __WEBPACK_IMPORTED_MODULE_6_primeng_primeng__["CalendarModule"]
+        ],
+        exports: [
+            __WEBPACK_IMPORTED_MODULE_3__components_general_formbuilder_component__["a" /* GeneralFormbuilderComponent */],
+            __WEBPACK_IMPORTED_MODULE_4__components_dynamic_forms_component__["a" /* DynamicFormsComponent */]
+        ],
+        declarations: [
+            __WEBPACK_IMPORTED_MODULE_3__components_general_formbuilder_component__["a" /* GeneralFormbuilderComponent */],
+            __WEBPACK_IMPORTED_MODULE_4__components_dynamic_forms_component__["a" /* DynamicFormsComponent */]
+        ]
+    })
+], GeneralFormbuilderModule);
+
+
+
+/***/ }),
+
+/***/ 451:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(172);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_general_listing_component__ = __webpack_require__(441);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GeneralListingRoutingModule; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+var routes = [
+    { path: '', component: __WEBPACK_IMPORTED_MODULE_2__components_general_listing_component__["a" /* GeneralListingComponent */] },
+];
+var GeneralListingRoutingModule = (function () {
+    function GeneralListingRoutingModule() {
+    }
+    return GeneralListingRoutingModule;
+}());
+GeneralListingRoutingModule = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
+        imports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["RouterModule"].forChild(routes)],
+        exports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["RouterModule"]]
+    })
+], GeneralListingRoutingModule);
+
+
+
+/***/ }),
+
+/***/ 452:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__(52);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_general_listing_component__ = __webpack_require__(441);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__general_listing_routing_module__ = __webpack_require__(451);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GeneralListingModule", function() { return GeneralListingModule; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+
+var GeneralListingModule = (function () {
+    function GeneralListingModule() {
+    }
+    return GeneralListingModule;
+}());
+GeneralListingModule = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
+        imports: [
+            __WEBPACK_IMPORTED_MODULE_1__angular_common__["CommonModule"],
+            __WEBPACK_IMPORTED_MODULE_3__general_listing_routing_module__["a" /* GeneralListingRoutingModule */]
+        ],
+        exports: [
+            __WEBPACK_IMPORTED_MODULE_2__components_general_listing_component__["a" /* GeneralListingComponent */]
+        ],
+        declarations: [__WEBPACK_IMPORTED_MODULE_2__components_general_listing_component__["a" /* GeneralListingComponent */]]
+    })
+], GeneralListingModule);
+
+
+
+/***/ }),
+
+/***/ 456:
+/***/ (function(module, exports) {
+
+module.exports = "<form  (ngSubmit)=\"onSubmit(form.value, form.valid)\" [formGroup]=\"form\" novalidate>\r\n<div class=\"form-horizontal\" *ngFor=\"let category of data\">\r\n    <div class=\"boder-btm\">\r\n        <h3 class=\"panel-title\"> {{category.category_name}}  </h3>\r\n    </div>\r\n    <div class=\"m-b-30\">\r\n      <div class=\"form-group\" *ngFor=\"let fields of category['custom_obj']\">\r\n        <div [ngSwitch]=\"fields.fieldType\">\r\n          <label class=\"col-sm-2 control-label\"> {{fields.displayName}}  <span class=\"asterisk\">*</span> </label>\r\n          <div class=\"col-sm-4\" *ngSwitchCase=\"'Text'\">\r\n            <input class=\"form-control\" type=\"text\" [formControlName]=\"fields.fieldName\" [(ngModel)]=\"fields.value\">\r\n          </div>\r\n          <div class=\"col-sm-4\" *ngSwitchCase=\"'Bit'\">\r\n            <div class=\"radio\" *ngFor=\"let opt of fields.optionValue; let idx = index\">\r\n              <label>\r\n                <input \r\n                    type=\"radio\" \r\n                    value=\"{{opt.key}}\"\r\n                    [formControlName]=\"fields.fieldName\" \r\n                    [(ngModel)]=\"fields.value\">\r\n                {{opt.value}}\r\n              </label>\r\n            </div>\r\n          </div>\r\n          <div class=\"col-sm-4\" *ngSwitchCase=\"'Dropdown'\">\r\n               <select class=\"form-control\" [id]=\"fields.id\" [formControlName]=\"fields.fieldName\" [(ngModel)]=\"fields.value\">\r\n                  <option  value=\"\" selected>Select</option>\r\n                  <option  value= {{opt.key}} *ngFor=\"let opt of fields.optionValue; let idx = index\">{{opt.value}}</option>\r\n                </select>\r\n          </div>\r\n          <div class=\"col-sm-4\" *ngSwitchCase=\"'Textarea'\">\r\n              <textarea [formControlName]=\"fields.fieldName\" [(ngModel)]=\"fields.value\" rows=\"10\" cols=\"55\"> </textarea>\r\n          </div>\r\n          <div class=\"col-sm-4\" *ngSwitchCase=\"'Date'\">\r\n              <p-calendar [formControlName]=\"fields.fieldName\" [showIcon]=\"true\" [(ngModel)]=\"fields.value\"></p-calendar> \r\n              <span style=\"margin-left:35px\">{{fields.value|date}}</span>\r\n          </div>\r\n          <div \r\n              class=\"alert alert-danger\" \r\n              [hidden]=\"form.get([fields.fieldName]).valid || (form.get([fields.fieldName]).pristine && !submitted)\">\r\n              * {{fields.displayName}} is required\r\n            </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n</div>\r\n<div class=\"form-row\">\r\n    <button class=\"btn btn-primary m-b-10\" type=\"submit\" >Save</button>\r\n    <p-growl [value]=\"msgs\"></p-growl>\r\n</div>\r\n</form>"
+
+/***/ }),
+
+/***/ 457:
+/***/ (function(module, exports) {
+
+module.exports = "<p>\r\n  general-formbuilder works!\r\n</p>\r\n"
+
+/***/ }),
+
+/***/ 458:
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"row\">\r\n    <div class=\"col-md-3 col-sm-3 col-xs-12 \">\r\n        <label class=\"bold\">Employee</label>\r\n        <select class=\"form-control\" style=\"display: none;\">\r\n            <option>-- Select --</option>\r\n        </select><div class=\"btn-group bootstrap-select form-control\"><button type=\"button\" class=\"btn dropdown-toggle selectpicker btn-default\" data-toggle=\"dropdown\" title=\"-- Select --\"><span class=\"filter-option pull-left\">-- Select --</span>&nbsp;<span class=\"caret\"></span></button><div class=\"dropdown-menu open\"><ul class=\"dropdown-menu inner selectpicker\" role=\"menu\"><li rel=\"0\" class=\"selected\"><a tabindex=\"0\" class=\"\" style=\"\"><span class=\"text\">-- Select --</span><i class=\"fa fa-ok icon-ok check-mark\"></i></a></li></ul></div></div>\r\n    </div>\r\n    <div class=\"col-md-3 col-sm-3 col-xs-12 \">\r\n        <label class=\"bold\">Department</label>\r\n        <select class=\"form-control\" style=\"display: none;\">\r\n            <option>-- Select --</option>\r\n        </select><div class=\"btn-group bootstrap-select form-control\"><button type=\"button\" class=\"btn dropdown-toggle selectpicker btn-default\" data-toggle=\"dropdown\" title=\"-- Select --\"><span class=\"filter-option pull-left\">-- Select --</span>&nbsp;<span class=\"caret\"></span></button><div class=\"dropdown-menu open\"><ul class=\"dropdown-menu inner selectpicker\" role=\"menu\"><li rel=\"0\" class=\"selected\"><a tabindex=\"0\" class=\"\" style=\"\"><span class=\"text\">-- Select --</span><i class=\"fa fa-ok icon-ok check-mark\"></i></a></li></ul></div></div>\r\n    </div>\r\n    <div class=\"col-md-3 col-sm-3 col-xs-12 \">\r\n        <label class=\"bold\">Status</label>\r\n        <select class=\"form-control\" style=\"display: none;\">\r\n            <option>-- Select --</option>\r\n        </select><div class=\"btn-group bootstrap-select form-control\"><button type=\"button\" class=\"btn dropdown-toggle selectpicker btn-default\" data-toggle=\"dropdown\" title=\"-- Select --\"><span class=\"filter-option pull-left\">-- Select --</span>&nbsp;<span class=\"caret\"></span></button><div class=\"dropdown-menu open\"><ul class=\"dropdown-menu inner selectpicker\" role=\"menu\"><li rel=\"0\" class=\"selected\"><a tabindex=\"0\" class=\"\" style=\"\"><span class=\"text\">-- Select --</span><i class=\"fa fa-ok icon-ok check-mark\"></i></a></li></ul></div></div>\r\n    </div>\r\n    <div class=\"col-md-3 col-sm-3 col-xs-12 \">\r\n        <label class=\"bold\">Employee Statistics</label>\r\n        <select class=\"form-control\" style=\"display: none;\">\r\n            <option>-- Select --</option>\r\n        </select><div class=\"btn-group bootstrap-select form-control\"><button type=\"button\" class=\"btn dropdown-toggle selectpicker btn-default\" data-toggle=\"dropdown\" title=\"-- Select --\"><span class=\"filter-option pull-left\">-- Select --</span>&nbsp;<span class=\"caret\"></span></button><div class=\"dropdown-menu open\"><ul class=\"dropdown-menu inner selectpicker\" role=\"menu\"><li rel=\"0\" class=\"selected\"><a tabindex=\"0\" class=\"\" style=\"\"><span class=\"text\">-- Select --</span><i class=\"fa fa-ok icon-ok check-mark\"></i></a></li></ul></div></div>\r\n    </div>\r\n</div>\r\n\r\n<div class=\"row\">\r\n    <div class=\"col-md-12 col-sm-12 col-xs-12\">\r\n        <div class=\"table-responsive\">\r\n            <table class=\"table table-bordered table-striped table-hover\">\r\n                <thead class=\"no-bd\">\r\n                    <tr>\r\n                        <th *ngFor=\"let fields of _FilteredfieldsHeading\"><strong> {{fields.displayName}} </strong> </th>\r\n                        <th><strong>Action</strong></th>\r\n                    </tr>\r\n                </thead>\r\n                <tbody class=\"no-bd-y\">\r\n                    <tr *ngFor=\"let rec of pagedItems;let i = index\">\r\n                        <td *ngFor=\"let r of rec\"> {{r.val}} </td>\r\n                        <td>\r\n                            <button [routerLink]=\"['/employee/edit/' + lookup + '/' + rec[0]['id'] ]\" type=\"button\" class=\"btn btn-sm btn-warning\" title=\"Edit\"><i class=\"fa fa-pencil\"></i></button>\r\n                            <button (click)=\"delete(rec[0]['id'])\" type=\"button\" class=\"btn btn-sm btn-danger\" title=\"Delete\"><i class=\"fa fa-remove\"></i></button>\r\n                        </td>\r\n                    </tr>\r\n                </tbody>\r\n            </table>\r\n\r\n            \r\n            <ul *ngIf=\"pager.pages && pager.pages.length\" class=\"pagination\">\r\n                <li [ngClass]=\"{disabled:pager.currentPage === 1}\">\r\n                    <a (click)=\"setPage(1)\">First</a>\r\n                </li>\r\n                <li [ngClass]=\"{disabled:pager.currentPage === 1}\">\r\n                    <a (click)=\"setPage(pager.currentPage - 1)\">Previous</a>\r\n                </li>\r\n                <li *ngFor=\"let page of pager.pages\" [ngClass]=\"{active:pager.currentPage === page}\">\r\n                    <a (click)=\"setPage(page)\">{{page}}</a>\r\n                </li>\r\n                <li [ngClass]=\"{disabled:pager.currentPage === pager.totalPages}\">\r\n                    <a (click)=\"setPage(pager.currentPage + 1)\">Next</a>\r\n                </li>\r\n                <li [ngClass]=\"{disabled:pager.currentPage === pager.totalPages}\">\r\n                    <a (click)=\"setPage(pager.totalPages)\">Last</a>\r\n                </li>\r\n            </ul>\r\n\r\n        </div>\r\n    </div>\r\n</div>\r\n                    \r\n      "
+
+/***/ }),
+
+/***/ 475:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(172);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(171);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__core_services_general_forms_service__ = __webpack_require__(376);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EditComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -18232,7 +20122,6 @@ var EditComponent = (function () {
             _this.generalFormId = params['formid'];
             _this.Id = params['id'];
         });
-        this.getFormDefination(this.generalFormId);
         this.getFormData(this.Id);
     };
     EditComponent.prototype.getFormData = function (id) {
@@ -18243,6 +20132,7 @@ var EditComponent = (function () {
             _this._formDataObj = data;
             _this._db_submit = _this._formDataObj['objEmployee'];
             _this._formData.push(_this._formDataObj['objEmployee']);
+            _this.getFormDefination(_this.generalFormId);
         });
     };
     EditComponent.prototype.getFormDefination = function (id) {
@@ -18340,7 +20230,7 @@ var EditComponent = (function () {
             this.url = 'EmployeeDetails/UpdateEmployee/';
         }
         this._generalFormsService
-            .Update(this.generalFormId, this._db_submit, this.url)
+            .Update(this.Id, this._db_submit, this.url)
             .subscribe(function (data) {
             if (_this.generalFormId == 1) {
                 console.log(data);
@@ -18352,7 +20242,7 @@ var EditComponent = (function () {
 EditComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-edit',
-        template: __webpack_require__(572),
+        template: __webpack_require__(577),
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormBuilder"],
         __WEBPACK_IMPORTED_MODULE_1__angular_router__["Router"],
@@ -18364,7 +20254,7 @@ EditComponent = __decorate([
 
 /***/ }),
 
-/***/ 470:
+/***/ 476:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -18390,7 +20280,7 @@ var LeaveComponent = (function () {
 LeaveComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-leave',
-        template: __webpack_require__(573),
+        template: __webpack_require__(578),
     }),
     __metadata("design:paramtypes", [])
 ], LeaveComponent);
@@ -18399,14 +20289,16 @@ LeaveComponent = __decorate([
 
 /***/ }),
 
-/***/ 471:
+/***/ 477:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(171);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__core_services_employee_service__ = __webpack_require__(453);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__core_services_general_forms_service__ = __webpack_require__(374);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_router__ = __webpack_require__(172);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(171);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__core_services_general_forms_service__ = __webpack_require__(376);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__models_general_data_model__ = __webpack_require__(549);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__shared__ = __webpack_require__(374);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ListsComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -18421,94 +20313,62 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+
 var ListsComponent = (function () {
-    function ListsComponent(_router, _route, _generalFormsService, _employeeService) {
+    function ListsComponent(fb, _router, _route, _generalFormsService) {
+        this.fb = fb;
         this._router = _router;
         this._route = _route;
         this._generalFormsService = _generalFormsService;
-        this._employeeService = _employeeService;
-        this.result_lists = {};
-        this._resultsData = [];
-        this._fieldLists = [];
-        this._results = {};
-        this._selectedfieldsHeading = [];
-        this._selectedfields = [];
-        this._FilteredfieldsHeading = [];
-        this._Filteredfields = [];
-        this._data = [];
+        this._generalDataModel = new __WEBPACK_IMPORTED_MODULE_4__models_general_data_model__["a" /* GeneralDataModel */]();
         this.lookup = 1;
+        this.msgs = [];
+        this.form = fb.group({
+            'f2': [this._generalDataModel.f2, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required],
+            'f3': [this._generalDataModel.f3, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required],
+            'f4': [this._generalDataModel.f4, [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required, __WEBPACK_IMPORTED_MODULE_5__shared__["e" /* BasicValidators */].email]],
+        });
     }
     ListsComponent.prototype.ngOnInit = function () {
-        this.getListingFields(this.lookup);
     };
-    ListsComponent.prototype.getListingFields = function (id) {
+    ListsComponent.prototype.onSubmit = function (value, isValid) {
         var _this = this;
-        this._generalFormsService
-            .GetSingle(id)
-            .subscribe(function (data) {
-            _this._results = data;
-            _this._fieldLists = _this._results['formFieldlist'];
-            for (var i = 0; i < _this._fieldLists.length; i++) {
-                if (_this._fieldLists[i]['isVisibleInList'] == true) {
-                    var index = _this._fieldLists[i]['id'];
-                    if (!_this._selectedfields[i]) {
-                        _this._selectedfields[i] = [];
-                    }
-                    _this._selectedfieldsHeading.push(_this._fieldLists[i]);
-                    _this._selectedfields[i] = _this._fieldLists[i]['fieldName'];
-                }
-            }
-            _this._FilteredfieldsHeading = _this.stripUndefined(_this._selectedfieldsHeading);
-            _this._Filteredfields = _this.stripUndefined(_this._selectedfields);
-            _this.getAllEmployee();
-        });
-    };
-    ListsComponent.prototype.getAllEmployee = function () {
-        var _this = this;
-        this._employeeService.GetAll()
-            .subscribe(function (data) {
-            _this.result_lists = data;
-            _this._resultsData = _this.result_lists['list'];
-            for (var i = 0; i < _this._resultsData.length; i++) {
-                if (!_this._data[i]) {
-                    _this._data[i] = [];
-                }
-                for (var j = 0; j < _this._Filteredfields.length; j++) {
-                    var field_name = _this._Filteredfields[j].toLowerCase();
-                    var field_value = _this._resultsData[i][field_name];
-                    var group = {
-                        val: field_value,
-                        id: _this._resultsData[i]['employeeId'],
-                    };
-                    _this._data[i].push(group);
-                }
-            }
-        });
-    };
-    ListsComponent.prototype.stripUndefined = function (arr) {
-        return arr.reduce(function (result, item) {
-            result.push(Array.isArray(item) && !item.length ? this.stripUndefined(item) : item);
-            return result;
-        }, []);
+        this.submitted = true;
+        if (isValid == false) {
+            return false;
+        }
+        else {
+            this._generalDataModel.f2 = value.f2;
+            this._generalDataModel.f3 = value.f3;
+            this._generalDataModel.f4 = value.f4;
+            var url = 'EmployeeDetails/CreateEmployee';
+            this._generalFormsService
+                .Add(this._generalDataModel, url)
+                .subscribe(function (data) {
+                _this.msgs.push({ severity: 'info', summary: 'Updated', detail: 'Information has been Added successfully!!!' });
+                document.getElementById('close_model').click();
+            });
+        }
     };
     return ListsComponent;
 }());
 ListsComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Component"])({
         selector: 'app-lists',
-        template: __webpack_require__(574),
+        template: __webpack_require__(579),
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_router__["Router"],
-        __WEBPACK_IMPORTED_MODULE_1__angular_router__["ActivatedRoute"],
-        __WEBPACK_IMPORTED_MODULE_3__core_services_general_forms_service__["a" /* GeneralFormsService */],
-        __WEBPACK_IMPORTED_MODULE_2__core_services_employee_service__["a" /* EmployeeService */]])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormBuilder"],
+        __WEBPACK_IMPORTED_MODULE_0__angular_router__["Router"],
+        __WEBPACK_IMPORTED_MODULE_0__angular_router__["ActivatedRoute"],
+        __WEBPACK_IMPORTED_MODULE_3__core_services_general_forms_service__["a" /* GeneralFormsService */]])
 ], ListsComponent);
 
 
 
 /***/ }),
 
-/***/ 472:
+/***/ 478:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -18534,7 +20394,7 @@ var ReportComponent = (function () {
 ReportComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-report',
-        template: __webpack_require__(577),
+        template: __webpack_require__(582),
     }),
     __metadata("design:paramtypes", [])
 ], ReportComponent);
@@ -18543,7 +20403,7 @@ ReportComponent = __decorate([
 
 /***/ }),
 
-/***/ 473:
+/***/ 479:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -18569,7 +20429,7 @@ var SalaryComponent = (function () {
 SalaryComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-salary',
-        template: __webpack_require__(579),
+        template: __webpack_require__(584),
     }),
     __metadata("design:paramtypes", [])
 ], SalaryComponent);
@@ -18578,17 +20438,17 @@ SalaryComponent = __decorate([
 
 /***/ }),
 
-/***/ 515:
+/***/ 520:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(171);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__lists_lists_component__ = __webpack_require__(471);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__edit_edit_component__ = __webpack_require__(469);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__leave_leave_component__ = __webpack_require__(470);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__salary_salary_component__ = __webpack_require__(473);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__report_report_component__ = __webpack_require__(472);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(172);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__lists_lists_component__ = __webpack_require__(477);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__edit_edit_component__ = __webpack_require__(475);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__leave_leave_component__ = __webpack_require__(476);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__salary_salary_component__ = __webpack_require__(479);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__report_report_component__ = __webpack_require__(478);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EmployeeRoutingModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -18627,27 +20487,31 @@ EmployeeRoutingModule = __decorate([
 
 /***/ }),
 
-/***/ 516:
+/***/ 521:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__(52);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(172);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__lists_lists_component__ = __webpack_require__(471);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__edit_edit_component__ = __webpack_require__(469);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__employee_routing_module__ = __webpack_require__(515);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__shared__ = __webpack_require__(371);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__leave_leave_component__ = __webpack_require__(470);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__salary_salary_component__ = __webpack_require__(473);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__report_report_component__ = __webpack_require__(472);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__report_activeemployee_activeemployee_component__ = __webpack_require__(517);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__report_workanniversary_workanniversary_component__ = __webpack_require__(519);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__report_birthday_birthday_component__ = __webpack_require__(518);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__core_services_employee_service__ = __webpack_require__(453);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__core_services_general_forms_service__ = __webpack_require__(374);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__general_formbuilder_general_formbuilder_module__ = __webpack_require__(446);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(171);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__lists_lists_component__ = __webpack_require__(477);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__edit_edit_component__ = __webpack_require__(475);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__employee_routing_module__ = __webpack_require__(520);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__shared__ = __webpack_require__(374);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__leave_leave_component__ = __webpack_require__(476);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__salary_salary_component__ = __webpack_require__(479);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__report_report_component__ = __webpack_require__(478);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__report_activeemployee_activeemployee_component__ = __webpack_require__(522);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__report_workanniversary_workanniversary_component__ = __webpack_require__(524);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__report_birthday_birthday_component__ = __webpack_require__(523);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__core_services_employee_service__ = __webpack_require__(443);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__core_services_general_forms_service__ = __webpack_require__(376);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__general_formbuilder_general_formbuilder_module__ = __webpack_require__(450);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__core_services_common_pager_service__ = __webpack_require__(373);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17_primeng_primeng__ = __webpack_require__(375);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17_primeng_primeng___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_17_primeng_primeng__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__general_listing_general_listing_module__ = __webpack_require__(452);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EmployeeModule", function() { return EmployeeModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -18655,6 +20519,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
+
 
 
 
@@ -18684,7 +20551,9 @@ EmployeeModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_2__angular_forms__["ReactiveFormsModule"],
             __WEBPACK_IMPORTED_MODULE_5__employee_routing_module__["a" /* EmployeeRoutingModule */],
             __WEBPACK_IMPORTED_MODULE_6__shared__["d" /* PageHeaderModule */],
-            __WEBPACK_IMPORTED_MODULE_15__general_formbuilder_general_formbuilder_module__["GeneralFormbuilderModule"]
+            __WEBPACK_IMPORTED_MODULE_15__general_formbuilder_general_formbuilder_module__["GeneralFormbuilderModule"],
+            __WEBPACK_IMPORTED_MODULE_17_primeng_primeng__["GrowlModule"],
+            __WEBPACK_IMPORTED_MODULE_18__general_listing_general_listing_module__["GeneralListingModule"]
         ],
         declarations: [
             __WEBPACK_IMPORTED_MODULE_3__lists_lists_component__["a" /* ListsComponent */],
@@ -18698,7 +20567,8 @@ EmployeeModule = __decorate([
         ],
         providers: [
             __WEBPACK_IMPORTED_MODULE_13__core_services_employee_service__["a" /* EmployeeService */],
-            __WEBPACK_IMPORTED_MODULE_14__core_services_general_forms_service__["a" /* GeneralFormsService */]
+            __WEBPACK_IMPORTED_MODULE_14__core_services_general_forms_service__["a" /* GeneralFormsService */],
+            __WEBPACK_IMPORTED_MODULE_16__core_services_common_pager_service__["a" /* PagerService */]
         ]
     })
 ], EmployeeModule);
@@ -18707,7 +20577,7 @@ EmployeeModule = __decorate([
 
 /***/ }),
 
-/***/ 517:
+/***/ 522:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -18733,7 +20603,7 @@ var ActiveemployeeComponent = (function () {
 ActiveemployeeComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-activeemployee',
-        template: __webpack_require__(575),
+        template: __webpack_require__(580),
     }),
     __metadata("design:paramtypes", [])
 ], ActiveemployeeComponent);
@@ -18742,7 +20612,7 @@ ActiveemployeeComponent = __decorate([
 
 /***/ }),
 
-/***/ 518:
+/***/ 523:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -18768,7 +20638,7 @@ var BirthdayComponent = (function () {
 BirthdayComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-birthday',
-        template: __webpack_require__(576),
+        template: __webpack_require__(581),
     }),
     __metadata("design:paramtypes", [])
 ], BirthdayComponent);
@@ -18777,7 +20647,7 @@ BirthdayComponent = __decorate([
 
 /***/ }),
 
-/***/ 519:
+/***/ 524:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -18803,7 +20673,7 @@ var WorkanniversaryComponent = (function () {
 WorkanniversaryComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-workanniversary',
-        template: __webpack_require__(578),
+        template: __webpack_require__(583),
     }),
     __metadata("design:paramtypes", [])
 ], WorkanniversaryComponent);
@@ -18812,56 +20682,71 @@ WorkanniversaryComponent = __decorate([
 
 /***/ }),
 
-/***/ 572:
-/***/ (function(module, exports) {
+/***/ 549:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-module.exports = "<div id=\"main-content\" >\r\n    <div class=\"row m-t-10\">\r\n      <div class=\"col-md-12\">\r\n\r\n        <div class=\"\">\r\n          <ul id=\"myTab2\" class=\"nav nav-tabs nav-dark\">\r\n            <li *ngFor=\"let tab of final_array;let i = index\">\r\n              <a id=\"maintab_{{i+1}}\" href=\"#tab2_{{i+1}}\" data-toggle=\"tab\"> {{tab[0]['tabName']}} </a>\r\n            </li>\r\n          </ul>\r\n          <div id=\"myTabContent\" class=\"tab-content\">\r\n            <div *ngFor=\"let tab of final_array;let i = index\" class=\"tab-pane fade\" id=\"tab2_{{i+1}}\">\r\n              <div class=\"text-right m-b-20\">\r\n\t              <button type=\"button\" class=\"btn btn-sm btn-icon btn-rounded btn-default\"><i class=\"fa fa-question\"></i> </button>\r\n              </div>\r\n               <app-dynamic-forms \r\n                    [tabnumber]=\"i\" \r\n                    [data]=\"tab\"\r\n                    (childSubmitData)=\"getSubmittedData($event)\"> \r\n                </app-dynamic-forms>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>"
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GeneralDataModel; });
+var GeneralDataModel = (function () {
+    function GeneralDataModel() {
+    }
+    return GeneralDataModel;
+}());
 
-/***/ }),
 
-/***/ 573:
-/***/ (function(module, exports) {
-
-module.exports = "<div id=\"main-content\" >\r\n    <div class=\"row m-t-10\">\r\n      <div class=\"col-md-12\">\r\n        <div class=\"panel panel-default\">\r\n          <div class=\"panel-heading text-right\">\r\n            <button type=\"button\" class=\"btn btn-sm btn-icon btn-rounded btn-default\"><i class=\"fa fa-question\"></i> </button>\r\n          </div>\r\n          <div class=\"panel-body\">\r\n           \r\n            <div class=\"row\">\r\n              <div class=\"col-md-3 col-sm-3 col-xs-12 \">\r\n                <label class=\"bold\" >Employee</label>\r\n                <select class=\"form-control\">\r\n                  <option>-- Select --</option>\r\n                </select>\r\n              </div>\r\n              <div class=\"col-md-3 col-sm-3 col-xs-12 \">\r\n                <label class=\"bold\" >Leave Structure</label>\r\n                <select class=\"form-control\">\r\n                  <option>-- Select --</option>\r\n                </select>\r\n              </div>\r\n              \r\n              \r\n            </div>\r\n            \r\n            <div class=\"row\">\r\n              <div class=\"col-md-12 col-sm-12 col-xs-12\">\r\n                <div class=\"table-responsive\">\r\n                  <table class=\"table table-bordered table-striped table-hover\">\r\n                    <thead class=\"no-bd\">\r\n                      <tr>\r\n                        <th><strong>Employee Name</strong> </th>\r\n                        <th><strong>Branch</strong> </th>\r\n                        <th><strong>Department</strong> </th>\r\n                        <th><strong>CL(Monthly)</strong></th>\r\n                        <th><strong>Total Leave(Monthly)</strong></th>\r\n                        <th><strong>Total Leave(Yearly)</strong></th>\r\n                        <th><strong>CF</strong></th>\r\n                      </tr>\r\n                    </thead>\r\n                    <tbody class=\"no-bd-y\">\r\n                      <tr>\r\n                        <td>Prashant Kapse </td>\r\n                        <td>Kailashnagar</td>\r\n                        <td>Software development (Kailashnagar)</td>\r\n                        <td>1.00</td>\r\n                        <td>1.00</td>\r\n                        <td>12.00</td>\r\n                        <td>0.00</td>\r\n                      </tr>\r\n                      <tr>\r\n                        <td>Ankit Chopada </td>\r\n                        <td>Kailashnagar</td>\r\n                        <td>Software development (Kailashnagar)</td>\r\n                        <td>1.00</td>\r\n                        <td>1.00</td>\r\n                        <td>12.00</td>\r\n                        <td>0.00</td>\r\n                      </tr>\r\n                      <tr>\r\n                        <td>Ankur Patel </td>\r\n                        <td>Kailashnagar</td>\r\n                        <td>Software development (Kailashnagar)</td>\r\n                        <td>1.00</td>\r\n                        <td>1.00</td>\r\n                        <td>12.00</td>\r\n                        <td>0.00</td>\r\n                      </tr>\r\n                      <tr>\r\n                        <td>Arvind Salunke </td>\r\n                        <td>Kailashnagar</td>\r\n                        <td>Software development (Kailashnagar)</td>\r\n                        <td>1.00</td>\r\n                        <td>1.00</td>\r\n                        <td>12.00</td>\r\n                        <td>0.00</td>\r\n                      </tr>\r\n                      <tr>\r\n                        <td>Avani Ghervara </td>\r\n                        <td>Kailashnagar</td>\r\n                        <td>Software development (Kailashnagar)</td>\r\n                        <td>1.00</td>\r\n                        <td>1.00</td>\r\n                        <td>12.00</td>\r\n                        <td>0.00</td>\r\n                      </tr>\r\n                      <tr>\r\n                        <td>Bharat Jariwala </td>\r\n                        <td>Kailashnagar</td>\r\n                        <td>Software development (Kailashnagar)</td>\r\n                        <td>1.00</td>\r\n                        <td>1.00</td>\r\n                        <td>12.00</td>\r\n                        <td>0.00</td>\r\n                      </tr>\r\n                     \r\n                    </tbody>\r\n                  </table>\r\n                </div>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>"
-
-/***/ }),
-
-/***/ 574:
-/***/ (function(module, exports) {
-
-module.exports = "<div id=\"main-content\">\r\n    <div class=\"row m-t-10\">\r\n        <div class=\"col-md-12\">\r\n            <div class=\"panel panel-default\">\r\n                <div class=\"panel-heading text-right\">\r\n                    <button type=\"button\" class=\"btn btn-sm btn-icon btn-rounded btn-default\"><i class=\"fa fa-question\"></i> </button>\r\n                </div>\r\n                <div class=\"panel-body\">\r\n                    <div class=\"row\">\r\n                        <div class=\"col-md-12 col-sm-12 col-xs-12 text-right\">\r\n                            <button class=\"btn btn-primary m-b-10\">Add Employee</button>\r\n                        </div>\r\n                    </div>\r\n                    <div class=\"row\">\r\n                        <div class=\"col-md-3 col-sm-3 col-xs-12 \">\r\n                            <label class=\"bold\">Employee</label>\r\n                            <select class=\"form-control\" style=\"display: none;\">\r\n                                <option>-- Select --</option>\r\n                            </select><div class=\"btn-group bootstrap-select form-control\"><button type=\"button\" class=\"btn dropdown-toggle selectpicker btn-default\" data-toggle=\"dropdown\" title=\"-- Select --\"><span class=\"filter-option pull-left\">-- Select --</span>&nbsp;<span class=\"caret\"></span></button><div class=\"dropdown-menu open\"><ul class=\"dropdown-menu inner selectpicker\" role=\"menu\"><li rel=\"0\" class=\"selected\"><a tabindex=\"0\" class=\"\" style=\"\"><span class=\"text\">-- Select --</span><i class=\"fa fa-ok icon-ok check-mark\"></i></a></li></ul></div></div>\r\n                        </div>\r\n                        <div class=\"col-md-3 col-sm-3 col-xs-12 \">\r\n                            <label class=\"bold\">Department</label>\r\n                            <select class=\"form-control\" style=\"display: none;\">\r\n                                <option>-- Select --</option>\r\n                            </select><div class=\"btn-group bootstrap-select form-control\"><button type=\"button\" class=\"btn dropdown-toggle selectpicker btn-default\" data-toggle=\"dropdown\" title=\"-- Select --\"><span class=\"filter-option pull-left\">-- Select --</span>&nbsp;<span class=\"caret\"></span></button><div class=\"dropdown-menu open\"><ul class=\"dropdown-menu inner selectpicker\" role=\"menu\"><li rel=\"0\" class=\"selected\"><a tabindex=\"0\" class=\"\" style=\"\"><span class=\"text\">-- Select --</span><i class=\"fa fa-ok icon-ok check-mark\"></i></a></li></ul></div></div>\r\n                        </div>\r\n                        <div class=\"col-md-3 col-sm-3 col-xs-12 \">\r\n                            <label class=\"bold\">Status</label>\r\n                            <select class=\"form-control\" style=\"display: none;\">\r\n                                <option>-- Select --</option>\r\n                            </select><div class=\"btn-group bootstrap-select form-control\"><button type=\"button\" class=\"btn dropdown-toggle selectpicker btn-default\" data-toggle=\"dropdown\" title=\"-- Select --\"><span class=\"filter-option pull-left\">-- Select --</span>&nbsp;<span class=\"caret\"></span></button><div class=\"dropdown-menu open\"><ul class=\"dropdown-menu inner selectpicker\" role=\"menu\"><li rel=\"0\" class=\"selected\"><a tabindex=\"0\" class=\"\" style=\"\"><span class=\"text\">-- Select --</span><i class=\"fa fa-ok icon-ok check-mark\"></i></a></li></ul></div></div>\r\n                        </div>\r\n                        <div class=\"col-md-3 col-sm-3 col-xs-12 \">\r\n                            <label class=\"bold\">Employee Statistics</label>\r\n                            <select class=\"form-control\" style=\"display: none;\">\r\n                                <option>-- Select --</option>\r\n                            </select><div class=\"btn-group bootstrap-select form-control\"><button type=\"button\" class=\"btn dropdown-toggle selectpicker btn-default\" data-toggle=\"dropdown\" title=\"-- Select --\"><span class=\"filter-option pull-left\">-- Select --</span>&nbsp;<span class=\"caret\"></span></button><div class=\"dropdown-menu open\"><ul class=\"dropdown-menu inner selectpicker\" role=\"menu\"><li rel=\"0\" class=\"selected\"><a tabindex=\"0\" class=\"\" style=\"\"><span class=\"text\">-- Select --</span><i class=\"fa fa-ok icon-ok check-mark\"></i></a></li></ul></div></div>\r\n                        </div>\r\n                    </div>\r\n\r\n                    <div class=\"row\">\r\n                        <div class=\"col-md-12 col-sm-12 col-xs-12\">\r\n                            <div class=\"table-responsive\">\r\n                                <table class=\"table table-bordered table-striped table-hover\">\r\n                                    <thead class=\"no-bd\">\r\n                                        <tr>\r\n                                            <th *ngFor=\"let fields of _FilteredfieldsHeading\"><strong> {{fields.displayName}} </strong> </th>\r\n                                            <th><strong>Action</strong></th>\r\n                                        </tr>\r\n                                    </thead>\r\n                                    <tbody class=\"no-bd-y\">\r\n                                        <tr *ngFor=\"let rec of _data;let i = index\">\r\n                                            <td *ngFor=\"let r of rec\"> {{r.val}} </td>\r\n                                            <td>\r\n                                                <button [routerLink]=\"['/employee/edit/' + lookup + '/' + rec[0]['id'] ]\" type=\"button\" class=\"btn btn-sm btn-warning\" title=\"Edit\"><i class=\"fa fa-pencil\"></i></button>\r\n                                                <button type=\"button\" class=\"btn btn-sm btn-danger\" title=\"Delete\"><i class=\"fa fa-remove\"></i></button>\r\n                                            </td>\r\n                                        </tr>\r\n                                    </tbody>\r\n                                </table>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>"
-
-/***/ }),
-
-/***/ 575:
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"text-right m-b-20\">\r\n                <div class=\"btn-group text-left\">\r\n                                        <button class=\"btn btn-success dropdown-toggle\" data-toggle=\"dropdown\">Export <i class=\"fa fa-angle-down\"></i>\r\n                                        </button>\r\n                                        <ul class=\"dropdown-menu pull-right\">\r\n                                            <li><a href=\"#\">Customize Columns</a>\r\n                                            </li>\r\n                                            <li><a href=\"#\">Print</a>\r\n                                            </li>\r\n                                            <li><a href=\"#\">Export to PDF</a>\r\n                                            </li>\r\n                                            <li><a href=\"#\">Export to XLS</a>\r\n                                            </li>\r\n                                            <li><a href=\"#\">Export to CSV</a>\r\n                                            </li>\r\n                                            <li><a href=\"#\">Export to DOC</a>\r\n                                            </li>\r\n                                        </ul>\r\n                                    </div>\r\n                \r\n                <button type=\"button\" class=\"btn btn-sm btn-icon btn-rounded btn-default\"><i class=\"fa fa-question\"></i></button>\r\n              </div>\r\n              <div class=\"form-horizontal\">\r\n                \r\n                <div class=\"m-b-10\">\r\n                  <div class=\"row row-5px\">\r\n              <div class=\"col-md-2 col-sm-2 col-xs-12 col-5px\">\r\n\r\n                <label class=\"bold\" >Branch</label>\r\n                <select class=\"form-control\">\r\n                  <option>-- Select --</option>\r\n                </select>\r\n              </div>\r\n              <div class=\"col-md-2 col-sm-2 col-xs-12 col-5px\">\r\n                <label class=\"bold\" >Department</label>\r\n                <select class=\"form-control\">\r\n                  <option>-- Select --</option>\r\n                </select>\r\n              </div>\r\n              <div class=\"col-md-3 col-sm-3 col-xs-12 col-5px\">\r\n                <label class=\"bold\" >Job Profile</label>\r\n                <select class=\"form-control\">\r\n                  <option>-- Select --</option>\r\n                </select>\r\n              </div>\r\n              <div class=\"col-md-2 col-sm-2 col-xs-12 col-5px\">\r\n                <label class=\"bold\" >User Role</label>\r\n                <select class=\"form-control\">\r\n                  <option>-- Select --</option>\r\n                </select>\r\n              </div>\r\n              <div class=\"col-md-3 col-sm-3 col-xs-12 col-5px\">                \r\n                <button class=\"btn btn-primary m-t-25\" >Generate Report</button>\r\n              </div>\r\n            </div>\r\n                </div>\r\n                <div class=\"row\">\r\n                <div class=\"col-md-12 col-sm-12 col-xs-12\">\r\n                 <div class=\"table-responsive\">\r\n                  <table class=\"table table-bordered table-striped table-hover\">\r\n                    <thead class=\"no-bd\">\r\n                      <tr>\r\n                        <th><strong>First Name</strong> </th>\r\n                        <th><strong>Last Name</strong> </th>\r\n                        <th><strong>Job Title</strong> </th>\r\n                        <th><strong>Address</strong> </th>\r\n                        <th><strong>Gender</strong> </th>\r\n                        <th><strong>Birth Date</strong> </th>\r\n                        <th><strong>Phone</strong> </th>\r\n                        <th><strong>Role Name</strong> </th>\r\n                        <th><strong>Email</strong> </th>\r\n                        <th><strong>Status</strong> </th>\r\n                      </tr>\r\n                    </thead>\r\n                    <tbody class=\"no-bd-y\">\r\n                      <tr>\r\n                        <td>Nikunj</td>                        \r\n                        <td>Savani </td>\r\n                        <td>ASP .NET Developer </td>\r\n                        <td>A-201 Rivera apartment, near CNG pump, sudama chowk, mota varachha</td>\r\n                        <td>Male</td>\r\n                        <td>5/4/1988 12:00:00 AM</td>\r\n                        <td></td>\r\n                        <td></td>\r\n                        <td>nikunj.savani@krtya.com</td>\r\n                        <td>Active</td>\r\n                      </tr>\r\n                      <tr>\r\n                        <td>Bhavesh</td>                        \r\n                        <td>Patel </td>\r\n                        <td>ASP .NET Developer </td>\r\n                        <td>A-201 Rivera apartment, near CNG pump, sudama chowk, mota varachha</td>\r\n                        <td>Male</td>\r\n                        <td>5/4/1988 12:00:00 AM</td>\r\n                        <td></td>\r\n                        <td></td>\r\n                        <td>nikunj.savani@krtya.com</td>\r\n                        <td>Active</td>\r\n                      </tr>\r\n                      <tr>\r\n                        <td>Manish</td>                        \r\n                        <td>Parakhiya </td>\r\n                        <td>ASP .NET Developer </td>\r\n                        <td>A-201 Rivera apartment, near CNG pump, sudama chowk, mota varachha</td>\r\n                        <td>Male</td>\r\n                        <td>5/4/1988 12:00:00 AM</td>\r\n                        <td></td>\r\n                        <td></td>\r\n                        <td>nikunj.savani@krtya.com</td>\r\n                        <td>Active</td>\r\n                      </tr>\r\n                     \r\n                      \r\n                    </tbody>\r\n                  </table>\r\n                  </div>\r\n                </div>\r\n              </div>\r\n                 \r\n              </div>"
-
-/***/ }),
-
-/***/ 576:
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"text-right m-b-20\">\r\n                <div class=\"btn-group text-left\">\r\n                                        <button class=\"btn btn-success dropdown-toggle\" data-toggle=\"dropdown\">Export <i class=\"fa fa-angle-down\"></i>\r\n                                        </button>\r\n                                        <ul class=\"dropdown-menu pull-right\">\r\n                                            <li><a href=\"#\">Customize Columns</a>\r\n                                            </li>\r\n                                            <li><a href=\"#\">Print</a>\r\n                                            </li>\r\n                                            <li><a href=\"#\">Export to PDF</a>\r\n                                            </li>\r\n                                            <li><a href=\"#\">Export to XLS</a>\r\n                                            </li>\r\n                                            <li><a href=\"#\">Export to CSV</a>\r\n                                            </li>\r\n                                            <li><a href=\"#\">Export to DOC</a>\r\n                                            </li>\r\n                                        </ul>\r\n                                    </div>\r\n                \r\n                <button type=\"button\" class=\"btn btn-sm btn-icon btn-rounded btn-default\"><i class=\"fa fa-question\"></i></button>\r\n              </div>\r\n               <div class=\"form-horizontal\">\r\n                \r\n                <div class=\"m-b-10\">\r\n                  <div class=\"row row-5px\">\r\n              <div class=\"col-md-2 col-sm-2 col-xs-12 col-5px\">\r\n                <label class=\"bold\" >Branch</label>\r\n                <select class=\"form-control\">\r\n                  <option>-- Select --</option>\r\n                </select>\r\n              </div>\r\n              <div class=\"col-md-2 col-sm-2 col-xs-12 col-5px\">\r\n                <label class=\"bold\" >Department</label>\r\n                <select class=\"form-control\">\r\n                  <option>-- Select --</option>\r\n                </select>\r\n              </div>\r\n              <div class=\"col-md-2 col-sm-2 col-xs-12 col-5px\">\r\n                <label class=\"bold\" >Job Profile</label>\r\n                <select class=\"form-control\">\r\n                  <option>-- Select --</option>\r\n                </select>\r\n              </div>\r\n              <div class=\"col-md-2 col-sm-2 col-xs-12 col-5px\">\r\n                <label class=\"bold\" >User Role</label>\r\n                <select class=\"form-control\">\r\n                  <option>-- Select --</option>\r\n                </select>\r\n              </div>\r\n              <div class=\"col-md-2 col-sm-2 col-xs-12 col-5px\">\r\n                <label class=\"bold\" >Month</label>\r\n                <select class=\"form-control\">\r\n                  <option>-- Select --</option>\r\n                </select>\r\n              </div>\r\n              <div class=\"col-md-2 col-sm-2 col-xs-12 col-5px\">                \r\n                <button class=\"btn btn-primary m-t-25\" >Generate Report</button>\r\n              </div>\r\n            </div>\r\n                </div>\r\n                <div class=\"row\">\r\n                <div class=\"col-md-12 col-sm-12 col-xs-12\">\r\n                 <div class=\"table-responsive\">\r\n                  <table class=\"table table-bordered table-striped table-hover\">\r\n                    <thead class=\"no-bd\">\r\n                      <tr>\r\n                        <th><strong>First Name</strong> </th>\r\n                        <th><strong>Last Name</strong> </th>\r\n                        <th><strong>Job Title</strong> </th>\r\n                        <th><strong>Address</strong> </th>\r\n                        <th><strong>Gender</strong> </th>\r\n                        <th><strong>Birth Date</strong> </th>                                                                \r\n                      </tr>\r\n                    </thead>\r\n                    <tbody class=\"no-bd-y\">\r\n                      <tr>\r\n                        <td>Nikunj</td>                        \r\n                        <td>Savani </td>\r\n                        <td>ASP .NET Developer </td>\r\n                        <td>A-201 Rivera apartment, near CNG pump, sudama chowk, mota varachha</td>\r\n                        <td>Male</td>\r\n                        <td>5/4/1988 12:00:00 AM</td>                        \r\n                      </tr>\r\n                      <tr>\r\n                        <td>Bhavesh</td>                        \r\n                        <td>Patel </td>\r\n                        <td>ASP .NET Developer </td>\r\n                        <td>A-201 Rivera apartment, near CNG pump, sudama chowk, mota varachha</td>\r\n                        <td>Male</td>\r\n                        <td>5/4/1988 12:00:00 AM</td>\r\n                        \r\n                      </tr>\r\n                      <tr>\r\n                        <td>Manish</td>                        \r\n                        <td>Parakhiya </td>\r\n                        <td>ASP .NET Developer </td>\r\n                        <td>A-201 Rivera apartment, near CNG pump, sudama chowk, mota varachha</td>\r\n                        <td>Male</td>\r\n                        <td>5/4/1988 12:00:00 AM</td>\r\n                        \r\n                      </tr>\r\n                     \r\n                      \r\n                    </tbody>\r\n                  </table>\r\n                  </div>\r\n                </div>\r\n              </div>\r\n                 \r\n              </div>"
 
 /***/ }),
 
 /***/ 577:
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"main-content\" >\r\n    <div class=\"row m-t-10\">\r\n      <div class=\"col-md-12\">\r\n        <div class=\"\">\r\n          <ul id=\"myTab2\" class=\"nav nav-tabs nav-dark\">\r\n            <li class=\"active\"><a href=\"#tab2_1\" data-toggle=\"tab\">Active Employees</a></li>\r\n            <li class=\"\"><a href=\"#tab2_2\" data-toggle=\"tab\">Work Anniversary</a></li>\r\n            <li class=\"\"><a href=\"#tab2_3\" data-toggle=\"tab\">Birthday </a></li>\r\n            \r\n          </ul>\r\n          <div id=\"myTabContent\" class=\"tab-content\">\r\n           \r\n            <div class=\"tab-pane fade active in\" id=\"tab2_1\">\r\n              <app-activeemployee></app-activeemployee>\r\n            </div>\r\n            <div class=\"tab-pane fade\" id=\"tab2_2\">\r\n              <app-workanniversary></app-workanniversary>\r\n            </div>\r\n            <div class=\"tab-pane fade\" id=\"tab2_3\">\r\n               <app-birthday></app-birthday>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>"
+module.exports = "<div id=\"main-content\" >\r\n    <div class=\"row m-t-10\">\r\n      <div class=\"col-md-12\">\r\n\r\n        <div class=\"\">\r\n          <ul id=\"myTab2\" class=\"nav nav-tabs nav-dark\">\r\n            <li *ngFor=\"let tab of final_array;let i = index\">\r\n              <a id=\"maintab_{{i+1}}\" href=\"#tab2_{{i+1}}\" data-toggle=\"tab\"> {{tab[0]['tabName']}} </a>\r\n            </li>\r\n          </ul>\r\n          <div id=\"myTabContent\" class=\"tab-content\">\r\n            <div *ngFor=\"let tab of final_array;let i = index\" class=\"tab-pane fade\" id=\"tab2_{{i+1}}\">\r\n              <div class=\"text-right m-b-20\">\r\n\t              <button type=\"button\" class=\"btn btn-sm btn-icon btn-rounded btn-default\"><i class=\"fa fa-question\"></i> </button>\r\n              </div>\r\n               <app-dynamic-forms \r\n                    [tabnumber]=\"i\" \r\n                    [data]=\"tab\"\r\n                    (childSubmitData)=\"getSubmittedData($event)\"> \r\n                </app-dynamic-forms>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>"
 
 /***/ }),
 
 /***/ 578:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"text-right m-b-20\">\r\n                <div class=\"btn-group text-left\">\r\n                                        <button class=\"btn btn-success dropdown-toggle\" data-toggle=\"dropdown\">Export <i class=\"fa fa-angle-down\"></i>\r\n                                        </button>\r\n                                        <ul class=\"dropdown-menu pull-right\">\r\n                                            <li><a href=\"#\">Customize Columns</a>\r\n                                            </li>\r\n                                            <li><a href=\"#\">Print</a>\r\n                                            </li>\r\n                                            <li><a href=\"#\">Export to PDF</a>\r\n                                            </li>\r\n                                            <li><a href=\"#\">Export to XLS</a>\r\n                                            </li>\r\n                                            <li><a href=\"#\">Export to CSV</a>\r\n                                            </li>\r\n                                            <li><a href=\"#\">Export to DOC</a>\r\n                                            </li>\r\n                                        </ul>\r\n                                    </div>\r\n                \r\n                <button type=\"button\" class=\"btn btn-sm btn-icon btn-rounded btn-default\"><i class=\"fa fa-question\"></i></button>\r\n              </div>\r\n              <div class=\"form-horizontal\">\r\n                \r\n                <div class=\"m-b-10\">\r\n                  <div class=\"row row-5px\">\r\n              <div class=\"col-md-2 col-sm-2 col-xs-12 col-5px\">\r\n                <label class=\"bold\" >Branch</label>\r\n                <select class=\"form-control\">\r\n                  <option>-- Select --</option>\r\n                </select>\r\n              </div>\r\n              <div class=\"col-md-2 col-sm-2 col-xs-12 col-5px\">\r\n                <label class=\"bold\" >Department</label>\r\n                <select class=\"form-control\">\r\n                  <option>-- Select --</option>\r\n                </select>\r\n              </div>\r\n              <div class=\"col-md-2 col-sm-2 col-xs-12 col-5px\">\r\n                <label class=\"bold\" >Job Profile</label>\r\n                <select class=\"form-control\">\r\n                  <option>-- Select --</option>\r\n                </select>\r\n              </div>\r\n              <div class=\"col-md-2 col-sm-2 col-xs-12 col-5px\">\r\n                <label class=\"bold\" >User Role</label>\r\n                <select class=\"form-control\">\r\n                  <option>-- Select --</option>\r\n                </select>\r\n              </div>\r\n              <div class=\"col-md-2 col-sm-2 col-xs-12 col-5px\">\r\n                <label class=\"bold\" >Month</label>\r\n                <select class=\"form-control\">\r\n                  <option>-- Select --</option>\r\n                </select>\r\n              </div>\r\n              <div class=\"col-md-2 col-sm-2 col-xs-12 col-5px\">                \r\n                <button class=\"btn btn-primary m-t-25\" >Generate Report</button>\r\n              </div>\r\n            </div>\r\n                </div>\r\n                <div class=\"row\">\r\n                <div class=\"col-md-12 col-sm-12 col-xs-12\">\r\n                 <div class=\"table-responsive\">\r\n                  <table class=\"table table-bordered table-striped table-hover\">\r\n                    <thead class=\"no-bd\">\r\n                      <tr>\r\n                        <th><strong>First Name</strong> </th>\r\n                        <th><strong>Last Name</strong> </th>\r\n                        <th><strong>Job Title</strong> </th>\r\n                        <th><strong>Address</strong> </th>\r\n                        <th><strong>Gender</strong> </th>\r\n                        <th><strong>Joining Date</strong> </th>                                                                \r\n                      </tr>\r\n                    </thead>\r\n                    <tbody class=\"no-bd-y\">\r\n                      <tr>\r\n                        <td>Nikunj</td>                        \r\n                        <td>Savani </td>\r\n                        <td>ASP .NET Developer </td>\r\n                        <td>A-201 Rivera apartment, near CNG pump, sudama chowk, mota varachha</td>\r\n                        <td>Male</td>\r\n                        <td>5/4/1988 12:00:00 AM</td>                        \r\n                      </tr>\r\n                      <tr>\r\n                        <td>Bhavesh</td>                        \r\n                        <td>Patel </td>\r\n                        <td>ASP .NET Developer </td>\r\n                        <td>A-201 Rivera apartment, near CNG pump, sudama chowk, mota varachha</td>\r\n                        <td>Male</td>\r\n                        <td>5/4/1988 12:00:00 AM</td>\r\n                        \r\n                      </tr>\r\n                      <tr>\r\n                        <td>Manish</td>                        \r\n                        <td>Parakhiya </td>\r\n                        <td>ASP .NET Developer </td>\r\n                        <td>A-201 Rivera apartment, near CNG pump, sudama chowk, mota varachha</td>\r\n                        <td>Male</td>\r\n                        <td>5/4/1988 12:00:00 AM</td>\r\n                        \r\n                      </tr>\r\n                     \r\n                      \r\n                    </tbody>\r\n                  </table>\r\n                  </div>\r\n                </div>\r\n              </div>\r\n                 \r\n              </div>"
+module.exports = "<div id=\"main-content\" >\r\n    <div class=\"row m-t-10\">\r\n      <div class=\"col-md-12\">\r\n        <div class=\"panel panel-default\">\r\n          <div class=\"panel-heading text-right\">\r\n            <button type=\"button\" class=\"btn btn-sm btn-icon btn-rounded btn-default\"><i class=\"fa fa-question\"></i> </button>\r\n          </div>\r\n          <div class=\"panel-body\">\r\n           \r\n            <div class=\"row\">\r\n              <div class=\"col-md-3 col-sm-3 col-xs-12 \">\r\n                <label class=\"bold\" >Employee</label>\r\n                <select class=\"form-control\">\r\n                  <option>-- Select --</option>\r\n                </select>\r\n              </div>\r\n              <div class=\"col-md-3 col-sm-3 col-xs-12 \">\r\n                <label class=\"bold\" >Leave Structure</label>\r\n                <select class=\"form-control\">\r\n                  <option>-- Select --</option>\r\n                </select>\r\n              </div>\r\n              \r\n              \r\n            </div>\r\n            \r\n            <div class=\"row\">\r\n              <div class=\"col-md-12 col-sm-12 col-xs-12\">\r\n                <div class=\"table-responsive\">\r\n                  <table class=\"table table-bordered table-striped table-hover\">\r\n                    <thead class=\"no-bd\">\r\n                      <tr>\r\n                        <th><strong>Employee Name</strong> </th>\r\n                        <th><strong>Branch</strong> </th>\r\n                        <th><strong>Department</strong> </th>\r\n                        <th><strong>CL(Monthly)</strong></th>\r\n                        <th><strong>Total Leave(Monthly)</strong></th>\r\n                        <th><strong>Total Leave(Yearly)</strong></th>\r\n                        <th><strong>CF</strong></th>\r\n                      </tr>\r\n                    </thead>\r\n                    <tbody class=\"no-bd-y\">\r\n                      <tr>\r\n                        <td>Prashant Kapse </td>\r\n                        <td>Kailashnagar</td>\r\n                        <td>Software development (Kailashnagar)</td>\r\n                        <td>1.00</td>\r\n                        <td>1.00</td>\r\n                        <td>12.00</td>\r\n                        <td>0.00</td>\r\n                      </tr>\r\n                      <tr>\r\n                        <td>Ankit Chopada </td>\r\n                        <td>Kailashnagar</td>\r\n                        <td>Software development (Kailashnagar)</td>\r\n                        <td>1.00</td>\r\n                        <td>1.00</td>\r\n                        <td>12.00</td>\r\n                        <td>0.00</td>\r\n                      </tr>\r\n                      <tr>\r\n                        <td>Ankur Patel </td>\r\n                        <td>Kailashnagar</td>\r\n                        <td>Software development (Kailashnagar)</td>\r\n                        <td>1.00</td>\r\n                        <td>1.00</td>\r\n                        <td>12.00</td>\r\n                        <td>0.00</td>\r\n                      </tr>\r\n                      <tr>\r\n                        <td>Arvind Salunke </td>\r\n                        <td>Kailashnagar</td>\r\n                        <td>Software development (Kailashnagar)</td>\r\n                        <td>1.00</td>\r\n                        <td>1.00</td>\r\n                        <td>12.00</td>\r\n                        <td>0.00</td>\r\n                      </tr>\r\n                      <tr>\r\n                        <td>Avani Ghervara </td>\r\n                        <td>Kailashnagar</td>\r\n                        <td>Software development (Kailashnagar)</td>\r\n                        <td>1.00</td>\r\n                        <td>1.00</td>\r\n                        <td>12.00</td>\r\n                        <td>0.00</td>\r\n                      </tr>\r\n                      <tr>\r\n                        <td>Bharat Jariwala </td>\r\n                        <td>Kailashnagar</td>\r\n                        <td>Software development (Kailashnagar)</td>\r\n                        <td>1.00</td>\r\n                        <td>1.00</td>\r\n                        <td>12.00</td>\r\n                        <td>0.00</td>\r\n                      </tr>\r\n                     \r\n                    </tbody>\r\n                  </table>\r\n                </div>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>"
 
 /***/ }),
 
 /***/ 579:
+/***/ (function(module, exports) {
+
+module.exports = "<div id=\"main-content\">\r\n    <div class=\"row m-t-10\">\r\n        <div class=\"col-md-12\">\r\n            <div class=\"panel panel-default\">\r\n                <div class=\"panel-heading text-right\">\r\n                    <button type=\"button\" class=\"btn btn-sm btn-icon btn-rounded btn-default\"><i class=\"fa fa-question\"></i> </button>\r\n                </div>\r\n                <div class=\"panel-body\">\r\n                    <div class=\"row\">\r\n                        <div class=\"col-md-12 col-sm-12 col-xs-12 text-right\">\r\n                            <button class=\"btn btn-primary m-b-10\" data-toggle=\"modal\" data-target=\"#myModal\">Add Employee</button>\r\n                        </div>\r\n                    </div>\r\n\r\n                        <app-general-listing [lookup]=\"lookup\"> </app-general-listing>\r\n                    \r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n\r\n<p-growl [value]=\"msgs\"></p-growl>\r\n\r\n<!-- Modal -->\r\n<div id=\"myModal\" class=\"modal fade\" role=\"dialog\">\r\n  <div class=\"modal-dialog\">\r\n\r\n    <!-- Modal content-->\r\n    <div class=\"modal-content\">\r\n      <div class=\"modal-header\">\r\n        <button type=\"button\" id=\"close_model\" class=\"close\" data-dismiss=\"modal\">&times;</button>\r\n        <h4 class=\"modal-title\">Add Employee Forms </h4>\r\n      </div>\r\n      <div class=\"modal-body\">\r\n            <form (ngSubmit)=\"onSubmit(form.value, form.valid)\" [formGroup]=\"form\" novalidate>\r\n                <div class=\"form-horizontal\">\r\n                    <div class=\"m-b-30\">\r\n                        <div class=\"form-group\">\r\n                            <label class=\"col-sm-4 control-label\"> First Name  <span class=\"asterisk\">*</span> </label>\r\n                            <div class=\"col-sm-6\" >\r\n                                <input class=\"form-control\" type=\"text\" formControlName=\"f2\" [(ngModel)]=\"_generalDataModel.f2\">\r\n                            </div>\r\n                            <div [hidden]=\"form.get('f2').valid || (form.get('f2').pristine && !submitted)\" class=\"alert alert-danger\">\r\n                                FirstName is required.\r\n                            </div>\r\n                        </div>\r\n                        <div class=\"form-group\">\r\n                            <label class=\"col-sm-4 control-label\"> Last Name  <span class=\"asterisk\">*</span> </label>\r\n                            <div class=\"col-sm-6\" >\r\n                                <input class=\"form-control\" type=\"text\" formControlName=\"f3\" [(ngModel)]=\"_generalDataModel.f3\">\r\n                            </div>\r\n                            <div [hidden]=\"form.get('f3').valid || (form.get('f3').pristine && !submitted)\" class=\"alert alert-danger\">\r\n                                LastName is required.\r\n                            </div>\r\n                        </div>\r\n                        <div class=\"form-group\">\r\n                            <label class=\"col-sm-4 control-label\"> Email  <span class=\"asterisk\">*</span> </label>\r\n                            <div class=\"col-sm-6\" >\r\n                                <input class=\"form-control\" type=\"text\" formControlName=\"f4\" [(ngModel)]=\"_generalDataModel.f4\">\r\n                            </div>\r\n                            <div [hidden]=\"form.get('f4').valid || (form.get('f4').pristine && !submitted)\" class=\"alert alert-danger\">\r\n                                Email is not valid.\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <div class=\"form-row\">\r\n                    <button class=\"btn btn-primary m-b-10\" type=\"submit\" >Save</button>\r\n                </div>\r\n            </form>\r\n      </div>\r\n      <div class=\"modal-footer\">\r\n        <button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Close</button>\r\n      </div>\r\n    </div>\r\n\r\n  </div>\r\n</div>"
+
+/***/ }),
+
+/***/ 580:
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"text-right m-b-20\">\r\n                <div class=\"btn-group text-left\">\r\n                                        <button class=\"btn btn-success dropdown-toggle\" data-toggle=\"dropdown\">Export <i class=\"fa fa-angle-down\"></i>\r\n                                        </button>\r\n                                        <ul class=\"dropdown-menu pull-right\">\r\n                                            <li><a href=\"#\">Customize Columns</a>\r\n                                            </li>\r\n                                            <li><a href=\"#\">Print</a>\r\n                                            </li>\r\n                                            <li><a href=\"#\">Export to PDF</a>\r\n                                            </li>\r\n                                            <li><a href=\"#\">Export to XLS</a>\r\n                                            </li>\r\n                                            <li><a href=\"#\">Export to CSV</a>\r\n                                            </li>\r\n                                            <li><a href=\"#\">Export to DOC</a>\r\n                                            </li>\r\n                                        </ul>\r\n                                    </div>\r\n                \r\n                <button type=\"button\" class=\"btn btn-sm btn-icon btn-rounded btn-default\"><i class=\"fa fa-question\"></i></button>\r\n              </div>\r\n              <div class=\"form-horizontal\">\r\n                \r\n                <div class=\"m-b-10\">\r\n                  <div class=\"row row-5px\">\r\n              <div class=\"col-md-2 col-sm-2 col-xs-12 col-5px\">\r\n\r\n                <label class=\"bold\" >Branch</label>\r\n                <select class=\"form-control\">\r\n                  <option>-- Select --</option>\r\n                </select>\r\n              </div>\r\n              <div class=\"col-md-2 col-sm-2 col-xs-12 col-5px\">\r\n                <label class=\"bold\" >Department</label>\r\n                <select class=\"form-control\">\r\n                  <option>-- Select --</option>\r\n                </select>\r\n              </div>\r\n              <div class=\"col-md-3 col-sm-3 col-xs-12 col-5px\">\r\n                <label class=\"bold\" >Job Profile</label>\r\n                <select class=\"form-control\">\r\n                  <option>-- Select --</option>\r\n                </select>\r\n              </div>\r\n              <div class=\"col-md-2 col-sm-2 col-xs-12 col-5px\">\r\n                <label class=\"bold\" >User Role</label>\r\n                <select class=\"form-control\">\r\n                  <option>-- Select --</option>\r\n                </select>\r\n              </div>\r\n              <div class=\"col-md-3 col-sm-3 col-xs-12 col-5px\">                \r\n                <button class=\"btn btn-primary m-t-25\" >Generate Report</button>\r\n              </div>\r\n            </div>\r\n                </div>\r\n                <div class=\"row\">\r\n                <div class=\"col-md-12 col-sm-12 col-xs-12\">\r\n                 <div class=\"table-responsive\">\r\n                  <table class=\"table table-bordered table-striped table-hover\">\r\n                    <thead class=\"no-bd\">\r\n                      <tr>\r\n                        <th><strong>First Name</strong> </th>\r\n                        <th><strong>Last Name</strong> </th>\r\n                        <th><strong>Job Title</strong> </th>\r\n                        <th><strong>Address</strong> </th>\r\n                        <th><strong>Gender</strong> </th>\r\n                        <th><strong>Birth Date</strong> </th>\r\n                        <th><strong>Phone</strong> </th>\r\n                        <th><strong>Role Name</strong> </th>\r\n                        <th><strong>Email</strong> </th>\r\n                        <th><strong>Status</strong> </th>\r\n                      </tr>\r\n                    </thead>\r\n                    <tbody class=\"no-bd-y\">\r\n                      <tr>\r\n                        <td>Nikunj</td>                        \r\n                        <td>Savani </td>\r\n                        <td>ASP .NET Developer </td>\r\n                        <td>A-201 Rivera apartment, near CNG pump, sudama chowk, mota varachha</td>\r\n                        <td>Male</td>\r\n                        <td>5/4/1988 12:00:00 AM</td>\r\n                        <td></td>\r\n                        <td></td>\r\n                        <td>nikunj.savani@krtya.com</td>\r\n                        <td>Active</td>\r\n                      </tr>\r\n                      <tr>\r\n                        <td>Bhavesh</td>                        \r\n                        <td>Patel </td>\r\n                        <td>ASP .NET Developer </td>\r\n                        <td>A-201 Rivera apartment, near CNG pump, sudama chowk, mota varachha</td>\r\n                        <td>Male</td>\r\n                        <td>5/4/1988 12:00:00 AM</td>\r\n                        <td></td>\r\n                        <td></td>\r\n                        <td>nikunj.savani@krtya.com</td>\r\n                        <td>Active</td>\r\n                      </tr>\r\n                      <tr>\r\n                        <td>Manish</td>                        \r\n                        <td>Parakhiya </td>\r\n                        <td>ASP .NET Developer </td>\r\n                        <td>A-201 Rivera apartment, near CNG pump, sudama chowk, mota varachha</td>\r\n                        <td>Male</td>\r\n                        <td>5/4/1988 12:00:00 AM</td>\r\n                        <td></td>\r\n                        <td></td>\r\n                        <td>nikunj.savani@krtya.com</td>\r\n                        <td>Active</td>\r\n                      </tr>\r\n                     \r\n                      \r\n                    </tbody>\r\n                  </table>\r\n                  </div>\r\n                </div>\r\n              </div>\r\n                 \r\n              </div>"
+
+/***/ }),
+
+/***/ 581:
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"text-right m-b-20\">\r\n                <div class=\"btn-group text-left\">\r\n                                        <button class=\"btn btn-success dropdown-toggle\" data-toggle=\"dropdown\">Export <i class=\"fa fa-angle-down\"></i>\r\n                                        </button>\r\n                                        <ul class=\"dropdown-menu pull-right\">\r\n                                            <li><a href=\"#\">Customize Columns</a>\r\n                                            </li>\r\n                                            <li><a href=\"#\">Print</a>\r\n                                            </li>\r\n                                            <li><a href=\"#\">Export to PDF</a>\r\n                                            </li>\r\n                                            <li><a href=\"#\">Export to XLS</a>\r\n                                            </li>\r\n                                            <li><a href=\"#\">Export to CSV</a>\r\n                                            </li>\r\n                                            <li><a href=\"#\">Export to DOC</a>\r\n                                            </li>\r\n                                        </ul>\r\n                                    </div>\r\n                \r\n                <button type=\"button\" class=\"btn btn-sm btn-icon btn-rounded btn-default\"><i class=\"fa fa-question\"></i></button>\r\n              </div>\r\n               <div class=\"form-horizontal\">\r\n                \r\n                <div class=\"m-b-10\">\r\n                  <div class=\"row row-5px\">\r\n              <div class=\"col-md-2 col-sm-2 col-xs-12 col-5px\">\r\n                <label class=\"bold\" >Branch</label>\r\n                <select class=\"form-control\">\r\n                  <option>-- Select --</option>\r\n                </select>\r\n              </div>\r\n              <div class=\"col-md-2 col-sm-2 col-xs-12 col-5px\">\r\n                <label class=\"bold\" >Department</label>\r\n                <select class=\"form-control\">\r\n                  <option>-- Select --</option>\r\n                </select>\r\n              </div>\r\n              <div class=\"col-md-2 col-sm-2 col-xs-12 col-5px\">\r\n                <label class=\"bold\" >Job Profile</label>\r\n                <select class=\"form-control\">\r\n                  <option>-- Select --</option>\r\n                </select>\r\n              </div>\r\n              <div class=\"col-md-2 col-sm-2 col-xs-12 col-5px\">\r\n                <label class=\"bold\" >User Role</label>\r\n                <select class=\"form-control\">\r\n                  <option>-- Select --</option>\r\n                </select>\r\n              </div>\r\n              <div class=\"col-md-2 col-sm-2 col-xs-12 col-5px\">\r\n                <label class=\"bold\" >Month</label>\r\n                <select class=\"form-control\">\r\n                  <option>-- Select --</option>\r\n                </select>\r\n              </div>\r\n              <div class=\"col-md-2 col-sm-2 col-xs-12 col-5px\">                \r\n                <button class=\"btn btn-primary m-t-25\" >Generate Report</button>\r\n              </div>\r\n            </div>\r\n                </div>\r\n                <div class=\"row\">\r\n                <div class=\"col-md-12 col-sm-12 col-xs-12\">\r\n                 <div class=\"table-responsive\">\r\n                  <table class=\"table table-bordered table-striped table-hover\">\r\n                    <thead class=\"no-bd\">\r\n                      <tr>\r\n                        <th><strong>First Name</strong> </th>\r\n                        <th><strong>Last Name</strong> </th>\r\n                        <th><strong>Job Title</strong> </th>\r\n                        <th><strong>Address</strong> </th>\r\n                        <th><strong>Gender</strong> </th>\r\n                        <th><strong>Birth Date</strong> </th>                                                                \r\n                      </tr>\r\n                    </thead>\r\n                    <tbody class=\"no-bd-y\">\r\n                      <tr>\r\n                        <td>Nikunj</td>                        \r\n                        <td>Savani </td>\r\n                        <td>ASP .NET Developer </td>\r\n                        <td>A-201 Rivera apartment, near CNG pump, sudama chowk, mota varachha</td>\r\n                        <td>Male</td>\r\n                        <td>5/4/1988 12:00:00 AM</td>                        \r\n                      </tr>\r\n                      <tr>\r\n                        <td>Bhavesh</td>                        \r\n                        <td>Patel </td>\r\n                        <td>ASP .NET Developer </td>\r\n                        <td>A-201 Rivera apartment, near CNG pump, sudama chowk, mota varachha</td>\r\n                        <td>Male</td>\r\n                        <td>5/4/1988 12:00:00 AM</td>\r\n                        \r\n                      </tr>\r\n                      <tr>\r\n                        <td>Manish</td>                        \r\n                        <td>Parakhiya </td>\r\n                        <td>ASP .NET Developer </td>\r\n                        <td>A-201 Rivera apartment, near CNG pump, sudama chowk, mota varachha</td>\r\n                        <td>Male</td>\r\n                        <td>5/4/1988 12:00:00 AM</td>\r\n                        \r\n                      </tr>\r\n                     \r\n                      \r\n                    </tbody>\r\n                  </table>\r\n                  </div>\r\n                </div>\r\n              </div>\r\n                 \r\n              </div>"
+
+/***/ }),
+
+/***/ 582:
+/***/ (function(module, exports) {
+
+module.exports = "<div id=\"main-content\" >\r\n    <div class=\"row m-t-10\">\r\n      <div class=\"col-md-12\">\r\n        <div class=\"\">\r\n          <ul id=\"myTab2\" class=\"nav nav-tabs nav-dark\">\r\n            <li class=\"active\"><a href=\"#tab2_1\" data-toggle=\"tab\">Active Employees</a></li>\r\n            <li class=\"\"><a href=\"#tab2_2\" data-toggle=\"tab\">Work Anniversary</a></li>\r\n            <li class=\"\"><a href=\"#tab2_3\" data-toggle=\"tab\">Birthday </a></li>\r\n            \r\n          </ul>\r\n          <div id=\"myTabContent\" class=\"tab-content\">\r\n           \r\n            <div class=\"tab-pane fade active in\" id=\"tab2_1\">\r\n              <app-activeemployee></app-activeemployee>\r\n            </div>\r\n            <div class=\"tab-pane fade\" id=\"tab2_2\">\r\n              <app-workanniversary></app-workanniversary>\r\n            </div>\r\n            <div class=\"tab-pane fade\" id=\"tab2_3\">\r\n               <app-birthday></app-birthday>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>"
+
+/***/ }),
+
+/***/ 583:
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"text-right m-b-20\">\r\n                <div class=\"btn-group text-left\">\r\n                                        <button class=\"btn btn-success dropdown-toggle\" data-toggle=\"dropdown\">Export <i class=\"fa fa-angle-down\"></i>\r\n                                        </button>\r\n                                        <ul class=\"dropdown-menu pull-right\">\r\n                                            <li><a href=\"#\">Customize Columns</a>\r\n                                            </li>\r\n                                            <li><a href=\"#\">Print</a>\r\n                                            </li>\r\n                                            <li><a href=\"#\">Export to PDF</a>\r\n                                            </li>\r\n                                            <li><a href=\"#\">Export to XLS</a>\r\n                                            </li>\r\n                                            <li><a href=\"#\">Export to CSV</a>\r\n                                            </li>\r\n                                            <li><a href=\"#\">Export to DOC</a>\r\n                                            </li>\r\n                                        </ul>\r\n                                    </div>\r\n                \r\n                <button type=\"button\" class=\"btn btn-sm btn-icon btn-rounded btn-default\"><i class=\"fa fa-question\"></i></button>\r\n              </div>\r\n              <div class=\"form-horizontal\">\r\n                \r\n                <div class=\"m-b-10\">\r\n                  <div class=\"row row-5px\">\r\n              <div class=\"col-md-2 col-sm-2 col-xs-12 col-5px\">\r\n                <label class=\"bold\" >Branch</label>\r\n                <select class=\"form-control\">\r\n                  <option>-- Select --</option>\r\n                </select>\r\n              </div>\r\n              <div class=\"col-md-2 col-sm-2 col-xs-12 col-5px\">\r\n                <label class=\"bold\" >Department</label>\r\n                <select class=\"form-control\">\r\n                  <option>-- Select --</option>\r\n                </select>\r\n              </div>\r\n              <div class=\"col-md-2 col-sm-2 col-xs-12 col-5px\">\r\n                <label class=\"bold\" >Job Profile</label>\r\n                <select class=\"form-control\">\r\n                  <option>-- Select --</option>\r\n                </select>\r\n              </div>\r\n              <div class=\"col-md-2 col-sm-2 col-xs-12 col-5px\">\r\n                <label class=\"bold\" >User Role</label>\r\n                <select class=\"form-control\">\r\n                  <option>-- Select --</option>\r\n                </select>\r\n              </div>\r\n              <div class=\"col-md-2 col-sm-2 col-xs-12 col-5px\">\r\n                <label class=\"bold\" >Month</label>\r\n                <select class=\"form-control\">\r\n                  <option>-- Select --</option>\r\n                </select>\r\n              </div>\r\n              <div class=\"col-md-2 col-sm-2 col-xs-12 col-5px\">                \r\n                <button class=\"btn btn-primary m-t-25\" >Generate Report</button>\r\n              </div>\r\n            </div>\r\n                </div>\r\n                <div class=\"row\">\r\n                <div class=\"col-md-12 col-sm-12 col-xs-12\">\r\n                 <div class=\"table-responsive\">\r\n                  <table class=\"table table-bordered table-striped table-hover\">\r\n                    <thead class=\"no-bd\">\r\n                      <tr>\r\n                        <th><strong>First Name</strong> </th>\r\n                        <th><strong>Last Name</strong> </th>\r\n                        <th><strong>Job Title</strong> </th>\r\n                        <th><strong>Address</strong> </th>\r\n                        <th><strong>Gender</strong> </th>\r\n                        <th><strong>Joining Date</strong> </th>                                                                \r\n                      </tr>\r\n                    </thead>\r\n                    <tbody class=\"no-bd-y\">\r\n                      <tr>\r\n                        <td>Nikunj</td>                        \r\n                        <td>Savani </td>\r\n                        <td>ASP .NET Developer </td>\r\n                        <td>A-201 Rivera apartment, near CNG pump, sudama chowk, mota varachha</td>\r\n                        <td>Male</td>\r\n                        <td>5/4/1988 12:00:00 AM</td>                        \r\n                      </tr>\r\n                      <tr>\r\n                        <td>Bhavesh</td>                        \r\n                        <td>Patel </td>\r\n                        <td>ASP .NET Developer </td>\r\n                        <td>A-201 Rivera apartment, near CNG pump, sudama chowk, mota varachha</td>\r\n                        <td>Male</td>\r\n                        <td>5/4/1988 12:00:00 AM</td>\r\n                        \r\n                      </tr>\r\n                      <tr>\r\n                        <td>Manish</td>                        \r\n                        <td>Parakhiya </td>\r\n                        <td>ASP .NET Developer </td>\r\n                        <td>A-201 Rivera apartment, near CNG pump, sudama chowk, mota varachha</td>\r\n                        <td>Male</td>\r\n                        <td>5/4/1988 12:00:00 AM</td>\r\n                        \r\n                      </tr>\r\n                     \r\n                      \r\n                    </tbody>\r\n                  </table>\r\n                  </div>\r\n                </div>\r\n              </div>\r\n                 \r\n              </div>"
+
+/***/ }),
+
+/***/ 584:
 /***/ (function(module, exports) {
 
 module.exports = "<div id=\"main-content\" >\r\n    <div class=\"row m-t-10\">\r\n      <div class=\"col-md-12\">\r\n        <div class=\"panel panel-default\">\r\n          <div class=\"panel-heading text-right\">\r\n            <button type=\"button\" class=\"btn btn-sm btn-icon btn-rounded btn-default\"><i class=\"fa fa-question\"></i> </button>\r\n          </div>\r\n          <div class=\"panel-body\">\r\n           \r\n            <div class=\"row\">\r\n              <div class=\"col-md-3 col-sm-3 col-xs-12 \">\r\n                <label class=\"bold\" >Employee</label>\r\n                <select class=\"form-control\">\r\n                  <option>-- Select --</option>\r\n                </select>\r\n              </div>\r\n              <div class=\"col-md-3 col-sm-3 col-xs-12 \">\r\n                <label class=\"bold\" >Salary Structure</label>\r\n                <select class=\"form-control\">\r\n                  <option>-- Select --</option>\r\n                </select>\r\n              </div>\r\n              <div class=\"col-md-3 col-sm-3 col-xs-12 \">\r\n                <label class=\"bold\" >Department</label>\r\n                <select class=\"form-control\">\r\n                  <option>-- Select --</option>\r\n                </select>\r\n              </div>\r\n              \r\n              \r\n            </div>\r\n            \r\n            <div class=\"row\">\r\n              <div class=\"col-md-12 col-sm-12 col-xs-12\">\r\n                <div class=\"table-responsive\">\r\n                  <table class=\"table table-bordered table-striped table-hover\">\r\n                    <thead class=\"no-bd\">\r\n                      <tr>\r\n                        <th><strong>Employee Name</strong> </th>\r\n                        <th><strong>Joinig Date</strong> </th>\r\n                        <th><strong>Department</strong> </th>\r\n                        <th><strong>Position</strong></th>\r\n                        <th><strong>CTC</strong></th>\r\n                        <th><strong>Professional Tax</strong></th>\r\n                        <th><strong>Action</strong></th>\r\n                      </tr>\r\n                    </thead>\r\n                    <tbody class=\"no-bd-y\">\r\n                      <tr>\r\n                        <td>Prashant Kapse </td>\r\n                        <td>2/6/2017 12:00:00 AM</td>\r\n                        <td>Software development (Kailashnagar)</td>\r\n                        <td>ASP.NET Developer</td>                       \r\n                        <td>20000.00</td>\r\n                        <td>200.00</td>\r\n                        <td><button type=\"button\" class=\"btn btn-sm btn-warning\" title=\"Edit\" data-toggle=\"modal\" data-target=\"#modal-basic\"><i class=\"fa fa-pencil\"></i></button>\r\n                        <div class=\"modal fade text-left\" id=\"modal-basic\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" aria-hidden=\"true\">\r\n                    <div class=\"modal-dialog modal-lg\">\r\n                      <div class=\"modal-content\">\r\n                        <div class=\"modal-header\">\r\n                          <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button>\r\n                          <h4 class=\"modal-title\" id=\"myModalLabel\"><strong>Employee Salary</strong> </h4>\r\n                        </div>\r\n                        <div class=\"modal-body\">\r\n                          <div class=\"form-horizontal\">\r\n                \r\n                <div class=\"m-b-30\">\r\n                  <div class=\"form-group\">\r\n                    <label class=\"col-sm-2 control-label\">Department </label>\r\n                    <div class=\"col-sm-3\">\r\n                      <select class=\"form-control\">\r\n                        <option>---Select---</option>\r\n                      </select>\r\n                    </div>\r\n                    <label class=\"col-sm-2 control-label\">Salary Structure  </label>\r\n                    <div class=\"col-sm-3\">\r\n                      <select class=\"form-control\">\r\n                        <option>---Select---</option>\r\n                      </select>\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n                <div class=\"row\">\r\n                <div class=\"col-md-12 col-sm-12 col-xs-12 table-responsive\">\r\n                  <table class=\"table table-bordered table-striped table-hover\">\r\n                    <thead class=\"no-bd\">\r\n                      <tr>\r\n                        <th><strong>Category Name</strong> </th>\r\n                        <th><strong>Category wise Amount</strong> </th>\r\n                        <th><strong>Percentage</strong> </th>\r\n                        <th><strong>Percentage Of</strong> </th>\r\n                        <th><strong>Duration</strong> </th>\r\n                        <th><strong>Deduction</strong> </th>\r\n                      </tr>\r\n                    </thead>\r\n                    <tbody class=\"no-bd-y\">\r\n                      <tr>\r\n                        <td>CTC</td>\r\n                        <td>\r\n                        \t<div class=\"form-inline\">\r\n\t\t\t\t\t\t\t \r\n\t\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\t<div class=\"input-group\">\r\n\t\t\t\t\t\t\t\t  <div class=\"input-group-addon\">₹</div>\r\n\t\t\t\t\t\t\t\t  <input type=\"text\" class=\"form-control\"  placeholder=\"Amount\">\r\n\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t \r\n\t\t\t\t\t\t\t  \r\n\t\t\t\t\t\t\t</div>\r\n                        </td>\r\n                        <td> </td>\r\n                        <td> </td>\r\n                        <td>Monthly</td>\r\n                        <td></td>\r\n                      </tr>\r\n                      <tr>\r\n                        <td>Professional tax</td>\r\n                        <td>\r\n                        \t<div >\r\n\t\t\t\t\t\t\t  \r\n\t\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\t<div class=\"input-group\">\r\n\t\t\t\t\t\t\t\t  <div class=\"input-group-addon\">₹</div>\r\n\t\t\t\t\t\t\t\t  <input type=\"text\" class=\"form-control\"  placeholder=\"Amount\">\r\n\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t  \r\n\t\t\t\t\t\t\t  \r\n\t\t\t\t\t\t\t</div>\r\n                        </td>\r\n                        <td> </td>\r\n                        <td> </td>\r\n                        <td>Monthly</td>\r\n                        <td><i class=\"fa fa-check\"></i></td>\r\n                      </tr>\r\n                      <tr>\r\n                        <td>Gross Salary</td>\r\n                        <td>\r\n                        \t₹ 14900\r\n                        </td>\r\n                        <td> </td>\r\n                        <td> </td>\r\n                        <td></td>\r\n                        <td></td>\r\n                      </tr>\r\n                      \r\n                    </tbody>\r\n                  </table>\r\n                </div>\r\n              </div>\r\n                 \r\n              </div>\r\n                        </div>\r\n                        <div class=\"modal-footer\">\r\n                          <button type=\"button\" class=\"btn btn-primary\" onclick=\"javascript:$('#form1').parsley('validate');\">Save</button>\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n                  </div>\r\n                            </td>\r\n                      </tr>\r\n                      <tr>\r\n                        <td>Prashant Kapse </td>\r\n                        <td>2/6/2017 12:00:00 AM</td>\r\n                        <td>Software development (Kailashnagar)</td>\r\n                        <td>ASP.NET Developer</td>                       \r\n                        <td>20000.00</td>\r\n                        <td>200.00</td>\r\n                        <td><button type=\"button\" class=\"btn btn-sm btn-warning\" title=\"Edit\"><i class=\"fa fa-pencil\"></i></button>  </td>\r\n                      </tr>\r\n                      <tr>\r\n                        <td>Prashant Kapse </td>\r\n                        <td>2/6/2017 12:00:00 AM</td>\r\n                        <td>Software development (Kailashnagar)</td>\r\n                        <td>ASP.NET Developer</td>                       \r\n                        <td>20000.00</td>\r\n                        <td>200.00</td>\r\n                        <td><button type=\"button\" class=\"btn btn-sm btn-warning\" title=\"Edit\"><i class=\"fa fa-pencil\"></i></button>  </td>\r\n                      </tr>\r\n                      <tr>\r\n                        <td>Prashant Kapse </td>\r\n                        <td>2/6/2017 12:00:00 AM</td>\r\n                        <td>Software development (Kailashnagar)</td>\r\n                        <td>ASP.NET Developer</td>                       \r\n                        <td>20000.00</td>\r\n                        <td>200.00</td>\r\n                        <td><button type=\"button\" class=\"btn btn-sm btn-warning\" title=\"Edit\"><i class=\"fa fa-pencil\"></i></button>  </td>\r\n                      </tr>\r\n                      <tr>\r\n                        <td>Prashant Kapse </td>\r\n                        <td>2/6/2017 12:00:00 AM</td>\r\n                        <td>Software development (Kailashnagar)</td>\r\n                        <td>ASP.NET Developer</td>                       \r\n                        <td>20000.00</td>\r\n                        <td>200.00</td>\r\n                        <td><button type=\"button\" class=\"btn btn-sm btn-warning\" title=\"Edit\"><i class=\"fa fa-pencil\"></i></button>  </td>\r\n                      </tr>\r\n                      <tr>\r\n                        <td>Prashant Kapse </td>\r\n                        <td>2/6/2017 12:00:00 AM</td>\r\n                        <td>Software development (Kailashnagar)</td>\r\n                        <td>ASP.NET Developer</td>                       \r\n                        <td>20000.00</td>\r\n                        <td>200.00</td>\r\n                        <td><button type=\"button\" class=\"btn btn-sm btn-warning\" title=\"Edit\"><i class=\"fa fa-pencil\"></i></button>  </td>\r\n                      </tr>\r\n                      <tr>\r\n                        <td>Prashant Kapse </td>\r\n                        <td>2/6/2017 12:00:00 AM</td>\r\n                        <td>Software development (Kailashnagar)</td>\r\n                        <td>ASP.NET Developer</td>                       \r\n                        <td>20000.00</td>\r\n                        <td>200.00</td>\r\n                        <td><button type=\"button\" class=\"btn btn-sm btn-warning\" title=\"Edit\"><i class=\"fa fa-pencil\"></i></button>  </td>\r\n                      </tr>\r\n                      \r\n                     \r\n                    </tbody>\r\n                  </table>\r\n                </div>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>"

@@ -40,6 +40,7 @@ export class MyLeaveService {
 
     public AddEmployeeLeave = (data: any): Observable<any> => {
         let toAdd = JSON.stringify(data);
+        console.log(toAdd);
         return this.http.post(this.actionUrl + 'EmployeeLeave/CreateEmployeeLeave/', toAdd, { headers: this.headers })
             .map(res => <any>res.json());
     }

@@ -1,11 +1,11 @@
 webpackJsonp([13],{
 
-/***/ 475:
+/***/ 490:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AttendanceComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AdjustmentComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -16,31 +16,31 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
-var AttendanceComponent = (function () {
-    function AttendanceComponent() {
+var AdjustmentComponent = (function () {
+    function AdjustmentComponent() {
     }
-    AttendanceComponent.prototype.ngOnInit = function () {
+    AdjustmentComponent.prototype.ngOnInit = function () {
     };
-    return AttendanceComponent;
+    return AdjustmentComponent;
 }());
-AttendanceComponent = __decorate([
+AdjustmentComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'app-attendance',
-        template: __webpack_require__(581),
+        selector: 'app-adjustment',
+        template: __webpack_require__(595),
     }),
     __metadata("design:paramtypes", [])
-], AttendanceComponent);
+], AdjustmentComponent);
 
 
 
 /***/ }),
 
-/***/ 476:
+/***/ 491:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HolidaysComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AlertComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -51,31 +51,31 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
-var HolidaysComponent = (function () {
-    function HolidaysComponent() {
+var AlertComponent = (function () {
+    function AlertComponent() {
     }
-    HolidaysComponent.prototype.ngOnInit = function () {
+    AlertComponent.prototype.ngOnInit = function () {
     };
-    return HolidaysComponent;
+    return AlertComponent;
 }());
-HolidaysComponent = __decorate([
+AlertComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'app-holidays',
-        template: __webpack_require__(582),
+        selector: 'app-alert',
+        template: __webpack_require__(596),
     }),
     __metadata("design:paramtypes", [])
-], HolidaysComponent);
+], AlertComponent);
 
 
 
 /***/ }),
 
-/***/ 477:
+/***/ 492:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LeavestructureComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ClaimComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -86,26 +86,26 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
-var LeavestructureComponent = (function () {
-    function LeavestructureComponent() {
+var ClaimComponent = (function () {
+    function ClaimComponent() {
     }
-    LeavestructureComponent.prototype.ngOnInit = function () {
+    ClaimComponent.prototype.ngOnInit = function () {
     };
-    return LeavestructureComponent;
+    return ClaimComponent;
 }());
-LeavestructureComponent = __decorate([
+ClaimComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'app-leavestructure',
-        template: __webpack_require__(583),
+        selector: 'app-claim',
+        template: __webpack_require__(597),
     }),
     __metadata("design:paramtypes", [])
-], LeavestructureComponent);
+], ClaimComponent);
 
 
 
 /***/ }),
 
-/***/ 478:
+/***/ 493:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -131,7 +131,7 @@ var ListsComponent = (function () {
 ListsComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-lists',
-        template: __webpack_require__(584),
+        template: __webpack_require__(598),
     }),
     __metadata("design:paramtypes", [])
 ], ListsComponent);
@@ -140,42 +140,7 @@ ListsComponent = __decorate([
 
 /***/ }),
 
-/***/ 479:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MisspunchComponent; });
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-var MisspunchComponent = (function () {
-    function MisspunchComponent() {
-    }
-    MisspunchComponent.prototype.ngOnInit = function () {
-    };
-    return MisspunchComponent;
-}());
-MisspunchComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'app-misspunch',
-        template: __webpack_require__(585),
-    }),
-    __metadata("design:paramtypes", [])
-], MisspunchComponent);
-
-
-
-/***/ }),
-
-/***/ 480:
+/***/ 494:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -201,7 +166,7 @@ var ReportsComponent = (function () {
 ReportsComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-reports',
-        template: __webpack_require__(586),
+        template: __webpack_require__(599),
     }),
     __metadata("design:paramtypes", [])
 ], ReportsComponent);
@@ -210,19 +175,54 @@ ReportsComponent = __decorate([
 
 /***/ }),
 
-/***/ 523:
+/***/ 495:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(171);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__lists_lists_component__ = __webpack_require__(478);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__leavestructure_leavestructure_component__ = __webpack_require__(477);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__holidays_holidays_component__ = __webpack_require__(476);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__attendance_attendance_component__ = __webpack_require__(475);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__misspunch_misspunch_component__ = __webpack_require__(479);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__reports_reports_component__ = __webpack_require__(480);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LeaveandattendanceRoutingModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SettingComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var SettingComponent = (function () {
+    function SettingComponent() {
+    }
+    SettingComponent.prototype.ngOnInit = function () {
+    };
+    return SettingComponent;
+}());
+SettingComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'app-setting',
+        template: __webpack_require__(600),
+    }),
+    __metadata("design:paramtypes", [])
+], SettingComponent);
+
+
+
+/***/ }),
+
+/***/ 530:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(172);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__lists_lists_component__ = __webpack_require__(493);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__alert_alert_component__ = __webpack_require__(491);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__setting_setting_component__ = __webpack_require__(495);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__adjustment_adjustment_component__ = __webpack_require__(490);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__claim_claim_component__ = __webpack_require__(492);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__reports_reports_component__ = __webpack_require__(494);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PayrollRoutingModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -239,44 +239,44 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 var routes = [
     { path: '', component: __WEBPACK_IMPORTED_MODULE_2__lists_lists_component__["a" /* ListsComponent */] },
-    { path: 'leavestructure', component: __WEBPACK_IMPORTED_MODULE_3__leavestructure_leavestructure_component__["a" /* LeavestructureComponent */] },
-    { path: 'holidays', component: __WEBPACK_IMPORTED_MODULE_4__holidays_holidays_component__["a" /* HolidaysComponent */] },
-    { path: 'attendance', component: __WEBPACK_IMPORTED_MODULE_5__attendance_attendance_component__["a" /* AttendanceComponent */] },
-    { path: 'misspunch', component: __WEBPACK_IMPORTED_MODULE_6__misspunch_misspunch_component__["a" /* MisspunchComponent */] },
+    { path: 'alert', component: __WEBPACK_IMPORTED_MODULE_3__alert_alert_component__["a" /* AlertComponent */] },
+    { path: 'setting', component: __WEBPACK_IMPORTED_MODULE_4__setting_setting_component__["a" /* SettingComponent */] },
+    { path: 'adjustment', component: __WEBPACK_IMPORTED_MODULE_5__adjustment_adjustment_component__["a" /* AdjustmentComponent */] },
+    { path: 'claim', component: __WEBPACK_IMPORTED_MODULE_6__claim_claim_component__["a" /* ClaimComponent */] },
     { path: 'reports', component: __WEBPACK_IMPORTED_MODULE_7__reports_reports_component__["a" /* ReportsComponent */] },
 ];
-var LeaveandattendanceRoutingModule = (function () {
-    function LeaveandattendanceRoutingModule() {
+var PayrollRoutingModule = (function () {
+    function PayrollRoutingModule() {
     }
-    return LeaveandattendanceRoutingModule;
+    return PayrollRoutingModule;
 }());
-LeaveandattendanceRoutingModule = __decorate([
+PayrollRoutingModule = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
         imports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["RouterModule"].forChild(routes)],
         exports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["RouterModule"]]
     })
-], LeaveandattendanceRoutingModule);
+], PayrollRoutingModule);
 
 
 
 /***/ }),
 
-/***/ 524:
+/***/ 531:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__(52);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__leaveandattendance_routing_module__ = __webpack_require__(523);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared__ = __webpack_require__(371);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__lists_lists_component__ = __webpack_require__(478);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__leavestructure_leavestructure_component__ = __webpack_require__(477);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__holidays_holidays_component__ = __webpack_require__(476);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__attendance_attendance_component__ = __webpack_require__(475);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__misspunch_misspunch_component__ = __webpack_require__(479);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__reports_reports_component__ = __webpack_require__(480);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LeaveandattendanceModule", function() { return LeaveandattendanceModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__payroll_routing_module__ = __webpack_require__(530);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared__ = __webpack_require__(374);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__lists_lists_component__ = __webpack_require__(493);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__alert_alert_component__ = __webpack_require__(491);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__setting_setting_component__ = __webpack_require__(495);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__adjustment_adjustment_component__ = __webpack_require__(490);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__claim_claim_component__ = __webpack_require__(492);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__reports_reports_component__ = __webpack_require__(494);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PayrollModule", function() { return PayrollModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -293,72 +293,72 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var LeaveandattendanceModule = (function () {
-    function LeaveandattendanceModule() {
+var PayrollModule = (function () {
+    function PayrollModule() {
     }
-    return LeaveandattendanceModule;
+    return PayrollModule;
 }());
-LeaveandattendanceModule = __decorate([
+PayrollModule = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
         imports: [
             __WEBPACK_IMPORTED_MODULE_1__angular_common__["CommonModule"],
-            __WEBPACK_IMPORTED_MODULE_2__leaveandattendance_routing_module__["a" /* LeaveandattendanceRoutingModule */],
+            __WEBPACK_IMPORTED_MODULE_2__payroll_routing_module__["a" /* PayrollRoutingModule */],
             __WEBPACK_IMPORTED_MODULE_3__shared__["d" /* PageHeaderModule */]
         ],
         declarations: [
             __WEBPACK_IMPORTED_MODULE_4__lists_lists_component__["a" /* ListsComponent */],
-            __WEBPACK_IMPORTED_MODULE_5__leavestructure_leavestructure_component__["a" /* LeavestructureComponent */],
-            __WEBPACK_IMPORTED_MODULE_6__holidays_holidays_component__["a" /* HolidaysComponent */],
-            __WEBPACK_IMPORTED_MODULE_7__attendance_attendance_component__["a" /* AttendanceComponent */],
-            __WEBPACK_IMPORTED_MODULE_8__misspunch_misspunch_component__["a" /* MisspunchComponent */],
+            __WEBPACK_IMPORTED_MODULE_5__alert_alert_component__["a" /* AlertComponent */],
+            __WEBPACK_IMPORTED_MODULE_6__setting_setting_component__["a" /* SettingComponent */],
+            __WEBPACK_IMPORTED_MODULE_7__adjustment_adjustment_component__["a" /* AdjustmentComponent */],
+            __WEBPACK_IMPORTED_MODULE_8__claim_claim_component__["a" /* ClaimComponent */],
             __WEBPACK_IMPORTED_MODULE_9__reports_reports_component__["a" /* ReportsComponent */]
         ]
     })
-], LeaveandattendanceModule);
+], PayrollModule);
 
 
 
 /***/ }),
 
-/***/ 581:
+/***/ 595:
 /***/ (function(module, exports) {
 
-module.exports = "<p>\r\n  attendance works!\r\n</p>\r\n"
+module.exports = "<p>\r\n  adjustment works!\r\n</p>\r\n"
 
 /***/ }),
 
-/***/ 582:
+/***/ 596:
 /***/ (function(module, exports) {
 
-module.exports = "<p>\r\n  holidays works!\r\n</p>\r\n"
+module.exports = "<p>\r\n  alert works!\r\n</p>\r\n"
 
 /***/ }),
 
-/***/ 583:
+/***/ 597:
 /***/ (function(module, exports) {
 
-module.exports = "<p>\r\n  leavestructure works!\r\n</p>\r\n"
+module.exports = "<p>\r\n  claim works!\r\n</p>\r\n"
 
 /***/ }),
 
-/***/ 584:
+/***/ 598:
 /***/ (function(module, exports) {
 
 module.exports = "<p>\r\n  lists works!\r\n</p>\r\n"
 
 /***/ }),
 
-/***/ 585:
-/***/ (function(module, exports) {
-
-module.exports = "<p>\r\n  misspunch works!\r\n</p>\r\n"
-
-/***/ }),
-
-/***/ 586:
+/***/ 599:
 /***/ (function(module, exports) {
 
 module.exports = "<p>\r\n  reports works!\r\n</p>\r\n"
+
+/***/ }),
+
+/***/ 600:
+/***/ (function(module, exports) {
+
+module.exports = "<p>\r\n  setting works!\r\n</p>\r\n"
 
 /***/ })
 

@@ -65,6 +65,58 @@ namespace EasyHRMS_Angular.Controllers
         }
 
 
+        // GET api/LookupData/GetLookupDataByLookupIDsInBulk
+        [HttpPost("GetLookupDataByLookupIDsInBulk"), Produces("application/json")]
+        public object GetLookupDataByLookupIDsInBulk([FromBody]List<int> model)
+        {
+            object result = null;
+            //Holiday objHoliday = null;
+            List<LookupDataVM> list = new List<LookupDataVM>();
+            List<LookupDataListVM> listoflookups = new List<LookupDataListVM>();
+            try
+            {
+                using (_context)
+                {
+                    //objHoliday = _context.Holiday.FirstOrDefault(x => x.HolidayId == id);
+                    if(model != null)
+                    {
+                       foreach(int id in model)
+                        {
+                            string Lookupname = _context.Lookups.Where(y => y.LookupId == id).FirstOrDefault().LookupName;
+                            list = _context.LookupData.Where(x => x.LookupId == id).Select(x => new LookupDataVM()
+                            {
+                                Id = x.Id,
+                                LookupId = x.LookupId,
+                                RowId = x.RowId,
+                                FieldName = x.FieldName,
+                                Value = x.Value,
+                            }).OrderBy(x => x.Id).ToList();
+
+                            listoflookups.Add(new LookupDataListVM() { LookupName = Lookupname, LdataList = list });
+                        }
+                    }
+                   
+                    result = new
+                    {
+                        listoflookups,
+                        error = "0",
+                        msg = "Success"
+                    };
+                }
+            }
+            catch (Exception ex)
+            {
+                ex.ToString();
+                result = new
+                {
+                    listoflookups,
+                    error = "1",
+                    msg = "Error"
+                };
+            }
+            return result;
+        }
+
         // GET api/LookupData/GetLRowDataByLRID/5/1
         [HttpGet("GetLRowDataByLRID/{lid}/{rid}"), Produces("application/json")]
         public object GetLRowDataByLRID(int lid, int rid)

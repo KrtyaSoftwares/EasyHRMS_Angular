@@ -81,7 +81,7 @@ export class ListComponent implements OnInit {
           .GetEmployeeLeaveByEmployeeId(id)
           .subscribe(
           data => {
-              //console.log(data.list);
+              console.log(data.list);
               this._employeeLeaveList = data.list;
               this._employeeLeaveListGroupByMonth = this.groupBy(this._employeeLeaveList, function (item: any) {
                   return new Date(item.fromDate).getMonth();
@@ -112,7 +112,7 @@ export class ListComponent implements OnInit {
           });
   }
   onSubmit(value: any, isValid: boolean) {
-      debugger;
+      //debugger;
       this.submitted = true;
       if (isValid == false) {
           this.msgs.push({ severity: 'error', summary: 'Error Message', detail: 'Validation failed' });
@@ -122,8 +122,13 @@ export class ListComponent implements OnInit {
       this._EmployeeLeaveModel.employeeId = 1;
       this._EmployeeLeaveModel.status = 'InProgress';
       //this._EmployeeLeaveModel.leaveTypeId = 1;
+      //this._EmployeeLeaveModel.fromDate.setHours(0, 0, 0, 0).toString(yyyy-mm-dd hh:mm:ss);
+      
       this._EmployeeLeaveModel.fromDate.setHours(0, 0, 0, 0);
       this._EmployeeLeaveModel.toDate.setHours(0, 0, 0, 0);
+      this._EmployeeLeaveModel.fromDate.toDateString();
+      this._EmployeeLeaveModel.toDate.toDateString();
+      console.log(this._EmployeeLeaveModel.toDate.toDateString());
       console.log(this._EmployeeLeaveModel);
       this._leaveService.AddEmployeeLeave(this._EmployeeLeaveModel)
           .subscribe(
