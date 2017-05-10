@@ -17,7 +17,7 @@ namespace EasyHRMS_Angular.Models
 
     public class LookupDataListVM
     {
-        public string LookupName { get; set; }
+        public int? Lookupid { get; set; }
         public List<LookupDataVM> LdataList { get; set; }
        
     }
