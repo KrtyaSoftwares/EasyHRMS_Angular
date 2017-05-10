@@ -42,7 +42,7 @@ export class ListingComponent implements OnInit {
             this.actionlist = this.results['actionlist'];
             this.lookupData = this.results['lookupData'];
             this. filterLookupData = this.lookupData.sort(function (a, b) {
-              return a.rowId - b.rowId;
+              return a.id - b.id;
             });
             if ( this.lookuplist.length == 0 ) {
                 this.record_not_exists = true;

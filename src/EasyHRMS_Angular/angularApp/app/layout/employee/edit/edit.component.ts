@@ -99,6 +99,7 @@ export class EditComponent implements OnInit {
                     optionValue: this._fieldLists[j]['optionValue'],
                     placeholder: this._fieldLists[j]['placeholder'],
                     validator: this._fieldLists[j]['validator'],
+                    lookupId: this._fieldLists[j]['lookupId'],
                     value: value,
                   }
                   group['custom_obj'].push(nested_group);
