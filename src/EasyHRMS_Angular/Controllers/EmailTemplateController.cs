@@ -155,26 +155,20 @@ namespace EasyHRMS_Angular.Controllers
                     try
                     {
                         var entityUpdate = _context.EmailTemplate.FirstOrDefault(x => x.Id == id);
-                        //if (entityUpdate != null)
-                        //{
-                        //    PropertyInfo[] propertiesEU = entityUpdate.GetType().GetProperties();
-                        //    foreach (PropertyInfo pi in propertiesEU)
-                        //    {
-                        //        if (pi.Name != "EmployeeLeaveID")
-                        //        {
-                        //            pi.SetValue(entityUpdate, pi.GetValue(model));
-                        //            //var xl = pi.GetValue(entityUpdate);
-                        //        }
-                        //    }
-                        //    _context.SaveChanges();
-                        //}
-
+                       
                         if (entityUpdate != null)
                         {
                             entityUpdate.FormName = model.FormName;
                             entityUpdate.TemplateName = model.TemplateName;
                             entityUpdate.Message = model.Message;
-                          
+                            entityUpdate.FromAddress = model.FromAddress;
+                            entityUpdate.ToAddress = model.ToAddress;
+                            entityUpdate.Ccaddress = model.Ccaddress;
+                            entityUpdate.Bccaddress = model.Bccaddress;
+                            entityUpdate.ReplyToAddress = model.ReplyToAddress;
+                            entityUpdate.EmailSubject = model.EmailSubject;
+                            entityUpdate.Attachment = model.Attachment;
+
                             _context.SaveChanges();
                         }
 
@@ -223,22 +217,19 @@ namespace EasyHRMS_Angular.Controllers
                         if (id != 0)
                         {
                             var entityUpdate = _context.EmailTemplate.FirstOrDefault(x => x.Id == id);
-                            //if (entityUpdate != null)
-                            //{
-                            //    PropertyInfo[] propertiesEU = entityUpdate.GetType().GetProperties();
-                            //    foreach (PropertyInfo pi in propertiesEU)
-                            //    {
-                            //        pi.SetValue(entityUpdate, pi.GetValue(model));
-                            //    }
-                            //    _context.SaveChanges();
-                            //}
-
-
+                           
                             if (entityUpdate != null)
                             {
                                 entityUpdate.FormName = model.FormName;
                                 entityUpdate.TemplateName = model.TemplateName;
                                 entityUpdate.Message = model.Message;
+                                entityUpdate.FromAddress = model.FromAddress;
+                                entityUpdate.ToAddress = model.ToAddress;
+                                entityUpdate.Ccaddress = model.Ccaddress;
+                                entityUpdate.Bccaddress = model.Bccaddress;
+                                entityUpdate.ReplyToAddress = model.ReplyToAddress;
+                                entityUpdate.EmailSubject = model.EmailSubject;
+                                entityUpdate.Attachment = model.Attachment;
 
                                 _context.SaveChanges();
                             }

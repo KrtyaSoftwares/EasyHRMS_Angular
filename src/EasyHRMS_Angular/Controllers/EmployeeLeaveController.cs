@@ -126,9 +126,11 @@ namespace EasyHRMS_Angular.Controllers
                 {
                     try
                     {
-                        Debug.WriteLine(model.ToDate);
-                        Debug.WriteLine(model.FromDate);
                         model.CreateDate = DateTime.Now;
+                        if(model.IsHalfDay == null)
+                        {
+                            model.IsHalfDay = false;
+                        }
                         _context.EmployeeLeave.Add(model);
                         //await _ctx.SaveChangesAsync();
                         _context.SaveChanges();

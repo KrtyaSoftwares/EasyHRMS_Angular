@@ -25,13 +25,13 @@ namespace EasyHRMS_Angular.Controllers
         [HttpGet("GetAllTaskTemplate"), Produces("application/json")]
         public object GetAllTaskTemplate()
         {
-            List<EmailTemplate> list = new List<EmailTemplate>();
+            List<TaskTemplate> list = new List<TaskTemplate>();
             object result = null;
             try
             {
                 using (_context)
                 {
-                    list = _context.EmailTemplate.ToList();
+                    list = _context.TaskTemplate.ToList();
 
                     result = new
                     {
@@ -63,12 +63,12 @@ namespace EasyHRMS_Angular.Controllers
         {
             object result = null;
 
-            EmailTemplate objEmailTemplate = new EmailTemplate();
+            TaskTemplate objEmailTemplate = new TaskTemplate();
             try
             {
                 using (_context)
                 {
-                    objEmailTemplate = _context.EmailTemplate.FirstOrDefault(x => x.Id == id);
+                    objEmailTemplate = _context.TaskTemplate.FirstOrDefault(x => x.Id == id);
 
                     result = new
                     {
@@ -93,7 +93,7 @@ namespace EasyHRMS_Angular.Controllers
 
         // POST api/TaskTemplate/CreateTaskTemplate
         [HttpPost, Route("CreateTaskTemplate"), Produces("application/json")]
-        public object CreateTaskTemplate([FromBody]EmailTemplate model)
+        public object CreateTaskTemplate([FromBody]TaskTemplate model)
         {
 
             object result = null;
@@ -110,7 +110,7 @@ namespace EasyHRMS_Angular.Controllers
                 {
                     try
                     {
-                        _context.EmailTemplate.Add(model);
+                        _context.TaskTemplate.Add(model);
                         //await _ctx.SaveChangesAsync();
                         _context.SaveChanges();
                         _ctxTransaction.Commit();
@@ -140,7 +140,7 @@ namespace EasyHRMS_Angular.Controllers
 
         // PUT api/TaskTemplate/UpdateTaskTemplate/5
         [HttpPost, Route("UpdateTaskTemplate/{id}")]
-        public object UpdateTaskTemplate(int id, [FromBody]EmailTemplate model)
+        public object UpdateTaskTemplate(int id, [FromBody]TaskTemplate model)
         {
             object result = null; string message = ""; string errorcode = ""; string excp = "";
             if (model == null)
@@ -153,27 +153,16 @@ namespace EasyHRMS_Angular.Controllers
                 {
                     try
                     {
-                        var entityUpdate = _context.EmailTemplate.FirstOrDefault(x => x.Id == id);
-                        //if (entityUpdate != null)
-                        //{
-                        //    PropertyInfo[] propertiesEU = entityUpdate.GetType().GetProperties();
-                        //    foreach (PropertyInfo pi in propertiesEU)
-                        //    {
-                        //        if (pi.Name != "EmployeeLeaveID")
-                        //        {
-                        //            pi.SetValue(entityUpdate, pi.GetValue(model));
-                        //            //var xl = pi.GetValue(entityUpdate);
-                        //        }
-                        //    }
-                        //    _context.SaveChanges();
-                        //}
-
+                        var entityUpdate = _context.TaskTemplate.FirstOrDefault(x => x.Id == id);
+                      
                         if (entityUpdate != null)
                         {
-                            entityUpdate.FormName = model.FormName;
                             entityUpdate.TemplateName = model.TemplateName;
-                            entityUpdate.Message = model.Message;
-
+                            entityUpdate.FormName = model.FormName;
+                            entityUpdate.Description = model.Description;
+                            entityUpdate.Priority = model.Priority;
+                            entityUpdate.TaskOwner = model.TaskOwner;
+                            entityUpdate.DueDate = model.DueDate;
                             _context.SaveChanges();
                         }
 
@@ -203,7 +192,7 @@ namespace EasyHRMS_Angular.Controllers
 
         // POST api/TaskTemplate/CreateUpdateTaskTemplate
         [HttpPost, Route("CreateUpdateTaskTemplate/{id}"), Produces("application/json")]
-        public object CreateUpdateTaskTemplate(int id, [FromBody]EmailTemplate model)
+        public object CreateUpdateTaskTemplate(int id, [FromBody]TaskTemplate model)
         {
             object result = null;
             string message = "";
@@ -221,24 +210,16 @@ namespace EasyHRMS_Angular.Controllers
                     {
                         if (id != 0)
                         {
-                            var entityUpdate = _context.EmailTemplate.FirstOrDefault(x => x.Id == id);
-                            //if (entityUpdate != null)
-                            //{
-                            //    PropertyInfo[] propertiesEU = entityUpdate.GetType().GetProperties();
-                            //    foreach (PropertyInfo pi in propertiesEU)
-                            //    {
-                            //        pi.SetValue(entityUpdate, pi.GetValue(model));
-                            //    }
-                            //    _context.SaveChanges();
-                            //}
-
-
+                            var entityUpdate = _context.TaskTemplate.FirstOrDefault(x => x.Id == id);
+                           
                             if (entityUpdate != null)
                             {
-                                entityUpdate.FormName = model.FormName;
                                 entityUpdate.TemplateName = model.TemplateName;
-                                entityUpdate.Message = model.Message;
-
+                                entityUpdate.FormName = model.FormName;
+                                entityUpdate.Description = model.Description;
+                                entityUpdate.Priority = model.Priority;
+                                entityUpdate.TaskOwner = model.TaskOwner;
+                                entityUpdate.DueDate = model.DueDate;
                                 _context.SaveChanges();
                             }
                             _ctxTransaction.Commit();
@@ -247,7 +228,7 @@ namespace EasyHRMS_Angular.Controllers
                         }
                         else
                         {
-                            _context.EmailTemplate.Add(model);
+                            _context.TaskTemplate.Add(model);
                             //await _ctx.SaveChangesAsync();
                             _context.SaveChanges();
                             _ctxTransaction.Commit();
@@ -290,10 +271,10 @@ namespace EasyHRMS_Angular.Controllers
                 {
                     try
                     {
-                        var idToRemove = _context.EmailTemplate.SingleOrDefault(x => x.Id == id);
+                        var idToRemove = _context.TaskTemplate.SingleOrDefault(x => x.Id == id);
                         if (idToRemove != null)
                         {
-                            _context.EmailTemplate.Remove(idToRemove);
+                            _context.TaskTemplate.Remove(idToRemove);
                             _context.SaveChanges();
                         }
                         _ctxTransaction.Commit();

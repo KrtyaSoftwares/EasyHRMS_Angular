@@ -1341,7 +1341,7 @@ exports.TreeDragDropService = TreeDragDropService;
 
 /***/ }),
 
-/***/ 372:
+/***/ 371:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1437,7 +1437,7 @@ exports.MessagesModule = MessagesModule;
 
 /***/ }),
 
-/***/ 373:
+/***/ 372:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1497,102 +1497,88 @@ exports.ProgressBarModule = ProgressBarModule;
 
 /***/ }),
 
-/***/ 374:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ 375:
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app_constants__ = __webpack_require__(67);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(66);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__(98);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GeneralFormsService; });
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
 
-
-
-
-var GeneralFormsService = (function () {
-    function GeneralFormsService(http, configuration) {
-        var _this = this;
-        this.http = http;
-        this.configuration = configuration;
-        this.GetSingle = function (id) {
-            return _this.http
-                .get(_this.actionUrl + 'Forms/GetAllFormDefByFormID/' + id)
-                .map(function (res) { return res.json(); });
-        };
-        this.GetFormData = function (id) {
-            return _this.http
-                .get(_this.actionUrl + 'EmployeeDetails/GetEmployeeByID/' + id)
-                .map(function (res) { return res.json(); });
-        };
-        this.Update = function (id, data, url) {
-            var toAdd = JSON.stringify(data);
-            return _this.http.post(_this.actionUrl + url + id, toAdd, { headers: _this.headers })
-                .map(function (res) { return res.json(); });
-        };
-        this.actionUrl = configuration.Server + 'api/';
-        this.headers = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Headers */]();
-        this.headers.append('Content-Type', 'application/json');
-        this.headers.append('Accept', 'application/json');
-    }
-    return GeneralFormsService;
-}());
-GeneralFormsService = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Injectable"])(),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_http__["c" /* Http */], __WEBPACK_IMPORTED_MODULE_0__app_constants__["a" /* Configuration */]])
-], GeneralFormsService);
-
-
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+Object.defineProperty(exports, "__esModule", { value: true });
+__export(__webpack_require__(370));
+__export(__webpack_require__(365));
+__export(__webpack_require__(377));
+__export(__webpack_require__(378));
+__export(__webpack_require__(379));
+__export(__webpack_require__(380));
+__export(__webpack_require__(366));
+__export(__webpack_require__(382));
+__export(__webpack_require__(381));
+__export(__webpack_require__(383));
+__export(__webpack_require__(384));
+__export(__webpack_require__(385));
+__export(__webpack_require__(386));
+__export(__webpack_require__(387));
+__export(__webpack_require__(389));
+__export(__webpack_require__(390));
+__export(__webpack_require__(391));
+__export(__webpack_require__(392));
+__export(__webpack_require__(393));
+__export(__webpack_require__(388));
+__export(__webpack_require__(394));
+__export(__webpack_require__(395));
+__export(__webpack_require__(396));
+__export(__webpack_require__(397));
+__export(__webpack_require__(398));
+__export(__webpack_require__(399));
+__export(__webpack_require__(400));
+__export(__webpack_require__(401));
+__export(__webpack_require__(402));
+__export(__webpack_require__(403));
+__export(__webpack_require__(404));
+__export(__webpack_require__(405));
+__export(__webpack_require__(367));
+__export(__webpack_require__(406));
+__export(__webpack_require__(407));
+__export(__webpack_require__(408));
+__export(__webpack_require__(409));
+__export(__webpack_require__(410));
+__export(__webpack_require__(411));
+__export(__webpack_require__(371));
+__export(__webpack_require__(412));
+__export(__webpack_require__(413));
+__export(__webpack_require__(414));
+__export(__webpack_require__(369));
+__export(__webpack_require__(415));
+__export(__webpack_require__(416));
+__export(__webpack_require__(417));
+__export(__webpack_require__(418));
+__export(__webpack_require__(372));
+__export(__webpack_require__(419));
+__export(__webpack_require__(420));
+__export(__webpack_require__(421));
+__export(__webpack_require__(422));
+__export(__webpack_require__(423));
+__export(__webpack_require__(424));
+__export(__webpack_require__(425));
+__export(__webpack_require__(426));
+__export(__webpack_require__(427));
+__export(__webpack_require__(429));
+__export(__webpack_require__(428));
+__export(__webpack_require__(430));
+__export(__webpack_require__(431));
+__export(__webpack_require__(432));
+__export(__webpack_require__(433));
+__export(__webpack_require__(434));
+__export(__webpack_require__(435));
+__export(__webpack_require__(436));
+__export(__webpack_require__(437));
+//# sourceMappingURL=primeng.js.map
 
 /***/ }),
 
-/***/ 376:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GeneralFormbuilderComponent; });
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-var GeneralFormbuilderComponent = (function () {
-    function GeneralFormbuilderComponent() {
-    }
-    GeneralFormbuilderComponent.prototype.ngOnInit = function () {
-        console.log('here');
-    };
-    return GeneralFormbuilderComponent;
-}());
-GeneralFormbuilderComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'app-general-formbuilder',
-        template: __webpack_require__(451),
-    }),
-    __metadata("design:paramtypes", [])
-], GeneralFormbuilderComponent);
-
-
-
-/***/ }),
-
-/***/ 378:
+/***/ 377:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1772,7 +1758,7 @@ exports.AccordionModule = AccordionModule;
 
 /***/ }),
 
-/***/ 379:
+/***/ 378:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1794,7 +1780,7 @@ var button_1 = __webpack_require__(366);
 var shared_1 = __webpack_require__(365);
 var domhandler_1 = __webpack_require__(364);
 var ObjectUtils_1 = __webpack_require__(368);
-var forms_1 = __webpack_require__(172);
+var forms_1 = __webpack_require__(171);
 exports.AUTOCOMPLETE_VALUE_ACCESSOR = {
     provide: forms_1.NG_VALUE_ACCESSOR,
     useExisting: core_1.forwardRef(function () { return AutoComplete; }),
@@ -2275,7 +2261,7 @@ exports.AutoCompleteModule = AutoCompleteModule;
 
 /***/ }),
 
-/***/ 380:
+/***/ 379:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2377,7 +2363,7 @@ exports.BlockUIModule = BlockUIModule;
 
 /***/ }),
 
-/***/ 381:
+/***/ 380:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2394,7 +2380,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(10);
 var common_1 = __webpack_require__(52);
-var router_1 = __webpack_require__(171);
+var router_1 = __webpack_require__(172);
 var Breadcrumb = (function () {
     function Breadcrumb() {
     }
@@ -2474,7 +2460,7 @@ exports.BreadcrumbModule = BreadcrumbModule;
 
 /***/ }),
 
-/***/ 382:
+/***/ 381:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2494,7 +2480,7 @@ var animations_1 = __webpack_require__(173);
 var common_1 = __webpack_require__(52);
 var button_1 = __webpack_require__(366);
 var domhandler_1 = __webpack_require__(364);
-var forms_1 = __webpack_require__(172);
+var forms_1 = __webpack_require__(171);
 exports.CALENDAR_VALUE_ACCESSOR = {
     provide: forms_1.NG_VALUE_ACCESSOR,
     useExisting: core_1.forwardRef(function () { return Calendar; }),
@@ -3552,7 +3538,7 @@ exports.CalendarModule = CalendarModule;
 
 /***/ }),
 
-/***/ 383:
+/***/ 382:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3689,7 +3675,7 @@ exports.CaptchaModule = CaptchaModule;
 
 /***/ }),
 
-/***/ 384:
+/***/ 383:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4016,7 +4002,7 @@ exports.CarouselModule = CarouselModule;
 
 /***/ }),
 
-/***/ 385:
+/***/ 384:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4150,7 +4136,7 @@ exports.ChartModule = ChartModule;
 
 /***/ }),
 
-/***/ 386:
+/***/ 385:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4167,7 +4153,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(10);
 var common_1 = __webpack_require__(52);
-var forms_1 = __webpack_require__(172);
+var forms_1 = __webpack_require__(171);
 exports.CHECKBOX_VALUE_ACCESSOR = {
     provide: forms_1.NG_VALUE_ACCESSOR,
     useExisting: core_1.forwardRef(function () { return Checkbox; }),
@@ -4304,7 +4290,7 @@ exports.CheckboxModule = CheckboxModule;
 
 /***/ }),
 
-/***/ 387:
+/***/ 386:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4324,7 +4310,7 @@ var common_1 = __webpack_require__(52);
 var shared_1 = __webpack_require__(365);
 var inputtext_1 = __webpack_require__(367);
 var domhandler_1 = __webpack_require__(364);
-var forms_1 = __webpack_require__(172);
+var forms_1 = __webpack_require__(171);
 exports.CHIPS_VALUE_ACCESSOR = {
     provide: forms_1.NG_VALUE_ACCESSOR,
     useExisting: core_1.forwardRef(function () { return Chips; }),
@@ -4515,7 +4501,7 @@ exports.ChipsModule = ChipsModule;
 
 /***/ }),
 
-/***/ 388:
+/***/ 387:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4565,7 +4551,7 @@ exports.CodeHighlighterModule = CodeHighlighterModule;
 
 /***/ }),
 
-/***/ 389:
+/***/ 388:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4854,7 +4840,7 @@ exports.ConfirmDialogModule = ConfirmDialogModule;
 
 /***/ }),
 
-/***/ 390:
+/***/ 389:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4875,7 +4861,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(10);
 var common_1 = __webpack_require__(52);
 var domhandler_1 = __webpack_require__(364);
-var router_1 = __webpack_require__(171);
+var router_1 = __webpack_require__(172);
 var ContextMenuSub = (function () {
     function ContextMenuSub(domHandler, contextMenu) {
         this.domHandler = domHandler;
@@ -5119,7 +5105,7 @@ exports.ContextMenuModule = ContextMenuModule;
 
 /***/ }),
 
-/***/ 391:
+/***/ 390:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5329,7 +5315,7 @@ exports.DataGridModule = DataGridModule;
 
 /***/ }),
 
-/***/ 392:
+/***/ 391:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5539,7 +5525,7 @@ exports.DataListModule = DataListModule;
 
 /***/ }),
 
-/***/ 393:
+/***/ 392:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5764,7 +5750,7 @@ exports.DataScrollerModule = DataScrollerModule;
 
 /***/ }),
 
-/***/ 394:
+/***/ 393:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5784,7 +5770,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(10);
 var common_1 = __webpack_require__(52);
-var forms_1 = __webpack_require__(172);
+var forms_1 = __webpack_require__(171);
 var shared_1 = __webpack_require__(365);
 var paginator_1 = __webpack_require__(369);
 var shared_2 = __webpack_require__(365);
@@ -7689,7 +7675,7 @@ exports.DataTableModule = DataTableModule;
 
 /***/ }),
 
-/***/ 395:
+/***/ 394:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8058,7 +8044,7 @@ exports.DialogModule = DialogModule;
 
 /***/ }),
 
-/***/ 396:
+/***/ 395:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8300,7 +8286,7 @@ exports.DragDropModule = DragDropModule;
 
 /***/ }),
 
-/***/ 397:
+/***/ 396:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8321,7 +8307,7 @@ var common_1 = __webpack_require__(52);
 var shared_1 = __webpack_require__(365);
 var domhandler_1 = __webpack_require__(364);
 var ObjectUtils_1 = __webpack_require__(368);
-var forms_1 = __webpack_require__(172);
+var forms_1 = __webpack_require__(171);
 exports.DROPDOWN_VALUE_ACCESSOR = {
     provide: forms_1.NG_VALUE_ACCESSOR,
     useExisting: core_1.forwardRef(function () { return Dropdown; }),
@@ -8803,7 +8789,7 @@ exports.DropdownModule = DropdownModule;
 
 /***/ }),
 
-/***/ 398:
+/***/ 397:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8822,7 +8808,7 @@ var core_1 = __webpack_require__(10);
 var common_1 = __webpack_require__(52);
 var shared_1 = __webpack_require__(365);
 var domhandler_1 = __webpack_require__(364);
-var forms_1 = __webpack_require__(172);
+var forms_1 = __webpack_require__(171);
 exports.EDITOR_VALUE_ACCESSOR = {
     provide: forms_1.NG_VALUE_ACCESSOR,
     useExisting: core_1.forwardRef(function () { return Editor; }),
@@ -8953,7 +8939,7 @@ exports.EditorModule = EditorModule;
 
 /***/ }),
 
-/***/ 399:
+/***/ 398:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9071,7 +9057,7 @@ exports.FieldsetModule = FieldsetModule;
 
 /***/ }),
 
-/***/ 400:
+/***/ 399:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9090,8 +9076,8 @@ var core_1 = __webpack_require__(10);
 var common_1 = __webpack_require__(52);
 var platform_browser_1 = __webpack_require__(40);
 var button_1 = __webpack_require__(366);
-var messages_1 = __webpack_require__(372);
-var progressbar_1 = __webpack_require__(373);
+var messages_1 = __webpack_require__(371);
+var progressbar_1 = __webpack_require__(372);
 var shared_1 = __webpack_require__(365);
 var FileUpload = (function () {
     function FileUpload(sanitizer) {
@@ -9403,7 +9389,7 @@ exports.FileUploadModule = FileUploadModule;
 
 /***/ }),
 
-/***/ 401:
+/***/ 400:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9634,7 +9620,7 @@ exports.GalleriaModule = GalleriaModule;
 
 /***/ }),
 
-/***/ 402:
+/***/ 401:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9820,7 +9806,7 @@ exports.GMapModule = GMapModule;
 
 /***/ }),
 
-/***/ 403:
+/***/ 402:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9949,7 +9935,7 @@ exports.GrowlModule = GrowlModule;
 
 /***/ }),
 
-/***/ 404:
+/***/ 403:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10063,7 +10049,7 @@ exports.InplaceModule = InplaceModule;
 
 /***/ }),
 
-/***/ 405:
+/***/ 404:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10109,7 +10095,7 @@ var core_1 = __webpack_require__(10);
 var common_1 = __webpack_require__(52);
 var domhandler_1 = __webpack_require__(364);
 var inputtext_1 = __webpack_require__(367);
-var forms_1 = __webpack_require__(172);
+var forms_1 = __webpack_require__(171);
 exports.INPUTMASK_VALUE_ACCESSOR = {
     provide: forms_1.NG_VALUE_ACCESSOR,
     useExisting: core_1.forwardRef(function () { return InputMask; }),
@@ -10626,7 +10612,7 @@ exports.InputMaskModule = InputMaskModule;
 
 /***/ }),
 
-/***/ 406:
+/***/ 405:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10643,7 +10629,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(10);
 var common_1 = __webpack_require__(52);
-var forms_1 = __webpack_require__(172);
+var forms_1 = __webpack_require__(171);
 var domhandler_1 = __webpack_require__(364);
 exports.INPUTSWITCH_VALUE_ACCESSOR = {
     provide: forms_1.NG_VALUE_ACCESSOR,
@@ -10816,7 +10802,7 @@ exports.InputSwitchModule = InputSwitchModule;
 
 /***/ }),
 
-/***/ 407:
+/***/ 406:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10944,7 +10930,7 @@ exports.InputTextareaModule = InputTextareaModule;
 
 /***/ }),
 
-/***/ 408:
+/***/ 407:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11161,7 +11147,7 @@ exports.LightboxModule = LightboxModule;
 
 /***/ }),
 
-/***/ 409:
+/***/ 408:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11181,7 +11167,7 @@ var common_1 = __webpack_require__(52);
 var shared_1 = __webpack_require__(365);
 var domhandler_1 = __webpack_require__(364);
 var ObjectUtils_1 = __webpack_require__(368);
-var forms_1 = __webpack_require__(172);
+var forms_1 = __webpack_require__(171);
 exports.LISTBOX_VALUE_ACCESSOR = {
     provide: forms_1.NG_VALUE_ACCESSOR,
     useExisting: core_1.forwardRef(function () { return Listbox; }),
@@ -11503,7 +11489,7 @@ exports.ListboxModule = ListboxModule;
 
 /***/ }),
 
-/***/ 410:
+/***/ 409:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11521,7 +11507,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(10);
 var common_1 = __webpack_require__(52);
 var domhandler_1 = __webpack_require__(364);
-var router_1 = __webpack_require__(171);
+var router_1 = __webpack_require__(172);
 var MegaMenu = (function () {
     function MegaMenu(el, domHandler, renderer) {
         this.el = el;
@@ -11655,7 +11641,7 @@ exports.MegaMenuModule = MegaMenuModule;
 
 /***/ }),
 
-/***/ 411:
+/***/ 410:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11673,7 +11659,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(10);
 var common_1 = __webpack_require__(52);
 var domhandler_1 = __webpack_require__(364);
-var router_1 = __webpack_require__(171);
+var router_1 = __webpack_require__(172);
 var Menu = (function () {
     function Menu(el, domHandler, renderer) {
         this.el = el;
@@ -11833,7 +11819,7 @@ exports.MenuModule = MenuModule;
 
 /***/ }),
 
-/***/ 412:
+/***/ 411:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11851,7 +11837,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(10);
 var common_1 = __webpack_require__(52);
 var domhandler_1 = __webpack_require__(364);
-var router_1 = __webpack_require__(171);
+var router_1 = __webpack_require__(172);
 var MenubarSub = (function () {
     function MenubarSub(domHandler) {
         this.domHandler = domHandler;
@@ -11985,7 +11971,7 @@ exports.MenubarModule = MenubarModule;
 
 /***/ }),
 
-/***/ 413:
+/***/ 412:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12004,7 +11990,7 @@ var core_1 = __webpack_require__(10);
 var common_1 = __webpack_require__(52);
 var domhandler_1 = __webpack_require__(364);
 var ObjectUtils_1 = __webpack_require__(368);
-var forms_1 = __webpack_require__(172);
+var forms_1 = __webpack_require__(171);
 exports.MULTISELECT_VALUE_ACCESSOR = {
     provide: forms_1.NG_VALUE_ACCESSOR,
     useExisting: core_1.forwardRef(function () { return MultiSelect; }),
@@ -12340,7 +12326,7 @@ exports.MultiSelectModule = MultiSelectModule;
 
 /***/ }),
 
-/***/ 414:
+/***/ 413:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12576,7 +12562,7 @@ exports.OrderListModule = OrderListModule;
 
 /***/ }),
 
-/***/ 415:
+/***/ 414:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12752,7 +12738,7 @@ exports.OverlayPanelModule = OverlayPanelModule;
 
 /***/ }),
 
-/***/ 416:
+/***/ 415:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12878,7 +12864,7 @@ exports.PanelModule = PanelModule;
 
 /***/ }),
 
-/***/ 417:
+/***/ 416:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12906,7 +12892,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(10);
 var animations_1 = __webpack_require__(173);
 var common_1 = __webpack_require__(52);
-var router_1 = __webpack_require__(171);
+var router_1 = __webpack_require__(172);
 var BasePanelMenuItem = (function () {
     function BasePanelMenuItem() {
     }
@@ -13038,7 +13024,7 @@ exports.PanelMenuModule = PanelMenuModule;
 
 /***/ }),
 
-/***/ 418:
+/***/ 417:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13238,7 +13224,7 @@ exports.PasswordModule = PasswordModule;
 
 /***/ }),
 
-/***/ 419:
+/***/ 418:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13568,7 +13554,7 @@ exports.PickListModule = PickListModule;
 
 /***/ }),
 
-/***/ 420:
+/***/ 419:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13585,7 +13571,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(10);
 var common_1 = __webpack_require__(52);
-var forms_1 = __webpack_require__(172);
+var forms_1 = __webpack_require__(171);
 exports.RADIO_VALUE_ACCESSOR = {
     provide: forms_1.NG_VALUE_ACCESSOR,
     useExisting: core_1.forwardRef(function () { return RadioButton; }),
@@ -13700,7 +13686,7 @@ exports.RadioButtonModule = RadioButtonModule;
 
 /***/ }),
 
-/***/ 421:
+/***/ 420:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13717,7 +13703,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(10);
 var common_1 = __webpack_require__(52);
-var forms_1 = __webpack_require__(172);
+var forms_1 = __webpack_require__(171);
 exports.RATING_VALUE_ACCESSOR = {
     provide: forms_1.NG_VALUE_ACCESSOR,
     useExisting: core_1.forwardRef(function () { return Rating; }),
@@ -13822,7 +13808,7 @@ exports.RatingModule = RatingModule;
 
 /***/ }),
 
-/***/ 422:
+/***/ 421:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14327,7 +14313,7 @@ exports.ScheduleModule = ScheduleModule;
 
 /***/ }),
 
-/***/ 423:
+/***/ 422:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14344,7 +14330,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(10);
 var common_1 = __webpack_require__(52);
-var forms_1 = __webpack_require__(172);
+var forms_1 = __webpack_require__(171);
 exports.SELECTBUTTON_VALUE_ACCESSOR = {
     provide: forms_1.NG_VALUE_ACCESSOR,
     useExisting: core_1.forwardRef(function () { return SelectButton; }),
@@ -14461,7 +14447,7 @@ exports.SelectButtonModule = SelectButtonModule;
 
 /***/ }),
 
-/***/ 424:
+/***/ 423:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14482,7 +14468,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(10);
 var common_1 = __webpack_require__(52);
 var domhandler_1 = __webpack_require__(364);
-var router_1 = __webpack_require__(171);
+var router_1 = __webpack_require__(172);
 var SlideMenuSub = (function () {
     function SlideMenuSub(slideMenu) {
         this.slideMenu = slideMenu;
@@ -14700,7 +14686,7 @@ exports.SlideMenuModule = SlideMenuModule;
 
 /***/ }),
 
-/***/ 425:
+/***/ 424:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14718,7 +14704,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(10);
 var common_1 = __webpack_require__(52);
 var domhandler_1 = __webpack_require__(364);
-var forms_1 = __webpack_require__(172);
+var forms_1 = __webpack_require__(171);
 exports.SLIDER_VALUE_ACCESSOR = {
     provide: forms_1.NG_VALUE_ACCESSOR,
     useExisting: core_1.forwardRef(function () { return Slider; }),
@@ -14976,7 +14962,7 @@ exports.SliderModule = SliderModule;
 
 /***/ }),
 
-/***/ 426:
+/***/ 425:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14995,7 +14981,7 @@ var core_1 = __webpack_require__(10);
 var common_1 = __webpack_require__(52);
 var inputtext_1 = __webpack_require__(367);
 var domhandler_1 = __webpack_require__(364);
-var forms_1 = __webpack_require__(172);
+var forms_1 = __webpack_require__(171);
 exports.SPINNER_VALUE_ACCESSOR = {
     provide: forms_1.NG_VALUE_ACCESSOR,
     useExisting: core_1.forwardRef(function () { return Spinner; }),
@@ -15271,7 +15257,7 @@ exports.SpinnerModule = SpinnerModule;
 
 /***/ }),
 
-/***/ 427:
+/***/ 426:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15290,7 +15276,7 @@ var core_1 = __webpack_require__(10);
 var common_1 = __webpack_require__(52);
 var domhandler_1 = __webpack_require__(364);
 var button_1 = __webpack_require__(366);
-var router_1 = __webpack_require__(171);
+var router_1 = __webpack_require__(172);
 var SplitButton = (function () {
     function SplitButton(el, domHandler, renderer, router, cd) {
         this.el = el;
@@ -15416,7 +15402,7 @@ exports.SplitButtonModule = SplitButtonModule;
 
 /***/ }),
 
-/***/ 428:
+/***/ 427:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15433,7 +15419,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(10);
 var common_1 = __webpack_require__(52);
-var router_1 = __webpack_require__(171);
+var router_1 = __webpack_require__(172);
 var Steps = (function () {
     function Steps(router) {
         this.router = router;
@@ -15519,7 +15505,7 @@ exports.StepsModule = StepsModule;
 
 /***/ }),
 
-/***/ 429:
+/***/ 428:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15537,7 +15523,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(10);
 var common_1 = __webpack_require__(52);
 var domhandler_1 = __webpack_require__(364);
-var router_1 = __webpack_require__(171);
+var router_1 = __webpack_require__(172);
 var TabMenu = (function () {
     function TabMenu() {
     }
@@ -15632,7 +15618,7 @@ exports.TabMenuModule = TabMenuModule;
 
 /***/ }),
 
-/***/ 430:
+/***/ 429:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15925,7 +15911,7 @@ exports.TabViewModule = TabViewModule;
 
 /***/ }),
 
-/***/ 431:
+/***/ 430:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15941,7 +15927,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(10);
-var forms_1 = __webpack_require__(172);
+var forms_1 = __webpack_require__(171);
 var common_1 = __webpack_require__(52);
 var domhandler_1 = __webpack_require__(364);
 var Terminal = (function () {
@@ -16038,7 +16024,7 @@ exports.TerminalModule = TerminalModule;
 
 /***/ }),
 
-/***/ 432:
+/***/ 431:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16056,7 +16042,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(10);
 var common_1 = __webpack_require__(52);
 var domhandler_1 = __webpack_require__(364);
-var router_1 = __webpack_require__(171);
+var router_1 = __webpack_require__(172);
 var TieredMenuSub = (function () {
     function TieredMenuSub(domHandler) {
         this.domHandler = domHandler;
@@ -16217,7 +16203,7 @@ exports.TieredMenuModule = TieredMenuModule;
 
 /***/ }),
 
-/***/ 433:
+/***/ 432:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16234,7 +16220,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(10);
 var common_1 = __webpack_require__(52);
-var forms_1 = __webpack_require__(172);
+var forms_1 = __webpack_require__(171);
 exports.TOGGLEBUTTON_VALUE_ACCESSOR = {
     provide: forms_1.NG_VALUE_ACCESSOR,
     useExisting: core_1.forwardRef(function () { return ToggleButton; }),
@@ -16359,7 +16345,7 @@ exports.ToggleButtonModule = ToggleButtonModule;
 
 /***/ }),
 
-/***/ 434:
+/***/ 433:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16413,7 +16399,7 @@ exports.ToolbarModule = ToolbarModule;
 
 /***/ }),
 
-/***/ 435:
+/***/ 434:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16619,7 +16605,7 @@ exports.TooltipModule = TooltipModule;
 
 /***/ }),
 
-/***/ 436:
+/***/ 435:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17318,7 +17304,7 @@ var UITreeNode_1;
 
 /***/ }),
 
-/***/ 437:
+/***/ 436:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17726,7 +17712,7 @@ exports.TreeTableModule = TreeTableModule;
 
 /***/ }),
 
-/***/ 438:
+/***/ 437:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17743,7 +17729,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(10);
 var common_1 = __webpack_require__(52);
-var forms_1 = __webpack_require__(172);
+var forms_1 = __webpack_require__(171);
 exports.TRISTATECHECKBOX_VALUE_ACCESSOR = {
     provide: forms_1.NG_VALUE_ACCESSOR,
     useExisting: core_1.forwardRef(function () { return TriStateCheckbox; }),
@@ -17855,96 +17841,16 @@ exports.TriStateCheckboxModule = TriStateCheckboxModule;
 
 /***/ }),
 
-/***/ 439:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-function __export(m) {
-    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
-}
-Object.defineProperty(exports, "__esModule", { value: true });
-__export(__webpack_require__(370));
-__export(__webpack_require__(365));
-__export(__webpack_require__(378));
-__export(__webpack_require__(379));
-__export(__webpack_require__(380));
-__export(__webpack_require__(381));
-__export(__webpack_require__(366));
-__export(__webpack_require__(383));
-__export(__webpack_require__(382));
-__export(__webpack_require__(384));
-__export(__webpack_require__(385));
-__export(__webpack_require__(386));
-__export(__webpack_require__(387));
-__export(__webpack_require__(388));
-__export(__webpack_require__(390));
-__export(__webpack_require__(391));
-__export(__webpack_require__(392));
-__export(__webpack_require__(393));
-__export(__webpack_require__(394));
-__export(__webpack_require__(389));
-__export(__webpack_require__(395));
-__export(__webpack_require__(396));
-__export(__webpack_require__(397));
-__export(__webpack_require__(398));
-__export(__webpack_require__(399));
-__export(__webpack_require__(400));
-__export(__webpack_require__(401));
-__export(__webpack_require__(402));
-__export(__webpack_require__(403));
-__export(__webpack_require__(404));
-__export(__webpack_require__(405));
-__export(__webpack_require__(406));
-__export(__webpack_require__(367));
-__export(__webpack_require__(407));
-__export(__webpack_require__(408));
-__export(__webpack_require__(409));
-__export(__webpack_require__(410));
-__export(__webpack_require__(411));
-__export(__webpack_require__(412));
-__export(__webpack_require__(372));
-__export(__webpack_require__(413));
-__export(__webpack_require__(414));
-__export(__webpack_require__(415));
-__export(__webpack_require__(369));
-__export(__webpack_require__(416));
-__export(__webpack_require__(417));
-__export(__webpack_require__(418));
-__export(__webpack_require__(419));
-__export(__webpack_require__(373));
-__export(__webpack_require__(420));
-__export(__webpack_require__(421));
-__export(__webpack_require__(422));
-__export(__webpack_require__(423));
-__export(__webpack_require__(424));
-__export(__webpack_require__(425));
-__export(__webpack_require__(426));
-__export(__webpack_require__(427));
-__export(__webpack_require__(428));
-__export(__webpack_require__(430));
-__export(__webpack_require__(429));
-__export(__webpack_require__(431));
-__export(__webpack_require__(432));
-__export(__webpack_require__(433));
-__export(__webpack_require__(434));
-__export(__webpack_require__(435));
-__export(__webpack_require__(436));
-__export(__webpack_require__(437));
-__export(__webpack_require__(438));
-//# sourceMappingURL=primeng.js.map
-
-/***/ }),
-
-/***/ 444:
+/***/ 461:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_router__ = __webpack_require__(171);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app_constants__ = __webpack_require__(67);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(172);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__core_services_general_forms_service__ = __webpack_require__(374);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DynamicFormsComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(66);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__(98);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyLeaveService; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -17958,86 +17864,256 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var DynamicFormsComponent = (function () {
-    function DynamicFormsComponent(fb, _router, _route, _generalFormsService) {
-        this.fb = fb;
-        this._router = _router;
-        this._route = _route;
-        this._generalFormsService = _generalFormsService;
-        this.data = [];
-        this.childSubmitData = new __WEBPACK_IMPORTED_MODULE_1__angular_core__["EventEmitter"]();
-        this.msgs = [];
+var MyLeaveService = (function () {
+    function MyLeaveService(http, configuration) {
+        var _this = this;
+        this.http = http;
+        this.configuration = configuration;
+        this.GetAllEmployeeLeave = function () {
+            return _this.http
+                .get(_this.actionUrl + 'EmployeeLeave/GetAllEmployeeLeave')
+                .map(function (res) { return res.json(); });
+        };
+        this.GetEmployeeLeaveByEmployeeId = function (id) {
+            return _this.http
+                .get(_this.actionUrl + 'EmployeeLeave/GetEmployeeLeaveByEmployeeId/' + id)
+                .map(function (res) { return res.json(); });
+        };
+        this.AddEmployeeLeave = function (data) {
+            var toAdd = JSON.stringify(data);
+            console.log(toAdd);
+            return _this.http.post(_this.actionUrl + 'EmployeeLeave/CreateEmployeeLeave/', toAdd, { headers: _this.headers })
+                .map(function (res) { return res.json(); });
+        };
+        this.DeleteEmployeeLeave = function (id) {
+            console.log(id);
+            return _this.http
+                .get(_this.actionUrl + 'EmployeeLeave/DeleteEmployeeLeaveByID/' + id)
+                .map(function (res) { return res.json(); });
+        };
+        this.actionUrl = configuration.Server + 'api/';
+        this.headers = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Headers */]();
+        this.headers.append('Content-Type', 'application/json');
+        this.headers.append('Accept', 'application/json');
     }
-    DynamicFormsComponent.prototype.ngOnInit = function () {
-        console.log(this.data);
-        this.makeForms();
-    };
-    DynamicFormsComponent.prototype.makeForms = function () {
-        var group = {};
-        this.data.forEach(function (frm) {
-            frm['custom_obj'].forEach(function (element) {
-                if (element.fieldType == 'Dropdown' || element.fieldType == 'Bit') {
-                    var optionVal = JSON.parse(element.optionValue);
-                    element.optionValue = optionVal;
-                }
-                if (element.isRequire == true) {
-                    group[element.fieldName] = new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormControl"]('', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required);
-                }
-                else {
-                    group[element.fieldName] = new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormControl"]('');
-                }
-            });
-        });
-        this.form = this.fb.group(group);
-    };
-    DynamicFormsComponent.prototype.onSubmit = function (value, isValid) {
-        this.submitted = true;
-        if (isValid == false) {
-            this.msgs.push({ severity: 'error', summary: 'Error Message', detail: 'Validation failed' });
-            return false;
-        }
-        else {
-            this.childSubmitData.emit(this.form.value);
-            this.msgs.push({ severity: 'info', summary: 'Updated', detail: 'Information has been updated successfully!!!' });
-        }
-    };
-    return DynamicFormsComponent;
+    return MyLeaveService;
 }());
-__decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Input"])('tabnumber'),
-    __metadata("design:type", Number)
-], DynamicFormsComponent.prototype, "tabnumber", void 0);
-__decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Input"])('data'),
-    __metadata("design:type", Array)
-], DynamicFormsComponent.prototype, "data", void 0);
-__decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Output"])(),
-    __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1__angular_core__["EventEmitter"])
-], DynamicFormsComponent.prototype, "childSubmitData", void 0);
-DynamicFormsComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Component"])({
-        selector: 'app-dynamic-forms',
-        template: __webpack_require__(450),
-    }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormBuilder"],
-        __WEBPACK_IMPORTED_MODULE_0__angular_router__["Router"],
-        __WEBPACK_IMPORTED_MODULE_0__angular_router__["ActivatedRoute"],
-        __WEBPACK_IMPORTED_MODULE_3__core_services_general_forms_service__["a" /* GeneralFormsService */]])
-], DynamicFormsComponent);
+MyLeaveService = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Injectable"])(),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_http__["c" /* Http */], __WEBPACK_IMPORTED_MODULE_0__app_constants__["a" /* Configuration */]])
+], MyLeaveService);
 
 
 
 /***/ }),
 
-/***/ 445:
+/***/ 506:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(171);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_general_formbuilder_component__ = __webpack_require__(376);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GeneralFormbuilderRoutingModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__(171);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__core_services_selfservice_myleaves_service__ = __webpack_require__(461);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__core_services_common_lookup_data_service__ = __webpack_require__(445);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__models_employeeleave_model__ = __webpack_require__(548);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ListComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+var ListComponent = (function () {
+    function ListComponent(_leaveService, _lookupDataService, fb) {
+        this._leaveService = _leaveService;
+        this._lookupDataService = _lookupDataService;
+        this.employeeId = 1;
+        this.lookupleavetype = 9;
+        this._employeeLeaveList = [];
+        this._employeeLeaveListGroupByMonth = [];
+        this._employeeLeaveDetailList = [];
+        this._leaveTypesList = [];
+        this._leaveTypesListTemp = [];
+        this._leaveTypesListByRowId = [];
+        this.msgs = [];
+        this._EmployeeLeaveModel = new __WEBPACK_IMPORTED_MODULE_4__models_employeeleave_model__["a" /* EmployeeLeaveModel */]();
+        this.employeeLeaveForm = fb.group({
+            'fromDate': [this._EmployeeLeaveModel.fromDate, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required],
+            'toDate': [this._EmployeeLeaveModel.toDate, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required],
+            'leaveReason': [this._EmployeeLeaveModel.toDate, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required],
+            'leaveTypeId': [this._EmployeeLeaveModel.leaveTypeId],
+            'isHalfDay': [this._EmployeeLeaveModel.isHalfDay]
+        });
+    }
+    ListComponent.prototype.ngOnInit = function () {
+        this.GetAllEmployeeLeaveByEmployeeId(this.employeeId);
+        this.GetAllLeaveTypes();
+    };
+    ListComponent.prototype.GetAllLeaveTypes = function () {
+        var _this = this;
+        var that = this;
+        this._lookupDataService
+            .GetLookUpData(this.lookupleavetype)
+            .subscribe(function (data) {
+            _this._leaveTypesListTemp = data.list;
+            _this._leaveTypesListByRowId = _this.groupBy(_this._leaveTypesListTemp, function (item) {
+                return item.rowId;
+            });
+            _this._leaveTypesListByRowId.forEach(function (item, index) {
+                var obj = {};
+                obj.key = item[0].rowId;
+                item.forEach(function (item2, index) {
+                    if (item2.fieldName == 'LeaveTypeTitle') {
+                        obj.name = item2.value;
+                    }
+                });
+                that._leaveTypesList.push(obj);
+            });
+        });
+    };
+    ListComponent.prototype.GetAllEmployeeLeaveByEmployeeId = function (id) {
+        var _this = this;
+        this._leaveService
+            .GetEmployeeLeaveByEmployeeId(id)
+            .subscribe(function (data) {
+            console.log(data.list);
+            _this._employeeLeaveList = data.list;
+            _this._employeeLeaveListGroupByMonth = _this.groupBy(_this._employeeLeaveList, function (item) {
+                return new Date(item.fromDate).getMonth();
+            });
+        });
+    };
+    ListComponent.prototype.GetAllEmployeeLeave = function () {
+        var _this = this;
+        this._leaveService
+            .GetAllEmployeeLeave()
+            .subscribe(function (data) {
+            _this._employeeLeaveList = data.list;
+            _this._employeeLeaveListGroupByMonth = _this.groupBy(_this._employeeLeaveList, function (item) {
+                return new Date(item.fromDate).getMonth();
+            });
+        });
+    };
+    ListComponent.prototype.onSubmit = function (value, isValid) {
+        var _this = this;
+        this.submitted = true;
+        if (isValid == false) {
+            this.msgs.push({ severity: 'error', summary: 'Error Message', detail: 'Validation failed' });
+            return false;
+        }
+        this._EmployeeLeaveModel.employeeId = 1;
+        this._EmployeeLeaveModel.status = 'InProgress';
+        this._EmployeeLeaveModel.fromDate.setHours(0, 0, 0, 0);
+        this._EmployeeLeaveModel.toDate.setHours(0, 0, 0, 0);
+        this._EmployeeLeaveModel.fromDate.toDateString();
+        this._EmployeeLeaveModel.toDate.toDateString();
+        console.log(this._EmployeeLeaveModel.toDate.toDateString());
+        console.log(this._EmployeeLeaveModel);
+        this._leaveService.AddEmployeeLeave(this._EmployeeLeaveModel)
+            .subscribe(function (data) {
+            _this._EmployeeLeaveModel = new __WEBPACK_IMPORTED_MODULE_4__models_employeeleave_model__["a" /* EmployeeLeaveModel */]();
+            _this.GetAllEmployeeLeave();
+            _this.submitted = false;
+            document.getElementById('closeModal').click();
+            if (isValid) {
+                _this.msgs.push({ severity: 'info', summary: 'Saved.', detail: 'Info has been Saved Successfully.' });
+            }
+            else
+                _this.msgs.push({ severity: 'error', summary: 'Error Message', detail: 'Validation failed' });
+        }, function (response) {
+            if (response.status == 404) {
+                console.log('execution failed');
+                return false;
+            }
+        });
+    };
+    ListComponent.prototype.initModel = function () {
+        this._EmployeeLeaveModel = new __WEBPACK_IMPORTED_MODULE_4__models_employeeleave_model__["a" /* EmployeeLeaveModel */]();
+    };
+    ListComponent.prototype.DeleteLeave = function (id) {
+        var _this = this;
+        this._leaveService
+            .DeleteEmployeeLeave(id)
+            .subscribe(function (data) {
+            _this.GetAllEmployeeLeave();
+        });
+    };
+    ListComponent.prototype.groupBy = function (array, f) {
+        var groups = {};
+        array.forEach(function (o) {
+            var group = JSON.stringify(f(o));
+            groups[group] = groups[group] || [];
+            groups[group].push(o);
+        });
+        return Object.keys(groups).map(function (group) {
+            return groups[group];
+        });
+    };
+    return ListComponent;
+}());
+ListComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'app-list',
+        template: __webpack_require__(611),
+    }),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__core_services_selfservice_myleaves_service__["a" /* MyLeaveService */], __WEBPACK_IMPORTED_MODULE_3__core_services_common_lookup_data_service__["a" /* LookupDataService */], __WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormBuilder"]])
+], ListComponent);
+
+
+
+/***/ }),
+
+/***/ 538:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyleavesComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var MyleavesComponent = (function () {
+    function MyleavesComponent() {
+    }
+    MyleavesComponent.prototype.ngOnInit = function () {
+    };
+    return MyleavesComponent;
+}());
+MyleavesComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'app-myleaves',
+        template: __webpack_require__(612),
+    }),
+    __metadata("design:paramtypes", [])
+], MyleavesComponent);
+
+
+
+/***/ }),
+
+/***/ 539:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(172);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_list_list_component__ = __webpack_require__(506);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyLeavesRoutingModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18048,38 +18124,39 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 var routes = [
-    { path: '', component: __WEBPACK_IMPORTED_MODULE_2__components_general_formbuilder_component__["a" /* GeneralFormbuilderComponent */] },
+    { path: '', component: __WEBPACK_IMPORTED_MODULE_2__components_list_list_component__["a" /* ListComponent */] },
 ];
-var GeneralFormbuilderRoutingModule = (function () {
-    function GeneralFormbuilderRoutingModule() {
+var MyLeavesRoutingModule = (function () {
+    function MyLeavesRoutingModule() {
     }
-    return GeneralFormbuilderRoutingModule;
+    return MyLeavesRoutingModule;
 }());
-GeneralFormbuilderRoutingModule = __decorate([
+MyLeavesRoutingModule = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
         imports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["RouterModule"].forChild(routes)],
         exports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["RouterModule"]]
     })
-], GeneralFormbuilderRoutingModule);
+], MyLeavesRoutingModule);
 
 
 
 /***/ }),
 
-/***/ 446:
+/***/ 540:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__(52);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(172);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_general_formbuilder_component__ = __webpack_require__(376);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_dynamic_forms_component__ = __webpack_require__(444);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__general_formbuilder_routing_module__ = __webpack_require__(445);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_primeng_primeng__ = __webpack_require__(439);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_primeng_primeng___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_primeng_primeng__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GeneralFormbuilderModule", function() { return GeneralFormbuilderModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(171);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__myleaves_routing_module__ = __webpack_require__(539);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_myleaves_component__ = __webpack_require__(538);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_list_list_component__ = __webpack_require__(506);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__core_services_selfservice_myleaves_service__ = __webpack_require__(461);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_primeng_primeng__ = __webpack_require__(375);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_primeng_primeng___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_primeng_primeng__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MyleavesModule", function() { return MyleavesModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18093,47 +18170,57 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var GeneralFormbuilderModule = (function () {
-    function GeneralFormbuilderModule() {
+
+var MyleavesModule = (function () {
+    function MyleavesModule() {
     }
-    return GeneralFormbuilderModule;
+    return MyleavesModule;
 }());
-GeneralFormbuilderModule = __decorate([
+MyleavesModule = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
         imports: [
             __WEBPACK_IMPORTED_MODULE_1__angular_common__["CommonModule"],
-            __WEBPACK_IMPORTED_MODULE_5__general_formbuilder_routing_module__["a" /* GeneralFormbuilderRoutingModule */],
+            __WEBPACK_IMPORTED_MODULE_3__myleaves_routing_module__["a" /* MyLeavesRoutingModule */],
             __WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormsModule"],
             __WEBPACK_IMPORTED_MODULE_2__angular_forms__["ReactiveFormsModule"],
-            __WEBPACK_IMPORTED_MODULE_6_primeng_primeng__["GrowlModule"],
-            __WEBPACK_IMPORTED_MODULE_6_primeng_primeng__["CalendarModule"]
+            __WEBPACK_IMPORTED_MODULE_7_primeng_primeng__["GrowlModule"],
+            __WEBPACK_IMPORTED_MODULE_7_primeng_primeng__["CalendarModule"]
         ],
-        exports: [
-            __WEBPACK_IMPORTED_MODULE_3__components_general_formbuilder_component__["a" /* GeneralFormbuilderComponent */],
-            __WEBPACK_IMPORTED_MODULE_4__components_dynamic_forms_component__["a" /* DynamicFormsComponent */]
-        ],
-        declarations: [
-            __WEBPACK_IMPORTED_MODULE_3__components_general_formbuilder_component__["a" /* GeneralFormbuilderComponent */],
-            __WEBPACK_IMPORTED_MODULE_4__components_dynamic_forms_component__["a" /* DynamicFormsComponent */]
-        ]
+        declarations: [__WEBPACK_IMPORTED_MODULE_4__components_myleaves_component__["a" /* MyleavesComponent */], __WEBPACK_IMPORTED_MODULE_5__components_list_list_component__["a" /* ListComponent */]],
+        providers: [__WEBPACK_IMPORTED_MODULE_6__core_services_selfservice_myleaves_service__["a" /* MyLeaveService */]]
     })
-], GeneralFormbuilderModule);
+], MyleavesModule);
 
 
 
 /***/ }),
 
-/***/ 450:
-/***/ (function(module, exports) {
+/***/ 548:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-module.exports = "<form  (ngSubmit)=\"onSubmit(form.value, form.valid)\" [formGroup]=\"form\" novalidate>\r\n<div class=\"form-horizontal\" *ngFor=\"let category of data\">\r\n    <div class=\"boder-btm\">\r\n        <h3 class=\"panel-title\"> {{category.category_name}}  </h3>\r\n    </div>\r\n    <div class=\"m-b-30\">\r\n      <div class=\"form-group\" *ngFor=\"let fields of category['custom_obj']\">\r\n        <div [ngSwitch]=\"fields.fieldType\">\r\n          <label class=\"col-sm-2 control-label\"> {{fields.displayName}}  <span class=\"asterisk\">*</span> </label>\r\n          <div class=\"col-sm-4\" *ngSwitchCase=\"'Text'\">\r\n            <input class=\"form-control\" type=\"text\" [formControlName]=\"fields.fieldName\" [(ngModel)]=\"fields.value\">\r\n          </div>\r\n          <div class=\"col-sm-4\" *ngSwitchCase=\"'Bit'\">\r\n            <div class=\"radio\" *ngFor=\"let opt of fields.optionValue\">\r\n              <label>\r\n                <input \r\n                    type=\"radio\" \r\n                    [value]=\"opt.key\"\r\n                    [formControlName]=\"fields.fieldName\" \r\n                    [checked]=\"fields.value === opt.key\">\r\n                {{opt.value}}\r\n              </label>\r\n            </div>\r\n          </div>\r\n          <div class=\"col-sm-4\" *ngSwitchCase=\"'Dropdown'\">\r\n               <select class=\"form-control\" [id]=\"fields.id\" [formControlName]=\"fields.fieldName\">\r\n                  <option  value=\"\" selected>Select</option>\r\n                  <option *ngFor=\"let opt of fields.optionValue\" [value]=\"opt.key\">{{opt.value}}</option>\r\n                </select>\r\n          </div>\r\n          <div class=\"col-sm-4\" *ngSwitchCase=\"'Textarea'\">\r\n              <textarea [formControlName]=\"fields.fieldName\" [(ngModel)]=\"fields.value\" rows=\"10\" cols=\"55\"> </textarea>\r\n          </div>\r\n          <div class=\"col-sm-4\" *ngSwitchCase=\"'Date'\">\r\n              <p-calendar [formControlName]=\"fields.fieldName\" [showIcon]=\"true\"></p-calendar> \r\n              <span style=\"margin-left:35px\">{{fields.value|date}}</span>\r\n          </div>\r\n          <div \r\n              class=\"alert alert-danger\" \r\n              [hidden]=\"form.get([fields.fieldName]).valid || (form.get([fields.fieldName]).pristine && !submitted)\">\r\n              * {{fields.displayName}} is required\r\n            </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n</div>\r\n<div class=\"form-row\">\r\n    <button class=\"btn btn-primary m-b-10\" type=\"submit\" >Save</button>\r\n    <p-growl [value]=\"msgs\"></p-growl>\r\n</div>\r\n</form>"
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EmployeeLeaveModel; });
+var EmployeeLeaveModel = (function () {
+    function EmployeeLeaveModel() {
+    }
+    return EmployeeLeaveModel;
+}());
+
+
 
 /***/ }),
 
-/***/ 451:
+/***/ 611:
 /***/ (function(module, exports) {
 
-module.exports = "<p>\r\n  general-formbuilder works!\r\n</p>\r\n"
+module.exports = "<!--<p>\n   Leaves list works!\n</p>-->\n\n<div id=\"main-content\">\r\n\r\n    <div class=\"row m-t-10\">\r\n        <div class=\"col-md-12\">\r\n            <div class=\"panel panel-default\">\r\n                <div class=\"panel-heading text-right\">\r\n\r\n\r\n                    <button type=\"button\" class=\"btn btn-sm btn-icon btn-rounded btn-default\">\r\n                        <i class=\"fa fa-question\"></i>\r\n                    </button>\r\n\r\n                </div>\r\n                <div class=\"panel-body\">\r\n                    <div class=\"row\">\r\n                        <div class=\"col-md-6 col-sm-6 col-xs-6\">\r\n                            <h3 class=\"panel-title m-t-20\">New Leave Request</h3>\r\n                        </div>\r\n                        <div class=\"col-md-6 col-sm-6 col-xs-6 text-right\">\r\n                            <button class=\"btn btn-primary m-b-10\" data-toggle=\"modal\" data-target=\"#modal-basic\" (click)=\"initModel()\">New Leave</button>\r\n                            <div class=\"modal fade text-left\" id=\"modal-basic\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" aria-hidden=\"true\">\r\n                                <div class=\"modal-dialog\">\r\n                                    <div class=\"modal-content\">\r\n                                        <div class=\"modal-header\">\r\n                                            <button type=\"button\" class=\"close\" id=\"closeModal\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button>\r\n                                            <h4 class=\"modal-title\" id=\"myModalLabel\"><strong>New Leave Request</strong> </h4>\r\n                                        </div>\r\n                                        <div class=\"modal-body\">\r\n                                            <form class=\"form-horizontal\" id=\"leaveform\" name=\"leaveform\" [formGroup]=\"employeeLeaveForm\" (ngSubmit)=\"onSubmit(employeeLeaveForm.value, employeeLeaveForm.valid)\" novalidate>\r\n                                                <div class=\"form-group\">\r\n                                                    <label class=\"col-sm-4 control-label\">\r\n                                                        From  <span class=\"asterisk\">*</span>\r\n                                                    </label>\r\n                                                    <div class=\"col-sm-8\">\r\n                                                        <p-calendar dateFormat=\"dd/mm/yy\" formControlName=\"fromDate\" [showIcon]=\"true\" [(ngModel)]=\"_EmployeeLeaveModel.fromDate\"></p-calendar>\r\n                                                        <!--<span style=\"margin-left:35px\">{{fields.value|date}}</span>-->\r\n                                                        <!--<input type=\"text\" class=\"form-control\" required>-->\r\n                                                        <div class=\"alert alert-danger\"\r\n                                                             [hidden]=\"employeeLeaveForm.get('fromDate').valid || (employeeLeaveForm.get('fromDate').pristine && !submitted)\">\r\n                                                            * From Date is required\r\n                                                        </div>\r\n                                                    </div>\r\n                                                    \r\n                                                </div>\r\n                                                <div class=\"form-group\">\r\n                                                    <label class=\"col-sm-4 control-label\">\r\n                                                        To  <span class=\"asterisk\">*</span>\r\n                                                    </label>\r\n                                                    <div class=\"col-sm-8\">\r\n                                                        <p-calendar dateFormat=\"dd/mm/yy\" [minDate]=\"_EmployeeLeaveModel.fromDate\" formControlName=\"toDate\" [showIcon]=\"true\" [(ngModel)]=\"_EmployeeLeaveModel.toDate\"></p-calendar>\r\n                                                        <!--<span style=\"margin-left:35px\">{{fields.value|date}}</span>-->\r\n                                                        <!--<input type=\"text\" class=\"form-control\" required>-->\r\n                                                        <div class=\"alert alert-danger\"\r\n                                                             [hidden]=\"employeeLeaveForm.get('toDate').valid || (employeeLeaveForm.get('toDate').pristine && !submitted)\">\r\n                                                            * To Date is required\r\n                                                        </div>\r\n                                                    </div>\r\n                                                    \r\n                                                </div>\r\n                                                <div class=\"form-group\">\r\n                                                    <label class=\"col-sm-4 control-label\">\r\n                                                        leave Type <span class=\"asterisk\">*</span>\r\n                                                    </label>\r\n                                                    <div class=\"col-sm-8\">\r\n                                                        <select [(ngModel)]=\"_EmployeeLeaveModel.leaveTypeId\" formControlName=\"leaveTypeId\" class=\"form-control\">\r\n                                                            <option value=\"\">--Select--</option>\r\n                                                            <option *ngFor=\"let leave of _leaveTypesList\" value={{leave.key}}>{{leave.name}}</option>\r\n                                                        </select>\r\n                                                        <!--<input type=\"text\" class=\"form-control\" required>-->\r\n                                                        <div class=\"alert alert-danger\"\r\n                                                             [hidden]=\"employeeLeaveForm.get('leaveTypeId').valid || (employeeLeaveForm.get('leaveTypeId').pristine && !submitted)\">\r\n                                                            * Leave Type is required\r\n                                                        </div>\r\n                                                    </div>\r\n                                                    \r\n                                                </div>\r\n                                                <div class=\"form-group\">\r\n                                                    <label class=\"col-sm-4 control-label\">\r\n                                                        Reason <span class=\"asterisk\">*</span>\r\n                                                    </label>\r\n                                                    <div class=\"col-sm-8\">\r\n                                                        <textarea rows=\"5\" [(ngModel)]=\"_EmployeeLeaveModel.leaveReason\" formControlName=\"leaveReason\" class=\"form-control valid\" placeholder=\"\" required></textarea>\r\n                                                    </div>\r\n                                                </div>\r\n                                                <!--<div class=\"form-group\">\r\n                                                    <label class=\"col-sm-4 control-label\">\r\n                                                        Status <span class=\"asterisk\">*</span>\r\n                                                    </label>\r\n                                                    <div class=\"col-sm-8\">\r\n                                                        <select [(ngModel)]=\"_EmployeeLeaveModel.status\" formControlName=\"status\" class=\"form-control\">\r\n                                                            <option value=\"\">--Select--</option>\r\n                                                            <option *ngFor=\"let leave of leaveStatusList\" value={{leave.name}}>{{leave.name}}</option>\r\n                                                        </select>\r\n                                                    </div>\r\n                                                </div>-->\r\n                                                <div class=\"form-group\">\r\n                                                    <label class=\"col-sm-4 control-label\">\r\n                                                        Is Half Day <span class=\"asterisk\">*</span>\r\n                                                    </label>\r\n                                                    <div class=\"col-sm-2\">\r\n                                                        <input type=\"checkbox\" [(ngModel)]=\"_EmployeeLeaveModel.isHalfDay\" formControlName=\"isHalfDay\" class=\"form-control\">\r\n                                                    </div>\r\n                                                </div>\r\n                                            </form>\r\n                                        </div>\r\n                                        <div class=\"modal-footer\">\r\n                                            <!--<button type=\"button\" class=\"btn btn-primary\" onclick=\"javascript:$('#form1').parsley('validate');\">Save</button>-->\r\n                                            <button type=\"submit\" class=\"btn btn-primary\" (click)=\"onSubmit(employeeLeaveForm.value, employeeLeaveForm.valid)\">Submit</button>\r\n\r\n                                        </div>\r\n                                    </div>\r\n                                </div>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                    <div class=\"row\">\r\n                        <div class=\"col-md-12 col-sm-12 col-xs-12 table-responsive\">\r\n                            <table class=\"table table-bordered table-striped table-hover\">\r\n                                <thead class=\"no-bd\">\r\n                                    <tr>\r\n                                        <th>\r\n                                            <strong>Date</strong>\r\n                                        </th>\r\n                                        <th>\r\n                                            <strong>Leave Reason</strong>\r\n                                        </th>\r\n                                        <th>\r\n                                            <strong>Status</strong>\r\n                                        </th>\r\n                                        <th>\r\n                                            <strong>Leave cancel</strong>\r\n                                        </th>\r\n\r\n                                    </tr>\r\n                                </thead>\r\n                                <tbody class=\"no-bd-y\">\r\n                                    <tr *ngFor=\"let rec of _employeeLeaveList;let i = index\">\r\n                                        <td>{{rec.fromDate| date: 'dd/MM/yyyy'}} to {{rec.toDate| date: 'dd/MM/yyyy'}}</td>\r\n                                        <td>{{rec.leaveReason}}</td>\r\n                                        <td>{{rec.status}}</td>\r\n                                        <td><button type=\"button\" class=\"btn btn-sm btn-danger\" (click)=\"DeleteLeave(rec.id)\"><i class=\"fa fa-remove\"></i></button></td>\r\n                                    </tr>\r\n                                    <!--<tr>\r\n                                        <td>12/02/17 to 12/02/17 </td>\r\n                                        <td>Personal</td>\r\n                                        <td>In Progress</td>\r\n                                        <td><button type=\"button\" class=\"btn btn-sm btn-danger\"><i class=\"fa fa-remove\"></i></button></td>\r\n                                    </tr>-->\r\n\r\n\r\n\r\n                                </tbody>\r\n                            </table>\r\n                        </div>\r\n                    </div>\r\n                    <h3 class=\"panel-title\">Leave Details</h3>\r\n                    <div class=\"row\">\r\n                        <div class=\"col-md-12 col-sm-12 col-xs-12 table-responsive\">\r\n                            <table class=\"table table-bordered table-striped table-hover\">\r\n                                <thead class=\"no-bd\">\r\n                                    <tr>\r\n                                        <th>\r\n                                            <strong>Month</strong>\r\n                                        </th>\r\n                                        <th>\r\n                                            <strong>Total Leave</strong>\r\n                                        </th>\r\n                                        <th>\r\n                                            <strong>Carry Forward</strong>\r\n                                        </th>\r\n                                    </tr>\r\n                                </thead>\r\n                                <tbody class=\"no-bd-y\">\r\n                                    <!--<tr  *ngFor=\"let rec of _employeeLeaveListGroupByMonth;let i = index\">\r\n\r\n                                        <td>{{rec[0].fromDate| date: 'MMMM,y'}}</td>\r\n                                        <td>3.00</td>\r\n                                        <td>4.50</td>\r\n                                    </tr>-->\r\n                                    <tr>\r\n                                        <td>September, 2015</td>\r\n                                        <td>3.00</td>\r\n                                        <td>4.50</td>\r\n                                    </tr>\r\n                                    <tr>\r\n                                        <td>October, 2015</td>\r\n                                        <td>1.00</td>\r\n                                        <td>4.50</td>\r\n                                    </tr>\r\n                                    <tr>\r\n                                        <td>November, 2015</td>\r\n                                        <td>00.00</td>\r\n                                        <td>4.50</td>\r\n                                    </tr>\r\n                                    <tr>\r\n                                        <td>December, 2015</td>\r\n                                        <td>00.00</td>\r\n                                        <td>4.50</td>\r\n                                    </tr>\r\n\r\n                                </tbody>\r\n                            </table>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n\r\n    </div>\r\n\r\n\r\n</div>\r\n<!-- END MAIN CONTENT -->\n"
+
+/***/ }),
+
+/***/ 612:
+/***/ (function(module, exports) {
+
+module.exports = "<p>\n  myleaves works!\n</p>\n"
 
 /***/ })
 
