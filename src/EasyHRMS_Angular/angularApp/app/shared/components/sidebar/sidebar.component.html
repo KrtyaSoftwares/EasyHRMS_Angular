@@ -23,6 +23,47 @@
                 </ul>
             </li>
             <li [routerLinkActive]="['router-link-active']">
+                <a (click)="addExpandClass('templates')">
+                    <i class="glyph-icon flaticon-forms"></i><span class="sidebar-text">Templates</span><span class="fa arrow"></span>
+                </a>
+                <ul class="submenu collapse" [class.in]="showMenu === 'templates'">
+                    <li>
+                        <a [routerLink]="['/templates/email-templates']"><span>Email Template</span></a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/templates/record-templates']"><span>Record Template</span></a>
+                    </li>
+                </ul>
+            </li>
+            <li [routerLinkActive]="['router-link-active']">
+                <a (click)="addExpandClass('automation')">
+                    <i class="glyph-icon flaticon-forms"></i><span class="sidebar-text">Automation</span><span class="fa arrow"></span>
+                </a>
+                <ul class="submenu collapse" [class.in]="showMenu === 'automation'">
+                    <li>
+                        <a [routerLink]="['/automation/workflows']"><span>Workflows</span></a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/automation/tasks']"><span>Tasks</span></a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/automation/checklists']"><span>Checklists</span></a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/automation/field-updates']"><span>Field Updates</span></a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/automation/webhooks']"><span>Webhooks</span></a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/automation/custom-functions']"><span>Custom Functions </span></a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/automation/scheduler']"><span> Scheduler </span></a>
+                    </li>
+                </ul>
+            </li>
+            <li [routerLinkActive]="['router-link-active']">
                 <a (click)="addExpandClass('appraisal')">
                     <i class="glyph-icon flaticon-forms"></i><span class="sidebar-text">Appraisal</span><span class="fa arrow"></span>
                 </a>
