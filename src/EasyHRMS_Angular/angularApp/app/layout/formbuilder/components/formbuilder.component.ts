@@ -100,7 +100,6 @@ addTableData(id: any, data: any) {
             } else {
                 this.record_not_exists = false;
             }
-            console.log(this.final_result);
             if (this.rowId) {
                 this.getTableData(this.lookup, this.rowId);
             }
@@ -118,7 +117,6 @@ addTableData(id: any, data: any) {
                         form.value = this.convertDate(form.value);
                     }
                 }
-
                 if (form.isRequire) {
                     group[form.fieldName] = ['', Validators.required];
                 } else {
@@ -137,7 +135,6 @@ addTableData(id: any, data: any) {
             }
         }
     }
-    //console.log(this.final_result);
  }
  convertDate(inputFormat: any) {
         function pad(s: any) { return (s < 10) ? '0' + s : s; }

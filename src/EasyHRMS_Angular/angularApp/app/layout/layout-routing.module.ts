@@ -7,7 +7,6 @@ const routes: Routes = [
         path: '', component: LayoutComponent,
         children: [
             { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' },
-            //{ path: 'myprofile', loadChildren: './myprofile/myprofile.module#MyprofileModule' },
             { path: 'employee', loadChildren: './employee/employee.module#EmployeeModule' },
             { path: 'selfservice', loadChildren: './selfservice/selfservice.module#SelfserviceModule' },
             { path: 'appraisal', loadChildren: './appraisal/appraisal.module#AppraisalModule' },
@@ -20,6 +19,8 @@ const routes: Routes = [
             { path: 'listing', loadChildren: './listing/listing.module#ListingModule' },
             { path: 'general-listing', loadChildren: './general-listing/general-listing.module#GeneralListingModule' },
             { path: 'general-formbuilder', loadChildren: './general-formbuilder/general-formbuilder.module#GeneralFormbuilderModule' },
+            { path: 'templates', loadChildren: './templates/templates.module#TemplatesModule' },
+            { path: 'automation', loadChildren: './automation/automation.module#AutomationModule' },
         ]
     }
 ];

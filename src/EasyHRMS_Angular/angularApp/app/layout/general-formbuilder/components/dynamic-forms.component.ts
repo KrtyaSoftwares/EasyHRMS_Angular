@@ -39,15 +39,20 @@ export class DynamicFormsComponent implements OnInit {
           data => {
             this.dropdown_lookupLists = data;
             this.lookupLists = this.dropdown_lookupLists['listoflookups'];
-            console.log(this.lookupLists);
-            // this.lookupLists.forEach((element: any) => {
-            //   console.log(element);
-            //   let index = element.lookupid;
-            //   if (!this.dropdown_dbLists[index]) {
-            //     this.dropdown_dbLists[index] = [];
-            //   }
-            //   //this.dropdown_dbLists[index] = ;
-            // });
+            this.lookupLists.forEach((element: any) => {
+              let index = element.lookupid;
+              if (!this.dropdown_dbLists[index]) {
+                this.dropdown_dbLists[index] = [];
+              }
+              let grp: any = {};
+              element.ldataList.forEach((ele: any) => {
+                grp = {
+                   key : ele.rowId,
+                   value: ele.value
+                 };
+              this.dropdown_dbLists[index].push(grp);
+              });
+            });
             this.makeForms();
           });
   }
@@ -60,8 +65,9 @@ export class DynamicFormsComponent implements OnInit {
               let optionVal = JSON.parse(element.optionValue);
               element.optionValue = optionVal;
             } else {
+              let lookupId = element.lookupId;
               let optionVal = JSON.parse(element.optionValue);
-              element.optionValue = optionVal;
+              element.optionValue = this.dropdown_dbLists[lookupId];
             }
           } else if (element.fieldType == 'Bit') {
             let optionVal = JSON.parse(element.optionValue);
