@@ -21,7 +21,9 @@ export class FormsService {
     }
 
     public GetAll = (): Observable<FormsModel[]> => {
-        return this.http.post(this.actionUrl + 'all/', '', { headers: this.headers }).map((response: Response) => <FormsModel[]>response.json());
+        return this.http
+           .get(this.actionUrl + 'Forms/GetAllFormDef')
+           .map(res => <FormsModel[]>res.json());
     }
 
     public GetSingle = (id: number): Observable<FormsModel> => {
