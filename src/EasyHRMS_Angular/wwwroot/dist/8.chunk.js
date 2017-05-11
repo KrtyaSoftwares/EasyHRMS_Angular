@@ -1505,7 +1505,7 @@ exports.ProgressBarModule = ProgressBarModule;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(66);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(98);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_underscore__ = __webpack_require__(438);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_underscore__ = __webpack_require__(439);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_underscore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_underscore__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PagerService; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -1590,25 +1590,24 @@ function __export(m) {
 Object.defineProperty(exports, "__esModule", { value: true });
 __export(__webpack_require__(370));
 __export(__webpack_require__(365));
-__export(__webpack_require__(377));
 __export(__webpack_require__(378));
 __export(__webpack_require__(379));
 __export(__webpack_require__(380));
-__export(__webpack_require__(366));
-__export(__webpack_require__(382));
 __export(__webpack_require__(381));
+__export(__webpack_require__(366));
 __export(__webpack_require__(383));
+__export(__webpack_require__(382));
 __export(__webpack_require__(384));
 __export(__webpack_require__(385));
 __export(__webpack_require__(386));
 __export(__webpack_require__(387));
-__export(__webpack_require__(389));
+__export(__webpack_require__(388));
 __export(__webpack_require__(390));
 __export(__webpack_require__(391));
 __export(__webpack_require__(392));
 __export(__webpack_require__(393));
-__export(__webpack_require__(388));
 __export(__webpack_require__(394));
+__export(__webpack_require__(389));
 __export(__webpack_require__(395));
 __export(__webpack_require__(396));
 __export(__webpack_require__(397));
@@ -1620,24 +1619,24 @@ __export(__webpack_require__(402));
 __export(__webpack_require__(403));
 __export(__webpack_require__(404));
 __export(__webpack_require__(405));
-__export(__webpack_require__(367));
 __export(__webpack_require__(406));
+__export(__webpack_require__(367));
 __export(__webpack_require__(407));
 __export(__webpack_require__(408));
 __export(__webpack_require__(409));
 __export(__webpack_require__(410));
 __export(__webpack_require__(411));
-__export(__webpack_require__(371));
 __export(__webpack_require__(412));
+__export(__webpack_require__(371));
 __export(__webpack_require__(413));
 __export(__webpack_require__(414));
-__export(__webpack_require__(369));
 __export(__webpack_require__(415));
+__export(__webpack_require__(369));
 __export(__webpack_require__(416));
 __export(__webpack_require__(417));
 __export(__webpack_require__(418));
-__export(__webpack_require__(372));
 __export(__webpack_require__(419));
+__export(__webpack_require__(372));
 __export(__webpack_require__(420));
 __export(__webpack_require__(421));
 __export(__webpack_require__(422));
@@ -1646,9 +1645,9 @@ __export(__webpack_require__(424));
 __export(__webpack_require__(425));
 __export(__webpack_require__(426));
 __export(__webpack_require__(427));
-__export(__webpack_require__(429));
 __export(__webpack_require__(428));
 __export(__webpack_require__(430));
+__export(__webpack_require__(429));
 __export(__webpack_require__(431));
 __export(__webpack_require__(432));
 __export(__webpack_require__(433));
@@ -1656,11 +1655,61 @@ __export(__webpack_require__(434));
 __export(__webpack_require__(435));
 __export(__webpack_require__(436));
 __export(__webpack_require__(437));
+__export(__webpack_require__(438));
 //# sourceMappingURL=primeng.js.map
 
 /***/ }),
 
 /***/ 376:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app_constants__ = __webpack_require__(67);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(66);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__(98);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LookupDataService; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var LookupDataService = (function () {
+    function LookupDataService(http, configuration) {
+        var _this = this;
+        this.http = http;
+        this.configuration = configuration;
+        this.GetLookUpData = function (lookupid) {
+            return _this.http
+                .get(_this.actionUrl + 'LookupData/GetLookupDataByLookupID/' + lookupid)
+                .map(function (res) { return res.json(); });
+        };
+        this.actionUrl = configuration.Server + 'api/';
+        this.headers = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Headers */]();
+        this.headers.append('Content-Type', 'application/json');
+        this.headers.append('Accept', 'application/json');
+    }
+    return LookupDataService;
+}());
+LookupDataService = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Injectable"])(),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_http__["c" /* Http */], __WEBPACK_IMPORTED_MODULE_0__app_constants__["a" /* Configuration */]])
+], LookupDataService);
+
+
+
+/***/ }),
+
+/***/ 377:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1729,7 +1778,7 @@ GeneralFormsService = __decorate([
 
 /***/ }),
 
-/***/ 377:
+/***/ 378:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1909,7 +1958,7 @@ exports.AccordionModule = AccordionModule;
 
 /***/ }),
 
-/***/ 378:
+/***/ 379:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2412,7 +2461,7 @@ exports.AutoCompleteModule = AutoCompleteModule;
 
 /***/ }),
 
-/***/ 379:
+/***/ 380:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2514,7 +2563,7 @@ exports.BlockUIModule = BlockUIModule;
 
 /***/ }),
 
-/***/ 380:
+/***/ 381:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2611,7 +2660,7 @@ exports.BreadcrumbModule = BreadcrumbModule;
 
 /***/ }),
 
-/***/ 381:
+/***/ 382:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3689,7 +3738,7 @@ exports.CalendarModule = CalendarModule;
 
 /***/ }),
 
-/***/ 382:
+/***/ 383:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3826,7 +3875,7 @@ exports.CaptchaModule = CaptchaModule;
 
 /***/ }),
 
-/***/ 383:
+/***/ 384:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4153,7 +4202,7 @@ exports.CarouselModule = CarouselModule;
 
 /***/ }),
 
-/***/ 384:
+/***/ 385:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4287,7 +4336,7 @@ exports.ChartModule = ChartModule;
 
 /***/ }),
 
-/***/ 385:
+/***/ 386:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4441,7 +4490,7 @@ exports.CheckboxModule = CheckboxModule;
 
 /***/ }),
 
-/***/ 386:
+/***/ 387:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4652,7 +4701,7 @@ exports.ChipsModule = ChipsModule;
 
 /***/ }),
 
-/***/ 387:
+/***/ 388:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4702,7 +4751,7 @@ exports.CodeHighlighterModule = CodeHighlighterModule;
 
 /***/ }),
 
-/***/ 388:
+/***/ 389:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4991,7 +5040,7 @@ exports.ConfirmDialogModule = ConfirmDialogModule;
 
 /***/ }),
 
-/***/ 389:
+/***/ 390:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5256,7 +5305,7 @@ exports.ContextMenuModule = ContextMenuModule;
 
 /***/ }),
 
-/***/ 390:
+/***/ 391:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5466,7 +5515,7 @@ exports.DataGridModule = DataGridModule;
 
 /***/ }),
 
-/***/ 391:
+/***/ 392:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5676,7 +5725,7 @@ exports.DataListModule = DataListModule;
 
 /***/ }),
 
-/***/ 392:
+/***/ 393:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5901,7 +5950,7 @@ exports.DataScrollerModule = DataScrollerModule;
 
 /***/ }),
 
-/***/ 393:
+/***/ 394:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7826,7 +7875,7 @@ exports.DataTableModule = DataTableModule;
 
 /***/ }),
 
-/***/ 394:
+/***/ 395:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8195,7 +8244,7 @@ exports.DialogModule = DialogModule;
 
 /***/ }),
 
-/***/ 395:
+/***/ 396:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8437,7 +8486,7 @@ exports.DragDropModule = DragDropModule;
 
 /***/ }),
 
-/***/ 396:
+/***/ 397:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8940,7 +8989,7 @@ exports.DropdownModule = DropdownModule;
 
 /***/ }),
 
-/***/ 397:
+/***/ 398:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9090,7 +9139,7 @@ exports.EditorModule = EditorModule;
 
 /***/ }),
 
-/***/ 398:
+/***/ 399:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9208,7 +9257,7 @@ exports.FieldsetModule = FieldsetModule;
 
 /***/ }),
 
-/***/ 399:
+/***/ 400:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9540,7 +9589,7 @@ exports.FileUploadModule = FileUploadModule;
 
 /***/ }),
 
-/***/ 400:
+/***/ 401:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9771,7 +9820,7 @@ exports.GalleriaModule = GalleriaModule;
 
 /***/ }),
 
-/***/ 401:
+/***/ 402:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9957,7 +10006,7 @@ exports.GMapModule = GMapModule;
 
 /***/ }),
 
-/***/ 402:
+/***/ 403:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10086,7 +10135,7 @@ exports.GrowlModule = GrowlModule;
 
 /***/ }),
 
-/***/ 403:
+/***/ 404:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10200,7 +10249,7 @@ exports.InplaceModule = InplaceModule;
 
 /***/ }),
 
-/***/ 404:
+/***/ 405:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10763,7 +10812,7 @@ exports.InputMaskModule = InputMaskModule;
 
 /***/ }),
 
-/***/ 405:
+/***/ 406:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10953,7 +11002,7 @@ exports.InputSwitchModule = InputSwitchModule;
 
 /***/ }),
 
-/***/ 406:
+/***/ 407:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11081,7 +11130,7 @@ exports.InputTextareaModule = InputTextareaModule;
 
 /***/ }),
 
-/***/ 407:
+/***/ 408:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11298,7 +11347,7 @@ exports.LightboxModule = LightboxModule;
 
 /***/ }),
 
-/***/ 408:
+/***/ 409:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11640,7 +11689,7 @@ exports.ListboxModule = ListboxModule;
 
 /***/ }),
 
-/***/ 409:
+/***/ 410:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11792,7 +11841,7 @@ exports.MegaMenuModule = MegaMenuModule;
 
 /***/ }),
 
-/***/ 410:
+/***/ 411:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11970,7 +12019,7 @@ exports.MenuModule = MenuModule;
 
 /***/ }),
 
-/***/ 411:
+/***/ 412:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12122,7 +12171,7 @@ exports.MenubarModule = MenubarModule;
 
 /***/ }),
 
-/***/ 412:
+/***/ 413:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12477,7 +12526,7 @@ exports.MultiSelectModule = MultiSelectModule;
 
 /***/ }),
 
-/***/ 413:
+/***/ 414:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12713,7 +12762,7 @@ exports.OrderListModule = OrderListModule;
 
 /***/ }),
 
-/***/ 414:
+/***/ 415:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12889,7 +12938,7 @@ exports.OverlayPanelModule = OverlayPanelModule;
 
 /***/ }),
 
-/***/ 415:
+/***/ 416:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13015,7 +13064,7 @@ exports.PanelModule = PanelModule;
 
 /***/ }),
 
-/***/ 416:
+/***/ 417:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13175,7 +13224,7 @@ exports.PanelMenuModule = PanelMenuModule;
 
 /***/ }),
 
-/***/ 417:
+/***/ 418:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13375,7 +13424,7 @@ exports.PasswordModule = PasswordModule;
 
 /***/ }),
 
-/***/ 418:
+/***/ 419:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13705,7 +13754,7 @@ exports.PickListModule = PickListModule;
 
 /***/ }),
 
-/***/ 419:
+/***/ 420:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13837,7 +13886,7 @@ exports.RadioButtonModule = RadioButtonModule;
 
 /***/ }),
 
-/***/ 420:
+/***/ 421:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13959,7 +14008,7 @@ exports.RatingModule = RatingModule;
 
 /***/ }),
 
-/***/ 421:
+/***/ 422:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14464,7 +14513,7 @@ exports.ScheduleModule = ScheduleModule;
 
 /***/ }),
 
-/***/ 422:
+/***/ 423:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14598,7 +14647,7 @@ exports.SelectButtonModule = SelectButtonModule;
 
 /***/ }),
 
-/***/ 423:
+/***/ 424:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14837,7 +14886,7 @@ exports.SlideMenuModule = SlideMenuModule;
 
 /***/ }),
 
-/***/ 424:
+/***/ 425:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15113,7 +15162,7 @@ exports.SliderModule = SliderModule;
 
 /***/ }),
 
-/***/ 425:
+/***/ 426:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15408,7 +15457,7 @@ exports.SpinnerModule = SpinnerModule;
 
 /***/ }),
 
-/***/ 426:
+/***/ 427:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15553,7 +15602,7 @@ exports.SplitButtonModule = SplitButtonModule;
 
 /***/ }),
 
-/***/ 427:
+/***/ 428:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15656,7 +15705,7 @@ exports.StepsModule = StepsModule;
 
 /***/ }),
 
-/***/ 428:
+/***/ 429:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15769,7 +15818,7 @@ exports.TabMenuModule = TabMenuModule;
 
 /***/ }),
 
-/***/ 429:
+/***/ 430:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16062,7 +16111,7 @@ exports.TabViewModule = TabViewModule;
 
 /***/ }),
 
-/***/ 430:
+/***/ 431:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16175,7 +16224,7 @@ exports.TerminalModule = TerminalModule;
 
 /***/ }),
 
-/***/ 431:
+/***/ 432:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16354,7 +16403,7 @@ exports.TieredMenuModule = TieredMenuModule;
 
 /***/ }),
 
-/***/ 432:
+/***/ 433:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16496,7 +16545,7 @@ exports.ToggleButtonModule = ToggleButtonModule;
 
 /***/ }),
 
-/***/ 433:
+/***/ 434:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16550,7 +16599,7 @@ exports.ToolbarModule = ToolbarModule;
 
 /***/ }),
 
-/***/ 434:
+/***/ 435:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16756,7 +16805,7 @@ exports.TooltipModule = TooltipModule;
 
 /***/ }),
 
-/***/ 435:
+/***/ 436:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17455,7 +17504,7 @@ var UITreeNode_1;
 
 /***/ }),
 
-/***/ 436:
+/***/ 437:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17863,7 +17912,7 @@ exports.TreeTableModule = TreeTableModule;
 
 /***/ }),
 
-/***/ 437:
+/***/ 438:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17992,7 +18041,7 @@ exports.TriStateCheckboxModule = TriStateCheckboxModule;
 
 /***/ }),
 
-/***/ 438:
+/***/ 439:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;//     Underscore.js 1.8.3
@@ -19548,7 +19597,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;//     Underscor
 
 /***/ }),
 
-/***/ 440:
+/***/ 441:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -19584,15 +19633,15 @@ GeneralFormbuilderComponent = __decorate([
 
 /***/ }),
 
-/***/ 441:
+/***/ 442:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(172);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__core_services_general_forms_service__ = __webpack_require__(376);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__core_services_general_forms_service__ = __webpack_require__(377);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__core_services_common_pager_service__ = __webpack_require__(373);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__core_services_employee_service__ = __webpack_require__(443);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__core_services_employee_service__ = __webpack_require__(444);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GeneralListingComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -19731,7 +19780,7 @@ GeneralListingComponent = __decorate([
 
 /***/ }),
 
-/***/ 443:
+/***/ 444:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -19787,7 +19836,8 @@ EmployeeService = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_router__ = __webpack_require__(172);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(171);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__core_services_general_forms_service__ = __webpack_require__(376);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__core_services_general_forms_service__ = __webpack_require__(377);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__core_services_common_lookup_data_service__ = __webpack_require__(376);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DynamicFormsComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -19802,17 +19852,34 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var DynamicFormsComponent = (function () {
-    function DynamicFormsComponent(fb, _router, _route, _generalFormsService) {
+    function DynamicFormsComponent(fb, _router, _route, _generalFormsService, _lookupDataService) {
         this.fb = fb;
         this._router = _router;
         this._route = _route;
         this._generalFormsService = _generalFormsService;
+        this._lookupDataService = _lookupDataService;
         this.data = [];
         this.childSubmitData = new __WEBPACK_IMPORTED_MODULE_1__angular_core__["EventEmitter"]();
         this.msgs = [];
+        this.lookupLists = [];
     }
     DynamicFormsComponent.prototype.ngOnInit = function () {
+        this.checkLookupForDropdown();
+    };
+    DynamicFormsComponent.prototype.checkLookupForDropdown = function () {
+        var _this = this;
+        this.data.forEach(function (frm) {
+            frm['custom_obj'].forEach(function (element) {
+                if (element.fieldType == 'Dropdown') {
+                    if (!element.optionValue) {
+                        _this.lookupLists.push(element.lookupId);
+                    }
+                }
+            });
+        });
+        console.log(this.lookupLists);
         this.makeForms();
     };
     DynamicFormsComponent.prototype.makeForms = function () {
@@ -19820,7 +19887,17 @@ var DynamicFormsComponent = (function () {
         var group = {};
         this.data.forEach(function (frm) {
             frm['custom_obj'].forEach(function (element) {
-                if (element.fieldType == 'Dropdown' || element.fieldType == 'Bit') {
+                if (element.fieldType == 'Dropdown') {
+                    if (element.optionValue) {
+                        var optionVal = JSON.parse(element.optionValue);
+                        element.optionValue = optionVal;
+                    }
+                    else {
+                        var LookupId = element.lookupId;
+                        var optionVal = JSON.parse(element.optionValue);
+                    }
+                }
+                else if (element.fieldType == 'Bit') {
                     var optionVal = JSON.parse(element.optionValue);
                     element.optionValue = optionVal;
                 }
@@ -19839,6 +19916,23 @@ var DynamicFormsComponent = (function () {
         });
         this.form = this.fb.group(group);
     };
+    DynamicFormsComponent.prototype.getDropdownValueBasedonLookupID = function (id) {
+        var _this = this;
+        this._lookupDataService
+            .GetLookUpData(id)
+            .subscribe(function (data) {
+            var genrate_object = {};
+            if (data.list) {
+                data.list.forEach(function (element) {
+                    genrate_object = {
+                        key: element.id,
+                        value: element.value
+                    };
+                });
+                _this.lookupLists[id].push(genrate_object);
+            }
+        });
+    };
     DynamicFormsComponent.prototype.onSubmit = function (value, isValid) {
         this.submitted = true;
         if (isValid == false) {
@@ -19854,6 +19948,12 @@ var DynamicFormsComponent = (function () {
         function pad(s) { return (s < 10) ? '0' + s : s; }
         var d = new Date(inputFormat);
         return [pad(d.getMonth() + 1), pad(d.getDate()), d.getFullYear()].join('/');
+    };
+    DynamicFormsComponent.prototype.stripUndefined = function (arr) {
+        return arr.reduce(function (result, item) {
+            result.push(Array.isArray(item) && !item.length ? this.stripUndefined(item) : item);
+            return result;
+        }, []);
     };
     return DynamicFormsComponent;
 }());
@@ -19877,7 +19977,8 @@ DynamicFormsComponent = __decorate([
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormBuilder"],
         __WEBPACK_IMPORTED_MODULE_0__angular_router__["Router"],
         __WEBPACK_IMPORTED_MODULE_0__angular_router__["ActivatedRoute"],
-        __WEBPACK_IMPORTED_MODULE_3__core_services_general_forms_service__["a" /* GeneralFormsService */]])
+        __WEBPACK_IMPORTED_MODULE_3__core_services_general_forms_service__["a" /* GeneralFormsService */],
+        __WEBPACK_IMPORTED_MODULE_4__core_services_common_lookup_data_service__["a" /* LookupDataService */]])
 ], DynamicFormsComponent);
 
 
@@ -19890,7 +19991,7 @@ DynamicFormsComponent = __decorate([
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(172);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_general_formbuilder_component__ = __webpack_require__(440);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_general_formbuilder_component__ = __webpack_require__(441);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GeneralFormbuilderRoutingModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -19928,11 +20029,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__(52);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(171);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_general_formbuilder_component__ = __webpack_require__(440);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_general_formbuilder_component__ = __webpack_require__(441);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_dynamic_forms_component__ = __webpack_require__(448);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__general_formbuilder_routing_module__ = __webpack_require__(449);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_primeng_primeng__ = __webpack_require__(375);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_primeng_primeng___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_primeng_primeng__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__core_services_common_lookup_data_service__ = __webpack_require__(376);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_primeng_primeng__ = __webpack_require__(375);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_primeng_primeng___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_primeng_primeng__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GeneralFormbuilderModule", function() { return GeneralFormbuilderModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -19940,6 +20042,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -19959,8 +20062,8 @@ GeneralFormbuilderModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_5__general_formbuilder_routing_module__["a" /* GeneralFormbuilderRoutingModule */],
             __WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormsModule"],
             __WEBPACK_IMPORTED_MODULE_2__angular_forms__["ReactiveFormsModule"],
-            __WEBPACK_IMPORTED_MODULE_6_primeng_primeng__["GrowlModule"],
-            __WEBPACK_IMPORTED_MODULE_6_primeng_primeng__["CalendarModule"]
+            __WEBPACK_IMPORTED_MODULE_7_primeng_primeng__["GrowlModule"],
+            __WEBPACK_IMPORTED_MODULE_7_primeng_primeng__["CalendarModule"]
         ],
         exports: [
             __WEBPACK_IMPORTED_MODULE_3__components_general_formbuilder_component__["a" /* GeneralFormbuilderComponent */],
@@ -19969,6 +20072,9 @@ GeneralFormbuilderModule = __decorate([
         declarations: [
             __WEBPACK_IMPORTED_MODULE_3__components_general_formbuilder_component__["a" /* GeneralFormbuilderComponent */],
             __WEBPACK_IMPORTED_MODULE_4__components_dynamic_forms_component__["a" /* DynamicFormsComponent */]
+        ],
+        providers: [
+            __WEBPACK_IMPORTED_MODULE_6__core_services_common_lookup_data_service__["a" /* LookupDataService */]
         ]
     })
 ], GeneralFormbuilderModule);
@@ -19983,7 +20089,7 @@ GeneralFormbuilderModule = __decorate([
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(172);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_general_listing_component__ = __webpack_require__(441);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_general_listing_component__ = __webpack_require__(442);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GeneralListingRoutingModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -20020,7 +20126,7 @@ GeneralListingRoutingModule = __decorate([
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__(52);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_general_listing_component__ = __webpack_require__(441);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_general_listing_component__ = __webpack_require__(442);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__general_listing_routing_module__ = __webpack_require__(451);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GeneralListingModule", function() { return GeneralListingModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -20083,7 +20189,7 @@ module.exports = "<div class=\"row\">\r\n    <div class=\"col-md-3 col-sm-3 col-
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(172);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(171);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__core_services_general_forms_service__ = __webpack_require__(376);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__core_services_general_forms_service__ = __webpack_require__(377);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EditComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -20183,6 +20289,7 @@ var EditComponent = (function () {
                             optionValue: _this._fieldLists[j]['optionValue'],
                             placeholder: _this._fieldLists[j]['placeholder'],
                             validator: _this._fieldLists[j]['validator'],
+                            lookupId: _this._fieldLists[j]['lookupId'],
                             value: value,
                         };
                         group['custom_obj'].push(nested_group);
@@ -20296,7 +20403,7 @@ LeaveComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_router__ = __webpack_require__(172);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(171);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__core_services_general_forms_service__ = __webpack_require__(376);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__core_services_general_forms_service__ = __webpack_require__(377);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__models_general_data_model__ = __webpack_require__(549);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__shared__ = __webpack_require__(374);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ListsComponent; });
@@ -20505,8 +20612,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__report_activeemployee_activeemployee_component__ = __webpack_require__(522);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__report_workanniversary_workanniversary_component__ = __webpack_require__(524);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__report_birthday_birthday_component__ = __webpack_require__(523);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__core_services_employee_service__ = __webpack_require__(443);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__core_services_general_forms_service__ = __webpack_require__(376);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__core_services_employee_service__ = __webpack_require__(444);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__core_services_general_forms_service__ = __webpack_require__(377);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__general_formbuilder_general_formbuilder_module__ = __webpack_require__(450);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__core_services_common_pager_service__ = __webpack_require__(373);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17_primeng_primeng__ = __webpack_require__(375);
