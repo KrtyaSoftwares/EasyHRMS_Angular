@@ -21,67 +21,20 @@
                       <tr>                       
                         <th><strong>Name</strong> </th>
                         <th><strong>Form Name</strong> </th>
-                        <th><strong>Template Name</strong> </th>                       
+                        <th><strong>Template Name</strong> </th>                
                         <th><strong>Action</strong></th>                      
                       </tr>
                     </thead>
                     <tbody class="no-bd-y">
-                      <tr>                       
-                        <td><a href="#">Welcome new Employee </a></td>
-                        <td>Employee</td>
-                        <td><a href="#">Welcome new Employee </a></td>
-						<td><button type="button" class="btn btn-sm btn-warning" title="Edit"><i class="fa fa-pencil"></i></button>  <button type="button" class="btn btn-sm btn-danger" title="Delete"><i class="fa fa-remove" ></i></button></td>   
+                      <tr *ngFor="let lst of _list">                       
+                        <td><a> {{lst.templateName}} </a></td>
+                        <td>{{lst.formName}}</td>
+                        <td><a >{{lst.templateName}}</a></td>
+						            <td>
+                          <button [routerLink]="['/templates/email-templates/forms/' + lst.id ]"  type="button" class="btn btn-sm btn-warning" title="Edit"><i class="fa fa-pencil"></i></button>
+                          <button (click)="delete(lst.id)" type="button" class="btn btn-sm btn-danger" title="Delete"><i class="fa fa-remove" ></i></button>
+                        </td>   
                       </tr>
-                      <tr>                       
-                        <td><a href="#">Job Created  </a></td>
-                        <td>Jobs</td>
-                        <td><a href="#">Job Created  </a></td>
-						<td><button type="button" class="btn btn-sm btn-warning" title="Edit"><i class="fa fa-pencil"></i></button>  <button type="button" class="btn btn-sm btn-danger" title="Delete"><i class="fa fa-remove" ></i></button></td>   
-                      </tr>
-                      <tr>                       
-                        <td><a href="#">Job Modified  </a></td>
-                        <td>Jobs</td>
-                        <td><a href="#">Job Modified  </a></td>
-						<td><button type="button" class="btn btn-sm btn-warning" title="Edit"><i class="fa fa-pencil"></i></button>  <button type="button" class="btn btn-sm btn-danger" title="Delete"><i class="fa fa-remove" ></i></button></td>   
-                      </tr>
-                      <tr>                       
-                        <td><a href="#">Job completed  </a></td>
-                        <td>Jobs</td>
-                        <td><a href="#">Job completed  </a></td>
-						<td><button type="button" class="btn btn-sm btn-warning" title="Edit"><i class="fa fa-pencil"></i></button>  <button type="button" class="btn btn-sm btn-danger" title="Delete"><i class="fa fa-remove" ></i></button></td>   
-                      </tr>
-                      <tr>                       
-                        <td><a href="#">Job Re-opened  </a></td>
-                        <td>Jobs</td>
-                        <td><a href="#">Job Re-opened  </a></td>
-						<td><button type="button" class="btn btn-sm btn-warning" title="Edit"><i class="fa fa-pencil"></i></button>  <button type="button" class="btn btn-sm btn-danger" title="Delete"><i class="fa fa-remove" ></i></button></td>   
-                      </tr>
-                      <tr>                       
-                        <td><a href="#">Job Reminder  </a></td>
-                        <td>Jobs</td>
-                        <td><a href="#">Job Reminder </a></td>
-						<td><button type="button" class="btn btn-sm btn-warning" title="Edit"><i class="fa fa-pencil"></i></button>  <button type="button" class="btn btn-sm btn-danger" title="Delete"><i class="fa fa-remove" ></i></button></td>   
-                      </tr>
-                      <tr>                       
-                        <td><a href="#">Task completed  </a></td>
-                        <td>Task</td>
-                        <td><a href="#">Task completed  </a></td>
-						<td><button type="button" class="btn btn-sm btn-warning" title="Edit"><i class="fa fa-pencil"></i></button>  <button type="button" class="btn btn-sm btn-danger" title="Delete"><i class="fa fa-remove" ></i></button></td>   
-                      </tr>
-                      <tr>                       
-                        <td><a href="#">Task assigned  </a></td>
-                        <td>Task</td>
-                        <td><a href="#">Task assigned  </a></td>
-						<td><button type="button" class="btn btn-sm btn-warning" title="Edit"><i class="fa fa-pencil"></i></button>  <button type="button" class="btn btn-sm btn-danger" title="Delete"><i class="fa fa-remove" ></i></button></td>   
-                      </tr>
-                      <tr>                       
-                        <td><a href="#">Task Reminder  </a></td>
-                        <td>Task</td>
-                        <td><a href="#">Task Reminder  </a></td>
-						<td><button type="button" class="btn btn-sm btn-warning" title="Edit"><i class="fa fa-pencil"></i></button>  <button type="button" class="btn btn-sm btn-danger" title="Delete"><i class="fa fa-remove" ></i></button></td>   
-                      </tr>
-                      
-                     
                     </tbody>
                   </table>
                 </div>

@@ -7,6 +7,7 @@ import { FormComponent } from './components/form/form.component';
 const routes: Routes = [
     { path: '', component: EmailTemplateComponent },
     { path: 'forms', component: FormComponent },
+    { path: 'forms/:id', component: FormComponent },
 ];
 
 @NgModule({
