@@ -26,23 +26,28 @@ export class TemplatesService {
            .map(res => <Templates[]>res.json());
     }
 
-    // public GetSingle = (id: number): Observable<Templates> => {
-    //     return this.http.get(this.actionUrl + id).map(res => <Templates>res.json());
-    // }
+    public GetSingle = (id: number): Observable<Templates> => {
+        return this.http
+            .get(this.actionUrl + 'EmailTemplate/GetEmailTemplateById/' + id)
+            .map(res => <Templates>res.json());
+    }
 
-    // public Add = (thingToAdd: any): Observable<Templates> => {
-    //     let toAdd = JSON.stringify({ name: thingToAdd.name });
+    public Add = (data: any): Observable<Templates> => {
+        let toAdd = JSON.stringify(data);
+        return this.http
+                    .post(this.actionUrl + 'EmailTemplate/CreateEmailTemplate', toAdd, { headers: this.headers })
+                    .map(res => <Templates>res.json());
+    }
 
-    //     return this.http.post(this.actionUrl, toAdd, { headers: this.headers }).map(res => <Templates>res.json());
-    // }
+    public Update = (id: number, data: any): Observable<Templates> => {
+        let toAdd = JSON.stringify(data);
+        return this.http.post(this.actionUrl + 'EmailTemplate/UpdateEmailTemplate/' + id, toAdd, { headers: this.headers })
+            .map(res => <Templates>res.json());
+    }
 
-    // public Update = (id: number, itemToUpdate: any): Observable<Templates> => {
-    //     return this.http
-    //         .put(this.actionUrl + id, JSON.stringify(itemToUpdate), { headers: this.headers })
-    //         .map(res => <Templates>res.json());
-    // }
-
-    // public Delete = (id: number): Observable<any> => {
-    //     return this.http.delete(this.actionUrl + id);
-    // }
+    public Delete = (id: number): Observable<any> => {
+        return this.http
+            .get(this.actionUrl + 'EmailTemplate/DeleteEmailTemplateById/' + id)
+            .map(res => <Templates>res.json());
+    }
 }
