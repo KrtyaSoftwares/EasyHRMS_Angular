@@ -32,6 +32,7 @@ namespace EasyHRMS_DA.Models
             : base(options) { }
         public Ehrms_ng2Context() { }
 
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<CheckList>(entity =>
@@ -278,7 +279,7 @@ namespace EasyHRMS_DA.Models
                     .IsRequired()
                     .HasMaxLength(100);
 
-                entity.Property(e => e.Priority).HasColumnType("nchar(10)");
+                entity.Property(e => e.Priority).HasMaxLength(10);
 
                 entity.Property(e => e.TemplateName)
                     .IsRequired()

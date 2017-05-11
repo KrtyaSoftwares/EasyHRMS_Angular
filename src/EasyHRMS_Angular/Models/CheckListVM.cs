@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace EasyHRMS_DA.Models
+namespace EasyHRMS_Angular.Models
 {
-    public partial class CheckList
+    public class CheckListVM
     {
         public int Id { get; set; }
         public string ChecklistName { get; set; }

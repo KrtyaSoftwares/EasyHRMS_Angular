@@ -11,6 +11,7 @@ namespace EasyHRMS_Angular.Models
         public int WorkFlowId { get; set; }
         public string Action { get; set; }
         public int TemplateId { get; set; }
+        //public string TemplateId { get; set; }
         public int ActionOrder { get; set; }
         public string FromAddress { get; set; }
         public string ToAddress { get; set; }

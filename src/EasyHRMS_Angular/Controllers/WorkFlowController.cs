@@ -8,6 +8,7 @@ using EasyHRMS_Angular.Models;
 
 namespace EasyHRMS_Angular.Controllers
 {
+    [Route("api/[controller]")]
     public class WorkFlowController : Controller
     {
         //public IActionResult Index()
@@ -21,6 +22,8 @@ namespace EasyHRMS_Angular.Controllers
         {
             _context = context;
         }
+
+        #region WorkFlow
 
         // GET: api/WorkFlow/GetAllWorkFlow
         [HttpGet("GetAllWorkFlow"), Produces("application/json")]
@@ -125,9 +128,15 @@ namespace EasyHRMS_Angular.Controllers
                 {
                     try
                     {
-                        //model.CreateDate = DateTime.Now;
-                        _context.WorkFlow.Add(model.WorkFlow);
+                        //WorkFlow objWorkFlow = new WorkFlow();
+                        //objWorkFlow.Name = model.WorkFlow.Name;
+                        //objWorkFlow.Description = model.WorkFlow.Description;
+                        //objWorkFlow.FormName = model.WorkFlow.FormName;
+                        //objWorkFlow.Status = model.WorkFlow.Status;
+                        //objWorkFlow.TriggerName = model.WorkFlow.TriggerName;
+                        //_context.WorkFlow.Add(objWorkFlow);
                         //await _ctx.SaveChangesAsync();
+                        _context.WorkFlow.Add(model.WorkFlow);
                         _context.SaveChanges();
                         //_ctxTransaction.Commit();
 
@@ -168,72 +177,197 @@ namespace EasyHRMS_Angular.Controllers
         }
 
 
-        //// PUT api/WorkFlow/UpdateWorkFlowWithActions/5
-        //[HttpPost, Route("UpdateWorkFlowWithActions/{id}")]
-        //public object UpdateWorkFlowWithActions(int id, [FromBody]WorkFlowWithActionVM model)
-        //{
-        //    object result = null; string message = ""; string errorcode = ""; string excp = "";
-        //    if (model == null)
-        //    {
-        //        return BadRequest();
-        //    }
-        //    using (_context)
-        //    {
-        //        using (var _ctxTransaction = _context.Database.BeginTransaction())
-        //        {
-        //            try
-        //            {
-        //                var entityUpdate = _context.EmployeeLeave.FirstOrDefault(x => x.Id == id);
-        //                //if (entityUpdate != null)
-        //                //{
-        //                //    PropertyInfo[] propertiesEU = entityUpdate.GetType().GetProperties();
-        //                //    foreach (PropertyInfo pi in propertiesEU)
-        //                //    {
-        //                //        if (pi.Name != "EmployeeLeaveID")
-        //                //        {
-        //                //            pi.SetValue(entityUpdate, pi.GetValue(model));
-        //                //            //var xl = pi.GetValue(entityUpdate);
-        //                //        }
-        //                //    }
-        //                //    _context.SaveChanges();
-        //                //}
+        // PUT api/WorkFlow/UpdateWorkFlowWithActions/5
+        [HttpPost, Route("UpdateWorkFlowWithActions/{id}")]
+        public object UpdateWorkFlowWithActions(int id, [FromBody]WorkFlowWithActionVM model)
+        {
+            object result = null; string message = ""; string errorcode = ""; string excp = "";
+            if (model == null)
+            {
+                return BadRequest();
+            }
+            using (_context)
+            {
+                using (var _ctxTransaction = _context.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        var entityUpdate = _context.WorkFlow.FirstOrDefault(x => x.Id == model.WorkFlow.Id);
 
-        //                if (entityUpdate != null)
-        //                {
-        //                    entityUpdate.EmployeeId = model.EmployeeId;
-        //                    entityUpdate.FromDate = model.FromDate;
-        //                    entityUpdate.ToDate = model.ToDate;
-        //                    entityUpdate.LeaveTypeId = model.LeaveTypeId;
-        //                    entityUpdate.Status = model.Status;
-        //                    entityUpdate.LeaveReason = model.LeaveReason;
-        //                    entityUpdate.CreateDate = model.CreateDate;
-        //                    entityUpdate.IsHalfDay = model.IsHalfDay;
+                        if (entityUpdate != null)
+                        {
+                            entityUpdate.Name = model.WorkFlow.Name;
+                            entityUpdate.Description = model.WorkFlow.Description;
+                            entityUpdate.FormName = model.WorkFlow.FormName;
+                            entityUpdate.Status = model.WorkFlow.Status;
+                            entityUpdate.TriggerName = model.WorkFlow.TriggerName;
 
-        //                    _context.SaveChanges();
-        //                }
+                            _context.SaveChanges();
+                        }
 
-        //                _ctxTransaction.Commit();
-        //                message = "Entry Updated";
-        //                errorcode = "0";
-        //            }
-        //            catch (Exception e)
-        //            {
-        //                _ctxTransaction.Rollback(); e.ToString();
-        //                message = "Entry Update Failed!!";
-        //                errorcode = "1";
-        //                excp = e.ToString();
-        //            }
+                        if (model.WorkFlowActions.Count > 0)
+                        {
+                            //List<WorkFlowAction> listToRemove = _context.WorkFlowAction.Where(y => y.WorkFlowId == model.WorkFlow.Id).ToList();
+                            //if(listToRemove.Count > 0)
+                            //{
+                            //    foreach (var Action in listToRemove)
+                            //    {
+                            //        _context.WorkFlowAction.Remove(Action);
+                            //    }
+                            //    _context.SaveChanges();
+                            //}
+                            foreach (var WFAction in model.WorkFlowActions)
+                            {
+                                if(WFAction.Id == 0)
+                                {
+                                    if (model.WorkFlow.Id != 0)
+                                    {
+                                        WFAction.WorkFlowId = model.WorkFlow.Id;
+                                        _context.WorkFlowAction.Add(WFAction);
+                                        _context.SaveChanges();
+                                    }
+                                }
+                                else
+                                {
+                                    var entityUpdateAction = _context.WorkFlowAction.FirstOrDefault(x => x.Id == WFAction.Id);
 
-        //            result = new
-        //            {
-        //                error = errorcode,
-        //                msg = message,
-        //                excp = excp
-        //            };
-        //        }
-        //    }
-        //    return result;
-        //}
+                                    if (entityUpdateAction != null)
+                                    {
+                                        entityUpdateAction.Action = WFAction.Action;
+                                        entityUpdateAction.ActionOrder = WFAction.ActionOrder;
+                                        entityUpdateAction.TemplateId = WFAction.TemplateId;
+                                       
+                                        _context.SaveChanges();
+                                    }
+                                }
+                               
+                            }
+                        }
+
+                        _ctxTransaction.Commit();
+                        message = "Entry Updated";
+                        errorcode = "0";
+                    }
+                    catch (Exception e)
+                    {
+                        _ctxTransaction.Rollback(); e.ToString();
+                        message = "Entry Update Failed!!";
+                        errorcode = "1";
+                        excp = e.ToString();
+                    }
+
+                    result = new
+                    {
+                        error = errorcode,
+                        msg = message,
+                        excp = excp
+                    };
+                }
+            }
+            return result;
+        }
+
+        // DELETE api/WorkFlow/DeleteWorkFlowById/5
+        [HttpGet, Route("DeleteWorkFlowById/{id}")]
+        public object DeleteWorkFlowById(int id)
+        {
+            object result = null;
+            string message = "";
+            string errorcode = "";
+            string excp = "";
+            using (_context)
+            {
+                using (var _ctxTransaction = _context.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        List<WorkFlowAction> listToRemove = _context.WorkFlowAction.Where(y => y.WorkFlowId == id).ToList();
+                        if (listToRemove.Count > 0)
+                        {
+                            foreach (var Action in listToRemove)
+                            {
+                                _context.WorkFlowAction.Remove(Action);
+                            }
+                            _context.SaveChanges();
+                        }
+
+                        var idToRemove = _context.WorkFlow.SingleOrDefault(x => x.Id == id);
+                        if (idToRemove != null)
+                        {
+                            _context.WorkFlow.Remove(idToRemove);
+                            _context.SaveChanges();
+                        }
+                        _ctxTransaction.Commit();
+                        message = "Deleted Successfully";
+                        errorcode = "0";
+                    }
+                    catch (Exception e)
+                    {
+                        _ctxTransaction.Rollback(); e.ToString();
+                        message = "Error on Deleting!!";
+                        errorcode = "1";
+                        excp = e.ToString();
+                    }
+
+                    result = new
+                    {
+                        error = errorcode,
+                        msg = message,
+                        excp = excp
+                    };
+                }
+            }
+            return result;
+        }
+        
+        #endregion WorkFlow
+
+        #region WorkFlowAction
+
+        // DELETE api/WorkFlow/DeleteWorkFlowActionById/5
+        [HttpGet, Route("DeleteWorkFlowActionById/{id}")]
+        public object DeleteWorkFlowActionById(int id)
+        {
+            object result = null;
+            string message = "";
+            string errorcode = "";
+            string excp = "";
+            using (_context)
+            {
+                using (var _ctxTransaction = _context.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        var idToRemove = _context.WorkFlowAction.SingleOrDefault(x => x.Id == id);
+                        if (idToRemove != null)
+                        {
+                            _context.WorkFlowAction.Remove(idToRemove);
+                            _context.SaveChanges();
+                        }
+                        _ctxTransaction.Commit();
+                        message = "Deleted Successfully";
+                        errorcode = "0";
+                    }
+                    catch (Exception e)
+                    {
+                        _ctxTransaction.Rollback(); e.ToString();
+                        message = "Error on Deleting!!";
+                        errorcode = "1";
+                        excp = e.ToString();
+                    }
+
+                    result = new
+                    {
+                        error = errorcode,
+                        msg = message,
+                        excp = excp
+                    };
+                }
+            }
+            return result;
+        }
+
+        #endregion WorkFlowAction
 
 
     }
