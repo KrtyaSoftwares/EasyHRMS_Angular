@@ -61,6 +61,39 @@ namespace EasyHRMS_Angular.Controllers
             return result;
         }
 
+        // GET api/Forms/GetFormsById/5
+        [HttpGet("GetFormsById/{id}"), Produces("application/json")]
+        public object GetFormsById(int id)
+        {
+            object result = null;
+            Forms objForms = new Forms();
+            try
+            {
+                using (_context)
+                {
+                    objForms = _context.Forms.FirstOrDefault(x => x.Id == id);
+
+                    result = new
+                    {
+                        objForms,
+                        error = "0",
+                        msg = "Success"
+                    };
+                }
+            }
+            catch (Exception ex)
+            {
+                ex.ToString();
+                result = new
+                {
+                    objForms,
+                    error = "1",
+                    msg = "Error"
+                };
+            }
+            return result;
+        }
+
         // GET api/Forms/GetAllFormDefByFormID/5
         [HttpGet("GetAllFormDefByFormID/{id}"), Produces("application/json")]
         public object GetAllFormDefByFormID(int id)
