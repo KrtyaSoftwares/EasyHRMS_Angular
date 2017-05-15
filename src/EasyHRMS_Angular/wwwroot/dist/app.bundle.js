@@ -69793,7 +69793,7 @@ AppRoutes = __decorate([
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services_thing_data_service__ = __webpack_require__(176);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_form_defination_service__ = __webpack_require__(174);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_lookup_form_defination_service__ = __webpack_require__(174);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_common__ = __webpack_require__(52);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_constants__ = __webpack_require__(67);
@@ -69817,7 +69817,7 @@ var CoreModule = CoreModule_1 = (function () {
             ngModule: CoreModule_1,
             providers: [
                 __WEBPACK_IMPORTED_MODULE_0__services_thing_data_service__["a" /* ThingService */],
-                __WEBPACK_IMPORTED_MODULE_1__services_form_defination_service__["a" /* FormsService */],
+                __WEBPACK_IMPORTED_MODULE_1__services_lookup_form_defination_service__["a" /* FormsService */],
                 __WEBPACK_IMPORTED_MODULE_4__app_constants__["a" /* Configuration */]
             ]
         };

@@ -8,6 +8,7 @@ import { CommonDataService } from './../../../core/services/common/common-data.s
 })
 export class HeaderComponent implements OnInit {
     showSelfServiceLink: any;
+    mainHeader: string;
 
     constructor(public router: Router, private commondataservice: CommonDataService) {
 
@@ -15,14 +16,22 @@ export class HeaderComponent implements OnInit {
     ngOnInit() {
         if (this.router.url.includes('/selfservice')) {
             this.showSelfServiceLink = false;
+            this.mainHeader = 'Self Service';
+
         }
         if (!this.router.url.includes('/selfservice')) {
             this.showSelfServiceLink = true;
+            this.mainHeader = 'Control Panel';
         }
     }
     showEmployeeLinkV(con: any) {
         this.showSelfServiceLink = con;
-        this.commondataservice.showSidebarlinkevnt.emit({ showSelfServiceSidebar: con});
+        this.commondataservice.showSidebarlinkevnt.emit({ showSelfServiceSidebar: con });
+        if (con == true) {
+            this.mainHeader = 'Control Panel';
+        }else {
+            this.mainHeader = 'Self Service';
+        }
 
     }
     toggleSidebar() {

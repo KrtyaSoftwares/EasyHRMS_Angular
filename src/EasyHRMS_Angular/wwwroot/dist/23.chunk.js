@@ -1,11 +1,11 @@
 webpackJsonp([23],{
 
-/***/ 505:
+/***/ 525:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyattendanceComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RecordTemplateComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -16,33 +16,33 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
-var MyattendanceComponent = (function () {
-    function MyattendanceComponent() {
+var RecordTemplateComponent = (function () {
+    function RecordTemplateComponent() {
     }
-    MyattendanceComponent.prototype.ngOnInit = function () {
+    RecordTemplateComponent.prototype.ngOnInit = function () {
     };
-    return MyattendanceComponent;
+    return RecordTemplateComponent;
 }());
-MyattendanceComponent = __decorate([
+RecordTemplateComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'app-myattendance',
-        template: __webpack_require__(610),
+        selector: 'app-record-template',
+        template: __webpack_require__(671),
     }),
     __metadata("design:paramtypes", [])
-], MyattendanceComponent);
+], RecordTemplateComponent);
 
 
 
 /***/ }),
 
-/***/ 536:
+/***/ 584:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(172);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_myattendance_component__ = __webpack_require__(505);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyAttendanceRoutingModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_record_template_component__ = __webpack_require__(525);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RecordTemplateRoutingModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -53,34 +53,34 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 var routes = [
-    { path: '', component: __WEBPACK_IMPORTED_MODULE_2__components_myattendance_component__["a" /* MyattendanceComponent */] },
+    { path: '', component: __WEBPACK_IMPORTED_MODULE_2__components_record_template_component__["a" /* RecordTemplateComponent */] },
 ];
-var MyAttendanceRoutingModule = (function () {
-    function MyAttendanceRoutingModule() {
+var RecordTemplateRoutingModule = (function () {
+    function RecordTemplateRoutingModule() {
     }
-    return MyAttendanceRoutingModule;
+    return RecordTemplateRoutingModule;
 }());
-MyAttendanceRoutingModule = __decorate([
+RecordTemplateRoutingModule = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
         imports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["RouterModule"].forChild(routes)],
         exports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["RouterModule"]]
     })
-], MyAttendanceRoutingModule);
+], RecordTemplateRoutingModule);
 
 
 
 /***/ }),
 
-/***/ 537:
+/***/ 585:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__(52);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__myattendance_routing_module__ = __webpack_require__(536);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_myattendance_component__ = __webpack_require__(505);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MyattendanceModule", function() { return MyattendanceModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__record_template_routing_module__ = __webpack_require__(584);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_record_template_component__ = __webpack_require__(525);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RecordTemplateModule", function() { return RecordTemplateModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -91,29 +91,29 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var MyattendanceModule = (function () {
-    function MyattendanceModule() {
+var RecordTemplateModule = (function () {
+    function RecordTemplateModule() {
     }
-    return MyattendanceModule;
+    return RecordTemplateModule;
 }());
-MyattendanceModule = __decorate([
+RecordTemplateModule = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
         imports: [
             __WEBPACK_IMPORTED_MODULE_1__angular_common__["CommonModule"],
-            __WEBPACK_IMPORTED_MODULE_2__myattendance_routing_module__["a" /* MyAttendanceRoutingModule */]
+            __WEBPACK_IMPORTED_MODULE_2__record_template_routing_module__["a" /* RecordTemplateRoutingModule */]
         ],
-        declarations: [__WEBPACK_IMPORTED_MODULE_3__components_myattendance_component__["a" /* MyattendanceComponent */]]
+        declarations: [__WEBPACK_IMPORTED_MODULE_3__components_record_template_component__["a" /* RecordTemplateComponent */]]
     })
-], MyattendanceModule);
+], RecordTemplateModule);
 
 
 
 /***/ }),
 
-/***/ 610:
+/***/ 671:
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  myattendance works!\n</p>\n"
+module.exports = "<p>\r\n  record-template works!\r\n</p>\r\n"
 
 /***/ })
 

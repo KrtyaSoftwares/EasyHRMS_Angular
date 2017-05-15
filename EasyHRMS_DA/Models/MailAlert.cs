@@ -1,18 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace EasyHRMS_Angular.Models
+namespace EasyHRMS_DA.Models
 {
-    public class WorkFlowActionVM
+    public partial class MailAlert
     {
         public int Id { get; set; }
-        public int WorkFlowId { get; set; }
-        public string Action { get; set; }
-        public int TemplateId { get; set; }
-        //public string TemplateId { get; set; }
-        public int ActionOrder { get; set; }
+        public string FormName { get; set; }
+        public string MailAlertName { get; set; }
+        public int? TemplateId { get; set; }
         public string FromAddress { get; set; }
         public string ToAddress { get; set; }
         public string Ccaddress { get; set; }
@@ -20,5 +16,6 @@ namespace EasyHRMS_Angular.Models
         public string ReplyToAddress { get; set; }
         public string EmailSubject { get; set; }
         public string Attachment { get; set; }
+        public string Message { get; set; }
     }
 }

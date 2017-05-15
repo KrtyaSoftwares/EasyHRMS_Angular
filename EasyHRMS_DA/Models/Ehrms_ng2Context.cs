@@ -19,9 +19,11 @@ namespace EasyHRMS_DA.Models
         public virtual DbSet<LookupFormBuilder> LookupFormBuilder { get; set; }
         public virtual DbSet<LookupList> LookupList { get; set; }
         public virtual DbSet<Lookups> Lookups { get; set; }
+        public virtual DbSet<MailAlert> MailAlert { get; set; }
         public virtual DbSet<TaskTemplate> TaskTemplate { get; set; }
         public virtual DbSet<WorkFlow> WorkFlow { get; set; }
         public virtual DbSet<WorkFlowAction> WorkFlowAction { get; set; }
+        public virtual DbSet<WorkFlowTask> WorkFlowTask { get; set; }
 
         //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         //{
@@ -31,7 +33,6 @@ namespace EasyHRMS_DA.Models
         public Ehrms_ng2Context(DbContextOptions<Ehrms_ng2Context> options)
             : base(options) { }
         public Ehrms_ng2Context() { }
-
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -44,21 +45,11 @@ namespace EasyHRMS_DA.Models
 
             modelBuilder.Entity<EmailTemplate>(entity =>
             {
-                entity.Property(e => e.Attachment).HasMaxLength(500);
-
-                entity.Property(e => e.Bccaddress).HasColumnName("BCCAddress");
-
-                entity.Property(e => e.Ccaddress).HasColumnName("CCAddress");
-
-                entity.Property(e => e.EmailSubject).HasMaxLength(500);
-
                 entity.Property(e => e.FormName)
                     .IsRequired()
                     .HasMaxLength(100);
 
                 entity.Property(e => e.Message).IsRequired();
-
-                entity.Property(e => e.ReplyToAddress).HasMaxLength(100);
 
                 entity.Property(e => e.TemplateName)
                     .IsRequired()
@@ -273,6 +264,27 @@ namespace EasyHRMS_DA.Models
                 entity.Property(e => e.LookupName).HasMaxLength(50);
             });
 
+            modelBuilder.Entity<MailAlert>(entity =>
+            {
+                entity.Property(e => e.Attachment).HasMaxLength(500);
+
+                entity.Property(e => e.Bccaddress).HasColumnName("BCCAddress");
+
+                entity.Property(e => e.Ccaddress).HasColumnName("CCAddress");
+
+                entity.Property(e => e.EmailSubject).HasMaxLength(500);
+
+                entity.Property(e => e.FormName)
+                    .IsRequired()
+                    .HasMaxLength(100);
+
+                entity.Property(e => e.MailAlertName)
+                    .IsRequired()
+                    .HasMaxLength(100);
+
+                entity.Property(e => e.ReplyToAddress).HasMaxLength(100);
+            });
+
             modelBuilder.Entity<TaskTemplate>(entity =>
             {
                 entity.Property(e => e.FormName)
@@ -280,6 +292,8 @@ namespace EasyHRMS_DA.Models
                     .HasMaxLength(100);
 
                 entity.Property(e => e.Priority).HasMaxLength(10);
+
+                entity.Property(e => e.TaskName).HasMaxLength(100);
 
                 entity.Property(e => e.TemplateName)
                     .IsRequired()
@@ -308,6 +322,25 @@ namespace EasyHRMS_DA.Models
                 entity.Property(e => e.Action)
                     .IsRequired()
                     .HasMaxLength(50);
+            });
+
+            modelBuilder.Entity<WorkFlowTask>(entity =>
+            {
+                entity.Property(e => e.Attachment).HasMaxLength(500);
+
+                entity.Property(e => e.Bccaddress).HasColumnName("BCCAddress");
+
+                entity.Property(e => e.Ccaddress).HasColumnName("CCAddress");
+
+                entity.Property(e => e.DueDate).HasMaxLength(500);
+
+                entity.Property(e => e.EmailSubject).HasMaxLength(500);
+
+                entity.Property(e => e.ReplyToAddress).HasMaxLength(100);
+
+                entity.Property(e => e.TaskName)
+                    .IsRequired()
+                    .HasMaxLength(100);
             });
         }
     }

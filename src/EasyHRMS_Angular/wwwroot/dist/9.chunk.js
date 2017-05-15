@@ -1,4 +1,4 @@
-webpackJsonp([9,12,20],{
+webpackJsonp([9,14,22],{
 
 /***/ 364:
 /***/ (function(module, exports, __webpack_require__) {
@@ -1505,7 +1505,7 @@ exports.ProgressBarModule = ProgressBarModule;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(66);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(98);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_underscore__ = __webpack_require__(439);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_underscore__ = __webpack_require__(436);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_underscore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_underscore__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PagerService; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -1579,7 +1579,7 @@ PagerService = __decorate([
 
 /***/ }),
 
-/***/ 375:
+/***/ 374:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1590,24 +1590,27 @@ function __export(m) {
 Object.defineProperty(exports, "__esModule", { value: true });
 __export(__webpack_require__(370));
 __export(__webpack_require__(365));
+__export(__webpack_require__(375));
+__export(__webpack_require__(376));
+__export(__webpack_require__(377));
 __export(__webpack_require__(378));
-__export(__webpack_require__(379));
-__export(__webpack_require__(380));
-__export(__webpack_require__(381));
 __export(__webpack_require__(366));
-__export(__webpack_require__(383));
+__export(__webpack_require__(380));
+__export(__webpack_require__(379));
+__export(__webpack_require__(381));
 __export(__webpack_require__(382));
+__export(__webpack_require__(383));
 __export(__webpack_require__(384));
 __export(__webpack_require__(385));
-__export(__webpack_require__(386));
 __export(__webpack_require__(387));
 __export(__webpack_require__(388));
+__export(__webpack_require__(389));
 __export(__webpack_require__(390));
 __export(__webpack_require__(391));
+__export(__webpack_require__(386));
 __export(__webpack_require__(392));
 __export(__webpack_require__(393));
 __export(__webpack_require__(394));
-__export(__webpack_require__(389));
 __export(__webpack_require__(395));
 __export(__webpack_require__(396));
 __export(__webpack_require__(397));
@@ -1617,50 +1620,47 @@ __export(__webpack_require__(400));
 __export(__webpack_require__(401));
 __export(__webpack_require__(402));
 __export(__webpack_require__(403));
+__export(__webpack_require__(367));
 __export(__webpack_require__(404));
 __export(__webpack_require__(405));
 __export(__webpack_require__(406));
-__export(__webpack_require__(367));
 __export(__webpack_require__(407));
 __export(__webpack_require__(408));
 __export(__webpack_require__(409));
+__export(__webpack_require__(371));
 __export(__webpack_require__(410));
 __export(__webpack_require__(411));
 __export(__webpack_require__(412));
-__export(__webpack_require__(371));
+__export(__webpack_require__(369));
 __export(__webpack_require__(413));
 __export(__webpack_require__(414));
 __export(__webpack_require__(415));
-__export(__webpack_require__(369));
 __export(__webpack_require__(416));
+__export(__webpack_require__(372));
 __export(__webpack_require__(417));
 __export(__webpack_require__(418));
 __export(__webpack_require__(419));
-__export(__webpack_require__(372));
 __export(__webpack_require__(420));
 __export(__webpack_require__(421));
 __export(__webpack_require__(422));
 __export(__webpack_require__(423));
 __export(__webpack_require__(424));
 __export(__webpack_require__(425));
-__export(__webpack_require__(426));
 __export(__webpack_require__(427));
+__export(__webpack_require__(426));
 __export(__webpack_require__(428));
-__export(__webpack_require__(430));
 __export(__webpack_require__(429));
+__export(__webpack_require__(430));
 __export(__webpack_require__(431));
 __export(__webpack_require__(432));
 __export(__webpack_require__(433));
 __export(__webpack_require__(434));
 __export(__webpack_require__(435));
-__export(__webpack_require__(436));
-__export(__webpack_require__(437));
-__export(__webpack_require__(438));
 //# sourceMappingURL=primeng.js.map
 
 /***/ }),
 
-/***/ 378:
+/***/ 375:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1840,7 +1840,7 @@ exports.AccordionModule = AccordionModule;
 
 /***/ }),
 
-/***/ 379:
+/***/ 376:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2343,7 +2343,7 @@ exports.AutoCompleteModule = AutoCompleteModule;
 
 /***/ }),
 
-/***/ 380:
+/***/ 377:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2445,7 +2445,7 @@ exports.BlockUIModule = BlockUIModule;
 
 /***/ }),
 
-/***/ 381:
+/***/ 378:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2542,7 +2542,7 @@ exports.BreadcrumbModule = BreadcrumbModule;
 
 /***/ }),
 
-/***/ 382:
+/***/ 379:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3620,7 +3620,7 @@ exports.CalendarModule = CalendarModule;
 
 /***/ }),
 
-/***/ 383:
+/***/ 380:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3757,7 +3757,7 @@ exports.CaptchaModule = CaptchaModule;
 
 /***/ }),
 
-/***/ 384:
+/***/ 381:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4084,7 +4084,7 @@ exports.CarouselModule = CarouselModule;
 
 /***/ }),
 
-/***/ 385:
+/***/ 382:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4218,7 +4218,7 @@ exports.ChartModule = ChartModule;
 
 /***/ }),
 
-/***/ 386:
+/***/ 383:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4372,7 +4372,7 @@ exports.CheckboxModule = CheckboxModule;
 
 /***/ }),
 
-/***/ 387:
+/***/ 384:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4583,7 +4583,7 @@ exports.ChipsModule = ChipsModule;
 
 /***/ }),
 
-/***/ 388:
+/***/ 385:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4633,7 +4633,7 @@ exports.CodeHighlighterModule = CodeHighlighterModule;
 
 /***/ }),
 
-/***/ 389:
+/***/ 386:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4922,7 +4922,7 @@ exports.ConfirmDialogModule = ConfirmDialogModule;
 
 /***/ }),
 
-/***/ 390:
+/***/ 387:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5187,7 +5187,7 @@ exports.ContextMenuModule = ContextMenuModule;
 
 /***/ }),
 
-/***/ 391:
+/***/ 388:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5397,7 +5397,7 @@ exports.DataGridModule = DataGridModule;
 
 /***/ }),
 
-/***/ 392:
+/***/ 389:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5607,7 +5607,7 @@ exports.DataListModule = DataListModule;
 
 /***/ }),
 
-/***/ 393:
+/***/ 390:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5832,7 +5832,7 @@ exports.DataScrollerModule = DataScrollerModule;
 
 /***/ }),
 
-/***/ 394:
+/***/ 391:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7757,7 +7757,7 @@ exports.DataTableModule = DataTableModule;
 
 /***/ }),
 
-/***/ 395:
+/***/ 392:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8126,7 +8126,7 @@ exports.DialogModule = DialogModule;
 
 /***/ }),
 
-/***/ 396:
+/***/ 393:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8368,7 +8368,7 @@ exports.DragDropModule = DragDropModule;
 
 /***/ }),
 
-/***/ 397:
+/***/ 394:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8871,7 +8871,7 @@ exports.DropdownModule = DropdownModule;
 
 /***/ }),
 
-/***/ 398:
+/***/ 395:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9021,7 +9021,7 @@ exports.EditorModule = EditorModule;
 
 /***/ }),
 
-/***/ 399:
+/***/ 396:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9139,7 +9139,7 @@ exports.FieldsetModule = FieldsetModule;
 
 /***/ }),
 
-/***/ 400:
+/***/ 397:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9471,7 +9471,7 @@ exports.FileUploadModule = FileUploadModule;
 
 /***/ }),
 
-/***/ 401:
+/***/ 398:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9702,7 +9702,7 @@ exports.GalleriaModule = GalleriaModule;
 
 /***/ }),
 
-/***/ 402:
+/***/ 399:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9888,7 +9888,7 @@ exports.GMapModule = GMapModule;
 
 /***/ }),
 
-/***/ 403:
+/***/ 400:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10017,7 +10017,7 @@ exports.GrowlModule = GrowlModule;
 
 /***/ }),
 
-/***/ 404:
+/***/ 401:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10131,7 +10131,7 @@ exports.InplaceModule = InplaceModule;
 
 /***/ }),
 
-/***/ 405:
+/***/ 402:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10694,7 +10694,7 @@ exports.InputMaskModule = InputMaskModule;
 
 /***/ }),
 
-/***/ 406:
+/***/ 403:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10884,7 +10884,7 @@ exports.InputSwitchModule = InputSwitchModule;
 
 /***/ }),
 
-/***/ 407:
+/***/ 404:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11012,7 +11012,7 @@ exports.InputTextareaModule = InputTextareaModule;
 
 /***/ }),
 
-/***/ 408:
+/***/ 405:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11229,7 +11229,7 @@ exports.LightboxModule = LightboxModule;
 
 /***/ }),
 
-/***/ 409:
+/***/ 406:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11571,7 +11571,7 @@ exports.ListboxModule = ListboxModule;
 
 /***/ }),
 
-/***/ 410:
+/***/ 407:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11723,7 +11723,7 @@ exports.MegaMenuModule = MegaMenuModule;
 
 /***/ }),
 
-/***/ 411:
+/***/ 408:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11901,7 +11901,7 @@ exports.MenuModule = MenuModule;
 
 /***/ }),
 
-/***/ 412:
+/***/ 409:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12053,7 +12053,7 @@ exports.MenubarModule = MenubarModule;
 
 /***/ }),
 
-/***/ 413:
+/***/ 410:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12408,7 +12408,7 @@ exports.MultiSelectModule = MultiSelectModule;
 
 /***/ }),
 
-/***/ 414:
+/***/ 411:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12644,7 +12644,7 @@ exports.OrderListModule = OrderListModule;
 
 /***/ }),
 
-/***/ 415:
+/***/ 412:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12820,7 +12820,7 @@ exports.OverlayPanelModule = OverlayPanelModule;
 
 /***/ }),
 
-/***/ 416:
+/***/ 413:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12946,7 +12946,7 @@ exports.PanelModule = PanelModule;
 
 /***/ }),
 
-/***/ 417:
+/***/ 414:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13106,7 +13106,7 @@ exports.PanelMenuModule = PanelMenuModule;
 
 /***/ }),
 
-/***/ 418:
+/***/ 415:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13306,7 +13306,7 @@ exports.PasswordModule = PasswordModule;
 
 /***/ }),
 
-/***/ 419:
+/***/ 416:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13636,7 +13636,7 @@ exports.PickListModule = PickListModule;
 
 /***/ }),
 
-/***/ 420:
+/***/ 417:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13768,7 +13768,7 @@ exports.RadioButtonModule = RadioButtonModule;
 
 /***/ }),
 
-/***/ 421:
+/***/ 418:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13890,7 +13890,7 @@ exports.RatingModule = RatingModule;
 
 /***/ }),
 
-/***/ 422:
+/***/ 419:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14395,7 +14395,7 @@ exports.ScheduleModule = ScheduleModule;
 
 /***/ }),
 
-/***/ 423:
+/***/ 420:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14529,7 +14529,7 @@ exports.SelectButtonModule = SelectButtonModule;
 
 /***/ }),
 
-/***/ 424:
+/***/ 421:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14768,7 +14768,7 @@ exports.SlideMenuModule = SlideMenuModule;
 
 /***/ }),
 
-/***/ 425:
+/***/ 422:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15044,7 +15044,7 @@ exports.SliderModule = SliderModule;
 
 /***/ }),
 
-/***/ 426:
+/***/ 423:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15339,7 +15339,7 @@ exports.SpinnerModule = SpinnerModule;
 
 /***/ }),
 
-/***/ 427:
+/***/ 424:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15484,7 +15484,7 @@ exports.SplitButtonModule = SplitButtonModule;
 
 /***/ }),
 
-/***/ 428:
+/***/ 425:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15587,7 +15587,7 @@ exports.StepsModule = StepsModule;
 
 /***/ }),
 
-/***/ 429:
+/***/ 426:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15700,7 +15700,7 @@ exports.TabMenuModule = TabMenuModule;
 
 /***/ }),
 
-/***/ 430:
+/***/ 427:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15993,7 +15993,7 @@ exports.TabViewModule = TabViewModule;
 
 /***/ }),
 
-/***/ 431:
+/***/ 428:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16106,7 +16106,7 @@ exports.TerminalModule = TerminalModule;
 
 /***/ }),
 
-/***/ 432:
+/***/ 429:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16285,7 +16285,7 @@ exports.TieredMenuModule = TieredMenuModule;
 
 /***/ }),
 
-/***/ 433:
+/***/ 430:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16427,7 +16427,7 @@ exports.ToggleButtonModule = ToggleButtonModule;
 
 /***/ }),
 
-/***/ 434:
+/***/ 431:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16481,7 +16481,7 @@ exports.ToolbarModule = ToolbarModule;
 
 /***/ }),
 
-/***/ 435:
+/***/ 432:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16687,7 +16687,7 @@ exports.TooltipModule = TooltipModule;
 
 /***/ }),
 
-/***/ 436:
+/***/ 433:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17386,7 +17386,7 @@ var UITreeNode_1;
 
 /***/ }),
 
-/***/ 437:
+/***/ 434:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17794,7 +17794,7 @@ exports.TreeTableModule = TreeTableModule;
 
 /***/ }),
 
-/***/ 438:
+/***/ 435:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17923,7 +17923,7 @@ exports.TriStateCheckboxModule = TriStateCheckboxModule;
 
 /***/ }),
 
-/***/ 439:
+/***/ 436:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;//     Underscore.js 1.8.3
@@ -19479,14 +19479,14 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;//     Underscor
 
 /***/ }),
 
-/***/ 440:
+/***/ 441:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_router__ = __webpack_require__(172);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(171);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__core_services_form_defination_service__ = __webpack_require__(174);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__core_services_lookup_form_defination_service__ = __webpack_require__(174);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FormbuilderComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -19590,7 +19590,6 @@ var FormbuilderComponent = (function () {
             else {
                 _this.record_not_exists = false;
             }
-            console.log(_this.final_result);
             if (_this.rowId) {
                 _this.getTableData(_this.lookup, _this.rowId);
             }
@@ -19645,24 +19644,24 @@ __decorate([
 FormbuilderComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Component"])({
         selector: 'app-formbuilder',
-        template: __webpack_require__(455)
+        template: __webpack_require__(458)
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormBuilder"],
         __WEBPACK_IMPORTED_MODULE_0__angular_router__["Router"],
         __WEBPACK_IMPORTED_MODULE_0__angular_router__["ActivatedRoute"],
-        __WEBPACK_IMPORTED_MODULE_3__core_services_form_defination_service__["a" /* FormsService */]])
+        __WEBPACK_IMPORTED_MODULE_3__core_services_lookup_form_defination_service__["a" /* FormsService */]])
 ], FormbuilderComponent);
 
 
 
 /***/ }),
 
-/***/ 443:
+/***/ 444:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_services_lists_data__ = __webpack_require__(445);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_services_lookup_lists_data__ = __webpack_require__(446);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__core_services_common_pager_service__ = __webpack_require__(373);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ListingComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -19758,9 +19757,9 @@ __decorate([
 ListingComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-listing',
-        template: __webpack_require__(459),
+        template: __webpack_require__(462),
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__core_services_lists_data__["a" /* ListsService */],
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__core_services_lookup_lists_data__["a" /* ListsService */],
         __WEBPACK_IMPORTED_MODULE_2__core_services_common_pager_service__["a" /* PagerService */]])
 ], ListingComponent);
 
@@ -19768,7 +19767,7 @@ ListingComponent = __decorate([
 
 /***/ }),
 
-/***/ 445:
+/***/ 446:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -19817,13 +19816,13 @@ ListsService = __decorate([
 
 /***/ }),
 
-/***/ 446:
+/***/ 449:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(172);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_formbuilder_component__ = __webpack_require__(440);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_formbuilder_component__ = __webpack_require__(441);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FormbuilderRoutingModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -19853,7 +19852,7 @@ FormbuilderRoutingModule = __decorate([
 
 /***/ }),
 
-/***/ 447:
+/***/ 450:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -19861,9 +19860,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__(52);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(171);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_formbuilder_component__ = __webpack_require__(440);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__formbuilder_routing_module__ = __webpack_require__(446);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_primeng_primeng__ = __webpack_require__(375);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_formbuilder_component__ = __webpack_require__(441);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__formbuilder_routing_module__ = __webpack_require__(449);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_primeng_primeng__ = __webpack_require__(374);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_primeng_primeng___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_primeng_primeng__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FormbuilderModule", function() { return FormbuilderModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -19904,13 +19903,13 @@ FormbuilderModule = __decorate([
 
 /***/ }),
 
-/***/ 453:
+/***/ 456:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(172);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_listing_component__ = __webpack_require__(443);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_listing_component__ = __webpack_require__(444);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ListingRoutingModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -19940,15 +19939,15 @@ ListingRoutingModule = __decorate([
 
 /***/ }),
 
-/***/ 454:
+/***/ 457:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__(52);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_listing_component__ = __webpack_require__(443);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__listing_routing_module__ = __webpack_require__(453);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_listing_component__ = __webpack_require__(444);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__listing_routing_module__ = __webpack_require__(456);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__core_services_common_pager_service__ = __webpack_require__(373);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ListingModule", function() { return ListingModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -19989,21 +19988,21 @@ ListingModule = __decorate([
 
 /***/ }),
 
-/***/ 455:
+/***/ 458:
 /***/ (function(module, exports) {
 
 module.exports = "<div id=\"main-content\" >\r\n    <div class=\"row m-t-10\">\r\n      <div class=\"col-md-12\">\r\n        <div class=\"panel panel-default\">\r\n          <div class=\"panel-heading text-right\">\r\n            <button type=\"button\" class=\"btn btn-sm btn-icon btn-rounded btn-default\"><i class=\"fa fa-question\"></i> </button>\r\n          </div>\r\n          <div class=\"panel-body\">\r\n           <div class=\"row\">\r\n              <div class=\"col-md-12 col-sm-12 col-xs-12\">                                 \r\n                <div class=\"form-horizontal\" >\r\n                  <div class=\"boder-btm\">\r\n                    <h3 class=\"panel-title\">Branch Info</h3>\r\n                  </div>\r\n                  <div *ngIf=\"record_not_exists\">No Form found.</div>\r\n                  <div *ngIf=\"!record_not_exists\" class=\"m-b-30\">\r\n                    <form \r\n                        *ngIf=\"form\"\r\n                        (ngSubmit)=\"onSubmit(form.value, form.valid)\" \r\n                        [formGroup]=\"form\" \r\n                        novalidate>\r\n                         <div *ngFor=\"let question of final_result; let i = index\">\r\n                            <div class=\"form-group\">\r\n                                <label for=\"inputEmail3\" class=\"col-md-4 col-sm-4 control-label\">\r\n                                  {{question.displayName ? question.displayName : question.fieldName}}\r\n                                </label>\r\n                                <div class=\"col-md-6 col-sm-6\" [ngSwitch]=\"question.fieldType\">\r\n                                  <div *ngSwitchCase=\"'Text'\">\r\n                                      <input \r\n                                        class=\"form-control\" \r\n                                        type=\"{{question.fieldType}}\"\r\n                                        [formControlName]=\"question.fieldName\" \r\n                                        [(ngModel)]=\"question.custom_value\">\r\n                                  </div>\r\n                                  <div class=\"col-sm-4\" *ngSwitchCase=\"'Bit'\">\r\n                                    <div class=\"radio\" *ngFor=\"let opt of question.optionValue\">\r\n                                      <label>\r\n                                        <input \r\n                                            type=\"radio\" \r\n                                            value=\"{{opt.key}}\"\r\n                                            [formControlName]=\"question.fieldName\" \r\n                                            [(ngModel)]=\"question.value\">\r\n                                        {{opt.value}}\r\n                                      </label>\r\n                                    </div>\r\n                                  </div>\r\n                                  <div class=\"col-sm-4\" *ngSwitchCase=\"'Dropdown'\">\r\n                                      <select class=\"form-control\" [formControlName]=\"question.fieldName\" [(ngModel)]=\"question.value\">\r\n                                          <option  value=\"\" selected>Select</option>\r\n                                          <option  value= {{opt.key}} *ngFor=\"let opt of question.optionValue\">{{opt.value}}</option>\r\n                                        </select>\r\n                                  </div>\r\n                                  <div class=\"col-sm-4\" *ngSwitchCase=\"'Textarea'\">\r\n                                      <textarea [formControlName]=\"question.fieldName\" [(ngModel)]=\"question.value\" rows=\"10\" cols=\"55\"> </textarea>\r\n                                  </div>\r\n                                  <div class=\"col-sm-4\" *ngSwitchCase=\"'datetime'\">\r\n                                      <p-calendar [formControlName]=\"question.fieldName\" [showIcon]=\"true\" [(ngModel)]=\"question.value\"></p-calendar> \r\n                                      <span style=\"margin-left:35px\">{{question.value|date}}</span>\r\n                                  </div>\r\n                                  <div \r\n                                    class=\"alert alert-danger\" \r\n                                    [hidden]=\"form.get([question.fieldName]).valid || (form.get([question.fieldName]).pristine && !submitted)\">\r\n                                    *{{question.fieldName}} is required\r\n                                  </div>\r\n                                </div>\r\n                          </div>\r\n                        </div>\r\n                        <div class=\"form-row\">\r\n                            <button class=\"btn btn-primary m-b-10\" type=\"submit\" >Save</button>\r\n                        </div>\r\n                    </form>\r\n                    <div class=\"form-row\">\r\n                      <div *ngIf=\"payLoad\"><strong>The form contains the following values</strong></div>\r\n                      <div>\r\n                          {{payLoad}}\r\n                      </div>\r\n                  </div>\r\n                  </div>\r\n                </div>\r\n\t\t          </div>\r\n           </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n</div>  "
 
 /***/ }),
 
-/***/ 459:
+/***/ 462:
 /***/ (function(module, exports) {
 
 module.exports = "<div id=\"main-content\" >\r\n    <div class=\"row m-t-10\">\r\n      <div class=\"col-md-12\">\r\n        <div class=\"panel panel-default\">\r\n          <div class=\"panel-heading text-right\">\r\n            <button type=\"button\" class=\"btn btn-sm btn-icon btn-rounded btn-default\"><i class=\"fa fa-question\"></i> </button>\r\n          </div>\r\n          <div class=\"panel-body\">\r\n           <div class=\"row\">\r\n              <div class=\"col-md-12 col-sm-12 col-xs-12 text-right\">\r\n                <button [routerLink]=\"['/lookup/form/' + lookup]\" class=\"btn btn-primary m-b-10\" >Add</button>\r\n              </div>\r\n            </div>\r\n            \r\n            <div *ngIf=\"record_not_exists\">No Form found.</div>\r\n                <div *ngIf=\"!record_not_exists\" class=\"row\">\r\n                    <div class=\"col-md-12 col-sm-12 col-xs-12\">\r\n                    <div class=\"table-responsive\">\r\n                        <table class=\"table table-bordered table-striped table-hover\">\r\n                        <thead class=\"no-bd\">\r\n                            <tr>\r\n                            <th *ngFor=\"let heading of _FilteredfieldsHeading; let i = index\"><strong>{{heading.displayName}}</strong> </th>\r\n                            <th><strong>Action</strong></th>                        \r\n                            </tr>\r\n                        </thead>\r\n                        <tbody class=\"no-bd-y\">\r\n                            <tr *ngFor=\"let hero of pagedItems\">\r\n                                <td *ngFor=\"let h of hero\">{{h.value}} </td>\r\n                            <td>\r\n                                <button\r\n                                    *ngFor=\"let act of actionlist\"\r\n                                    type=\"button\"\r\n                                    [routerLink]=\"act.action == 'Edit' ? ['/lookup/form/'+ lookup + '/' + hero[0]['rowId']] : ['/lookup/delete/' + lookup + '/' + hero[0]['rowId']]\"\r\n                                    [ngClass]=\"act.action == 'Edit' ? 'btn btn-sm btn-warning' : 'btn btn-sm btn-danger'\"\r\n                                    title=\"{{act.action}}\">\r\n                                    <i [ngClass]=\"act.action == 'Edit' ? 'fa fa-pencil' : 'fa fa-remove'\"></i>\r\n                                </button>\r\n                            </td>\r\n                            </tr>\r\n                        </tbody>\r\n                        </table>\r\n                        <ul *ngIf=\"pager.pages && pager.pages.length\" class=\"pagination\">\r\n                            <li [ngClass]=\"{disabled:pager.currentPage === 1}\">\r\n                                <a (click)=\"setPage(1)\">First</a>\r\n                            </li>\r\n                            <li [ngClass]=\"{disabled:pager.currentPage === 1}\">\r\n                                <a (click)=\"setPage(pager.currentPage - 1)\">Previous</a>\r\n                            </li>\r\n                            <li *ngFor=\"let page of pager.pages\" [ngClass]=\"{active:pager.currentPage === page}\">\r\n                                <a (click)=\"setPage(page)\">{{page}}</a>\r\n                            </li>\r\n                            <li [ngClass]=\"{disabled:pager.currentPage === pager.totalPages}\">\r\n                                <a (click)=\"setPage(pager.currentPage + 1)\">Next</a>\r\n                            </li>\r\n                            <li [ngClass]=\"{disabled:pager.currentPage === pager.totalPages}\">\r\n                                <a (click)=\"setPage(pager.totalPages)\">Last</a>\r\n                            </li>\r\n                        </ul>\r\n                    </div>\r\n                    </div>\r\n                </div>\r\n        </div>\r\n                </div>\r\n            </div>\r\n            </div>\r\n        </div>"
 
 /***/ }),
 
-/***/ 460:
+/***/ 463:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -20052,13 +20051,13 @@ LookupService = __decorate([
 
 /***/ }),
 
-/***/ 486:
+/***/ 499:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(172);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__core_services_form_defination_service__ = __webpack_require__(174);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__core_services_lookup_form_defination_service__ = __webpack_require__(174);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DeleteComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -20099,18 +20098,18 @@ var DeleteComponent = (function () {
 DeleteComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-delete',
-        template: __webpack_require__(591),
+        template: __webpack_require__(644),
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_router__["Router"],
         __WEBPACK_IMPORTED_MODULE_1__angular_router__["ActivatedRoute"],
-        __WEBPACK_IMPORTED_MODULE_2__core_services_form_defination_service__["a" /* FormsService */]])
+        __WEBPACK_IMPORTED_MODULE_2__core_services_lookup_form_defination_service__["a" /* FormsService */]])
 ], DeleteComponent);
 
 
 
 /***/ }),
 
-/***/ 487:
+/***/ 500:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -20145,7 +20144,7 @@ var FormComponent = (function () {
 FormComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-form',
-        template: __webpack_require__(592),
+        template: __webpack_require__(645),
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_router__["Router"],
         __WEBPACK_IMPORTED_MODULE_1__angular_router__["ActivatedRoute"]])
@@ -20155,7 +20154,7 @@ FormComponent = __decorate([
 
 /***/ }),
 
-/***/ 488:
+/***/ 501:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -20189,7 +20188,7 @@ var LookupListsComponent = (function () {
 LookupListsComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-lookup-lists',
-        template: __webpack_require__(593)
+        template: __webpack_require__(646)
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_router__["Router"],
         __WEBPACK_IMPORTED_MODULE_1__angular_router__["ActivatedRoute"]])
@@ -20199,13 +20198,13 @@ LookupListsComponent = __decorate([
 
 /***/ }),
 
-/***/ 489:
+/***/ 502:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(172);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__core_services_lookup_service__ = __webpack_require__(460);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__core_services_lookup_lookup_service__ = __webpack_require__(463);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LookupComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -20285,27 +20284,27 @@ var LookupComponent = (function () {
 LookupComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-lookup',
-        template: __webpack_require__(594),
+        template: __webpack_require__(647),
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_router__["Router"],
         __WEBPACK_IMPORTED_MODULE_1__angular_router__["ActivatedRoute"],
-        __WEBPACK_IMPORTED_MODULE_2__core_services_lookup_service__["a" /* LookupService */]])
+        __WEBPACK_IMPORTED_MODULE_2__core_services_lookup_lookup_service__["a" /* LookupService */]])
 ], LookupComponent);
 
 
 
 /***/ }),
 
-/***/ 528:
+/***/ 563:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(172);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_lookup_component__ = __webpack_require__(489);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_list_lookup_lists_component__ = __webpack_require__(488);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_form_form_component__ = __webpack_require__(487);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_delete_delete_component__ = __webpack_require__(486);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_lookup_component__ = __webpack_require__(502);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_list_lookup_lists_component__ = __webpack_require__(501);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_form_form_component__ = __webpack_require__(500);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_delete_delete_component__ = __webpack_require__(499);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LookupRoutingModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -20342,7 +20341,7 @@ LookupRoutingModule = __decorate([
 
 /***/ }),
 
-/***/ 529:
+/***/ 564:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -20350,16 +20349,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__(52);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(171);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_lookup_component__ = __webpack_require__(489);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__lookup_routing_module__ = __webpack_require__(528);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__shared__ = __webpack_require__(374);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_list_lookup_lists_component__ = __webpack_require__(488);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_form_form_component__ = __webpack_require__(487);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_delete_delete_component__ = __webpack_require__(486);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__formbuilder_formbuilder_module__ = __webpack_require__(447);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__listing_listing_module__ = __webpack_require__(454);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__core_services_lists_data__ = __webpack_require__(445);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__core_services_lookup_service__ = __webpack_require__(460);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_lookup_component__ = __webpack_require__(502);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__lookup_routing_module__ = __webpack_require__(563);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__shared__ = __webpack_require__(437);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_list_lookup_lists_component__ = __webpack_require__(501);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_form_form_component__ = __webpack_require__(500);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_delete_delete_component__ = __webpack_require__(499);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__formbuilder_formbuilder_module__ = __webpack_require__(450);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__listing_listing_module__ = __webpack_require__(457);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__core_services_lookup_lists_data__ = __webpack_require__(446);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__core_services_lookup_lookup_service__ = __webpack_require__(463);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LookupModule", function() { return LookupModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -20403,8 +20402,8 @@ LookupModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_8__components_delete_delete_component__["a" /* DeleteComponent */]
         ],
         providers: [
-            __WEBPACK_IMPORTED_MODULE_11__core_services_lists_data__["a" /* ListsService */],
-            __WEBPACK_IMPORTED_MODULE_12__core_services_lookup_service__["a" /* LookupService */]
+            __WEBPACK_IMPORTED_MODULE_11__core_services_lookup_lists_data__["a" /* ListsService */],
+            __WEBPACK_IMPORTED_MODULE_12__core_services_lookup_lookup_service__["a" /* LookupService */]
         ]
     })
 ], LookupModule);
@@ -20413,28 +20412,28 @@ LookupModule = __decorate([
 
 /***/ }),
 
-/***/ 591:
+/***/ 644:
 /***/ (function(module, exports) {
 
 module.exports = "<p>\r\n  delete works!\r\n</p>\r\n"
 
 /***/ }),
 
-/***/ 592:
+/***/ 645:
 /***/ (function(module, exports) {
 
 module.exports = "<app-formbuilder [lookup]=\"lookup\" [rowId]=\"rowId\"> </app-formbuilder>"
 
 /***/ }),
 
-/***/ 593:
+/***/ 646:
 /***/ (function(module, exports) {
 
 module.exports = "<app-listing [lookup]=\"lookup\"> </app-listing>"
 
 /***/ }),
 
-/***/ 594:
+/***/ 647:
 /***/ (function(module, exports) {
 
 module.exports = "<div id=\"main-content\" class=\"dashboard\">\r\n\t<div *ngFor=\"let category of filter_Array\">\r\n\t\t<div class=\"boder-btm-dark\">\r\n\t\t\t  <h1 class=\"panel-title\"> {{category[0].category}} </h1>\r\n\t\t</div>\r\n    \t<ul class=\"lookup-list\">\r\n    \t\t<li *ngFor=\"let lookup of category\">\r\n\t\t\t\t<div class=\"panel no-bd bd-3 panel-stat\">\r\n                \t<div class=\"panel-body {{lookup.custom_color}} text-center p-0\" >\r\n               \t \t\t<a [routerLink]=\"['/lookup/lists/' + lookup.lookupId]\" class=\"lookup-link p-10 lookup-icon-size hvr-rectangle-out\">\r\n                \t\t \t<div class=\"lookup-icon\">\r\n\t\t\t\t\t \t\t\t<img src=\"developer_assets/img/lookup-icons/{{lookup.ImageUrl}}\" width=\"36\" height=\"36\" alt=\"\" >\r\n\t\t\t\t\t \t\t</div>\r\n\t\t\t\t\t \t\t<div class=\"lookup-title\"> {{lookup.lookupName}} </div>\r\n               \t\t\t</a>\r\n                \t</div>\r\n             \t</div>\r\n\t\t\t</li>\r\n    \t</ul>\r\n\t</div>\r\n</div>"

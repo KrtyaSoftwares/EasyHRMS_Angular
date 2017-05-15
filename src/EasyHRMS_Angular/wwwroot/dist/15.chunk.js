@@ -1,11 +1,11 @@
 webpackJsonp([15],{
 
-/***/ 496:
+/***/ 503:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ApplicantsComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AdjustmentComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -16,31 +16,31 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
-var ApplicantsComponent = (function () {
-    function ApplicantsComponent() {
+var AdjustmentComponent = (function () {
+    function AdjustmentComponent() {
     }
-    ApplicantsComponent.prototype.ngOnInit = function () {
+    AdjustmentComponent.prototype.ngOnInit = function () {
     };
-    return ApplicantsComponent;
+    return AdjustmentComponent;
 }());
-ApplicantsComponent = __decorate([
+AdjustmentComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'app-applicants',
-        template: __webpack_require__(601),
+        selector: 'app-adjustment',
+        template: __webpack_require__(648),
     }),
     __metadata("design:paramtypes", [])
-], ApplicantsComponent);
+], AdjustmentComponent);
 
 
 
 /***/ }),
 
-/***/ 497:
+/***/ 504:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return InterviewlistsComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AlertComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -51,26 +51,61 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
-var InterviewlistsComponent = (function () {
-    function InterviewlistsComponent() {
+var AlertComponent = (function () {
+    function AlertComponent() {
     }
-    InterviewlistsComponent.prototype.ngOnInit = function () {
+    AlertComponent.prototype.ngOnInit = function () {
     };
-    return InterviewlistsComponent;
+    return AlertComponent;
 }());
-InterviewlistsComponent = __decorate([
+AlertComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'app-interviewlists',
-        template: __webpack_require__(602),
+        selector: 'app-alert',
+        template: __webpack_require__(649),
     }),
     __metadata("design:paramtypes", [])
-], InterviewlistsComponent);
+], AlertComponent);
 
 
 
 /***/ }),
 
-/***/ 498:
+/***/ 505:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ClaimComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var ClaimComponent = (function () {
+    function ClaimComponent() {
+    }
+    ClaimComponent.prototype.ngOnInit = function () {
+    };
+    return ClaimComponent;
+}());
+ClaimComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'app-claim',
+        template: __webpack_require__(650),
+    }),
+    __metadata("design:paramtypes", [])
+], ClaimComponent);
+
+
+
+/***/ }),
+
+/***/ 506:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -96,7 +131,7 @@ var ListsComponent = (function () {
 ListsComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-lists',
-        template: __webpack_require__(603),
+        template: __webpack_require__(651),
     }),
     __metadata("design:paramtypes", [])
 ], ListsComponent);
@@ -105,42 +140,7 @@ ListsComponent = __decorate([
 
 /***/ }),
 
-/***/ 499:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MeetingcalendarComponent; });
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-var MeetingcalendarComponent = (function () {
-    function MeetingcalendarComponent() {
-    }
-    MeetingcalendarComponent.prototype.ngOnInit = function () {
-    };
-    return MeetingcalendarComponent;
-}());
-MeetingcalendarComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'app-meetingcalendar',
-        template: __webpack_require__(604),
-    }),
-    __metadata("design:paramtypes", [])
-], MeetingcalendarComponent);
-
-
-
-/***/ }),
-
-/***/ 500:
+/***/ 507:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -166,7 +166,7 @@ var ReportsComponent = (function () {
 ReportsComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-reports',
-        template: __webpack_require__(605),
+        template: __webpack_require__(652),
     }),
     __metadata("design:paramtypes", [])
 ], ReportsComponent);
@@ -175,24 +175,61 @@ ReportsComponent = __decorate([
 
 /***/ }),
 
-/***/ 532:
+/***/ 508:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(172);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__lists_lists_component__ = __webpack_require__(498);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__applicants_applicants_component__ = __webpack_require__(496);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__meetingcalendar_meetingcalendar_component__ = __webpack_require__(499);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__interviewlists_interviewlists_component__ = __webpack_require__(497);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__reports_reports_component__ = __webpack_require__(500);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RecruitmentRoutingModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SettingComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var SettingComponent = (function () {
+    function SettingComponent() {
+    }
+    SettingComponent.prototype.ngOnInit = function () {
+    };
+    return SettingComponent;
+}());
+SettingComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'app-setting',
+        template: __webpack_require__(653),
+    }),
+    __metadata("design:paramtypes", [])
+], SettingComponent);
+
+
+
+/***/ }),
+
+/***/ 565:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(172);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__lists_lists_component__ = __webpack_require__(506);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__alert_alert_component__ = __webpack_require__(504);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__setting_setting_component__ = __webpack_require__(508);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__adjustment_adjustment_component__ = __webpack_require__(503);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__claim_claim_component__ = __webpack_require__(505);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__reports_reports_component__ = __webpack_require__(507);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PayrollRoutingModule; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
 
 
 
@@ -202,42 +239,44 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 var routes = [
     { path: '', component: __WEBPACK_IMPORTED_MODULE_2__lists_lists_component__["a" /* ListsComponent */] },
-    { path: 'applicants', component: __WEBPACK_IMPORTED_MODULE_3__applicants_applicants_component__["a" /* ApplicantsComponent */] },
-    { path: 'meetingcalendar', component: __WEBPACK_IMPORTED_MODULE_4__meetingcalendar_meetingcalendar_component__["a" /* MeetingcalendarComponent */] },
-    { path: 'interviewlists', component: __WEBPACK_IMPORTED_MODULE_5__interviewlists_interviewlists_component__["a" /* InterviewlistsComponent */] },
-    { path: 'reports', component: __WEBPACK_IMPORTED_MODULE_6__reports_reports_component__["a" /* ReportsComponent */] },
+    { path: 'alert', component: __WEBPACK_IMPORTED_MODULE_3__alert_alert_component__["a" /* AlertComponent */] },
+    { path: 'setting', component: __WEBPACK_IMPORTED_MODULE_4__setting_setting_component__["a" /* SettingComponent */] },
+    { path: 'adjustment', component: __WEBPACK_IMPORTED_MODULE_5__adjustment_adjustment_component__["a" /* AdjustmentComponent */] },
+    { path: 'claim', component: __WEBPACK_IMPORTED_MODULE_6__claim_claim_component__["a" /* ClaimComponent */] },
+    { path: 'reports', component: __WEBPACK_IMPORTED_MODULE_7__reports_reports_component__["a" /* ReportsComponent */] },
 ];
-var RecruitmentRoutingModule = (function () {
-    function RecruitmentRoutingModule() {
+var PayrollRoutingModule = (function () {
+    function PayrollRoutingModule() {
     }
-    return RecruitmentRoutingModule;
+    return PayrollRoutingModule;
 }());
-RecruitmentRoutingModule = __decorate([
+PayrollRoutingModule = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
         imports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["RouterModule"].forChild(routes)],
         exports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["RouterModule"]]
     })
-], RecruitmentRoutingModule);
+], PayrollRoutingModule);
 
 
 
 /***/ }),
 
-/***/ 533:
+/***/ 566:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__(52);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__recruitment_routing_module__ = __webpack_require__(532);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared__ = __webpack_require__(374);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__lists_lists_component__ = __webpack_require__(498);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__applicants_applicants_component__ = __webpack_require__(496);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__meetingcalendar_meetingcalendar_component__ = __webpack_require__(499);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__interviewlists_interviewlists_component__ = __webpack_require__(497);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__reports_reports_component__ = __webpack_require__(500);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RecruitmentModule", function() { return RecruitmentModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__payroll_routing_module__ = __webpack_require__(565);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared__ = __webpack_require__(437);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__lists_lists_component__ = __webpack_require__(506);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__alert_alert_component__ = __webpack_require__(504);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__setting_setting_component__ = __webpack_require__(508);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__adjustment_adjustment_component__ = __webpack_require__(503);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__claim_claim_component__ = __webpack_require__(505);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__reports_reports_component__ = __webpack_require__(507);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PayrollModule", function() { return PayrollModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -253,64 +292,73 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var RecruitmentModule = (function () {
-    function RecruitmentModule() {
+
+var PayrollModule = (function () {
+    function PayrollModule() {
     }
-    return RecruitmentModule;
+    return PayrollModule;
 }());
-RecruitmentModule = __decorate([
+PayrollModule = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
         imports: [
             __WEBPACK_IMPORTED_MODULE_1__angular_common__["CommonModule"],
-            __WEBPACK_IMPORTED_MODULE_2__recruitment_routing_module__["a" /* RecruitmentRoutingModule */],
+            __WEBPACK_IMPORTED_MODULE_2__payroll_routing_module__["a" /* PayrollRoutingModule */],
             __WEBPACK_IMPORTED_MODULE_3__shared__["d" /* PageHeaderModule */]
         ],
         declarations: [
             __WEBPACK_IMPORTED_MODULE_4__lists_lists_component__["a" /* ListsComponent */],
-            __WEBPACK_IMPORTED_MODULE_5__applicants_applicants_component__["a" /* ApplicantsComponent */],
-            __WEBPACK_IMPORTED_MODULE_6__meetingcalendar_meetingcalendar_component__["a" /* MeetingcalendarComponent */],
-            __WEBPACK_IMPORTED_MODULE_7__interviewlists_interviewlists_component__["a" /* InterviewlistsComponent */],
-            __WEBPACK_IMPORTED_MODULE_8__reports_reports_component__["a" /* ReportsComponent */]
+            __WEBPACK_IMPORTED_MODULE_5__alert_alert_component__["a" /* AlertComponent */],
+            __WEBPACK_IMPORTED_MODULE_6__setting_setting_component__["a" /* SettingComponent */],
+            __WEBPACK_IMPORTED_MODULE_7__adjustment_adjustment_component__["a" /* AdjustmentComponent */],
+            __WEBPACK_IMPORTED_MODULE_8__claim_claim_component__["a" /* ClaimComponent */],
+            __WEBPACK_IMPORTED_MODULE_9__reports_reports_component__["a" /* ReportsComponent */]
         ]
     })
-], RecruitmentModule);
+], PayrollModule);
 
 
 
 /***/ }),
 
-/***/ 601:
+/***/ 648:
 /***/ (function(module, exports) {
 
-module.exports = "<p>\r\n  applicants works!\r\n</p>\r\n"
+module.exports = "<p>\r\n  adjustment works!\r\n</p>\r\n"
 
 /***/ }),
 
-/***/ 602:
+/***/ 649:
 /***/ (function(module, exports) {
 
-module.exports = "<p>\r\n  interviewlists works!\r\n</p>\r\n"
+module.exports = "<p>\r\n  alert works!\r\n</p>\r\n"
 
 /***/ }),
 
-/***/ 603:
+/***/ 650:
+/***/ (function(module, exports) {
+
+module.exports = "<p>\r\n  claim works!\r\n</p>\r\n"
+
+/***/ }),
+
+/***/ 651:
 /***/ (function(module, exports) {
 
 module.exports = "<p>\r\n  lists works!\r\n</p>\r\n"
 
 /***/ }),
 
-/***/ 604:
-/***/ (function(module, exports) {
-
-module.exports = "<p>\r\n  meetingcalendar works!\r\n</p>\r\n"
-
-/***/ }),
-
-/***/ 605:
+/***/ 652:
 /***/ (function(module, exports) {
 
 module.exports = "<p>\r\n  reports works!\r\n</p>\r\n"
+
+/***/ }),
+
+/***/ 653:
+/***/ (function(module, exports) {
+
+module.exports = "<p>\r\n  setting works!\r\n</p>\r\n"
 
 /***/ })
 
