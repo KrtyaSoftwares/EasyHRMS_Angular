@@ -1,0 +1,109 @@
+<div id="main-content" >
+	<div class="row m-t-10">
+      <div class="col-md-12">
+        <div class="panel panel-default">
+          <div class="panel-heading text-right">
+            <button type="button" class="btn btn-sm btn-icon btn-rounded btn-default"><i class="fa fa-question"></i> </button>
+          </div>
+          <div class="panel-body">
+           <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+               <form [formGroup]="form" (ngSubmit)="onSubmit(form.value,form.valid)" novalidate class="form-horizontal">
+					          <div class="boder-btm">
+                      <h3 class="panel-title">Mail Alerts Info</h3>
+                    </div>
+                    <div class="m-b-30">
+                      <div class="form-group">
+                        <label class="col-sm-2 control-label">Form Name </label>
+                        <div class="col-sm-4">
+                         <select class="form-control" formControlName="formName" [(ngModel)]="_templatesModels.formName">
+                            <option>---Select---</option>
+                            <option *ngFor="let lst of _list" [value]="lst.id"> {{lst.formName}} </option>
+                          </select>
+                          <div [hidden]="form.get('formName').valid || (form.get('formName').pristine && !submitted)" class="alert alert-danger">
+                              Form Name is required.
+                          </div>
+                         </div>
+                        <label class="col-sm-2 control-label">Mail Alert Name </label>
+                        <div class="col-sm-4">
+                          <input type="text" class="form-control" formControlName="templateName" [(ngModel)]="_templatesModels.templateName">
+                          <div [hidden]="form.get('templateName').valid || (form.get('templateName').pristine && !submitted)" class="alert alert-danger">
+                              Template name is required.
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="boder-btm">
+                      <h3 class="panel-title">Message</h3>
+                    </div>
+                   	<div class="m-b-30">
+                    	<div class="form-group">
+                      		<label class="col-sm-2 control-label">From </label>
+                        	<div class="col-sm-4">
+                            <input type="text" class="form-control" formControlName="fromAddress" [(ngModel)]="_templatesModels.fromAddress">
+                            <div [hidden]="form.get('fromAddress').valid || (form.get('fromAddress').pristine && !submitted)" class="alert alert-danger">
+                                fromAddress is required.
+                            </div>
+                          </div>
+	                        <label class="col-sm-2 control-label">To  </label>
+                        	<div class="col-sm-4">
+                              <input type="text" class="form-control" formControlName="toAddress" [(ngModel)]="_templatesModels.toAddress">
+                              <div [hidden]="form.get('toAddress').valid || (form.get('toAddress').pristine && !submitted)" class="alert alert-danger">
+                                  toAddress is required.
+                              </div>
+                          </div>
+                      	</div>
+                    	<div class="form-group">
+	                      	<label class="col-sm-2 control-label">Cc </label>
+                        	<div class="col-sm-4">
+                            <input type="text" class="form-control" formControlName="ccaddress" [(ngModel)]="_templatesModels.ccaddress">
+                            <div [hidden]="form.get('ccaddress').valid || (form.get('ccaddress').pristine && !submitted)" class="alert alert-danger">
+                                ccaddress is required.
+                            </div>
+                          </div>
+                      		<label class="col-sm-2 control-label">Bcc </label>
+                        	<div class="col-sm-4">
+                            <input type="text" class="form-control" formControlName="bccaddress" [(ngModel)]="_templatesModels.bccaddress">
+                            <div [hidden]="form.get('bccaddress').valid || (form.get('bccaddress').pristine && !submitted)" class="alert alert-danger">
+                                bccaddress is required.
+                            </div>
+                          </div>
+                      	</div>
+                        <div class="form-group">
+                      		<label class="col-sm-2 control-label">Reply To </label>
+                       	 	<div class="col-sm-4">
+                            <input type="text" class="form-control" formControlName="replyToAddress" [(ngModel)]="_templatesModels.replyToAddress">
+                            <div [hidden]="form.get('replyToAddress').valid || (form.get('replyToAddress').pristine && !submitted)" class="alert alert-danger">
+                                replyToAddress is required.
+                            </div>
+                          </div>
+                      		<label class="col-sm-2 control-label">Subject </label>
+                        	<div class="col-sm-4">
+                            <input type="text" class="form-control" formControlName="emailSubject" [(ngModel)]="_templatesModels.emailSubject">
+                            <div [hidden]="form.get('emailSubject').valid || (form.get('emailSubject').pristine && !submitted)" class="alert alert-danger">
+                                emailSubject is required.
+                            </div>
+                          </div>
+                      	</div>
+                        <div class="form-group">
+                      		<label class="col-sm-2 control-label">Message </label>
+                            <div class="col-sm-8">
+                            	<p-editor [style]="{'height':'320px'}" formControlName="message" [(ngModel)]="_templatesModels.message"></p-editor>
+                            </div>
+	                    </div>
+                    	<div class="form-group">                                            
+                        	<div class="col-sm-10 col-sm-offset-2">
+                            	<button class="btn btn-primary m-b-10" type="submit">Submit</button>
+                            	<button [routerLink]="['/automation/mail-alerts']" type="reset" class="btn btn-default m-b-10">Cancel</button>
+                              <p-growl [value]="msgs"></p-growl>
+                        	</div>                                           
+                    	</div>
+                    </div>
+                </form>	
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

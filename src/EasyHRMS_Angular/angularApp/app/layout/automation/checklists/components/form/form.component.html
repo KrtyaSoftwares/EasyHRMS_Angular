@@ -1,0 +1,96 @@
+<div id="main-content" >
+	<div class="row m-t-10">
+      <div class="col-md-12">
+        <div class="panel panel-default">
+          <div class="panel-heading text-right">
+            <button type="button" class="btn btn-sm btn-icon btn-rounded btn-default"><i class="fa fa-question"></i> </button>
+          </div>
+          <div class="panel-body">
+           <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                  <form [formGroup]="form" (ngSubmit)="onSubmit(form.value,form.valid)" novalidate class="form-horizontal">
+                    <div class="boder-btm">
+                      <h3 class="panel-title">Basic Info</h3>
+                    </div>
+                    <div class="m-b-30">
+                      <div class="form-group">
+                        <label class="col-sm-2 control-label">Form Name </label>
+                        <div class="col-sm-4">
+                          <select class="form-control" formControlName="formName" [(ngModel)]="_templatesModels.formName">
+                            <option>---Select---</option>
+                            <option *ngFor="let lst of _list" [value]="lst.id"> {{lst.formName}} </option>
+                          </select>
+                          <div [hidden]="form.get('formName').valid || (form.get('formName').pristine && !submitted)" class="alert alert-danger">
+                              Form Name is required.
+                          </div>
+                          </div>
+                        <label class="col-sm-2 control-label">Checklist Name </label>
+                        <div class="col-sm-4">
+                          <input type="text" class="form-control" required>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="m-b-30">
+                      <div class="form-group">
+                        <label class="col-sm-2 control-label">Task Template Name </label>
+                        <div class="col-sm-4">
+                          <select class="form-control">
+                            <option>---Select---</option>
+                          </select>
+                          </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12 col-sm-12 col-xs-12 text-right">
+                        <button class="btn btn-primary m-b-10" >Add New Task</button>
+                      </div>
+                    </div>
+                    <div class="boder-btm">
+                      <h3 class="panel-title">Tasks</h3>
+                    </div>
+                    <div class="m-b-30">
+                      <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <ul class="list-unstyled task-item-list">
+                                <li>
+                                    <div class="task-item-main" >Place allocation - Manager: 2 day(s) <button type="button" class="btn btn-sm btn-warning pull-right" title="Edit"><i class="fa fa-pencil"></i></button>  <button type="button" class="btn btn-sm btn-danger pull-right" title="Delete"><i class="fa fa-remove" ></i></button>
+                                    </div>	
+                                </li>
+                                <li>
+                                    <div class="task-item-main" >Enroll mail on benefit plans - HR department: 2 day(s) <button type="button" class="btn btn-sm btn-warning pull-right" title="Edit"><i class="fa fa-pencil"></i></button>  <button type="button" class="btn btn-sm btn-danger pull-right" title="Delete"><i class="fa fa-remove" ></i></button>
+                                    </div>	
+                                </li>
+                                <li>
+                                    <div class="task-item-main" >Laptop purchase - Purchasing department: 2 day(s) <button type="button" class="btn btn-sm btn-warning pull-right" title="Edit"><i class="fa fa-pencil"></i></button>  <button type="button" class="btn btn-sm btn-danger pull-right" title="Delete"><i class="fa fa-remove" ></i></button>
+                                    </div>	
+                                </li>
+                                <li>
+                                    <div class="task-item-main" >Allocate training programs - Training Team: 2 day(s) <button type="button" class="btn btn-sm btn-warning pull-right" title="Edit"><i class="fa fa-pencil"></i></button>  <button type="button" class="btn btn-sm btn-danger pull-right" title="Delete"><i class="fa fa-remove" ></i></button>
+                                    </div>	
+                                </li>
+                                <li>
+                                    <div class="task-item-main" >Order business cards - Office Manager: 2 day(s) <button type="button" class="btn btn-sm btn-warning pull-right" title="Edit"><i class="fa fa-pencil"></i></button>  <button type="button" class="btn btn-sm btn-danger pull-right" title="Delete"><i class="fa fa-remove" ></i></button>
+                                    </div>	
+                                </li>
+                                <li>
+                                    <div class="task-item-main" >Order corporate credit cards - Finance department: 2 day(s) <button type="button" class="btn btn-sm btn-warning pull-right" title="Edit"><i class="fa fa-pencil"></i></button>  <button type="button" class="btn btn-sm btn-danger pull-right" title="Delete"><i class="fa fa-remove" ></i></button>
+                                    </div>	
+                                </li>
+                            </ul>
+                          </div>
+                      </div>
+                    </div>
+                    <div class="form-group">                                            
+                        <div class="col-sm-10 col-sm-offset-2">
+                            <button class="btn btn-primary m-b-10" onclick="javascript:$('#form1').parsley('validate');">Submit</button>
+                            <button type="reset" class="btn btn-default m-b-10">Cancel</button>
+                        </div>                                           
+                    </div>                                       
+                  </form>
+          </div>
+			</div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
