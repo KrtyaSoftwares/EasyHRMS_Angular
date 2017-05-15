@@ -310,12 +310,7 @@ namespace EasyHRMS_Angular.Controllers
             }
             return result;
         }
-
-
-        #region Email Alert
-
-
-        #endregion Email Alert
+        
         
     }
 }

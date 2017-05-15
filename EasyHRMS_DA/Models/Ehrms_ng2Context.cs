@@ -41,6 +41,10 @@ namespace EasyHRMS_DA.Models
                 entity.Property(e => e.ChecklistName)
                     .IsRequired()
                     .HasMaxLength(100);
+
+                entity.Property(e => e.FormName)
+                    .IsRequired()
+                    .HasMaxLength(50);
             });
 
             modelBuilder.Entity<EmailTemplate>(entity =>

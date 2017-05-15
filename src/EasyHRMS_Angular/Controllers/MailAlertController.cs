@@ -8,7 +8,7 @@ using EasyHRMS_DA.Models;
 namespace EasyHRMS_Angular.Controllers
 {
     [Route("api/[controller]")]
-    public class CheckListController : Controller
+    public class MailAlertController : Controller
     {
         //public IActionResult Index()
         //{
@@ -17,22 +17,22 @@ namespace EasyHRMS_Angular.Controllers
 
         private readonly Ehrms_ng2Context _context;
 
-        public CheckListController(Ehrms_ng2Context context)
+        public MailAlertController(Ehrms_ng2Context context)
         {
             _context = context;
         }
 
-        // GET: api/CheckList/GetAllCheckList
-        [HttpGet("GetAllCheckList"), Produces("application/json")]
-        public object GetAllCheckList()
+        // GET: api/MailAlert/GetAllMailAlert
+        [HttpGet("GetAllMailAlert"), Produces("application/json")]
+        public object GetAllMailAlert()
         {
-            List<CheckList> list = new List<CheckList>();
+            List<MailAlert> list = new List<MailAlert>();
             object result = null;
             try
             {
                 using (_context)
                 {
-                    list = _context.CheckList.ToList();
+                    list = _context.MailAlert.ToList();
 
                     result = new
                     {
@@ -57,22 +57,23 @@ namespace EasyHRMS_Angular.Controllers
         }
 
 
-        // GET api/CheckList/GetCheckListById/5
-        [HttpGet("GetCheckListById/{id}"), Produces("application/json")]
-        public object GetCheckListById(int id)
+
+        // GET api/MailAlert/GetMailAlertById/5
+        [HttpGet("GetMailAlertById/{id}"), Produces("application/json")]
+        public object GetMailAlertById(int id)
         {
             object result = null;
 
-            CheckList objCheckList = new CheckList();
+            MailAlert objMailAlert = new MailAlert();
             try
             {
                 using (_context)
                 {
-                    objCheckList = _context.CheckList.FirstOrDefault(x => x.Id == id);
+                    objMailAlert = _context.MailAlert.FirstOrDefault(x => x.Id == id);
 
                     result = new
                     {
-                        objCheckList,
+                        objMailAlert,
                         error = "0",
                         msg = "Success"
                     };
@@ -83,7 +84,7 @@ namespace EasyHRMS_Angular.Controllers
                 ex.ToString();
                 result = new
                 {
-                    objCheckList,
+                    objMailAlert,
                     error = "1",
                     msg = "Error"
                 };
@@ -91,10 +92,11 @@ namespace EasyHRMS_Angular.Controllers
             return result;
         }
 
-        // POST api/CheckList/CreateCheckList
-        [HttpPost, Route("CreateCheckList"), Produces("application/json")]
-        public object CreateCheckList([FromBody]CheckList model)
+        // POST api/MailAlert/CreateMailAlert
+        [HttpPost, Route("CreateMailAlert"), Produces("application/json")]
+        public object CreateMailAlert([FromBody]MailAlert model)
         {
+
             object result = null;
             string message = "";
             string errorcode = "";
@@ -109,7 +111,7 @@ namespace EasyHRMS_Angular.Controllers
                 {
                     try
                     {
-                        _context.CheckList.Add(model);
+                        _context.MailAlert.Add(model);
                         //await _ctx.SaveChangesAsync();
                         _context.SaveChanges();
                         _ctxTransaction.Commit();
@@ -136,9 +138,10 @@ namespace EasyHRMS_Angular.Controllers
             return result;
         }
 
-        // PUT api/CheckList/UpdateCheckList/5
-        [HttpPost, Route("UpdateCheckList/{id}")]
-        public object UpdateCheckList(int id, [FromBody]CheckList model)
+
+        // PUT api/MailAlert/UpdateMailAlert/5
+        [HttpPost, Route("UpdateMailAlert/{id}")]
+        public object UpdateMailAlert(int id, [FromBody]MailAlert model)
         {
             object result = null; string message = ""; string errorcode = ""; string excp = "";
             if (model == null)
@@ -151,16 +154,22 @@ namespace EasyHRMS_Angular.Controllers
                 {
                     try
                     {
-                        var entityUpdate = _context.CheckList.FirstOrDefault(x => x.Id == id);
+                        var entityUpdate = _context.MailAlert.FirstOrDefault(x => x.Id == id);
 
                         if (entityUpdate != null)
                         {
                             entityUpdate.FormName = model.FormName;
-                            entityUpdate.ChecklistName = model.ChecklistName;
-                            entityUpdate.TaskId = model.TaskId;
-                            entityUpdate.ChecklistOrder = model.ChecklistOrder;
-                            entityUpdate.TaskOrder = model.TaskOrder;
-                           
+                            entityUpdate.MailAlertName = model.MailAlertName;
+                            entityUpdate.TemplateId = model.TemplateId;
+                            entityUpdate.FromAddress = model.FromAddress;
+                            entityUpdate.ToAddress = model.ToAddress;
+                            entityUpdate.Ccaddress = model.Ccaddress;
+                            entityUpdate.Bccaddress = model.Bccaddress;
+                            entityUpdate.ReplyToAddress = model.ReplyToAddress;
+                            entityUpdate.EmailSubject = model.EmailSubject;
+                            entityUpdate.Attachment = model.Attachment;
+                            entityUpdate.Message = model.Message;
+
                             _context.SaveChanges();
                         }
 
@@ -188,9 +197,9 @@ namespace EasyHRMS_Angular.Controllers
         }
 
 
-        // POST api/CheckList/CreateUpdateCheckList
-        [HttpPost, Route("CreateUpdateCheckList/{id}"), Produces("application/json")]
-        public object CreateUpdateCheckList(int id, [FromBody]CheckList model)
+        // POST api/MailAlert/CreateUpdateMailAlert
+        [HttpPost, Route("CreateUpdateMailAlert/{id}"), Produces("application/json")]
+        public object CreateUpdateMailAlert(int id, [FromBody]MailAlert model)
         {
             object result = null;
             string message = "";
@@ -208,15 +217,21 @@ namespace EasyHRMS_Angular.Controllers
                     {
                         if (id != 0)
                         {
-                            var entityUpdate = _context.CheckList.FirstOrDefault(x => x.Id == id);
+                            var entityUpdate = _context.MailAlert.FirstOrDefault(x => x.Id == id);
 
                             if (entityUpdate != null)
                             {
                                 entityUpdate.FormName = model.FormName;
-                                entityUpdate.ChecklistName = model.ChecklistName;
-                                entityUpdate.TaskId = model.TaskId;
-                                entityUpdate.ChecklistOrder = model.ChecklistOrder;
-                                entityUpdate.TaskOrder = model.TaskOrder;
+                                entityUpdate.MailAlertName = model.MailAlertName;
+                                entityUpdate.TemplateId = model.TemplateId;
+                                entityUpdate.FromAddress = model.FromAddress;
+                                entityUpdate.ToAddress = model.ToAddress;
+                                entityUpdate.Ccaddress = model.Ccaddress;
+                                entityUpdate.Bccaddress = model.Bccaddress;
+                                entityUpdate.ReplyToAddress = model.ReplyToAddress;
+                                entityUpdate.EmailSubject = model.EmailSubject;
+                                entityUpdate.Attachment = model.Attachment;
+                                entityUpdate.Message = model.Message;
 
                                 _context.SaveChanges();
                             }
@@ -226,7 +241,7 @@ namespace EasyHRMS_Angular.Controllers
                         }
                         else
                         {
-                            _context.CheckList.Add(model);
+                            _context.MailAlert.Add(model);
                             //await _ctx.SaveChangesAsync();
                             _context.SaveChanges();
                             _ctxTransaction.Commit();
@@ -255,9 +270,9 @@ namespace EasyHRMS_Angular.Controllers
             return result;
         }
 
-        // DELETE api/CheckList/DeleteCheckListById/5
-        [HttpGet, Route("DeleteCheckListById/{id}")]
-        public object DeleteCheckListById(int id)
+        // DELETE api/MailAlert/DeleteMailAlertById/5
+        [HttpGet, Route("DeleteMailAlertById/{id}")]
+        public object DeleteMailAlertById(int id)
         {
             object result = null;
             string message = "";
@@ -269,10 +284,10 @@ namespace EasyHRMS_Angular.Controllers
                 {
                     try
                     {
-                        var idToRemove = _context.CheckList.SingleOrDefault(x => x.Id == id);
+                        var idToRemove = _context.MailAlert.SingleOrDefault(x => x.Id == id);
                         if (idToRemove != null)
                         {
-                            _context.CheckList.Remove(idToRemove);
+                            _context.MailAlert.Remove(idToRemove);
                             _context.SaveChanges();
                         }
                         _ctxTransaction.Commit();
@@ -297,6 +312,7 @@ namespace EasyHRMS_Angular.Controllers
             }
             return result;
         }
+
 
     }
 }
