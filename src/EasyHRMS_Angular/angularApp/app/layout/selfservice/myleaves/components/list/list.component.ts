@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import {
     ReactiveFormsModule,
     FormGroup,
@@ -16,6 +17,7 @@ import { EmployeeLeaveModel } from '../../../../../models/employee/employeeleave
   selector: 'app-list',
   templateUrl: './list.component.html',
   //styleUrls: ['./list.component.css']
+  
 })
 export class ListComponent implements OnInit {
     employeeId = 1;
@@ -34,7 +36,9 @@ export class ListComponent implements OnInit {
     _EmployeeLeaveModel = new EmployeeLeaveModel();
     public submitted: boolean;
 
-    constructor(private _leaveService: MyLeaveService, private _lookupDataService: LookupDataService, fb: FormBuilder) {
+    constructor(private _leaveService: MyLeaveService,
+        private _lookupDataService: LookupDataService,
+        fb: FormBuilder) {
         this.employeeLeaveForm = fb.group({
             //'employeeLeaveId': [],
             //'employeeId': [],
@@ -123,7 +127,9 @@ export class ListComponent implements OnInit {
       //this._EmployeeLeaveModel.fromDate.setHours(0, 0, 0, 0).toString(yyyy-mm-dd hh:mm:ss);
       this._EmployeeLeaveModel.fromDate.setHours(0, 0, 0, 0);
       this._EmployeeLeaveModel.toDate.setHours(0, 0, 0, 0);
-      this._EmployeeLeaveModel.fromDate.toDateString();
+      //this._EmployeeLeaveModel.fromDate.toDateString();
+      //this._EmployeeLeaveModel.toDate.toDateString();
+     
       this._EmployeeLeaveModel.toDate.toDateString();
       console.log(this._EmployeeLeaveModel.toDate.toDateString());
       console.log(this._EmployeeLeaveModel);

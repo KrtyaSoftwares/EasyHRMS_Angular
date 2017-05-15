@@ -1,3 +1,60 @@
-<p>
+<!--<p>
   tasks works!
-</p>
+</p>-->
+
+<!-- BEGIN MAIN CONTENT -->
+<div id="main-content">
+    <div class="row m-t-10">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading text-right">
+                    <button type="button" class="btn btn-sm btn-icon btn-rounded btn-default"><i class="fa fa-question"></i> </button>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12 text-right">
+                            <button [routerLink]="['./forms']" class="btn btn-primary m-b-10">Add Task Template</button>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped table-hover">
+                                    <thead class="no-bd">
+                                        <tr>
+                                            <th><strong>Name</strong> </th>
+                                            <th><strong>Form Name</strong> </th>
+                                            <th><strong>Due Date</strong> </th>
+                                            <th><strong>Task Owner</strong> </th>
+                                            <th><strong>Action</strong></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="no-bd-y">
+                                        <tr *ngFor="let task of _taskList" >
+                                            <td><a href="#">{{task.templateName}}</a></td>
+                                            <td>{{task.formName}}</td>
+                                            <td>{{task.dueDate}}</td>
+                                            <td>{{task.taskOwner}}</td>
+                                            <td><button type="button" [routerLink]="['./forms/' + task.id ]" class="btn btn-sm btn-warning" title="Edit"><i class="fa fa-pencil"></i></button>  <button type="button" (click)="deleteTask(task.id)" class="btn btn-sm btn-danger" title="Delete"><i class="fa fa-remove"></i></button></td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="#">New Mockup & HTML/CSS </a></td>
+                                            <td>Employee</td>
+                                            <td>1 Day(s) After Rule Trigger Time</td>
+                                            <td>jariwbh - Employee</td>
+                                            <td><button type="button" class="btn btn-sm btn-warning" title="Edit"><i class="fa fa-pencil"></i></button>  <button type="button" class="btn btn-sm btn-danger" title="Delete"><i class="fa fa-remove"></i></button></td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END MAIN CONTENT --> 

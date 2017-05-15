@@ -8,6 +8,7 @@ namespace EasyHRMS_DA.Models
         public int Id { get; set; }
         public string TemplateName { get; set; }
         public string FormName { get; set; }
+        public string TaskName { get; set; }
         public string Description { get; set; }
         public string Priority { get; set; }
         public string TaskOwner { get; set; }

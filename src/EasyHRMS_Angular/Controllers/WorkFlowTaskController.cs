@@ -8,7 +8,7 @@ using EasyHRMS_DA.Models;
 namespace EasyHRMS_Angular.Controllers
 {
     [Route("api/[controller]")]
-    public class TaskTemplateController : Controller
+    public class WorkFlowTaskController : Controller
     {
         //public IActionResult Index()
         //{
@@ -17,22 +17,22 @@ namespace EasyHRMS_Angular.Controllers
 
         private readonly Ehrms_ng2Context _context;
 
-        public TaskTemplateController(Ehrms_ng2Context context)
+        public WorkFlowTaskController(Ehrms_ng2Context context)
         {
             _context = context;
         }
 
-        // GET: api/TaskTemplate/GetAllTaskTemplate
-        [HttpGet("GetAllTaskTemplate"), Produces("application/json")]
-        public object GetAllTaskTemplate()
+        // GET: api/WorkFlowTask/GetAllWorkFlowTask
+        [HttpGet("GetAllWorkFlowTask"), Produces("application/json")]
+        public object GetAllWorkFlowTask()
         {
-            List<TaskTemplate> list = new List<TaskTemplate>();
+            List<WorkFlowTask> list = new List<WorkFlowTask>();
             object result = null;
             try
             {
                 using (_context)
                 {
-                    list = _context.TaskTemplate.ToList();
+                    list = _context.WorkFlowTask.ToList();
 
                     result = new
                     {
@@ -55,23 +55,23 @@ namespace EasyHRMS_Angular.Controllers
             }
             return result;
         }
-        
 
-        // GET api/TaskTemplate/GetTaskTemplateById/5
-        [HttpGet("GetTaskTemplateById/{id}"), Produces("application/json")]
-        public object GetTaskTemplateById(int id)
+
+        // GET api/WorkFlowTask/GetWorkFlowTaskById/5
+        [HttpGet("GetWorkFlowTaskById/{id}"), Produces("application/json")]
+        public object GetWorkFlowTaskById(int id)
         {
             object result = null;
-            TaskTemplate objTaskTemplate = new TaskTemplate();
+            WorkFlowTask objWorkFlowTask = new WorkFlowTask();
             try
             {
                 using (_context)
                 {
-                    objTaskTemplate = _context.TaskTemplate.FirstOrDefault(x => x.Id == id);
+                    objWorkFlowTask = _context.WorkFlowTask.FirstOrDefault(x => x.Id == id);
 
                     result = new
                     {
-                        objTaskTemplate,
+                        objWorkFlowTask,
                         error = "0",
                         msg = "Success"
                     };
@@ -82,7 +82,7 @@ namespace EasyHRMS_Angular.Controllers
                 ex.ToString();
                 result = new
                 {
-                    objTaskTemplate,
+                    objWorkFlowTask,
                     error = "1",
                     msg = "Error"
                 };
@@ -90,9 +90,9 @@ namespace EasyHRMS_Angular.Controllers
             return result;
         }
 
-        // POST api/TaskTemplate/CreateTaskTemplate
-        [HttpPost, Route("CreateTaskTemplate"), Produces("application/json")]
-        public object CreateTaskTemplate([FromBody]TaskTemplate model)
+        // POST api/WorkFlowTask/CreateWorkFlowTask
+        [HttpPost, Route("CreateWorkFlowTask"), Produces("application/json")]
+        public object CreateWorkFlowTask([FromBody]WorkFlowTask model)
         {
             object result = null;
             string message = "";
@@ -108,7 +108,7 @@ namespace EasyHRMS_Angular.Controllers
                 {
                     try
                     {
-                        _context.TaskTemplate.Add(model);
+                        _context.WorkFlowTask.Add(model);
                         //await _ctx.SaveChangesAsync();
                         _context.SaveChanges();
                         _ctxTransaction.Commit();
@@ -136,9 +136,9 @@ namespace EasyHRMS_Angular.Controllers
         }
 
 
-        // PUT api/TaskTemplate/UpdateTaskTemplate/5
-        [HttpPost, Route("UpdateTaskTemplate/{id}")]
-        public object UpdateTaskTemplate(int id, [FromBody]TaskTemplate model)
+        // PUT api/WorkFlowTask/UpdateWorkFlowTask/5
+        [HttpPost, Route("UpdateWorkFlowTask/{id}")]
+        public object UpdateWorkFlowTask(int id, [FromBody]WorkFlowTask model)
         {
             object result = null; string message = ""; string errorcode = ""; string excp = "";
             if (model == null)
@@ -151,17 +151,23 @@ namespace EasyHRMS_Angular.Controllers
                 {
                     try
                     {
-                        var entityUpdate = _context.TaskTemplate.FirstOrDefault(x => x.Id == id);
-                      
+                        var entityUpdate = _context.WorkFlowTask.FirstOrDefault(x => x.Id == id);
+
                         if (entityUpdate != null)
                         {
-                            entityUpdate.TemplateName = model.TemplateName;
-                            entityUpdate.FormName = model.FormName;
                             entityUpdate.TaskName = model.TaskName;
                             entityUpdate.Description = model.Description;
-                            entityUpdate.Priority = model.Priority;
                             entityUpdate.TaskOwner = model.TaskOwner;
                             entityUpdate.DueDate = model.DueDate;
+                            entityUpdate.TemplateId = model.TemplateId;
+                            entityUpdate.FromAddress = model.FromAddress;
+                            entityUpdate.ToAddress = model.ToAddress;
+                            entityUpdate.Ccaddress = model.Ccaddress;
+                            entityUpdate.Bccaddress = model.Bccaddress;
+                            entityUpdate.ReplyToAddress = model.ReplyToAddress;
+                            entityUpdate.EmailSubject = model.EmailSubject;
+                            entityUpdate.Attachment = model.Attachment;
+                            entityUpdate.Message = model.Message;
                             _context.SaveChanges();
                         }
 
@@ -189,9 +195,9 @@ namespace EasyHRMS_Angular.Controllers
         }
 
 
-        // POST api/TaskTemplate/CreateUpdateTaskTemplate
-        [HttpPost, Route("CreateUpdateTaskTemplate/{id}"), Produces("application/json")]
-        public object CreateUpdateTaskTemplate(int id, [FromBody]TaskTemplate model)
+        // POST api/WorkFlowTask/CreateUpdateWorkFlowTask
+        [HttpPost, Route("CreateUpdateWorkFlowTask/{id}"), Produces("application/json")]
+        public object CreateUpdateWorkFlowTask(int id, [FromBody]WorkFlowTask model)
         {
             object result = null;
             string message = "";
@@ -209,17 +215,23 @@ namespace EasyHRMS_Angular.Controllers
                     {
                         if (id != 0)
                         {
-                            var entityUpdate = _context.TaskTemplate.FirstOrDefault(x => x.Id == id);
-                           
+                            var entityUpdate = _context.WorkFlowTask.FirstOrDefault(x => x.Id == id);
+
                             if (entityUpdate != null)
                             {
-                                entityUpdate.TemplateName = model.TemplateName;
-                                entityUpdate.FormName = model.FormName;
-                                entityUpdate.Description = model.Description;
                                 entityUpdate.TaskName = model.TaskName;
-                                entityUpdate.Priority = model.Priority;
+                                entityUpdate.Description = model.Description;
                                 entityUpdate.TaskOwner = model.TaskOwner;
                                 entityUpdate.DueDate = model.DueDate;
+                                entityUpdate.TemplateId = model.TemplateId;
+                                entityUpdate.FromAddress = model.FromAddress;
+                                entityUpdate.ToAddress = model.ToAddress;
+                                entityUpdate.Ccaddress = model.Ccaddress;
+                                entityUpdate.Bccaddress = model.Bccaddress;
+                                entityUpdate.ReplyToAddress = model.ReplyToAddress;
+                                entityUpdate.EmailSubject = model.EmailSubject;
+                                entityUpdate.Attachment = model.Attachment;
+                                entityUpdate.Message = model.Message;
                                 _context.SaveChanges();
                             }
                             _ctxTransaction.Commit();
@@ -228,7 +240,7 @@ namespace EasyHRMS_Angular.Controllers
                         }
                         else
                         {
-                            _context.TaskTemplate.Add(model);
+                            _context.WorkFlowTask.Add(model);
                             //await _ctx.SaveChangesAsync();
                             _context.SaveChanges();
                             _ctxTransaction.Commit();
@@ -255,9 +267,9 @@ namespace EasyHRMS_Angular.Controllers
             return result;
         }
 
-        // DELETE api/TaskTemplate/DeleteTaskTemplateById/5
-        [HttpGet, Route("DeleteTaskTemplateById/{id}")]
-        public object DeleteTaskTemplateById(int id)
+        // DELETE api/WorkFlowTask/DeleteWorkFlowTaskById/5
+        [HttpGet, Route("DeleteWorkFlowTaskById/{id}")]
+        public object DeleteWorkFlowTaskById(int id)
         {
             object result = null;
             string message = "";
@@ -269,10 +281,10 @@ namespace EasyHRMS_Angular.Controllers
                 {
                     try
                     {
-                        var idToRemove = _context.TaskTemplate.SingleOrDefault(x => x.Id == id);
+                        var idToRemove = _context.WorkFlowTask.SingleOrDefault(x => x.Id == id);
                         if (idToRemove != null)
                         {
-                            _context.TaskTemplate.Remove(idToRemove);
+                            _context.WorkFlowTask.Remove(idToRemove);
                             _context.SaveChanges();
                         }
                         _ctxTransaction.Commit();
@@ -297,6 +309,8 @@ namespace EasyHRMS_Angular.Controllers
             }
             return result;
         }
+
+
 
     }
 }

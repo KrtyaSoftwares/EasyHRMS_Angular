@@ -1,4 +1,4 @@
-webpackJsonp([8,11,19],{
+webpackJsonp([8,13,21],{
 
 /***/ 364:
 /***/ (function(module, exports, __webpack_require__) {
@@ -1505,7 +1505,7 @@ exports.ProgressBarModule = ProgressBarModule;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(66);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(98);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_underscore__ = __webpack_require__(439);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_underscore__ = __webpack_require__(436);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_underscore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_underscore__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PagerService; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -1579,7 +1579,7 @@ PagerService = __decorate([
 
 /***/ }),
 
-/***/ 375:
+/***/ 374:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1590,24 +1590,27 @@ function __export(m) {
 Object.defineProperty(exports, "__esModule", { value: true });
 __export(__webpack_require__(370));
 __export(__webpack_require__(365));
+__export(__webpack_require__(375));
+__export(__webpack_require__(376));
+__export(__webpack_require__(377));
 __export(__webpack_require__(378));
-__export(__webpack_require__(379));
-__export(__webpack_require__(380));
-__export(__webpack_require__(381));
 __export(__webpack_require__(366));
-__export(__webpack_require__(383));
+__export(__webpack_require__(380));
+__export(__webpack_require__(379));
+__export(__webpack_require__(381));
 __export(__webpack_require__(382));
+__export(__webpack_require__(383));
 __export(__webpack_require__(384));
 __export(__webpack_require__(385));
-__export(__webpack_require__(386));
 __export(__webpack_require__(387));
 __export(__webpack_require__(388));
+__export(__webpack_require__(389));
 __export(__webpack_require__(390));
 __export(__webpack_require__(391));
+__export(__webpack_require__(386));
 __export(__webpack_require__(392));
 __export(__webpack_require__(393));
 __export(__webpack_require__(394));
-__export(__webpack_require__(389));
 __export(__webpack_require__(395));
 __export(__webpack_require__(396));
 __export(__webpack_require__(397));
@@ -1617,168 +1620,47 @@ __export(__webpack_require__(400));
 __export(__webpack_require__(401));
 __export(__webpack_require__(402));
 __export(__webpack_require__(403));
+__export(__webpack_require__(367));
 __export(__webpack_require__(404));
 __export(__webpack_require__(405));
 __export(__webpack_require__(406));
-__export(__webpack_require__(367));
 __export(__webpack_require__(407));
 __export(__webpack_require__(408));
 __export(__webpack_require__(409));
+__export(__webpack_require__(371));
 __export(__webpack_require__(410));
 __export(__webpack_require__(411));
 __export(__webpack_require__(412));
-__export(__webpack_require__(371));
+__export(__webpack_require__(369));
 __export(__webpack_require__(413));
 __export(__webpack_require__(414));
 __export(__webpack_require__(415));
-__export(__webpack_require__(369));
 __export(__webpack_require__(416));
+__export(__webpack_require__(372));
 __export(__webpack_require__(417));
 __export(__webpack_require__(418));
 __export(__webpack_require__(419));
-__export(__webpack_require__(372));
 __export(__webpack_require__(420));
 __export(__webpack_require__(421));
 __export(__webpack_require__(422));
 __export(__webpack_require__(423));
 __export(__webpack_require__(424));
 __export(__webpack_require__(425));
-__export(__webpack_require__(426));
 __export(__webpack_require__(427));
+__export(__webpack_require__(426));
 __export(__webpack_require__(428));
-__export(__webpack_require__(430));
 __export(__webpack_require__(429));
+__export(__webpack_require__(430));
 __export(__webpack_require__(431));
 __export(__webpack_require__(432));
 __export(__webpack_require__(433));
 __export(__webpack_require__(434));
 __export(__webpack_require__(435));
-__export(__webpack_require__(436));
-__export(__webpack_require__(437));
-__export(__webpack_require__(438));
 //# sourceMappingURL=primeng.js.map
 
 /***/ }),
 
-/***/ 376:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app_constants__ = __webpack_require__(67);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(66);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__(98);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LookupDataService; });
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-var LookupDataService = (function () {
-    function LookupDataService(http, configuration) {
-        var _this = this;
-        this.http = http;
-        this.configuration = configuration;
-        this.GetLookUpData = function (lookupid) {
-            return _this.http
-                .get(_this.actionUrl + 'LookupData/GetLookupDataByLookupID/' + lookupid)
-                .map(function (res) { return res.json(); });
-        };
-        this.actionUrl = configuration.Server + 'api/';
-        this.headers = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Headers */]();
-        this.headers.append('Content-Type', 'application/json');
-        this.headers.append('Accept', 'application/json');
-    }
-    return LookupDataService;
-}());
-LookupDataService = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Injectable"])(),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_http__["c" /* Http */], __WEBPACK_IMPORTED_MODULE_0__app_constants__["a" /* Configuration */]])
-], LookupDataService);
-
-
-
-/***/ }),
-
-/***/ 377:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app_constants__ = __webpack_require__(67);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(66);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__(98);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GeneralFormsService; });
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-var GeneralFormsService = (function () {
-    function GeneralFormsService(http, configuration) {
-        var _this = this;
-        this.http = http;
-        this.configuration = configuration;
-        this.GetSingle = function (id) {
-            return _this.http
-                .get(_this.actionUrl + 'Forms/GetAllFormDefByFormID/' + id)
-                .map(function (res) { return res.json(); });
-        };
-        this.GetFormData = function (id) {
-            return _this.http
-                .get(_this.actionUrl + 'EmployeeDetails/GetEmployeeByID/' + id)
-                .map(function (res) { return res.json(); });
-        };
-        this.Add = function (data, url) {
-            var toAdd = JSON.stringify(data);
-            return _this.http.post(_this.actionUrl + url, toAdd, { headers: _this.headers })
-                .map(function (res) { return res.json(); });
-        };
-        this.Update = function (id, data, url) {
-            var toAdd = JSON.stringify(data);
-            return _this.http.post(_this.actionUrl + url + id, toAdd, { headers: _this.headers })
-                .map(function (res) { return res.json(); });
-        };
-        this.Delete = function (Id, url) {
-            return _this.http
-                .get(_this.actionUrl + url + '/' + Id)
-                .map(function (res) { return res.json(); });
-        };
-        this.actionUrl = configuration.Server + 'api/';
-        this.headers = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Headers */]();
-        this.headers.append('Content-Type', 'application/json');
-        this.headers.append('Accept', 'application/json');
-    }
-    return GeneralFormsService;
-}());
-GeneralFormsService = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Injectable"])(),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_http__["c" /* Http */], __WEBPACK_IMPORTED_MODULE_0__app_constants__["a" /* Configuration */]])
-], GeneralFormsService);
-
-
-
-/***/ }),
-
-/***/ 378:
+/***/ 375:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1958,7 +1840,7 @@ exports.AccordionModule = AccordionModule;
 
 /***/ }),
 
-/***/ 379:
+/***/ 376:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2461,7 +2343,7 @@ exports.AutoCompleteModule = AutoCompleteModule;
 
 /***/ }),
 
-/***/ 380:
+/***/ 377:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2563,7 +2445,7 @@ exports.BlockUIModule = BlockUIModule;
 
 /***/ }),
 
-/***/ 381:
+/***/ 378:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2660,7 +2542,7 @@ exports.BreadcrumbModule = BreadcrumbModule;
 
 /***/ }),
 
-/***/ 382:
+/***/ 379:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3738,7 +3620,7 @@ exports.CalendarModule = CalendarModule;
 
 /***/ }),
 
-/***/ 383:
+/***/ 380:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3875,7 +3757,7 @@ exports.CaptchaModule = CaptchaModule;
 
 /***/ }),
 
-/***/ 384:
+/***/ 381:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4202,7 +4084,7 @@ exports.CarouselModule = CarouselModule;
 
 /***/ }),
 
-/***/ 385:
+/***/ 382:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4336,7 +4218,7 @@ exports.ChartModule = ChartModule;
 
 /***/ }),
 
-/***/ 386:
+/***/ 383:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4490,7 +4372,7 @@ exports.CheckboxModule = CheckboxModule;
 
 /***/ }),
 
-/***/ 387:
+/***/ 384:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4701,7 +4583,7 @@ exports.ChipsModule = ChipsModule;
 
 /***/ }),
 
-/***/ 388:
+/***/ 385:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4751,7 +4633,7 @@ exports.CodeHighlighterModule = CodeHighlighterModule;
 
 /***/ }),
 
-/***/ 389:
+/***/ 386:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5040,7 +4922,7 @@ exports.ConfirmDialogModule = ConfirmDialogModule;
 
 /***/ }),
 
-/***/ 390:
+/***/ 387:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5305,7 +5187,7 @@ exports.ContextMenuModule = ContextMenuModule;
 
 /***/ }),
 
-/***/ 391:
+/***/ 388:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5515,7 +5397,7 @@ exports.DataGridModule = DataGridModule;
 
 /***/ }),
 
-/***/ 392:
+/***/ 389:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5725,7 +5607,7 @@ exports.DataListModule = DataListModule;
 
 /***/ }),
 
-/***/ 393:
+/***/ 390:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5950,7 +5832,7 @@ exports.DataScrollerModule = DataScrollerModule;
 
 /***/ }),
 
-/***/ 394:
+/***/ 391:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7875,7 +7757,7 @@ exports.DataTableModule = DataTableModule;
 
 /***/ }),
 
-/***/ 395:
+/***/ 392:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8244,7 +8126,7 @@ exports.DialogModule = DialogModule;
 
 /***/ }),
 
-/***/ 396:
+/***/ 393:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8486,7 +8368,7 @@ exports.DragDropModule = DragDropModule;
 
 /***/ }),
 
-/***/ 397:
+/***/ 394:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8989,7 +8871,7 @@ exports.DropdownModule = DropdownModule;
 
 /***/ }),
 
-/***/ 398:
+/***/ 395:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9139,7 +9021,7 @@ exports.EditorModule = EditorModule;
 
 /***/ }),
 
-/***/ 399:
+/***/ 396:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9257,7 +9139,7 @@ exports.FieldsetModule = FieldsetModule;
 
 /***/ }),
 
-/***/ 400:
+/***/ 397:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9589,7 +9471,7 @@ exports.FileUploadModule = FileUploadModule;
 
 /***/ }),
 
-/***/ 401:
+/***/ 398:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9820,7 +9702,7 @@ exports.GalleriaModule = GalleriaModule;
 
 /***/ }),
 
-/***/ 402:
+/***/ 399:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10006,7 +9888,7 @@ exports.GMapModule = GMapModule;
 
 /***/ }),
 
-/***/ 403:
+/***/ 400:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10135,7 +10017,7 @@ exports.GrowlModule = GrowlModule;
 
 /***/ }),
 
-/***/ 404:
+/***/ 401:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10249,7 +10131,7 @@ exports.InplaceModule = InplaceModule;
 
 /***/ }),
 
-/***/ 405:
+/***/ 402:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10812,7 +10694,7 @@ exports.InputMaskModule = InputMaskModule;
 
 /***/ }),
 
-/***/ 406:
+/***/ 403:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11002,7 +10884,7 @@ exports.InputSwitchModule = InputSwitchModule;
 
 /***/ }),
 
-/***/ 407:
+/***/ 404:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11130,7 +11012,7 @@ exports.InputTextareaModule = InputTextareaModule;
 
 /***/ }),
 
-/***/ 408:
+/***/ 405:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11347,7 +11229,7 @@ exports.LightboxModule = LightboxModule;
 
 /***/ }),
 
-/***/ 409:
+/***/ 406:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11689,7 +11571,7 @@ exports.ListboxModule = ListboxModule;
 
 /***/ }),
 
-/***/ 410:
+/***/ 407:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11841,7 +11723,7 @@ exports.MegaMenuModule = MegaMenuModule;
 
 /***/ }),
 
-/***/ 411:
+/***/ 408:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12019,7 +11901,7 @@ exports.MenuModule = MenuModule;
 
 /***/ }),
 
-/***/ 412:
+/***/ 409:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12171,7 +12053,7 @@ exports.MenubarModule = MenubarModule;
 
 /***/ }),
 
-/***/ 413:
+/***/ 410:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12526,7 +12408,7 @@ exports.MultiSelectModule = MultiSelectModule;
 
 /***/ }),
 
-/***/ 414:
+/***/ 411:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12762,7 +12644,7 @@ exports.OrderListModule = OrderListModule;
 
 /***/ }),
 
-/***/ 415:
+/***/ 412:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12938,7 +12820,7 @@ exports.OverlayPanelModule = OverlayPanelModule;
 
 /***/ }),
 
-/***/ 416:
+/***/ 413:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13064,7 +12946,7 @@ exports.PanelModule = PanelModule;
 
 /***/ }),
 
-/***/ 417:
+/***/ 414:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13224,7 +13106,7 @@ exports.PanelMenuModule = PanelMenuModule;
 
 /***/ }),
 
-/***/ 418:
+/***/ 415:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13424,7 +13306,7 @@ exports.PasswordModule = PasswordModule;
 
 /***/ }),
 
-/***/ 419:
+/***/ 416:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13754,7 +13636,7 @@ exports.PickListModule = PickListModule;
 
 /***/ }),
 
-/***/ 420:
+/***/ 417:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13886,7 +13768,7 @@ exports.RadioButtonModule = RadioButtonModule;
 
 /***/ }),
 
-/***/ 421:
+/***/ 418:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14008,7 +13890,7 @@ exports.RatingModule = RatingModule;
 
 /***/ }),
 
-/***/ 422:
+/***/ 419:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14513,7 +14395,7 @@ exports.ScheduleModule = ScheduleModule;
 
 /***/ }),
 
-/***/ 423:
+/***/ 420:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14647,7 +14529,7 @@ exports.SelectButtonModule = SelectButtonModule;
 
 /***/ }),
 
-/***/ 424:
+/***/ 421:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14886,7 +14768,7 @@ exports.SlideMenuModule = SlideMenuModule;
 
 /***/ }),
 
-/***/ 425:
+/***/ 422:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15162,7 +15044,7 @@ exports.SliderModule = SliderModule;
 
 /***/ }),
 
-/***/ 426:
+/***/ 423:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15457,7 +15339,7 @@ exports.SpinnerModule = SpinnerModule;
 
 /***/ }),
 
-/***/ 427:
+/***/ 424:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15602,7 +15484,7 @@ exports.SplitButtonModule = SplitButtonModule;
 
 /***/ }),
 
-/***/ 428:
+/***/ 425:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15705,7 +15587,7 @@ exports.StepsModule = StepsModule;
 
 /***/ }),
 
-/***/ 429:
+/***/ 426:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15818,7 +15700,7 @@ exports.TabMenuModule = TabMenuModule;
 
 /***/ }),
 
-/***/ 430:
+/***/ 427:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16111,7 +15993,7 @@ exports.TabViewModule = TabViewModule;
 
 /***/ }),
 
-/***/ 431:
+/***/ 428:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16224,7 +16106,7 @@ exports.TerminalModule = TerminalModule;
 
 /***/ }),
 
-/***/ 432:
+/***/ 429:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16403,7 +16285,7 @@ exports.TieredMenuModule = TieredMenuModule;
 
 /***/ }),
 
-/***/ 433:
+/***/ 430:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16545,7 +16427,7 @@ exports.ToggleButtonModule = ToggleButtonModule;
 
 /***/ }),
 
-/***/ 434:
+/***/ 431:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16599,7 +16481,7 @@ exports.ToolbarModule = ToolbarModule;
 
 /***/ }),
 
-/***/ 435:
+/***/ 432:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16805,7 +16687,7 @@ exports.TooltipModule = TooltipModule;
 
 /***/ }),
 
-/***/ 436:
+/***/ 433:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17504,7 +17386,7 @@ var UITreeNode_1;
 
 /***/ }),
 
-/***/ 437:
+/***/ 434:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17912,7 +17794,7 @@ exports.TreeTableModule = TreeTableModule;
 
 /***/ }),
 
-/***/ 438:
+/***/ 435:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18041,7 +17923,7 @@ exports.TriStateCheckboxModule = TriStateCheckboxModule;
 
 /***/ }),
 
-/***/ 439:
+/***/ 436:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;//     Underscore.js 1.8.3
@@ -19597,7 +19479,130 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;//     Underscor
 
 /***/ }),
 
-/***/ 441:
+/***/ 438:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app_constants__ = __webpack_require__(67);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(66);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__(98);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LookupDataService; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var LookupDataService = (function () {
+    function LookupDataService(http, configuration) {
+        var _this = this;
+        this.http = http;
+        this.configuration = configuration;
+        this.GetLookUpData = function (lookupid) {
+            return _this.http
+                .get(_this.actionUrl + 'LookupData/GetLookupDataByLookupID/' + lookupid)
+                .map(function (res) { return res.json(); });
+        };
+        this.actionUrl = configuration.Server + 'api/';
+        this.headers = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Headers */]();
+        this.headers.append('Content-Type', 'application/json');
+        this.headers.append('Accept', 'application/json');
+    }
+    return LookupDataService;
+}());
+LookupDataService = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Injectable"])(),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_http__["c" /* Http */], __WEBPACK_IMPORTED_MODULE_0__app_constants__["a" /* Configuration */]])
+], LookupDataService);
+
+
+
+/***/ }),
+
+/***/ 439:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app_constants__ = __webpack_require__(67);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(66);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__(98);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GeneralFormsService; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var GeneralFormsService = (function () {
+    function GeneralFormsService(http, configuration) {
+        var _this = this;
+        this.http = http;
+        this.configuration = configuration;
+        this.GetSingle = function (id) {
+            return _this.http
+                .get(_this.actionUrl + 'Forms/GetAllFormDefByFormID/' + id)
+                .map(function (res) { return res.json(); });
+        };
+        this.GetFormData = function (id) {
+            return _this.http
+                .get(_this.actionUrl + 'EmployeeDetails/GetEmployeeByID/' + id)
+                .map(function (res) { return res.json(); });
+        };
+        this.GetDropdownValueBasedonFormID = function (id) {
+            return _this.http
+                .get(_this.actionUrl + 'LookupData/GetLookupDataByFormIDInBulk/' + id)
+                .map(function (res) { return res.json(); });
+        };
+        this.Add = function (data, url) {
+            var toAdd = JSON.stringify(data);
+            return _this.http.post(_this.actionUrl + url, toAdd, { headers: _this.headers })
+                .map(function (res) { return res.json(); });
+        };
+        this.Update = function (id, data, url) {
+            var toAdd = JSON.stringify(data);
+            return _this.http.post(_this.actionUrl + url + id, toAdd, { headers: _this.headers })
+                .map(function (res) { return res.json(); });
+        };
+        this.Delete = function (Id, url) {
+            return _this.http
+                .get(_this.actionUrl + url + '/' + Id)
+                .map(function (res) { return res.json(); });
+        };
+        this.actionUrl = configuration.Server + 'api/';
+        this.headers = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Headers */]();
+        this.headers.append('Content-Type', 'application/json');
+        this.headers.append('Accept', 'application/json');
+    }
+    return GeneralFormsService;
+}());
+GeneralFormsService = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Injectable"])(),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_http__["c" /* Http */], __WEBPACK_IMPORTED_MODULE_0__app_constants__["a" /* Configuration */]])
+], GeneralFormsService);
+
+
+
+/***/ }),
+
+/***/ 442:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -19624,7 +19629,7 @@ var GeneralFormbuilderComponent = (function () {
 GeneralFormbuilderComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-general-formbuilder',
-        template: __webpack_require__(457),
+        template: __webpack_require__(460),
     }),
     __metadata("design:paramtypes", [])
 ], GeneralFormbuilderComponent);
@@ -19633,15 +19638,15 @@ GeneralFormbuilderComponent = __decorate([
 
 /***/ }),
 
-/***/ 442:
+/***/ 443:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(172);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__core_services_general_forms_service__ = __webpack_require__(377);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__core_services_general_general_forms_service__ = __webpack_require__(439);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__core_services_common_pager_service__ = __webpack_require__(373);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__core_services_employee_service__ = __webpack_require__(444);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__core_services_employee_employee_service__ = __webpack_require__(445);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GeneralListingComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -19767,12 +19772,12 @@ __decorate([
 GeneralListingComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-general-listing',
-        template: __webpack_require__(458),
+        template: __webpack_require__(461),
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_router__["Router"],
         __WEBPACK_IMPORTED_MODULE_1__angular_router__["ActivatedRoute"],
-        __WEBPACK_IMPORTED_MODULE_2__core_services_general_forms_service__["a" /* GeneralFormsService */],
-        __WEBPACK_IMPORTED_MODULE_4__core_services_employee_service__["a" /* EmployeeService */],
+        __WEBPACK_IMPORTED_MODULE_2__core_services_general_general_forms_service__["a" /* GeneralFormsService */],
+        __WEBPACK_IMPORTED_MODULE_4__core_services_employee_employee_service__["a" /* EmployeeService */],
         __WEBPACK_IMPORTED_MODULE_3__core_services_common_pager_service__["a" /* PagerService */]])
 ], GeneralListingComponent);
 
@@ -19780,7 +19785,7 @@ GeneralListingComponent = __decorate([
 
 /***/ }),
 
-/***/ 444:
+/***/ 445:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -19829,15 +19834,15 @@ EmployeeService = __decorate([
 
 /***/ }),
 
-/***/ 448:
+/***/ 451:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_router__ = __webpack_require__(172);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(171);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__core_services_general_forms_service__ = __webpack_require__(377);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__core_services_common_lookup_data_service__ = __webpack_require__(376);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__core_services_general_general_forms_service__ = __webpack_require__(439);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__core_services_common_lookup_data_service__ = __webpack_require__(438);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DynamicFormsComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -19863,24 +19868,36 @@ var DynamicFormsComponent = (function () {
         this.data = [];
         this.childSubmitData = new __WEBPACK_IMPORTED_MODULE_1__angular_core__["EventEmitter"]();
         this.msgs = [];
+        this.dropdown_lookupLists = {};
         this.lookupLists = [];
+        this.dropdown_dbLists = [];
     }
     DynamicFormsComponent.prototype.ngOnInit = function () {
-        this.checkLookupForDropdown();
+        this.checkLookupForDropdown(this.generalFormId);
     };
-    DynamicFormsComponent.prototype.checkLookupForDropdown = function () {
+    DynamicFormsComponent.prototype.checkLookupForDropdown = function (id) {
         var _this = this;
-        this.data.forEach(function (frm) {
-            frm['custom_obj'].forEach(function (element) {
-                if (element.fieldType == 'Dropdown') {
-                    if (!element.optionValue) {
-                        _this.lookupLists.push(element.lookupId);
-                    }
+        this._generalFormsService
+            .GetDropdownValueBasedonFormID(id)
+            .subscribe(function (data) {
+            _this.dropdown_lookupLists = data;
+            _this.lookupLists = _this.dropdown_lookupLists['listoflookups'];
+            _this.lookupLists.forEach(function (element) {
+                var index = element.lookupid;
+                if (!_this.dropdown_dbLists[index]) {
+                    _this.dropdown_dbLists[index] = [];
                 }
+                var grp = {};
+                element.ldataList.forEach(function (ele) {
+                    grp = {
+                        key: ele.rowId,
+                        value: ele.value
+                    };
+                    _this.dropdown_dbLists[index].push(grp);
+                });
             });
+            _this.makeForms();
         });
-        console.log(this.lookupLists);
-        this.makeForms();
     };
     DynamicFormsComponent.prototype.makeForms = function () {
         var _this = this;
@@ -19893,8 +19910,9 @@ var DynamicFormsComponent = (function () {
                         element.optionValue = optionVal;
                     }
                     else {
-                        var LookupId = element.lookupId;
+                        var lookupId = element.lookupId;
                         var optionVal = JSON.parse(element.optionValue);
+                        element.optionValue = _this.dropdown_dbLists[lookupId];
                     }
                 }
                 else if (element.fieldType == 'Bit') {
@@ -19915,23 +19933,6 @@ var DynamicFormsComponent = (function () {
             });
         });
         this.form = this.fb.group(group);
-    };
-    DynamicFormsComponent.prototype.getDropdownValueBasedonLookupID = function (id) {
-        var _this = this;
-        this._lookupDataService
-            .GetLookUpData(id)
-            .subscribe(function (data) {
-            var genrate_object = {};
-            if (data.list) {
-                data.list.forEach(function (element) {
-                    genrate_object = {
-                        key: element.id,
-                        value: element.value
-                    };
-                });
-                _this.lookupLists[id].push(genrate_object);
-            }
-        });
     };
     DynamicFormsComponent.prototype.onSubmit = function (value, isValid) {
         this.submitted = true;
@@ -19962,6 +19963,10 @@ __decorate([
     __metadata("design:type", Number)
 ], DynamicFormsComponent.prototype, "tabnumber", void 0);
 __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Input"])('generalFormId'),
+    __metadata("design:type", Number)
+], DynamicFormsComponent.prototype, "generalFormId", void 0);
+__decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Input"])('data'),
     __metadata("design:type", Array)
 ], DynamicFormsComponent.prototype, "data", void 0);
@@ -19972,12 +19977,12 @@ __decorate([
 DynamicFormsComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Component"])({
         selector: 'app-dynamic-forms',
-        template: __webpack_require__(456),
+        template: __webpack_require__(459),
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormBuilder"],
         __WEBPACK_IMPORTED_MODULE_0__angular_router__["Router"],
         __WEBPACK_IMPORTED_MODULE_0__angular_router__["ActivatedRoute"],
-        __WEBPACK_IMPORTED_MODULE_3__core_services_general_forms_service__["a" /* GeneralFormsService */],
+        __WEBPACK_IMPORTED_MODULE_3__core_services_general_general_forms_service__["a" /* GeneralFormsService */],
         __WEBPACK_IMPORTED_MODULE_4__core_services_common_lookup_data_service__["a" /* LookupDataService */]])
 ], DynamicFormsComponent);
 
@@ -19985,13 +19990,13 @@ DynamicFormsComponent = __decorate([
 
 /***/ }),
 
-/***/ 449:
+/***/ 452:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(172);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_general_formbuilder_component__ = __webpack_require__(441);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_general_formbuilder_component__ = __webpack_require__(442);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GeneralFormbuilderRoutingModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -20021,7 +20026,7 @@ GeneralFormbuilderRoutingModule = __decorate([
 
 /***/ }),
 
-/***/ 450:
+/***/ 453:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -20029,11 +20034,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__(52);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(171);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_general_formbuilder_component__ = __webpack_require__(441);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_dynamic_forms_component__ = __webpack_require__(448);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__general_formbuilder_routing_module__ = __webpack_require__(449);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__core_services_common_lookup_data_service__ = __webpack_require__(376);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_primeng_primeng__ = __webpack_require__(375);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_general_formbuilder_component__ = __webpack_require__(442);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_dynamic_forms_component__ = __webpack_require__(451);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__general_formbuilder_routing_module__ = __webpack_require__(452);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__core_services_common_lookup_data_service__ = __webpack_require__(438);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_primeng_primeng__ = __webpack_require__(374);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_primeng_primeng___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_primeng_primeng__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GeneralFormbuilderModule", function() { return GeneralFormbuilderModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -20083,13 +20088,13 @@ GeneralFormbuilderModule = __decorate([
 
 /***/ }),
 
-/***/ 451:
+/***/ 454:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(172);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_general_listing_component__ = __webpack_require__(442);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_general_listing_component__ = __webpack_require__(443);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GeneralListingRoutingModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -20119,15 +20124,15 @@ GeneralListingRoutingModule = __decorate([
 
 /***/ }),
 
-/***/ 452:
+/***/ 455:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__(52);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_general_listing_component__ = __webpack_require__(442);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__general_listing_routing_module__ = __webpack_require__(451);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_general_listing_component__ = __webpack_require__(443);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__general_listing_routing_module__ = __webpack_require__(454);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GeneralListingModule", function() { return GeneralListingModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -20161,35 +20166,35 @@ GeneralListingModule = __decorate([
 
 /***/ }),
 
-/***/ 456:
+/***/ 459:
 /***/ (function(module, exports) {
 
-module.exports = "<form  (ngSubmit)=\"onSubmit(form.value, form.valid)\" [formGroup]=\"form\" novalidate>\r\n<div class=\"form-horizontal\" *ngFor=\"let category of data\">\r\n    <div class=\"boder-btm\">\r\n        <h3 class=\"panel-title\"> {{category.category_name}}  </h3>\r\n    </div>\r\n    <div class=\"m-b-30\">\r\n      <div class=\"form-group\" *ngFor=\"let fields of category['custom_obj']\">\r\n        <div [ngSwitch]=\"fields.fieldType\">\r\n          <label class=\"col-sm-2 control-label\"> {{fields.displayName}}  <span class=\"asterisk\">*</span> </label>\r\n          <div class=\"col-sm-4\" *ngSwitchCase=\"'Text'\">\r\n            <input class=\"form-control\" type=\"text\" [formControlName]=\"fields.fieldName\" [(ngModel)]=\"fields.value\">\r\n          </div>\r\n          <div class=\"col-sm-4\" *ngSwitchCase=\"'Bit'\">\r\n            <div class=\"radio\" *ngFor=\"let opt of fields.optionValue; let idx = index\">\r\n              <label>\r\n                <input \r\n                    type=\"radio\" \r\n                    value=\"{{opt.key}}\"\r\n                    [formControlName]=\"fields.fieldName\" \r\n                    [(ngModel)]=\"fields.value\">\r\n                {{opt.value}}\r\n              </label>\r\n            </div>\r\n          </div>\r\n          <div class=\"col-sm-4\" *ngSwitchCase=\"'Dropdown'\">\r\n               <select class=\"form-control\" [id]=\"fields.id\" [formControlName]=\"fields.fieldName\" [(ngModel)]=\"fields.value\">\r\n                  <option  value=\"\" selected>Select</option>\r\n                  <option  value= {{opt.key}} *ngFor=\"let opt of fields.optionValue; let idx = index\">{{opt.value}}</option>\r\n                </select>\r\n          </div>\r\n          <div class=\"col-sm-4\" *ngSwitchCase=\"'Textarea'\">\r\n              <textarea [formControlName]=\"fields.fieldName\" [(ngModel)]=\"fields.value\" rows=\"10\" cols=\"55\"> </textarea>\r\n          </div>\r\n          <div class=\"col-sm-4\" *ngSwitchCase=\"'Date'\">\r\n              <p-calendar [formControlName]=\"fields.fieldName\" [showIcon]=\"true\" [(ngModel)]=\"fields.value\"></p-calendar> \r\n              <span style=\"margin-left:35px\">{{fields.value|date}}</span>\r\n          </div>\r\n          <div \r\n              class=\"alert alert-danger\" \r\n              [hidden]=\"form.get([fields.fieldName]).valid || (form.get([fields.fieldName]).pristine && !submitted)\">\r\n              * {{fields.displayName}} is required\r\n            </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n</div>\r\n<div class=\"form-row\">\r\n    <button class=\"btn btn-primary m-b-10\" type=\"submit\" >Save</button>\r\n    <p-growl [value]=\"msgs\"></p-growl>\r\n</div>\r\n</form>"
+module.exports = "<form *ngIf=\"form\"  (ngSubmit)=\"onSubmit(form.value, form.valid)\" [formGroup]=\"form\" novalidate>\r\n<div class=\"form-horizontal\" *ngFor=\"let category of data\">\r\n    <div class=\"boder-btm\">\r\n        <h3 class=\"panel-title\"> {{category.category_name}}  </h3>\r\n    </div>\r\n    <div class=\"m-b-30\">\r\n      <div class=\"form-group\" *ngFor=\"let fields of category['custom_obj']\">\r\n        <div [ngSwitch]=\"fields.fieldType\">\r\n          <label class=\"col-sm-2 control-label\"> {{fields.displayName}}  <span class=\"asterisk\">*</span> </label>\r\n          <div class=\"col-sm-4\" *ngSwitchCase=\"'Text'\">\r\n            <input class=\"form-control\" type=\"text\" [formControlName]=\"fields.fieldName\" [(ngModel)]=\"fields.value\">\r\n          </div>\r\n          <div class=\"col-sm-4\" *ngSwitchCase=\"'Bit'\">\r\n            <div class=\"radio\" *ngFor=\"let opt of fields.optionValue; let idx = index\">\r\n              <label>\r\n                <input \r\n                    type=\"radio\" \r\n                    value=\"{{opt.key}}\"\r\n                    [formControlName]=\"fields.fieldName\" \r\n                    [(ngModel)]=\"fields.value\">\r\n                {{opt.value}}\r\n              </label>\r\n            </div>\r\n          </div>\r\n          <div class=\"col-sm-4\" *ngSwitchCase=\"'Dropdown'\">\r\n               <select class=\"form-control\" [id]=\"fields.id\" [formControlName]=\"fields.fieldName\" [(ngModel)]=\"fields.value\">\r\n                  <option  value=\"\" selected>Select</option>\r\n                  <option  value= {{opt.key}} *ngFor=\"let opt of fields.optionValue; let idx = index\">{{opt.value}}</option>\r\n                </select>\r\n          </div>\r\n          <div class=\"col-sm-4\" *ngSwitchCase=\"'Textarea'\">\r\n              <textarea [formControlName]=\"fields.fieldName\" [(ngModel)]=\"fields.value\" rows=\"10\" cols=\"55\"> </textarea>\r\n          </div>\r\n          <div class=\"col-sm-4\" *ngSwitchCase=\"'Date'\">\r\n              <p-calendar [formControlName]=\"fields.fieldName\" [showIcon]=\"true\" [(ngModel)]=\"fields.value\"></p-calendar> \r\n              <span style=\"margin-left:35px\">{{fields.value|date}}</span>\r\n          </div>\r\n          <div \r\n              class=\"alert alert-danger\" \r\n              [hidden]=\"form.get([fields.fieldName]).valid || (form.get([fields.fieldName]).pristine && !submitted)\">\r\n              * {{fields.displayName}} is required\r\n            </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n</div>\r\n<div class=\"form-row\">\r\n    <button class=\"btn btn-primary m-b-10\" type=\"submit\" >Save</button>\r\n    <p-growl [value]=\"msgs\"></p-growl>\r\n</div>\r\n</form>"
 
 /***/ }),
 
-/***/ 457:
+/***/ 460:
 /***/ (function(module, exports) {
 
 module.exports = "<p>\r\n  general-formbuilder works!\r\n</p>\r\n"
 
 /***/ }),
 
-/***/ 458:
+/***/ 461:
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"row\">\r\n    <div class=\"col-md-3 col-sm-3 col-xs-12 \">\r\n        <label class=\"bold\">Employee</label>\r\n        <select class=\"form-control\" style=\"display: none;\">\r\n            <option>-- Select --</option>\r\n        </select><div class=\"btn-group bootstrap-select form-control\"><button type=\"button\" class=\"btn dropdown-toggle selectpicker btn-default\" data-toggle=\"dropdown\" title=\"-- Select --\"><span class=\"filter-option pull-left\">-- Select --</span>&nbsp;<span class=\"caret\"></span></button><div class=\"dropdown-menu open\"><ul class=\"dropdown-menu inner selectpicker\" role=\"menu\"><li rel=\"0\" class=\"selected\"><a tabindex=\"0\" class=\"\" style=\"\"><span class=\"text\">-- Select --</span><i class=\"fa fa-ok icon-ok check-mark\"></i></a></li></ul></div></div>\r\n    </div>\r\n    <div class=\"col-md-3 col-sm-3 col-xs-12 \">\r\n        <label class=\"bold\">Department</label>\r\n        <select class=\"form-control\" style=\"display: none;\">\r\n            <option>-- Select --</option>\r\n        </select><div class=\"btn-group bootstrap-select form-control\"><button type=\"button\" class=\"btn dropdown-toggle selectpicker btn-default\" data-toggle=\"dropdown\" title=\"-- Select --\"><span class=\"filter-option pull-left\">-- Select --</span>&nbsp;<span class=\"caret\"></span></button><div class=\"dropdown-menu open\"><ul class=\"dropdown-menu inner selectpicker\" role=\"menu\"><li rel=\"0\" class=\"selected\"><a tabindex=\"0\" class=\"\" style=\"\"><span class=\"text\">-- Select --</span><i class=\"fa fa-ok icon-ok check-mark\"></i></a></li></ul></div></div>\r\n    </div>\r\n    <div class=\"col-md-3 col-sm-3 col-xs-12 \">\r\n        <label class=\"bold\">Status</label>\r\n        <select class=\"form-control\" style=\"display: none;\">\r\n            <option>-- Select --</option>\r\n        </select><div class=\"btn-group bootstrap-select form-control\"><button type=\"button\" class=\"btn dropdown-toggle selectpicker btn-default\" data-toggle=\"dropdown\" title=\"-- Select --\"><span class=\"filter-option pull-left\">-- Select --</span>&nbsp;<span class=\"caret\"></span></button><div class=\"dropdown-menu open\"><ul class=\"dropdown-menu inner selectpicker\" role=\"menu\"><li rel=\"0\" class=\"selected\"><a tabindex=\"0\" class=\"\" style=\"\"><span class=\"text\">-- Select --</span><i class=\"fa fa-ok icon-ok check-mark\"></i></a></li></ul></div></div>\r\n    </div>\r\n    <div class=\"col-md-3 col-sm-3 col-xs-12 \">\r\n        <label class=\"bold\">Employee Statistics</label>\r\n        <select class=\"form-control\" style=\"display: none;\">\r\n            <option>-- Select --</option>\r\n        </select><div class=\"btn-group bootstrap-select form-control\"><button type=\"button\" class=\"btn dropdown-toggle selectpicker btn-default\" data-toggle=\"dropdown\" title=\"-- Select --\"><span class=\"filter-option pull-left\">-- Select --</span>&nbsp;<span class=\"caret\"></span></button><div class=\"dropdown-menu open\"><ul class=\"dropdown-menu inner selectpicker\" role=\"menu\"><li rel=\"0\" class=\"selected\"><a tabindex=\"0\" class=\"\" style=\"\"><span class=\"text\">-- Select --</span><i class=\"fa fa-ok icon-ok check-mark\"></i></a></li></ul></div></div>\r\n    </div>\r\n</div>\r\n\r\n<div class=\"row\">\r\n    <div class=\"col-md-12 col-sm-12 col-xs-12\">\r\n        <div class=\"table-responsive\">\r\n            <table class=\"table table-bordered table-striped table-hover\">\r\n                <thead class=\"no-bd\">\r\n                    <tr>\r\n                        <th *ngFor=\"let fields of _FilteredfieldsHeading\"><strong> {{fields.displayName}} </strong> </th>\r\n                        <th><strong>Action</strong></th>\r\n                    </tr>\r\n                </thead>\r\n                <tbody class=\"no-bd-y\">\r\n                    <tr *ngFor=\"let rec of pagedItems;let i = index\">\r\n                        <td *ngFor=\"let r of rec\"> {{r.val}} </td>\r\n                        <td>\r\n                            <button [routerLink]=\"['/employee/edit/' + lookup + '/' + rec[0]['id'] ]\" type=\"button\" class=\"btn btn-sm btn-warning\" title=\"Edit\"><i class=\"fa fa-pencil\"></i></button>\r\n                            <button (click)=\"delete(rec[0]['id'])\" type=\"button\" class=\"btn btn-sm btn-danger\" title=\"Delete\"><i class=\"fa fa-remove\"></i></button>\r\n                        </td>\r\n                    </tr>\r\n                </tbody>\r\n            </table>\r\n\r\n            \r\n            <ul *ngIf=\"pager.pages && pager.pages.length\" class=\"pagination\">\r\n                <li [ngClass]=\"{disabled:pager.currentPage === 1}\">\r\n                    <a (click)=\"setPage(1)\">First</a>\r\n                </li>\r\n                <li [ngClass]=\"{disabled:pager.currentPage === 1}\">\r\n                    <a (click)=\"setPage(pager.currentPage - 1)\">Previous</a>\r\n                </li>\r\n                <li *ngFor=\"let page of pager.pages\" [ngClass]=\"{active:pager.currentPage === page}\">\r\n                    <a (click)=\"setPage(page)\">{{page}}</a>\r\n                </li>\r\n                <li [ngClass]=\"{disabled:pager.currentPage === pager.totalPages}\">\r\n                    <a (click)=\"setPage(pager.currentPage + 1)\">Next</a>\r\n                </li>\r\n                <li [ngClass]=\"{disabled:pager.currentPage === pager.totalPages}\">\r\n                    <a (click)=\"setPage(pager.totalPages)\">Last</a>\r\n                </li>\r\n            </ul>\r\n\r\n        </div>\r\n    </div>\r\n</div>\r\n                    \r\n      "
 
 /***/ }),
 
-/***/ 475:
+/***/ 488:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(172);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(171);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__core_services_general_forms_service__ = __webpack_require__(377);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__core_services_general_general_forms_service__ = __webpack_require__(439);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EditComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -20349,19 +20354,19 @@ var EditComponent = (function () {
 EditComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-edit',
-        template: __webpack_require__(577),
+        template: __webpack_require__(630),
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormBuilder"],
         __WEBPACK_IMPORTED_MODULE_1__angular_router__["Router"],
         __WEBPACK_IMPORTED_MODULE_1__angular_router__["ActivatedRoute"],
-        __WEBPACK_IMPORTED_MODULE_3__core_services_general_forms_service__["a" /* GeneralFormsService */]])
+        __WEBPACK_IMPORTED_MODULE_3__core_services_general_general_forms_service__["a" /* GeneralFormsService */]])
 ], EditComponent);
 
 
 
 /***/ }),
 
-/***/ 476:
+/***/ 489:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -20387,7 +20392,7 @@ var LeaveComponent = (function () {
 LeaveComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-leave',
-        template: __webpack_require__(578),
+        template: __webpack_require__(631),
     }),
     __metadata("design:paramtypes", [])
 ], LeaveComponent);
@@ -20396,16 +20401,16 @@ LeaveComponent = __decorate([
 
 /***/ }),
 
-/***/ 477:
+/***/ 490:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_router__ = __webpack_require__(172);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(171);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__core_services_general_forms_service__ = __webpack_require__(377);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__models_general_data_model__ = __webpack_require__(549);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__shared__ = __webpack_require__(374);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__core_services_general_general_forms_service__ = __webpack_require__(439);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__models_general_general_data_model__ = __webpack_require__(590);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__shared__ = __webpack_require__(437);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ListsComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -20428,7 +20433,7 @@ var ListsComponent = (function () {
         this._router = _router;
         this._route = _route;
         this._generalFormsService = _generalFormsService;
-        this._generalDataModel = new __WEBPACK_IMPORTED_MODULE_4__models_general_data_model__["a" /* GeneralDataModel */]();
+        this._generalDataModel = new __WEBPACK_IMPORTED_MODULE_4__models_general_general_data_model__["a" /* GeneralDataModel */]();
         this.lookup = 1;
         this.msgs = [];
         this.form = fb.group({
@@ -20463,19 +20468,19 @@ var ListsComponent = (function () {
 ListsComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Component"])({
         selector: 'app-lists',
-        template: __webpack_require__(579),
+        template: __webpack_require__(632),
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormBuilder"],
         __WEBPACK_IMPORTED_MODULE_0__angular_router__["Router"],
         __WEBPACK_IMPORTED_MODULE_0__angular_router__["ActivatedRoute"],
-        __WEBPACK_IMPORTED_MODULE_3__core_services_general_forms_service__["a" /* GeneralFormsService */]])
+        __WEBPACK_IMPORTED_MODULE_3__core_services_general_general_forms_service__["a" /* GeneralFormsService */]])
 ], ListsComponent);
 
 
 
 /***/ }),
 
-/***/ 478:
+/***/ 491:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -20501,7 +20506,7 @@ var ReportComponent = (function () {
 ReportComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-report',
-        template: __webpack_require__(582),
+        template: __webpack_require__(635),
     }),
     __metadata("design:paramtypes", [])
 ], ReportComponent);
@@ -20510,7 +20515,7 @@ ReportComponent = __decorate([
 
 /***/ }),
 
-/***/ 479:
+/***/ 492:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -20536,7 +20541,7 @@ var SalaryComponent = (function () {
 SalaryComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-salary',
-        template: __webpack_require__(584),
+        template: __webpack_require__(637),
     }),
     __metadata("design:paramtypes", [])
 ], SalaryComponent);
@@ -20545,17 +20550,17 @@ SalaryComponent = __decorate([
 
 /***/ }),
 
-/***/ 520:
+/***/ 555:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(172);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__lists_lists_component__ = __webpack_require__(477);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__edit_edit_component__ = __webpack_require__(475);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__leave_leave_component__ = __webpack_require__(476);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__salary_salary_component__ = __webpack_require__(479);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__report_report_component__ = __webpack_require__(478);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__lists_lists_component__ = __webpack_require__(490);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__edit_edit_component__ = __webpack_require__(488);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__leave_leave_component__ = __webpack_require__(489);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__salary_salary_component__ = __webpack_require__(492);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__report_report_component__ = __webpack_require__(491);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EmployeeRoutingModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -20594,7 +20599,7 @@ EmployeeRoutingModule = __decorate([
 
 /***/ }),
 
-/***/ 521:
+/***/ 556:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -20602,23 +20607,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__(52);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(171);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__lists_lists_component__ = __webpack_require__(477);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__edit_edit_component__ = __webpack_require__(475);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__employee_routing_module__ = __webpack_require__(520);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__shared__ = __webpack_require__(374);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__leave_leave_component__ = __webpack_require__(476);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__salary_salary_component__ = __webpack_require__(479);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__report_report_component__ = __webpack_require__(478);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__report_activeemployee_activeemployee_component__ = __webpack_require__(522);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__report_workanniversary_workanniversary_component__ = __webpack_require__(524);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__report_birthday_birthday_component__ = __webpack_require__(523);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__core_services_employee_service__ = __webpack_require__(444);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__core_services_general_forms_service__ = __webpack_require__(377);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__general_formbuilder_general_formbuilder_module__ = __webpack_require__(450);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__lists_lists_component__ = __webpack_require__(490);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__edit_edit_component__ = __webpack_require__(488);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__employee_routing_module__ = __webpack_require__(555);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__shared__ = __webpack_require__(437);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__leave_leave_component__ = __webpack_require__(489);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__salary_salary_component__ = __webpack_require__(492);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__report_report_component__ = __webpack_require__(491);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__report_activeemployee_activeemployee_component__ = __webpack_require__(557);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__report_workanniversary_workanniversary_component__ = __webpack_require__(559);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__report_birthday_birthday_component__ = __webpack_require__(558);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__core_services_employee_employee_service__ = __webpack_require__(445);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__core_services_general_general_forms_service__ = __webpack_require__(439);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__general_formbuilder_general_formbuilder_module__ = __webpack_require__(453);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__core_services_common_pager_service__ = __webpack_require__(373);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17_primeng_primeng__ = __webpack_require__(375);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17_primeng_primeng__ = __webpack_require__(374);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17_primeng_primeng___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_17_primeng_primeng__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__general_listing_general_listing_module__ = __webpack_require__(452);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__general_listing_general_listing_module__ = __webpack_require__(455);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EmployeeModule", function() { return EmployeeModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -20673,8 +20678,8 @@ EmployeeModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_12__report_birthday_birthday_component__["a" /* BirthdayComponent */]
         ],
         providers: [
-            __WEBPACK_IMPORTED_MODULE_13__core_services_employee_service__["a" /* EmployeeService */],
-            __WEBPACK_IMPORTED_MODULE_14__core_services_general_forms_service__["a" /* GeneralFormsService */],
+            __WEBPACK_IMPORTED_MODULE_13__core_services_employee_employee_service__["a" /* EmployeeService */],
+            __WEBPACK_IMPORTED_MODULE_14__core_services_general_general_forms_service__["a" /* GeneralFormsService */],
             __WEBPACK_IMPORTED_MODULE_16__core_services_common_pager_service__["a" /* PagerService */]
         ]
     })
@@ -20684,7 +20689,7 @@ EmployeeModule = __decorate([
 
 /***/ }),
 
-/***/ 522:
+/***/ 557:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -20710,7 +20715,7 @@ var ActiveemployeeComponent = (function () {
 ActiveemployeeComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-activeemployee',
-        template: __webpack_require__(580),
+        template: __webpack_require__(633),
     }),
     __metadata("design:paramtypes", [])
 ], ActiveemployeeComponent);
@@ -20719,7 +20724,7 @@ ActiveemployeeComponent = __decorate([
 
 /***/ }),
 
-/***/ 523:
+/***/ 558:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -20745,7 +20750,7 @@ var BirthdayComponent = (function () {
 BirthdayComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-birthday',
-        template: __webpack_require__(581),
+        template: __webpack_require__(634),
     }),
     __metadata("design:paramtypes", [])
 ], BirthdayComponent);
@@ -20754,7 +20759,7 @@ BirthdayComponent = __decorate([
 
 /***/ }),
 
-/***/ 524:
+/***/ 559:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -20780,7 +20785,7 @@ var WorkanniversaryComponent = (function () {
 WorkanniversaryComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-workanniversary',
-        template: __webpack_require__(583),
+        template: __webpack_require__(636),
     }),
     __metadata("design:paramtypes", [])
 ], WorkanniversaryComponent);
@@ -20789,7 +20794,7 @@ WorkanniversaryComponent = __decorate([
 
 /***/ }),
 
-/***/ 549:
+/***/ 590:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -20804,56 +20809,56 @@ var GeneralDataModel = (function () {
 
 /***/ }),
 
-/***/ 577:
+/***/ 630:
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"main-content\" >\r\n    <div class=\"row m-t-10\">\r\n      <div class=\"col-md-12\">\r\n\r\n        <div class=\"\">\r\n          <ul id=\"myTab2\" class=\"nav nav-tabs nav-dark\">\r\n            <li *ngFor=\"let tab of final_array;let i = index\">\r\n              <a id=\"maintab_{{i+1}}\" href=\"#tab2_{{i+1}}\" data-toggle=\"tab\"> {{tab[0]['tabName']}} </a>\r\n            </li>\r\n          </ul>\r\n          <div id=\"myTabContent\" class=\"tab-content\">\r\n            <div *ngFor=\"let tab of final_array;let i = index\" class=\"tab-pane fade\" id=\"tab2_{{i+1}}\">\r\n              <div class=\"text-right m-b-20\">\r\n\t              <button type=\"button\" class=\"btn btn-sm btn-icon btn-rounded btn-default\"><i class=\"fa fa-question\"></i> </button>\r\n              </div>\r\n               <app-dynamic-forms \r\n                    [tabnumber]=\"i\" \r\n                    [data]=\"tab\"\r\n                    (childSubmitData)=\"getSubmittedData($event)\"> \r\n                </app-dynamic-forms>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>"
+module.exports = "<div id=\"main-content\" >\r\n    <div class=\"row m-t-10\">\r\n      <div class=\"col-md-12\">\r\n\r\n        <div class=\"\">\r\n          <ul id=\"myTab2\" class=\"nav nav-tabs nav-dark\">\r\n            <li *ngFor=\"let tab of final_array;let i = index\">\r\n              <a id=\"maintab_{{i+1}}\" href=\"#tab2_{{i+1}}\" data-toggle=\"tab\"> {{tab[0]['tabName']}} </a>\r\n            </li>\r\n          </ul>\r\n          <div id=\"myTabContent\" class=\"tab-content\">\r\n            <div *ngFor=\"let tab of final_array;let i = index\" class=\"tab-pane fade\" id=\"tab2_{{i+1}}\">\r\n              <div class=\"text-right m-b-20\">\r\n\t              <button type=\"button\" class=\"btn btn-sm btn-icon btn-rounded btn-default\"><i class=\"fa fa-question\"></i> </button>\r\n              </div>\r\n               <app-dynamic-forms\r\n                    [generalFormId]=\"generalFormId\"\r\n                    [tabnumber]=\"i\" \r\n                    [data]=\"tab\"\r\n                    (childSubmitData)=\"getSubmittedData($event)\"> \r\n                </app-dynamic-forms>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>"
 
 /***/ }),
 
-/***/ 578:
+/***/ 631:
 /***/ (function(module, exports) {
 
 module.exports = "<div id=\"main-content\" >\r\n    <div class=\"row m-t-10\">\r\n      <div class=\"col-md-12\">\r\n        <div class=\"panel panel-default\">\r\n          <div class=\"panel-heading text-right\">\r\n            <button type=\"button\" class=\"btn btn-sm btn-icon btn-rounded btn-default\"><i class=\"fa fa-question\"></i> </button>\r\n          </div>\r\n          <div class=\"panel-body\">\r\n           \r\n            <div class=\"row\">\r\n              <div class=\"col-md-3 col-sm-3 col-xs-12 \">\r\n                <label class=\"bold\" >Employee</label>\r\n                <select class=\"form-control\">\r\n                  <option>-- Select --</option>\r\n                </select>\r\n              </div>\r\n              <div class=\"col-md-3 col-sm-3 col-xs-12 \">\r\n                <label class=\"bold\" >Leave Structure</label>\r\n                <select class=\"form-control\">\r\n                  <option>-- Select --</option>\r\n                </select>\r\n              </div>\r\n              \r\n              \r\n            </div>\r\n            \r\n            <div class=\"row\">\r\n              <div class=\"col-md-12 col-sm-12 col-xs-12\">\r\n                <div class=\"table-responsive\">\r\n                  <table class=\"table table-bordered table-striped table-hover\">\r\n                    <thead class=\"no-bd\">\r\n                      <tr>\r\n                        <th><strong>Employee Name</strong> </th>\r\n                        <th><strong>Branch</strong> </th>\r\n                        <th><strong>Department</strong> </th>\r\n                        <th><strong>CL(Monthly)</strong></th>\r\n                        <th><strong>Total Leave(Monthly)</strong></th>\r\n                        <th><strong>Total Leave(Yearly)</strong></th>\r\n                        <th><strong>CF</strong></th>\r\n                      </tr>\r\n                    </thead>\r\n                    <tbody class=\"no-bd-y\">\r\n                      <tr>\r\n                        <td>Prashant Kapse </td>\r\n                        <td>Kailashnagar</td>\r\n                        <td>Software development (Kailashnagar)</td>\r\n                        <td>1.00</td>\r\n                        <td>1.00</td>\r\n                        <td>12.00</td>\r\n                        <td>0.00</td>\r\n                      </tr>\r\n                      <tr>\r\n                        <td>Ankit Chopada </td>\r\n                        <td>Kailashnagar</td>\r\n                        <td>Software development (Kailashnagar)</td>\r\n                        <td>1.00</td>\r\n                        <td>1.00</td>\r\n                        <td>12.00</td>\r\n                        <td>0.00</td>\r\n                      </tr>\r\n                      <tr>\r\n                        <td>Ankur Patel </td>\r\n                        <td>Kailashnagar</td>\r\n                        <td>Software development (Kailashnagar)</td>\r\n                        <td>1.00</td>\r\n                        <td>1.00</td>\r\n                        <td>12.00</td>\r\n                        <td>0.00</td>\r\n                      </tr>\r\n                      <tr>\r\n                        <td>Arvind Salunke </td>\r\n                        <td>Kailashnagar</td>\r\n                        <td>Software development (Kailashnagar)</td>\r\n                        <td>1.00</td>\r\n                        <td>1.00</td>\r\n                        <td>12.00</td>\r\n                        <td>0.00</td>\r\n                      </tr>\r\n                      <tr>\r\n                        <td>Avani Ghervara </td>\r\n                        <td>Kailashnagar</td>\r\n                        <td>Software development (Kailashnagar)</td>\r\n                        <td>1.00</td>\r\n                        <td>1.00</td>\r\n                        <td>12.00</td>\r\n                        <td>0.00</td>\r\n                      </tr>\r\n                      <tr>\r\n                        <td>Bharat Jariwala </td>\r\n                        <td>Kailashnagar</td>\r\n                        <td>Software development (Kailashnagar)</td>\r\n                        <td>1.00</td>\r\n                        <td>1.00</td>\r\n                        <td>12.00</td>\r\n                        <td>0.00</td>\r\n                      </tr>\r\n                     \r\n                    </tbody>\r\n                  </table>\r\n                </div>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>"
 
 /***/ }),
 
-/***/ 579:
+/***/ 632:
 /***/ (function(module, exports) {
 
 module.exports = "<div id=\"main-content\">\r\n    <div class=\"row m-t-10\">\r\n        <div class=\"col-md-12\">\r\n            <div class=\"panel panel-default\">\r\n                <div class=\"panel-heading text-right\">\r\n                    <button type=\"button\" class=\"btn btn-sm btn-icon btn-rounded btn-default\"><i class=\"fa fa-question\"></i> </button>\r\n                </div>\r\n                <div class=\"panel-body\">\r\n                    <div class=\"row\">\r\n                        <div class=\"col-md-12 col-sm-12 col-xs-12 text-right\">\r\n                            <button class=\"btn btn-primary m-b-10\" data-toggle=\"modal\" data-target=\"#myModal\">Add Employee</button>\r\n                        </div>\r\n                    </div>\r\n\r\n                        <app-general-listing [lookup]=\"lookup\"> </app-general-listing>\r\n                    \r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n\r\n<p-growl [value]=\"msgs\"></p-growl>\r\n\r\n<!-- Modal -->\r\n<div id=\"myModal\" class=\"modal fade\" role=\"dialog\">\r\n  <div class=\"modal-dialog\">\r\n\r\n    <!-- Modal content-->\r\n    <div class=\"modal-content\">\r\n      <div class=\"modal-header\">\r\n        <button type=\"button\" id=\"close_model\" class=\"close\" data-dismiss=\"modal\">&times;</button>\r\n        <h4 class=\"modal-title\">Add Employee Forms </h4>\r\n      </div>\r\n      <div class=\"modal-body\">\r\n            <form (ngSubmit)=\"onSubmit(form.value, form.valid)\" [formGroup]=\"form\" novalidate>\r\n                <div class=\"form-horizontal\">\r\n                    <div class=\"m-b-30\">\r\n                        <div class=\"form-group\">\r\n                            <label class=\"col-sm-4 control-label\"> First Name  <span class=\"asterisk\">*</span> </label>\r\n                            <div class=\"col-sm-6\" >\r\n                                <input class=\"form-control\" type=\"text\" formControlName=\"f2\" [(ngModel)]=\"_generalDataModel.f2\">\r\n                            </div>\r\n                            <div [hidden]=\"form.get('f2').valid || (form.get('f2').pristine && !submitted)\" class=\"alert alert-danger\">\r\n                                FirstName is required.\r\n                            </div>\r\n                        </div>\r\n                        <div class=\"form-group\">\r\n                            <label class=\"col-sm-4 control-label\"> Last Name  <span class=\"asterisk\">*</span> </label>\r\n                            <div class=\"col-sm-6\" >\r\n                                <input class=\"form-control\" type=\"text\" formControlName=\"f3\" [(ngModel)]=\"_generalDataModel.f3\">\r\n                            </div>\r\n                            <div [hidden]=\"form.get('f3').valid || (form.get('f3').pristine && !submitted)\" class=\"alert alert-danger\">\r\n                                LastName is required.\r\n                            </div>\r\n                        </div>\r\n                        <div class=\"form-group\">\r\n                            <label class=\"col-sm-4 control-label\"> Email  <span class=\"asterisk\">*</span> </label>\r\n                            <div class=\"col-sm-6\" >\r\n                                <input class=\"form-control\" type=\"text\" formControlName=\"f4\" [(ngModel)]=\"_generalDataModel.f4\">\r\n                            </div>\r\n                            <div [hidden]=\"form.get('f4').valid || (form.get('f4').pristine && !submitted)\" class=\"alert alert-danger\">\r\n                                Email is not valid.\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <div class=\"form-row\">\r\n                    <button class=\"btn btn-primary m-b-10\" type=\"submit\" >Save</button>\r\n                </div>\r\n            </form>\r\n      </div>\r\n      <div class=\"modal-footer\">\r\n        <button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Close</button>\r\n      </div>\r\n    </div>\r\n\r\n  </div>\r\n</div>"
 
 /***/ }),
 
-/***/ 580:
+/***/ 633:
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"text-right m-b-20\">\r\n                <div class=\"btn-group text-left\">\r\n                                        <button class=\"btn btn-success dropdown-toggle\" data-toggle=\"dropdown\">Export <i class=\"fa fa-angle-down\"></i>\r\n                                        </button>\r\n                                        <ul class=\"dropdown-menu pull-right\">\r\n                                            <li><a href=\"#\">Customize Columns</a>\r\n                                            </li>\r\n                                            <li><a href=\"#\">Print</a>\r\n                                            </li>\r\n                                            <li><a href=\"#\">Export to PDF</a>\r\n                                            </li>\r\n                                            <li><a href=\"#\">Export to XLS</a>\r\n                                            </li>\r\n                                            <li><a href=\"#\">Export to CSV</a>\r\n                                            </li>\r\n                                            <li><a href=\"#\">Export to DOC</a>\r\n                                            </li>\r\n                                        </ul>\r\n                                    </div>\r\n                \r\n                <button type=\"button\" class=\"btn btn-sm btn-icon btn-rounded btn-default\"><i class=\"fa fa-question\"></i></button>\r\n              </div>\r\n              <div class=\"form-horizontal\">\r\n                \r\n                <div class=\"m-b-10\">\r\n                  <div class=\"row row-5px\">\r\n              <div class=\"col-md-2 col-sm-2 col-xs-12 col-5px\">\r\n\r\n                <label class=\"bold\" >Branch</label>\r\n                <select class=\"form-control\">\r\n                  <option>-- Select --</option>\r\n                </select>\r\n              </div>\r\n              <div class=\"col-md-2 col-sm-2 col-xs-12 col-5px\">\r\n                <label class=\"bold\" >Department</label>\r\n                <select class=\"form-control\">\r\n                  <option>-- Select --</option>\r\n                </select>\r\n              </div>\r\n              <div class=\"col-md-3 col-sm-3 col-xs-12 col-5px\">\r\n                <label class=\"bold\" >Job Profile</label>\r\n                <select class=\"form-control\">\r\n                  <option>-- Select --</option>\r\n                </select>\r\n              </div>\r\n              <div class=\"col-md-2 col-sm-2 col-xs-12 col-5px\">\r\n                <label class=\"bold\" >User Role</label>\r\n                <select class=\"form-control\">\r\n                  <option>-- Select --</option>\r\n                </select>\r\n              </div>\r\n              <div class=\"col-md-3 col-sm-3 col-xs-12 col-5px\">                \r\n                <button class=\"btn btn-primary m-t-25\" >Generate Report</button>\r\n              </div>\r\n            </div>\r\n                </div>\r\n                <div class=\"row\">\r\n                <div class=\"col-md-12 col-sm-12 col-xs-12\">\r\n                 <div class=\"table-responsive\">\r\n                  <table class=\"table table-bordered table-striped table-hover\">\r\n                    <thead class=\"no-bd\">\r\n                      <tr>\r\n                        <th><strong>First Name</strong> </th>\r\n                        <th><strong>Last Name</strong> </th>\r\n                        <th><strong>Job Title</strong> </th>\r\n                        <th><strong>Address</strong> </th>\r\n                        <th><strong>Gender</strong> </th>\r\n                        <th><strong>Birth Date</strong> </th>\r\n                        <th><strong>Phone</strong> </th>\r\n                        <th><strong>Role Name</strong> </th>\r\n                        <th><strong>Email</strong> </th>\r\n                        <th><strong>Status</strong> </th>\r\n                      </tr>\r\n                    </thead>\r\n                    <tbody class=\"no-bd-y\">\r\n                      <tr>\r\n                        <td>Nikunj</td>                        \r\n                        <td>Savani </td>\r\n                        <td>ASP .NET Developer </td>\r\n                        <td>A-201 Rivera apartment, near CNG pump, sudama chowk, mota varachha</td>\r\n                        <td>Male</td>\r\n                        <td>5/4/1988 12:00:00 AM</td>\r\n                        <td></td>\r\n                        <td></td>\r\n                        <td>nikunj.savani@krtya.com</td>\r\n                        <td>Active</td>\r\n                      </tr>\r\n                      <tr>\r\n                        <td>Bhavesh</td>                        \r\n                        <td>Patel </td>\r\n                        <td>ASP .NET Developer </td>\r\n                        <td>A-201 Rivera apartment, near CNG pump, sudama chowk, mota varachha</td>\r\n                        <td>Male</td>\r\n                        <td>5/4/1988 12:00:00 AM</td>\r\n                        <td></td>\r\n                        <td></td>\r\n                        <td>nikunj.savani@krtya.com</td>\r\n                        <td>Active</td>\r\n                      </tr>\r\n                      <tr>\r\n                        <td>Manish</td>                        \r\n                        <td>Parakhiya </td>\r\n                        <td>ASP .NET Developer </td>\r\n                        <td>A-201 Rivera apartment, near CNG pump, sudama chowk, mota varachha</td>\r\n                        <td>Male</td>\r\n                        <td>5/4/1988 12:00:00 AM</td>\r\n                        <td></td>\r\n                        <td></td>\r\n                        <td>nikunj.savani@krtya.com</td>\r\n                        <td>Active</td>\r\n                      </tr>\r\n                     \r\n                      \r\n                    </tbody>\r\n                  </table>\r\n                  </div>\r\n                </div>\r\n              </div>\r\n                 \r\n              </div>"
 
 /***/ }),
 
-/***/ 581:
+/***/ 634:
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"text-right m-b-20\">\r\n                <div class=\"btn-group text-left\">\r\n                                        <button class=\"btn btn-success dropdown-toggle\" data-toggle=\"dropdown\">Export <i class=\"fa fa-angle-down\"></i>\r\n                                        </button>\r\n                                        <ul class=\"dropdown-menu pull-right\">\r\n                                            <li><a href=\"#\">Customize Columns</a>\r\n                                            </li>\r\n                                            <li><a href=\"#\">Print</a>\r\n                                            </li>\r\n                                            <li><a href=\"#\">Export to PDF</a>\r\n                                            </li>\r\n                                            <li><a href=\"#\">Export to XLS</a>\r\n                                            </li>\r\n                                            <li><a href=\"#\">Export to CSV</a>\r\n                                            </li>\r\n                                            <li><a href=\"#\">Export to DOC</a>\r\n                                            </li>\r\n                                        </ul>\r\n                                    </div>\r\n                \r\n                <button type=\"button\" class=\"btn btn-sm btn-icon btn-rounded btn-default\"><i class=\"fa fa-question\"></i></button>\r\n              </div>\r\n               <div class=\"form-horizontal\">\r\n                \r\n                <div class=\"m-b-10\">\r\n                  <div class=\"row row-5px\">\r\n              <div class=\"col-md-2 col-sm-2 col-xs-12 col-5px\">\r\n                <label class=\"bold\" >Branch</label>\r\n                <select class=\"form-control\">\r\n                  <option>-- Select --</option>\r\n                </select>\r\n              </div>\r\n              <div class=\"col-md-2 col-sm-2 col-xs-12 col-5px\">\r\n                <label class=\"bold\" >Department</label>\r\n                <select class=\"form-control\">\r\n                  <option>-- Select --</option>\r\n                </select>\r\n              </div>\r\n              <div class=\"col-md-2 col-sm-2 col-xs-12 col-5px\">\r\n                <label class=\"bold\" >Job Profile</label>\r\n                <select class=\"form-control\">\r\n                  <option>-- Select --</option>\r\n                </select>\r\n              </div>\r\n              <div class=\"col-md-2 col-sm-2 col-xs-12 col-5px\">\r\n                <label class=\"bold\" >User Role</label>\r\n                <select class=\"form-control\">\r\n                  <option>-- Select --</option>\r\n                </select>\r\n              </div>\r\n              <div class=\"col-md-2 col-sm-2 col-xs-12 col-5px\">\r\n                <label class=\"bold\" >Month</label>\r\n                <select class=\"form-control\">\r\n                  <option>-- Select --</option>\r\n                </select>\r\n              </div>\r\n              <div class=\"col-md-2 col-sm-2 col-xs-12 col-5px\">                \r\n                <button class=\"btn btn-primary m-t-25\" >Generate Report</button>\r\n              </div>\r\n            </div>\r\n                </div>\r\n                <div class=\"row\">\r\n                <div class=\"col-md-12 col-sm-12 col-xs-12\">\r\n                 <div class=\"table-responsive\">\r\n                  <table class=\"table table-bordered table-striped table-hover\">\r\n                    <thead class=\"no-bd\">\r\n                      <tr>\r\n                        <th><strong>First Name</strong> </th>\r\n                        <th><strong>Last Name</strong> </th>\r\n                        <th><strong>Job Title</strong> </th>\r\n                        <th><strong>Address</strong> </th>\r\n                        <th><strong>Gender</strong> </th>\r\n                        <th><strong>Birth Date</strong> </th>                                                                \r\n                      </tr>\r\n                    </thead>\r\n                    <tbody class=\"no-bd-y\">\r\n                      <tr>\r\n                        <td>Nikunj</td>                        \r\n                        <td>Savani </td>\r\n                        <td>ASP .NET Developer </td>\r\n                        <td>A-201 Rivera apartment, near CNG pump, sudama chowk, mota varachha</td>\r\n                        <td>Male</td>\r\n                        <td>5/4/1988 12:00:00 AM</td>                        \r\n                      </tr>\r\n                      <tr>\r\n                        <td>Bhavesh</td>                        \r\n                        <td>Patel </td>\r\n                        <td>ASP .NET Developer </td>\r\n                        <td>A-201 Rivera apartment, near CNG pump, sudama chowk, mota varachha</td>\r\n                        <td>Male</td>\r\n                        <td>5/4/1988 12:00:00 AM</td>\r\n                        \r\n                      </tr>\r\n                      <tr>\r\n                        <td>Manish</td>                        \r\n                        <td>Parakhiya </td>\r\n                        <td>ASP .NET Developer </td>\r\n                        <td>A-201 Rivera apartment, near CNG pump, sudama chowk, mota varachha</td>\r\n                        <td>Male</td>\r\n                        <td>5/4/1988 12:00:00 AM</td>\r\n                        \r\n                      </tr>\r\n                     \r\n                      \r\n                    </tbody>\r\n                  </table>\r\n                  </div>\r\n                </div>\r\n              </div>\r\n                 \r\n              </div>"
 
 /***/ }),
 
-/***/ 582:
+/***/ 635:
 /***/ (function(module, exports) {
 
 module.exports = "<div id=\"main-content\" >\r\n    <div class=\"row m-t-10\">\r\n      <div class=\"col-md-12\">\r\n        <div class=\"\">\r\n          <ul id=\"myTab2\" class=\"nav nav-tabs nav-dark\">\r\n            <li class=\"active\"><a href=\"#tab2_1\" data-toggle=\"tab\">Active Employees</a></li>\r\n            <li class=\"\"><a href=\"#tab2_2\" data-toggle=\"tab\">Work Anniversary</a></li>\r\n            <li class=\"\"><a href=\"#tab2_3\" data-toggle=\"tab\">Birthday </a></li>\r\n            \r\n          </ul>\r\n          <div id=\"myTabContent\" class=\"tab-content\">\r\n           \r\n            <div class=\"tab-pane fade active in\" id=\"tab2_1\">\r\n              <app-activeemployee></app-activeemployee>\r\n            </div>\r\n            <div class=\"tab-pane fade\" id=\"tab2_2\">\r\n              <app-workanniversary></app-workanniversary>\r\n            </div>\r\n            <div class=\"tab-pane fade\" id=\"tab2_3\">\r\n               <app-birthday></app-birthday>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>"
 
 /***/ }),
 
-/***/ 583:
+/***/ 636:
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"text-right m-b-20\">\r\n                <div class=\"btn-group text-left\">\r\n                                        <button class=\"btn btn-success dropdown-toggle\" data-toggle=\"dropdown\">Export <i class=\"fa fa-angle-down\"></i>\r\n                                        </button>\r\n                                        <ul class=\"dropdown-menu pull-right\">\r\n                                            <li><a href=\"#\">Customize Columns</a>\r\n                                            </li>\r\n                                            <li><a href=\"#\">Print</a>\r\n                                            </li>\r\n                                            <li><a href=\"#\">Export to PDF</a>\r\n                                            </li>\r\n                                            <li><a href=\"#\">Export to XLS</a>\r\n                                            </li>\r\n                                            <li><a href=\"#\">Export to CSV</a>\r\n                                            </li>\r\n                                            <li><a href=\"#\">Export to DOC</a>\r\n                                            </li>\r\n                                        </ul>\r\n                                    </div>\r\n                \r\n                <button type=\"button\" class=\"btn btn-sm btn-icon btn-rounded btn-default\"><i class=\"fa fa-question\"></i></button>\r\n              </div>\r\n              <div class=\"form-horizontal\">\r\n                \r\n                <div class=\"m-b-10\">\r\n                  <div class=\"row row-5px\">\r\n              <div class=\"col-md-2 col-sm-2 col-xs-12 col-5px\">\r\n                <label class=\"bold\" >Branch</label>\r\n                <select class=\"form-control\">\r\n                  <option>-- Select --</option>\r\n                </select>\r\n              </div>\r\n              <div class=\"col-md-2 col-sm-2 col-xs-12 col-5px\">\r\n                <label class=\"bold\" >Department</label>\r\n                <select class=\"form-control\">\r\n                  <option>-- Select --</option>\r\n                </select>\r\n              </div>\r\n              <div class=\"col-md-2 col-sm-2 col-xs-12 col-5px\">\r\n                <label class=\"bold\" >Job Profile</label>\r\n                <select class=\"form-control\">\r\n                  <option>-- Select --</option>\r\n                </select>\r\n              </div>\r\n              <div class=\"col-md-2 col-sm-2 col-xs-12 col-5px\">\r\n                <label class=\"bold\" >User Role</label>\r\n                <select class=\"form-control\">\r\n                  <option>-- Select --</option>\r\n                </select>\r\n              </div>\r\n              <div class=\"col-md-2 col-sm-2 col-xs-12 col-5px\">\r\n                <label class=\"bold\" >Month</label>\r\n                <select class=\"form-control\">\r\n                  <option>-- Select --</option>\r\n                </select>\r\n              </div>\r\n              <div class=\"col-md-2 col-sm-2 col-xs-12 col-5px\">                \r\n                <button class=\"btn btn-primary m-t-25\" >Generate Report</button>\r\n              </div>\r\n            </div>\r\n                </div>\r\n                <div class=\"row\">\r\n                <div class=\"col-md-12 col-sm-12 col-xs-12\">\r\n                 <div class=\"table-responsive\">\r\n                  <table class=\"table table-bordered table-striped table-hover\">\r\n                    <thead class=\"no-bd\">\r\n                      <tr>\r\n                        <th><strong>First Name</strong> </th>\r\n                        <th><strong>Last Name</strong> </th>\r\n                        <th><strong>Job Title</strong> </th>\r\n                        <th><strong>Address</strong> </th>\r\n                        <th><strong>Gender</strong> </th>\r\n                        <th><strong>Joining Date</strong> </th>                                                                \r\n                      </tr>\r\n                    </thead>\r\n                    <tbody class=\"no-bd-y\">\r\n                      <tr>\r\n                        <td>Nikunj</td>                        \r\n                        <td>Savani </td>\r\n                        <td>ASP .NET Developer </td>\r\n                        <td>A-201 Rivera apartment, near CNG pump, sudama chowk, mota varachha</td>\r\n                        <td>Male</td>\r\n                        <td>5/4/1988 12:00:00 AM</td>                        \r\n                      </tr>\r\n                      <tr>\r\n                        <td>Bhavesh</td>                        \r\n                        <td>Patel </td>\r\n                        <td>ASP .NET Developer </td>\r\n                        <td>A-201 Rivera apartment, near CNG pump, sudama chowk, mota varachha</td>\r\n                        <td>Male</td>\r\n                        <td>5/4/1988 12:00:00 AM</td>\r\n                        \r\n                      </tr>\r\n                      <tr>\r\n                        <td>Manish</td>                        \r\n                        <td>Parakhiya </td>\r\n                        <td>ASP .NET Developer </td>\r\n                        <td>A-201 Rivera apartment, near CNG pump, sudama chowk, mota varachha</td>\r\n                        <td>Male</td>\r\n                        <td>5/4/1988 12:00:00 AM</td>\r\n                        \r\n                      </tr>\r\n                     \r\n                      \r\n                    </tbody>\r\n                  </table>\r\n                  </div>\r\n                </div>\r\n              </div>\r\n                 \r\n              </div>"
 
 /***/ }),
 
-/***/ 584:
+/***/ 637:
 /***/ (function(module, exports) {
 
 module.exports = "<div id=\"main-content\" >\r\n    <div class=\"row m-t-10\">\r\n      <div class=\"col-md-12\">\r\n        <div class=\"panel panel-default\">\r\n          <div class=\"panel-heading text-right\">\r\n            <button type=\"button\" class=\"btn btn-sm btn-icon btn-rounded btn-default\"><i class=\"fa fa-question\"></i> </button>\r\n          </div>\r\n          <div class=\"panel-body\">\r\n           \r\n            <div class=\"row\">\r\n              <div class=\"col-md-3 col-sm-3 col-xs-12 \">\r\n                <label class=\"bold\" >Employee</label>\r\n                <select class=\"form-control\">\r\n                  <option>-- Select --</option>\r\n                </select>\r\n              </div>\r\n              <div class=\"col-md-3 col-sm-3 col-xs-12 \">\r\n                <label class=\"bold\" >Salary Structure</label>\r\n                <select class=\"form-control\">\r\n                  <option>-- Select --</option>\r\n                </select>\r\n              </div>\r\n              <div class=\"col-md-3 col-sm-3 col-xs-12 \">\r\n                <label class=\"bold\" >Department</label>\r\n                <select class=\"form-control\">\r\n                  <option>-- Select --</option>\r\n                </select>\r\n              </div>\r\n              \r\n              \r\n            </div>\r\n            \r\n            <div class=\"row\">\r\n              <div class=\"col-md-12 col-sm-12 col-xs-12\">\r\n                <div class=\"table-responsive\">\r\n                  <table class=\"table table-bordered table-striped table-hover\">\r\n                    <thead class=\"no-bd\">\r\n                      <tr>\r\n                        <th><strong>Employee Name</strong> </th>\r\n                        <th><strong>Joinig Date</strong> </th>\r\n                        <th><strong>Department</strong> </th>\r\n                        <th><strong>Position</strong></th>\r\n                        <th><strong>CTC</strong></th>\r\n                        <th><strong>Professional Tax</strong></th>\r\n                        <th><strong>Action</strong></th>\r\n                      </tr>\r\n                    </thead>\r\n                    <tbody class=\"no-bd-y\">\r\n                      <tr>\r\n                        <td>Prashant Kapse </td>\r\n                        <td>2/6/2017 12:00:00 AM</td>\r\n                        <td>Software development (Kailashnagar)</td>\r\n                        <td>ASP.NET Developer</td>                       \r\n                        <td>20000.00</td>\r\n                        <td>200.00</td>\r\n                        <td><button type=\"button\" class=\"btn btn-sm btn-warning\" title=\"Edit\" data-toggle=\"modal\" data-target=\"#modal-basic\"><i class=\"fa fa-pencil\"></i></button>\r\n                        <div class=\"modal fade text-left\" id=\"modal-basic\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" aria-hidden=\"true\">\r\n                    <div class=\"modal-dialog modal-lg\">\r\n                      <div class=\"modal-content\">\r\n                        <div class=\"modal-header\">\r\n                          <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button>\r\n                          <h4 class=\"modal-title\" id=\"myModalLabel\"><strong>Employee Salary</strong> </h4>\r\n                        </div>\r\n                        <div class=\"modal-body\">\r\n                          <div class=\"form-horizontal\">\r\n                \r\n                <div class=\"m-b-30\">\r\n                  <div class=\"form-group\">\r\n                    <label class=\"col-sm-2 control-label\">Department </label>\r\n                    <div class=\"col-sm-3\">\r\n                      <select class=\"form-control\">\r\n                        <option>---Select---</option>\r\n                      </select>\r\n                    </div>\r\n                    <label class=\"col-sm-2 control-label\">Salary Structure  </label>\r\n                    <div class=\"col-sm-3\">\r\n                      <select class=\"form-control\">\r\n                        <option>---Select---</option>\r\n                      </select>\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n                <div class=\"row\">\r\n                <div class=\"col-md-12 col-sm-12 col-xs-12 table-responsive\">\r\n                  <table class=\"table table-bordered table-striped table-hover\">\r\n                    <thead class=\"no-bd\">\r\n                      <tr>\r\n                        <th><strong>Category Name</strong> </th>\r\n                        <th><strong>Category wise Amount</strong> </th>\r\n                        <th><strong>Percentage</strong> </th>\r\n                        <th><strong>Percentage Of</strong> </th>\r\n                        <th><strong>Duration</strong> </th>\r\n                        <th><strong>Deduction</strong> </th>\r\n                      </tr>\r\n                    </thead>\r\n                    <tbody class=\"no-bd-y\">\r\n                      <tr>\r\n                        <td>CTC</td>\r\n                        <td>\r\n                        \t<div class=\"form-inline\">\r\n\t\t\t\t\t\t\t \r\n\t\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\t<div class=\"input-group\">\r\n\t\t\t\t\t\t\t\t  <div class=\"input-group-addon\">₹</div>\r\n\t\t\t\t\t\t\t\t  <input type=\"text\" class=\"form-control\"  placeholder=\"Amount\">\r\n\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t \r\n\t\t\t\t\t\t\t  \r\n\t\t\t\t\t\t\t</div>\r\n                        </td>\r\n                        <td> </td>\r\n                        <td> </td>\r\n                        <td>Monthly</td>\r\n                        <td></td>\r\n                      </tr>\r\n                      <tr>\r\n                        <td>Professional tax</td>\r\n                        <td>\r\n                        \t<div >\r\n\t\t\t\t\t\t\t  \r\n\t\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\t<div class=\"input-group\">\r\n\t\t\t\t\t\t\t\t  <div class=\"input-group-addon\">₹</div>\r\n\t\t\t\t\t\t\t\t  <input type=\"text\" class=\"form-control\"  placeholder=\"Amount\">\r\n\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t  \r\n\t\t\t\t\t\t\t  \r\n\t\t\t\t\t\t\t</div>\r\n                        </td>\r\n                        <td> </td>\r\n                        <td> </td>\r\n                        <td>Monthly</td>\r\n                        <td><i class=\"fa fa-check\"></i></td>\r\n                      </tr>\r\n                      <tr>\r\n                        <td>Gross Salary</td>\r\n                        <td>\r\n                        \t₹ 14900\r\n                        </td>\r\n                        <td> </td>\r\n                        <td> </td>\r\n                        <td></td>\r\n                        <td></td>\r\n                      </tr>\r\n                      \r\n                    </tbody>\r\n                  </table>\r\n                </div>\r\n              </div>\r\n                 \r\n              </div>\r\n                        </div>\r\n                        <div class=\"modal-footer\">\r\n                          <button type=\"button\" class=\"btn btn-primary\" onclick=\"javascript:$('#form1').parsley('validate');\">Save</button>\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n                  </div>\r\n                            </td>\r\n                      </tr>\r\n                      <tr>\r\n                        <td>Prashant Kapse </td>\r\n                        <td>2/6/2017 12:00:00 AM</td>\r\n                        <td>Software development (Kailashnagar)</td>\r\n                        <td>ASP.NET Developer</td>                       \r\n                        <td>20000.00</td>\r\n                        <td>200.00</td>\r\n                        <td><button type=\"button\" class=\"btn btn-sm btn-warning\" title=\"Edit\"><i class=\"fa fa-pencil\"></i></button>  </td>\r\n                      </tr>\r\n                      <tr>\r\n                        <td>Prashant Kapse </td>\r\n                        <td>2/6/2017 12:00:00 AM</td>\r\n                        <td>Software development (Kailashnagar)</td>\r\n                        <td>ASP.NET Developer</td>                       \r\n                        <td>20000.00</td>\r\n                        <td>200.00</td>\r\n                        <td><button type=\"button\" class=\"btn btn-sm btn-warning\" title=\"Edit\"><i class=\"fa fa-pencil\"></i></button>  </td>\r\n                      </tr>\r\n                      <tr>\r\n                        <td>Prashant Kapse </td>\r\n                        <td>2/6/2017 12:00:00 AM</td>\r\n                        <td>Software development (Kailashnagar)</td>\r\n                        <td>ASP.NET Developer</td>                       \r\n                        <td>20000.00</td>\r\n                        <td>200.00</td>\r\n                        <td><button type=\"button\" class=\"btn btn-sm btn-warning\" title=\"Edit\"><i class=\"fa fa-pencil\"></i></button>  </td>\r\n                      </tr>\r\n                      <tr>\r\n                        <td>Prashant Kapse </td>\r\n                        <td>2/6/2017 12:00:00 AM</td>\r\n                        <td>Software development (Kailashnagar)</td>\r\n                        <td>ASP.NET Developer</td>                       \r\n                        <td>20000.00</td>\r\n                        <td>200.00</td>\r\n                        <td><button type=\"button\" class=\"btn btn-sm btn-warning\" title=\"Edit\"><i class=\"fa fa-pencil\"></i></button>  </td>\r\n                      </tr>\r\n                      <tr>\r\n                        <td>Prashant Kapse </td>\r\n                        <td>2/6/2017 12:00:00 AM</td>\r\n                        <td>Software development (Kailashnagar)</td>\r\n                        <td>ASP.NET Developer</td>                       \r\n                        <td>20000.00</td>\r\n                        <td>200.00</td>\r\n                        <td><button type=\"button\" class=\"btn btn-sm btn-warning\" title=\"Edit\"><i class=\"fa fa-pencil\"></i></button>  </td>\r\n                      </tr>\r\n                      <tr>\r\n                        <td>Prashant Kapse </td>\r\n                        <td>2/6/2017 12:00:00 AM</td>\r\n                        <td>Software development (Kailashnagar)</td>\r\n                        <td>ASP.NET Developer</td>                       \r\n                        <td>20000.00</td>\r\n                        <td>200.00</td>\r\n                        <td><button type=\"button\" class=\"btn btn-sm btn-warning\" title=\"Edit\"><i class=\"fa fa-pencil\"></i></button>  </td>\r\n                      </tr>\r\n                      \r\n                     \r\n                    </tbody>\r\n                  </table>\r\n                </div>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>"

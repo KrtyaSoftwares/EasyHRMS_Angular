@@ -1,0 +1,115 @@
+<!-- BEGIN MAIN CONTENT -->
+<div id="main-content">
+    <div class="row m-t-10">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading text-right">
+                    <button type="button" class="btn btn-sm btn-icon btn-rounded btn-default"><i class="fa fa-question"></i> </button>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+
+
+                            <form id="form1" [formGroup]="form" (ngSubmit)="onSubmit(form.value,form.valid)" class="form-horizontal" parsley-validate>
+                                <div class="boder-btm">
+                                    <h3 class="panel-title">Task Info</h3>
+                                </div>
+                                <div class="m-b-30">
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">Form Name </label>
+                                        <div class="col-sm-4">
+                                            <select class="form-control" formControlName="formName" [(ngModel)]="_taskmodel.formName">
+                                                <option>---Select---</option>
+                                                <option *ngFor="let lst of _list" [value]="lst.formName"> {{lst.formName}} </option>
+                                            </select>
+                                            <div [hidden]="form.get('formName').valid || (form.get('formName').pristine && !submitted)" class="alert alert-danger">
+                                                Form Name is required.
+                                            </div>
+                                        </div>
+                                        <label class="col-sm-2 control-label">Display Name </label>
+                                        <div class="col-sm-4">
+                                            <input type="text" class="form-control" formControlName="templateName" [(ngModel)]="_taskmodel.templateName" required>
+                                            <div [hidden]="form.get('templateName').valid || (form.get('templateName').pristine && !submitted)" class="alert alert-danger">
+                                                Template Name is required.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">Task Name </label>
+                                        <div class="col-sm-4">
+                                            <input type="text" class="form-control" formControlName="taskName" [(ngModel)]="_taskmodel.taskName" required>
+                                            <div [hidden]="form.get('taskName').valid || (form.get('taskName').pristine && !submitted)" class="alert alert-danger">
+                                                Task Name is required.
+                                            </div>
+                                        </div>
+                                        <label class="col-sm-2 control-label">Priority </label>
+                                        <div class="col-sm-4">
+                                            <select class="form-control" formControlName="priority" [(ngModel)]="_taskmodel.priority">
+                                                <option [value]=''>---Select---</option>
+                                                <option [value]='high'>High</option>
+                                                <option [value]='low'>Low</option>
+                                                <option [value]='moderate'>Moderate</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">Description </label>
+                                        <div class="col-sm-4">
+                                            <textarea rows="2" class="form-control valid" formControlName="description" [(ngModel)]="_taskmodel.description" placeholder="" required=""></textarea>
+                                        </div>
+                                        <label class="col-sm-2 control-label">Task Owner </label>
+                                        <div class="col-sm-4">
+                                            <textarea rows="2" class="form-control valid" formControlName="taskOwner" [(ngModel)]="_taskmodel.taskOwner" placeholder="" required=""></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">Due Date</label>
+                                        <div class="col-sm-2">
+                                            <input type="text" class="form-control" formControlName="dueDate" [(ngModel)]="_taskmodel.dueDate" required>
+                                        </div>
+                                        <!--<div class="col-sm-2">
+                                            <select class="form-control">
+                                                <option>---Select---</option>
+                                                <option>Day(s)</option>
+                                                <option>Week(s)</option>
+                                                <option>Month(s)</option>
+                                                <option>Year(s)</option>
+                                            </select>
+                                        </div>-->
+                                        <!--<div class="col-sm-2">
+                                            <select class="form-control">
+                                                <option>---Select---</option>
+                                                <option>After</option>
+                                            </select>
+                                        </div>-->
+                                        <!--<div class="col-sm-2">
+                                            <select class="form-control">
+                                                <option>-- Rule Trigger Date --</option>
+                                                <option>Birth Date</option>
+                                                <option>Date of joining</option>
+                                                <option>Date of exit</option>
+                                            </select>
+                                        </div>-->
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-sm-10 col-sm-offset-2">
+                                        <button class="btn btn-primary m-b-10" type="submit" >Submit</button>
+                                        <button type="reset" [routerLink]="['/automation/tasks']" class="btn btn-default m-b-10">Cancel</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <p-growl [value]="msgs"></p-growl>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END MAIN CONTENT --> 

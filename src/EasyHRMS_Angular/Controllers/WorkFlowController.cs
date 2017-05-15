@@ -236,7 +236,10 @@ namespace EasyHRMS_Angular.Controllers
                                         entityUpdateAction.Action = WFAction.Action;
                                         entityUpdateAction.ActionOrder = WFAction.ActionOrder;
                                         entityUpdateAction.TemplateId = WFAction.TemplateId;
-                                       
+                                        entityUpdateAction.MailAlertId = WFAction.MailAlertId;
+                                        entityUpdateAction.TaskId = WFAction.TaskId;
+                                        entityUpdateAction.CheckListId = WFAction.CheckListId;
+                                        
                                         _context.SaveChanges();
                                     }
                                 }

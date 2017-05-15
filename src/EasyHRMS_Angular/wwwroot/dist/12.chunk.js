@@ -1497,7 +1497,7 @@ exports.ProgressBarModule = ProgressBarModule;
 
 /***/ }),
 
-/***/ 375:
+/***/ 374:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1508,24 +1508,27 @@ function __export(m) {
 Object.defineProperty(exports, "__esModule", { value: true });
 __export(__webpack_require__(370));
 __export(__webpack_require__(365));
+__export(__webpack_require__(375));
+__export(__webpack_require__(376));
+__export(__webpack_require__(377));
 __export(__webpack_require__(378));
-__export(__webpack_require__(379));
-__export(__webpack_require__(380));
-__export(__webpack_require__(381));
 __export(__webpack_require__(366));
-__export(__webpack_require__(383));
+__export(__webpack_require__(380));
+__export(__webpack_require__(379));
+__export(__webpack_require__(381));
 __export(__webpack_require__(382));
+__export(__webpack_require__(383));
 __export(__webpack_require__(384));
 __export(__webpack_require__(385));
-__export(__webpack_require__(386));
 __export(__webpack_require__(387));
 __export(__webpack_require__(388));
+__export(__webpack_require__(389));
 __export(__webpack_require__(390));
 __export(__webpack_require__(391));
+__export(__webpack_require__(386));
 __export(__webpack_require__(392));
 __export(__webpack_require__(393));
 __export(__webpack_require__(394));
-__export(__webpack_require__(389));
 __export(__webpack_require__(395));
 __export(__webpack_require__(396));
 __export(__webpack_require__(397));
@@ -1535,50 +1538,47 @@ __export(__webpack_require__(400));
 __export(__webpack_require__(401));
 __export(__webpack_require__(402));
 __export(__webpack_require__(403));
+__export(__webpack_require__(367));
 __export(__webpack_require__(404));
 __export(__webpack_require__(405));
 __export(__webpack_require__(406));
-__export(__webpack_require__(367));
 __export(__webpack_require__(407));
 __export(__webpack_require__(408));
 __export(__webpack_require__(409));
+__export(__webpack_require__(371));
 __export(__webpack_require__(410));
 __export(__webpack_require__(411));
 __export(__webpack_require__(412));
-__export(__webpack_require__(371));
+__export(__webpack_require__(369));
 __export(__webpack_require__(413));
 __export(__webpack_require__(414));
 __export(__webpack_require__(415));
-__export(__webpack_require__(369));
 __export(__webpack_require__(416));
+__export(__webpack_require__(372));
 __export(__webpack_require__(417));
 __export(__webpack_require__(418));
 __export(__webpack_require__(419));
-__export(__webpack_require__(372));
 __export(__webpack_require__(420));
 __export(__webpack_require__(421));
 __export(__webpack_require__(422));
 __export(__webpack_require__(423));
 __export(__webpack_require__(424));
 __export(__webpack_require__(425));
-__export(__webpack_require__(426));
 __export(__webpack_require__(427));
+__export(__webpack_require__(426));
 __export(__webpack_require__(428));
-__export(__webpack_require__(430));
 __export(__webpack_require__(429));
+__export(__webpack_require__(430));
 __export(__webpack_require__(431));
 __export(__webpack_require__(432));
 __export(__webpack_require__(433));
 __export(__webpack_require__(434));
 __export(__webpack_require__(435));
-__export(__webpack_require__(436));
-__export(__webpack_require__(437));
-__export(__webpack_require__(438));
 //# sourceMappingURL=primeng.js.map
 
 /***/ }),
 
-/***/ 378:
+/***/ 375:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1758,7 +1758,7 @@ exports.AccordionModule = AccordionModule;
 
 /***/ }),
 
-/***/ 379:
+/***/ 376:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2261,7 +2261,7 @@ exports.AutoCompleteModule = AutoCompleteModule;
 
 /***/ }),
 
-/***/ 380:
+/***/ 377:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2363,7 +2363,7 @@ exports.BlockUIModule = BlockUIModule;
 
 /***/ }),
 
-/***/ 381:
+/***/ 378:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2460,7 +2460,7 @@ exports.BreadcrumbModule = BreadcrumbModule;
 
 /***/ }),
 
-/***/ 382:
+/***/ 379:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3538,7 +3538,7 @@ exports.CalendarModule = CalendarModule;
 
 /***/ }),
 
-/***/ 383:
+/***/ 380:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3675,7 +3675,7 @@ exports.CaptchaModule = CaptchaModule;
 
 /***/ }),
 
-/***/ 384:
+/***/ 381:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4002,7 +4002,7 @@ exports.CarouselModule = CarouselModule;
 
 /***/ }),
 
-/***/ 385:
+/***/ 382:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4136,7 +4136,7 @@ exports.ChartModule = ChartModule;
 
 /***/ }),
 
-/***/ 386:
+/***/ 383:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4290,7 +4290,7 @@ exports.CheckboxModule = CheckboxModule;
 
 /***/ }),
 
-/***/ 387:
+/***/ 384:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4501,7 +4501,7 @@ exports.ChipsModule = ChipsModule;
 
 /***/ }),
 
-/***/ 388:
+/***/ 385:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4551,7 +4551,7 @@ exports.CodeHighlighterModule = CodeHighlighterModule;
 
 /***/ }),
 
-/***/ 389:
+/***/ 386:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4840,7 +4840,7 @@ exports.ConfirmDialogModule = ConfirmDialogModule;
 
 /***/ }),
 
-/***/ 390:
+/***/ 387:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5105,7 +5105,7 @@ exports.ContextMenuModule = ContextMenuModule;
 
 /***/ }),
 
-/***/ 391:
+/***/ 388:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5315,7 +5315,7 @@ exports.DataGridModule = DataGridModule;
 
 /***/ }),
 
-/***/ 392:
+/***/ 389:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5525,7 +5525,7 @@ exports.DataListModule = DataListModule;
 
 /***/ }),
 
-/***/ 393:
+/***/ 390:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5750,7 +5750,7 @@ exports.DataScrollerModule = DataScrollerModule;
 
 /***/ }),
 
-/***/ 394:
+/***/ 391:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7675,7 +7675,7 @@ exports.DataTableModule = DataTableModule;
 
 /***/ }),
 
-/***/ 395:
+/***/ 392:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8044,7 +8044,7 @@ exports.DialogModule = DialogModule;
 
 /***/ }),
 
-/***/ 396:
+/***/ 393:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8286,7 +8286,7 @@ exports.DragDropModule = DragDropModule;
 
 /***/ }),
 
-/***/ 397:
+/***/ 394:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8789,7 +8789,7 @@ exports.DropdownModule = DropdownModule;
 
 /***/ }),
 
-/***/ 398:
+/***/ 395:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8939,7 +8939,7 @@ exports.EditorModule = EditorModule;
 
 /***/ }),
 
-/***/ 399:
+/***/ 396:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9057,7 +9057,7 @@ exports.FieldsetModule = FieldsetModule;
 
 /***/ }),
 
-/***/ 400:
+/***/ 397:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9389,7 +9389,7 @@ exports.FileUploadModule = FileUploadModule;
 
 /***/ }),
 
-/***/ 401:
+/***/ 398:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9620,7 +9620,7 @@ exports.GalleriaModule = GalleriaModule;
 
 /***/ }),
 
-/***/ 402:
+/***/ 399:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9806,7 +9806,7 @@ exports.GMapModule = GMapModule;
 
 /***/ }),
 
-/***/ 403:
+/***/ 400:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9935,7 +9935,7 @@ exports.GrowlModule = GrowlModule;
 
 /***/ }),
 
-/***/ 404:
+/***/ 401:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10049,7 +10049,7 @@ exports.InplaceModule = InplaceModule;
 
 /***/ }),
 
-/***/ 405:
+/***/ 402:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10612,7 +10612,7 @@ exports.InputMaskModule = InputMaskModule;
 
 /***/ }),
 
-/***/ 406:
+/***/ 403:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10802,7 +10802,7 @@ exports.InputSwitchModule = InputSwitchModule;
 
 /***/ }),
 
-/***/ 407:
+/***/ 404:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10930,7 +10930,7 @@ exports.InputTextareaModule = InputTextareaModule;
 
 /***/ }),
 
-/***/ 408:
+/***/ 405:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11147,7 +11147,7 @@ exports.LightboxModule = LightboxModule;
 
 /***/ }),
 
-/***/ 409:
+/***/ 406:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11489,7 +11489,7 @@ exports.ListboxModule = ListboxModule;
 
 /***/ }),
 
-/***/ 410:
+/***/ 407:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11641,7 +11641,7 @@ exports.MegaMenuModule = MegaMenuModule;
 
 /***/ }),
 
-/***/ 411:
+/***/ 408:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11819,7 +11819,7 @@ exports.MenuModule = MenuModule;
 
 /***/ }),
 
-/***/ 412:
+/***/ 409:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11971,7 +11971,7 @@ exports.MenubarModule = MenubarModule;
 
 /***/ }),
 
-/***/ 413:
+/***/ 410:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12326,7 +12326,7 @@ exports.MultiSelectModule = MultiSelectModule;
 
 /***/ }),
 
-/***/ 414:
+/***/ 411:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12562,7 +12562,7 @@ exports.OrderListModule = OrderListModule;
 
 /***/ }),
 
-/***/ 415:
+/***/ 412:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12738,7 +12738,7 @@ exports.OverlayPanelModule = OverlayPanelModule;
 
 /***/ }),
 
-/***/ 416:
+/***/ 413:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12864,7 +12864,7 @@ exports.PanelModule = PanelModule;
 
 /***/ }),
 
-/***/ 417:
+/***/ 414:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13024,7 +13024,7 @@ exports.PanelMenuModule = PanelMenuModule;
 
 /***/ }),
 
-/***/ 418:
+/***/ 415:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13224,7 +13224,7 @@ exports.PasswordModule = PasswordModule;
 
 /***/ }),
 
-/***/ 419:
+/***/ 416:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13554,7 +13554,7 @@ exports.PickListModule = PickListModule;
 
 /***/ }),
 
-/***/ 420:
+/***/ 417:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13686,7 +13686,7 @@ exports.RadioButtonModule = RadioButtonModule;
 
 /***/ }),
 
-/***/ 421:
+/***/ 418:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13808,7 +13808,7 @@ exports.RatingModule = RatingModule;
 
 /***/ }),
 
-/***/ 422:
+/***/ 419:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14313,7 +14313,7 @@ exports.ScheduleModule = ScheduleModule;
 
 /***/ }),
 
-/***/ 423:
+/***/ 420:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14447,7 +14447,7 @@ exports.SelectButtonModule = SelectButtonModule;
 
 /***/ }),
 
-/***/ 424:
+/***/ 421:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14686,7 +14686,7 @@ exports.SlideMenuModule = SlideMenuModule;
 
 /***/ }),
 
-/***/ 425:
+/***/ 422:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14962,7 +14962,7 @@ exports.SliderModule = SliderModule;
 
 /***/ }),
 
-/***/ 426:
+/***/ 423:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15257,7 +15257,7 @@ exports.SpinnerModule = SpinnerModule;
 
 /***/ }),
 
-/***/ 427:
+/***/ 424:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15402,7 +15402,7 @@ exports.SplitButtonModule = SplitButtonModule;
 
 /***/ }),
 
-/***/ 428:
+/***/ 425:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15505,7 +15505,7 @@ exports.StepsModule = StepsModule;
 
 /***/ }),
 
-/***/ 429:
+/***/ 426:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15618,7 +15618,7 @@ exports.TabMenuModule = TabMenuModule;
 
 /***/ }),
 
-/***/ 430:
+/***/ 427:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15911,7 +15911,7 @@ exports.TabViewModule = TabViewModule;
 
 /***/ }),
 
-/***/ 431:
+/***/ 428:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16024,7 +16024,7 @@ exports.TerminalModule = TerminalModule;
 
 /***/ }),
 
-/***/ 432:
+/***/ 429:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16203,7 +16203,7 @@ exports.TieredMenuModule = TieredMenuModule;
 
 /***/ }),
 
-/***/ 433:
+/***/ 430:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16345,7 +16345,7 @@ exports.ToggleButtonModule = ToggleButtonModule;
 
 /***/ }),
 
-/***/ 434:
+/***/ 431:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16399,7 +16399,7 @@ exports.ToolbarModule = ToolbarModule;
 
 /***/ }),
 
-/***/ 435:
+/***/ 432:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16605,7 +16605,7 @@ exports.TooltipModule = TooltipModule;
 
 /***/ }),
 
-/***/ 436:
+/***/ 433:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17304,7 +17304,7 @@ var UITreeNode_1;
 
 /***/ }),
 
-/***/ 437:
+/***/ 434:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17712,7 +17712,7 @@ exports.TreeTableModule = TreeTableModule;
 
 /***/ }),
 
-/***/ 438:
+/***/ 435:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17841,15 +17841,16 @@ exports.TriStateCheckboxModule = TriStateCheckboxModule;
 
 /***/ }),
 
-/***/ 440:
+/***/ 464:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_router__ = __webpack_require__(172);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app_constants__ = __webpack_require__(67);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(171);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__core_services_form_defination_service__ = __webpack_require__(174);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FormbuilderComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(66);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__(98);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyLeaveService; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -17863,170 +17864,258 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var FormbuilderComponent = (function () {
-    function FormbuilderComponent(fb, _router, _route, formsService) {
-        this.fb = fb;
-        this._router = _router;
-        this._route = _route;
-        this.formsService = formsService;
-        this.result = {};
-        this.createArray = [];
-        this.final_result = [];
-        this.forms = [];
-        this.record = {};
-        this.singleRecord = [];
-        this.record_not_exists = false;
+var MyLeaveService = (function () {
+    function MyLeaveService(http, configuration) {
+        var _this = this;
+        this.http = http;
+        this.configuration = configuration;
+        this.GetAllEmployeeLeave = function () {
+            return _this.http
+                .get(_this.actionUrl + 'EmployeeLeave/GetAllEmployeeLeave')
+                .map(function (res) { return res.json(); });
+        };
+        this.GetEmployeeLeaveByEmployeeId = function (id) {
+            return _this.http
+                .get(_this.actionUrl + 'EmployeeLeave/GetEmployeeLeaveByEmployeeId/' + id)
+                .map(function (res) { return res.json(); });
+        };
+        this.AddEmployeeLeave = function (data) {
+            var toAdd = JSON.stringify(data);
+            console.log(toAdd);
+            return _this.http.post(_this.actionUrl + 'EmployeeLeave/CreateEmployeeLeave/', toAdd, { headers: _this.headers })
+                .map(function (res) { return res.json(); });
+        };
+        this.DeleteEmployeeLeave = function (id) {
+            console.log(id);
+            return _this.http
+                .get(_this.actionUrl + 'EmployeeLeave/DeleteEmployeeLeaveByID/' + id)
+                .map(function (res) { return res.json(); });
+        };
+        this.actionUrl = configuration.Server + 'api/';
+        this.headers = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Headers */]();
+        this.headers.append('Content-Type', 'application/json');
+        this.headers.append('Accept', 'application/json');
     }
-    FormbuilderComponent.prototype.ngOnInit = function () {
-        this.getTableDefination(this.lookup);
-    };
-    FormbuilderComponent.prototype.getTableData = function (lookup, id) {
-        var _this = this;
-        this.formsService
-            .GetTableData(lookup, id)
-            .subscribe(function (data) {
-            _this.record = data;
-            _this.singleRecord = _this.record['list'];
-            _this.array_merge();
-        });
-    };
-    FormbuilderComponent.prototype.onSubmit = function (value, isValid) {
-        this.submitted = true;
-        if (isValid == false) {
-            return false;
-        }
-        else {
-            this.createArray = [];
-            var rowId = void 0;
-            var id = void 0;
-            var cnt = 0;
-            for (var key in this.form.value) {
-                if (this.rowId) {
-                    rowId = this.singleRecord[0]['rowId'];
-                    id = this.singleRecord[cnt]['id'];
-                }
-                var value_1 = this.form.value[key];
-                var tempObj = {
-                    'lookupId': this.lookup,
-                    'fieldName': key,
-                    'rowId': this.rowId ? rowId : 0,
-                    'id': this.rowId ? id : 0,
-                    'value': value_1
-                };
-                this.createArray.push(tempObj);
-                cnt++;
-            }
-            if (this.rowId) {
-                this.updateTableData(this.lookup, this.createArray);
-            }
-            else {
-                this.addTableData(this.lookup, this.createArray);
-            }
-        }
-    };
-    FormbuilderComponent.prototype.addTableData = function (id, data) {
-        var _this = this;
-        this.formsService
-            .Add(id, data)
-            .subscribe(function (data) {
-            _this._router.navigate(['/lookup/lists/' + _this.lookup]);
-        });
-    };
-    FormbuilderComponent.prototype.updateTableData = function (id, data) {
-        var _this = this;
-        this.formsService
-            .Update(id, data)
-            .subscribe(function (data) {
-            _this._router.navigate(['/lookup/lists/' + _this.lookup]);
-        });
-    };
-    FormbuilderComponent.prototype.getTableDefination = function (id) {
-        var _this = this;
-        this.formsService.GetSingle(id)
-            .subscribe(function (data) {
-            _this.result = data;
-            _this.final_result = _this.result['list'];
-            if (_this.final_result.length == 0) {
-                _this.record_not_exists = true;
-            }
-            else {
-                _this.record_not_exists = false;
-            }
-            console.log(_this.final_result);
-            if (_this.rowId) {
-                _this.getTableData(_this.lookup, _this.rowId);
-            }
-            var group = {};
-            var i = 0;
-            _this.final_result.forEach(function (form) {
-                _this.final_result[i]['custom_value'] = '';
-                if (form.fieldType == 'Dropdown' || form.fieldType == 'Bit') {
-                    var optionVal = JSON.parse(form.optionValue);
-                    form.optionValue = optionVal;
-                }
-                if (form.fieldType == 'Date') {
-                    if (form.value !== '') {
-                        form.value = _this.convertDate(form.value);
-                    }
-                }
-                if (form.isRequire) {
-                    group[form.fieldName] = ['', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required];
-                }
-                else {
-                    group[form.fieldName] = [];
-                }
-                i++;
-            });
-            _this.form = _this.fb.group(group);
-        });
-    };
-    FormbuilderComponent.prototype.array_merge = function () {
-        for (var i in this.final_result) {
-            for (var j in this.singleRecord) {
-                if (this.singleRecord[j].fieldName == this.final_result[i].fieldName) {
-                    this.final_result[i]['custom_value'] = this.singleRecord[j]['value'];
-                }
-            }
-        }
-    };
-    FormbuilderComponent.prototype.convertDate = function (inputFormat) {
-        function pad(s) { return (s < 10) ? '0' + s : s; }
-        var d = new Date(inputFormat);
-        return [pad(d.getMonth() + 1), pad(d.getDate()), d.getFullYear()].join('/');
-    };
-    return FormbuilderComponent;
+    return MyLeaveService;
 }());
-__decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Input"])('lookup'),
-    __metadata("design:type", Number)
-], FormbuilderComponent.prototype, "lookup", void 0);
-__decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Input"])('rowId'),
-    __metadata("design:type", Number)
-], FormbuilderComponent.prototype, "rowId", void 0);
-FormbuilderComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Component"])({
-        selector: 'app-formbuilder',
-        template: __webpack_require__(455)
-    }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormBuilder"],
-        __WEBPACK_IMPORTED_MODULE_0__angular_router__["Router"],
-        __WEBPACK_IMPORTED_MODULE_0__angular_router__["ActivatedRoute"],
-        __WEBPACK_IMPORTED_MODULE_3__core_services_form_defination_service__["a" /* FormsService */]])
-], FormbuilderComponent);
+MyLeaveService = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Injectable"])(),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_http__["c" /* Http */], __WEBPACK_IMPORTED_MODULE_0__app_constants__["a" /* Configuration */]])
+], MyLeaveService);
 
 
 
 /***/ }),
 
-/***/ 446:
+/***/ 519:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__(171);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__core_services_selfservice_myleaves_service__ = __webpack_require__(464);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__core_services_common_lookup_data_service__ = __webpack_require__(438);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__models_employee_employeeleave_model__ = __webpack_require__(589);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ListComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+var ListComponent = (function () {
+    function ListComponent(_leaveService, _lookupDataService, fb) {
+        this._leaveService = _leaveService;
+        this._lookupDataService = _lookupDataService;
+        this.employeeId = 1;
+        this.lookupleavetype = 9;
+        this._employeeLeaveList = [];
+        this._employeeLeaveListGroupByMonth = [];
+        this._employeeLeaveDetailList = [];
+        this._leaveTypesList = [];
+        this._leaveTypesListTemp = [];
+        this._leaveTypesListByRowId = [];
+        this.msgs = [];
+        this._EmployeeLeaveModel = new __WEBPACK_IMPORTED_MODULE_4__models_employee_employeeleave_model__["a" /* EmployeeLeaveModel */]();
+        this.employeeLeaveForm = fb.group({
+            'fromDate': [this._EmployeeLeaveModel.fromDate, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required],
+            'toDate': [this._EmployeeLeaveModel.toDate, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required],
+            'leaveReason': [this._EmployeeLeaveModel.toDate, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required],
+            'leaveTypeId': [this._EmployeeLeaveModel.leaveTypeId],
+            'isHalfDay': [this._EmployeeLeaveModel.isHalfDay]
+        });
+    }
+    ListComponent.prototype.ngOnInit = function () {
+        this.GetAllEmployeeLeaveByEmployeeId(this.employeeId);
+        this.GetAllLeaveTypes();
+    };
+    ListComponent.prototype.GetAllLeaveTypes = function () {
+        var _this = this;
+        var that = this;
+        this._lookupDataService
+            .GetLookUpData(this.lookupleavetype)
+            .subscribe(function (data) {
+            _this._leaveTypesListTemp = data.list;
+            _this._leaveTypesListByRowId = _this.groupBy(_this._leaveTypesListTemp, function (item) {
+                return item.rowId;
+            });
+            _this._leaveTypesListByRowId.forEach(function (item, index) {
+                var obj = {};
+                obj.key = item[0].rowId;
+                item.forEach(function (item2, index) {
+                    if (item2.fieldName == 'LeaveTypeTitle') {
+                        obj.name = item2.value;
+                    }
+                });
+                that._leaveTypesList.push(obj);
+            });
+        });
+    };
+    ListComponent.prototype.GetAllEmployeeLeaveByEmployeeId = function (id) {
+        var _this = this;
+        this._leaveService
+            .GetEmployeeLeaveByEmployeeId(id)
+            .subscribe(function (data) {
+            console.log(data.list);
+            _this._employeeLeaveList = data.list;
+            _this._employeeLeaveListGroupByMonth = _this.groupBy(_this._employeeLeaveList, function (item) {
+                return new Date(item.fromDate).getMonth();
+            });
+        });
+    };
+    ListComponent.prototype.GetAllEmployeeLeave = function () {
+        var _this = this;
+        this._leaveService
+            .GetAllEmployeeLeave()
+            .subscribe(function (data) {
+            _this._employeeLeaveList = data.list;
+            _this._employeeLeaveListGroupByMonth = _this.groupBy(_this._employeeLeaveList, function (item) {
+                return new Date(item.fromDate).getMonth();
+            });
+        });
+    };
+    ListComponent.prototype.onSubmit = function (value, isValid) {
+        var _this = this;
+        this.submitted = true;
+        if (isValid == false) {
+            this.msgs.push({ severity: 'error', summary: 'Error Message', detail: 'Validation failed' });
+            return false;
+        }
+        this._EmployeeLeaveModel.employeeId = 1;
+        this._EmployeeLeaveModel.status = 'InProgress';
+        this._EmployeeLeaveModel.fromDate.setHours(0, 0, 0, 0);
+        this._EmployeeLeaveModel.toDate.setHours(0, 0, 0, 0);
+        this._EmployeeLeaveModel.toDate.toDateString();
+        console.log(this._EmployeeLeaveModel.toDate.toDateString());
+        console.log(this._EmployeeLeaveModel);
+        this._leaveService.AddEmployeeLeave(this._EmployeeLeaveModel)
+            .subscribe(function (data) {
+            _this._EmployeeLeaveModel = new __WEBPACK_IMPORTED_MODULE_4__models_employee_employeeleave_model__["a" /* EmployeeLeaveModel */]();
+            _this.GetAllEmployeeLeave();
+            _this.submitted = false;
+            document.getElementById('closeModal').click();
+            if (isValid) {
+                _this.msgs.push({ severity: 'info', summary: 'Saved.', detail: 'Info has been Saved Successfully.' });
+            }
+            else {
+                _this.msgs.push({ severity: 'error', summary: 'Error Message', detail: 'Validation failed' });
+            }
+        }, function (response) {
+            if (response.status == 404) {
+                console.log('execution failed');
+                return false;
+            }
+        });
+    };
+    ListComponent.prototype.initModel = function () {
+        this._EmployeeLeaveModel = new __WEBPACK_IMPORTED_MODULE_4__models_employee_employeeleave_model__["a" /* EmployeeLeaveModel */]();
+    };
+    ListComponent.prototype.DeleteLeave = function (id) {
+        var _this = this;
+        this._leaveService
+            .DeleteEmployeeLeave(id)
+            .subscribe(function (data) {
+            _this.GetAllEmployeeLeave();
+        });
+    };
+    ListComponent.prototype.groupBy = function (array, f) {
+        var groups = {};
+        array.forEach(function (o) {
+            var group = JSON.stringify(f(o));
+            groups[group] = groups[group] || [];
+            groups[group].push(o);
+        });
+        return Object.keys(groups).map(function (group) {
+            return groups[group];
+        });
+    };
+    return ListComponent;
+}());
+ListComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'app-list',
+        template: __webpack_require__(664),
+    }),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__core_services_selfservice_myleaves_service__["a" /* MyLeaveService */],
+        __WEBPACK_IMPORTED_MODULE_3__core_services_common_lookup_data_service__["a" /* LookupDataService */],
+        __WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormBuilder"]])
+], ListComponent);
+
+
+
+/***/ }),
+
+/***/ 573:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyleavesComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var MyleavesComponent = (function () {
+    function MyleavesComponent() {
+    }
+    MyleavesComponent.prototype.ngOnInit = function () {
+    };
+    return MyleavesComponent;
+}());
+MyleavesComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'app-myleaves',
+        template: __webpack_require__(665),
+    }),
+    __metadata("design:paramtypes", [])
+], MyleavesComponent);
+
+
+
+/***/ }),
+
+/***/ 574:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(172);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_formbuilder_component__ = __webpack_require__(440);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FormbuilderRoutingModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_list_list_component__ = __webpack_require__(519);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyLeavesRoutingModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18037,25 +18126,25 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 var routes = [
-    { path: '', component: __WEBPACK_IMPORTED_MODULE_2__components_formbuilder_component__["a" /* FormbuilderComponent */] },
+    { path: '', component: __WEBPACK_IMPORTED_MODULE_2__components_list_list_component__["a" /* ListComponent */] },
 ];
-var FormbuilderRoutingModule = (function () {
-    function FormbuilderRoutingModule() {
+var MyLeavesRoutingModule = (function () {
+    function MyLeavesRoutingModule() {
     }
-    return FormbuilderRoutingModule;
+    return MyLeavesRoutingModule;
 }());
-FormbuilderRoutingModule = __decorate([
+MyLeavesRoutingModule = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
         imports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["RouterModule"].forChild(routes)],
         exports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["RouterModule"]]
     })
-], FormbuilderRoutingModule);
+], MyLeavesRoutingModule);
 
 
 
 /***/ }),
 
-/***/ 447:
+/***/ 575:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -18063,11 +18152,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__(52);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(171);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_formbuilder_component__ = __webpack_require__(440);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__formbuilder_routing_module__ = __webpack_require__(446);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_primeng_primeng__ = __webpack_require__(375);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_primeng_primeng___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_primeng_primeng__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FormbuilderModule", function() { return FormbuilderModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__myleaves_routing_module__ = __webpack_require__(574);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_myleaves_component__ = __webpack_require__(573);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_list_list_component__ = __webpack_require__(519);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__core_services_selfservice_myleaves_service__ = __webpack_require__(464);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_primeng_primeng__ = __webpack_require__(374);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_primeng_primeng___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_primeng_primeng__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MyleavesModule", function() { return MyleavesModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18080,36 +18171,58 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var FormbuilderModule = (function () {
-    function FormbuilderModule() {
+
+
+var MyleavesModule = (function () {
+    function MyleavesModule() {
     }
-    return FormbuilderModule;
+    return MyleavesModule;
 }());
-FormbuilderModule = __decorate([
+MyleavesModule = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
         imports: [
             __WEBPACK_IMPORTED_MODULE_1__angular_common__["CommonModule"],
-            __WEBPACK_IMPORTED_MODULE_4__formbuilder_routing_module__["a" /* FormbuilderRoutingModule */],
+            __WEBPACK_IMPORTED_MODULE_3__myleaves_routing_module__["a" /* MyLeavesRoutingModule */],
             __WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormsModule"],
             __WEBPACK_IMPORTED_MODULE_2__angular_forms__["ReactiveFormsModule"],
-            __WEBPACK_IMPORTED_MODULE_5_primeng_primeng__["GrowlModule"],
-            __WEBPACK_IMPORTED_MODULE_5_primeng_primeng__["CalendarModule"]
+            __WEBPACK_IMPORTED_MODULE_7_primeng_primeng__["GrowlModule"],
+            __WEBPACK_IMPORTED_MODULE_7_primeng_primeng__["CalendarModule"]
         ],
-        exports: [
-            __WEBPACK_IMPORTED_MODULE_3__components_formbuilder_component__["a" /* FormbuilderComponent */]
-        ],
-        declarations: [__WEBPACK_IMPORTED_MODULE_3__components_formbuilder_component__["a" /* FormbuilderComponent */]]
+        declarations: [__WEBPACK_IMPORTED_MODULE_4__components_myleaves_component__["a" /* MyleavesComponent */], __WEBPACK_IMPORTED_MODULE_5__components_list_list_component__["a" /* ListComponent */]],
+        providers: [__WEBPACK_IMPORTED_MODULE_6__core_services_selfservice_myleaves_service__["a" /* MyLeaveService */]]
     })
-], FormbuilderModule);
+], MyleavesModule);
 
 
 
 /***/ }),
 
-/***/ 455:
+/***/ 589:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EmployeeLeaveModel; });
+var EmployeeLeaveModel = (function () {
+    function EmployeeLeaveModel() {
+    }
+    return EmployeeLeaveModel;
+}());
+
+
+
+/***/ }),
+
+/***/ 664:
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"main-content\" >\r\n    <div class=\"row m-t-10\">\r\n      <div class=\"col-md-12\">\r\n        <div class=\"panel panel-default\">\r\n          <div class=\"panel-heading text-right\">\r\n            <button type=\"button\" class=\"btn btn-sm btn-icon btn-rounded btn-default\"><i class=\"fa fa-question\"></i> </button>\r\n          </div>\r\n          <div class=\"panel-body\">\r\n           <div class=\"row\">\r\n              <div class=\"col-md-12 col-sm-12 col-xs-12\">                                 \r\n                <div class=\"form-horizontal\" >\r\n                  <div class=\"boder-btm\">\r\n                    <h3 class=\"panel-title\">Branch Info</h3>\r\n                  </div>\r\n                  <div *ngIf=\"record_not_exists\">No Form found.</div>\r\n                  <div *ngIf=\"!record_not_exists\" class=\"m-b-30\">\r\n                    <form \r\n                        *ngIf=\"form\"\r\n                        (ngSubmit)=\"onSubmit(form.value, form.valid)\" \r\n                        [formGroup]=\"form\" \r\n                        novalidate>\r\n                         <div *ngFor=\"let question of final_result; let i = index\">\r\n                            <div class=\"form-group\">\r\n                                <label for=\"inputEmail3\" class=\"col-md-4 col-sm-4 control-label\">\r\n                                  {{question.displayName ? question.displayName : question.fieldName}}\r\n                                </label>\r\n                                <div class=\"col-md-6 col-sm-6\" [ngSwitch]=\"question.fieldType\">\r\n                                  <div *ngSwitchCase=\"'Text'\">\r\n                                      <input \r\n                                        class=\"form-control\" \r\n                                        type=\"{{question.fieldType}}\"\r\n                                        [formControlName]=\"question.fieldName\" \r\n                                        [(ngModel)]=\"question.custom_value\">\r\n                                  </div>\r\n                                  <div class=\"col-sm-4\" *ngSwitchCase=\"'Bit'\">\r\n                                    <div class=\"radio\" *ngFor=\"let opt of question.optionValue\">\r\n                                      <label>\r\n                                        <input \r\n                                            type=\"radio\" \r\n                                            value=\"{{opt.key}}\"\r\n                                            [formControlName]=\"question.fieldName\" \r\n                                            [(ngModel)]=\"question.value\">\r\n                                        {{opt.value}}\r\n                                      </label>\r\n                                    </div>\r\n                                  </div>\r\n                                  <div class=\"col-sm-4\" *ngSwitchCase=\"'Dropdown'\">\r\n                                      <select class=\"form-control\" [formControlName]=\"question.fieldName\" [(ngModel)]=\"question.value\">\r\n                                          <option  value=\"\" selected>Select</option>\r\n                                          <option  value= {{opt.key}} *ngFor=\"let opt of question.optionValue\">{{opt.value}}</option>\r\n                                        </select>\r\n                                  </div>\r\n                                  <div class=\"col-sm-4\" *ngSwitchCase=\"'Textarea'\">\r\n                                      <textarea [formControlName]=\"question.fieldName\" [(ngModel)]=\"question.value\" rows=\"10\" cols=\"55\"> </textarea>\r\n                                  </div>\r\n                                  <div class=\"col-sm-4\" *ngSwitchCase=\"'datetime'\">\r\n                                      <p-calendar [formControlName]=\"question.fieldName\" [showIcon]=\"true\" [(ngModel)]=\"question.value\"></p-calendar> \r\n                                      <span style=\"margin-left:35px\">{{question.value|date}}</span>\r\n                                  </div>\r\n                                  <div \r\n                                    class=\"alert alert-danger\" \r\n                                    [hidden]=\"form.get([question.fieldName]).valid || (form.get([question.fieldName]).pristine && !submitted)\">\r\n                                    *{{question.fieldName}} is required\r\n                                  </div>\r\n                                </div>\r\n                          </div>\r\n                        </div>\r\n                        <div class=\"form-row\">\r\n                            <button class=\"btn btn-primary m-b-10\" type=\"submit\" >Save</button>\r\n                        </div>\r\n                    </form>\r\n                    <div class=\"form-row\">\r\n                      <div *ngIf=\"payLoad\"><strong>The form contains the following values</strong></div>\r\n                      <div>\r\n                          {{payLoad}}\r\n                      </div>\r\n                  </div>\r\n                  </div>\r\n                </div>\r\n\t\t          </div>\r\n           </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n</div>  "
+module.exports = "<!--<p>\n   Leaves list works!\n</p>-->\n\n<div id=\"main-content\">\r\n\r\n    <div class=\"row m-t-10\">\r\n        <div class=\"col-md-12\">\r\n            <div class=\"panel panel-default\">\r\n                <div class=\"panel-heading text-right\">\r\n\r\n\r\n                    <button type=\"button\" class=\"btn btn-sm btn-icon btn-rounded btn-default\">\r\n                        <i class=\"fa fa-question\"></i>\r\n                    </button>\r\n\r\n                </div>\r\n                <div class=\"panel-body\">\r\n                    <div class=\"row\">\r\n                        <div class=\"col-md-6 col-sm-6 col-xs-6\">\r\n                            <h3 class=\"panel-title m-t-20\">New Leave Request</h3>\r\n                        </div>\r\n                        <div class=\"col-md-6 col-sm-6 col-xs-6 text-right\">\r\n                            <button class=\"btn btn-primary m-b-10\" data-toggle=\"modal\" data-target=\"#modal-basic\" (click)=\"initModel()\">New Leave</button>\r\n                            <div class=\"modal fade text-left\" id=\"modal-basic\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" aria-hidden=\"true\">\r\n                                <div class=\"modal-dialog\">\r\n                                    <div class=\"modal-content\">\r\n                                        <div class=\"modal-header\">\r\n                                            <button type=\"button\" class=\"close\" id=\"closeModal\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button>\r\n                                            <h4 class=\"modal-title\" id=\"myModalLabel\"><strong>New Leave Request</strong> </h4>\r\n                                        </div>\r\n                                        <div class=\"modal-body\">\r\n                                            <form class=\"form-horizontal\" id=\"leaveform\" name=\"leaveform\" [formGroup]=\"employeeLeaveForm\" (ngSubmit)=\"onSubmit(employeeLeaveForm.value, employeeLeaveForm.valid)\" novalidate>\r\n                                                <div class=\"form-group\">\r\n                                                    <label class=\"col-sm-4 control-label\">\r\n                                                        From  <span class=\"asterisk\">*</span>\r\n                                                    </label>\r\n                                                    <div class=\"col-sm-8\">\r\n                                                        <p-calendar dateFormat=\"dd/mm/yy\" formControlName=\"fromDate\" [showIcon]=\"true\" [(ngModel)]=\"_EmployeeLeaveModel.fromDate\"></p-calendar>\r\n                                                        <!--<span style=\"margin-left:35px\">{{fields.value|date}}</span>-->\r\n                                                        <!--<input type=\"text\" class=\"form-control\" required>-->\r\n                                                        <div class=\"alert alert-danger\"\r\n                                                             [hidden]=\"employeeLeaveForm.get('fromDate').valid || (employeeLeaveForm.get('fromDate').pristine && !submitted)\">\r\n                                                            * From Date is required\r\n                                                        </div>\r\n                                                    </div>\r\n                                                    \r\n                                                </div>\r\n                                                <div class=\"form-group\">\r\n                                                    <label class=\"col-sm-4 control-label\">\r\n                                                        To  <span class=\"asterisk\">*</span>\r\n                                                    </label>\r\n                                                    <div class=\"col-sm-8\">\r\n                                                        <p-calendar dateFormat=\"dd/mm/yy\" [minDate]=\"_EmployeeLeaveModel.fromDate\" formControlName=\"toDate\" [showIcon]=\"true\" [(ngModel)]=\"_EmployeeLeaveModel.toDate\"></p-calendar>\r\n                                                        <!--<span style=\"margin-left:35px\">{{fields.value|date}}</span>-->\r\n                                                        <!--<input type=\"text\" class=\"form-control\" required>-->\r\n                                                        <div class=\"alert alert-danger\"\r\n                                                             [hidden]=\"employeeLeaveForm.get('toDate').valid || (employeeLeaveForm.get('toDate').pristine && !submitted)\">\r\n                                                            * To Date is required\r\n                                                        </div>\r\n                                                    </div>\r\n                                                    \r\n                                                </div>\r\n                                                <div class=\"form-group\">\r\n                                                    <label class=\"col-sm-4 control-label\">\r\n                                                        leave Type <span class=\"asterisk\">*</span>\r\n                                                    </label>\r\n                                                    <div class=\"col-sm-8\">\r\n                                                        <select [(ngModel)]=\"_EmployeeLeaveModel.leaveTypeId\" formControlName=\"leaveTypeId\" class=\"form-control\">\r\n                                                            <option value=\"\">--Select--</option>\r\n                                                            <option *ngFor=\"let leave of _leaveTypesList\" value={{leave.key}}>{{leave.name}}</option>\r\n                                                        </select>\r\n                                                        <!--<input type=\"text\" class=\"form-control\" required>-->\r\n                                                        <div class=\"alert alert-danger\"\r\n                                                             [hidden]=\"employeeLeaveForm.get('leaveTypeId').valid || (employeeLeaveForm.get('leaveTypeId').pristine && !submitted)\">\r\n                                                            * Leave Type is required\r\n                                                        </div>\r\n                                                    </div>\r\n                                                    \r\n                                                </div>\r\n                                                <div class=\"form-group\">\r\n                                                    <label class=\"col-sm-4 control-label\">\r\n                                                        Reason <span class=\"asterisk\">*</span>\r\n                                                    </label>\r\n                                                    <div class=\"col-sm-8\">\r\n                                                        <textarea rows=\"5\" [(ngModel)]=\"_EmployeeLeaveModel.leaveReason\" formControlName=\"leaveReason\" class=\"form-control valid\" placeholder=\"\" required></textarea>\r\n                                                    </div>\r\n                                                </div>\r\n                                                <!--<div class=\"form-group\">\r\n                                                    <label class=\"col-sm-4 control-label\">\r\n                                                        Status <span class=\"asterisk\">*</span>\r\n                                                    </label>\r\n                                                    <div class=\"col-sm-8\">\r\n                                                        <select [(ngModel)]=\"_EmployeeLeaveModel.status\" formControlName=\"status\" class=\"form-control\">\r\n                                                            <option value=\"\">--Select--</option>\r\n                                                            <option *ngFor=\"let leave of leaveStatusList\" value={{leave.name}}>{{leave.name}}</option>\r\n                                                        </select>\r\n                                                    </div>\r\n                                                </div>-->\r\n                                                <div class=\"form-group\">\r\n                                                    <label class=\"col-sm-4 control-label\">\r\n                                                        Is Half Day <span class=\"asterisk\">*</span>\r\n                                                    </label>\r\n                                                    <div class=\"col-sm-2\">\r\n                                                        <input type=\"checkbox\" [(ngModel)]=\"_EmployeeLeaveModel.isHalfDay\" formControlName=\"isHalfDay\" class=\"form-control\">\r\n                                                    </div>\r\n                                                </div>\r\n                                            </form>\r\n                                        </div>\r\n                                        <div class=\"modal-footer\">\r\n                                            <!--<button type=\"button\" class=\"btn btn-primary\" onclick=\"javascript:$('#form1').parsley('validate');\">Save</button>-->\r\n                                            <button type=\"submit\" class=\"btn btn-primary\" (click)=\"onSubmit(employeeLeaveForm.value, employeeLeaveForm.valid)\">Submit</button>\r\n\r\n                                        </div>\r\n                                    </div>\r\n                                </div>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                    <div class=\"row\">\r\n                        <div class=\"col-md-12 col-sm-12 col-xs-12 table-responsive\">\r\n                            <table class=\"table table-bordered table-striped table-hover\">\r\n                                <thead class=\"no-bd\">\r\n                                    <tr>\r\n                                        <th>\r\n                                            <strong>Date</strong>\r\n                                        </th>\r\n                                        <th>\r\n                                            <strong>Leave Reason</strong>\r\n                                        </th>\r\n                                        <th>\r\n                                            <strong>Status</strong>\r\n                                        </th>\r\n                                        <th>\r\n                                            <strong>Leave cancel</strong>\r\n                                        </th>\r\n\r\n                                    </tr>\r\n                                </thead>\r\n                                <tbody class=\"no-bd-y\">\r\n                                    <tr *ngFor=\"let rec of _employeeLeaveList;let i = index\">\r\n                                        <td>{{rec.fromDate| date: 'dd/MM/yyyy'}} to {{rec.toDate| date: 'dd/MM/yyyy'}}</td>\r\n                                        <td>{{rec.leaveReason}}</td>\r\n                                        <td>{{rec.status}}</td>\r\n                                        <td><button type=\"button\" class=\"btn btn-sm btn-danger\" (click)=\"DeleteLeave(rec.id)\"><i class=\"fa fa-remove\"></i></button></td>\r\n                                    </tr>\r\n                                    <!--<tr>\r\n                                        <td>12/02/17 to 12/02/17 </td>\r\n                                        <td>Personal</td>\r\n                                        <td>In Progress</td>\r\n                                        <td><button type=\"button\" class=\"btn btn-sm btn-danger\"><i class=\"fa fa-remove\"></i></button></td>\r\n                                    </tr>-->\r\n\r\n\r\n\r\n                                </tbody>\r\n                            </table>\r\n                        </div>\r\n                    </div>\r\n                    <h3 class=\"panel-title\">Leave Details</h3>\r\n                    <div class=\"row\">\r\n                        <div class=\"col-md-12 col-sm-12 col-xs-12 table-responsive\">\r\n                            <table class=\"table table-bordered table-striped table-hover\">\r\n                                <thead class=\"no-bd\">\r\n                                    <tr>\r\n                                        <th>\r\n                                            <strong>Month</strong>\r\n                                        </th>\r\n                                        <th>\r\n                                            <strong>Total Leave</strong>\r\n                                        </th>\r\n                                        <th>\r\n                                            <strong>Carry Forward</strong>\r\n                                        </th>\r\n                                    </tr>\r\n                                </thead>\r\n                                <tbody class=\"no-bd-y\">\r\n                                    <!--<tr  *ngFor=\"let rec of _employeeLeaveListGroupByMonth;let i = index\">\r\n\r\n                                        <td>{{rec[0].fromDate| date: 'MMMM,y'}}</td>\r\n                                        <td>3.00</td>\r\n                                        <td>4.50</td>\r\n                                    </tr>-->\r\n                                    <tr>\r\n                                        <td>September, 2015</td>\r\n                                        <td>3.00</td>\r\n                                        <td>4.50</td>\r\n                                    </tr>\r\n                                    <tr>\r\n                                        <td>October, 2015</td>\r\n                                        <td>1.00</td>\r\n                                        <td>4.50</td>\r\n                                    </tr>\r\n                                    <tr>\r\n                                        <td>November, 2015</td>\r\n                                        <td>00.00</td>\r\n                                        <td>4.50</td>\r\n                                    </tr>\r\n                                    <tr>\r\n                                        <td>December, 2015</td>\r\n                                        <td>00.00</td>\r\n                                        <td>4.50</td>\r\n                                    </tr>\r\n\r\n                                </tbody>\r\n                            </table>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n\r\n    </div>\r\n\r\n\r\n</div>\r\n<!-- END MAIN CONTENT -->\n<p-growl [value]=\"msgs\"></p-growl>"
+
+/***/ }),
+
+/***/ 665:
+/***/ (function(module, exports) {
+
+module.exports = "<p>\n  myleaves works!\n</p>\n"
 
 /***/ })
 

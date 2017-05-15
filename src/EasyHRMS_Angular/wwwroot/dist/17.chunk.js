@@ -1,11 +1,11 @@
 webpackJsonp([17],{
 
-/***/ 470:
+/***/ 509:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EnquiryComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ApplicantsComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -16,31 +16,31 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
-var EnquiryComponent = (function () {
-    function EnquiryComponent() {
+var ApplicantsComponent = (function () {
+    function ApplicantsComponent() {
     }
-    EnquiryComponent.prototype.ngOnInit = function () {
+    ApplicantsComponent.prototype.ngOnInit = function () {
     };
-    return EnquiryComponent;
+    return ApplicantsComponent;
 }());
-EnquiryComponent = __decorate([
+ApplicantsComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'app-enquiry',
-        template: __webpack_require__(572),
+        selector: 'app-applicants',
+        template: __webpack_require__(654),
     }),
     __metadata("design:paramtypes", [])
-], EnquiryComponent);
+], ApplicantsComponent);
 
 
 
 /***/ }),
 
-/***/ 471:
+/***/ 510:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LivepositionComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return InterviewlistsComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -51,31 +51,31 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
-var LivepositionComponent = (function () {
-    function LivepositionComponent() {
+var InterviewlistsComponent = (function () {
+    function InterviewlistsComponent() {
     }
-    LivepositionComponent.prototype.ngOnInit = function () {
+    InterviewlistsComponent.prototype.ngOnInit = function () {
     };
-    return LivepositionComponent;
+    return InterviewlistsComponent;
 }());
-LivepositionComponent = __decorate([
+InterviewlistsComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'app-liveposition',
-        template: __webpack_require__(573),
+        selector: 'app-interviewlists',
+        template: __webpack_require__(655),
     }),
     __metadata("design:paramtypes", [])
-], LivepositionComponent);
+], InterviewlistsComponent);
 
 
 
 /***/ }),
 
-/***/ 472:
+/***/ 511:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return OppurtunityComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ListsComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -86,31 +86,31 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
-var OppurtunityComponent = (function () {
-    function OppurtunityComponent() {
+var ListsComponent = (function () {
+    function ListsComponent() {
     }
-    OppurtunityComponent.prototype.ngOnInit = function () {
+    ListsComponent.prototype.ngOnInit = function () {
     };
-    return OppurtunityComponent;
+    return ListsComponent;
 }());
-OppurtunityComponent = __decorate([
+ListsComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'app-oppurtunity',
-        template: __webpack_require__(574),
+        selector: 'app-lists',
+        template: __webpack_require__(656),
     }),
     __metadata("design:paramtypes", [])
-], OppurtunityComponent);
+], ListsComponent);
 
 
 
 /***/ }),
 
-/***/ 473:
+/***/ 512:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ReportComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MeetingcalendarComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -121,42 +121,79 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
-var ReportComponent = (function () {
-    function ReportComponent() {
+var MeetingcalendarComponent = (function () {
+    function MeetingcalendarComponent() {
     }
-    ReportComponent.prototype.ngOnInit = function () {
+    MeetingcalendarComponent.prototype.ngOnInit = function () {
     };
-    return ReportComponent;
+    return MeetingcalendarComponent;
 }());
-ReportComponent = __decorate([
+MeetingcalendarComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'app-report',
-        template: __webpack_require__(575),
+        selector: 'app-meetingcalendar',
+        template: __webpack_require__(657),
     }),
     __metadata("design:paramtypes", [])
-], ReportComponent);
+], MeetingcalendarComponent);
 
 
 
 /***/ }),
 
-/***/ 516:
+/***/ 513:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ReportsComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var ReportsComponent = (function () {
+    function ReportsComponent() {
+    }
+    ReportsComponent.prototype.ngOnInit = function () {
+    };
+    return ReportsComponent;
+}());
+ReportsComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'app-reports',
+        template: __webpack_require__(658),
+    }),
+    __metadata("design:paramtypes", [])
+], ReportsComponent);
+
+
+
+/***/ }),
+
+/***/ 567:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(172);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__oppurtunity_oppurtunity_component__ = __webpack_require__(472);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__liveposition_liveposition_component__ = __webpack_require__(471);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__enquiry_enquiry_component__ = __webpack_require__(470);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__report_report_component__ = __webpack_require__(473);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CrmRoutingModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__lists_lists_component__ = __webpack_require__(511);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__applicants_applicants_component__ = __webpack_require__(509);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__meetingcalendar_meetingcalendar_component__ = __webpack_require__(512);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__interviewlists_interviewlists_component__ = __webpack_require__(510);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__reports_reports_component__ = __webpack_require__(513);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RecruitmentRoutingModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -164,41 +201,43 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 var routes = [
-    { path: '', component: __WEBPACK_IMPORTED_MODULE_2__oppurtunity_oppurtunity_component__["a" /* OppurtunityComponent */] },
-    { path: 'liveposition', component: __WEBPACK_IMPORTED_MODULE_3__liveposition_liveposition_component__["a" /* LivepositionComponent */] },
-    { path: 'enquiry', component: __WEBPACK_IMPORTED_MODULE_4__enquiry_enquiry_component__["a" /* EnquiryComponent */] },
-    { path: 'reports', component: __WEBPACK_IMPORTED_MODULE_5__report_report_component__["a" /* ReportComponent */] },
+    { path: '', component: __WEBPACK_IMPORTED_MODULE_2__lists_lists_component__["a" /* ListsComponent */] },
+    { path: 'applicants', component: __WEBPACK_IMPORTED_MODULE_3__applicants_applicants_component__["a" /* ApplicantsComponent */] },
+    { path: 'meetingcalendar', component: __WEBPACK_IMPORTED_MODULE_4__meetingcalendar_meetingcalendar_component__["a" /* MeetingcalendarComponent */] },
+    { path: 'interviewlists', component: __WEBPACK_IMPORTED_MODULE_5__interviewlists_interviewlists_component__["a" /* InterviewlistsComponent */] },
+    { path: 'reports', component: __WEBPACK_IMPORTED_MODULE_6__reports_reports_component__["a" /* ReportsComponent */] },
 ];
-var CrmRoutingModule = (function () {
-    function CrmRoutingModule() {
+var RecruitmentRoutingModule = (function () {
+    function RecruitmentRoutingModule() {
     }
-    return CrmRoutingModule;
+    return RecruitmentRoutingModule;
 }());
-CrmRoutingModule = __decorate([
+RecruitmentRoutingModule = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
         imports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["RouterModule"].forChild(routes)],
         exports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["RouterModule"]]
     })
-], CrmRoutingModule);
+], RecruitmentRoutingModule);
 
 
 
 /***/ }),
 
-/***/ 517:
+/***/ 568:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__(52);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__crm_routing_module__ = __webpack_require__(516);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared__ = __webpack_require__(374);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__oppurtunity_oppurtunity_component__ = __webpack_require__(472);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__liveposition_liveposition_component__ = __webpack_require__(471);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__enquiry_enquiry_component__ = __webpack_require__(470);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__report_report_component__ = __webpack_require__(473);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CrmModule", function() { return CrmModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__recruitment_routing_module__ = __webpack_require__(567);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared__ = __webpack_require__(437);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__lists_lists_component__ = __webpack_require__(511);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__applicants_applicants_component__ = __webpack_require__(509);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__meetingcalendar_meetingcalendar_component__ = __webpack_require__(512);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__interviewlists_interviewlists_component__ = __webpack_require__(510);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__reports_reports_component__ = __webpack_require__(513);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RecruitmentModule", function() { return RecruitmentModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -213,56 +252,65 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var CrmModule = (function () {
-    function CrmModule() {
+
+var RecruitmentModule = (function () {
+    function RecruitmentModule() {
     }
-    return CrmModule;
+    return RecruitmentModule;
 }());
-CrmModule = __decorate([
+RecruitmentModule = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
         imports: [
             __WEBPACK_IMPORTED_MODULE_1__angular_common__["CommonModule"],
-            __WEBPACK_IMPORTED_MODULE_2__crm_routing_module__["a" /* CrmRoutingModule */],
+            __WEBPACK_IMPORTED_MODULE_2__recruitment_routing_module__["a" /* RecruitmentRoutingModule */],
             __WEBPACK_IMPORTED_MODULE_3__shared__["d" /* PageHeaderModule */]
         ],
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_4__oppurtunity_oppurtunity_component__["a" /* OppurtunityComponent */],
-            __WEBPACK_IMPORTED_MODULE_5__liveposition_liveposition_component__["a" /* LivepositionComponent */],
-            __WEBPACK_IMPORTED_MODULE_6__enquiry_enquiry_component__["a" /* EnquiryComponent */],
-            __WEBPACK_IMPORTED_MODULE_7__report_report_component__["a" /* ReportComponent */]
+            __WEBPACK_IMPORTED_MODULE_4__lists_lists_component__["a" /* ListsComponent */],
+            __WEBPACK_IMPORTED_MODULE_5__applicants_applicants_component__["a" /* ApplicantsComponent */],
+            __WEBPACK_IMPORTED_MODULE_6__meetingcalendar_meetingcalendar_component__["a" /* MeetingcalendarComponent */],
+            __WEBPACK_IMPORTED_MODULE_7__interviewlists_interviewlists_component__["a" /* InterviewlistsComponent */],
+            __WEBPACK_IMPORTED_MODULE_8__reports_reports_component__["a" /* ReportsComponent */]
         ]
     })
-], CrmModule);
+], RecruitmentModule);
 
 
 
 /***/ }),
 
-/***/ 572:
+/***/ 654:
 /***/ (function(module, exports) {
 
-module.exports = "<p>\r\n  enquiry works!\r\n</p>\r\n"
+module.exports = "<p>\r\n  applicants works!\r\n</p>\r\n"
 
 /***/ }),
 
-/***/ 573:
+/***/ 655:
 /***/ (function(module, exports) {
 
-module.exports = "<p>\r\n  liveposition works!\r\n</p>\r\n"
+module.exports = "<p>\r\n  interviewlists works!\r\n</p>\r\n"
 
 /***/ }),
 
-/***/ 574:
+/***/ 656:
 /***/ (function(module, exports) {
 
-module.exports = "<p>\r\n  oppurtunity works!\r\n</p>\r\n"
+module.exports = "<p>\r\n  lists works!\r\n</p>\r\n"
 
 /***/ }),
 
-/***/ 575:
+/***/ 657:
 /***/ (function(module, exports) {
 
-module.exports = "<p>\r\n  report works!\r\n</p>\r\n"
+module.exports = "<p>\r\n  meetingcalendar works!\r\n</p>\r\n"
+
+/***/ }),
+
+/***/ 658:
+/***/ (function(module, exports) {
+
+module.exports = "<p>\r\n  reports works!\r\n</p>\r\n"
 
 /***/ })
 

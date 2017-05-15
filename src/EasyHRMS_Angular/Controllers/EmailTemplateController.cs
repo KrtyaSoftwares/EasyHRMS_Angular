@@ -70,7 +70,7 @@ namespace EasyHRMS_Angular.Controllers
                 using (_context)
                 {
                     objEmailTemplate = _context.EmailTemplate.FirstOrDefault(x => x.Id == id);
-                   
+
                     result = new
                     {
                         objEmailTemplate,
@@ -155,19 +155,19 @@ namespace EasyHRMS_Angular.Controllers
                     try
                     {
                         var entityUpdate = _context.EmailTemplate.FirstOrDefault(x => x.Id == id);
-                       
+
                         if (entityUpdate != null)
                         {
                             entityUpdate.FormName = model.FormName;
                             entityUpdate.TemplateName = model.TemplateName;
                             entityUpdate.Message = model.Message;
-                            entityUpdate.FromAddress = model.FromAddress;
-                            entityUpdate.ToAddress = model.ToAddress;
-                            entityUpdate.Ccaddress = model.Ccaddress;
-                            entityUpdate.Bccaddress = model.Bccaddress;
-                            entityUpdate.ReplyToAddress = model.ReplyToAddress;
-                            entityUpdate.EmailSubject = model.EmailSubject;
-                            entityUpdate.Attachment = model.Attachment;
+                            //entityUpdate.FromAddress = model.FromAddress;
+                            //entityUpdate.ToAddress = model.ToAddress;
+                            //entityUpdate.Ccaddress = model.Ccaddress;
+                            //entityUpdate.Bccaddress = model.Bccaddress;
+                            //entityUpdate.ReplyToAddress = model.ReplyToAddress;
+                            //entityUpdate.EmailSubject = model.EmailSubject;
+                            //entityUpdate.Attachment = model.Attachment;
 
                             _context.SaveChanges();
                         }
@@ -217,19 +217,19 @@ namespace EasyHRMS_Angular.Controllers
                         if (id != 0)
                         {
                             var entityUpdate = _context.EmailTemplate.FirstOrDefault(x => x.Id == id);
-                           
+
                             if (entityUpdate != null)
                             {
                                 entityUpdate.FormName = model.FormName;
                                 entityUpdate.TemplateName = model.TemplateName;
                                 entityUpdate.Message = model.Message;
-                                entityUpdate.FromAddress = model.FromAddress;
-                                entityUpdate.ToAddress = model.ToAddress;
-                                entityUpdate.Ccaddress = model.Ccaddress;
-                                entityUpdate.Bccaddress = model.Bccaddress;
-                                entityUpdate.ReplyToAddress = model.ReplyToAddress;
-                                entityUpdate.EmailSubject = model.EmailSubject;
-                                entityUpdate.Attachment = model.Attachment;
+                                //entityUpdate.FromAddress = model.FromAddress;
+                                //entityUpdate.ToAddress = model.ToAddress;
+                                //entityUpdate.Ccaddress = model.Ccaddress;
+                                //entityUpdate.Bccaddress = model.Bccaddress;
+                                //entityUpdate.ReplyToAddress = model.ReplyToAddress;
+                                //entityUpdate.EmailSubject = model.EmailSubject;
+                                //entityUpdate.Attachment = model.Attachment;
 
                                 _context.SaveChanges();
                             }
@@ -310,5 +310,12 @@ namespace EasyHRMS_Angular.Controllers
             }
             return result;
         }
+
+
+        #region Email Alert
+
+
+        #endregion Email Alert
+        
     }
 }

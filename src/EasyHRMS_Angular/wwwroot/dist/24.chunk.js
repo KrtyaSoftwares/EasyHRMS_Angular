@@ -1,11 +1,11 @@
 webpackJsonp([24],{
 
-/***/ 504:
+/***/ 522:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyadvancesclaimComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TemplatesComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -16,33 +16,33 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
-var MyadvancesclaimComponent = (function () {
-    function MyadvancesclaimComponent() {
+var TemplatesComponent = (function () {
+    function TemplatesComponent() {
     }
-    MyadvancesclaimComponent.prototype.ngOnInit = function () {
+    TemplatesComponent.prototype.ngOnInit = function () {
     };
-    return MyadvancesclaimComponent;
+    return TemplatesComponent;
 }());
-MyadvancesclaimComponent = __decorate([
+TemplatesComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'app-myadvancesclaim',
-        template: __webpack_require__(609),
+        selector: 'app-templates',
+        template: __webpack_require__(668),
     }),
     __metadata("design:paramtypes", [])
-], MyadvancesclaimComponent);
+], TemplatesComponent);
 
 
 
 /***/ }),
 
-/***/ 534:
+/***/ 586:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(172);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_myadvancesclaim_component__ = __webpack_require__(504);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyAdvancesClaimRoutingModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_templates_component__ = __webpack_require__(522);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TemplatseRoutingModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -53,34 +53,40 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 var routes = [
-    { path: '', component: __WEBPACK_IMPORTED_MODULE_2__components_myadvancesclaim_component__["a" /* MyadvancesclaimComponent */] },
+    {
+        path: '', component: __WEBPACK_IMPORTED_MODULE_2__components_templates_component__["a" /* TemplatesComponent */],
+        children: [
+            { path: 'email-templates', loadChildren: function () { return new Promise(function (resolve) { __webpack_require__.e/* require.ensure */(10).then((function (require) { resolve(__webpack_require__(583)['EmailTemplateModule']); }).bind(null, __webpack_require__)).catch(__webpack_require__.oe); }); } },
+            { path: 'record-templates', loadChildren: function () { return new Promise(function (resolve) { __webpack_require__.e/* require.ensure */(23).then((function (require) { resolve(__webpack_require__(585)['RecordTemplateModule']); }).bind(null, __webpack_require__)).catch(__webpack_require__.oe); }); } },
+        ]
+    },
 ];
-var MyAdvancesClaimRoutingModule = (function () {
-    function MyAdvancesClaimRoutingModule() {
+var TemplatseRoutingModule = (function () {
+    function TemplatseRoutingModule() {
     }
-    return MyAdvancesClaimRoutingModule;
+    return TemplatseRoutingModule;
 }());
-MyAdvancesClaimRoutingModule = __decorate([
+TemplatseRoutingModule = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
         imports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["RouterModule"].forChild(routes)],
         exports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["RouterModule"]]
     })
-], MyAdvancesClaimRoutingModule);
+], TemplatseRoutingModule);
 
 
 
 /***/ }),
 
-/***/ 535:
+/***/ 587:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__(52);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__myadvancesclaim_routing_module__ = __webpack_require__(534);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_myadvancesclaim_component__ = __webpack_require__(504);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MyadvancesclaimModule", function() { return MyadvancesclaimModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_templates_component__ = __webpack_require__(522);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__templates_routing_module__ = __webpack_require__(586);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TemplatesModule", function() { return TemplatesModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -91,29 +97,29 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var MyadvancesclaimModule = (function () {
-    function MyadvancesclaimModule() {
+var TemplatesModule = (function () {
+    function TemplatesModule() {
     }
-    return MyadvancesclaimModule;
+    return TemplatesModule;
 }());
-MyadvancesclaimModule = __decorate([
+TemplatesModule = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
         imports: [
             __WEBPACK_IMPORTED_MODULE_1__angular_common__["CommonModule"],
-            __WEBPACK_IMPORTED_MODULE_2__myadvancesclaim_routing_module__["a" /* MyAdvancesClaimRoutingModule */]
+            __WEBPACK_IMPORTED_MODULE_3__templates_routing_module__["a" /* TemplatseRoutingModule */]
         ],
-        declarations: [__WEBPACK_IMPORTED_MODULE_3__components_myadvancesclaim_component__["a" /* MyadvancesclaimComponent */]]
+        declarations: [__WEBPACK_IMPORTED_MODULE_2__components_templates_component__["a" /* TemplatesComponent */]]
     })
-], MyadvancesclaimModule);
+], TemplatesModule);
 
 
 
 /***/ }),
 
-/***/ 609:
+/***/ 668:
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  myadvancesclaim works!\n</p>\n"
+module.exports = "<router-outlet></router-outlet>"
 
 /***/ })
 
