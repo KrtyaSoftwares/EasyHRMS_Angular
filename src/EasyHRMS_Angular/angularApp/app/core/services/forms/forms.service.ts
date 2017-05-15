@@ -27,7 +27,9 @@ export class FormsService {
     }
 
     public GetSingle = (id: number): Observable<FormsModel> => {
-        return this.http.get(this.actionUrl + id).map(res => <FormsModel>res.json());
+        return this.http
+            .get(this.actionUrl + 'Forms/GetFormsById/' + id)
+            .map(res => <FormsModel>res.json());
     }
 
     public Add = (thingToAdd: any): Observable<FormsModel> => {

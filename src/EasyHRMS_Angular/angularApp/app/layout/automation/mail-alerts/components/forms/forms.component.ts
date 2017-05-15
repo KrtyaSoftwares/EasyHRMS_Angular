@@ -5,8 +5,10 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 import { FormsService } from './../../../../../core/services/forms/forms.service';
 import { FormsModel } from './../../../../../models/forms/forms.model';
 
+import { MailAlertService } from './../../../../../core/services/mail-alert/mail-alert.service';
+import { MailAlert } from './../../../../../models/mail-alert/mail-alert.model';
+
 import { TemplatesService } from './../../../../../core/services/templates/templates.service';
-import { Templates } from './../../../../../models/templates/templates.model';
 
 import {Message} from 'primeng/primeng';
 
@@ -16,34 +18,38 @@ import {Message} from 'primeng/primeng';
 })
 export class FormsComponent implements OnInit {
 
-  _templatesModels = new Templates();
+  _mailAlertModels = new MailAlert();
 
    form: FormGroup;
    text: string;
-   _objEmailTemplate: any = {};
+   _objMailAlert: any = {};
    _results: any = {};
   _list: any[] = [];
    submitted: boolean;
    msgs: Message[] = [];
    bindId: number;
+  _objTemplates: any = {};
+  _templateLists: any[] = [];
 
   constructor(
     private fb: FormBuilder,
     private _router: Router,
     private _route: ActivatedRoute,
     private _formsService: FormsService,
-    private _templatesService: TemplatesService
+    private _mailAlertService: MailAlertService,
+    private _templatesService: TemplatesService,
   ) {
       this.form = fb.group({
-          'templateName': [this._templatesModels.templateName, Validators.required],
-          'formName': [this._templatesModels.formName, Validators.required],
-          'message': [this._templatesModels.message],
-          'fromAddress': [this._templatesModels.fromAddress, Validators.required],
-          'toAddress': [this._templatesModels.toAddress, Validators.required],
-          'ccaddress': [this._templatesModels.ccaddress, Validators.required],
-          'bccaddress': [this._templatesModels.bccaddress, Validators.required],
-          'replyToAddress': [this._templatesModels.replyToAddress, Validators.required],
-          'emailSubject': [this._templatesModels.emailSubject, Validators.required],
+          'formName': [this._mailAlertModels.formName, Validators.required],
+          'mailAlertName': [this._mailAlertModels.mailAlertName, Validators.required],
+          'templateId': [this._mailAlertModels.mailAlertName, Validators.required],
+          'fromAddress': [this._mailAlertModels.fromAddress, Validators.required],
+          'toAddress': [this._mailAlertModels.toAddress, Validators.required],
+          'ccaddress': [this._mailAlertModels.ccaddress, Validators.required],
+          'bccaddress': [this._mailAlertModels.bccaddress, Validators.required],
+          'replyToAddress': [this._mailAlertModels.replyToAddress, Validators.required],
+          'emailSubject': [this._mailAlertModels.emailSubject, Validators.required],
+          'message': [this._mailAlertModels.message],
       });
    }
 
@@ -56,19 +62,37 @@ export class FormsComponent implements OnInit {
     });
 
     if (this.bindId) {
-          this.getTemplateDataBasedonId(this.bindId);
+          this.getMailAlertDataBasedonId(this.bindId);
     }
     this.getAllForms();
+    this.getAllTemplates();
   }
-  getTemplateDataBasedonId(id: number) {
-      this._templatesService
+  getAllTemplates() {
+    this._templatesService
+            .GetAll()
+            .subscribe(
+            data => {
+              this._objTemplates = data;
+              this._templateLists = this._objTemplates['list'];
+            });
+  }
+  onChange(tempId: any) {
+     this._templateLists.forEach((element: any) => {
+         if ( tempId == element.id ) {
+            this._mailAlertModels.message = element.message;
+         }
+      });
+  }
+
+  getMailAlertDataBasedonId(id: number) {
+      this._mailAlertService
             .GetSingle(id)
             .subscribe(
             data => {
               if (data) {
-                this._objEmailTemplate = data;
-                if (this._objEmailTemplate['objEmailTemplate']) {
-                  this._templatesModels = this._objEmailTemplate['objEmailTemplate'];
+                this._objMailAlert = data;
+                if (this._objMailAlert['objMailAlert']) {
+                  this._mailAlertModels = this._objMailAlert['objMailAlert'];
                 } else {
                   this.msgs = [];
                   this.msgs.push({severity : 'error', summary : 'Error Message',  detail : 'Oops!!!Something Went Wrong'});
@@ -91,32 +115,32 @@ export class FormsComponent implements OnInit {
         if (isValid == false) {
            return false;
         } else {
-           this._templatesModels.templateName = value.templateName;
-           this._templatesModels.formName = value.formName;
-           this._templatesModels.message = value.message;
-           this._templatesModels.fromAddress = value.fromAddress;
-           this._templatesModels.toAddress = value.toAddress;
-           this._templatesModels.ccaddress = value.ccaddress;
-           this._templatesModels.bccaddress = value.bccaddress;
-           this._templatesModels.replyToAddress = value.replyToAddress;
-           this._templatesModels.emailSubject = value.emailSubject;
+           this._mailAlertModels.formName = value.formName;
+           this._mailAlertModels.mailAlertName = value.mailAlertName;
+           this._mailAlertModels.message = value.message;
+           this._mailAlertModels.fromAddress = value.fromAddress;
+           this._mailAlertModels.toAddress = value.toAddress;
+           this._mailAlertModels.ccaddress = value.ccaddress;
+           this._mailAlertModels.bccaddress = value.bccaddress;
+           this._mailAlertModels.replyToAddress = value.replyToAddress;
+           this._mailAlertModels.emailSubject = value.emailSubject;
            if (!this.bindId) {
-              this._templatesService
-                  .Add(this._templatesModels)
+              this._mailAlertService
+                  .Add(this._mailAlertModels)
                   .subscribe(
                   data => {
                     this.msgs = [];
                     this.msgs.push ( { severity: 'info', summary: 'Insert Message', detail: 'Email Template has been added Successfully!!!' } );
-                    this._router.navigate(['/templates/email-templates']);
+                    this._router.navigate(['/automation/mail-alerts']);
                   });
            } else {
-              this._templatesService
-                  .Update(this.bindId, this._templatesModels)
+              this._mailAlertService
+                  .Update(this.bindId, this._mailAlertModels)
                   .subscribe(
                   data => {
                     this.msgs = [];
                     this.msgs.push ( { severity: 'info', summary: 'Update Message', detail: 'Email Template has been Updated Successfully!!!' } );
-                    this._router.navigate(['/templates/email-templates']);
+                    this._router.navigate(['/automation/mail-alerts']);
                   });
             }
         }
