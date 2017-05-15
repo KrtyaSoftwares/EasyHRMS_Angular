@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { TemplatesService } from './../../../../core/services/templates/templates.service';
-import { Templates } from './../../../../models/templates/templates.model';
+import { MailAlertService } from './../../../../core/services/mail-alert/mail-alert.service';
+import { MailAlert } from './../../../../models/mail-alert/mail-alert.model';
 
 import { PagerService } from '../../../../core/services/common/pager.service';
 import {Message} from 'primeng/primeng';
@@ -24,7 +24,7 @@ export class MailAlertsComponent implements OnInit {
   constructor(
     private _router: Router,
     private _route: ActivatedRoute,
-    private _templatesService: TemplatesService,
+    private _mailAlertService: MailAlertService,
     private pagerService: PagerService
   ) { }
 
@@ -32,18 +32,25 @@ export class MailAlertsComponent implements OnInit {
     this.getAllTemplates();
   }
   getAllTemplates() {
-    this._templatesService
+    this._mailAlertService
           .GetAll()
           .subscribe(
           data => {
             this._results = data;
             this._list = this._results['list'];
+            this.getFormname();
             //initialize to page 1
-            this.setPage(1);
+            //this.setPage(1);
           });
   }
+  getFormname() {
+        this._list.forEach((element: any) => {
+         console.log(element);
+        });
+  }
+
   delete(id: number) {
-    this._templatesService
+    this._mailAlertService
           .Delete(id)
           .subscribe(
           data => {
@@ -60,5 +67,6 @@ export class MailAlertsComponent implements OnInit {
       this.pager = this.pagerService.getPager(this._list.length, page);
       // get current page of items
       this.pagedItems = this._list.slice(this.pager.startIndex, this.pager.endIndex + 1);
+      //console.log(this.pagedItems);
   }
 }

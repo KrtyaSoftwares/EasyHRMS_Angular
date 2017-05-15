@@ -1,4 +1,4 @@
-webpackJsonp([9,14,22],{
+webpackJsonp([9,15,24],{
 
 /***/ 364:
 /***/ (function(module, exports, __webpack_require__) {
@@ -19479,7 +19479,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;//     Underscor
 
 /***/ }),
 
-/***/ 441:
+/***/ 442:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -19644,7 +19644,7 @@ __decorate([
 FormbuilderComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Component"])({
         selector: 'app-formbuilder',
-        template: __webpack_require__(458)
+        template: __webpack_require__(459)
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormBuilder"],
         __WEBPACK_IMPORTED_MODULE_0__angular_router__["Router"],
@@ -19656,12 +19656,12 @@ FormbuilderComponent = __decorate([
 
 /***/ }),
 
-/***/ 444:
+/***/ 445:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_services_lookup_lists_data__ = __webpack_require__(446);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_services_lookup_lists_data__ = __webpack_require__(447);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__core_services_common_pager_service__ = __webpack_require__(373);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ListingComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -19757,7 +19757,7 @@ __decorate([
 ListingComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-listing',
-        template: __webpack_require__(462),
+        template: __webpack_require__(463),
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__core_services_lookup_lists_data__["a" /* ListsService */],
         __WEBPACK_IMPORTED_MODULE_2__core_services_common_pager_service__["a" /* PagerService */]])
@@ -19767,7 +19767,7 @@ ListingComponent = __decorate([
 
 /***/ }),
 
-/***/ 446:
+/***/ 447:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -19822,7 +19822,7 @@ ListsService = __decorate([
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(172);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_formbuilder_component__ = __webpack_require__(441);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_formbuilder_component__ = __webpack_require__(442);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FormbuilderRoutingModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -19860,7 +19860,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__(52);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(171);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_formbuilder_component__ = __webpack_require__(441);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_formbuilder_component__ = __webpack_require__(442);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__formbuilder_routing_module__ = __webpack_require__(449);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_primeng_primeng__ = __webpack_require__(374);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_primeng_primeng___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_primeng_primeng__);
@@ -19909,7 +19909,7 @@ FormbuilderModule = __decorate([
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(172);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_listing_component__ = __webpack_require__(444);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_listing_component__ = __webpack_require__(445);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ListingRoutingModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -19946,7 +19946,7 @@ ListingRoutingModule = __decorate([
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__(52);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_listing_component__ = __webpack_require__(444);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_listing_component__ = __webpack_require__(445);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__listing_routing_module__ = __webpack_require__(456);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__core_services_common_pager_service__ = __webpack_require__(373);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ListingModule", function() { return ListingModule; });
@@ -19988,21 +19988,21 @@ ListingModule = __decorate([
 
 /***/ }),
 
-/***/ 458:
+/***/ 459:
 /***/ (function(module, exports) {
 
 module.exports = "<div id=\"main-content\" >\r\n    <div class=\"row m-t-10\">\r\n      <div class=\"col-md-12\">\r\n        <div class=\"panel panel-default\">\r\n          <div class=\"panel-heading text-right\">\r\n            <button type=\"button\" class=\"btn btn-sm btn-icon btn-rounded btn-default\"><i class=\"fa fa-question\"></i> </button>\r\n          </div>\r\n          <div class=\"panel-body\">\r\n           <div class=\"row\">\r\n              <div class=\"col-md-12 col-sm-12 col-xs-12\">                                 \r\n                <div class=\"form-horizontal\" >\r\n                  <div class=\"boder-btm\">\r\n                    <h3 class=\"panel-title\">Branch Info</h3>\r\n                  </div>\r\n                  <div *ngIf=\"record_not_exists\">No Form found.</div>\r\n                  <div *ngIf=\"!record_not_exists\" class=\"m-b-30\">\r\n                    <form \r\n                        *ngIf=\"form\"\r\n                        (ngSubmit)=\"onSubmit(form.value, form.valid)\" \r\n                        [formGroup]=\"form\" \r\n                        novalidate>\r\n                         <div *ngFor=\"let question of final_result; let i = index\">\r\n                            <div class=\"form-group\">\r\n                                <label for=\"inputEmail3\" class=\"col-md-4 col-sm-4 control-label\">\r\n                                  {{question.displayName ? question.displayName : question.fieldName}}\r\n                                </label>\r\n                                <div class=\"col-md-6 col-sm-6\" [ngSwitch]=\"question.fieldType\">\r\n                                  <div *ngSwitchCase=\"'Text'\">\r\n                                      <input \r\n                                        class=\"form-control\" \r\n                                        type=\"{{question.fieldType}}\"\r\n                                        [formControlName]=\"question.fieldName\" \r\n                                        [(ngModel)]=\"question.custom_value\">\r\n                                  </div>\r\n                                  <div class=\"col-sm-4\" *ngSwitchCase=\"'Bit'\">\r\n                                    <div class=\"radio\" *ngFor=\"let opt of question.optionValue\">\r\n                                      <label>\r\n                                        <input \r\n                                            type=\"radio\" \r\n                                            value=\"{{opt.key}}\"\r\n                                            [formControlName]=\"question.fieldName\" \r\n                                            [(ngModel)]=\"question.value\">\r\n                                        {{opt.value}}\r\n                                      </label>\r\n                                    </div>\r\n                                  </div>\r\n                                  <div class=\"col-sm-4\" *ngSwitchCase=\"'Dropdown'\">\r\n                                      <select class=\"form-control\" [formControlName]=\"question.fieldName\" [(ngModel)]=\"question.value\">\r\n                                          <option  value=\"\" selected>Select</option>\r\n                                          <option  value= {{opt.key}} *ngFor=\"let opt of question.optionValue\">{{opt.value}}</option>\r\n                                        </select>\r\n                                  </div>\r\n                                  <div class=\"col-sm-4\" *ngSwitchCase=\"'Textarea'\">\r\n                                      <textarea [formControlName]=\"question.fieldName\" [(ngModel)]=\"question.value\" rows=\"10\" cols=\"55\"> </textarea>\r\n                                  </div>\r\n                                  <div class=\"col-sm-4\" *ngSwitchCase=\"'datetime'\">\r\n                                      <p-calendar [formControlName]=\"question.fieldName\" [showIcon]=\"true\" [(ngModel)]=\"question.value\"></p-calendar> \r\n                                      <span style=\"margin-left:35px\">{{question.value|date}}</span>\r\n                                  </div>\r\n                                  <div \r\n                                    class=\"alert alert-danger\" \r\n                                    [hidden]=\"form.get([question.fieldName]).valid || (form.get([question.fieldName]).pristine && !submitted)\">\r\n                                    *{{question.fieldName}} is required\r\n                                  </div>\r\n                                </div>\r\n                          </div>\r\n                        </div>\r\n                        <div class=\"form-row\">\r\n                            <button class=\"btn btn-primary m-b-10\" type=\"submit\" >Save</button>\r\n                        </div>\r\n                    </form>\r\n                    <div class=\"form-row\">\r\n                      <div *ngIf=\"payLoad\"><strong>The form contains the following values</strong></div>\r\n                      <div>\r\n                          {{payLoad}}\r\n                      </div>\r\n                  </div>\r\n                  </div>\r\n                </div>\r\n\t\t          </div>\r\n           </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n</div>  "
 
 /***/ }),
 
-/***/ 462:
+/***/ 463:
 /***/ (function(module, exports) {
 
 module.exports = "<div id=\"main-content\" >\r\n    <div class=\"row m-t-10\">\r\n      <div class=\"col-md-12\">\r\n        <div class=\"panel panel-default\">\r\n          <div class=\"panel-heading text-right\">\r\n            <button type=\"button\" class=\"btn btn-sm btn-icon btn-rounded btn-default\"><i class=\"fa fa-question\"></i> </button>\r\n          </div>\r\n          <div class=\"panel-body\">\r\n           <div class=\"row\">\r\n              <div class=\"col-md-12 col-sm-12 col-xs-12 text-right\">\r\n                <button [routerLink]=\"['/lookup/form/' + lookup]\" class=\"btn btn-primary m-b-10\" >Add</button>\r\n              </div>\r\n            </div>\r\n            \r\n            <div *ngIf=\"record_not_exists\">No Form found.</div>\r\n                <div *ngIf=\"!record_not_exists\" class=\"row\">\r\n                    <div class=\"col-md-12 col-sm-12 col-xs-12\">\r\n                    <div class=\"table-responsive\">\r\n                        <table class=\"table table-bordered table-striped table-hover\">\r\n                        <thead class=\"no-bd\">\r\n                            <tr>\r\n                            <th *ngFor=\"let heading of _FilteredfieldsHeading; let i = index\"><strong>{{heading.displayName}}</strong> </th>\r\n                            <th><strong>Action</strong></th>                        \r\n                            </tr>\r\n                        </thead>\r\n                        <tbody class=\"no-bd-y\">\r\n                            <tr *ngFor=\"let hero of pagedItems\">\r\n                                <td *ngFor=\"let h of hero\">{{h.value}} </td>\r\n                            <td>\r\n                                <button\r\n                                    *ngFor=\"let act of actionlist\"\r\n                                    type=\"button\"\r\n                                    [routerLink]=\"act.action == 'Edit' ? ['/lookup/form/'+ lookup + '/' + hero[0]['rowId']] : ['/lookup/delete/' + lookup + '/' + hero[0]['rowId']]\"\r\n                                    [ngClass]=\"act.action == 'Edit' ? 'btn btn-sm btn-warning' : 'btn btn-sm btn-danger'\"\r\n                                    title=\"{{act.action}}\">\r\n                                    <i [ngClass]=\"act.action == 'Edit' ? 'fa fa-pencil' : 'fa fa-remove'\"></i>\r\n                                </button>\r\n                            </td>\r\n                            </tr>\r\n                        </tbody>\r\n                        </table>\r\n                        <ul *ngIf=\"pager.pages && pager.pages.length\" class=\"pagination\">\r\n                            <li [ngClass]=\"{disabled:pager.currentPage === 1}\">\r\n                                <a (click)=\"setPage(1)\">First</a>\r\n                            </li>\r\n                            <li [ngClass]=\"{disabled:pager.currentPage === 1}\">\r\n                                <a (click)=\"setPage(pager.currentPage - 1)\">Previous</a>\r\n                            </li>\r\n                            <li *ngFor=\"let page of pager.pages\" [ngClass]=\"{active:pager.currentPage === page}\">\r\n                                <a (click)=\"setPage(page)\">{{page}}</a>\r\n                            </li>\r\n                            <li [ngClass]=\"{disabled:pager.currentPage === pager.totalPages}\">\r\n                                <a (click)=\"setPage(pager.currentPage + 1)\">Next</a>\r\n                            </li>\r\n                            <li [ngClass]=\"{disabled:pager.currentPage === pager.totalPages}\">\r\n                                <a (click)=\"setPage(pager.totalPages)\">Last</a>\r\n                            </li>\r\n                        </ul>\r\n                    </div>\r\n                    </div>\r\n                </div>\r\n        </div>\r\n                </div>\r\n            </div>\r\n            </div>\r\n        </div>"
 
 /***/ }),
 
-/***/ 463:
+/***/ 464:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -20051,7 +20051,7 @@ LookupService = __decorate([
 
 /***/ }),
 
-/***/ 499:
+/***/ 503:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -20098,7 +20098,7 @@ var DeleteComponent = (function () {
 DeleteComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-delete',
-        template: __webpack_require__(644),
+        template: __webpack_require__(651),
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_router__["Router"],
         __WEBPACK_IMPORTED_MODULE_1__angular_router__["ActivatedRoute"],
@@ -20109,7 +20109,7 @@ DeleteComponent = __decorate([
 
 /***/ }),
 
-/***/ 500:
+/***/ 504:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -20144,7 +20144,7 @@ var FormComponent = (function () {
 FormComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-form',
-        template: __webpack_require__(645),
+        template: __webpack_require__(652),
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_router__["Router"],
         __WEBPACK_IMPORTED_MODULE_1__angular_router__["ActivatedRoute"]])
@@ -20154,7 +20154,7 @@ FormComponent = __decorate([
 
 /***/ }),
 
-/***/ 501:
+/***/ 505:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -20188,7 +20188,7 @@ var LookupListsComponent = (function () {
 LookupListsComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-lookup-lists',
-        template: __webpack_require__(646)
+        template: __webpack_require__(653)
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_router__["Router"],
         __WEBPACK_IMPORTED_MODULE_1__angular_router__["ActivatedRoute"]])
@@ -20198,13 +20198,13 @@ LookupListsComponent = __decorate([
 
 /***/ }),
 
-/***/ 502:
+/***/ 506:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(172);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__core_services_lookup_lookup_service__ = __webpack_require__(463);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__core_services_lookup_lookup_service__ = __webpack_require__(464);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LookupComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -20284,7 +20284,7 @@ var LookupComponent = (function () {
 LookupComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-lookup',
-        template: __webpack_require__(647),
+        template: __webpack_require__(654),
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_router__["Router"],
         __WEBPACK_IMPORTED_MODULE_1__angular_router__["ActivatedRoute"],
@@ -20295,16 +20295,16 @@ LookupComponent = __decorate([
 
 /***/ }),
 
-/***/ 563:
+/***/ 568:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(172);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_lookup_component__ = __webpack_require__(502);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_list_lookup_lists_component__ = __webpack_require__(501);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_form_form_component__ = __webpack_require__(500);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_delete_delete_component__ = __webpack_require__(499);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_lookup_component__ = __webpack_require__(506);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_list_lookup_lists_component__ = __webpack_require__(505);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_form_form_component__ = __webpack_require__(504);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_delete_delete_component__ = __webpack_require__(503);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LookupRoutingModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -20341,7 +20341,7 @@ LookupRoutingModule = __decorate([
 
 /***/ }),
 
-/***/ 564:
+/***/ 569:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -20349,16 +20349,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__(52);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(171);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_lookup_component__ = __webpack_require__(502);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__lookup_routing_module__ = __webpack_require__(563);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__shared__ = __webpack_require__(437);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_list_lookup_lists_component__ = __webpack_require__(501);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_form_form_component__ = __webpack_require__(500);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_delete_delete_component__ = __webpack_require__(499);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_lookup_component__ = __webpack_require__(506);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__lookup_routing_module__ = __webpack_require__(568);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__shared__ = __webpack_require__(438);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_list_lookup_lists_component__ = __webpack_require__(505);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_form_form_component__ = __webpack_require__(504);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_delete_delete_component__ = __webpack_require__(503);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__formbuilder_formbuilder_module__ = __webpack_require__(450);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__listing_listing_module__ = __webpack_require__(457);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__core_services_lookup_lists_data__ = __webpack_require__(446);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__core_services_lookup_lookup_service__ = __webpack_require__(463);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__core_services_lookup_lists_data__ = __webpack_require__(447);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__core_services_lookup_lookup_service__ = __webpack_require__(464);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LookupModule", function() { return LookupModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -20412,31 +20412,31 @@ LookupModule = __decorate([
 
 /***/ }),
 
-/***/ 644:
+/***/ 651:
 /***/ (function(module, exports) {
 
-module.exports = "<p>\r\n  delete works!\r\n</p>\r\n"
+module.exports = "<p>\n  delete works!\n</p>\n"
 
 /***/ }),
 
-/***/ 645:
+/***/ 652:
 /***/ (function(module, exports) {
 
 module.exports = "<app-formbuilder [lookup]=\"lookup\" [rowId]=\"rowId\"> </app-formbuilder>"
 
 /***/ }),
 
-/***/ 646:
+/***/ 653:
 /***/ (function(module, exports) {
 
 module.exports = "<app-listing [lookup]=\"lookup\"> </app-listing>"
 
 /***/ }),
 
-/***/ 647:
+/***/ 654:
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"main-content\" class=\"dashboard\">\r\n\t<div *ngFor=\"let category of filter_Array\">\r\n\t\t<div class=\"boder-btm-dark\">\r\n\t\t\t  <h1 class=\"panel-title\"> {{category[0].category}} </h1>\r\n\t\t</div>\r\n    \t<ul class=\"lookup-list\">\r\n    \t\t<li *ngFor=\"let lookup of category\">\r\n\t\t\t\t<div class=\"panel no-bd bd-3 panel-stat\">\r\n                \t<div class=\"panel-body {{lookup.custom_color}} text-center p-0\" >\r\n               \t \t\t<a [routerLink]=\"['/lookup/lists/' + lookup.lookupId]\" class=\"lookup-link p-10 lookup-icon-size hvr-rectangle-out\">\r\n                \t\t \t<div class=\"lookup-icon\">\r\n\t\t\t\t\t \t\t\t<img src=\"developer_assets/img/lookup-icons/{{lookup.ImageUrl}}\" width=\"36\" height=\"36\" alt=\"\" >\r\n\t\t\t\t\t \t\t</div>\r\n\t\t\t\t\t \t\t<div class=\"lookup-title\"> {{lookup.lookupName}} </div>\r\n               \t\t\t</a>\r\n                \t</div>\r\n             \t</div>\r\n\t\t\t</li>\r\n    \t</ul>\r\n\t</div>\r\n</div>"
+module.exports = "<div id=\"main-content\" class=\"dashboard\">\n\t<div *ngFor=\"let category of filter_Array\">\n\t\t<div class=\"boder-btm-dark\">\n\t\t\t  <h1 class=\"panel-title\"> {{category[0].category}} </h1>\n\t\t</div>\n    \t<ul class=\"lookup-list\">\n    \t\t<li *ngFor=\"let lookup of category\">\n\t\t\t\t<div class=\"panel no-bd bd-3 panel-stat\">\n                \t<div class=\"panel-body {{lookup.custom_color}} text-center p-0\" >\n               \t \t\t<a [routerLink]=\"['/lookup/lists/' + lookup.lookupId]\" class=\"lookup-link p-10 lookup-icon-size hvr-rectangle-out\">\n                \t\t \t<div class=\"lookup-icon\">\n\t\t\t\t\t \t\t\t<img src=\"developer_assets/img/lookup-icons/{{lookup.ImageUrl}}\" width=\"36\" height=\"36\" alt=\"\" >\n\t\t\t\t\t \t\t</div>\n\t\t\t\t\t \t\t<div class=\"lookup-title\"> {{lookup.lookupName}} </div>\n               \t\t\t</a>\n                \t</div>\n             \t</div>\n\t\t\t</li>\n    \t</ul>\n\t</div>\n</div>"
 
 /***/ })
 

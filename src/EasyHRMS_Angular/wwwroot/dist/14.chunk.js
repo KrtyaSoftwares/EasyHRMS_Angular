@@ -17841,15 +17841,16 @@ exports.TriStateCheckboxModule = TriStateCheckboxModule;
 
 /***/ }),
 
-/***/ 441:
+/***/ 439:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_router__ = __webpack_require__(172);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app_constants__ = __webpack_require__(67);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(171);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__core_services_lookup_form_defination_service__ = __webpack_require__(174);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FormbuilderComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(66);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__(98);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LookupDataService; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -17863,169 +17864,306 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var FormbuilderComponent = (function () {
-    function FormbuilderComponent(fb, _router, _route, formsService) {
-        this.fb = fb;
-        this._router = _router;
-        this._route = _route;
-        this.formsService = formsService;
-        this.result = {};
-        this.createArray = [];
-        this.final_result = [];
-        this.forms = [];
-        this.record = {};
-        this.singleRecord = [];
-        this.record_not_exists = false;
+var LookupDataService = (function () {
+    function LookupDataService(http, configuration) {
+        var _this = this;
+        this.http = http;
+        this.configuration = configuration;
+        this.GetLookUpData = function (lookupid) {
+            return _this.http
+                .get(_this.actionUrl + 'LookupData/GetLookupDataByLookupID/' + lookupid)
+                .map(function (res) { return res.json(); });
+        };
+        this.actionUrl = configuration.Server + 'api/';
+        this.headers = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Headers */]();
+        this.headers.append('Content-Type', 'application/json');
+        this.headers.append('Accept', 'application/json');
     }
-    FormbuilderComponent.prototype.ngOnInit = function () {
-        this.getTableDefination(this.lookup);
-    };
-    FormbuilderComponent.prototype.getTableData = function (lookup, id) {
-        var _this = this;
-        this.formsService
-            .GetTableData(lookup, id)
-            .subscribe(function (data) {
-            _this.record = data;
-            _this.singleRecord = _this.record['list'];
-            _this.array_merge();
-        });
-    };
-    FormbuilderComponent.prototype.onSubmit = function (value, isValid) {
-        this.submitted = true;
-        if (isValid == false) {
-            return false;
-        }
-        else {
-            this.createArray = [];
-            var rowId = void 0;
-            var id = void 0;
-            var cnt = 0;
-            for (var key in this.form.value) {
-                if (this.rowId) {
-                    rowId = this.singleRecord[0]['rowId'];
-                    id = this.singleRecord[cnt]['id'];
-                }
-                var value_1 = this.form.value[key];
-                var tempObj = {
-                    'lookupId': this.lookup,
-                    'fieldName': key,
-                    'rowId': this.rowId ? rowId : 0,
-                    'id': this.rowId ? id : 0,
-                    'value': value_1
-                };
-                this.createArray.push(tempObj);
-                cnt++;
-            }
-            if (this.rowId) {
-                this.updateTableData(this.lookup, this.createArray);
-            }
-            else {
-                this.addTableData(this.lookup, this.createArray);
-            }
-        }
-    };
-    FormbuilderComponent.prototype.addTableData = function (id, data) {
-        var _this = this;
-        this.formsService
-            .Add(id, data)
-            .subscribe(function (data) {
-            _this._router.navigate(['/lookup/lists/' + _this.lookup]);
-        });
-    };
-    FormbuilderComponent.prototype.updateTableData = function (id, data) {
-        var _this = this;
-        this.formsService
-            .Update(id, data)
-            .subscribe(function (data) {
-            _this._router.navigate(['/lookup/lists/' + _this.lookup]);
-        });
-    };
-    FormbuilderComponent.prototype.getTableDefination = function (id) {
-        var _this = this;
-        this.formsService.GetSingle(id)
-            .subscribe(function (data) {
-            _this.result = data;
-            _this.final_result = _this.result['list'];
-            if (_this.final_result.length == 0) {
-                _this.record_not_exists = true;
-            }
-            else {
-                _this.record_not_exists = false;
-            }
-            if (_this.rowId) {
-                _this.getTableData(_this.lookup, _this.rowId);
-            }
-            var group = {};
-            var i = 0;
-            _this.final_result.forEach(function (form) {
-                _this.final_result[i]['custom_value'] = '';
-                if (form.fieldType == 'Dropdown' || form.fieldType == 'Bit') {
-                    var optionVal = JSON.parse(form.optionValue);
-                    form.optionValue = optionVal;
-                }
-                if (form.fieldType == 'Date') {
-                    if (form.value !== '') {
-                        form.value = _this.convertDate(form.value);
-                    }
-                }
-                if (form.isRequire) {
-                    group[form.fieldName] = ['', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required];
-                }
-                else {
-                    group[form.fieldName] = [];
-                }
-                i++;
-            });
-            _this.form = _this.fb.group(group);
-        });
-    };
-    FormbuilderComponent.prototype.array_merge = function () {
-        for (var i in this.final_result) {
-            for (var j in this.singleRecord) {
-                if (this.singleRecord[j].fieldName == this.final_result[i].fieldName) {
-                    this.final_result[i]['custom_value'] = this.singleRecord[j]['value'];
-                }
-            }
-        }
-    };
-    FormbuilderComponent.prototype.convertDate = function (inputFormat) {
-        function pad(s) { return (s < 10) ? '0' + s : s; }
-        var d = new Date(inputFormat);
-        return [pad(d.getMonth() + 1), pad(d.getDate()), d.getFullYear()].join('/');
-    };
-    return FormbuilderComponent;
+    return LookupDataService;
 }());
-__decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Input"])('lookup'),
-    __metadata("design:type", Number)
-], FormbuilderComponent.prototype, "lookup", void 0);
-__decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Input"])('rowId'),
-    __metadata("design:type", Number)
-], FormbuilderComponent.prototype, "rowId", void 0);
-FormbuilderComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Component"])({
-        selector: 'app-formbuilder',
-        template: __webpack_require__(458)
-    }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormBuilder"],
-        __WEBPACK_IMPORTED_MODULE_0__angular_router__["Router"],
-        __WEBPACK_IMPORTED_MODULE_0__angular_router__["ActivatedRoute"],
-        __WEBPACK_IMPORTED_MODULE_3__core_services_lookup_form_defination_service__["a" /* FormsService */]])
-], FormbuilderComponent);
+LookupDataService = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Injectable"])(),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_http__["c" /* Http */], __WEBPACK_IMPORTED_MODULE_0__app_constants__["a" /* Configuration */]])
+], LookupDataService);
 
 
 
 /***/ }),
 
-/***/ 449:
+/***/ 440:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app_constants__ = __webpack_require__(67);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(66);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__(98);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GeneralFormsService; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var GeneralFormsService = (function () {
+    function GeneralFormsService(http, configuration) {
+        var _this = this;
+        this.http = http;
+        this.configuration = configuration;
+        this.GetSingle = function (id) {
+            return _this.http
+                .get(_this.actionUrl + 'Forms/GetAllFormDefByFormID/' + id)
+                .map(function (res) { return res.json(); });
+        };
+        this.GetFormData = function (id) {
+            return _this.http
+                .get(_this.actionUrl + 'EmployeeDetails/GetEmployeeByID/' + id)
+                .map(function (res) { return res.json(); });
+        };
+        this.GetDropdownValueBasedonFormID = function (id) {
+            return _this.http
+                .get(_this.actionUrl + 'LookupData/GetLookupDataByFormIDInBulk/' + id)
+                .map(function (res) { return res.json(); });
+        };
+        this.Add = function (data, url) {
+            var toAdd = JSON.stringify(data);
+            return _this.http.post(_this.actionUrl + url, toAdd, { headers: _this.headers })
+                .map(function (res) { return res.json(); });
+        };
+        this.Update = function (id, data, url) {
+            var toAdd = JSON.stringify(data);
+            return _this.http.post(_this.actionUrl + url + id, toAdd, { headers: _this.headers })
+                .map(function (res) { return res.json(); });
+        };
+        this.Delete = function (Id, url) {
+            return _this.http
+                .get(_this.actionUrl + url + '/' + Id)
+                .map(function (res) { return res.json(); });
+        };
+        this.actionUrl = configuration.Server + 'api/';
+        this.headers = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Headers */]();
+        this.headers.append('Content-Type', 'application/json');
+        this.headers.append('Accept', 'application/json');
+    }
+    return GeneralFormsService;
+}());
+GeneralFormsService = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Injectable"])(),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_http__["c" /* Http */], __WEBPACK_IMPORTED_MODULE_0__app_constants__["a" /* Configuration */]])
+], GeneralFormsService);
+
+
+
+/***/ }),
+
+/***/ 443:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GeneralFormbuilderComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var GeneralFormbuilderComponent = (function () {
+    function GeneralFormbuilderComponent() {
+    }
+    GeneralFormbuilderComponent.prototype.ngOnInit = function () {
+        console.log('here');
+    };
+    return GeneralFormbuilderComponent;
+}());
+GeneralFormbuilderComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'app-general-formbuilder',
+        template: __webpack_require__(461),
+    }),
+    __metadata("design:paramtypes", [])
+], GeneralFormbuilderComponent);
+
+
+
+/***/ }),
+
+/***/ 451:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_router__ = __webpack_require__(172);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(171);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__core_services_general_general_forms_service__ = __webpack_require__(440);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__core_services_common_lookup_data_service__ = __webpack_require__(439);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DynamicFormsComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+var DynamicFormsComponent = (function () {
+    function DynamicFormsComponent(fb, _router, _route, _generalFormsService, _lookupDataService) {
+        this.fb = fb;
+        this._router = _router;
+        this._route = _route;
+        this._generalFormsService = _generalFormsService;
+        this._lookupDataService = _lookupDataService;
+        this.data = [];
+        this.childSubmitData = new __WEBPACK_IMPORTED_MODULE_1__angular_core__["EventEmitter"]();
+        this.msgs = [];
+        this.dropdown_lookupLists = {};
+        this.lookupLists = [];
+        this.dropdown_dbLists = [];
+    }
+    DynamicFormsComponent.prototype.ngOnInit = function () {
+        this.checkLookupForDropdown(this.generalFormId);
+    };
+    DynamicFormsComponent.prototype.checkLookupForDropdown = function (id) {
+        var _this = this;
+        this._generalFormsService
+            .GetDropdownValueBasedonFormID(id)
+            .subscribe(function (data) {
+            _this.dropdown_lookupLists = data;
+            _this.lookupLists = _this.dropdown_lookupLists['listoflookups'];
+            _this.lookupLists.forEach(function (element) {
+                var index = element.lookupid;
+                if (!_this.dropdown_dbLists[index]) {
+                    _this.dropdown_dbLists[index] = [];
+                }
+                var grp = {};
+                element.ldataList.forEach(function (ele) {
+                    grp = {
+                        key: ele.rowId,
+                        value: ele.value
+                    };
+                    _this.dropdown_dbLists[index].push(grp);
+                });
+            });
+            _this.makeForms();
+        });
+    };
+    DynamicFormsComponent.prototype.makeForms = function () {
+        var _this = this;
+        var group = {};
+        this.data.forEach(function (frm) {
+            frm['custom_obj'].forEach(function (element) {
+                if (element.fieldType == 'Dropdown') {
+                    if (element.optionValue) {
+                        var optionVal = JSON.parse(element.optionValue);
+                        element.optionValue = optionVal;
+                    }
+                    else {
+                        var lookupId = element.lookupId;
+                        var optionVal = JSON.parse(element.optionValue);
+                        element.optionValue = _this.dropdown_dbLists[lookupId];
+                    }
+                }
+                else if (element.fieldType == 'Bit') {
+                    var optionVal = JSON.parse(element.optionValue);
+                    element.optionValue = optionVal;
+                }
+                if (element.fieldType == 'Date') {
+                    if (element.value !== '') {
+                        element.value = _this.convertDate(element.value);
+                    }
+                }
+                if (element.isRequire == true) {
+                    group[element.fieldName] = new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormControl"]('', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required);
+                }
+                else {
+                    group[element.fieldName] = new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormControl"]('');
+                }
+            });
+        });
+        this.form = this.fb.group(group);
+    };
+    DynamicFormsComponent.prototype.onSubmit = function (value, isValid) {
+        this.submitted = true;
+        if (isValid == false) {
+            this.msgs.push({ severity: 'error', summary: 'Error Message', detail: 'Validation failed' });
+            return false;
+        }
+        else {
+            this.childSubmitData.emit(this.form.value);
+            this.msgs.push({ severity: 'info', summary: 'Updated', detail: 'Information has been updated successfully!!!' });
+        }
+    };
+    DynamicFormsComponent.prototype.convertDate = function (inputFormat) {
+        function pad(s) { return (s < 10) ? '0' + s : s; }
+        var d = new Date(inputFormat);
+        return [pad(d.getMonth() + 1), pad(d.getDate()), d.getFullYear()].join('/');
+    };
+    DynamicFormsComponent.prototype.stripUndefined = function (arr) {
+        return arr.reduce(function (result, item) {
+            result.push(Array.isArray(item) && !item.length ? this.stripUndefined(item) : item);
+            return result;
+        }, []);
+    };
+    return DynamicFormsComponent;
+}());
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Input"])('tabnumber'),
+    __metadata("design:type", Number)
+], DynamicFormsComponent.prototype, "tabnumber", void 0);
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Input"])('generalFormId'),
+    __metadata("design:type", Number)
+], DynamicFormsComponent.prototype, "generalFormId", void 0);
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Input"])('data'),
+    __metadata("design:type", Array)
+], DynamicFormsComponent.prototype, "data", void 0);
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Output"])(),
+    __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1__angular_core__["EventEmitter"])
+], DynamicFormsComponent.prototype, "childSubmitData", void 0);
+DynamicFormsComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Component"])({
+        selector: 'app-dynamic-forms',
+        template: __webpack_require__(460),
+    }),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormBuilder"],
+        __WEBPACK_IMPORTED_MODULE_0__angular_router__["Router"],
+        __WEBPACK_IMPORTED_MODULE_0__angular_router__["ActivatedRoute"],
+        __WEBPACK_IMPORTED_MODULE_3__core_services_general_general_forms_service__["a" /* GeneralFormsService */],
+        __WEBPACK_IMPORTED_MODULE_4__core_services_common_lookup_data_service__["a" /* LookupDataService */]])
+], DynamicFormsComponent);
+
+
+
+/***/ }),
+
+/***/ 452:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(172);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_formbuilder_component__ = __webpack_require__(441);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FormbuilderRoutingModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_general_formbuilder_component__ = __webpack_require__(443);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GeneralFormbuilderRoutingModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18036,25 +18174,25 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 var routes = [
-    { path: '', component: __WEBPACK_IMPORTED_MODULE_2__components_formbuilder_component__["a" /* FormbuilderComponent */] },
+    { path: '', component: __WEBPACK_IMPORTED_MODULE_2__components_general_formbuilder_component__["a" /* GeneralFormbuilderComponent */] },
 ];
-var FormbuilderRoutingModule = (function () {
-    function FormbuilderRoutingModule() {
+var GeneralFormbuilderRoutingModule = (function () {
+    function GeneralFormbuilderRoutingModule() {
     }
-    return FormbuilderRoutingModule;
+    return GeneralFormbuilderRoutingModule;
 }());
-FormbuilderRoutingModule = __decorate([
+GeneralFormbuilderRoutingModule = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
         imports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["RouterModule"].forChild(routes)],
         exports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["RouterModule"]]
     })
-], FormbuilderRoutingModule);
+], GeneralFormbuilderRoutingModule);
 
 
 
 /***/ }),
 
-/***/ 450:
+/***/ 453:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -18062,11 +18200,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__(52);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(171);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_formbuilder_component__ = __webpack_require__(441);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__formbuilder_routing_module__ = __webpack_require__(449);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_primeng_primeng__ = __webpack_require__(374);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_primeng_primeng___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_primeng_primeng__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FormbuilderModule", function() { return FormbuilderModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_general_formbuilder_component__ = __webpack_require__(443);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_dynamic_forms_component__ = __webpack_require__(451);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__general_formbuilder_routing_module__ = __webpack_require__(452);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__core_services_common_lookup_data_service__ = __webpack_require__(439);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_primeng_primeng__ = __webpack_require__(374);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_primeng_primeng___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_primeng_primeng__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GeneralFormbuilderModule", function() { return GeneralFormbuilderModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18079,36 +18219,52 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var FormbuilderModule = (function () {
-    function FormbuilderModule() {
+
+
+var GeneralFormbuilderModule = (function () {
+    function GeneralFormbuilderModule() {
     }
-    return FormbuilderModule;
+    return GeneralFormbuilderModule;
 }());
-FormbuilderModule = __decorate([
+GeneralFormbuilderModule = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
         imports: [
             __WEBPACK_IMPORTED_MODULE_1__angular_common__["CommonModule"],
-            __WEBPACK_IMPORTED_MODULE_4__formbuilder_routing_module__["a" /* FormbuilderRoutingModule */],
+            __WEBPACK_IMPORTED_MODULE_5__general_formbuilder_routing_module__["a" /* GeneralFormbuilderRoutingModule */],
             __WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormsModule"],
             __WEBPACK_IMPORTED_MODULE_2__angular_forms__["ReactiveFormsModule"],
-            __WEBPACK_IMPORTED_MODULE_5_primeng_primeng__["GrowlModule"],
-            __WEBPACK_IMPORTED_MODULE_5_primeng_primeng__["CalendarModule"]
+            __WEBPACK_IMPORTED_MODULE_7_primeng_primeng__["GrowlModule"],
+            __WEBPACK_IMPORTED_MODULE_7_primeng_primeng__["CalendarModule"]
         ],
         exports: [
-            __WEBPACK_IMPORTED_MODULE_3__components_formbuilder_component__["a" /* FormbuilderComponent */]
+            __WEBPACK_IMPORTED_MODULE_3__components_general_formbuilder_component__["a" /* GeneralFormbuilderComponent */],
+            __WEBPACK_IMPORTED_MODULE_4__components_dynamic_forms_component__["a" /* DynamicFormsComponent */]
         ],
-        declarations: [__WEBPACK_IMPORTED_MODULE_3__components_formbuilder_component__["a" /* FormbuilderComponent */]]
+        declarations: [
+            __WEBPACK_IMPORTED_MODULE_3__components_general_formbuilder_component__["a" /* GeneralFormbuilderComponent */],
+            __WEBPACK_IMPORTED_MODULE_4__components_dynamic_forms_component__["a" /* DynamicFormsComponent */]
+        ],
+        providers: [
+            __WEBPACK_IMPORTED_MODULE_6__core_services_common_lookup_data_service__["a" /* LookupDataService */]
+        ]
     })
-], FormbuilderModule);
+], GeneralFormbuilderModule);
 
 
 
 /***/ }),
 
-/***/ 458:
+/***/ 460:
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"main-content\" >\r\n    <div class=\"row m-t-10\">\r\n      <div class=\"col-md-12\">\r\n        <div class=\"panel panel-default\">\r\n          <div class=\"panel-heading text-right\">\r\n            <button type=\"button\" class=\"btn btn-sm btn-icon btn-rounded btn-default\"><i class=\"fa fa-question\"></i> </button>\r\n          </div>\r\n          <div class=\"panel-body\">\r\n           <div class=\"row\">\r\n              <div class=\"col-md-12 col-sm-12 col-xs-12\">                                 \r\n                <div class=\"form-horizontal\" >\r\n                  <div class=\"boder-btm\">\r\n                    <h3 class=\"panel-title\">Branch Info</h3>\r\n                  </div>\r\n                  <div *ngIf=\"record_not_exists\">No Form found.</div>\r\n                  <div *ngIf=\"!record_not_exists\" class=\"m-b-30\">\r\n                    <form \r\n                        *ngIf=\"form\"\r\n                        (ngSubmit)=\"onSubmit(form.value, form.valid)\" \r\n                        [formGroup]=\"form\" \r\n                        novalidate>\r\n                         <div *ngFor=\"let question of final_result; let i = index\">\r\n                            <div class=\"form-group\">\r\n                                <label for=\"inputEmail3\" class=\"col-md-4 col-sm-4 control-label\">\r\n                                  {{question.displayName ? question.displayName : question.fieldName}}\r\n                                </label>\r\n                                <div class=\"col-md-6 col-sm-6\" [ngSwitch]=\"question.fieldType\">\r\n                                  <div *ngSwitchCase=\"'Text'\">\r\n                                      <input \r\n                                        class=\"form-control\" \r\n                                        type=\"{{question.fieldType}}\"\r\n                                        [formControlName]=\"question.fieldName\" \r\n                                        [(ngModel)]=\"question.custom_value\">\r\n                                  </div>\r\n                                  <div class=\"col-sm-4\" *ngSwitchCase=\"'Bit'\">\r\n                                    <div class=\"radio\" *ngFor=\"let opt of question.optionValue\">\r\n                                      <label>\r\n                                        <input \r\n                                            type=\"radio\" \r\n                                            value=\"{{opt.key}}\"\r\n                                            [formControlName]=\"question.fieldName\" \r\n                                            [(ngModel)]=\"question.value\">\r\n                                        {{opt.value}}\r\n                                      </label>\r\n                                    </div>\r\n                                  </div>\r\n                                  <div class=\"col-sm-4\" *ngSwitchCase=\"'Dropdown'\">\r\n                                      <select class=\"form-control\" [formControlName]=\"question.fieldName\" [(ngModel)]=\"question.value\">\r\n                                          <option  value=\"\" selected>Select</option>\r\n                                          <option  value= {{opt.key}} *ngFor=\"let opt of question.optionValue\">{{opt.value}}</option>\r\n                                        </select>\r\n                                  </div>\r\n                                  <div class=\"col-sm-4\" *ngSwitchCase=\"'Textarea'\">\r\n                                      <textarea [formControlName]=\"question.fieldName\" [(ngModel)]=\"question.value\" rows=\"10\" cols=\"55\"> </textarea>\r\n                                  </div>\r\n                                  <div class=\"col-sm-4\" *ngSwitchCase=\"'datetime'\">\r\n                                      <p-calendar [formControlName]=\"question.fieldName\" [showIcon]=\"true\" [(ngModel)]=\"question.value\"></p-calendar> \r\n                                      <span style=\"margin-left:35px\">{{question.value|date}}</span>\r\n                                  </div>\r\n                                  <div \r\n                                    class=\"alert alert-danger\" \r\n                                    [hidden]=\"form.get([question.fieldName]).valid || (form.get([question.fieldName]).pristine && !submitted)\">\r\n                                    *{{question.fieldName}} is required\r\n                                  </div>\r\n                                </div>\r\n                          </div>\r\n                        </div>\r\n                        <div class=\"form-row\">\r\n                            <button class=\"btn btn-primary m-b-10\" type=\"submit\" >Save</button>\r\n                        </div>\r\n                    </form>\r\n                    <div class=\"form-row\">\r\n                      <div *ngIf=\"payLoad\"><strong>The form contains the following values</strong></div>\r\n                      <div>\r\n                          {{payLoad}}\r\n                      </div>\r\n                  </div>\r\n                  </div>\r\n                </div>\r\n\t\t          </div>\r\n           </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n</div>  "
+module.exports = "<form *ngIf=\"form\"  (ngSubmit)=\"onSubmit(form.value, form.valid)\" [formGroup]=\"form\" novalidate>\n<div class=\"form-horizontal\" *ngFor=\"let category of data\">\n    <div class=\"boder-btm\">\n        <h3 class=\"panel-title\"> {{category.category_name}}  </h3>\n    </div>\n    <div class=\"m-b-30\">\n      <div class=\"form-group\" *ngFor=\"let fields of category['custom_obj']\">\n        <div [ngSwitch]=\"fields.fieldType\">\n          <label class=\"col-sm-2 control-label\"> {{fields.displayName}}  <span class=\"asterisk\">*</span> </label>\n          <div class=\"col-sm-4\" *ngSwitchCase=\"'Text'\">\n            <input class=\"form-control\" type=\"text\" [formControlName]=\"fields.fieldName\" [(ngModel)]=\"fields.value\">\n          </div>\n          <div class=\"col-sm-4\" *ngSwitchCase=\"'Bit'\">\n            <div class=\"radio\" *ngFor=\"let opt of fields.optionValue; let idx = index\">\n              <label>\n                <input \n                    type=\"radio\" \n                    value=\"{{opt.key}}\"\n                    [formControlName]=\"fields.fieldName\" \n                    [(ngModel)]=\"fields.value\">\n                {{opt.value}}\n              </label>\n            </div>\n          </div>\n          <div class=\"col-sm-4\" *ngSwitchCase=\"'Dropdown'\">\n               <select class=\"form-control\" [id]=\"fields.id\" [formControlName]=\"fields.fieldName\" [(ngModel)]=\"fields.value\">\n                  <option  value=\"\" selected>Select</option>\n                  <option  value= {{opt.key}} *ngFor=\"let opt of fields.optionValue; let idx = index\">{{opt.value}}</option>\n                </select>\n          </div>\n          <div class=\"col-sm-4\" *ngSwitchCase=\"'Textarea'\">\n              <textarea [formControlName]=\"fields.fieldName\" [(ngModel)]=\"fields.value\" rows=\"10\" cols=\"55\"> </textarea>\n          </div>\n          <div class=\"col-sm-4\" *ngSwitchCase=\"'Date'\">\n              <p-calendar [formControlName]=\"fields.fieldName\" [showIcon]=\"true\" [(ngModel)]=\"fields.value\"></p-calendar> \n              <span style=\"margin-left:35px\">{{fields.value|date}}</span>\n          </div>\n          <div \n              class=\"alert alert-danger\" \n              [hidden]=\"form.get([fields.fieldName]).valid || (form.get([fields.fieldName]).pristine && !submitted)\">\n              * {{fields.displayName}} is required\n            </div>\n        </div>\n      </div>\n    </div>\n</div>\n<div class=\"form-row\">\n    <button class=\"btn btn-primary m-b-10\" type=\"submit\" >Save</button>\n    <p-growl [value]=\"msgs\"></p-growl>\n</div>\n</form>"
+
+/***/ }),
+
+/***/ 461:
+/***/ (function(module, exports) {
+
+module.exports = "<p>\n  general-formbuilder works!\n</p>\n"
 
 /***/ })
 

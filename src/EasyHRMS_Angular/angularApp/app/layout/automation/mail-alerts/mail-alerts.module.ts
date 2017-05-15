@@ -11,7 +11,7 @@ import { EditorModule, SharedModule } from 'primeng/primeng';
 import {GrowlModule} from 'primeng/primeng';
 
 import { PagerService } from '../../../core/services/common/pager.service';
-import { TemplatesService } from './../../../core/services/templates/templates.service';
+import { MailAlertService } from './../../../core/services/mail-alert/mail-alert.service';
 import { FormsService } from './../../../core/services/forms/forms.service';
 
 @NgModule({
@@ -29,7 +29,7 @@ import { FormsService } from './../../../core/services/forms/forms.service';
     FormsComponent
   ],
   providers : [
-    TemplatesService,
+    MailAlertService,
     FormsService,
     PagerService
   ]
