@@ -21,5 +21,7 @@ namespace EasyHRMS_Angular.ModelsVM
         public string EmailSubject { get; set; }
         public string Attachment { get; set; }
         public string Message { get; set; }
+        public int? CheckListId { get; set; }
+        public int? TaskOrder { get; set; }
     }
 }

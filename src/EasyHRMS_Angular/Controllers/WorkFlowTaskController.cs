@@ -168,6 +168,8 @@ namespace EasyHRMS_Angular.Controllers
                             entityUpdate.EmailSubject = model.EmailSubject;
                             entityUpdate.Attachment = model.Attachment;
                             entityUpdate.Message = model.Message;
+                            entityUpdate.CheckListId = model.CheckListId;
+                            entityUpdate.TaskOrder = model.TaskOrder;
                             _context.SaveChanges();
                         }
 
@@ -232,6 +234,8 @@ namespace EasyHRMS_Angular.Controllers
                                 entityUpdate.EmailSubject = model.EmailSubject;
                                 entityUpdate.Attachment = model.Attachment;
                                 entityUpdate.Message = model.Message;
+                                entityUpdate.CheckListId = model.CheckListId;
+                                entityUpdate.TaskOrder = model.TaskOrder;
                                 _context.SaveChanges();
                             }
                             _ctxTransaction.Commit();

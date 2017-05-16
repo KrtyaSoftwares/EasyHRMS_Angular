@@ -19,5 +19,7 @@ namespace EasyHRMS_DA.Models
         public string EmailSubject { get; set; }
         public string Attachment { get; set; }
         public string Message { get; set; }
+        public int? CheckListId { get; set; }
+        public int? TaskOrder { get; set; }
     }
 }

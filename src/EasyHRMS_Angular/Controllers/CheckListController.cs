@@ -91,6 +91,43 @@ namespace EasyHRMS_Angular.Controllers
             return result;
         }
 
+        // GET api/CheckList/GetCheckListWithTasksById/5
+        [HttpGet("GetCheckListWithTasksById/{id}"), Produces("application/json")]
+        public object GetCheckListWithTasksById(int id)
+        {
+            object result = null;
+
+            CheckList objCheckList = new CheckList();
+            List<WorkFlowTask> list = new List<WorkFlowTask>();
+            try
+            {
+                using (_context)
+                {
+                    objCheckList = _context.CheckList.FirstOrDefault(x => x.Id == id);
+                    list = _context.WorkFlowTask.Where(y => y.CheckListId == id).ToList();
+                    result = new
+                    {
+                        objCheckList,
+                        list,
+                        error = "0",
+                        msg = "Success"
+                    };
+                }
+            }
+            catch (Exception ex)
+            {
+                ex.ToString();
+                result = new
+                {
+                    objCheckList,
+                    list,
+                    error = "1",
+                    msg = "Error"
+                };
+            }
+            return result;
+        }
+
         // POST api/CheckList/CreateCheckList
         [HttpPost, Route("CreateCheckList"), Produces("application/json")]
         public object CreateCheckList([FromBody]CheckList model)
@@ -157,9 +194,9 @@ namespace EasyHRMS_Angular.Controllers
                         {
                             entityUpdate.FormName = model.FormName;
                             entityUpdate.ChecklistName = model.ChecklistName;
-                            entityUpdate.TaskId = model.TaskId;
+                            //entityUpdate.TaskId = model.TaskId;
                             entityUpdate.ChecklistOrder = model.ChecklistOrder;
-                            entityUpdate.TaskOrder = model.TaskOrder;
+                            //entityUpdate.TaskOrder = model.TaskOrder;
                            
                             _context.SaveChanges();
                         }
@@ -214,9 +251,9 @@ namespace EasyHRMS_Angular.Controllers
                             {
                                 entityUpdate.FormName = model.FormName;
                                 entityUpdate.ChecklistName = model.ChecklistName;
-                                entityUpdate.TaskId = model.TaskId;
+                                //entityUpdate.TaskId = model.TaskId;
                                 entityUpdate.ChecklistOrder = model.ChecklistOrder;
-                                entityUpdate.TaskOrder = model.TaskOrder;
+                                //entityUpdate.TaskOrder = model.TaskOrder;
 
                                 _context.SaveChanges();
                             }
@@ -269,15 +306,24 @@ namespace EasyHRMS_Angular.Controllers
                 {
                     try
                     {
-                        var idToRemove = _context.CheckList.SingleOrDefault(x => x.Id == id);
-                        if (idToRemove != null)
+                        List<WorkFlowTask> listTasks = _context.WorkFlowTask.Where(y => y.CheckListId == id).ToList();
+                        if(listTasks.Count > 0)
                         {
-                            _context.CheckList.Remove(idToRemove);
-                            _context.SaveChanges();
+                            message = "Can Not Delete As Refernce in Other Record!";
+                            errorcode = "1";
                         }
-                        _ctxTransaction.Commit();
-                        message = "Deleted Successfully";
-                        errorcode = "0";
+                        else
+                        {
+                            var idToRemove = _context.CheckList.SingleOrDefault(x => x.Id == id);
+                            if (idToRemove != null)
+                            {
+                                _context.CheckList.Remove(idToRemove);
+                                _context.SaveChanges();
+                            }
+                            _ctxTransaction.Commit();
+                            message = "Deleted Successfully";
+                            errorcode = "0";
+                        }
                     }
                     catch (Exception e)
                     {

@@ -10,8 +10,6 @@ namespace EasyHRMS_Angular.Models
         public int Id { get; set; }
         public string FormName { get; set; }
         public string ChecklistName { get; set; }
-        public int? TaskId { get; set; }
         public int? ChecklistOrder { get; set; }
-        public int? TaskOrder { get; set; }
     }
 }

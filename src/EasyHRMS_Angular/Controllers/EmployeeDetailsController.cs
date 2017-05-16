@@ -157,6 +157,7 @@ namespace EasyHRMS_Angular.Controllers
                         //await _ctx.SaveChangesAsync();
                         _context.SaveChanges();
                         _ctxTransaction.Commit();
+                        //CheckForWorkFlow(1);
                         message = "Saved Successfully";
                         errorcode = "0";
                     }
@@ -179,6 +180,16 @@ namespace EasyHRMS_Angular.Controllers
             }
             return result;
         }
+
+        //private void CheckForWorkFlow(string FormId)
+        //{
+            //throw new NotImplementedException();
+
+            //if(FormId != )
+            //{
+            //    WorkFlow WorkFlow = _context.WorkFlow.Where(x => x.FormName == FormId)
+            //}
+        //}
 
         // PUT api/EmployeeDetails/UpdateEmployee/5
         [HttpPost, Route("UpdateEmployee/{id}")]
