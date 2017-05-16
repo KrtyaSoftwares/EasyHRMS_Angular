@@ -33,12 +33,19 @@ namespace EasyHRMS_Angular.Controllers
             {
                 using (_context)
                 {
-                    list = _context.CheckList.Select(y => new CheckListVM
+                    list = _context.CheckList.Select(g => new {
+                        Id = g.Id,
+                        FormName = g.FormName,
+                        ChecklistName = g.ChecklistName,
+                        ChecklistOrder = g.ChecklistOrder,
+                        TaskCount = _context.WorkFlowTask.Where(z => z.CheckListId == g.Id).Count()
+                    }).ToList().Select(y => new CheckListVM
                     {
                         Id = y.Id,
                         FormName = y.FormName,
                         ChecklistName = y.ChecklistName,
                         ChecklistOrder = y.ChecklistOrder,
+                        TaskCount = y.TaskCount
                         //TaskCount = _context.WorkFlowTask.Where(z => z.CheckListId == y.Id).Count()
                         //TaskCount = _context.WorkFlowTask.Count(z => z.CheckListId == y.Id)
                     }).ToList();
