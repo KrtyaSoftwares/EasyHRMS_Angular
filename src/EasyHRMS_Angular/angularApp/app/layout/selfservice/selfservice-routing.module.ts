@@ -10,6 +10,7 @@ const routes: Routes = [
     {
         path: '', component: SelfserviceComponent,
         children: [
+            { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' },
             { path: 'myprofile', loadChildren: './myprofile/myprofile.module#MyprofileModule' },
             { path: 'mysalary', loadChildren: './mysalary/mysalary.module#MysalaryModule' },
             { path: 'myleaves', loadChildren: './myleaves/myleaves.module#MyleavesModule' },

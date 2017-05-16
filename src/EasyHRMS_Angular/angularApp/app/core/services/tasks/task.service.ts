@@ -34,7 +34,7 @@ export class TaskService {
 
     public AddTask = (data: any): Observable<any> => {
         let toAdd = JSON.stringify(data);
-        //console.log(toAdd);
+        console.log(toAdd);
         return this.http.post(this.actionUrl + 'TaskTemplate/CreateTaskTemplate/', toAdd, { headers: this.headers })
             .map(res => <any>res.json());
     }

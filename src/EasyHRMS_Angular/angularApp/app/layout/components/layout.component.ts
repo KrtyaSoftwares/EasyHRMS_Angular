@@ -17,7 +17,7 @@ export class LayoutComponent implements OnInit {
 
         if (this.router.url.includes('/selfservice') ) {
             this.showSidebar = false;
-            //this.router.navigate(['/dashboard']);
+            this.router.navigate(['/selfservice/dashboard']);
         }
 
         this.commondataservice.showSidebarlinkevnt.subscribe((obj: any) => {

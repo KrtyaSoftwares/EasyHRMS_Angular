@@ -32,7 +32,7 @@
                                         </tr>
                                     </thead>
                                     <tbody class="no-bd-y">
-                                        <tr *ngFor="let task of _taskList" >
+                                        <tr *ngFor="let task of pagedItems" >
                                             <td><a href="#">{{task.templateName}}</a></td>
                                             <td>{{task.formName}}</td>
                                             <td>{{task.dueDate}}</td>
@@ -49,6 +49,24 @@
 
                                     </tbody>
                                 </table>
+                                <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+                                    <li [ngClass]="{disabled:pager.currentPage === 1}">
+                                        <a (click)="setPage(1)">First</a>
+                                    </li>
+                                    <li [ngClass]="{disabled:pager.currentPage === 1}">
+                                        <a (click)="setPage(pager.currentPage - 1)">Previous</a>
+                                    </li>
+                                    <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+                                        <a (click)="setPage(page)">{{page}}</a>
+                                    </li>
+                                    <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                                        <a (click)="setPage(pager.currentPage + 1)">Next</a>
+                                    </li>
+                                    <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                                        <a (click)="setPage(pager.totalPages)">Last</a>
+                                    </li>
+                                </ul>
+
                             </div>
                         </div>
                     </div>
