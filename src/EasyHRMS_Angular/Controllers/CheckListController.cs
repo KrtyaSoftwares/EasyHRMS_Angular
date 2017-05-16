@@ -64,9 +64,9 @@ namespace EasyHRMS_Angular.Controllers
             }
             return result;
         }
-        
-        // GET: api/CheckList/GetAllCheckList
-        [HttpGet("GetAllCheckList"), Produces("application/json")]
+
+        // GET: api/CheckList/GetAllCheckListWithAllTask
+        [HttpGet("GetAllCheckListWithAllTask"), Produces("application/json")]
         public object GetAllCheckListWithAllTask()
         {
             List<CheckListVM> list = new List<CheckListVM>();
