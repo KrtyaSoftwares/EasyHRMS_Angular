@@ -19479,7 +19479,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;//     Underscor
 
 /***/ }),
 
-/***/ 440:
+/***/ 437:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -19543,7 +19543,7 @@ FormsService = __decorate([
 
 /***/ }),
 
-/***/ 448:
+/***/ 441:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -19613,15 +19613,31 @@ TemplatesService = __decorate([
 
 /***/ }),
 
-/***/ 523:
+/***/ 458:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(172);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__core_services_templates_templates_service__ = __webpack_require__(448);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__core_services_common_pager_service__ = __webpack_require__(373);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EmailTemplateComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Templates; });
+var Templates = (function () {
+    function Templates() {
+    }
+    return Templates;
+}());
+
+
+
+/***/ }),
+
+/***/ 465:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app_constants__ = __webpack_require__(67);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(66);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__(98);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MailAlertService; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -19635,75 +19651,64 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var EmailTemplateComponent = (function () {
-    function EmailTemplateComponent(_router, _route, _templatesService, pagerService) {
-        this._router = _router;
-        this._route = _route;
-        this._templatesService = _templatesService;
-        this.pagerService = pagerService;
-        this._results = {};
-        this._list = [];
-        this.msgs = [];
-        this.pager = {};
+var MailAlertService = (function () {
+    function MailAlertService(http, configuration) {
+        var _this = this;
+        this.http = http;
+        this.configuration = configuration;
+        this.GetAll = function () {
+            return _this.http
+                .get(_this.actionUrl + 'MailAlert/GetAllMailAlert')
+                .map(function (res) { return res.json(); });
+        };
+        this.GetSingle = function (id) {
+            return _this.http
+                .get(_this.actionUrl + 'MailAlert/GetMailAlertById/' + id)
+                .map(function (res) { return res.json(); });
+        };
+        this.Add = function (data) {
+            var toAdd = JSON.stringify(data);
+            return _this.http
+                .post(_this.actionUrl + 'MailAlert/CreateMailAlert', toAdd, { headers: _this.headers })
+                .map(function (res) { return res.json(); });
+        };
+        this.Update = function (id, data) {
+            var toAdd = JSON.stringify(data);
+            return _this.http.post(_this.actionUrl + 'MailAlert/UpdateMailAlert/' + id, toAdd, { headers: _this.headers })
+                .map(function (res) { return res.json(); });
+        };
+        this.Delete = function (id) {
+            return _this.http
+                .get(_this.actionUrl + 'MailAlert/DeleteMailAlertById/' + id)
+                .map(function (res) { return res.json(); });
+        };
+        this.actionUrl = configuration.Server + 'api/';
+        this.headers = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Headers */]();
+        this.headers.append('Content-Type', 'application/json');
+        this.headers.append('Accept', 'application/json');
     }
-    EmailTemplateComponent.prototype.ngOnInit = function () {
-        this.getAllTemplates();
-    };
-    EmailTemplateComponent.prototype.getAllTemplates = function () {
-        var _this = this;
-        this._templatesService
-            .GetAll()
-            .subscribe(function (data) {
-            _this._results = data;
-            _this._list = _this._results['list'];
-            _this.setPage(1);
-        });
-    };
-    EmailTemplateComponent.prototype.delete = function (id) {
-        var _this = this;
-        this._templatesService
-            .Delete(id)
-            .subscribe(function (data) {
-            _this.msgs = [];
-            _this.msgs.push({ severity: 'warn', summary: 'Insert Message', detail: 'Email Template has been Deleted Successfully!!!' });
-            _this.getAllTemplates();
-        });
-    };
-    EmailTemplateComponent.prototype.setPage = function (page) {
-        if (page < 1 || page > this.pager.totalPages) {
-            return;
-        }
-        this.pager = this.pagerService.getPager(this._list.length, page);
-        this.pagedItems = this._list.slice(this.pager.startIndex, this.pager.endIndex + 1);
-    };
-    return EmailTemplateComponent;
+    return MailAlertService;
 }());
-EmailTemplateComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'app-email-template',
-        template: __webpack_require__(669),
-    }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_router__["Router"],
-        __WEBPACK_IMPORTED_MODULE_1__angular_router__["ActivatedRoute"],
-        __WEBPACK_IMPORTED_MODULE_2__core_services_templates_templates_service__["a" /* TemplatesService */],
-        __WEBPACK_IMPORTED_MODULE_3__core_services_common_pager_service__["a" /* PagerService */]])
-], EmailTemplateComponent);
+MailAlertService = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Injectable"])(),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_http__["c" /* Http */], __WEBPACK_IMPORTED_MODULE_0__app_constants__["a" /* Configuration */]])
+], MailAlertService);
 
 
 
 /***/ }),
 
-/***/ 524:
+/***/ 479:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(172);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(171);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__core_services_forms_forms_service__ = __webpack_require__(440);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__core_services_templates_templates_service__ = __webpack_require__(448);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__models_templates_templates_model__ = __webpack_require__(592);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FormComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__core_services_forms_forms_service__ = __webpack_require__(437);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__core_services_templates_templates_service__ = __webpack_require__(441);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__models_templates_templates_model__ = __webpack_require__(458);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FormsComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -19719,8 +19724,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var FormComponent = (function () {
-    function FormComponent(fb, _router, _route, _formsService, _templatesService) {
+var FormsComponent = (function () {
+    function FormsComponent(fb, _router, _route, _formsService, _templatesService) {
         this.fb = fb;
         this._router = _router;
         this._route = _route;
@@ -19735,9 +19740,15 @@ var FormComponent = (function () {
             'templateName': [this._templatesModels.templateName, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required],
             'formName': [this._templatesModels.formName, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required],
             'message': [this._templatesModels.message],
+            'fromAddress': [this._templatesModels.fromAddress, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required],
+            'toAddress': [this._templatesModels.toAddress, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required],
+            'ccaddress': [this._templatesModels.ccaddress, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required],
+            'bccaddress': [this._templatesModels.bccaddress, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required],
+            'replyToAddress': [this._templatesModels.replyToAddress, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required],
+            'emailSubject': [this._templatesModels.emailSubject, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required],
         });
     }
-    FormComponent.prototype.ngOnInit = function () {
+    FormsComponent.prototype.ngOnInit = function () {
         var _this = this;
         this._route.params.subscribe(function (param) {
             _this.bindId = param['id'];
@@ -19747,7 +19758,7 @@ var FormComponent = (function () {
         }
         this.getAllForms();
     };
-    FormComponent.prototype.getTemplateDataBasedonId = function (id) {
+    FormsComponent.prototype.getTemplateDataBasedonId = function (id) {
         var _this = this;
         this._templatesService
             .GetSingle(id)
@@ -19764,7 +19775,7 @@ var FormComponent = (function () {
             }
         });
     };
-    FormComponent.prototype.getAllForms = function () {
+    FormsComponent.prototype.getAllForms = function () {
         var _this = this;
         this._formsService
             .GetAll()
@@ -19773,7 +19784,7 @@ var FormComponent = (function () {
             _this._list = _this._results['list'];
         });
     };
-    FormComponent.prototype.onSubmit = function (value, isValid) {
+    FormsComponent.prototype.onSubmit = function (value, isValid) {
         var _this = this;
         this.submitted = true;
         if (isValid == false) {
@@ -19783,6 +19794,12 @@ var FormComponent = (function () {
             this._templatesModels.templateName = value.templateName;
             this._templatesModels.formName = value.formName;
             this._templatesModels.message = value.message;
+            this._templatesModels.fromAddress = value.fromAddress;
+            this._templatesModels.toAddress = value.toAddress;
+            this._templatesModels.ccaddress = value.ccaddress;
+            this._templatesModels.bccaddress = value.bccaddress;
+            this._templatesModels.replyToAddress = value.replyToAddress;
+            this._templatesModels.emailSubject = value.emailSubject;
             if (!this.bindId) {
                 this._templatesService
                     .Add(this._templatesModels)
@@ -19803,33 +19820,118 @@ var FormComponent = (function () {
             }
         }
     };
-    return FormComponent;
+    return FormsComponent;
 }());
-FormComponent = __decorate([
+FormsComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'app-form',
-        template: __webpack_require__(670),
+        selector: 'app-forms',
+        template: __webpack_require__(624),
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormBuilder"],
         __WEBPACK_IMPORTED_MODULE_1__angular_router__["Router"],
         __WEBPACK_IMPORTED_MODULE_1__angular_router__["ActivatedRoute"],
         __WEBPACK_IMPORTED_MODULE_3__core_services_forms_forms_service__["a" /* FormsService */],
         __WEBPACK_IMPORTED_MODULE_4__core_services_templates_templates_service__["a" /* TemplatesService */]])
-], FormComponent);
+], FormsComponent);
 
 
 
 /***/ }),
 
-/***/ 582:
+/***/ 480:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(172);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_email_template_component__ = __webpack_require__(523);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_form_form_component__ = __webpack_require__(524);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EmailTemplateRoutingModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__core_services_mail_alert_mail_alert_service__ = __webpack_require__(465);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__core_services_common_pager_service__ = __webpack_require__(373);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MailAlertsComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var MailAlertsComponent = (function () {
+    function MailAlertsComponent(_router, _route, _mailAlertService, pagerService) {
+        this._router = _router;
+        this._route = _route;
+        this._mailAlertService = _mailAlertService;
+        this.pagerService = pagerService;
+        this._results = {};
+        this._list = [];
+        this.msgs = [];
+        this.pager = {};
+    }
+    MailAlertsComponent.prototype.ngOnInit = function () {
+        this.getAllTemplates();
+    };
+    MailAlertsComponent.prototype.getAllTemplates = function () {
+        var _this = this;
+        this._mailAlertService
+            .GetAll()
+            .subscribe(function (data) {
+            _this._results = data;
+            _this._list = _this._results['list'];
+            _this.getFormname();
+        });
+    };
+    MailAlertsComponent.prototype.getFormname = function () {
+        this._list.forEach(function (element) {
+            console.log(element);
+        });
+    };
+    MailAlertsComponent.prototype.delete = function (id) {
+        var _this = this;
+        this._mailAlertService
+            .Delete(id)
+            .subscribe(function (data) {
+            _this.msgs = [];
+            _this.msgs.push({ severity: 'warn', summary: 'Insert Message', detail: 'Email Template has been Deleted Successfully!!!' });
+            _this.getAllTemplates();
+        });
+    };
+    MailAlertsComponent.prototype.setPage = function (page) {
+        if (page < 1 || page > this.pager.totalPages) {
+            return;
+        }
+        this.pager = this.pagerService.getPager(this._list.length, page);
+        this.pagedItems = this._list.slice(this.pager.startIndex, this.pager.endIndex + 1);
+    };
+    return MailAlertsComponent;
+}());
+MailAlertsComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'app-mail-alerts',
+        template: __webpack_require__(625),
+    }),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_router__["Router"],
+        __WEBPACK_IMPORTED_MODULE_1__angular_router__["ActivatedRoute"],
+        __WEBPACK_IMPORTED_MODULE_2__core_services_mail_alert_mail_alert_service__["a" /* MailAlertService */],
+        __WEBPACK_IMPORTED_MODULE_3__core_services_common_pager_service__["a" /* PagerService */]])
+], MailAlertsComponent);
+
+
+
+/***/ }),
+
+/***/ 546:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(172);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_mail_alerts_component__ = __webpack_require__(480);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_forms_forms_component__ = __webpack_require__(479);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MailAlertsRoutingModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -19841,27 +19943,27 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 var routes = [
-    { path: '', component: __WEBPACK_IMPORTED_MODULE_2__components_email_template_component__["a" /* EmailTemplateComponent */] },
-    { path: 'forms', component: __WEBPACK_IMPORTED_MODULE_3__components_form_form_component__["a" /* FormComponent */] },
-    { path: 'forms/:id', component: __WEBPACK_IMPORTED_MODULE_3__components_form_form_component__["a" /* FormComponent */] },
+    { path: '', component: __WEBPACK_IMPORTED_MODULE_2__components_mail_alerts_component__["a" /* MailAlertsComponent */] },
+    { path: 'forms', component: __WEBPACK_IMPORTED_MODULE_3__components_forms_forms_component__["a" /* FormsComponent */] },
+    { path: 'forms/:id', component: __WEBPACK_IMPORTED_MODULE_3__components_forms_forms_component__["a" /* FormsComponent */] },
 ];
-var EmailTemplateRoutingModule = (function () {
-    function EmailTemplateRoutingModule() {
+var MailAlertsRoutingModule = (function () {
+    function MailAlertsRoutingModule() {
     }
-    return EmailTemplateRoutingModule;
+    return MailAlertsRoutingModule;
 }());
-EmailTemplateRoutingModule = __decorate([
+MailAlertsRoutingModule = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
         imports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["RouterModule"].forChild(routes)],
         exports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["RouterModule"]]
     })
-], EmailTemplateRoutingModule);
+], MailAlertsRoutingModule);
 
 
 
 /***/ }),
 
-/***/ 583:
+/***/ 547:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -19869,15 +19971,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__(52);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(171);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_email_template_component__ = __webpack_require__(523);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_form_form_component__ = __webpack_require__(524);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__email_template_routing_module__ = __webpack_require__(582);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__core_services_templates_templates_service__ = __webpack_require__(448);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__core_services_forms_forms_service__ = __webpack_require__(440);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_primeng_primeng__ = __webpack_require__(374);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_primeng_primeng___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_primeng_primeng__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__core_services_common_pager_service__ = __webpack_require__(373);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EmailTemplateModule", function() { return EmailTemplateModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__mail_alerts_routing_module__ = __webpack_require__(546);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_mail_alerts_component__ = __webpack_require__(480);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_forms_forms_component__ = __webpack_require__(479);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_primeng_primeng__ = __webpack_require__(374);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_primeng_primeng___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_primeng_primeng__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__core_services_common_pager_service__ = __webpack_require__(373);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__core_services_mail_alert_mail_alert_service__ = __webpack_require__(465);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__core_services_forms_forms_service__ = __webpack_require__(437);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MailAlertsModule", function() { return MailAlertsModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -19895,64 +19997,49 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var EmailTemplateModule = (function () {
-    function EmailTemplateModule() {
+var MailAlertsModule = (function () {
+    function MailAlertsModule() {
     }
-    return EmailTemplateModule;
+    return MailAlertsModule;
 }());
-EmailTemplateModule = __decorate([
+MailAlertsModule = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
         imports: [
             __WEBPACK_IMPORTED_MODULE_1__angular_common__["CommonModule"],
-            __WEBPACK_IMPORTED_MODULE_5__email_template_routing_module__["a" /* EmailTemplateRoutingModule */],
-            __WEBPACK_IMPORTED_MODULE_8_primeng_primeng__["EditorModule"],
-            __WEBPACK_IMPORTED_MODULE_8_primeng_primeng__["SharedModule"],
+            __WEBPACK_IMPORTED_MODULE_3__mail_alerts_routing_module__["a" /* MailAlertsRoutingModule */],
+            __WEBPACK_IMPORTED_MODULE_6_primeng_primeng__["EditorModule"],
+            __WEBPACK_IMPORTED_MODULE_6_primeng_primeng__["SharedModule"],
             __WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormsModule"],
             __WEBPACK_IMPORTED_MODULE_2__angular_forms__["ReactiveFormsModule"],
-            __WEBPACK_IMPORTED_MODULE_8_primeng_primeng__["GrowlModule"]
+            __WEBPACK_IMPORTED_MODULE_6_primeng_primeng__["GrowlModule"]
         ],
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_3__components_email_template_component__["a" /* EmailTemplateComponent */],
-            __WEBPACK_IMPORTED_MODULE_4__components_form_form_component__["a" /* FormComponent */]
+            __WEBPACK_IMPORTED_MODULE_4__components_mail_alerts_component__["a" /* MailAlertsComponent */],
+            __WEBPACK_IMPORTED_MODULE_5__components_forms_forms_component__["a" /* FormsComponent */]
         ],
         providers: [
-            __WEBPACK_IMPORTED_MODULE_6__core_services_templates_templates_service__["a" /* TemplatesService */],
-            __WEBPACK_IMPORTED_MODULE_7__core_services_forms_forms_service__["a" /* FormsService */],
-            __WEBPACK_IMPORTED_MODULE_9__core_services_common_pager_service__["a" /* PagerService */]
+            __WEBPACK_IMPORTED_MODULE_8__core_services_mail_alert_mail_alert_service__["a" /* MailAlertService */],
+            __WEBPACK_IMPORTED_MODULE_9__core_services_forms_forms_service__["a" /* FormsService */],
+            __WEBPACK_IMPORTED_MODULE_7__core_services_common_pager_service__["a" /* PagerService */]
         ]
     })
-], EmailTemplateModule);
+], MailAlertsModule);
 
 
 
 /***/ }),
 
-/***/ 592:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Templates; });
-var Templates = (function () {
-    function Templates() {
-    }
-    return Templates;
-}());
-
-
-
-/***/ }),
-
-/***/ 669:
+/***/ 624:
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"main-content\" >\r\n    <div class=\"row m-t-10\">\r\n      <div class=\"col-md-12\">\r\n        <div class=\"panel panel-default\">\r\n          <div class=\"panel-heading text-right\">\r\n            <button type=\"button\" class=\"btn btn-sm btn-icon btn-rounded btn-default\"><i class=\"fa fa-question\"></i> </button>\r\n          </div>\r\n          <div class=\"panel-body\">\r\n           <div class=\"row\">\r\n              <div class=\"col-md-12 col-sm-12 col-xs-12 text-right\">\r\n                <button [routerLink]=\"['//templates/email-templates/forms']\" class=\"btn btn-primary m-b-10\" >Add Mail Alert</button>\r\n              </div>\r\n            </div>\r\n            \r\n            <p-growl [value]=\"msgs\"></p-growl>\r\n            <div class=\"row\">\r\n              <div class=\"col-md-12 col-sm-12 col-xs-12\">\r\n                <div class=\"table-responsive\">\r\n                  <table class=\"table table-bordered table-striped table-hover\">\r\n                    <thead class=\"no-bd\">\r\n                      <tr>                       \r\n                        <th><strong>Name</strong> </th>\r\n                        <th><strong>Form Name</strong> </th>\r\n                        <th><strong>Template Name</strong> </th>                \r\n                        <th><strong>Action</strong></th>                      \r\n                      </tr>\r\n                    </thead>\r\n                    <tbody class=\"no-bd-y\">\r\n                      <tr *ngFor=\"let lst of pagedItems\">                       \r\n                        <td><a> {{lst.templateName}} </a></td>\r\n                        <td>{{lst.formName}}</td>\r\n                        <td><a >{{lst.templateName}}</a></td>\r\n\t\t\t\t\t\t            <td>\r\n                          <button [routerLink]=\"['/templates/email-templates/forms/' + lst.id ]\"  type=\"button\" class=\"btn btn-sm btn-warning\" title=\"Edit\"><i class=\"fa fa-pencil\"></i></button>\r\n                          <button (click)=\"delete(lst.id)\" type=\"button\" class=\"btn btn-sm btn-danger\" title=\"Delete\"><i class=\"fa fa-remove\" ></i></button>\r\n                        </td>   \r\n                      </tr>\r\n                    </tbody>\r\n                  </table>\r\n\r\n                  <ul *ngIf=\"pager.pages && pager.pages.length\" class=\"pagination\">\r\n                      <li [ngClass]=\"{disabled:pager.currentPage === 1}\">\r\n                          <a (click)=\"setPage(1)\">First</a>\r\n                      </li>\r\n                      <li [ngClass]=\"{disabled:pager.currentPage === 1}\">\r\n                          <a (click)=\"setPage(pager.currentPage - 1)\">Previous</a>\r\n                      </li>\r\n                      <li *ngFor=\"let page of pager.pages\" [ngClass]=\"{active:pager.currentPage === page}\">\r\n                          <a (click)=\"setPage(page)\">{{page}}</a>\r\n                      </li>\r\n                      <li [ngClass]=\"{disabled:pager.currentPage === pager.totalPages}\">\r\n                          <a (click)=\"setPage(pager.currentPage + 1)\">Next</a>\r\n                      </li>\r\n                      <li [ngClass]=\"{disabled:pager.currentPage === pager.totalPages}\">\r\n                          <a (click)=\"setPage(pager.totalPages)\">Last</a>\r\n                      </li>\r\n                  </ul>\r\n\r\n                </div>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>"
+module.exports = "<div id=\"main-content\" >\n\t<div class=\"row m-t-10\">\n      <div class=\"col-md-12\">\n        <div class=\"panel panel-default\">\n          <div class=\"panel-heading text-right\">\n            <button type=\"button\" class=\"btn btn-sm btn-icon btn-rounded btn-default\"><i class=\"fa fa-question\"></i> </button>\n          </div>\n          <div class=\"panel-body\">\n           <div class=\"row\">\n            <div class=\"col-md-12 col-sm-12 col-xs-12\">\n               <form [formGroup]=\"form\" (ngSubmit)=\"onSubmit(form.value,form.valid)\" novalidate class=\"form-horizontal\">\n\t\t\t\t\t          <div class=\"boder-btm\">\n                      <h3 class=\"panel-title\">Mail Alerts Info</h3>\n                    </div>\n                    <div class=\"m-b-30\">\n                      <div class=\"form-group\">\n                        <label class=\"col-sm-2 control-label\">Form Name </label>\n                        <div class=\"col-sm-4\">\n                         <select class=\"form-control\" formControlName=\"formName\" [(ngModel)]=\"_templatesModels.formName\">\n                            <option>---Select---</option>\n                            <option *ngFor=\"let lst of _list\" [value]=\"lst.id\"> {{lst.formName}} </option>\n                          </select>\n                          <div [hidden]=\"form.get('formName').valid || (form.get('formName').pristine && !submitted)\" class=\"alert alert-danger\">\n                              Form Name is required.\n                          </div>\n                         </div>\n                        <label class=\"col-sm-2 control-label\">Mail Alert Name </label>\n                        <div class=\"col-sm-4\">\n                          <input type=\"text\" class=\"form-control\" formControlName=\"templateName\" [(ngModel)]=\"_templatesModels.templateName\">\n                          <div [hidden]=\"form.get('templateName').valid || (form.get('templateName').pristine && !submitted)\" class=\"alert alert-danger\">\n                              Template name is required.\n                          </div>\n                        </div>\n                      </div>\n                    </div>\n                    <div class=\"boder-btm\">\n                      <h3 class=\"panel-title\">Message</h3>\n                    </div>\n                   \t<div class=\"m-b-30\">\n                    \t<div class=\"form-group\">\n                      \t\t<label class=\"col-sm-2 control-label\">From </label>\n                        \t<div class=\"col-sm-4\">\n                            <input type=\"text\" class=\"form-control\" formControlName=\"fromAddress\" [(ngModel)]=\"_templatesModels.fromAddress\">\n                            <div [hidden]=\"form.get('fromAddress').valid || (form.get('fromAddress').pristine && !submitted)\" class=\"alert alert-danger\">\n                                fromAddress is required.\n                            </div>\n                          </div>\n\t                        <label class=\"col-sm-2 control-label\">To  </label>\n                        \t<div class=\"col-sm-4\">\n                              <input type=\"text\" class=\"form-control\" formControlName=\"toAddress\" [(ngModel)]=\"_templatesModels.toAddress\">\n                              <div [hidden]=\"form.get('toAddress').valid || (form.get('toAddress').pristine && !submitted)\" class=\"alert alert-danger\">\n                                  toAddress is required.\n                              </div>\n                          </div>\n                      \t</div>\n                    \t<div class=\"form-group\">\n\t                      \t<label class=\"col-sm-2 control-label\">Cc </label>\n                        \t<div class=\"col-sm-4\">\n                            <input type=\"text\" class=\"form-control\" formControlName=\"ccaddress\" [(ngModel)]=\"_templatesModels.ccaddress\">\n                            <div [hidden]=\"form.get('ccaddress').valid || (form.get('ccaddress').pristine && !submitted)\" class=\"alert alert-danger\">\n                                ccaddress is required.\n                            </div>\n                          </div>\n                      \t\t<label class=\"col-sm-2 control-label\">Bcc </label>\n                        \t<div class=\"col-sm-4\">\n                            <input type=\"text\" class=\"form-control\" formControlName=\"bccaddress\" [(ngModel)]=\"_templatesModels.bccaddress\">\n                            <div [hidden]=\"form.get('bccaddress').valid || (form.get('bccaddress').pristine && !submitted)\" class=\"alert alert-danger\">\n                                bccaddress is required.\n                            </div>\n                          </div>\n                      \t</div>\n                        <div class=\"form-group\">\n                      \t\t<label class=\"col-sm-2 control-label\">Reply To </label>\n                       \t \t<div class=\"col-sm-4\">\n                            <input type=\"text\" class=\"form-control\" formControlName=\"replyToAddress\" [(ngModel)]=\"_templatesModels.replyToAddress\">\n                            <div [hidden]=\"form.get('replyToAddress').valid || (form.get('replyToAddress').pristine && !submitted)\" class=\"alert alert-danger\">\n                                replyToAddress is required.\n                            </div>\n                          </div>\n                      \t\t<label class=\"col-sm-2 control-label\">Subject </label>\n                        \t<div class=\"col-sm-4\">\n                            <input type=\"text\" class=\"form-control\" formControlName=\"emailSubject\" [(ngModel)]=\"_templatesModels.emailSubject\">\n                            <div [hidden]=\"form.get('emailSubject').valid || (form.get('emailSubject').pristine && !submitted)\" class=\"alert alert-danger\">\n                                emailSubject is required.\n                            </div>\n                          </div>\n                      \t</div>\n                        <div class=\"form-group\">\n                      \t\t<label class=\"col-sm-2 control-label\">Message </label>\n                            <div class=\"col-sm-8\">\n                            \t<p-editor [style]=\"{'height':'320px'}\" formControlName=\"message\" [(ngModel)]=\"_templatesModels.message\"></p-editor>\n                            </div>\n\t                    </div>\n                    \t<div class=\"form-group\">                                            \n                        \t<div class=\"col-sm-10 col-sm-offset-2\">\n                            \t<button class=\"btn btn-primary m-b-10\" type=\"submit\">Submit</button>\n                            \t<button [routerLink]=\"['/automation/mail-alerts']\" type=\"reset\" class=\"btn btn-default m-b-10\">Cancel</button>\n                              <p-growl [value]=\"msgs\"></p-growl>\n                        \t</div>                                           \n                    \t</div>\n                    </div>\n                </form>\t\n              </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>"
 
 /***/ }),
 
-/***/ 670:
+/***/ 625:
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"main-content\" >\r\n\t<div class=\"row m-t-10\">\r\n      <div class=\"col-md-12\">\r\n        <div class=\"panel panel-default\">\r\n          <div class=\"panel-heading text-right\">\r\n            <button type=\"button\" class=\"btn btn-sm btn-icon btn-rounded btn-default\"><i class=\"fa fa-question\"></i> </button>\r\n          </div>\r\n          <div class=\"panel-body\">\r\n           <div class=\"row\">\r\n\t\t\t\t<div class=\"col-md-12 col-sm-12 col-xs-12\">\r\n\t\t\t\t\t<form [formGroup]=\"form\" (ngSubmit)=\"onSubmit(form.value,form.valid)\" novalidate class=\"form-horizontal\">\r\n\t\t\t\t\t\t<div class=\"boder-btm\">\r\n              <h3 class=\"panel-title\">Add / Edit Template</h3>\r\n            </div>\r\n            <div class=\"m-b-30\">\r\n              <div class=\"form-group\">\r\n                <label class=\"col-sm-2 control-label\">Form Name </label>\r\n                <div class=\"col-sm-4\">\r\n                  <select class=\"form-control\" formControlName=\"formName\" [(ngModel)]=\"_templatesModels.formName\">\r\n                    <option>---Select---</option>\r\n                    <option *ngFor=\"let lst of _list\" [value]=\"lst.id\"> {{lst.formName}} </option>\r\n                  </select>\r\n                  <div [hidden]=\"form.get('formName').valid || (form.get('formName').pristine && !submitted)\" class=\"alert alert-danger\">\r\n                      Form Name is required.\r\n                  </div>\r\n                  </div>\r\n              </div>\r\n              <div class=\"form-group\">\r\n                <label class=\"col-sm-2 control-label\">Template Name </label>\r\n                <div class=\"col-sm-4\">\r\n                  <input type=\"text\" class=\"form-control\" formControlName=\"templateName\" [(ngModel)]=\"_templatesModels.templateName\">\r\n                  <div [hidden]=\"form.get('templateName').valid || (form.get('templateName').pristine && !submitted)\" class=\"alert alert-danger\">\r\n                      Template name is required.\r\n                  </div>\r\n                </div>\r\n              </div>\r\n            </div>\r\n            <div class=\"boder-btm\">\r\n              <h3 class=\"panel-title\">Message</h3>\r\n            </div>\r\n            <div class=\"form-group\">\r\n              \r\n                <div class=\"col-sm-12\">\r\n                    <div class=\"summernote\"></div>   \r\n                </div>\r\n              \r\n              </div>\r\n            <div class=\"form-group\">\r\n              <label class=\"col-sm-2 control-label\"> </label>\r\n                <div class=\"col-sm-8\">\r\n                  <p-editor formControlName=\"message\" [style]=\"{'height':'320px'}\" [(ngModel)]=\"_templatesModels.message\"></p-editor>\r\n                </div>\r\n                \r\n              </div>                                   \r\n            <div class=\"form-group\">                                            \r\n                <div class=\"col-sm-10 col-sm-offset-2\">\r\n                    <button class=\"btn btn-primary m-b-10\" type=\"submit\" >Submit</button>\r\n                    <button [routerLink]=\"['/templates/email-templates/']\" type=\"reset\" class=\"btn btn-default m-b-10\">Cancel</button>\r\n                    <p-growl [value]=\"msgs\"></p-growl>\r\n                </div>                                           \r\n            </div>                                       \r\n        </form>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n</div>\r\n"
+module.exports = "<div id=\"main-content\" >\n    <div class=\"row m-t-10\">\n      <div class=\"col-md-12\">\n        <div class=\"panel panel-default\">\n          <div class=\"panel-heading text-right\">\n            <button type=\"button\" class=\"btn btn-sm btn-icon btn-rounded btn-default\"><i class=\"fa fa-question\"></i> </button>\n          </div>\n          <div class=\"panel-body\">\n           <div class=\"row\">\n              <div class=\"col-md-12 col-sm-12 col-xs-12 text-right\">\n                <button [routerLink]=\"['/automation/mail-alerts/forms']\" class=\"btn btn-primary m-b-10\" >Add Mail Alert</button>\n              </div>\n            </div>\n            \n            <p-growl [value]=\"msgs\"></p-growl>\n            <div class=\"row\">\n              <div class=\"col-md-12 col-sm-12 col-xs-12\">\n                <div class=\"table-responsive\">\n                  <table class=\"table table-bordered table-striped table-hover\">\n                    <thead class=\"no-bd\">\n                      <tr>                       \n                        <th><strong>Form Name</strong> </th>\n                        <th><strong>Mail Alert Name</strong> </th>                \n                        <th><strong>Action</strong></th>                      \n                      </tr>\n                    </thead>\n                    <tbody class=\"no-bd-y\">\n                      <tr *ngFor=\"let lst of pagedItems\">                       \n                        <td>{{lst.formName}}</td>\n                        <td><a >{{lst.mailAlertName}}</a></td>\n\t\t\t\t\t\t            <td>\n                          <button [routerLink]=\"['/automation/mail-alerts/forms/' + lst.id ]\"  type=\"button\" class=\"btn btn-sm btn-warning\" title=\"Edit\"><i class=\"fa fa-pencil\"></i></button>\n                          <button (click)=\"delete(lst.id)\" type=\"button\" class=\"btn btn-sm btn-danger\" title=\"Delete\"><i class=\"fa fa-remove\" ></i></button>\n                        </td>   \n                      </tr>\n                    </tbody>\n                  </table>\n\n                  <ul *ngIf=\"pager.pages && pager.pages.length\" class=\"pagination\">\n                      <li [ngClass]=\"{disabled:pager.currentPage === 1}\">\n                          <a (click)=\"setPage(1)\">First</a>\n                      </li>\n                      <li [ngClass]=\"{disabled:pager.currentPage === 1}\">\n                          <a (click)=\"setPage(pager.currentPage - 1)\">Previous</a>\n                      </li>\n                      <li *ngFor=\"let page of pager.pages\" [ngClass]=\"{active:pager.currentPage === page}\">\n                          <a (click)=\"setPage(page)\">{{page}}</a>\n                      </li>\n                      <li [ngClass]=\"{disabled:pager.currentPage === pager.totalPages}\">\n                          <a (click)=\"setPage(pager.currentPage + 1)\">Next</a>\n                      </li>\n                      <li [ngClass]=\"{disabled:pager.currentPage === pager.totalPages}\">\n                          <a (click)=\"setPage(pager.totalPages)\">Last</a>\n                      </li>\n                  </ul>\n\n                </div>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>"
 
 /***/ })
 

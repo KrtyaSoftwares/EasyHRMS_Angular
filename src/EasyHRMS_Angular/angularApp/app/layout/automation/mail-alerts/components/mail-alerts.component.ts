@@ -1,11 +1,14 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { TemplatesService } from './../../../../core/services/templates/templates.service';
-import { Templates } from './../../../../models/templates/templates.model';
+import { MailAlertService } from './../../../../core/services/mail-alert/mail-alert.service';
+import { MailAlert } from './../../../../models/mail-alert/mail-alert.model';
+
+import { FormsService } from './../../../../core/services/forms/forms.service';
 
 import { PagerService } from '../../../../core/services/common/pager.service';
 import {Message} from 'primeng/primeng';
+import {ConfirmDialogModule, ConfirmationService} from 'primeng/primeng';
 
 @Component({
   selector: 'app-mail-alerts',
@@ -16,6 +19,8 @@ export class MailAlertsComponent implements OnInit {
   _results: any = {};
   _list: any[] = [];
   msgs: Message[] = [];
+
+  _formResults: any = {};
   // pager object
     pager: any = {};
   // paged items
@@ -24,33 +29,56 @@ export class MailAlertsComponent implements OnInit {
   constructor(
     private _router: Router,
     private _route: ActivatedRoute,
-    private _templatesService: TemplatesService,
-    private pagerService: PagerService
+    private _mailAlertService: MailAlertService,
+    private _formsService: FormsService,
+    private pagerService: PagerService,
+    private confirmationService: ConfirmationService
   ) { }
 
   ngOnInit() {
     this.getAllTemplates();
   }
   getAllTemplates() {
-    this._templatesService
+    this._mailAlertService
           .GetAll()
           .subscribe(
           data => {
             this._results = data;
             this._list = this._results['list'];
-            //initialize to page 1
-            this.setPage(1);
+            this.getFormname();
           });
   }
-  delete(id: number) {
-    this._templatesService
-          .Delete(id)
+  getFormname() {
+
+        this._list.forEach((element: any) => {
+         let formId = element.formName;
+         this._formsService
+          .GetSingle(formId)
           .subscribe(
           data => {
-            this.msgs = [];
-            this.msgs.push ( { severity: 'warn', summary: 'Insert Message', detail: 'Email Template has been Deleted Successfully!!!' } );
-            this.getAllTemplates();
+           this._formResults = data;
+           element.custom_formName = this._formResults['objForms']['formName'];
           });
+        });
+       //initialize to page 1
+        this.setPage(1);
+  }
+
+  delete(id: number) {
+
+    this.confirmationService.confirm({
+            message: 'Are you sure that you want to perform this action?',
+            accept: () => {
+                this._mailAlertService
+                  .Delete(id)
+                  .subscribe(
+                  data => {
+                    this.msgs = [];
+                    this.msgs.push ( { severity: 'warn', summary: 'Insert Message', detail: 'Email Template has been Deleted Successfully!!!' } );
+                    this.getAllTemplates();
+                  });
+            }
+        });
   }
   setPage(page: number) {
       if (page < 1 || page > this.pager.totalPages) {
@@ -60,5 +88,6 @@ export class MailAlertsComponent implements OnInit {
       this.pager = this.pagerService.getPager(this._list.length, page);
       // get current page of items
       this.pagedItems = this._list.slice(this.pager.startIndex, this.pager.endIndex + 1);
+      //console.log(this.pagedItems);
   }
 }

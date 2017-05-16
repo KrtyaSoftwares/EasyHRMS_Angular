@@ -11,8 +11,10 @@ import { EditorModule, SharedModule } from 'primeng/primeng';
 import {GrowlModule} from 'primeng/primeng';
 
 import { PagerService } from '../../../core/services/common/pager.service';
-import { TemplatesService } from './../../../core/services/templates/templates.service';
+import { MailAlertService } from './../../../core/services/mail-alert/mail-alert.service';
 import { FormsService } from './../../../core/services/forms/forms.service';
+import { TemplatesService } from './../../../core/services/templates/templates.service';
+import { ConfirmDialogModule, ConfirmationService } from 'primeng/primeng';
 
 @NgModule({
   imports: [
@@ -22,16 +24,19 @@ import { FormsService } from './../../../core/services/forms/forms.service';
     SharedModule,
     FormsModule,
     ReactiveFormsModule,
-    GrowlModule
+    GrowlModule,
+    ConfirmDialogModule,
   ],
   declarations: [
     MailAlertsComponent,
     FormsComponent
   ],
   providers : [
-    TemplatesService,
+    MailAlertService,
     FormsService,
-    PagerService
+    PagerService,
+    ConfirmationService,
+    TemplatesService
   ]
 })
 export class MailAlertsModule { }

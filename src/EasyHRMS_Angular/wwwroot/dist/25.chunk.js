@@ -1,11 +1,11 @@
 webpackJsonp([25],{
 
-/***/ 521:
+/***/ 529:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MysalaryComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RecordTemplateComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -16,33 +16,33 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
-var MysalaryComponent = (function () {
-    function MysalaryComponent() {
+var RecordTemplateComponent = (function () {
+    function RecordTemplateComponent() {
     }
-    MysalaryComponent.prototype.ngOnInit = function () {
+    RecordTemplateComponent.prototype.ngOnInit = function () {
     };
-    return MysalaryComponent;
+    return RecordTemplateComponent;
 }());
-MysalaryComponent = __decorate([
+RecordTemplateComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'app-mysalary',
-        template: __webpack_require__(667),
+        selector: 'app-record-template',
+        template: __webpack_require__(678),
     }),
     __metadata("design:paramtypes", [])
-], MysalaryComponent);
+], RecordTemplateComponent);
 
 
 
 /***/ }),
 
-/***/ 578:
+/***/ 589:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(172);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_mysalary_component__ = __webpack_require__(521);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MySalaryRoutingModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_record_template_component__ = __webpack_require__(529);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RecordTemplateRoutingModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -53,34 +53,34 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 var routes = [
-    { path: '', component: __WEBPACK_IMPORTED_MODULE_2__components_mysalary_component__["a" /* MysalaryComponent */] },
+    { path: '', component: __WEBPACK_IMPORTED_MODULE_2__components_record_template_component__["a" /* RecordTemplateComponent */] },
 ];
-var MySalaryRoutingModule = (function () {
-    function MySalaryRoutingModule() {
+var RecordTemplateRoutingModule = (function () {
+    function RecordTemplateRoutingModule() {
     }
-    return MySalaryRoutingModule;
+    return RecordTemplateRoutingModule;
 }());
-MySalaryRoutingModule = __decorate([
+RecordTemplateRoutingModule = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
         imports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["RouterModule"].forChild(routes)],
         exports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["RouterModule"]]
     })
-], MySalaryRoutingModule);
+], RecordTemplateRoutingModule);
 
 
 
 /***/ }),
 
-/***/ 579:
+/***/ 590:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__(52);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mysalary_routing_module__ = __webpack_require__(578);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_mysalary_component__ = __webpack_require__(521);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MysalaryModule", function() { return MysalaryModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__record_template_routing_module__ = __webpack_require__(589);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_record_template_component__ = __webpack_require__(529);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RecordTemplateModule", function() { return RecordTemplateModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -91,31 +91,29 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var MysalaryModule = (function () {
-    function MysalaryModule() {
+var RecordTemplateModule = (function () {
+    function RecordTemplateModule() {
     }
-    return MysalaryModule;
+    return RecordTemplateModule;
 }());
-MysalaryModule = __decorate([
+RecordTemplateModule = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
         imports: [
             __WEBPACK_IMPORTED_MODULE_1__angular_common__["CommonModule"],
-            __WEBPACK_IMPORTED_MODULE_2__mysalary_routing_module__["a" /* MySalaryRoutingModule */]
+            __WEBPACK_IMPORTED_MODULE_2__record_template_routing_module__["a" /* RecordTemplateRoutingModule */]
         ],
-        declarations: [
-            __WEBPACK_IMPORTED_MODULE_3__components_mysalary_component__["a" /* MysalaryComponent */]
-        ]
+        declarations: [__WEBPACK_IMPORTED_MODULE_3__components_record_template_component__["a" /* RecordTemplateComponent */]]
     })
-], MysalaryModule);
+], RecordTemplateModule);
 
 
 
 /***/ }),
 
-/***/ 667:
+/***/ 678:
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  mysalary works!\n</p>\n"
+module.exports = "<p>\n  record-template works!\n</p>\n"
 
 /***/ })
 

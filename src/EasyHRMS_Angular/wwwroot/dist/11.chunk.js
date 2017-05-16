@@ -19479,7 +19479,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;//     Underscor
 
 /***/ }),
 
-/***/ 440:
+/***/ 437:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -19543,7 +19543,7 @@ FormsService = __decorate([
 
 /***/ }),
 
-/***/ 447:
+/***/ 441:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -19552,7 +19552,7 @@ FormsService = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(66);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__(98);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TaskService; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TemplatesService; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -19566,35 +19566,35 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var TaskService = (function () {
-    function TaskService(http, configuration) {
+var TemplatesService = (function () {
+    function TemplatesService(http, configuration) {
         var _this = this;
         this.http = http;
         this.configuration = configuration;
-        this.GetAllTasks = function () {
+        this.GetAll = function () {
             return _this.http
-                .get(_this.actionUrl + 'TaskTemplate/GetAllTaskTemplate')
+                .get(_this.actionUrl + 'EmailTemplate/GetAllEmailTemplate')
                 .map(function (res) { return res.json(); });
         };
-        this.GetTasksByTaskId = function (id) {
+        this.GetSingle = function (id) {
             return _this.http
-                .get(_this.actionUrl + 'TaskTemplate/GetTaskTemplateById/' + id)
+                .get(_this.actionUrl + 'EmailTemplate/GetEmailTemplateById/' + id)
                 .map(function (res) { return res.json(); });
         };
-        this.AddTask = function (data) {
+        this.Add = function (data) {
             var toAdd = JSON.stringify(data);
-            return _this.http.post(_this.actionUrl + 'TaskTemplate/CreateTaskTemplate/', toAdd, { headers: _this.headers })
-                .map(function (res) { return res.json(); });
-        };
-        this.UpdateTask = function (id, data) {
-            var toAdd = JSON.stringify(data);
-            return _this.http.post(_this.actionUrl + 'TaskTemplate/UpdateTaskTemplate/' + id, toAdd, { headers: _this.headers })
-                .map(function (res) { return res.json(); });
-        };
-        this.DeleteTask = function (id) {
-            console.log(id);
             return _this.http
-                .get(_this.actionUrl + 'TaskTemplate/DeleteTaskTemplateById/' + id)
+                .post(_this.actionUrl + 'EmailTemplate/CreateEmailTemplate', toAdd, { headers: _this.headers })
+                .map(function (res) { return res.json(); });
+        };
+        this.Update = function (id, data) {
+            var toAdd = JSON.stringify(data);
+            return _this.http.post(_this.actionUrl + 'EmailTemplate/UpdateEmailTemplate/' + id, toAdd, { headers: _this.headers })
+                .map(function (res) { return res.json(); });
+        };
+        this.Delete = function (id) {
+            return _this.http
+                .get(_this.actionUrl + 'EmailTemplate/DeleteEmailTemplateById/' + id)
                 .map(function (res) { return res.json(); });
         };
         this.actionUrl = configuration.Server + 'api/';
@@ -19602,27 +19602,122 @@ var TaskService = (function () {
         this.headers.append('Content-Type', 'application/json');
         this.headers.append('Accept', 'application/json');
     }
-    return TaskService;
+    return TemplatesService;
 }());
-TaskService = __decorate([
+TemplatesService = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Injectable"])(),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_http__["c" /* Http */], __WEBPACK_IMPORTED_MODULE_0__app_constants__["a" /* Configuration */]])
-], TaskService);
+], TemplatesService);
 
 
 
 /***/ }),
 
-/***/ 478:
+/***/ 458:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Templates; });
+var Templates = (function () {
+    function Templates() {
+    }
+    return Templates;
+}());
+
+
+
+/***/ }),
+
+/***/ 527:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(172);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__core_services_templates_templates_service__ = __webpack_require__(441);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__core_services_common_pager_service__ = __webpack_require__(373);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EmailTemplateComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var EmailTemplateComponent = (function () {
+    function EmailTemplateComponent(_router, _route, _templatesService, pagerService) {
+        this._router = _router;
+        this._route = _route;
+        this._templatesService = _templatesService;
+        this.pagerService = pagerService;
+        this._results = {};
+        this._list = [];
+        this.msgs = [];
+        this.pager = {};
+    }
+    EmailTemplateComponent.prototype.ngOnInit = function () {
+        this.getAllTemplates();
+    };
+    EmailTemplateComponent.prototype.getAllTemplates = function () {
+        var _this = this;
+        this._templatesService
+            .GetAll()
+            .subscribe(function (data) {
+            _this._results = data;
+            _this._list = _this._results['list'];
+            _this.setPage(1);
+        });
+    };
+    EmailTemplateComponent.prototype.delete = function (id) {
+        var _this = this;
+        this._templatesService
+            .Delete(id)
+            .subscribe(function (data) {
+            _this.msgs = [];
+            _this.msgs.push({ severity: 'warn', summary: 'Insert Message', detail: 'Email Template has been Deleted Successfully!!!' });
+            _this.getAllTemplates();
+        });
+    };
+    EmailTemplateComponent.prototype.setPage = function (page) {
+        if (page < 1 || page > this.pager.totalPages) {
+            return;
+        }
+        this.pager = this.pagerService.getPager(this._list.length, page);
+        this.pagedItems = this._list.slice(this.pager.startIndex, this.pager.endIndex + 1);
+    };
+    return EmailTemplateComponent;
+}());
+EmailTemplateComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'app-email-template',
+        template: __webpack_require__(676),
+    }),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_router__["Router"],
+        __WEBPACK_IMPORTED_MODULE_1__angular_router__["ActivatedRoute"],
+        __WEBPACK_IMPORTED_MODULE_2__core_services_templates_templates_service__["a" /* TemplatesService */],
+        __WEBPACK_IMPORTED_MODULE_3__core_services_common_pager_service__["a" /* PagerService */]])
+], EmailTemplateComponent);
+
+
+
+/***/ }),
+
+/***/ 528:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(172);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(171);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__core_services_forms_forms_service__ = __webpack_require__(440);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__core_services_tasks_task_service__ = __webpack_require__(447);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__models_tasks_task_model__ = __webpack_require__(591);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__core_services_forms_forms_service__ = __webpack_require__(437);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__core_services_templates_templates_service__ = __webpack_require__(441);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__models_templates_templates_model__ = __webpack_require__(458);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FormComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -19640,24 +19735,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var FormComponent = (function () {
-    function FormComponent(fb, _router, _route, _formsService, _taskService) {
+    function FormComponent(fb, _router, _route, _formsService, _templatesService) {
         this.fb = fb;
         this._router = _router;
         this._route = _route;
         this._formsService = _formsService;
-        this._taskService = _taskService;
-        this._taskmodel = new __WEBPACK_IMPORTED_MODULE_5__models_tasks_task_model__["a" /* TaskModel */]();
+        this._templatesService = _templatesService;
+        this._templatesModels = new __WEBPACK_IMPORTED_MODULE_5__models_templates_templates_model__["a" /* Templates */]();
+        this._objEmailTemplate = {};
         this._results = {};
         this._list = [];
         this.msgs = [];
         this.form = fb.group({
-            'templateName': [this._taskmodel.templateName, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required],
-            'formName': [this._taskmodel.formName, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required],
-            'taskName': [this._taskmodel.taskName],
-            'description': [this._taskmodel.description],
-            'priority': [this._taskmodel.priority, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required],
-            'taskOwner': [this._taskmodel.taskOwner, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required],
-            'dueDate': [this._taskmodel.dueDate, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required],
+            'templateName': [this._templatesModels.templateName, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required],
+            'formName': [this._templatesModels.formName, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required],
+            'message': [this._templatesModels.message],
         });
     }
     FormComponent.prototype.ngOnInit = function () {
@@ -19666,9 +19758,26 @@ var FormComponent = (function () {
             _this.bindId = param['id'];
         });
         if (this.bindId) {
-            this.getTaskDataById(this.bindId);
+            this.getTemplateDataBasedonId(this.bindId);
         }
         this.getAllForms();
+    };
+    FormComponent.prototype.getTemplateDataBasedonId = function (id) {
+        var _this = this;
+        this._templatesService
+            .GetSingle(id)
+            .subscribe(function (data) {
+            if (data) {
+                _this._objEmailTemplate = data;
+                if (_this._objEmailTemplate['objEmailTemplate']) {
+                    _this._templatesModels = _this._objEmailTemplate['objEmailTemplate'];
+                }
+                else {
+                    _this.msgs = [];
+                    _this.msgs.push({ severity: 'error', summary: 'Error Message', detail: 'Oops!!!Something Went Wrong' });
+                }
+            }
+        });
     };
     FormComponent.prototype.getAllForms = function () {
         var _this = this;
@@ -19679,22 +19788,6 @@ var FormComponent = (function () {
             _this._list = _this._results['list'];
         });
     };
-    FormComponent.prototype.getTaskDataById = function (id) {
-        var _this = this;
-        this._taskService
-            .GetTasksByTaskId(id)
-            .subscribe(function (data) {
-            if (data) {
-                if (data.objTaskTemplate) {
-                    _this._taskmodel = data.objTaskTemplate;
-                }
-                else {
-                    _this.msgs = [];
-                    _this.msgs.push({ severity: 'error', summary: 'Error Message', detail: 'Oops!!!Something Went Wrong' });
-                }
-            }
-        });
-    };
     FormComponent.prototype.onSubmit = function (value, isValid) {
         var _this = this;
         this.submitted = true;
@@ -19702,22 +19795,25 @@ var FormComponent = (function () {
             return false;
         }
         else {
+            this._templatesModels.templateName = value.templateName;
+            this._templatesModels.formName = value.formName;
+            this._templatesModels.message = value.message;
             if (!this.bindId) {
-                this._taskService
-                    .AddTask(this._taskmodel)
+                this._templatesService
+                    .Add(this._templatesModels)
                     .subscribe(function (data) {
                     _this.msgs = [];
-                    _this.msgs.push({ severity: 'info', summary: 'Insert Message', detail: 'Task Template has been added Successfully!!!' });
-                    _this._router.navigate(['/automation/tasks']);
+                    _this.msgs.push({ severity: 'info', summary: 'Insert Message', detail: 'Email Template has been added Successfully!!!' });
+                    _this._router.navigate(['/templates/email-templates']);
                 });
             }
             else {
-                this._taskService
-                    .UpdateTask(this.bindId, this._taskmodel)
+                this._templatesService
+                    .Update(this.bindId, this._templatesModels)
                     .subscribe(function (data) {
                     _this.msgs = [];
-                    _this.msgs.push({ severity: 'info', summary: 'Update Message', detail: 'Task Template has been Updated Successfully!!!' });
-                    _this._router.navigate(['/automation/tasks']);
+                    _this.msgs.push({ severity: 'info', summary: 'Update Message', detail: 'Email Template has been Updated Successfully!!!' });
+                    _this._router.navigate(['/templates/email-templates']);
                 });
             }
         }
@@ -19727,87 +19823,28 @@ var FormComponent = (function () {
 FormComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-form',
-        template: __webpack_require__(620),
+        template: __webpack_require__(677),
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormBuilder"],
         __WEBPACK_IMPORTED_MODULE_1__angular_router__["Router"],
         __WEBPACK_IMPORTED_MODULE_1__angular_router__["ActivatedRoute"],
         __WEBPACK_IMPORTED_MODULE_3__core_services_forms_forms_service__["a" /* FormsService */],
-        __WEBPACK_IMPORTED_MODULE_4__core_services_tasks_task_service__["a" /* TaskService */]])
+        __WEBPACK_IMPORTED_MODULE_4__core_services_templates_templates_service__["a" /* TemplatesService */]])
 ], FormComponent);
 
 
 
 /***/ }),
 
-/***/ 479:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_services_tasks_task_service__ = __webpack_require__(447);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TasksComponent; });
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-var TasksComponent = (function () {
-    function TasksComponent(_taskService) {
-        this._taskService = _taskService;
-        this._taskList = [];
-        this.msgs = [];
-    }
-    TasksComponent.prototype.ngOnInit = function () {
-        this.GetAlltask();
-    };
-    TasksComponent.prototype.GetAlltask = function () {
-        var _this = this;
-        this._taskService
-            .GetAllTasks()
-            .subscribe(function (data) {
-            _this._taskList = data.list;
-        });
-    };
-    TasksComponent.prototype.deleteTask = function (id) {
-        var _this = this;
-        this._taskService
-            .DeleteTask(id)
-            .subscribe(function (data) {
-            _this.msgs = [];
-            _this.msgs.push({ severity: 'warn', summary: 'Insert Message', detail: 'Task Template has been Deleted Successfully!!!' });
-            _this.GetAlltask();
-        });
-    };
-    return TasksComponent;
-}());
-TasksComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'app-tasks',
-        template: __webpack_require__(621),
-    }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__core_services_tasks_task_service__["a" /* TaskService */]])
-], TasksComponent);
-
-
-
-/***/ }),
-
-/***/ 545:
+/***/ 587:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(172);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_tasks_component__ = __webpack_require__(479);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_form_form_component__ = __webpack_require__(478);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TasksRoutingModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_email_template_component__ = __webpack_require__(527);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_form_form_component__ = __webpack_require__(528);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EmailTemplateRoutingModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -19819,27 +19856,27 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 var routes = [
-    { path: '', component: __WEBPACK_IMPORTED_MODULE_2__components_tasks_component__["a" /* TasksComponent */] },
+    { path: '', component: __WEBPACK_IMPORTED_MODULE_2__components_email_template_component__["a" /* EmailTemplateComponent */] },
     { path: 'forms', component: __WEBPACK_IMPORTED_MODULE_3__components_form_form_component__["a" /* FormComponent */] },
     { path: 'forms/:id', component: __WEBPACK_IMPORTED_MODULE_3__components_form_form_component__["a" /* FormComponent */] },
 ];
-var TasksRoutingModule = (function () {
-    function TasksRoutingModule() {
+var EmailTemplateRoutingModule = (function () {
+    function EmailTemplateRoutingModule() {
     }
-    return TasksRoutingModule;
+    return EmailTemplateRoutingModule;
 }());
-TasksRoutingModule = __decorate([
+EmailTemplateRoutingModule = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
         imports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["RouterModule"].forChild(routes)],
         exports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["RouterModule"]]
     })
-], TasksRoutingModule);
+], EmailTemplateRoutingModule);
 
 
 
 /***/ }),
 
-/***/ 546:
+/***/ 588:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -19847,15 +19884,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__(52);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(171);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__tasks_routing_module__ = __webpack_require__(545);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_tasks_component__ = __webpack_require__(479);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_form_form_component__ = __webpack_require__(478);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__core_services_tasks_task_service__ = __webpack_require__(447);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__core_services_forms_forms_service__ = __webpack_require__(440);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_email_template_component__ = __webpack_require__(527);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_form_form_component__ = __webpack_require__(528);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__email_template_routing_module__ = __webpack_require__(587);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__core_services_templates_templates_service__ = __webpack_require__(441);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__core_services_forms_forms_service__ = __webpack_require__(437);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_primeng_primeng__ = __webpack_require__(374);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_primeng_primeng___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_primeng_primeng__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__core_services_common_pager_service__ = __webpack_require__(373);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TasksModule", function() { return TasksModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EmailTemplateModule", function() { return EmailTemplateModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -19872,62 +19909,50 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var TasksModule = (function () {
-    function TasksModule() {
+
+var EmailTemplateModule = (function () {
+    function EmailTemplateModule() {
     }
-    return TasksModule;
+    return EmailTemplateModule;
 }());
-TasksModule = __decorate([
+EmailTemplateModule = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
         imports: [
             __WEBPACK_IMPORTED_MODULE_1__angular_common__["CommonModule"],
-            __WEBPACK_IMPORTED_MODULE_3__tasks_routing_module__["a" /* TasksRoutingModule */],
+            __WEBPACK_IMPORTED_MODULE_5__email_template_routing_module__["a" /* EmailTemplateRoutingModule */],
+            __WEBPACK_IMPORTED_MODULE_8_primeng_primeng__["EditorModule"],
+            __WEBPACK_IMPORTED_MODULE_8_primeng_primeng__["SharedModule"],
             __WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormsModule"],
             __WEBPACK_IMPORTED_MODULE_2__angular_forms__["ReactiveFormsModule"],
             __WEBPACK_IMPORTED_MODULE_8_primeng_primeng__["GrowlModule"]
         ],
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_4__components_tasks_component__["a" /* TasksComponent */],
-            __WEBPACK_IMPORTED_MODULE_5__components_form_form_component__["a" /* FormComponent */]
+            __WEBPACK_IMPORTED_MODULE_3__components_email_template_component__["a" /* EmailTemplateComponent */],
+            __WEBPACK_IMPORTED_MODULE_4__components_form_form_component__["a" /* FormComponent */]
         ],
         providers: [
-            __WEBPACK_IMPORTED_MODULE_6__core_services_tasks_task_service__["a" /* TaskService */],
+            __WEBPACK_IMPORTED_MODULE_6__core_services_templates_templates_service__["a" /* TemplatesService */],
             __WEBPACK_IMPORTED_MODULE_7__core_services_forms_forms_service__["a" /* FormsService */],
             __WEBPACK_IMPORTED_MODULE_9__core_services_common_pager_service__["a" /* PagerService */]
         ]
     })
-], TasksModule);
+], EmailTemplateModule);
 
 
 
 /***/ }),
 
-/***/ 591:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TaskModel; });
-var TaskModel = (function () {
-    function TaskModel() {
-    }
-    return TaskModel;
-}());
-
-
-
-/***/ }),
-
-/***/ 620:
+/***/ 676:
 /***/ (function(module, exports) {
 
-module.exports = "<!-- BEGIN MAIN CONTENT -->\r\n<div id=\"main-content\">\r\n    <div class=\"row m-t-10\">\r\n        <div class=\"col-md-12\">\r\n            <div class=\"panel panel-default\">\r\n                <div class=\"panel-heading text-right\">\r\n                    <button type=\"button\" class=\"btn btn-sm btn-icon btn-rounded btn-default\"><i class=\"fa fa-question\"></i> </button>\r\n                </div>\r\n                <div class=\"panel-body\">\r\n                    <div class=\"row\">\r\n                        <div class=\"col-md-12 col-sm-12 col-xs-12\">\r\n\r\n\r\n                            <form id=\"form1\" [formGroup]=\"form\" (ngSubmit)=\"onSubmit(form.value,form.valid)\" class=\"form-horizontal\" parsley-validate>\r\n                                <div class=\"boder-btm\">\r\n                                    <h3 class=\"panel-title\">Task Info</h3>\r\n                                </div>\r\n                                <div class=\"m-b-30\">\r\n                                    <div class=\"form-group\">\r\n                                        <label class=\"col-sm-2 control-label\">Form Name </label>\r\n                                        <div class=\"col-sm-4\">\r\n                                            <select class=\"form-control\" formControlName=\"formName\" [(ngModel)]=\"_taskmodel.formName\">\r\n                                                <option>---Select---</option>\r\n                                                <option *ngFor=\"let lst of _list\" [value]=\"lst.formName\"> {{lst.formName}} </option>\r\n                                            </select>\r\n                                            <div [hidden]=\"form.get('formName').valid || (form.get('formName').pristine && !submitted)\" class=\"alert alert-danger\">\r\n                                                Form Name is required.\r\n                                            </div>\r\n                                        </div>\r\n                                        <label class=\"col-sm-2 control-label\">Display Name </label>\r\n                                        <div class=\"col-sm-4\">\r\n                                            <input type=\"text\" class=\"form-control\" formControlName=\"templateName\" [(ngModel)]=\"_taskmodel.templateName\" required>\r\n                                            <div [hidden]=\"form.get('templateName').valid || (form.get('templateName').pristine && !submitted)\" class=\"alert alert-danger\">\r\n                                                Template Name is required.\r\n                                            </div>\r\n                                        </div>\r\n                                    </div>\r\n                                    <div class=\"form-group\">\r\n                                        <label class=\"col-sm-2 control-label\">Task Name </label>\r\n                                        <div class=\"col-sm-4\">\r\n                                            <input type=\"text\" class=\"form-control\" formControlName=\"taskName\" [(ngModel)]=\"_taskmodel.taskName\" required>\r\n                                            <div [hidden]=\"form.get('taskName').valid || (form.get('taskName').pristine && !submitted)\" class=\"alert alert-danger\">\r\n                                                Task Name is required.\r\n                                            </div>\r\n                                        </div>\r\n                                        <label class=\"col-sm-2 control-label\">Priority </label>\r\n                                        <div class=\"col-sm-4\">\r\n                                            <select class=\"form-control\" formControlName=\"priority\" [(ngModel)]=\"_taskmodel.priority\">\r\n                                                <option [value]=''>---Select---</option>\r\n                                                <option [value]='high'>High</option>\r\n                                                <option [value]='low'>Low</option>\r\n                                                <option [value]='moderate'>Moderate</option>\r\n                                            </select>\r\n                                        </div>\r\n                                    </div>\r\n\r\n                                    <div class=\"form-group\">\r\n                                        <label class=\"col-sm-2 control-label\">Description </label>\r\n                                        <div class=\"col-sm-4\">\r\n                                            <textarea rows=\"2\" class=\"form-control valid\" formControlName=\"description\" [(ngModel)]=\"_taskmodel.description\" placeholder=\"\" required=\"\"></textarea>\r\n                                        </div>\r\n                                        <label class=\"col-sm-2 control-label\">Task Owner </label>\r\n                                        <div class=\"col-sm-4\">\r\n                                            <textarea rows=\"2\" class=\"form-control valid\" formControlName=\"taskOwner\" [(ngModel)]=\"_taskmodel.taskOwner\" placeholder=\"\" required=\"\"></textarea>\r\n                                        </div>\r\n                                    </div>\r\n                                    <div class=\"form-group\">\r\n                                        <label class=\"col-sm-2 control-label\">Due Date</label>\r\n                                        <div class=\"col-sm-2\">\r\n                                            <input type=\"text\" class=\"form-control\" formControlName=\"dueDate\" [(ngModel)]=\"_taskmodel.dueDate\" required>\r\n                                        </div>\r\n                                        <!--<div class=\"col-sm-2\">\r\n                                            <select class=\"form-control\">\r\n                                                <option>---Select---</option>\r\n                                                <option>Day(s)</option>\r\n                                                <option>Week(s)</option>\r\n                                                <option>Month(s)</option>\r\n                                                <option>Year(s)</option>\r\n                                            </select>\r\n                                        </div>-->\r\n                                        <!--<div class=\"col-sm-2\">\r\n                                            <select class=\"form-control\">\r\n                                                <option>---Select---</option>\r\n                                                <option>After</option>\r\n                                            </select>\r\n                                        </div>-->\r\n                                        <!--<div class=\"col-sm-2\">\r\n                                            <select class=\"form-control\">\r\n                                                <option>-- Rule Trigger Date --</option>\r\n                                                <option>Birth Date</option>\r\n                                                <option>Date of joining</option>\r\n                                                <option>Date of exit</option>\r\n                                            </select>\r\n                                        </div>-->\r\n                                    </div>\r\n                                </div>\r\n\r\n                                <div class=\"form-group\">\r\n                                    <div class=\"col-sm-10 col-sm-offset-2\">\r\n                                        <button class=\"btn btn-primary m-b-10\" type=\"submit\" >Submit</button>\r\n                                        <button type=\"reset\" [routerLink]=\"['/automation/tasks']\" class=\"btn btn-default m-b-10\">Cancel</button>\r\n                                    </div>\r\n                                </div>\r\n                            </form>\r\n                        </div>\r\n                    </div>\r\n                    <p-growl [value]=\"msgs\"></p-growl>\r\n\r\n\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n<!-- END MAIN CONTENT --> \r\n"
+module.exports = "<div id=\"main-content\" >\n    <div class=\"row m-t-10\">\n      <div class=\"col-md-12\">\n        <div class=\"panel panel-default\">\n          <div class=\"panel-heading text-right\">\n            <button type=\"button\" class=\"btn btn-sm btn-icon btn-rounded btn-default\"><i class=\"fa fa-question\"></i> </button>\n          </div>\n          <div class=\"panel-body\">\n           <div class=\"row\">\n              <div class=\"col-md-12 col-sm-12 col-xs-12 text-right\">\n                <button [routerLink]=\"['//templates/email-templates/forms']\" class=\"btn btn-primary m-b-10\" >Add Mail Alert</button>\n              </div>\n            </div>\n            \n            <p-growl [value]=\"msgs\"></p-growl>\n            <div class=\"row\">\n              <div class=\"col-md-12 col-sm-12 col-xs-12\">\n                <div class=\"table-responsive\">\n                  <table class=\"table table-bordered table-striped table-hover\">\n                    <thead class=\"no-bd\">\n                      <tr>                       \n                        <th><strong>Name</strong> </th>\n                        <th><strong>Form Name</strong> </th>\n                        <th><strong>Template Name</strong> </th>                \n                        <th><strong>Action</strong></th>                      \n                      </tr>\n                    </thead>\n                    <tbody class=\"no-bd-y\">\n                      <tr *ngFor=\"let lst of pagedItems\">                       \n                        <td><a> {{lst.templateName}} </a></td>\n                        <td>{{lst.formName}}</td>\n                        <td><a >{{lst.templateName}}</a></td>\n\t\t\t\t\t\t            <td>\n                          <button [routerLink]=\"['/templates/email-templates/forms/' + lst.id ]\"  type=\"button\" class=\"btn btn-sm btn-warning\" title=\"Edit\"><i class=\"fa fa-pencil\"></i></button>\n                          <button (click)=\"delete(lst.id)\" type=\"button\" class=\"btn btn-sm btn-danger\" title=\"Delete\"><i class=\"fa fa-remove\" ></i></button>\n                        </td>   \n                      </tr>\n                    </tbody>\n                  </table>\n\n                  <ul *ngIf=\"pager.pages && pager.pages.length\" class=\"pagination\">\n                      <li [ngClass]=\"{disabled:pager.currentPage === 1}\">\n                          <a (click)=\"setPage(1)\">First</a>\n                      </li>\n                      <li [ngClass]=\"{disabled:pager.currentPage === 1}\">\n                          <a (click)=\"setPage(pager.currentPage - 1)\">Previous</a>\n                      </li>\n                      <li *ngFor=\"let page of pager.pages\" [ngClass]=\"{active:pager.currentPage === page}\">\n                          <a (click)=\"setPage(page)\">{{page}}</a>\n                      </li>\n                      <li [ngClass]=\"{disabled:pager.currentPage === pager.totalPages}\">\n                          <a (click)=\"setPage(pager.currentPage + 1)\">Next</a>\n                      </li>\n                      <li [ngClass]=\"{disabled:pager.currentPage === pager.totalPages}\">\n                          <a (click)=\"setPage(pager.totalPages)\">Last</a>\n                      </li>\n                  </ul>\n\n                </div>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>"
 
 /***/ }),
 
-/***/ 621:
+/***/ 677:
 /***/ (function(module, exports) {
 
-module.exports = "<!--<p>\r\n  tasks works!\r\n</p>-->\r\n\r\n<!-- BEGIN MAIN CONTENT -->\r\n<div id=\"main-content\">\r\n    <div class=\"row m-t-10\">\r\n        <div class=\"col-md-12\">\r\n            <div class=\"panel panel-default\">\r\n                <div class=\"panel-heading text-right\">\r\n                    <button type=\"button\" class=\"btn btn-sm btn-icon btn-rounded btn-default\"><i class=\"fa fa-question\"></i> </button>\r\n                </div>\r\n                <div class=\"panel-body\">\r\n                    <div class=\"row\">\r\n                        <div class=\"col-md-12 col-sm-12 col-xs-12 text-right\">\r\n                            <button [routerLink]=\"['./forms']\" class=\"btn btn-primary m-b-10\">Add Task Template</button>\r\n                        </div>\r\n                    </div>\r\n\r\n\r\n                    <div class=\"row\">\r\n                        <div class=\"col-md-12 col-sm-12 col-xs-12\">\r\n                            <div class=\"table-responsive\">\r\n                                <table class=\"table table-bordered table-striped table-hover\">\r\n                                    <thead class=\"no-bd\">\r\n                                        <tr>\r\n                                            <th><strong>Name</strong> </th>\r\n                                            <th><strong>Form Name</strong> </th>\r\n                                            <th><strong>Due Date</strong> </th>\r\n                                            <th><strong>Task Owner</strong> </th>\r\n                                            <th><strong>Action</strong></th>\r\n                                        </tr>\r\n                                    </thead>\r\n                                    <tbody class=\"no-bd-y\">\r\n                                        <tr *ngFor=\"let task of _taskList\" >\r\n                                            <td><a href=\"#\">{{task.templateName}}</a></td>\r\n                                            <td>{{task.formName}}</td>\r\n                                            <td>{{task.dueDate}}</td>\r\n                                            <td>{{task.taskOwner}}</td>\r\n                                            <td><button type=\"button\" [routerLink]=\"['./forms/' + task.id ]\" class=\"btn btn-sm btn-warning\" title=\"Edit\"><i class=\"fa fa-pencil\"></i></button>  <button type=\"button\" (click)=\"deleteTask(task.id)\" class=\"btn btn-sm btn-danger\" title=\"Delete\"><i class=\"fa fa-remove\"></i></button></td>\r\n                                        </tr>\r\n                                        <tr>\r\n                                            <td><a href=\"#\">New Mockup & HTML/CSS </a></td>\r\n                                            <td>Employee</td>\r\n                                            <td>1 Day(s) After Rule Trigger Time</td>\r\n                                            <td>jariwbh - Employee</td>\r\n                                            <td><button type=\"button\" class=\"btn btn-sm btn-warning\" title=\"Edit\"><i class=\"fa fa-pencil\"></i></button>  <button type=\"button\" class=\"btn btn-sm btn-danger\" title=\"Delete\"><i class=\"fa fa-remove\"></i></button></td>\r\n                                        </tr>\r\n\r\n                                    </tbody>\r\n                                </table>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n<!-- END MAIN CONTENT --> \r\n"
+module.exports = "<div id=\"main-content\" >\n\t<div class=\"row m-t-10\">\n      <div class=\"col-md-12\">\n        <div class=\"panel panel-default\">\n          <div class=\"panel-heading text-right\">\n            <button type=\"button\" class=\"btn btn-sm btn-icon btn-rounded btn-default\"><i class=\"fa fa-question\"></i> </button>\n          </div>\n          <div class=\"panel-body\">\n           <div class=\"row\">\n\t\t\t\t<div class=\"col-md-12 col-sm-12 col-xs-12\">\n\t\t\t\t\t<form [formGroup]=\"form\" (ngSubmit)=\"onSubmit(form.value,form.valid)\" novalidate class=\"form-horizontal\">\n\t\t\t\t\t\t<div class=\"boder-btm\">\n              <h3 class=\"panel-title\">Add / Edit Template</h3>\n            </div>\n            <div class=\"m-b-30\">\n              <div class=\"form-group\">\n                <label class=\"col-sm-2 control-label\">Form Name </label>\n                <div class=\"col-sm-4\">\n                  <select class=\"form-control\" formControlName=\"formName\" [(ngModel)]=\"_templatesModels.formName\">\n                    <option>---Select---</option>\n                    <option *ngFor=\"let lst of _list\" [value]=\"lst.id\"> {{lst.formName}} </option>\n                  </select>\n                  <div [hidden]=\"form.get('formName').valid || (form.get('formName').pristine && !submitted)\" class=\"alert alert-danger\">\n                      Form Name is required.\n                  </div>\n                  </div>\n              </div>\n              <div class=\"form-group\">\n                <label class=\"col-sm-2 control-label\">Template Name </label>\n                <div class=\"col-sm-4\">\n                  <input type=\"text\" class=\"form-control\" formControlName=\"templateName\" [(ngModel)]=\"_templatesModels.templateName\">\n                  <div [hidden]=\"form.get('templateName').valid || (form.get('templateName').pristine && !submitted)\" class=\"alert alert-danger\">\n                      Template name is required.\n                  </div>\n                </div>\n              </div>\n            </div>\n            <div class=\"boder-btm\">\n              <h3 class=\"panel-title\">Message</h3>\n            </div>\n            <div class=\"form-group\">\n              \n                <div class=\"col-sm-12\">\n                    <div class=\"summernote\"></div>   \n                </div>\n              \n              </div>\n            <div class=\"form-group\">\n              <label class=\"col-sm-2 control-label\"> </label>\n                <div class=\"col-sm-8\">\n                  <p-editor formControlName=\"message\" [style]=\"{'height':'320px'}\" [(ngModel)]=\"_templatesModels.message\"></p-editor>\n                </div>\n                \n              </div>                                   \n            <div class=\"form-group\">                                            \n                <div class=\"col-sm-10 col-sm-offset-2\">\n                    <button class=\"btn btn-primary m-b-10\" type=\"submit\" >Submit</button>\n                    <button [routerLink]=\"['/templates/email-templates/']\" type=\"reset\" class=\"btn btn-default m-b-10\">Cancel</button>\n                    <p-growl [value]=\"msgs\"></p-growl>\n                </div>                                           \n            </div>                                       \n        </form>\n\t\t\t\t</div>\n\t\t\t</div>\n          </div>\n        </div>\n      </div>\n    </div>\n</div>\n"
 
 /***/ })
 

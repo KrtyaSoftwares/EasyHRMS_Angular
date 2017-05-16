@@ -128,9 +128,10 @@ export class ListComponent implements OnInit {
       this._EmployeeLeaveModel.toDate.setHours(0, 0, 0, 0);
       //this._EmployeeLeaveModel.fromDate.toDateString();
       //this._EmployeeLeaveModel.toDate.toDateString();
+     
       this._EmployeeLeaveModel.toDate.toDateString();
-      //console.log(this._EmployeeLeaveModel.toDate.toDateString());
-      //console.log(this._EmployeeLeaveModel);
+      console.log(this._EmployeeLeaveModel.toDate.toDateString());
+      console.log(this._EmployeeLeaveModel);
       this._leaveService.AddEmployeeLeave(this._EmployeeLeaveModel)
           .subscribe(
           data => {
