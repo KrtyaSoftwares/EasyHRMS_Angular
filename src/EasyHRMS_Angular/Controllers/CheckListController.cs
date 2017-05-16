@@ -309,8 +309,25 @@ namespace EasyHRMS_Angular.Controllers
                         List<WorkFlowTask> listTasks = _context.WorkFlowTask.Where(y => y.CheckListId == id).ToList();
                         if(listTasks.Count > 0)
                         {
-                            message = "Can Not Delete As Refernce in Other Record!";
-                            errorcode = "1";
+                            foreach(var task in listTasks)
+                            {
+                                var TaskidToRemove = _context.WorkFlowTask.SingleOrDefault(x => x.Id == task.Id);
+                                if (TaskidToRemove != null)
+                                {
+                                    _context.WorkFlowTask.Remove(TaskidToRemove);
+                                    _context.SaveChanges();
+                                }
+                            }
+
+                            var idToRemove = _context.CheckList.SingleOrDefault(x => x.Id == id);
+                            if (idToRemove != null)
+                            {
+                                _context.CheckList.Remove(idToRemove);
+                                _context.SaveChanges();
+                            }
+                            _ctxTransaction.Commit();
+                            message = "Deleted Successfully";
+                            errorcode = "0";
                         }
                         else
                         {
