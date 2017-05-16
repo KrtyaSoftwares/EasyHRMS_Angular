@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { TaskService } from './../../../../core/services/tasks/task.service';
+import { FormsService } from './../../../../core/services/forms/forms.service';
 
 import { PagerService } from '../../../../core/services/common/pager.service';
 import { Message } from 'primeng/primeng';
+import { ConfirmDialogModule, ConfirmationService } from 'primeng/primeng';
 
 @Component({
   selector: 'app-tasks',
@@ -17,7 +19,11 @@ export class TasksComponent implements OnInit {
     pager: any = {};
     // paged items
     pagedItems: any[];
-    constructor(private _taskService: TaskService, private pagerService: PagerService) { }
+    _formResults: any = [];
+    constructor(private _taskService: TaskService,
+        private _formsService: FormsService,
+        private pagerService: PagerService,
+    private confirmationService: ConfirmationService) { }
 
   ngOnInit() {
       this.GetAlltask();
@@ -32,18 +38,41 @@ export class TasksComponent implements OnInit {
               this._taskList = data.list;
               //initialize to page 1
               this.setPage(1);
+              this.getFormname();
           });
   }
 
+  getFormname() {
+
+      this._taskList.forEach((element: any) => {
+          let formId = element.formName;
+          this._formsService
+              .GetSingle(formId)
+              .subscribe(
+              data => {
+                  this._formResults = data;
+                  element.custom_formName = this._formResults['objForms']['formName'];
+              });
+      });
+      //initialize to page 1
+      this.setPage(1);
+  }
+
   deleteTask(id: number) {
-      this._taskService
-          .DeleteTask(id)
-          .subscribe(
-          data => {
-              this.msgs = [];
-              this.msgs.push({ severity: 'warn', summary: 'Insert Message', detail: 'Task Template has been Deleted Successfully!!!' });
-              this.GetAlltask();
-          });
+
+      this.confirmationService.confirm({
+          message: 'Are you sure that you want to perform this action?',
+          accept: () => {
+              this._taskService
+                  .DeleteTask(id)
+                  .subscribe(
+                  data => {
+                      this.msgs = [];
+                      this.msgs.push({ severity: 'warn', summary: 'Delete Message', detail: 'Task Template has been Deleted Successfully!!!' });
+                      this.GetAlltask();
+                  });
+          }
+      });
   }
 
   setPage(page: number) {

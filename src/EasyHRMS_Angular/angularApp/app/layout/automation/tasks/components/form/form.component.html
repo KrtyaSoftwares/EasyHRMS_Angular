@@ -21,7 +21,7 @@
                                         <div class="col-sm-4">
                                             <select class="form-control" formControlName="formName" [(ngModel)]="_taskmodel.formName">
                                                 <option>---Select---</option>
-                                                <option *ngFor="let lst of _list" [value]="lst.formName"> {{lst.formName}} </option>
+                                                <option *ngFor="let lst of _list" [value]="lst.id"> {{lst.formName}} </option>
                                             </select>
                                             <div [hidden]="form.get('formName').valid || (form.get('formName').pristine && !submitted)" class="alert alert-danger">
                                                 Form Name is required.

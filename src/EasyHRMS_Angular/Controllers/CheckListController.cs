@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using EasyHRMS_DA.Models;
+using EasyHRMS_Angular.Models;
 
 namespace EasyHRMS_Angular.Controllers
 {
@@ -26,17 +27,29 @@ namespace EasyHRMS_Angular.Controllers
         [HttpGet("GetAllCheckList"), Produces("application/json")]
         public object GetAllCheckList()
         {
-            List<CheckList> list = new List<CheckList>();
+            List<CheckListVM> list = new List<CheckListVM>();
+            List<WorkFlowTask> TaskList = new List<WorkFlowTask>();
             object result = null;
             try
             {
                 using (_context)
                 {
-                    list = _context.CheckList.ToList();
+                    list = _context.CheckList.Select(y => new CheckListVM
+                    {
+                        Id = y.Id,
+                        FormName = y.FormName,
+                        ChecklistName = y.ChecklistName,
+                        ChecklistOrder = y.ChecklistOrder,
+                        //TaskCount = _context.WorkFlowTask.Where(z => z.CheckListId == y.Id).Count()
+                        //TaskCount = _context.WorkFlowTask.Count(z => z.CheckListId == y.Id)
+                    }).ToList();
+
+                    TaskList = _context.WorkFlowTask.Where(x => x.CheckListId != null).ToList();
 
                     result = new
                     {
                         list,
+                        TaskList,
                         error = "0",
                         msg = "Success"
                     };
@@ -48,6 +61,7 @@ namespace EasyHRMS_Angular.Controllers
                 result = new
                 {
                     list,
+                    TaskList,
                     error = "1",
                     msg = "Error",
                     excp = ex.ToString()

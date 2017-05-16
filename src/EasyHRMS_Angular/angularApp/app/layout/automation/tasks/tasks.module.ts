@@ -12,6 +12,8 @@ import { FormsService } from './../../../core/services/forms/forms.service';
 
 import { GrowlModule } from 'primeng/primeng';
 import { PagerService } from '../../../core/services/common/pager.service';
+import { TemplatesService } from './../../../core/services/templates/templates.service';
+import { ConfirmDialogModule, ConfirmationService } from 'primeng/primeng';
 
 
 @NgModule({
@@ -20,7 +22,8 @@ import { PagerService } from '../../../core/services/common/pager.service';
     TasksRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    GrowlModule
+    GrowlModule,
+    ConfirmDialogModule,
   ],
   declarations: [
       TasksComponent,
@@ -29,7 +32,9 @@ import { PagerService } from '../../../core/services/common/pager.service';
   providers: [
       TaskService,
       FormsService,
-      PagerService
+      PagerService,
+      ConfirmationService,
+      TemplatesService
   ]
 })
 export class TasksModule { }

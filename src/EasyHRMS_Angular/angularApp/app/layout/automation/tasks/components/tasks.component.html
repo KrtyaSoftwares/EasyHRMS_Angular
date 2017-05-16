@@ -17,7 +17,6 @@
                         </div>
                     </div>
 
-
                     <div class="row">
                         <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="table-responsive">
@@ -34,7 +33,7 @@
                                     <tbody class="no-bd-y">
                                         <tr *ngFor="let task of pagedItems" >
                                             <td><a href="#">{{task.templateName}}</a></td>
-                                            <td>{{task.formName}}</td>
+                                            <td>{{task.custom_formName}}</td>
                                             <td>{{task.dueDate}}</td>
                                             <td>{{task.taskOwner}}</td>
                                             <td><button type="button" [routerLink]="['./forms/' + task.id ]" class="btn btn-sm btn-warning" title="Edit"><i class="fa fa-pencil"></i></button>  <button type="button" (click)="deleteTask(task.id)" class="btn btn-sm btn-danger" title="Delete"><i class="fa fa-remove"></i></button></td>
@@ -76,3 +75,5 @@
     </div>
 </div>
 <!-- END MAIN CONTENT --> 
+<p-growl [value]="msgs"></p-growl>
+<p-confirmDialog width="425"></p-confirmDialog>
