@@ -28,6 +28,48 @@ namespace EasyHRMS_Angular.Controllers
         public object GetAllCheckList()
         {
             List<CheckListVM> list = new List<CheckListVM>();
+            object result = null;
+            try
+            {
+                using (_context)
+                {
+                    list = _context.CheckList.Select(y => new CheckListVM
+                    {
+                        Id = y.Id,
+                        FormName = y.FormName,
+                        ChecklistName = y.ChecklistName,
+                        ChecklistOrder = y.ChecklistOrder,
+                        //TaskCount = _context.WorkFlowTask.Where(z => z.CheckListId == y.Id).Count()
+                        //TaskCount = _context.WorkFlowTask.Count(z => z.CheckListId == y.Id)
+                    }).ToList();
+                    
+                    result = new
+                    {
+                        list,
+                        error = "0",
+                        msg = "Success"
+                    };
+                }
+            }
+            catch (Exception ex)
+            {
+                ex.ToString();
+                result = new
+                {
+                    list,
+                    error = "1",
+                    msg = "Error",
+                    excp = ex.ToString()
+                };
+            }
+            return result;
+        }
+        
+        // GET: api/CheckList/GetAllCheckList
+        [HttpGet("GetAllCheckList"), Produces("application/json")]
+        public object GetAllCheckListWithAllTask()
+        {
+            List<CheckListVM> list = new List<CheckListVM>();
             List<WorkFlowTask> TaskList = new List<WorkFlowTask>();
             object result = null;
             try
@@ -69,7 +111,6 @@ namespace EasyHRMS_Angular.Controllers
             }
             return result;
         }
-
 
         // GET api/CheckList/GetCheckListById/5
         [HttpGet("GetCheckListById/{id}"), Produces("application/json")]
