@@ -43,7 +43,12 @@ namespace EasyHRMS_Angular.Controllers
                         Description = x.Description,
                         FormName = x.FormName,
                         TriggerName = x.TriggerName,
-                        Status = x.Status
+                        Status = x.Status,
+                        //CustomFormName = _context.Forms.Where(y => y.Id == x.FormName).FirstOrDefault().FormName
+                        MailAlertsCount = _context.WorkFlowAction.Where(y => y.Action == "MailAlerts").Count(),
+                        TasksCount = _context.WorkFlowAction.Where(y => y.Action == "Tasks").Count(),
+                        CheckListCount = _context.WorkFlowAction.Where(y => y.Action == "CheckLists").Count(),
+
                     }).ToList();
                     result = new
                     {
@@ -60,8 +65,8 @@ namespace EasyHRMS_Angular.Controllers
                 {
                     list,
                     error = "1",
-                    msg = "Error"
-                };
+                    msg = ex.ToString()
+            };
             }
             return result;
         }
@@ -322,7 +327,49 @@ namespace EasyHRMS_Angular.Controllers
             }
             return result;
         }
-        
+
+        // PUT api/WorkFlow/UpdateWorkFlowStatus/5
+        [HttpPost, Route("UpdateWorkFlowStatus/{id}")]
+        public object UpdateWorkFlowStatus(int id, [FromBody]bool status)
+        {
+            object result = null; string message = ""; string errorcode = ""; string excp = "";
+           
+            using (_context)
+            {
+                using (var _ctxTransaction = _context.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        var entityUpdate = _context.WorkFlow.FirstOrDefault(x => x.Id == id);
+
+                        if (entityUpdate != null)
+                        {
+                            entityUpdate.Status = status;
+                            _context.SaveChanges();
+                        }
+
+                        _ctxTransaction.Commit();
+                        message = "Entry Updated";
+                        errorcode = "0";
+                    }
+                    catch (Exception e)
+                    {
+                        _ctxTransaction.Rollback(); e.ToString();
+                        message = "Entry Update Failed!!";
+                        errorcode = "1";
+                        excp = e.ToString();
+                    }
+
+                    result = new
+                    {
+                        error = errorcode,
+                        msg = message,
+                        excp = excp
+                    };
+                }
+            }
+            return result;
+        }
         #endregion WorkFlow
 
         #region WorkFlowAction

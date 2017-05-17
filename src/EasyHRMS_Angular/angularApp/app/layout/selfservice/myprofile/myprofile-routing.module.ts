@@ -2,7 +2,7 @@
 import { Routes, RouterModule } from '@angular/router';
 
 import { MyprofileComponent } from './components/myprofile.component';
-
+//import { }
 
 
 const routes: Routes = [

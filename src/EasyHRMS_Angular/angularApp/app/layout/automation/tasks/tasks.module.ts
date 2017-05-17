@@ -12,7 +12,6 @@ import { FormsService } from './../../../core/services/forms/forms.service';
 
 import { GrowlModule } from 'primeng/primeng';
 import { PagerService } from '../../../core/services/common/pager.service';
-import { TemplatesService } from './../../../core/services/templates/templates.service';
 import { ConfirmDialogModule, ConfirmationService } from 'primeng/primeng';
 
 
@@ -33,8 +32,7 @@ import { ConfirmDialogModule, ConfirmationService } from 'primeng/primeng';
       TaskService,
       FormsService,
       PagerService,
-      ConfirmationService,
-      TemplatesService
+      ConfirmationService
   ]
 })
 export class TasksModule { }

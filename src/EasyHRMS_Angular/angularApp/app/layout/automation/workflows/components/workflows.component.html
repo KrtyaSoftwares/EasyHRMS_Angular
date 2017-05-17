@@ -1,3 +1,112 @@
-<p>
+<!--<p>
   workflows works!
-</p>
+</p>-->
+<!-- BEGIN MAIN CONTENT -->
+<div id="main-content">
+    <div class="row m-t-10">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading text-right">
+                    <button type="button" class="btn btn-sm btn-icon btn-rounded btn-default"><i class="fa fa-question"></i> </button>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12 text-right">
+                            <button class="btn btn-primary m-b-10">Add Workflow</button>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped table-hover">
+                                    <thead class="no-bd">
+                                        <tr>
+                                            <th><strong>Name</strong> </th>
+                                            <th><strong>Form Name</strong> </th>
+                                            <th><strong>Execute On</strong> </th>
+                                            <th><strong>Mail Alerts</strong></th>
+                                            <th><strong>Tasks</strong></th>
+                                            <th><strong>Checklists</strong></th>
+                                            <th><strong>Status</strong></th>
+                                            <th><strong>Action</strong></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="no-bd-y">
+                                        <tr *ngFor="let workflow of _workflowList">
+                                            <td><a href="#">{{workflow.name}}</a></td>
+                                            <td>{{workflow.custom_formName}}</td>
+                                            <td>{{workflow.triggerName}}</td>
+                                            <td>{{workflow.mailAlertsCount}}</td>
+                                            <td>{{workflow.tasksCount}}</td>
+                                            <td>{{workflow.checkListCount}}</td>
+                                            <td><input type="checkbox" class="switch" [value]="workflow.status" [checked]="workflow.status" data-size="small" (change)="changeStatus($event.target.checked, workflow.id);$event.target.checked ? workflow.status = true : workflow.status = false"></td>
+                                            <!--<td><input type="checkbox" class="switch" [value]="workflow.status" [checked]="workflow.status" data-size="small" (change)="$event.target.checked ? workflow.status = true : workflow.status = false"></td>-->
+                                            <!--<td><p-inputSwitch [checked]="workflow.status"></p-inputSwitch></td>-->
+                                            <td><button type="button" class="btn btn-sm btn-warning" title="Edit"><i class="fa fa-pencil"></i></button>  <button type="button" class="btn btn-sm btn-danger" title="Delete"><i class="fa fa-remove"></i></button></td>
+                                        </tr>
+                                        <!--<tr>
+                                            <td><a href="#">Job details Modified</a></td>
+                                            <td>Jobs</td>
+                                            <td>Edit</td>
+                                            <td>0</td>
+                                            <td>1</td>
+                                            <td>0</td>
+                                            <td><input type="checkbox" class="switch" checked data-size="small"></td>
+                                            <td><button type="button" class="btn btn-sm btn-warning" title="Edit"><i class="fa fa-pencil"></i></button>  <button type="button" class="btn btn-sm btn-danger" title="Delete"><i class="fa fa-remove"></i></button></td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="#">Job completed</a></td>
+                                            <td>Jobs</td>
+                                            <td>Field Updates</td>
+                                            <td>0</td>
+                                            <td>1</td>
+                                            <td>0</td>
+                                            <td><input type="checkbox" class="switch" checked data-size="small"></td>
+                                            <td><button type="button" class="btn btn-sm btn-warning" title="Edit"><i class="fa fa-pencil"></i></button>  <button type="button" class="btn btn-sm btn-danger" title="Delete"><i class="fa fa-remove"></i></button></td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="#">Job Re-opened</a></td>
+                                            <td>Jobs</td>
+                                            <td>Field Updates</td>
+                                            <td>0</td>
+                                            <td>1</td>
+                                            <td>0</td>
+                                            <td><input type="checkbox" class="switch" checked data-size="small"></td>
+                                            <td><button type="button" class="btn btn-sm btn-warning" title="Edit"><i class="fa fa-pencil"></i></button>  <button type="button" class="btn btn-sm btn-danger" title="Delete"><i class="fa fa-remove"></i></button></td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="#">Job Created</a></td>
+                                            <td>Jobs</td>
+                                            <td>Create</td>
+                                            <td>0</td>
+                                            <td>1</td>
+                                            <td>0</td>
+                                            <td><input type="checkbox" class="switch" checked data-size="small"></td>
+                                            <td><button type="button" class="btn btn-sm btn-warning" title="Edit"><i class="fa fa-pencil"></i></button>  <button type="button" class="btn btn-sm btn-danger" title="Delete"><i class="fa fa-remove"></i></button></td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="#">Job Reminder</a></td>
+                                            <td>Jobs</td>
+                                            <td>Create or Edit</td>
+                                            <td>1</td>
+                                            <td>0</td>
+                                            <td>0</td>
+                                            <td><input type="checkbox" class="switch" checked data-size="small"></td>
+                                            <td><button type="button" class="btn btn-sm btn-warning" title="Edit"><i class="fa fa-pencil"></i></button>  <button type="button" class="btn btn-sm btn-danger" title="Delete"><i class="fa fa-remove"></i></button></td>
+                                        </tr>-->
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END MAIN CONTENT --> 
+<p-growl [value]="msgs"></p-growl>
+<p-confirmDialog width="425"></p-confirmDialog>

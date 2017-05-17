@@ -1,3 +1,147 @@
-<p>
+<!--<p>
   myadvancesclaim works!
-</p>
+</p>-->
+
+<!-- BEGIN MAIN CONTENT -->
+<div id="main-content">
+
+    <div class="row m-t-10">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading text-right">
+
+
+                    <button type="button" class="btn btn-sm btn-icon btn-rounded btn-default">
+                        <i class="fa fa-question"></i>
+                    </button>
+
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12 text-right">
+                            <button class="btn btn-primary m-b-10" data-toggle="modal" data-target="#modal-basic">Add Request</button>
+                            <div class="modal fade text-left" id="modal-basic" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                            <h4 class="modal-title" id="myModalLabel"><strong>Add Advance/Claim Request</strong> </h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form class="form-horizontal" id="form1" parsley-validate>
+                                                <div class="form-group">
+                                                    <label class="col-sm-4 control-label">
+                                                        Request Type <span class="asterisk">*</span>
+                                                    </label>
+                                                    <div class="col-sm-8">
+                                                        <div class="radio">
+                                                            <label class="radio-inline">
+                                                                <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> Advance
+                                                            </label>
+                                                            <label class="radio-inline">
+                                                                <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> Claim
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-4 control-label">
+                                                        Purpose <span class="asterisk">*</span>
+                                                    </label>
+                                                    <div class="col-sm-8">
+                                                        <textarea rows="5" class="form-control valid" placeholder="" parsley-minwords="3" required></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-4 control-label">
+                                                        Amount  <span class="asterisk">*</span>
+                                                    </label>
+                                                    <div class="col-sm-8">
+                                                        <input type="text" class="form-control" required>
+                                                    </div>
+
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-4 control-label">
+                                                        Document
+                                                    </label>
+                                                    <div class="col-sm-8 fileupload-buttonbar">
+                                                        <span class="btn btn-success fileinput-button">
+                                                            <i class="glyphicon glyphicon-plus"></i>
+                                                            <span>Add files...</span>
+                                                            <input type="file" name="files[]" multiple>
+                                                        </span>
+                                                        <!-- The table listing the files available for upload/download -->
+                                                        <table role="presentation" class="table table-striped"><tbody class="files"></tbody></table>
+                                                    </div>
+
+                                                </div>
+
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-primary" onclick="javascript:$('#form1').parsley('validate');">Save</button>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12 table-responsive">
+                            <table class="table table-bordered table-striped table-hover">
+                                <thead class="no-bd">
+                                    <tr>
+                                        <th>
+                                            <strong>Request Type</strong>
+                                        </th>
+                                        <th>
+                                            <strong>Purpose</strong>
+                                        </th>
+                                        <th>
+                                            <strong>Amount</strong>
+                                        </th>
+                                        <th>
+                                            <strong>Status</strong>
+                                        </th>
+                                        <th>
+                                            <strong>Pay Date</strong>
+                                        </th>
+                                        <th>
+                                            <strong>Action</strong>
+                                        </th>
+
+                                    </tr>
+                                </thead>
+                                <tbody class="no-bd-y">
+                                    <tr>
+                                        <td>Claim </td>
+                                        <td>When can you send my bonus amount</td>
+                                        <td>50000.00</td>
+                                        <td>In Progress</td>
+                                        <td>-</td>
+                                        <td><button type="button" class="btn btn-sm btn-warning" title="Edit"><i class="fa fa-pencil"></i></button>  <button type="button" class="btn btn-sm btn-danger" title="Delete"><i class="fa fa-remove"></i></button><button type="button" class="btn btn-sm btn-success" title="Download"><i class="fa fa-download"></i></button></td>
+                                    </tr>
+
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
+</div>
+<!-- END MAIN CONTENT -->

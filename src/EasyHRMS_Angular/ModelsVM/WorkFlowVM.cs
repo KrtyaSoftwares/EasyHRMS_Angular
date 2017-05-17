@@ -14,6 +14,10 @@ namespace EasyHRMS_Angular.Models
         public string FormName { get; set; }
         public string TriggerName { get; set; }
         public bool Status { get; set; }
+        public string CustomFormName { get; set; }
+        public int MailAlertsCount { get; set; }
+        public int TasksCount { get; set; }
+        public int CheckListCount { get; set; }
     }
 
     public class WorkFlowWithActionVM

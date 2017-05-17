@@ -8,6 +8,7 @@ import {
     Validators
 } from '@angular/forms';
 import { Message } from 'primeng/primeng';
+import { ConfirmDialogModule, ConfirmationService } from 'primeng/primeng';
 
 import { MyLeaveService } from '../../../../../core/services/selfservice/myleaves.service';
 import { LookupDataService } from '../../../../../core/services/common/lookup-data.service';
@@ -37,7 +38,8 @@ export class ListComponent implements OnInit {
 
     constructor(private _leaveService: MyLeaveService,
         private _lookupDataService: LookupDataService,
-        fb: FormBuilder) {
+        fb: FormBuilder,
+        private confirmationService: ConfirmationService) {
         this.employeeLeaveForm = fb.group({
             //'employeeLeaveId': [],
             //'employeeId': [],
@@ -144,6 +146,7 @@ export class ListComponent implements OnInit {
               } else {
                 this.msgs.push({ severity: 'error', summary: 'Error Message', detail: 'Validation failed' });
               }
+              this.employeeLeaveForm.reset();
          }, response => {
               if (response.status == 404) {
                   console.log('execution failed');
@@ -157,12 +160,17 @@ export class ListComponent implements OnInit {
   }
 
   DeleteLeave(id: number) {
-      this._leaveService
-          .DeleteEmployeeLeave(id)
-          .subscribe(
-          data => {
-              this.GetAllEmployeeLeave();
-          })
+      this.confirmationService.confirm({
+          message: 'Are you sure that you want to perform this action?',
+          accept: () => {
+              this._leaveService
+                  .DeleteEmployeeLeave(id)
+                  .subscribe(
+                  data => {
+                      this.GetAllEmployeeLeave();
+                  })
+          }
+      });
   }
 
   groupBy(array: any, f: any) {

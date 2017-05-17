@@ -12,6 +12,8 @@ import {
     CalendarModule
 } from 'primeng/primeng';
 
+import { ConfirmDialogModule, ConfirmationService } from 'primeng/primeng';
+
 @NgModule({
   imports: [
       CommonModule,
@@ -19,9 +21,12 @@ import {
       FormsModule,
       ReactiveFormsModule,
       GrowlModule,
-      CalendarModule
+      CalendarModule,
+      ConfirmDialogModule,
   ],
   declarations: [MyleavesComponent, ListComponent],
-  providers: [MyLeaveService]
+  providers: [MyLeaveService,
+      ConfirmationService
+  ]
 })
 export class MyleavesModule { }
