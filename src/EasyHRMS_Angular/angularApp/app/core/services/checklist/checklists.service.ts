@@ -1,4 +1,4 @@
-import { Templates } from './../../../models/templates/templates.model';
+import { Checklists } from './../../../models/checklist/checklists.model';
 import { Configuration } from './../../../app.constants';
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers } from '@angular/http';
@@ -20,34 +20,39 @@ export class ChecklistsService {
         this.headers.append('Accept', 'application/json');
     }
 
-    // public GetAll = (): Observable<Templates[]> => {
-    //     return this.http
-    //        .get(this.actionUrl + 'EmailTemplate/GetAllEmailTemplate')
-    //        .map(res => <Templates[]>res.json());
-    // }
+    public GetAll = (): Observable<Checklists[]> => {
+        return this.http
+           .get(this.actionUrl + 'CheckList/GetAllCheckList')
+           .map(res => <Checklists[]>res.json());
+    }
 
-    // public GetSingle = (id: number): Observable<Templates> => {
-    //     return this.http
-    //         .get(this.actionUrl + 'EmailTemplate/GetEmailTemplateById/' + id)
-    //         .map(res => <Templates>res.json());
-    // }
+    public GetSingle = (id: number): Observable<Checklists> => {
+        return this.http
+            .get(this.actionUrl + 'CheckList/GetCheckListById/' + id)
+            .map(res => <Checklists>res.json());
+    }
 
-    // public Add = (data: any): Observable<Templates> => {
-    //     let toAdd = JSON.stringify(data);
-    //     return this.http
-    //                 .post(this.actionUrl + 'EmailTemplate/CreateEmailTemplate', toAdd, { headers: this.headers })
-    //                 .map(res => <Templates>res.json());
-    // }
+    public GetTaskBasedonCheckID = (id: number): Observable<Checklists> => {
+        return this.http
+            .get(this.actionUrl + 'CheckList/GetCheckListWithTasksById/' + id)
+            .map(res => <Checklists>res.json());
+    }
+    public Add = (data: any): Observable<Checklists> => {
+        let toAdd = JSON.stringify(data);
+        return this.http
+                    .post(this.actionUrl + 'CheckList/CreateCheckList', toAdd, { headers: this.headers })
+                    .map(res => <Checklists>res.json());
+    }
 
-    // public Update = (id: number, data: any): Observable<Templates> => {
-    //     let toAdd = JSON.stringify(data);
-    //     return this.http.post(this.actionUrl + 'EmailTemplate/UpdateEmailTemplate/' + id, toAdd, { headers: this.headers })
-    //         .map(res => <Templates>res.json());
-    // }
+    public Update = (id: number, data: any): Observable<Checklists> => {
+        let toAdd = JSON.stringify(data);
+        return this.http.post(this.actionUrl + 'CheckList/UpdateCheckList/' + id, toAdd, { headers: this.headers })
+            .map(res => <Checklists>res.json());
+    }
 
-    // public Delete = (id: number): Observable<any> => {
-    //     return this.http
-    //         .get(this.actionUrl + 'EmailTemplate/DeleteEmailTemplateById/' + id)
-    //         .map(res => <Templates>res.json());
-    // }
+    public Delete = (id: number): Observable<any> => {
+        return this.http
+            .get(this.actionUrl + 'CheckList/DeleteCheckListById/' + id)
+            .map(res => <Checklists>res.json());
+    }
 }

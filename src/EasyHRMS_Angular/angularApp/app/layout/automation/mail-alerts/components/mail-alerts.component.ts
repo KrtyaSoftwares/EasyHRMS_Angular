@@ -19,7 +19,6 @@ export class MailAlertsComponent implements OnInit {
   _results: any = {};
   _list: any[] = [];
   msgs: Message[] = [];
-
   _formResults: any = {};
   // pager object
     pager: any = {};

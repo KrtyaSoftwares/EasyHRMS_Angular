@@ -4,6 +4,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { TemplatesService } from './../../../../core/services/templates/templates.service';
 import { Templates } from './../../../../models/templates/templates.model';
 
+import { FormsService } from './../../../../core/services/forms/forms.service';
+
 import { PagerService } from '../../../../core/services/common/pager.service';
 import {Message} from 'primeng/primeng';
 
@@ -15,6 +17,8 @@ export class EmailTemplateComponent implements OnInit {
   _results: any = {};
   _list: any[] = [];
   msgs: Message[] = [];
+
+  _formResults: any = {};
   // pager object
     pager: any = {};
   // paged items
@@ -24,7 +28,8 @@ export class EmailTemplateComponent implements OnInit {
     private _router: Router,
     private _route: ActivatedRoute,
     private _templatesService: TemplatesService,
-    private pagerService: PagerService
+    private pagerService: PagerService,
+    private _formsService: FormsService,
   ) { }
 
   ngOnInit() {
@@ -37,9 +42,23 @@ export class EmailTemplateComponent implements OnInit {
           data => {
             this._results = data;
             this._list = this._results['list'];
-            //initialize to page 1
-            this.setPage(1);
+            this.getFormname();
           });
+  }
+  getFormname() {
+
+        this._list.forEach((element: any) => {
+         let formId = element.formName;
+         this._formsService
+          .GetSingle(formId)
+          .subscribe(
+          data => {
+           this._formResults = data;
+           element.custom_formName = this._formResults['objForms']['formName'];
+          });
+        });
+       //initialize to page 1
+        this.setPage(1);
   }
   delete(id: number) {
     this._templatesService

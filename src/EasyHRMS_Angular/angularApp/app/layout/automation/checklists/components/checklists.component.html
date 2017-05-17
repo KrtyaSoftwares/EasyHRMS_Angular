@@ -1,3 +1,4 @@
+<p-confirmDialog width="425"></p-confirmDialog>
 <div id="main-content" >
     <div class="row m-t-10">
       <div class="col-md-12">
@@ -26,13 +27,13 @@
                       </tr>
                     </thead>
                     <tbody class="no-bd-y">
-                      <tr>                       
-                        <td><a href="#">New employee joins </a></td>
-                        <td>Employee</td>
-                        <td>6</td>                        
+                      <tr *ngFor="let lst of pagedItems">                       
+                        <td><a href="#">{{lst.checklistName}} </a></td>
+                        <td>{{lst.custom_formName}}</td>
+                        <td>{{lst.taskCount}}</td>                        
 						            <td>
-                          <button type="button" class="btn btn-sm btn-warning" title="Edit"><i class="fa fa-pencil"></i></button>  
-                          <button type="button" class="btn btn-sm btn-danger" title="Delete"><i class="fa fa-remove" ></i></button>
+                          <button [routerLink]="['/automation/checklists/form/' + lst.id ]" type="button" class="btn btn-sm btn-warning" title="Edit"><i class="fa fa-pencil"></i></button>  
+                          <button (click)="delete(lst.id)" type="button" class="btn btn-sm btn-danger" title="Delete"><i class="fa fa-remove" ></i></button>
                         </td>   
                       </tr>
                     </tbody>
