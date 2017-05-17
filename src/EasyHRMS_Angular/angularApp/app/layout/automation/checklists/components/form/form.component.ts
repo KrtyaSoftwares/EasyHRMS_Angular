@@ -246,6 +246,7 @@ export class FormComponent implements OnInit {
             this.msgs.push ( { severity: 'info', summary: 'Insert Message', detail: 'Task has been added Successfully!!!' } );
             document.getElementById('close').click();
             this.getAllTasks(this.bindId);
+            this.formTasks.reset();
           });
       } else {
         this._workflowTasksService
@@ -256,6 +257,7 @@ export class FormComponent implements OnInit {
             this.msgs.push ( { severity: 'info', summary: 'Update Message', detail: 'Task has been Updated Successfully!!!' } );
             document.getElementById('close').click();
             this.getAllTasks(this.bindId);
+            this.formTasks.reset();
           });
       }
     }
