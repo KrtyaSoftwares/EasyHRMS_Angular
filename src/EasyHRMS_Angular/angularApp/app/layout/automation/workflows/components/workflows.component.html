@@ -12,7 +12,7 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-md-12 col-sm-12 col-xs-12 text-right">
-                            <button class="btn btn-primary m-b-10">Add Workflow</button>
+                            <button class="btn btn-primary m-b-10" [routerLink]="['./forms']">Add Workflow</button>
                         </div>
                     </div>
 
@@ -44,7 +44,7 @@
                                             <td><input type="checkbox" class="switch" [value]="workflow.status" [checked]="workflow.status" data-size="small" (change)="changeStatus($event.target.checked, workflow.id);$event.target.checked ? workflow.status = true : workflow.status = false"></td>
                                             <!--<td><input type="checkbox" class="switch" [value]="workflow.status" [checked]="workflow.status" data-size="small" (change)="$event.target.checked ? workflow.status = true : workflow.status = false"></td>-->
                                             <!--<td><p-inputSwitch [checked]="workflow.status"></p-inputSwitch></td>-->
-                                            <td><button type="button" class="btn btn-sm btn-warning" title="Edit"><i class="fa fa-pencil"></i></button>  <button type="button" class="btn btn-sm btn-danger" title="Delete"><i class="fa fa-remove"></i></button></td>
+                                            <td><button type="button" [routerLink]="['./forms/' + workflow.id ]" class="btn btn-sm btn-warning" title="Edit"><i class="fa fa-pencil"></i></button>  <button type="button" (click)="deleteWorkFlow(workflow.id)" class="btn btn-sm btn-danger" title="Delete"><i class="fa fa-remove"></i></button></td>
                                         </tr>
                                         <!--<tr>
                                             <td><a href="#">Job details Modified</a></td>

@@ -74,7 +74,33 @@ export class WorkflowsComponent implements OnInit {
             .ChangeWorkflowStatus(id, event)
             .subscribe(
             data => {
+                if (data) {
+                    if (data.error == '0') {
+                        this.msgs = [];
+                        this.msgs.push({ severity: 'info', summary: 'Update Message', detail: 'WorkFlow Status has been Updated Successfully!!!' });
+                    } else {
+                        this.msgs = [];
+                        this.msgs.push({ severity: 'error', summary: 'Error Message', detail: 'Oops!!!Something Went Wrong' });
+                    }
+                }
             });
+    }
+
+    deleteWorkFlow(id: number) {
+
+        this.confirmationService.confirm({
+            message: 'Are you sure that you want to perform this action?',
+            accept: () => {
+                //this._taskService
+                //    .DeleteTask(id)
+                //    .subscribe(
+                //    data => {
+                //        this.msgs = [];
+                //        this.msgs.push({ severity: 'warn', summary: 'Delete Message', detail: 'Task Template has been Deleted Successfully!!!' });
+                //        this.GetAlltask();
+                //    });
+            }
+        });
     }
 
 
