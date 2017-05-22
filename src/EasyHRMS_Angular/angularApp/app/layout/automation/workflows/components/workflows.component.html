@@ -34,7 +34,7 @@
                                         </tr>
                                     </thead>
                                     <tbody class="no-bd-y">
-                                        <tr *ngFor="let workflow of _workflowList">
+                                        <tr *ngFor="let workflow of pagedItems">
                                             <td><a href="#">{{workflow.name}}</a></td>
                                             <td>{{workflow.custom_formName}}</td>
                                             <td>{{workflow.triggerName}}</td>
@@ -42,63 +42,27 @@
                                             <td>{{workflow.tasksCount}}</td>
                                             <td>{{workflow.checkListCount}}</td>
                                             <td><input type="checkbox" class="switch" [value]="workflow.status" [checked]="workflow.status" data-size="small" (change)="changeStatus($event.target.checked, workflow.id);$event.target.checked ? workflow.status = true : workflow.status = false"></td>
-                                            <!--<td><input type="checkbox" class="switch" [value]="workflow.status" [checked]="workflow.status" data-size="small" (change)="$event.target.checked ? workflow.status = true : workflow.status = false"></td>-->
-                                            <!--<td><p-inputSwitch [checked]="workflow.status"></p-inputSwitch></td>-->
                                             <td><button type="button" [routerLink]="['./forms/' + workflow.id ]" class="btn btn-sm btn-warning" title="Edit"><i class="fa fa-pencil"></i></button>  <button type="button" (click)="deleteWorkFlow(workflow.id)" class="btn btn-sm btn-danger" title="Delete"><i class="fa fa-remove"></i></button></td>
                                         </tr>
-                                        <!--<tr>
-                                            <td><a href="#">Job details Modified</a></td>
-                                            <td>Jobs</td>
-                                            <td>Edit</td>
-                                            <td>0</td>
-                                            <td>1</td>
-                                            <td>0</td>
-                                            <td><input type="checkbox" class="switch" checked data-size="small"></td>
-                                            <td><button type="button" class="btn btn-sm btn-warning" title="Edit"><i class="fa fa-pencil"></i></button>  <button type="button" class="btn btn-sm btn-danger" title="Delete"><i class="fa fa-remove"></i></button></td>
-                                        </tr>
-                                        <tr>
-                                            <td><a href="#">Job completed</a></td>
-                                            <td>Jobs</td>
-                                            <td>Field Updates</td>
-                                            <td>0</td>
-                                            <td>1</td>
-                                            <td>0</td>
-                                            <td><input type="checkbox" class="switch" checked data-size="small"></td>
-                                            <td><button type="button" class="btn btn-sm btn-warning" title="Edit"><i class="fa fa-pencil"></i></button>  <button type="button" class="btn btn-sm btn-danger" title="Delete"><i class="fa fa-remove"></i></button></td>
-                                        </tr>
-                                        <tr>
-                                            <td><a href="#">Job Re-opened</a></td>
-                                            <td>Jobs</td>
-                                            <td>Field Updates</td>
-                                            <td>0</td>
-                                            <td>1</td>
-                                            <td>0</td>
-                                            <td><input type="checkbox" class="switch" checked data-size="small"></td>
-                                            <td><button type="button" class="btn btn-sm btn-warning" title="Edit"><i class="fa fa-pencil"></i></button>  <button type="button" class="btn btn-sm btn-danger" title="Delete"><i class="fa fa-remove"></i></button></td>
-                                        </tr>
-                                        <tr>
-                                            <td><a href="#">Job Created</a></td>
-                                            <td>Jobs</td>
-                                            <td>Create</td>
-                                            <td>0</td>
-                                            <td>1</td>
-                                            <td>0</td>
-                                            <td><input type="checkbox" class="switch" checked data-size="small"></td>
-                                            <td><button type="button" class="btn btn-sm btn-warning" title="Edit"><i class="fa fa-pencil"></i></button>  <button type="button" class="btn btn-sm btn-danger" title="Delete"><i class="fa fa-remove"></i></button></td>
-                                        </tr>
-                                        <tr>
-                                            <td><a href="#">Job Reminder</a></td>
-                                            <td>Jobs</td>
-                                            <td>Create or Edit</td>
-                                            <td>1</td>
-                                            <td>0</td>
-                                            <td>0</td>
-                                            <td><input type="checkbox" class="switch" checked data-size="small"></td>
-                                            <td><button type="button" class="btn btn-sm btn-warning" title="Edit"><i class="fa fa-pencil"></i></button>  <button type="button" class="btn btn-sm btn-danger" title="Delete"><i class="fa fa-remove"></i></button></td>
-                                        </tr>-->
-
                                     </tbody>
                                 </table>
+                                <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+                                    <li [ngClass]="{disabled:pager.currentPage === 1}">
+                                        <a (click)="setPage(1)">First</a>
+                                    </li>
+                                    <li [ngClass]="{disabled:pager.currentPage === 1}">
+                                        <a (click)="setPage(pager.currentPage - 1)">Previous</a>
+                                    </li>
+                                    <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+                                        <a (click)="setPage(page)">{{page}}</a>
+                                    </li>
+                                    <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                                        <a (click)="setPage(pager.currentPage + 1)">Next</a>
+                                    </li>
+                                    <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                                        <a (click)="setPage(pager.totalPages)">Last</a>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>

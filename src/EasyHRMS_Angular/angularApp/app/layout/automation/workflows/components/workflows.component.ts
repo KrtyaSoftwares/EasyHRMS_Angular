@@ -91,14 +91,14 @@ export class WorkflowsComponent implements OnInit {
         this.confirmationService.confirm({
             message: 'Are you sure that you want to perform this action?',
             accept: () => {
-                //this._taskService
-                //    .DeleteTask(id)
-                //    .subscribe(
-                //    data => {
-                //        this.msgs = [];
-                //        this.msgs.push({ severity: 'warn', summary: 'Delete Message', detail: 'Task Template has been Deleted Successfully!!!' });
-                //        this.GetAlltask();
-                //    });
+                this._workflowService
+                   .Delete(id)
+                   .subscribe(
+                   data => {
+                       this.msgs = [];
+                       this.msgs.push({ severity: 'warn', summary: 'Delete Message', detail: 'Work Flow has been Deleted Successfully!!!' });
+                       this.GetAllWorkFlow();
+                   });
             }
         });
     }

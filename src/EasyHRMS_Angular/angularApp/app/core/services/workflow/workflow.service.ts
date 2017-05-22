@@ -1,4 +1,4 @@
-﻿//import { Templates } from './../../../models/templates/templates.model';
+﻿import { Workflow } from './../../../models/workflow/workflow.model';
 import { Configuration } from './../../../app.constants';
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers } from '@angular/http';
@@ -52,9 +52,9 @@ export class WorkFlowService {
     //        .map(res => <Templates>res.json());
     //}
 
-    //public Delete = (id: number): Observable<any> => {
-    //    return this.http
-    //        .get(this.actionUrl + 'EmailTemplate/DeleteEmailTemplateById/' + id)
-    //        .map(res => <Templates>res.json());
-    //}
+    public Delete = (id: number): Observable<any> => {
+       return this.http
+           .get(this.actionUrl + 'WorkFlow/DeleteWorkFlowById/' + id)
+           .map(res => <Workflow>res.json());
+    }
 }

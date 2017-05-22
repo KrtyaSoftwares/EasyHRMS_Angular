@@ -11,7 +11,7 @@
                         <div class="col-md-12 col-sm-12 col-xs-12">
 
 
-                            <form id="form1" class="form-horizontal" parsley-validate>
+                            <form [formGroup]="form" (ngSubmit)="onSubmit(form.value,form.valid)" novalidate class="form-horizontal">
                                 <div class="boder-btm">
                                     <h3 class="panel-title">Basic Info</h3>
                                 </div>
@@ -19,25 +19,32 @@
                                     <div class="form-group">
                                         <label class="col-sm-2 control-label">Form Name </label>
                                         <div class="col-sm-4">
-                                            <select class="form-control">
+                                            <select class="form-control" formControlName="formName" [(ngModel)]="_workflow.formName">
                                                 <option>---Select---</option>
+                                                <option *ngFor="let lst of _list" [value]="lst.id"> {{lst.formName}} </option>
                                             </select>
+                                            <div [hidden]="form.get('formName').valid || (form.get('formName').pristine && !submitted)" class="alert alert-danger">
+                                                Form Name is required.
+                                            </div>
                                         </div>
                                         <label class="col-sm-2 control-label">Workflow Name </label>
                                         <div class="col-sm-4">
-                                            <input type="text" class="form-control" required>
+                                            <input type="text" class="form-control" formControlName="name" [(ngModel)]="_workflow.name">
+                                            <div [hidden]="form.get('name').valid || (form.get('name').pristine && !submitted)" class="alert alert-danger">
+                                                WorkFlow Name is required.
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-2 control-label">Description </label>
                                         <div class="col-sm-4">
-                                            <textarea rows="2" class="form-control valid" placeholder="" required=""></textarea>
+                                            <textarea rows="2" class="form-control valid" formControlName="description" [(ngModel)]="_workflow.description"></textarea>
                                         </div>
                                         <label class="col-sm-2 control-label">Status </label>
                                         <div class="col-sm-4">
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" value="">
+                                                    <input type="checkbox" formControlName="status" [(ngModel)]="_workflow.status">
                                                     Is Active
                                                 </label>
                                             </div>
@@ -45,58 +52,36 @@
 
                                     </div>
                                 </div>
+                                
                                 <div class="boder-btm">
                                     <h3 class="panel-title">Trigger Process</h3>
                                 </div>
                                 <div class="m-b-30 form-inline">
-
                                     <div class="col-sm-offset-2 col-sm-10">
                                         <div class="form-group">
                                             <div class="radio-inline">
                                                 <label>
-                                                    <input type="radio" name="inlineRadioOptions" value="">
+                                                    <input type="radio" value="create" formControlName="triggerName" [(ngModel)]="_workflow.triggerName" checked>
                                                     Create
                                                 </label>
                                             </div>
                                             <div class="radio-inline">
                                                 <label>
-                                                    <input type="radio" name="inlineRadioOptions" value="">
+                                                    <input type="radio" value="edit" formControlName="triggerName" [(ngModel)]="_workflow.triggerName">
                                                     Edit
                                                 </label>
                                             </div>
                                             <div class="radio-inline">
                                                 <label>
-                                                    <input type="radio" name="inlineRadioOptions" value="">
-                                                    Create or Edit
-                                                </label>
-                                            </div>
-                                            <div class="radio-inline">
-                                                <label>
-                                                    <input type="radio" name="inlineRadioOptions" value="">
-                                                    Field Update
-                                                </label>
-                                            </div>
-                                            <div class="radio-inline">
-                                                <label>
-                                                    <input type="radio" name="inlineRadioOptions" value="">
-                                                    Approve
-                                                </label>
-                                            </div>
-                                            <div class="radio-inline">
-                                                <label>
-                                                    <input type="radio" name="inlineRadioOptions" value="">
-                                                    Reject
-                                                </label>
-                                            </div>
-                                            <div class="radio-inline">
-                                                <label>
-                                                    <input type="radio" name="inlineRadioOptions" value="">
+                                                    <input type="radio" value="delete" formControlName="triggerName" [(ngModel)]="_workflow.triggerName">
                                                     Delete
                                                 </label>
                                             </div>
+                                            <div [hidden]="form.get('triggerName').valid || (form.get('triggerName').pristine && !submitted)" class="alert alert-danger">
+                                                triggerName is required.
+                                            </div>
                                         </div>
                                     </div>
-
                                 </div>
                                 <div class="boder-btm">
                                     <h3 class="panel-title">Action</h3>
@@ -106,58 +91,113 @@
                                         <label class="col-sm-2 control-label">Mail Alerts </label>
                                         <div class="col-sm-10">
                                             <div class="btn-group">
-                                                <button type="button" class="btn btn-sm btn-success m-0 dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-plus"></i> </button>
+                                                <button type="button" class="btn btn-sm btn-success m-0 dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <i class="fa fa-plus"></i> 
+                                                </button>
                                                 <ul class="dropdown-menu">
-                                                    <li><a href="#" data-value="option1" tabIndex="-1"><div class="checkbox"><label><input type="checkbox" />Welcome new Employee</label></div></a></li>
-                                                    <li><a href="#" data-value="option2" tabIndex="-1"><div class="checkbox"><label><input type="checkbox" />Option 2</label></div></a></li>
-                                                    <li><a href="#" data-value="option3" tabIndex="-1"><div class="checkbox"><label><input type="checkbox" />Option 3</label></div></a></li>
-                                                    <li><a href="#" data-value="option4" tabIndex="-1"><div class="checkbox"><label><input type="checkbox" />Option 4</label></div></a></li>
-                                                    <li><a href="#" data-value="option5" tabIndex="-1"><div class="checkbox"><label><input type="checkbox" />Option 5</label></div></a></li>
-                                                    <li><a href="#" data-value="option6" tabIndex="-1"><div class="checkbox"><label><input type="checkbox" />Option 6</label></div></a></li>
+                                                    <li *ngFor="let Mlst of _mailAlertList; let i = index">
+                                                        <a href="#" data-value="option" tabIndex="-1">
+                                                            <div class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox" value="{{Mlst.id}}" (change)="handleChange('mailAlert', $event)" /> {{Mlst.mailAlertName}}
+                                                                </label>
+                                                            </div>
+                                                        </a>
+                                                    </li>
                                                 </ul>
-
                                             </div>
-
                                             <ul class="list-unstyled workflow-action-list m-t-10">
-                                                <li>
+                                                <li *ngFor="let mailAlert of _mailAlertSelectedValue">
                                                     <div class="workflow-action-main">
-                                                        <a href="#">Welcome new Employee</a>  <button type="button" class="btn btn-sm btn-danger pull-right" title="Delete"><i class="fa fa-remove"></i></button>
+                                                        <a> {{mailAlert.value}} </a>  
+                                                        <button (click)="remove(_mailAlertSelectedValue,mailAlert.id)" type="button" class="btn btn-sm btn-danger pull-right" title="Delete">
+                                                            <i class="fa fa-remove"></i>
+                                                        </button>
                                                     </div>
                                                 </li>
-
-
                                             </ul>
                                         </div>
-
-
+                                        <div class="alert alert-danger" *ngIf="_mailAlertError">
+                                            <strong>Danger!</strong> Please choose atleast one MailAlert.
+                                        </div>
                                     </div>
+
                                     <div class="form-group">
                                         <label class="col-sm-2 control-label">Tasks </label>
                                         <div class="col-sm-10">
-                                            <button type="button" class="btn btn-sm btn-success m-0" title="Create"><i class="fa fa-plus"></i></button>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-2 control-label">Checklists </label>
-                                        <div class="col-sm-10">
-                                            <button type="button" class="btn btn-sm btn-success m-0" title="Create"><i class="fa fa-plus"></i></button>
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-sm btn-success m-0 dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <i class="fa fa-plus"></i> 
+                                                </button>
+                                                <ul class="dropdown-menu">
+                                                    <li *ngFor="let Tlst of _tasksList; let i = index">
+                                                        <a href="#" data-value="option" tabIndex="-1">
+                                                            <div class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox" value="{{Tlst.id}}" (change)="handleChange('tasks', $event)" /> 
+                                                                    {{Tlst.templateName}}
+                                                                </label>
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
                                             <ul class="list-unstyled workflow-action-list m-t-10">
-                                                <li>
+                                                <li *ngFor="let task of _taskSelectedValue">
                                                     <div class="workflow-action-main">
-                                                        <a href="#">New employee joins</a>  <button type="button" class="btn btn-sm btn-danger pull-right" title="Delete"><i class="fa fa-remove"></i></button>
+                                                        <a >{{task.value}}</a>  
+                                                        <button (click)="remove(_taskSelectedValue,task.id)" type="button" class="btn btn-sm btn-danger pull-right" title="Delete">
+                                                            <i class="fa fa-remove"></i>
+                                                        </button>
                                                     </div>
                                                 </li>
-
-
                                             </ul>
+                                        </div>
+                                        <div class="alert alert-danger" *ngIf="_taskError">
+                                            <strong>Danger!</strong> Please choose atleast one Tasks.
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">CheckLists </label>
+                                        <div class="col-sm-10">
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-sm btn-success m-0 dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <i class="fa fa-plus"></i> 
+                                                </button>
+                                                <ul class="dropdown-menu">
+                                                    <li *ngFor="let Clst of _checkLists; let i = index">
+                                                        <a href="#" data-value="option" tabIndex="-1">
+                                                            <div class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox" placeholder="{{Clst.checklistName}}" value="{{Clst.id}}" (change)="handleChange('checklist', $event)" /> 
+                                                                    {{Clst.checklistName}}
+                                                                </label>
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <ul class="list-unstyled workflow-action-list m-t-10">
+                                                <li *ngFor="let chk of _checkListSelectedValue">
+                                                    <div class="workflow-action-main">
+                                                        <a> {{chk.value}} </a>  
+                                                        <button (click)="remove(_checkListSelectedValue,chk.id)" type="button" class="btn btn-sm btn-danger pull-right" title="Delete">
+                                                            <i class="fa fa-remove"></i>
+                                                        </button>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="alert alert-danger" *ngIf="_checkListError">
+                                            <strong>Danger!</strong> Please choose atleast one CheckList.
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="form-group">
                                     <div class="col-sm-10 col-sm-offset-2">
-                                        <button class="btn btn-primary m-b-10" onclick="javascript:$('#form1').parsley('validate');">Submit</button>
-                                        <button type="reset" class="btn btn-default m-b-10">Cancel</button>
+                                        <button type="submit" class="btn btn-primary m-b-10" >Submit</button>
+                                        <button [routerLink]="['/automation/workflows/']" class="btn btn-default m-b-10">Cancel</button>
                                     </div>
                                 </div>
                             </form>

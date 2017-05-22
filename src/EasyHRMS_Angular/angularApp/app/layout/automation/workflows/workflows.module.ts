@@ -9,6 +9,10 @@ import { FormComponent } from './components/form/form.component';
 import { WorkFlowService } from './../../../core/services/workflow/workflow.service';
 import { FormsService } from './../../../core/services/forms/forms.service';
 
+import { MailAlertService } from './../../../core/services/mail-alert/mail-alert.service';
+import { TaskService } from './../../../core/services/tasks/task.service';
+import { ChecklistsService } from './../../../core/services/checklist/checklists.service';
+
 import { GrowlModule } from 'primeng/primeng';
 import { PagerService } from '../../../core/services/common/pager.service';
 import { ConfirmDialogModule, ConfirmationService } from 'primeng/primeng';
@@ -30,7 +34,10 @@ import { ConfirmDialogModule, ConfirmationService } from 'primeng/primeng';
       WorkFlowService,
       FormsService,
       PagerService,
-      ConfirmationService
+      ConfirmationService,
+      MailAlertService,
+      TaskService,
+      ChecklistsService
   ]
 })
 export class WorkflowsModule { }
