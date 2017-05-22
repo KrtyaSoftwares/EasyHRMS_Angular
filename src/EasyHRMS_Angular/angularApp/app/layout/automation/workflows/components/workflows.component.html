@@ -41,6 +41,7 @@
                                             <td>{{workflow.mailAlertsCount}}</td>
                                             <td>{{workflow.tasksCount}}</td>
                                             <td>{{workflow.checkListCount}}</td>
+
                                             <td><input type="checkbox" class="switch" [value]="workflow.status" [checked]="workflow.status" data-size="small" (change)="changeStatus($event.target.checked, workflow.id);$event.target.checked ? workflow.status = true : workflow.status = false"></td>
                                             <td><button type="button" [routerLink]="['./forms/' + workflow.id ]" class="btn btn-sm btn-warning" title="Edit"><i class="fa fa-pencil"></i></button>  <button type="button" (click)="deleteWorkFlow(workflow.id)" class="btn btn-sm btn-danger" title="Delete"><i class="fa fa-remove"></i></button></td>
                                         </tr>
@@ -74,3 +75,4 @@
 <!-- END MAIN CONTENT --> 
 <p-growl [value]="msgs"></p-growl>
 <p-confirmDialog width="425"></p-confirmDialog>
+<!--<script src="../../../../../assets/plugins/bootstrap-switch/bootstrap-switch.js"></script>-->

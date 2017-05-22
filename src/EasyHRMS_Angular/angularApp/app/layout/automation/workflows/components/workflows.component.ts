@@ -10,7 +10,7 @@ import { InputSwitchModule } from 'primeng/primeng';
 
 @Component({
   selector: 'app-workflows',
-  templateUrl: './workflows.component.html',
+  templateUrl: './workflows.component.html'
 })
 export class WorkflowsComponent implements OnInit {
     _workflowList: any = [];

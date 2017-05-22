@@ -5,6 +5,8 @@ import { LayoutRoutingModule } from './layout-routing.module';
 import { LayoutComponent } from './components/layout.component';
 import { HeaderComponent, SidebarComponent, SidebarselfserviceComponent } from '../shared';
 
+//import { EditComponent } from './employee/edit/edit.component';
+
 @NgModule({
     imports: [
         CommonModule,
@@ -15,7 +17,8 @@ import { HeaderComponent, SidebarComponent, SidebarselfserviceComponent } from '
         LayoutComponent,
         HeaderComponent,
         SidebarComponent,
-        SidebarselfserviceComponent
+        SidebarselfserviceComponent,
+        //EditComponent
     ]
 })
 export class LayoutModule { }
