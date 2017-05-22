@@ -49,7 +49,7 @@ export class FormComponent implements OnInit {
    _checkListSelectedValue: any[] = [];
 
    _needToSave: any = {};
-   
+   _objWorkFlow: any = {};
 
 constructor(
     private fb: FormBuilder,
@@ -72,10 +72,52 @@ constructor(
    }
 
    ngOnInit() {
+    //get URLid
+    this._route.params.subscribe(
+        (param: any) => {
+            this.bindId = param['id'];
+    });
     this.getAllForms();
     this.getAllMailAlert();
     this.getAllTasks();
     this.getAllChecklists();
+    if (this.bindId) {
+          this.getDataBasedonId(this.bindId);
+    }
+ }
+  getDataBasedonId(id: number) {
+    this._workFlowService
+            .GetSingle(id)
+            .subscribe(
+            data => {
+              if (data) {
+                this._objWorkFlow = data;
+                if (this._objWorkFlow['objWorkFlow']) {
+                  this._needToSave['WorkFlow'] = this._objWorkFlow['objWorkFlow'];
+                  this._needToSave['WorkFlowActions'] = this._objWorkFlow['list'];
+                  //Assign Value to Model
+                  this._workflow = this._needToSave['WorkFlow'];
+                  this._needToSave['WorkFlowActions'].forEach((element: any) => {
+                      if (element.action == 'MailAlerts') {
+                          let tempMailAlertId = element.mailAlertId;
+                          let isChecked = <HTMLInputElement> document.getElementById('mailAlerts_' + tempMailAlertId);
+                          isChecked.checked = true;
+                      } else if (element.action == 'Tasks') {
+                          let temptaskId = element.taskId;
+                          let isChecked = <HTMLInputElement> document.getElementById('tasks_' + temptaskId);
+                          isChecked.checked = true;
+                      } else if (element.action == 'Checklists') {
+                          let tempcheckListId = element.checkListId;
+                          let isChecked = <HTMLInputElement> document.getElementById('checkLists_' + tempcheckListId);
+                          isChecked.checked = true;
+                      }
+                  });
+                } else {
+                  this.msgs = [];
+                  this.msgs.push({severity : 'error', summary : 'Error Message',  detail : 'Oops!!!Something Went Wrong'});
+                }
+              }
+            });
   }
   getAllMailAlert() {
       this._mailAlertService
@@ -114,112 +156,157 @@ constructor(
           });
   }
   handleChange(action: any, evt: any) {
+
       this._mailAlertError = false;
       this._taskError = false;
       this._checkListError = false;
 
       let target = evt.target;
-      if (action == 'mailAlert') {
+
+      let MailAlertsValue = null;
+      let TasksValue = null;
+      let ChecklistsValue = null;
+      if (action == 'MailAlerts') {
+            MailAlertsValue = target.value;
+      } else if (action == 'Tasks') {
+            TasksValue = target.value;
+      } else if (action == 'Checklists') {
+          ChecklistsValue = target.value;
+      }
+
         if (target.checked) {
             let value = target.nextSibling.data.trim();
             let grp = {
-                id: target.value,
-                value: value
-            };
-            this._mailAlertSelectedValue.push(grp);
-            let grpSave = {
-                action: 'MailAlerts',
+                name: value,
+                id: 0,
+                workFlowId: this.bindId,
+                action: action,
+                templateId: 0,
                 actionOrder: 1,
-                mailAlertId: target.value
+                mailAlertId: MailAlertsValue,
+                taskId: TasksValue,
+                checkListId: ChecklistsValue
             };
             this._needToSave['WorkFlowActions'].push(grp);
         } else {
-            this.remove(this._mailAlertSelectedValue, target.value);
+            this.remove(target.value, action);
         }
-      } else if (action == 'tasks') {
-         if (target.checked) {
-            let value = target.nextSibling.data.trim();
-            let grp = {
-                id: target.value,
-                value: value
-            };
-            this._taskSelectedValue.push(grp);
-            let grpSave = {
-                action: 'tasks',
-                actionOrder: 1,
-                mailAlertId: target.value
-            };
-            this._needToSave['WorkFlowActions'].push(grp);
-        } else {
-            this.remove(this._taskSelectedValue, target.value);
-        }
-      } else if (action == 'checklist') {
-          if (target.checked) {
-            let value = target.nextSibling.data.trim();
-            let grp = {
-                id: target.value,
-                value: value
-            };
-            this._checkListSelectedValue.push(grp);
-            let grpSave = {
-                action: 'checklist',
-                actionOrder: 1,
-                mailAlertId: target.value
-            };
-            this._needToSave['WorkFlowActions'].push(grp);
-        } else {
-            this.remove(this._checkListSelectedValue, target.value);
-        }
-      }
   }
-  remove(array: any, id: number) {
+  remove(id: number, action: any) {
+    let array = this._needToSave['WorkFlowActions'];
     for (let i in array) {
-        if (array[i].id == id) {
-            array.splice(i, 1);
-            break;
-        }
+         if ( action == 'MailAlerts' ) {
+            if (array[i].mailAlertId == id) {
+                // remove Action from DB.
+                if (array[i].id != 0) {
+                    this.removeAction(array[i].id);
+                }
+                array.splice(i, 1);
+                let isChecked = <HTMLInputElement> document.getElementById('mailAlerts_' + id);
+                isChecked.checked = false;
+                break;
+            }
+         } else if ( action == 'Tasks' ) {
+            if (array[i].taskId == id) {
+                // remove Action from DB.
+                if (array[i].id != 0) {
+                    this.removeAction(array[i].id);
+                }
+                array.splice(i, 1);
+                let isChecked = <HTMLInputElement> document.getElementById('tasks_' + id);
+                isChecked.checked = false;
+                break;
+            }
+         } else if ( action == 'Checklists' ) {
+            if (array[i].checkListId == id) {
+                // remove Action from DB.
+                if (array[i].id != 0) {
+                    this.removeAction(array[i].id);
+                }
+                array.splice(i, 1);
+                let isChecked = <HTMLInputElement> document.getElementById('checkLists_' + id);
+                isChecked.checked = false;
+                break;
+            }
+         }
     }
 }
+  removeAction(id: number) {
+      this._workFlowService
+        .DeleteAction(id)
+        .subscribe(
+        data => {
+            this.msgs = [];
+            this.msgs.push({ severity: 'warn', summary: 'Delete Message', detail: 'Work Flow Action has been Deleted Successfully!!!' });
+        });
+  }
   onSubmit(value: any, isValid: boolean) {
       this.submitted = true;
       if (isValid == false) {
           return false;
       } else {
           let cnt = 0;
+          let mailAlertsCnt = 0;
+          let tasksCnt = 0;
+          let checklistsCnt = 0;
+          this._needToSave['WorkFlowActions'].forEach((element: any) => {
+              if (element.action == 'MailAlerts') {
+                  mailAlertsCnt++;
+              } else if (element.action == 'Tasks') {
+                  tasksCnt++;
+              } else if (element.action == 'Checklists') {
+                  checklistsCnt++;
+              }
+          });
 
-          if (this._mailAlertSelectedValue.length == 0) {
+          if (mailAlertsCnt == 0) {
             this._mailAlertError = true;
           } else {
               this._mailAlertError = false;
               cnt++;
           }
 
-          if (this._taskSelectedValue.length == 0) {
+          if (tasksCnt == 0) {
             this._taskError = true;
           } else {
             this._taskError = false;
               cnt++;
           }
 
-          if (this._checkListSelectedValue.length == 0) {
+          if (checklistsCnt == 0) {
             this._checkListError = true;
           } else {
             this._checkListError = false;
             cnt++;
           }
-          if (cnt == 3) {
-            this._needToSave['WorkFlow'] = {
-                name: value.name,
-                description: value.description,
-                formName: value.formName,
-                triggerName: value.triggerName,
-                status: value.status
+         if (cnt == 3) {
+            if (!this.bindId) {
+             this._needToSave['WorkFlow'] = {
+                    name: value.name,
+                    description: value.description,
+                    formName: value.formName,
+                    triggerName: value.triggerName,
+                    status: value.status
+                }
+              this._workFlowService
+                .Add(this._needToSave)
+                .subscribe(
+                data => {
+                    this.msgs = [];
+                    this.msgs.push ( { severity: 'info', summary: 'Insert Message', detail: 'WorkFlow has been added Successfully!!!' } );
+                    this._router.navigate(['/automation/workflows']);
+                });
+            } else {
+                this._workFlowService
+                .Update(this.bindId, this._needToSave)
+                .subscribe(
+                data => {
+                    this.msgs = [];
+                    this.msgs.push ( { severity: 'info', summary: 'Update Message', detail: 'WorkFlow has been Updated Successfully!!!' } );
+                    this._router.navigate(['/automation/workflows']);
+                });
             }
-            
-            
-            
-            console.log(this._needToSave);
-          }
+         }
     }
   }
 }

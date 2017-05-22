@@ -16,6 +16,7 @@ import { ChecklistsService } from './../../../core/services/checklist/checklists
 import { GrowlModule } from 'primeng/primeng';
 import { PagerService } from '../../../core/services/common/pager.service';
 import { ConfirmDialogModule, ConfirmationService } from 'primeng/primeng';
+import {InputSwitchModule} from 'primeng/primeng';
 
 @NgModule({
   imports: [
@@ -25,6 +26,7 @@ import { ConfirmDialogModule, ConfirmationService } from 'primeng/primeng';
       WorkflowsRoutingModule,
       GrowlModule,
       ConfirmDialogModule,
+      InputSwitchModule
   ],
   declarations: [
       WorkflowsComponent,

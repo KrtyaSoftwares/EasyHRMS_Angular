@@ -21,6 +21,8 @@ export class WorkflowsComponent implements OnInit {
     pagedItems: any[];
 
     _formResults: any = [];
+
+     checked: boolean;
     constructor(private _workflowService: WorkFlowService,
         private _formsService: FormsService,
         private pagerService: PagerService,
@@ -30,6 +32,14 @@ export class WorkflowsComponent implements OnInit {
         this.GetAllWorkFlow();
     }
 
+    handleChange(e: any) {
+        let isChecked = e.checked;
+        if (isChecked == true ) {
+            console.log('ON');
+        } else {
+            console.log('OFF');
+        }
+    }
     GetAllWorkFlow() {
         this._workflowService
             .GetAll()

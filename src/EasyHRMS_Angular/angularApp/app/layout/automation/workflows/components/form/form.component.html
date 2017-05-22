@@ -96,10 +96,10 @@
                                                 </button>
                                                 <ul class="dropdown-menu">
                                                     <li *ngFor="let Mlst of _mailAlertList; let i = index">
-                                                        <a href="#" data-value="option" tabIndex="-1">
+                                                        <a data-value="option" tabIndex="-1">
                                                             <div class="checkbox">
                                                                 <label>
-                                                                    <input type="checkbox" value="{{Mlst.id}}" (change)="handleChange('mailAlert', $event)" /> {{Mlst.mailAlertName}}
+                                                                    <input id="mailAlerts_{{Mlst.id}}" type="checkbox" value="{{Mlst.id}}" (change)="handleChange('MailAlerts', $event)" /> {{Mlst.mailAlertName}}
                                                                 </label>
                                                             </div>
                                                         </a>
@@ -107,10 +107,10 @@
                                                 </ul>
                                             </div>
                                             <ul class="list-unstyled workflow-action-list m-t-10">
-                                                <li *ngFor="let mailAlert of _mailAlertSelectedValue">
-                                                    <div class="workflow-action-main">
-                                                        <a> {{mailAlert.value}} </a>  
-                                                        <button (click)="remove(_mailAlertSelectedValue,mailAlert.id)" type="button" class="btn btn-sm btn-danger pull-right" title="Delete">
+                                                <li *ngFor="let mailAlert of _needToSave['WorkFlowActions']">
+                                                    <div *ngIf="mailAlert.action == 'MailAlerts'" class="workflow-action-main">
+                                                        <a> {{mailAlert.name}} </a>  
+                                                        <button (click)="remove(mailAlert.mailAlertId,'MailAlerts')" type="button" class="btn btn-sm btn-danger pull-right" title="Delete">
                                                             <i class="fa fa-remove"></i>
                                                         </button>
                                                     </div>
@@ -131,10 +131,10 @@
                                                 </button>
                                                 <ul class="dropdown-menu">
                                                     <li *ngFor="let Tlst of _tasksList; let i = index">
-                                                        <a href="#" data-value="option" tabIndex="-1">
+                                                        <a data-value="option" tabIndex="-1">
                                                             <div class="checkbox">
                                                                 <label>
-                                                                    <input type="checkbox" value="{{Tlst.id}}" (change)="handleChange('tasks', $event)" /> 
+                                                                    <input id="tasks_{{Tlst.id}}" type="checkbox" value="{{Tlst.id}}" (change)="handleChange('Tasks', $event)" /> 
                                                                     {{Tlst.templateName}}
                                                                 </label>
                                                             </div>
@@ -143,10 +143,10 @@
                                                 </ul>
                                             </div>
                                             <ul class="list-unstyled workflow-action-list m-t-10">
-                                                <li *ngFor="let task of _taskSelectedValue">
-                                                    <div class="workflow-action-main">
-                                                        <a >{{task.value}}</a>  
-                                                        <button (click)="remove(_taskSelectedValue,task.id)" type="button" class="btn btn-sm btn-danger pull-right" title="Delete">
+                                                <li *ngFor="let task of _needToSave['WorkFlowActions']">
+                                                    <div *ngIf="task.action == 'Tasks'" class="workflow-action-main">
+                                                        <a >{{task.name}}</a>  
+                                                        <button (click)="remove(task.taskId,'Tasks')" type="button" class="btn btn-sm btn-danger pull-right" title="Delete">
                                                             <i class="fa fa-remove"></i>
                                                         </button>
                                                     </div>
@@ -167,10 +167,10 @@
                                                 </button>
                                                 <ul class="dropdown-menu">
                                                     <li *ngFor="let Clst of _checkLists; let i = index">
-                                                        <a href="#" data-value="option" tabIndex="-1">
+                                                        <a data-value="option" tabIndex="-1">
                                                             <div class="checkbox">
                                                                 <label>
-                                                                    <input type="checkbox" placeholder="{{Clst.checklistName}}" value="{{Clst.id}}" (change)="handleChange('checklist', $event)" /> 
+                                                                    <input id="checkLists_{{Clst.id}}" type="checkbox" placeholder="{{Clst.checklistName}}" value="{{Clst.id}}" (change)="handleChange('Checklists', $event)" /> 
                                                                     {{Clst.checklistName}}
                                                                 </label>
                                                             </div>
@@ -179,10 +179,10 @@
                                                 </ul>
                                             </div>
                                             <ul class="list-unstyled workflow-action-list m-t-10">
-                                                <li *ngFor="let chk of _checkListSelectedValue">
-                                                    <div class="workflow-action-main">
-                                                        <a> {{chk.value}} </a>  
-                                                        <button (click)="remove(_checkListSelectedValue,chk.id)" type="button" class="btn btn-sm btn-danger pull-right" title="Delete">
+                                                <li *ngFor="let chk of _needToSave['WorkFlowActions']">
+                                                    <div *ngIf="chk.action == 'Checklists'" class="workflow-action-main">
+                                                        <a> {{chk.name}} </a>  
+                                                        <button (click)="remove(chk.checkListId,'Checklists')" type="button" class="btn btn-sm btn-danger pull-right" title="Delete">
                                                             <i class="fa fa-remove"></i>
                                                         </button>
                                                     </div>

@@ -33,28 +33,34 @@ export class WorkFlowService {
             .map(res => <any>res.json());
     }
 
-    //public GetSingle = (id: number): Observable<Templates> => {
-    //    return this.http
-    //        .get(this.actionUrl + 'EmailTemplate/GetEmailTemplateById/' + id)
-    //        .map(res => <Templates>res.json());
-    //}
+    public GetSingle = (id: number): Observable<Workflow> => {
+       return this.http
+           .get(this.actionUrl + 'WorkFlow/GetWorkFlowWithActionsByWFID/' + id)
+           .map(res => <Workflow>res.json());
+    }
 
-    //public Add = (data: any): Observable<Templates> => {
-    //    let toAdd = JSON.stringify(data);
-    //    return this.http
-    //        .post(this.actionUrl + 'EmailTemplate/CreateEmailTemplate', toAdd, { headers: this.headers })
-    //        .map(res => <Templates>res.json());
-    //}
+    public Add = (data: any): Observable<Workflow> => {
+       let toAdd = JSON.stringify(data);
+       return this.http
+           .post(this.actionUrl + 'WorkFlow/CreateWorkFlowWithActions', toAdd, { headers: this.headers })
+           .map(res => <Workflow>res.json());
+    }
 
-    //public Update = (id: number, data: any): Observable<Templates> => {
-    //    let toAdd = JSON.stringify(data);
-    //    return this.http.post(this.actionUrl + 'EmailTemplate/UpdateEmailTemplate/' + id, toAdd, { headers: this.headers })
-    //        .map(res => <Templates>res.json());
-    //}
+    public Update = (id: number, data: any): Observable<Workflow> => {
+       let toAdd = JSON.stringify(data);
+       return this.http.post(this.actionUrl + 'WorkFlow/UpdateWorkFlowWithActions/' + id, toAdd, { headers: this.headers })
+           .map(res => <Workflow>res.json());
+    }
 
     public Delete = (id: number): Observable<any> => {
        return this.http
            .get(this.actionUrl + 'WorkFlow/DeleteWorkFlowById/' + id)
+           .map(res => <Workflow>res.json());
+    }
+
+    public DeleteAction = (id: number): Observable<any> => {
+       return this.http
+           .get(this.actionUrl + 'WorkFlow/DeleteWorkFlowActionById/' + id)
            .map(res => <Workflow>res.json());
     }
 }
