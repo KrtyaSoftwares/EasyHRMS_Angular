@@ -92,7 +92,8 @@ namespace EasyHRMS_Angular.Controllers
                         ActionOrder = x.ActionOrder,
                         MailAlertId = x.MailAlertId,
                         TaskId = x.TaskId,
-                        CheckListId = x.CheckListId
+                        CheckListId = x.CheckListId,
+                        Name = x.Name
                     }).ToList();
                     result = new
                     {
@@ -247,6 +248,7 @@ namespace EasyHRMS_Angular.Controllers
                                         entityUpdateAction.MailAlertId = WFAction.MailAlertId;
                                         entityUpdateAction.TaskId = WFAction.TaskId;
                                         entityUpdateAction.CheckListId = WFAction.CheckListId;
+                                        entityUpdateAction.Name = WFAction.Name;
                                         
                                         _context.SaveChanges();
                                     }

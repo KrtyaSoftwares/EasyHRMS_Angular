@@ -8,6 +8,7 @@ namespace EasyHRMS_DA.Models
     {
         public virtual DbSet<CheckList> CheckList { get; set; }
         public virtual DbSet<EmailTemplate> EmailTemplate { get; set; }
+        public virtual DbSet<EmployeeClaimAdvanceRequest> EmployeeClaimAdvanceRequest { get; set; }
         public virtual DbSet<EmployeeDetails> EmployeeDetails { get; set; }
         public virtual DbSet<EmployeeLeave> EmployeeLeave { get; set; }
         public virtual DbSet<FormField> FormField { get; set; }
@@ -58,6 +59,23 @@ namespace EasyHRMS_DA.Models
                 entity.Property(e => e.TemplateName)
                     .IsRequired()
                     .HasMaxLength(100);
+            });
+
+            modelBuilder.Entity<EmployeeClaimAdvanceRequest>(entity =>
+            {
+                entity.ToTable("Employee_ClaimAdvanceRequest");
+
+                entity.Property(e => e.Amount).HasColumnType("decimal");
+
+                entity.Property(e => e.Date).HasColumnType("date");
+
+                entity.Property(e => e.PayDate).HasColumnType("date");
+
+                entity.Property(e => e.Status).HasMaxLength(50);
+
+                entity.Property(e => e.Title).HasMaxLength(200);
+
+                entity.Property(e => e.Type).HasColumnType("char(1)");
             });
 
             modelBuilder.Entity<EmployeeDetails>(entity =>

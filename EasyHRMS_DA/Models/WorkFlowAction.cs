@@ -13,5 +13,6 @@ namespace EasyHRMS_DA.Models
         public int? MailAlertId { get; set; }
         public int? TaskId { get; set; }
         public int? CheckListId { get; set; }
+        public string Name { get; set; }
     }
 }
