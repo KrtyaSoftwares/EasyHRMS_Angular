@@ -31,10 +31,16 @@ export class EditComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-
-    this._route.params.subscribe(params => {
-        this.generalFormId = params['formid'];
-        this.Id = params['id'];
+      this._route.params.subscribe(params => {
+          if (params['formid'] != null && params['formid'] != undefined && params['id'] != null && params['id'] != undefined) {
+              console.log('Hifff');
+              this.generalFormId = params['formid'];
+              this.Id = params['id'];
+          }else {
+              console.log('Hi');
+              this.generalFormId = 1;
+              this.Id = 1;
+          }
     });
     this.getFormData(this.Id);
   }
