@@ -89,7 +89,10 @@ namespace EasyHRMS_Angular.Controllers
                         WorkFlowId = x.WorkFlowId,
                         Action = x.Action,
                         TemplateId = x.TemplateId,
-                        ActionOrder = x.ActionOrder
+                        ActionOrder = x.ActionOrder,
+                        MailAlertId = x.MailAlertId,
+                        TaskId = x.TaskId,
+                        CheckListId = x.CheckListId
                     }).ToList();
                     result = new
                     {
