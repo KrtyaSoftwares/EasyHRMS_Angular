@@ -23,6 +23,16 @@
                 </ul>
             </li>
             <li [routerLinkActive]="['router-link-active']">
+                <a (click)="addExpandClass('UserAccessControl')">
+                    <i class="glyph-icon flaticon-forms"></i><span class="sidebar-text">User Access Control</span><span class="fa arrow"></span>
+                </a>
+                <ul class="submenu collapse" [class.in]="showMenu === 'UserAccessControl'">
+                    <li>
+                        <a [routerLink]="['/user-access-control/permissions']"><span>Permissions</span></a>
+                    </li>
+                </ul>
+            </li>
+            <li [routerLinkActive]="['router-link-active']">
                 <a (click)="addExpandClass('templates')">
                     <i class="glyph-icon flaticon-forms"></i><span class="sidebar-text">Templates</span><span class="fa arrow"></span>
                 </a>

@@ -21,6 +21,7 @@ const routes: Routes = [
             { path: 'general-formbuilder', loadChildren: './general-formbuilder/general-formbuilder.module#GeneralFormbuilderModule' },
             { path: 'templates', loadChildren: './templates/templates.module#TemplatesModule' },
             { path: 'automation', loadChildren: './automation/automation.module#AutomationModule' },
+            { path: 'user-access-control', loadChildren: './user-access-control/user-access-control.module#UserAccessControlModule' },
         ]
     }
 ];
