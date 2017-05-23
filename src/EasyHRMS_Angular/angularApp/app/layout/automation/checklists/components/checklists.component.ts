@@ -43,22 +43,9 @@ export class ChecklistsComponent implements OnInit {
           data => {
             this._results = data;
             this._list = this._results['list'];
-            this.getFormname();
+            //initialize to page 1
+            this.setPage(1);
           });
-  }
-  getFormname() {
-      this._list.forEach((element: any) => {
-         let formId = element.formName;
-         this._formsService
-          .GetSingle(formId)
-          .subscribe(
-          data => {
-           this._formResults = data;
-           element.custom_formName = this._formResults['objForms']['formName'];
-          });
-        });
-        //initialize to page 1
-        this.setPage(1);
   }
   delete(id: number) {
       this.confirmationService

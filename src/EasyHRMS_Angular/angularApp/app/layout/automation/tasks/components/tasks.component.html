@@ -33,19 +33,11 @@
                                     <tbody class="no-bd-y">
                                         <tr *ngFor="let task of pagedItems" >
                                             <td><a href="#">{{task.templateName}}</a></td>
-                                            <td>{{task.custom_formName}}</td>
+                                            <td>{{task.customFormName}}</td>
                                             <td>{{task.dueDate}}</td>
                                             <td>{{task.taskOwner}}</td>
                                             <td><button type="button" [routerLink]="['./forms/' + task.id ]" class="btn btn-sm btn-warning" title="Edit"><i class="fa fa-pencil"></i></button>  <button type="button" (click)="deleteTask(task.id)" class="btn btn-sm btn-danger" title="Delete"><i class="fa fa-remove"></i></button></td>
                                         </tr>
-                                        <!--<tr>
-                                            <td><a href="#">New Mockup & HTML/CSS </a></td>
-                                            <td>Employee</td>
-                                            <td>1 Day(s) After Rule Trigger Time</td>
-                                            <td>jariwbh - Employee</td>
-                                            <td><button type="button" class="btn btn-sm btn-warning" title="Edit"><i class="fa fa-pencil"></i></button>  <button type="button" class="btn btn-sm btn-danger" title="Delete"><i class="fa fa-remove"></i></button></td>
-                                        </tr>-->
-
                                     </tbody>
                                 </table>
                                 <ul *ngIf="pager.pages && pager.pages.length" class="pagination">

@@ -27,7 +27,7 @@
                     </thead>
                     <tbody class="no-bd-y">
                       <tr *ngFor="let lst of pagedItems">                       
-                        <td>{{lst.custom_formName}}</td>
+                        <td>{{lst.customFormName}}</td>
                         <td><a >{{lst.mailAlertName}}</a></td>
 						            <td>
                           <button [routerLink]="['/automation/mail-alerts/forms/' + lst.id ]"  type="button" class="btn btn-sm btn-warning" title="Edit"><i class="fa fa-pencil"></i></button>

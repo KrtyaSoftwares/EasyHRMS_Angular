@@ -34,31 +34,12 @@ export class TasksComponent implements OnInit {
           .GetAllTasks()
           .subscribe(
           data => {
-              //console.log(data.list);
               this._taskList = data.list;
               //initialize to page 1
               this.setPage(1);
-              this.getFormname();
           });
   }
-
-  getFormname() {
-
-      this._taskList.forEach((element: any) => {
-          let formId = element.formName;
-          this._formsService
-              .GetSingle(formId)
-              .subscribe(
-              data => {
-                  this._formResults = data;
-                  element.custom_formName = this._formResults['objForms']['formName'];
-              });
-      });
-      //initialize to page 1
-      this.setPage(1);
-  }
-
-  deleteTask(id: number) {
+ deleteTask(id: number) {
 
       this.confirmationService.confirm({
           message: 'Are you sure that you want to perform this action?',

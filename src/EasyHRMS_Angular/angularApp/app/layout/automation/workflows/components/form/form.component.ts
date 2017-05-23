@@ -101,15 +101,21 @@ constructor(
                       if (element.action == 'MailAlerts') {
                           let tempMailAlertId = element.mailAlertId;
                           let isChecked = <HTMLInputElement> document.getElementById('mailAlerts_' + tempMailAlertId);
-                          isChecked.checked = true;
+                          if (isChecked != null) {
+                            isChecked.checked = true;
+                          }
                       } else if (element.action == 'Tasks') {
                           let temptaskId = element.taskId;
                           let isChecked = <HTMLInputElement> document.getElementById('tasks_' + temptaskId);
-                          isChecked.checked = true;
+                          if (isChecked != null) {
+                            isChecked.checked = true;
+                          }
                       } else if (element.action == 'Checklists') {
                           let tempcheckListId = element.checkListId;
                           let isChecked = <HTMLInputElement> document.getElementById('checkLists_' + tempcheckListId);
-                          isChecked.checked = true;
+                          if (isChecked != null) {
+                            isChecked.checked = true;
+                          }
                       }
                   });
                 } else {
