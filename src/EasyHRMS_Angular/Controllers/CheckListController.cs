@@ -38,14 +38,16 @@ namespace EasyHRMS_Angular.Controllers
                         FormName = g.FormName,
                         ChecklistName = g.ChecklistName,
                         ChecklistOrder = g.ChecklistOrder,
-                        TaskCount = _context.WorkFlowTask.Where(z => z.CheckListId == g.Id).Count()
+                        TaskCount = _context.WorkFlowTask.Where(z => z.CheckListId == g.Id).Count(),
+                        CustomFormName = _context.Forms.Where(z => z.Id == g.FormName).FirstOrDefault().FormName
                     }).ToList().Select(y => new CheckListVM
                     {
                         Id = y.Id,
                         FormName = y.FormName,
                         ChecklistName = y.ChecklistName,
                         ChecklistOrder = y.ChecklistOrder,
-                        TaskCount = y.TaskCount
+                        TaskCount = y.TaskCount,
+                        CustomFormName = y.CustomFormName
                         //TaskCount = _context.WorkFlowTask.Where(z => z.CheckListId == y.Id).Count()
                         //TaskCount = _context.WorkFlowTask.Count(z => z.CheckListId == y.Id)
                     }).ToList();
@@ -260,6 +262,13 @@ namespace EasyHRMS_Angular.Controllers
                             entityUpdate.ChecklistOrder = model.ChecklistOrder;
                             //entityUpdate.TaskOrder = model.TaskOrder;
                            
+                            _context.SaveChanges();
+                        }
+
+                        var entityUpdateWorkFlowAction = _context.WorkFlowAction.FirstOrDefault(x => x.CheckListId == id);
+                        if (entityUpdateWorkFlowAction != null)
+                        {
+                            entityUpdateWorkFlowAction.Name = model.ChecklistName;
                             _context.SaveChanges();
                         }
 

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using EasyHRMS_DA.Models;
+using EasyHRMS_Angular.ModelsVM;
 
 namespace EasyHRMS_Angular.Controllers
 {
@@ -26,13 +27,31 @@ namespace EasyHRMS_Angular.Controllers
         [HttpGet("GetAllMailAlert"), Produces("application/json")]
         public object GetAllMailAlert()
         {
-            List<MailAlert> list = new List<MailAlert>();
+            //List<MailAlert> list = new List<MailAlert>();
+            List<MailAlertVM> list = new List<MailAlertVM>();
             object result = null;
             try
             {
                 using (_context)
                 {
-                    list = _context.MailAlert.ToList();
+                    //list = _context.MailAlert.ToList();
+                    list = _context.MailAlert.Select(y => new MailAlertVM
+                    {
+                        Id = y.Id,
+                        FormName = y.FormName,
+                        MailAlertName = y.MailAlertName,
+                        TemplateId = y.TemplateId,
+                        FromAddress = y.FromAddress,
+                        ToAddress = y.ToAddress,
+                        Ccaddress = y.Ccaddress,
+                        Bccaddress = y.Bccaddress,
+                        ReplyToAddress = y.ReplyToAddress,
+                        EmailSubject = y.EmailSubject,
+                        Attachment = y.Attachment,
+                        Message = y.Message,
+                        CustomFormName = _context.Forms.Where(z => z.Id == y.FormName).FirstOrDefault().FormName
+
+                    }).ToList();
 
                     result = new
                     {
@@ -170,6 +189,13 @@ namespace EasyHRMS_Angular.Controllers
                             entityUpdate.Attachment = model.Attachment;
                             entityUpdate.Message = model.Message;
 
+                            _context.SaveChanges();
+                        }
+
+                        var entityUpdateWorkFlowAction = _context.WorkFlowAction.FirstOrDefault(x => x.MailAlertId == id);
+                        if (entityUpdateWorkFlowAction != null)
+                        {
+                            entityUpdateWorkFlowAction.Name = model.MailAlertName;
                             _context.SaveChanges();
                         }
 

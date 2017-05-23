@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using EasyHRMS_DA.Models;
+using EasyHRMS_Angular.Models;
 
 namespace EasyHRMS_Angular.Controllers
 {
@@ -26,13 +27,23 @@ namespace EasyHRMS_Angular.Controllers
         [HttpGet("GetAllEmailTemplate"), Produces("application/json")]
         public object GetAllEmailTemplate()
         {
-            List<EmailTemplate> list = new List<EmailTemplate>();
+            //List<EmailTemplate> list = new List<EmailTemplate>();
+            List<EmailTemplateVM> list = new List<EmailTemplateVM>();
             object result = null;
             try
             {
                 using (_context)
                 {
-                    list = _context.EmailTemplate.ToList();
+                    //list = _context.EmailTemplate.ToList();
+                    list = _context.EmailTemplate.Select(y => new EmailTemplateVM
+                    {
+                        Id = y.Id,
+                        TemplateName = y.TemplateName,
+                        FormName = y.FormName,
+                        Message = y.Message,
+                        CustomFormName = _context.Forms.Where(z => z.Id == y.FormName).FirstOrDefault().FormName,
+                       
+                    }).ToList();
 
                     result = new
                     {

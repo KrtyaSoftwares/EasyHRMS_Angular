@@ -9,8 +9,10 @@ namespace EasyHRMS_Angular.Models
     {
         public int Id { get; set; }
         public string TemplateName { get; set; }
-        public string FormName { get; set; }
+        public int FormName { get; set; }
         public string Message { get; set; }
+
+        public string CustomFormName { get; set; }
         //public string FromAddress { get; set; }
         //public string ToAddress { get; set; }
         //public string Ccaddress { get; set; }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using EasyHRMS_DA.Models;
+using EasyHRMS_Angular.Models;
 
 namespace EasyHRMS_Angular.Controllers
 {
@@ -26,13 +27,28 @@ namespace EasyHRMS_Angular.Controllers
         [HttpGet("GetAllTaskTemplate"), Produces("application/json")]
         public object GetAllTaskTemplate()
         {
-            List<TaskTemplate> list = new List<TaskTemplate>();
+            //List<TaskTemplate> list = new List<TaskTemplate>();
+            List<TaskTemplateVM> list = new List<TaskTemplateVM>();
             object result = null;
             try
             {
                 using (_context)
                 {
-                    list = _context.TaskTemplate.ToList();
+                    //list = _context.TaskTemplate.ToList();
+                    list = _context.TaskTemplate.Select(y => new TaskTemplateVM
+                    {
+                        Id = y.Id,
+                        TemplateName = y.TemplateName,
+                        FormName = y.FormName,
+                        TaskName = y.TaskName,
+                        Description = y.Description,
+                        Priority = y.Priority,
+                        TaskOwner = y.TaskOwner,
+                        DueDate = y.DueDate,
+                       
+                        CustomFormName = _context.Forms.Where(z => z.Id == y.FormName).FirstOrDefault().FormName
+
+                    }).ToList();
 
                     result = new
                     {
@@ -162,6 +178,13 @@ namespace EasyHRMS_Angular.Controllers
                             entityUpdate.Priority = model.Priority;
                             entityUpdate.TaskOwner = model.TaskOwner;
                             entityUpdate.DueDate = model.DueDate;
+                            _context.SaveChanges();
+                        }
+
+                        var entityUpdateWorkFlowAction = _context.WorkFlowAction.FirstOrDefault(x => x.TaskId == id);
+                        if (entityUpdateWorkFlowAction != null)
+                        {
+                            entityUpdateWorkFlowAction.Name = model.TaskName;
                             _context.SaveChanges();
                         }
 

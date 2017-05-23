@@ -6,7 +6,7 @@ namespace EasyHRMS_DA.Models
     public partial class MailAlert
     {
         public int Id { get; set; }
-        public string FormName { get; set; }
+        public int FormName { get; set; }
         public string MailAlertName { get; set; }
         public int? TemplateId { get; set; }
         public string FromAddress { get; set; }

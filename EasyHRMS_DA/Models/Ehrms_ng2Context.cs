@@ -42,18 +42,10 @@ namespace EasyHRMS_DA.Models
                 entity.Property(e => e.ChecklistName)
                     .IsRequired()
                     .HasMaxLength(100);
-
-                entity.Property(e => e.FormName)
-                    .IsRequired()
-                    .HasMaxLength(50);
             });
 
             modelBuilder.Entity<EmailTemplate>(entity =>
             {
-                entity.Property(e => e.FormName)
-                    .IsRequired()
-                    .HasMaxLength(100);
-
                 entity.Property(e => e.Message).IsRequired();
 
                 entity.Property(e => e.TemplateName)
@@ -296,10 +288,6 @@ namespace EasyHRMS_DA.Models
 
                 entity.Property(e => e.EmailSubject).HasMaxLength(500);
 
-                entity.Property(e => e.FormName)
-                    .IsRequired()
-                    .HasMaxLength(100);
-
                 entity.Property(e => e.MailAlertName)
                     .IsRequired()
                     .HasMaxLength(100);
@@ -309,10 +297,6 @@ namespace EasyHRMS_DA.Models
 
             modelBuilder.Entity<TaskTemplate>(entity =>
             {
-                entity.Property(e => e.FormName)
-                    .IsRequired()
-                    .HasMaxLength(100);
-
                 entity.Property(e => e.Priority).HasMaxLength(10);
 
                 entity.Property(e => e.TaskName).HasMaxLength(100);
@@ -325,10 +309,6 @@ namespace EasyHRMS_DA.Models
             modelBuilder.Entity<WorkFlow>(entity =>
             {
                 entity.Property(e => e.Description).HasMaxLength(500);
-
-                entity.Property(e => e.FormName)
-                    .IsRequired()
-                    .HasMaxLength(50);
 
                 entity.Property(e => e.Name)
                     .IsRequired()

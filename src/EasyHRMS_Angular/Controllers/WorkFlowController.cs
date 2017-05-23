@@ -44,7 +44,7 @@ namespace EasyHRMS_Angular.Controllers
                         FormName = x.FormName,
                         TriggerName = x.TriggerName,
                         Status = x.Status,
-                        //CustomFormName = _context.Forms.Where(y => y.Id == x.FormName).FirstOrDefault().FormName
+                        CustomFormName = _context.Forms.Where(y => y.Id == x.FormName).FirstOrDefault().FormName,
                         MailAlertsCount = _context.WorkFlowAction.Where(y => y.Action == "MailAlerts").Count(),
                         TasksCount = _context.WorkFlowAction.Where(y => y.Action == "Tasks").Count(),
                         CheckListCount = _context.WorkFlowAction.Where(y => y.Action == "CheckLists").Count(),
