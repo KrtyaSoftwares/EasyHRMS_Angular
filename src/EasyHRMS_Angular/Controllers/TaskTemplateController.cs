@@ -35,7 +35,7 @@ namespace EasyHRMS_Angular.Controllers
                 using (_context)
                 {
                     //list = _context.TaskTemplate.ToList();
-                    list = _context.TaskTemplate.Select(y => new TaskTemplateVM
+                    list = _context.TaskTemplate.Select(y => new
                     {
                         Id = y.Id,
                         TemplateName = y.TemplateName,
@@ -47,6 +47,19 @@ namespace EasyHRMS_Angular.Controllers
                         DueDate = y.DueDate,
                        
                         CustomFormName = _context.Forms.Where(z => z.Id == y.FormName).FirstOrDefault().FormName
+
+                    }).ToList().Select(y => new TaskTemplateVM
+                    {
+                        Id = y.Id,
+                        TemplateName = y.TemplateName,
+                        FormName = y.FormName,
+                        TaskName = y.TaskName,
+                        Description = y.Description,
+                        Priority = y.Priority,
+                        TaskOwner = y.TaskOwner,
+                        DueDate = y.DueDate,
+
+                        CustomFormName = y.CustomFormName
 
                     }).ToList();
 
@@ -181,12 +194,6 @@ namespace EasyHRMS_Angular.Controllers
                             _context.SaveChanges();
                         }
 
-                        var entityUpdateWorkFlowAction = _context.WorkFlowAction.FirstOrDefault(x => x.TaskId == id);
-                        if (entityUpdateWorkFlowAction != null)
-                        {
-                            entityUpdateWorkFlowAction.Name = model.TaskName;
-                            _context.SaveChanges();
-                        }
 
                         _ctxTransaction.Commit();
                         message = "Entry Updated";

@@ -36,7 +36,7 @@ namespace EasyHRMS_Angular.Controllers
             {
                 using (_context)
                 {
-                    list = _context.WorkFlow.Select(x => new WorkFlowVM()
+                    list = _context.WorkFlow.Select(x => new
                     {
                         Id = x.Id,
                         Name = x.Name,
@@ -49,7 +49,21 @@ namespace EasyHRMS_Angular.Controllers
                         TasksCount = _context.WorkFlowAction.Where(y => y.Action == "Tasks").Count(),
                         CheckListCount = _context.WorkFlowAction.Where(y => y.Action == "CheckLists").Count(),
 
+                    }).ToList().Select(x => new WorkFlowVM
+                    {
+                        Id = x.Id,
+                        Name = x.Name,
+                        Description = x.Description,
+                        FormName = x.FormName,
+                        TriggerName = x.TriggerName,
+                        Status = x.Status,
+                        CustomFormName = x.CustomFormName,
+                        MailAlertsCount = x.MailAlertsCount,
+                        TasksCount = x.TasksCount,
+                        CheckListCount = x.CheckListCount,
+
                     }).ToList();
+
                     result = new
                     {
                         list,

@@ -35,14 +35,22 @@ namespace EasyHRMS_Angular.Controllers
                 using (_context)
                 {
                     //list = _context.EmailTemplate.ToList();
-                    list = _context.EmailTemplate.Select(y => new EmailTemplateVM
+                    list = _context.EmailTemplate.Select(x => new
+                    {
+                        Id = x.Id,
+                        TemplateName = x.TemplateName,
+                        FormName = x.FormName,
+                        Message = x.Message,
+                        CustomFormName = _context.Forms.Where(z => z.Id == x.FormName).FirstOrDefault().FormName,
+                       
+                    }).ToList().Select(y => new EmailTemplateVM
                     {
                         Id = y.Id,
                         TemplateName = y.TemplateName,
                         FormName = y.FormName,
                         Message = y.Message,
-                        CustomFormName = _context.Forms.Where(z => z.Id == y.FormName).FirstOrDefault().FormName,
-                       
+                        CustomFormName = y.CustomFormName
+
                     }).ToList();
 
                     result = new

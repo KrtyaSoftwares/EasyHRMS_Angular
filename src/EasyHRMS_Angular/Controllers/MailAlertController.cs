@@ -35,7 +35,7 @@ namespace EasyHRMS_Angular.Controllers
                 using (_context)
                 {
                     //list = _context.MailAlert.ToList();
-                    list = _context.MailAlert.Select(y => new MailAlertVM
+                    list = _context.MailAlert.Select(y => new
                     {
                         Id = y.Id,
                         FormName = y.FormName,
@@ -50,6 +50,22 @@ namespace EasyHRMS_Angular.Controllers
                         Attachment = y.Attachment,
                         Message = y.Message,
                         CustomFormName = _context.Forms.Where(z => z.Id == y.FormName).FirstOrDefault().FormName
+
+                    }).ToList().Select(y => new MailAlertVM
+                    {
+                        Id = y.Id,
+                        FormName = y.FormName,
+                        MailAlertName = y.MailAlertName,
+                        TemplateId = y.TemplateId,
+                        FromAddress = y.FromAddress,
+                        ToAddress = y.ToAddress,
+                        Ccaddress = y.Ccaddress,
+                        Bccaddress = y.Bccaddress,
+                        ReplyToAddress = y.ReplyToAddress,
+                        EmailSubject = y.EmailSubject,
+                        Attachment = y.Attachment,
+                        Message = y.Message,
+                        CustomFormName = y.CustomFormName
 
                     }).ToList();
 
