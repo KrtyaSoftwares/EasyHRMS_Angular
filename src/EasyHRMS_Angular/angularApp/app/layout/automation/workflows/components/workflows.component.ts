@@ -48,25 +48,25 @@ export class WorkflowsComponent implements OnInit {
                 this._workflowList = data.list;
                 //initialize to page 1
                 this.setPage(1);
-                this.getFormname();
+                //this.getFormname();
             });
     }
 
-    getFormname() {
+    //getFormname() {
 
-        this._workflowList.forEach((element: any) => {
-            let formId = element.formName;
-            this._formsService
-                .GetSingle(formId)
-                .subscribe(
-                data => {
-                    this._formResults = data;
-                    element.custom_formName = this._formResults['objForms']['formName'];
-                });
-        });
-        //initialize to page 1
-        this.setPage(1);
-    }
+    //    this._workflowList.forEach((element: any) => {
+    //        let formId = element.formName;
+    //        this._formsService
+    //            .GetSingle(formId)
+    //            .subscribe(
+    //            data => {
+    //                this._formResults = data;
+    //                element.custom_formName = this._formResults['objForms']['formName'];
+    //            });
+    //    });
+    //    //initialize to page 1
+    //    this.setPage(1);
+    //}
 
     setPage(page: number) {
         if (page < 1 || page > this.pager.totalPages) {
