@@ -194,6 +194,12 @@ namespace EasyHRMS_Angular.Controllers
                             _context.SaveChanges();
                         }
 
+                        var entityUpdateWorkFlowAction = _context.WorkFlowAction.FirstOrDefault(x => x.TaskId == id);
+                        if (entityUpdateWorkFlowAction != null)
+                        {
+                            entityUpdateWorkFlowAction.Name = model.TaskName;
+                            _context.SaveChanges();
+                        }
 
                         _ctxTransaction.Commit();
                         message = "Entry Updated";
