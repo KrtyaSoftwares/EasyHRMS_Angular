@@ -305,15 +305,24 @@ namespace EasyHRMS_Angular.Controllers
                 {
                     try
                     {
-                        var idToRemove = _context.TaskTemplate.SingleOrDefault(x => x.Id == id);
-                        if (idToRemove != null)
+                        var WorkFlowAction = _context.WorkFlowAction.FirstOrDefault(x => x.TaskId == id);
+                        if (WorkFlowAction != null)
                         {
-                            _context.TaskTemplate.Remove(idToRemove);
-                            _context.SaveChanges();
+                            message = "Can Not Delete As This Task Selected in other Form(WorkFlow)";
+                            errorcode = "2";
                         }
-                        _ctxTransaction.Commit();
-                        message = "Deleted Successfully";
-                        errorcode = "0";
+                        else
+                        {
+                            var idToRemove = _context.TaskTemplate.SingleOrDefault(x => x.Id == id);
+                            if (idToRemove != null)
+                            {
+                                _context.TaskTemplate.Remove(idToRemove);
+                                _context.SaveChanges();
+                            }
+                            _ctxTransaction.Commit();
+                            message = "Deleted Successfully";
+                            errorcode = "0";
+                        }
                     }
                     catch (Exception e)
                     {

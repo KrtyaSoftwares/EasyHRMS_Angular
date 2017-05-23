@@ -56,10 +56,17 @@ export class MailAlertsComponent implements OnInit {
                 this._mailAlertService
                   .Delete(id)
                   .subscribe(
-                  data => {
-                    this.msgs = [];
-                    this.msgs.push ( { severity: 'warn', summary: 'Insert Message', detail: 'Email Template has been Deleted Successfully!!!' } );
-                    this.getAllTemplates();
+                    data => {
+                        if (data.error == '2') {
+                            this.msgs = [];
+                            this.msgs.push({
+                                severity: 'info', summary: 'Delete Message', detail: data.msg
+                            });
+                        } else {
+                            this.msgs = [];
+                            this.msgs.push({ severity: 'success', summary: 'Delete Message', detail: 'Mail Alert has been Deleted Successfully!!!' });
+                            this.getAllTemplates();
+                        }
                   });
             }
         });

@@ -48,9 +48,16 @@ export class TasksComponent implements OnInit {
                   .DeleteTask(id)
                   .subscribe(
                   data => {
-                      this.msgs = [];
-                      this.msgs.push({ severity: 'warn', summary: 'Delete Message', detail: 'Task Template has been Deleted Successfully!!!' });
-                      this.GetAlltask();
+                      if (data.error == '2') {
+                          this.msgs = [];
+                          this.msgs.push({
+                              severity: 'info', summary: 'Delete Message', detail: data.msg
+                          });
+                      } else {
+                          this.msgs = [];
+                          this.msgs.push({ severity: 'success', summary: 'Delete Message', detail: 'Task Template has been Deleted Successfully!!!' });
+                          this.GetAlltask();
+                      }
                   });
           }
       });

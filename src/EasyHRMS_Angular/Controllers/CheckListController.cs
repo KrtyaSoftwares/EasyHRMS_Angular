@@ -377,41 +377,54 @@ namespace EasyHRMS_Angular.Controllers
                 {
                     try
                     {
-                        List<WorkFlowTask> listTasks = _context.WorkFlowTask.Where(y => y.CheckListId == id).ToList();
-                        if(listTasks.Count > 0)
-                        {
-                            foreach(var task in listTasks)
-                            {
-                                var TaskidToRemove = _context.WorkFlowTask.SingleOrDefault(x => x.Id == task.Id);
-                                if (TaskidToRemove != null)
-                                {
-                                    _context.WorkFlowTask.Remove(TaskidToRemove);
-                                    _context.SaveChanges();
-                                }
-                            }
 
-                            var idToRemove = _context.CheckList.SingleOrDefault(x => x.Id == id);
-                            if (idToRemove != null)
-                            {
-                                _context.CheckList.Remove(idToRemove);
-                                _context.SaveChanges();
-                            }
-                            _ctxTransaction.Commit();
-                            message = "Deleted Successfully";
-                            errorcode = "0";
+                        var WorkFlowAction = _context.WorkFlowAction.FirstOrDefault(x => x.CheckListId == id);
+                        if (WorkFlowAction != null)
+                        {
+                            message = "Can Not Delete As This CheckList Selected in other Form(WorkFlow)";
+                            errorcode = "2";
                         }
                         else
                         {
-                            var idToRemove = _context.CheckList.SingleOrDefault(x => x.Id == id);
-                            if (idToRemove != null)
+                            List<WorkFlowTask> listTasks = _context.WorkFlowTask.Where(y => y.CheckListId == id).ToList();
+                            if (listTasks.Count > 0)
                             {
-                                _context.CheckList.Remove(idToRemove);
-                                _context.SaveChanges();
+                                foreach (var task in listTasks)
+                                {
+                                    var TaskidToRemove = _context.WorkFlowTask.SingleOrDefault(x => x.Id == task.Id);
+                                    if (TaskidToRemove != null)
+                                    {
+                                        _context.WorkFlowTask.Remove(TaskidToRemove);
+                                        _context.SaveChanges();
+                                    }
+                                }
+
+                                var idToRemove = _context.CheckList.SingleOrDefault(x => x.Id == id);
+                                if (idToRemove != null)
+                                {
+                                    _context.CheckList.Remove(idToRemove);
+                                    _context.SaveChanges();
+                                }
+                                _ctxTransaction.Commit();
+                                message = "Deleted Successfully";
+                                errorcode = "0";
                             }
-                            _ctxTransaction.Commit();
-                            message = "Deleted Successfully";
-                            errorcode = "0";
+                            else
+                            {
+                                var idToRemove = _context.CheckList.SingleOrDefault(x => x.Id == id);
+                                if (idToRemove != null)
+                                {
+                                    _context.CheckList.Remove(idToRemove);
+                                    _context.SaveChanges();
+                                }
+                                _ctxTransaction.Commit();
+                                message = "Deleted Successfully";
+                                errorcode = "0";
+                            }
                         }
+
+
+                        
                     }
                     catch (Exception e)
                     {
