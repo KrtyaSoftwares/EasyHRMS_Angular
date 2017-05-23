@@ -43,7 +43,7 @@
                                             <td>{{workflow.checkListCount}}</td>
 
                                             <td>
-                                                <p-inputSwitch (onChange)="handleChange($event)" [(ngModel)]="workflow.status"></p-inputSwitch>
+                                                <p-inputSwitch (onChange)="changeStatus($event.checked, workflow.id)" [(ngModel)]="workflow.status"></p-inputSwitch>
                                                 <!--<input type="checkbox" class="switch" [value]="workflow.status" [checked]="workflow.status" data-size="small" (change)="changeStatus($event.target.checked, workflow.id);$event.target.checked ? workflow.status = true : workflow.status = false">-->
                                             </td>
                                             <td><button type="button" [routerLink]="['./forms/' + workflow.id ]" class="btn btn-sm btn-warning" title="Edit"><i class="fa fa-pencil"></i></button>  <button type="button" (click)="deleteWorkFlow(workflow.id)" class="btn btn-sm btn-danger" title="Delete"><i class="fa fa-remove"></i></button></td>

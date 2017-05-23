@@ -31,15 +31,14 @@ export class WorkflowsComponent implements OnInit {
     ngOnInit() {
         this.GetAllWorkFlow();
     }
-
-    handleChange(e: any) {
-        let isChecked = e.checked;
-        if (isChecked == true ) {
-            console.log('ON');
-        } else {
-            console.log('OFF');
-        }
-    }
+    //handleChange(e: any) {
+    //    let isChecked = e.checked;
+    //    if (isChecked == true ) {
+    //        console.log('ON');
+    //    } else {
+    //        console.log('OFF');
+    //    }
+    //}
     GetAllWorkFlow() {
         this._workflowService
             .GetAll()
