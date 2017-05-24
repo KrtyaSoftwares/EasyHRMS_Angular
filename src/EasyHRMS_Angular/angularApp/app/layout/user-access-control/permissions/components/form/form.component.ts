@@ -5,8 +5,8 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './form.component.html',
 })
 export class FormComponent implements OnInit {
-
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }

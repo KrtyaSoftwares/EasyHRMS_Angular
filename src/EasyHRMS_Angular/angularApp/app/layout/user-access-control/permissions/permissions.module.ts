@@ -10,13 +10,15 @@ import { AdminOperationsComponent } from './components/admin-operations/admin-op
 
 import {TabViewModule} from 'primeng/primeng';
 import {GrowlModule} from 'primeng/primeng';
+import {InputSwitchModule} from 'primeng/primeng';
 
 @NgModule({
   imports: [
     CommonModule,
     PermissionsRoutingModule,
     TabViewModule,
-    GrowlModule
+    GrowlModule,
+    InputSwitchModule
   ],
   declarations: [
     PermissionsComponent,

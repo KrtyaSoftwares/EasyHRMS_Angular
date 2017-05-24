@@ -56,6 +56,8 @@
     "angularApp/app/layout/selfservice/myattendance/myattendance.module.ts",
     "angularApp/app/layout/selfservice/myleaves/myleaves.module.ts",
     "angularApp/app/layout/selfservice/mysalary/mysalary.module.ts",
+    "angularApp/app/layout/user-access-control/user-access-control.module.ts",
+    "angularApp/app/layout/user-access-control/permissions/permissions.module.ts",
     "angularApp/main-aot.ts"
   ],
   "angularCompilerOptions": {
