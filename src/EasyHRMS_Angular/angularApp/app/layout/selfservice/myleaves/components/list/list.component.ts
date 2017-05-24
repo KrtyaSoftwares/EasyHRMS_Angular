@@ -131,6 +131,8 @@ export class ListComponent implements OnInit {
       //this._EmployeeLeaveModel.fromDate.toDateString();
       //this._EmployeeLeaveModel.toDate.toDateString();
       //this._EmployeeLeaveModel.toDate.toDateString();
+      this._EmployeeLeaveModel.fromDate.setDate(this._EmployeeLeaveModel.fromDate.getDate() + 1);
+      this._EmployeeLeaveModel.toDate.setDate(this._EmployeeLeaveModel.toDate.getDate() + 1);
       console.log(this._EmployeeLeaveModel.toDate.toDateString());
       console.log(this._EmployeeLeaveModel);
       this._leaveService.AddEmployeeLeave(this._EmployeeLeaveModel)
@@ -142,7 +144,7 @@ export class ListComponent implements OnInit {
               document.getElementById('closeModal').click();
               //this.msgs_success = [];
               if (isValid) {
-                  this.msgs.push({ severity: 'info', summary: 'Saved.', detail: 'Info has been Saved Successfully.' });
+                  this.msgs.push({ severity: 'success', summary: 'Saved.', detail: 'Info has been Saved Successfully.' });
               } else {
                 this.msgs.push({ severity: 'error', summary: 'Error Message', detail: 'Validation failed' });
               }
@@ -167,6 +169,8 @@ export class ListComponent implements OnInit {
                   .DeleteEmployeeLeave(id)
                   .subscribe(
                   data => {
+                      this.msgs = [];
+                      this.msgs.push({ severity: 'success', summary: 'Delete Message', detail: 'Leave has been Deleted Successfully!!!' });
                       this.GetAllEmployeeLeave();
                   })
           }

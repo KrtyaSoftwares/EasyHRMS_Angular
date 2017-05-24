@@ -19,7 +19,6 @@ export class MyadvancesclaimService {
         this.headers.append('Content-Type', 'application/json');
         this.headers.append('Accept', 'application/json');
     }
-    
     public GetAll = (): Observable<any> => {
         return this.http
             .get(this.actionUrl + 'EmployeeClaimAdvanceRequest/GetAllEmployeeClaimAdvanceRequest')
