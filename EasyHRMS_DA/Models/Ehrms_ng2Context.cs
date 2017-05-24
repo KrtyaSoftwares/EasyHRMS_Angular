@@ -11,6 +11,7 @@ namespace EasyHRMS_DA.Models
         public virtual DbSet<EmployeeClaimAdvanceRequest> EmployeeClaimAdvanceRequest { get; set; }
         public virtual DbSet<EmployeeDetails> EmployeeDetails { get; set; }
         public virtual DbSet<EmployeeLeave> EmployeeLeave { get; set; }
+        public virtual DbSet<EmployeePayrollCategory> EmployeePayrollCategory { get; set; }
         public virtual DbSet<FormField> FormField { get; set; }
         public virtual DbSet<FormTab> FormTab { get; set; }
         public virtual DbSet<Forms> Forms { get; set; }
@@ -171,6 +172,19 @@ namespace EasyHRMS_DA.Models
                 entity.Property(e => e.Status).HasMaxLength(50);
 
                 entity.Property(e => e.ToDate).HasColumnType("date");
+            });
+
+            modelBuilder.Entity<EmployeePayrollCategory>(entity =>
+            {
+                entity.ToTable("Employee_PayrollCategory");
+
+                entity.Property(e => e.Amount).HasColumnType("numeric");
+
+                entity.Property(e => e.Description).HasMaxLength(50);
+
+                entity.Property(e => e.Percentage).HasColumnType("numeric");
+
+                entity.Property(e => e.Period).HasColumnName("period");
             });
 
             modelBuilder.Entity<FormField>(entity =>
