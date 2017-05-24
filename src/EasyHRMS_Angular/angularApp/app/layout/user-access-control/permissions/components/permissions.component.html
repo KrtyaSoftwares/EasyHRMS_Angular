@@ -1,0 +1,13 @@
+<p-growl [value]="msgs"></p-growl>
+<h3 class="first">Permissions</h3>
+<p-tabView>
+    <p-tabPanel header="Form Permissions" leftIcon="fa-calendar">
+        <app-form></app-form>
+    </p-tabPanel>
+    <p-tabPanel header="Global Permissions" leftIcon="fa-print">
+        <app-global></app-global>
+    </p-tabPanel>
+    <p-tabPanel header="Admin Operations" leftIcon="fa-bell-o">
+        <app-admin-operations></app-admin-operations>
+    </p-tabPanel>
+</p-tabView>
