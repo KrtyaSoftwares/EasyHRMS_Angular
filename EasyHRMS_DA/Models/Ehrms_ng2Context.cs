@@ -22,6 +22,9 @@ namespace EasyHRMS_DA.Models
         public virtual DbSet<LookupList> LookupList { get; set; }
         public virtual DbSet<Lookups> Lookups { get; set; }
         public virtual DbSet<MailAlert> MailAlert { get; set; }
+        public virtual DbSet<SalaryStructure> SalaryStructure { get; set; }
+        public virtual DbSet<SalaryStructureDepartmentMapping> SalaryStructureDepartmentMapping { get; set; }
+        public virtual DbSet<SalaryStructurePayrollCategoryMapping> SalaryStructurePayrollCategoryMapping { get; set; }
         public virtual DbSet<TaskTemplate> TaskTemplate { get; set; }
         public virtual DbSet<WorkFlow> WorkFlow { get; set; }
         public virtual DbSet<WorkFlowAction> WorkFlowAction { get; set; }
@@ -35,6 +38,7 @@ namespace EasyHRMS_DA.Models
         public Ehrms_ng2Context(DbContextOptions<Ehrms_ng2Context> options)
             : base(options) { }
         public Ehrms_ng2Context() { }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -307,6 +311,21 @@ namespace EasyHRMS_DA.Models
                     .HasMaxLength(100);
 
                 entity.Property(e => e.ReplyToAddress).HasMaxLength(100);
+            });
+
+            modelBuilder.Entity<SalaryStructure>(entity =>
+            {
+                entity.Property(e => e.Name).HasMaxLength(50);
+            });
+
+            modelBuilder.Entity<SalaryStructureDepartmentMapping>(entity =>
+            {
+                entity.ToTable("SalaryStructure_Department_Mapping");
+            });
+
+            modelBuilder.Entity<SalaryStructurePayrollCategoryMapping>(entity =>
+            {
+                entity.ToTable("SalaryStructure_PayrollCategory_Mapping");
             });
 
             modelBuilder.Entity<TaskTemplate>(entity =>

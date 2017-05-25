@@ -9,6 +9,7 @@ namespace EasyHRMS_Angular.ModelsVM
     {
         public int Id { get; set; }
         public string CategoryName { get; set; }
+        public bool? Type { get; set; }
         public decimal? Percentage { get; set; }
         public string PercentageOf { get; set; }
         public decimal? Amount { get; set; }

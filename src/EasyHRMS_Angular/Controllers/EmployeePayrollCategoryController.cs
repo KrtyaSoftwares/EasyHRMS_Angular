@@ -57,6 +57,7 @@ namespace EasyHRMS_Angular.Controllers
                     {
                         Id = y.Id,
                         CategoryName = y.CategoryName,
+                        Type = y.Type,
                         Percentage = y.Percentage,
                         PercentageOf = y.PercentageOf,
                         Amount = y.Amount,
@@ -95,9 +96,7 @@ namespace EasyHRMS_Angular.Controllers
             }
             return result;
         }
-
-
-
+        
         // GET api/EmployeePayrollCategory/GetEmployeePayrollCategoryById/5
         [HttpGet("GetEmployeePayrollCategoryById/{id}"), Produces("application/json")]
         public object GetEmployeePayrollCategoryById(int id)
@@ -136,7 +135,6 @@ namespace EasyHRMS_Angular.Controllers
         [HttpPost, Route("CreateEmployeePayrollCategory"), Produces("application/json")]
         public object CreateEmployeePayrollCategory([FromBody]EmployeePayrollCategory model)
         {
-
             object result = null;
             string message = "";
             string errorcode = "";
@@ -178,8 +176,7 @@ namespace EasyHRMS_Angular.Controllers
             return result;
         }
 
-
-        // PUT api/EmployeePayrollCategory/UpdateEmployeePayrollCategory/5
+        // POST api/EmployeePayrollCategory/UpdateEmployeePayrollCategory/5
         [HttpPost, Route("UpdateEmployeePayrollCategory/{id}")]
         public object UpdateEmployeePayrollCategory(int id, [FromBody]EmployeePayrollCategory model)
         {
@@ -199,6 +196,7 @@ namespace EasyHRMS_Angular.Controllers
                         if (entityUpdate != null)
                         {
                             entityUpdate.CategoryName = model.CategoryName;
+                            entityUpdate.Type = model.Type;
                             entityUpdate.Percentage = model.Percentage;
                             entityUpdate.PercentageOf = model.PercentageOf;
                             entityUpdate.Amount = model.Amount;
@@ -239,8 +237,7 @@ namespace EasyHRMS_Angular.Controllers
             }
             return result;
         }
-
-
+        
         // POST api/EmployeePayrollCategory/CreateUpdateEmployeePayrollCategory
         [HttpPost, Route("CreateUpdateEmployeePayrollCategory/{id}"), Produces("application/json")]
         public object CreateUpdateEmployeePayrollCategory(int id, [FromBody]EmployeePayrollCategory model)
@@ -266,6 +263,7 @@ namespace EasyHRMS_Angular.Controllers
                             if (entityUpdate != null)
                             {
                                 entityUpdate.CategoryName = model.CategoryName;
+                                entityUpdate.Type = model.Type;
                                 entityUpdate.Percentage = model.Percentage;
                                 entityUpdate.PercentageOf = model.PercentageOf;
                                 entityUpdate.Amount = model.Amount;
