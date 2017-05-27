@@ -1,0 +1,118 @@
+<div id="main-content" >
+    <div class="row m-t-10">
+      <div class="col-md-12">
+        <div class="panel panel-default">
+          <div class="panel-heading text-right">
+            <button type="button" class="btn btn-sm btn-icon btn-rounded btn-default"><i class="fa fa-question"></i> </button>
+          </div>
+          <div class="panel-body">
+           <div class="row">
+			        <div class="col-md-12 col-sm-12 col-xs-12">
+                  <form [formGroup]="form" (ngSubmit)="onSubmit(form.value,form.valid)" novalidate class="form-horizontal">
+                      <div class="boder-btm">
+										    <h3 class="panel-title">Employee Payroll Category</h3>
+										  </div>
+										  <div class="m-b-30">
+                          <div class="form-group">
+                            <label class="col-sm-2 control-label"> Name  </label>
+                            <div class="col-sm-4">
+                              <input type="text" class="form-control" formControlName="categoryName" [(ngModel)]="_payrollCategoriesModel.categoryName">
+                              <div [hidden]="form.get('categoryName').valid || (form.get('categoryName').pristine && !submitted)" class="alert alert-danger">
+                                Name is required.
+                              </div>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="col-sm-2 control-label"> Description  </label>
+                            <div class="col-sm-4">
+                              <textarea class="form-control" formControlName="description" [(ngModel)]="_payrollCategoriesModel.description"> 
+                              </textarea>
+                              <div [hidden]="form.get('description').valid || (form.get('description').pristine && !submitted)" class="alert alert-danger">
+                                Description is required.
+                              </div>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="col-sm-2 control-label">Applicable for period </label>
+                            <div class="col-sm-4">
+                              <select class="form-control" formControlName="period" [(ngModel)]="_payrollCategoriesModel.period">
+                                <option selected> -- Select Period --</option>
+                                <option value="1"> Monthly </option>
+                                <option value="2"> Yearly </option>
+                                <option value="3"> Daily </option>
+                                <option value="4"> ShiftWise </option>
+                              </select>
+                              <div [hidden]="form.get('period').valid || (form.get('period').pristine && !submitted)" class="alert alert-danger">
+                                period is required.
+                            </div>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="col-sm-2 control-label">Type</label>
+                            <div class="col-sm-4">
+                              <div>
+                                <input type="radio" [value]="true" name="type" formControlName="type"  [(ngModel)]="_payrollCategoriesModel.type" (click)="onChnageType('percentage')"> % Of &nbsp;&nbsp;&nbsp;
+                                <input type="radio" [value]="false" name="type" formControlName="type" [(ngModel)]="_payrollCategoriesModel.type" (click)="onChnageType('amount')"> Amount
+                              </div>
+                            </div>
+                          </div>
+                          <div *ngIf="checkPerctage">
+                              <div class="form-group">
+                                <label class="col-sm-2 control-label"></label>
+                                <div class="col-sm-4">
+                                  <div *ngFor="let cat of _categories">
+                                   <div *ngIf="cat.id != bindId"> 
+                                     <input (change)="percentageChange(cat.id, $event)" type="checkbox" [checked]="cat.checked"> &nbsp;&nbsp; {{cat.categoryName}} <br>
+                                   </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label class="col-sm-2 control-label"></label>
+                                <div class="col-sm-4">
+                                  <input type="text" class="form-control" (ngModelChange)="mychange('percentage', $event)" formControlName="percentage" [(ngModel)]="_payrollCategoriesModel.percentage">
+                                  <div *ngIf="_percentageError" class="alert alert-danger">
+                                    percentage is required.
+                                  </div>
+                                </div>
+                              </div>
+                          </div>
+                          <div class="form-group" *ngIf="!checkPerctage">
+                            <label class="col-sm-2 control-label">Amount</label>
+                            <div class="col-sm-4">
+                              <input type="text" class="form-control" (ngModelChange)="mychange('amount', $event)" formControlName="amount" [(ngModel)]="_payrollCategoriesModel.amount">
+                              <div *ngIf="_amountError" class="alert alert-danger">
+                                Amount is required.
+                              </div>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="col-sm-2 control-label">Allowed deductions</label>
+                            <div class="col-sm-4">
+                              <input type="checkbox" formControlName="taxDeducted" [(ngModel)]="_payrollCategoriesModel.taxDeducted" value="Taxcanbededucted"> &nbsp;&nbsp; Tax can be deducted <br>
+                              <!--<input type="checkbox" formControlName="pensiondeducted" [(ngModel)]="_payrollCategoriesModel.pensiondeducted" value="NationalInsurancecontributionscanbededucted"> &nbsp;&nbsp; National Insurance contributions can be deducted <br>
+                              <input type="checkbox" formControlName="insurationdeducted" [(ngModel)]="_payrollCategoriesModel.insurationdeducted" value="Basedonattendance"> &nbsp;&nbsp; Based on attendance<br>-->
+                              <input type="checkbox" formControlName="isBasedOnAttandance" [(ngModel)]="_payrollCategoriesModel.isBasedOnAttandance" value="Pensionschemedeductionscanbededucted"> &nbsp;&nbsp; Pension scheme deductions can be deducted <br>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="col-sm-2 control-label">IsDeduction</label>
+                            <div class="col-sm-4">
+                              <input type="checkbox" formControlName="isDeduction" [(ngModel)]="_payrollCategoriesModel.isDeduction"> 
+                            </div>
+                          </div>
+                          <div class="form-group">                                            
+                            <div class="col-sm-10 col-sm-offset-2">
+                                <button class="btn btn-primary m-b-10" type="submit">Submit</button>
+                                <button [routerLink]="['/payroll/categories']" class="btn btn-default m-b-10">Cancel</button>
+                            </div>
+                          </div> 
+										  </div>
+                  </form>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
