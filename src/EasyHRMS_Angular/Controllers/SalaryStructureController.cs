@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using EasyHRMS_DA.Models;
 using EasyHRMS_Angular.ModelsVM;
+using EasyHRMS_Angular.Models;
 
 namespace EasyHRMS_Angular.Controllers
 {
@@ -451,6 +452,51 @@ namespace EasyHRMS_Angular.Controllers
                         excp = excp
                     };
                 }
+            }
+            return result;
+        }
+
+        // GET api/SalaryStructure/GetLookupDepartmentDataByLookupID/5
+        [HttpGet("GetLookupDepartmentDataByLookupID/{id}"), Produces("application/json")]
+        public object GetLookupDepartmentDataByLookupID(int id)
+        {
+            object result = null;
+            //Holiday objHoliday = null;
+            List<LookupDataVM> list = new List<LookupDataVM>();
+            try
+            {
+                using (_context)
+                {
+                    List<int?> DepartmentIds = _context.SalaryStructureDepartmentMapping.Select(x => x.DepartmentId).Distinct().ToList();
+                    if(DepartmentIds.Count > 0)
+                    { 
+                    //objHoliday = _context.Holiday.FirstOrDefault(x => x.HolidayId == id);
+                    list = _context.LookupData.Where(x => x.LookupId == id && !DepartmentIds.Contains(x.RowId)).Select(x => new LookupDataVM()
+                    {
+                        Id = x.Id,
+                        LookupId = x.LookupId,
+                        RowId = x.RowId,
+                        FieldName = x.FieldName,
+                        Value = x.Value,
+                    }).OrderBy(x => x.Id).ToList();
+                    }
+                    result = new
+                    {
+                        list,
+                        error = "0",
+                        msg = "Success"
+                    };
+                }
+            }
+            catch (Exception ex)
+            {
+                ex.ToString();
+                result = new
+                {
+                    list,
+                    error = "1",
+                    msg = "Error"
+                };
             }
             return result;
         }

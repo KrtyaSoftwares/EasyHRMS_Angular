@@ -149,6 +149,26 @@ namespace EasyHRMS_Angular.Controllers
                 {
                     try
                     {
+                        if(model.Type == true)
+                        {
+                            decimal? TotalAmount = new decimal();
+                            if(model.PercentageOf != null)
+                            {
+                                List<int> PayrollCategoryIds = model.PercentageOf.Split(',').Select(x => int.Parse(x)).ToList();
+                                Decimal? Amount = _context.EmployeePayrollCategory.Where(y => PayrollCategoryIds.Contains(y.Id)).Select(z => z.Amount).ToList().Sum();
+                                if(Amount != null)
+                                {
+                                    if(model.Percentage != null)
+                                    {
+                                        TotalAmount = Amount * model.Percentage / 100;
+                                    }
+                                }
+                            }
+                            if(TotalAmount != null)
+                            {
+                                model.Amount = TotalAmount;
+                            }
+                        }
                         _context.EmployeePayrollCategory.Add(model);
                         //await _ctx.SaveChangesAsync();
                         _context.SaveChanges();
@@ -195,6 +215,26 @@ namespace EasyHRMS_Angular.Controllers
 
                         if (entityUpdate != null)
                         {
+                            if (model.Type == true)
+                            {
+                                decimal? TotalAmount = new decimal();
+                                if (model.PercentageOf != null)
+                                {
+                                    List<int> PayrollCategoryIds = model.PercentageOf.Split(',').Select(x => int.Parse(x)).ToList();
+                                    Decimal? Amount = _context.EmployeePayrollCategory.Where(y => PayrollCategoryIds.Contains(y.Id)).Select(z => z.Amount).ToList().Sum();
+                                    if (Amount != null)
+                                    {
+                                        if (model.Percentage != null)
+                                        {
+                                            TotalAmount = Amount * model.Percentage / 100;
+                                        }
+                                    }
+                                }
+                                if (TotalAmount != null)
+                                {
+                                    model.Amount = TotalAmount;
+                                }
+                            }
                             entityUpdate.CategoryName = model.CategoryName;
                             entityUpdate.Type = model.Type;
                             entityUpdate.Percentage = model.Percentage;
@@ -256,6 +296,27 @@ namespace EasyHRMS_Angular.Controllers
                 {
                     try
                     {
+                        if (model.Type == true)
+                        {
+                            decimal? TotalAmount = new decimal();
+                            if (model.PercentageOf != null)
+                            {
+                                List<int> PayrollCategoryIds = model.PercentageOf.Split(',').Select(x => int.Parse(x)).ToList();
+                                Decimal? Amount = _context.EmployeePayrollCategory.Where(y => PayrollCategoryIds.Contains(y.Id)).Select(z => z.Amount).ToList().Sum();
+                                if (Amount != null)
+                                {
+                                    if (model.Percentage != null)
+                                    {
+                                        TotalAmount = Amount * model.Percentage / 100;
+                                    }
+                                }
+                            }
+                            if (TotalAmount != null)
+                            {
+                                model.Amount = TotalAmount;
+                            }
+                        }
+
                         if (id != 0)
                         {
                             var entityUpdate = _context.EmployeePayrollCategory.FirstOrDefault(x => x.Id == id);

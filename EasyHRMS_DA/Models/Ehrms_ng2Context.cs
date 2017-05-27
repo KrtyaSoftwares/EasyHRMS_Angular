@@ -12,6 +12,7 @@ namespace EasyHRMS_DA.Models
         public virtual DbSet<EmployeeDetails> EmployeeDetails { get; set; }
         public virtual DbSet<EmployeeLeave> EmployeeLeave { get; set; }
         public virtual DbSet<EmployeePayrollCategory> EmployeePayrollCategory { get; set; }
+        public virtual DbSet<EmployeePayrollSalaryDetail> EmployeePayrollSalaryDetail { get; set; }
         public virtual DbSet<FormField> FormField { get; set; }
         public virtual DbSet<FormTab> FormTab { get; set; }
         public virtual DbSet<Forms> Forms { get; set; }
@@ -38,7 +39,6 @@ namespace EasyHRMS_DA.Models
         public Ehrms_ng2Context(DbContextOptions<Ehrms_ng2Context> options)
             : base(options) { }
         public Ehrms_ng2Context() { }
-
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -189,6 +189,17 @@ namespace EasyHRMS_DA.Models
                 entity.Property(e => e.Percentage).HasColumnType("numeric");
 
                 entity.Property(e => e.Period).HasColumnName("period");
+            });
+
+            modelBuilder.Entity<EmployeePayrollSalaryDetail>(entity =>
+            {
+                entity.ToTable("Employee_PayrollSalaryDetail");
+
+                entity.Property(e => e.Amount).HasColumnType("decimal");
+
+                entity.Property(e => e.CreatedDate).HasColumnType("datetime");
+
+                entity.Property(e => e.GrossSalary).HasColumnType("decimal");
             });
 
             modelBuilder.Entity<FormField>(entity =>
