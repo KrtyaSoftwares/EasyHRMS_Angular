@@ -33,6 +33,8 @@
     "angularApp/app/layout/listing/listing.module.ts",
     "angularApp/app/layout/myprofile/myprofile.module.ts",
     "angularApp/app/layout/payroll/payroll.module.ts",
+    "angularApp/app/layout/payroll/categories/categories.module.ts",
+    "angularApp/app/layout/payroll/salary-structure/salary-structure.module.ts",
     "angularApp/app/layout/recruitment/recruitment.module.ts",
     "angularApp/app/layout/employee/employee.module.ts",
     "angularApp/app/layout/lookup/lookup.module.ts",

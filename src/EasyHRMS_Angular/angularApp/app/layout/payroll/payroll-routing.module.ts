@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+import { PayrollComponent } from './components/payroll.component';
 import { ListsComponent } from './lists/lists.component';
 import { AlertComponent } from './alert/alert.component';
 import { SettingComponent } from './setting/setting.component';
@@ -10,12 +11,13 @@ import { ReportsComponent } from './reports/reports.component';
 
 
 const routes: Routes = [
-    { path: '', component: ListsComponent },
-    { path: 'alert', component: AlertComponent },
-    { path: 'setting', component: SettingComponent },
-    { path: 'adjustment', component: AdjustmentComponent },
-    { path: 'claim', component: ClaimComponent },
-    { path: 'reports', component: ReportsComponent },
+    {
+        path: '', component: PayrollComponent,
+        children: [
+            { path: 'categories', loadChildren: './categories/categories.module#CategoriesModule' },
+            { path: 'salary-structure', loadChildren: './salary-structure/salary-structure.module#SalaryStructureModule' },
+        ]
+    },
 ];
 
 @NgModule({

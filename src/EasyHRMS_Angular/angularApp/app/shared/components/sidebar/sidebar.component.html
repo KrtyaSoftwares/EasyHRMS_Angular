@@ -145,6 +145,12 @@
                 <a (click)="addExpandClass('payroll')"><i class="glyph-icon flaticon-pages"></i><span class="sidebar-text">Payroll</span><span class="fa arrow"></span></a>
                 <ul class="submenu collapse" [class.in]="showMenu === 'payroll'">
                     <li>
+                        <a [routerLink]="['/payroll/categories']"><span>Categories</span></a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/payroll/salary-structure']"><span>Salary Structure</span></a>
+                    </li>
+                    <li>
                         <a [routerLink]="['/payroll']"><span>List View</span></a>
                     </li>
                     <li>
