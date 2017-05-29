@@ -10,7 +10,7 @@ using EasyHRMS_Angular.Models;
 namespace EasyHRMS_Angular.Controllers
 {
     [Route("api/[controller]")]
-    public class SalaryStructureController : Controller
+    public class LeaveStructureController : Controller
     {
         //public IActionResult Index()
         //{
@@ -19,16 +19,16 @@ namespace EasyHRMS_Angular.Controllers
 
         private readonly Ehrms_ng2Context _context;
 
-        public SalaryStructureController(Ehrms_ng2Context context)
+        public LeaveStructureController(Ehrms_ng2Context context)
         {
             _context = context;
         }
 
-        // GET: api/SalaryStructure/GetAllSalaryStructure
-        [HttpGet("GetAllSalaryStructure"), Produces("application/json")]
-        public object GetAllSalaryStructure()
+        // GET: api/LeaveStructure/GetAllLeaveStructure
+        [HttpGet("GetAllLeaveStructure"), Produces("application/json")]
+        public object GetAllLeaveStructure()
         {
-            List<SalaryStructure> list = new List<SalaryStructure>();
+            List<LeaveStructure> list = new List<LeaveStructure>();
             object result = null;
             try
             {
@@ -53,12 +53,15 @@ namespace EasyHRMS_Angular.Controllers
 
                     //}).ToList();
 
-                    list = _context.SalaryStructure.Select(y => new SalaryStructure
+                    list = _context.LeaveStructure.Select(y => new LeaveStructure
                     {
                         Id = y.Id,
-                        Name = y.Name,
-                        Description = y.Description,
-                        IsActive = y.IsActive
+                        LeaveStructureName = y.LeaveStructureName,
+                        MaxLeaveCount = y.MaxLeaveCount,
+                        IsCarryForward = y.IsCarryForward,
+                        Status = y.Status,
+                        IsAllowLeave = y.IsAllowLeave,
+                        IsDefault = y.IsDefault
 
                     }).ToList();
 
@@ -84,27 +87,27 @@ namespace EasyHRMS_Angular.Controllers
             return result;
         }
 
-        // GET api/SalaryStructure/GetSalaryStructureById/5
-        [HttpGet("GetSalaryStructureById/{id}"), Produces("application/json")]
-        public object GetSalaryStructureById(int id)
+        // GET api/LeaveStructure/GetLeaveStructureById/5
+        [HttpGet("GetLeaveStructureById/{id}"), Produces("application/json")]
+        public object GetLeaveStructureById(int id)
         {
             object result = null;
 
-            SalaryStructure objSalaryStructure = new SalaryStructure();
+            LeaveStructure objLeaveStructure = new LeaveStructure();
             List<int?> DepartmentIds = new List<int?>();
-            List<int?> PayrollCategoryIds = new List<int?>();
+            List<int?> LeaveTypeIds = new List<int?>();
             try
             {
                 using (_context)
                 {
-                    objSalaryStructure = _context.SalaryStructure.FirstOrDefault(x => x.Id == id);
-                    DepartmentIds = _context.SalaryStructureDepartmentMapping.Where(y => y.SalaryStructureId == id).Select(z => z.DepartmentId).ToList();
-                    PayrollCategoryIds = _context.SalaryStructurePayrollCategoryMapping.Where(y => y.SalaryStructureId == id).Select(z => z.PayrollCategoryId).ToList();
+                    objLeaveStructure = _context.LeaveStructure.FirstOrDefault(x => x.Id == id);
+                    DepartmentIds = _context.LeaveStructureDepartmentMapping.Where(y => y.LeaveStructureId == id).Select(z => z.DepartmentId).ToList();
+                    LeaveTypeIds = _context.LeaveStructureLeaveTypeMapping.Where(y => y.LeaveStructureId == id).Select(z => z.LeaveTypeId).ToList();
                     result = new
                     {
-                        objSalaryStructure,
+                        objLeaveStructure,
                         DepartmentIds,
-                        PayrollCategoryIds,
+                        LeaveTypeIds,
                         error = "0",
                         msg = "Success"
                     };
@@ -115,9 +118,9 @@ namespace EasyHRMS_Angular.Controllers
                 ex.ToString();
                 result = new
                 {
-                    objSalaryStructure,
+                    objLeaveStructure,
                     DepartmentIds,
-                    PayrollCategoryIds,
+                    LeaveTypeIds,
                     error = "1",
                     msg = "Error"
                 };
@@ -125,9 +128,9 @@ namespace EasyHRMS_Angular.Controllers
             return result;
         }
 
-        // POST api/SalaryStructure/CreateSalaryStructure
-        [HttpPost, Route("CreateSalaryStructure"), Produces("application/json")]
-        public object CreateSalaryStructure([FromBody]SalaryStructureVM model)
+        // POST api/LeaveStructure/CreateLeaveStructure
+        [HttpPost, Route("CreateLeaveStructure"), Produces("application/json")]
+        public object CreateLeaveStructure([FromBody]LeaveStructureVM model)
         {
             object result = null;
             string message = "";
@@ -143,11 +146,14 @@ namespace EasyHRMS_Angular.Controllers
                 {
                     try
                     {
-                        SalaryStructure objSalaryStructure = new SalaryStructure();
-                        objSalaryStructure.Name = model.Name;
-                        objSalaryStructure.Description = model.Description;
-                        objSalaryStructure.IsActive = model.IsActive;
-                        _context.SalaryStructure.Add(objSalaryStructure);
+                        LeaveStructure objLeaveStructure = new LeaveStructure();
+                        objLeaveStructure.LeaveStructureName = model.LeaveStructureName;
+                        objLeaveStructure.MaxLeaveCount = model.MaxLeaveCount;
+                        objLeaveStructure.IsCarryForward = model.IsCarryForward;
+                        objLeaveStructure.Status = model.Status;
+                        objLeaveStructure.IsAllowLeave = model.IsAllowLeave;
+                        objLeaveStructure.IsDefault = model.IsDefault;
+                        _context.LeaveStructure.Add(objLeaveStructure);
                         //await _ctx.SaveChangesAsync();
                         _context.SaveChanges();
 
@@ -155,19 +161,19 @@ namespace EasyHRMS_Angular.Controllers
                         {
                             foreach (int DepartmentId in model.DepartmentIds)
                             {
-                                SalaryStructureDepartmentMapping objMapping = null;
-                                objMapping = new SalaryStructureDepartmentMapping { SalaryStructureId = objSalaryStructure.Id, DepartmentId = DepartmentId };
+                                LeaveStructureDepartmentMapping objMapping = null;
+                                objMapping = new LeaveStructureDepartmentMapping { LeaveStructureId = objLeaveStructure.Id, DepartmentId = DepartmentId };
                                 _context.Add(objMapping);
                             }
                             _context.SaveChanges();
                         }
 
-                        if (model.PayrollCategoryIds.Count > 0)
+                        if (model.LeaveTypeIds.Count > 0)
                         {
-                            foreach (int PayrollCategoryId in model.PayrollCategoryIds)
+                            foreach (int LeaveTypeId in model.LeaveTypeIds)
                             {
-                                SalaryStructurePayrollCategoryMapping objMapping = null;
-                                objMapping = new SalaryStructurePayrollCategoryMapping { SalaryStructureId = objSalaryStructure.Id, PayrollCategoryId = PayrollCategoryId };
+                                LeaveStructureLeaveTypeMapping objMapping = null;
+                                objMapping = new LeaveStructureLeaveTypeMapping { LeaveStructureId = objLeaveStructure.Id, LeaveTypeId = LeaveTypeId };
                                 _context.Add(objMapping);
                             }
                             _context.SaveChanges();
@@ -197,9 +203,9 @@ namespace EasyHRMS_Angular.Controllers
             return result;
         }
 
-        // POST api/SalaryStructure/UpdateSalaryStructure/5
-        [HttpPost, Route("UpdateSalaryStructure/{id}")]
-        public object UpdateSalaryStructure(int id, [FromBody]SalaryStructureVM model)
+        // POST api/LeaveStructure/UpdateLeaveStructure/5
+        [HttpPost, Route("UpdateLeaveStructure/{id}")]
+        public object UpdateLeaveStructure(int id, [FromBody]LeaveStructureVM model)
         {
             object result = null; string message = ""; string errorcode = ""; string excp = "";
             if (model == null)
@@ -212,42 +218,45 @@ namespace EasyHRMS_Angular.Controllers
                 {
                     try
                     {
-                        var entityUpdate = _context.SalaryStructure.FirstOrDefault(x => x.Id == id);
+                        var entityUpdate = _context.LeaveStructure.FirstOrDefault(x => x.Id == id);
 
                         if (entityUpdate != null)
                         {
-                            entityUpdate.Name = model.Name;
-                            entityUpdate.Description = model.Description;
-                            entityUpdate.IsActive = model.IsActive;
+                            entityUpdate.LeaveStructureName = model.LeaveStructureName;
+                            entityUpdate.MaxLeaveCount = model.MaxLeaveCount;
+                            entityUpdate.IsCarryForward = model.IsCarryForward;
+                            entityUpdate.Status = model.Status;
+                            entityUpdate.IsAllowLeave = model.IsAllowLeave;
+                            entityUpdate.IsDefault = model.IsDefault;
                             _context.SaveChanges();
                         }
 
-                        List<SalaryStructureDepartmentMapping> RemoveDepartmentList = _context.SalaryStructureDepartmentMapping.Where(y => y.SalaryStructureId == id).ToList();
+                        List<LeaveStructureDepartmentMapping> RemoveDepartmentList = _context.LeaveStructureDepartmentMapping.Where(y => y.LeaveStructureId == id).ToList();
                         if (RemoveDepartmentList.Count > 0)
                         {
-                            _context.SalaryStructureDepartmentMapping.RemoveRange(RemoveDepartmentList);
+                            _context.LeaveStructureDepartmentMapping.RemoveRange(RemoveDepartmentList);
                         }
                         if (model.DepartmentIds.Count > 0)
                         {
                             foreach (int DepartmentId in model.DepartmentIds)
                             {
-                                SalaryStructureDepartmentMapping objMapping = null;
-                                objMapping = new SalaryStructureDepartmentMapping { SalaryStructureId = id, DepartmentId = DepartmentId };
+                                LeaveStructureDepartmentMapping objMapping = null;
+                                objMapping = new LeaveStructureDepartmentMapping { LeaveStructureId = id, DepartmentId = DepartmentId };
                                 _context.Add(objMapping);
                             }
                             _context.SaveChanges();
                         }
-                        List<SalaryStructurePayrollCategoryMapping> RemovePayrollCategoryList = _context.SalaryStructurePayrollCategoryMapping.Where(y => y.SalaryStructureId == id).ToList();
-                        if (RemovePayrollCategoryList.Count > 0)
+                        List<LeaveStructureLeaveTypeMapping> RemoveLeaveTypeList = _context.LeaveStructureLeaveTypeMapping.Where(y => y.LeaveStructureId == id).ToList();
+                        if (RemoveLeaveTypeList.Count > 0)
                         {
-                            _context.SalaryStructurePayrollCategoryMapping.RemoveRange(RemovePayrollCategoryList);
+                            _context.LeaveStructureLeaveTypeMapping.RemoveRange(RemoveLeaveTypeList);
                         }
-                        if (model.PayrollCategoryIds.Count > 0)
+                        if (model.LeaveTypeIds.Count > 0)
                         {
-                            foreach (int PayrollCategoryId in model.PayrollCategoryIds)
+                            foreach (int LeaveTypeId in model.LeaveTypeIds)
                             {
-                                SalaryStructurePayrollCategoryMapping objMapping = null;
-                                objMapping = new SalaryStructurePayrollCategoryMapping { SalaryStructureId = id, PayrollCategoryId = PayrollCategoryId };
+                                LeaveStructureLeaveTypeMapping objMapping = null;
+                                objMapping = new LeaveStructureLeaveTypeMapping { LeaveStructureId = id, LeaveTypeId = LeaveTypeId };
                                 _context.Add(objMapping);
                             }
                             _context.SaveChanges();
@@ -276,9 +285,9 @@ namespace EasyHRMS_Angular.Controllers
             return result;
         }
 
-        // POST api/SalaryStructure/CreateUpdateSalaryStructure
-        [HttpPost, Route("CreateUpdateSalaryStructure/{id}"), Produces("application/json")]
-        public object CreateUpdateSalaryStructure(int id, [FromBody]SalaryStructureVM model)
+        // POST api/LeaveStructure/CreateUpdateLeaveStructure
+        [HttpPost, Route("CreateUpdateLeaveStructure/{id}"), Produces("application/json")]
+        public object CreateUpdateLeaveStructure(int id, [FromBody]LeaveStructureVM model)
         {
             object result = null;
             string message = "";
@@ -296,47 +305,50 @@ namespace EasyHRMS_Angular.Controllers
                     {
                         if (id != 0)
                         {
-                            var entityUpdate = _context.SalaryStructure.FirstOrDefault(x => x.Id == id);
+                            var entityUpdate = _context.LeaveStructure.FirstOrDefault(x => x.Id == id);
 
                             if (entityUpdate != null)
                             {
-                                entityUpdate.Name = model.Name;
-                                entityUpdate.Description = model.Description;
-                                entityUpdate.IsActive = model.IsActive;
-
+                                entityUpdate.LeaveStructureName = model.LeaveStructureName;
+                                entityUpdate.MaxLeaveCount = model.MaxLeaveCount;
+                                entityUpdate.IsCarryForward = model.IsCarryForward;
+                                entityUpdate.Status = model.Status;
+                                entityUpdate.IsAllowLeave = model.IsAllowLeave;
+                                entityUpdate.IsDefault = model.IsDefault;
                                 _context.SaveChanges();
                             }
 
-                            List<SalaryStructureDepartmentMapping> RemoveDepartmentList = _context.SalaryStructureDepartmentMapping.Where(y => y.SalaryStructureId == id).ToList();
+                            List<LeaveStructureDepartmentMapping> RemoveDepartmentList = _context.LeaveStructureDepartmentMapping.Where(y => y.LeaveStructureId == id).ToList();
                             if (RemoveDepartmentList.Count > 0)
                             {
-                                _context.SalaryStructureDepartmentMapping.RemoveRange(RemoveDepartmentList);
+                                _context.LeaveStructureDepartmentMapping.RemoveRange(RemoveDepartmentList);
                             }
                             if (model.DepartmentIds.Count > 0)
                             {
                                 foreach (int DepartmentId in model.DepartmentIds)
                                 {
-                                    SalaryStructureDepartmentMapping objMapping = null;
-                                    objMapping = new SalaryStructureDepartmentMapping { SalaryStructureId = id, DepartmentId = DepartmentId };
+                                    LeaveStructureDepartmentMapping objMapping = null;
+                                    objMapping = new LeaveStructureDepartmentMapping { LeaveStructureId = id, DepartmentId = DepartmentId };
                                     _context.Add(objMapping);
                                 }
                                 _context.SaveChanges();
                             }
-                            List<SalaryStructurePayrollCategoryMapping> RemovePayrollCategoryList = _context.SalaryStructurePayrollCategoryMapping.Where(y => y.SalaryStructureId == id).ToList();
-                            if (RemovePayrollCategoryList.Count > 0)
+                            List<LeaveStructureLeaveTypeMapping> RemoveLeaveTypeList = _context.LeaveStructureLeaveTypeMapping.Where(y => y.LeaveStructureId == id).ToList();
+                            if (RemoveLeaveTypeList.Count > 0)
                             {
-                                _context.SalaryStructurePayrollCategoryMapping.RemoveRange(RemovePayrollCategoryList);
+                                _context.LeaveStructureLeaveTypeMapping.RemoveRange(RemoveLeaveTypeList);
                             }
-                            if (model.PayrollCategoryIds.Count > 0)
+                            if (model.LeaveTypeIds.Count > 0)
                             {
-                                foreach (int PayrollCategoryId in model.PayrollCategoryIds)
+                                foreach (int LeaveTypeId in model.LeaveTypeIds)
                                 {
-                                    SalaryStructurePayrollCategoryMapping objMapping = null;
-                                    objMapping = new SalaryStructurePayrollCategoryMapping { SalaryStructureId = id, PayrollCategoryId = PayrollCategoryId };
+                                    LeaveStructureLeaveTypeMapping objMapping = null;
+                                    objMapping = new LeaveStructureLeaveTypeMapping { LeaveStructureId = id, LeaveTypeId = LeaveTypeId };
                                     _context.Add(objMapping);
                                 }
                                 _context.SaveChanges();
                             }
+
 
                             _ctxTransaction.Commit();
                             message = "Entry Updated";
@@ -344,11 +356,14 @@ namespace EasyHRMS_Angular.Controllers
                         }
                         else
                         {
-                            SalaryStructure objSalaryStructure = new SalaryStructure();
-                            objSalaryStructure.Name = model.Name;
-                            objSalaryStructure.Description = model.Description;
-                            objSalaryStructure.IsActive = model.IsActive;
-                            _context.SalaryStructure.Add(objSalaryStructure);
+                            LeaveStructure objLeaveStructure = new LeaveStructure();
+                            objLeaveStructure.LeaveStructureName = model.LeaveStructureName;
+                            objLeaveStructure.MaxLeaveCount = model.MaxLeaveCount;
+                            objLeaveStructure.IsCarryForward = model.IsCarryForward;
+                            objLeaveStructure.Status = model.Status;
+                            objLeaveStructure.IsAllowLeave = model.IsAllowLeave;
+                            objLeaveStructure.IsDefault = model.IsDefault;
+                            _context.LeaveStructure.Add(objLeaveStructure);
                             //await _ctx.SaveChangesAsync();
                             _context.SaveChanges();
 
@@ -356,19 +371,19 @@ namespace EasyHRMS_Angular.Controllers
                             {
                                 foreach (int DepartmentId in model.DepartmentIds)
                                 {
-                                    SalaryStructureDepartmentMapping objMapping = null;
-                                    objMapping = new SalaryStructureDepartmentMapping { SalaryStructureId = objSalaryStructure.Id, DepartmentId = DepartmentId };
+                                    LeaveStructureDepartmentMapping objMapping = null;
+                                    objMapping = new LeaveStructureDepartmentMapping { LeaveStructureId = objLeaveStructure.Id, DepartmentId = DepartmentId };
                                     _context.Add(objMapping);
                                 }
                                 _context.SaveChanges();
                             }
 
-                            if (model.PayrollCategoryIds.Count > 0)
+                            if (model.LeaveTypeIds.Count > 0)
                             {
-                                foreach (int PayrollCategoryId in model.PayrollCategoryIds)
+                                foreach (int LeaveTypeId in model.LeaveTypeIds)
                                 {
-                                    SalaryStructurePayrollCategoryMapping objMapping = null;
-                                    objMapping = new SalaryStructurePayrollCategoryMapping { SalaryStructureId = objSalaryStructure.Id, PayrollCategoryId = PayrollCategoryId };
+                                    LeaveStructureLeaveTypeMapping objMapping = null;
+                                    objMapping = new LeaveStructureLeaveTypeMapping { LeaveStructureId = objLeaveStructure.Id, LeaveTypeId = LeaveTypeId };
                                     _context.Add(objMapping);
                                 }
                                 _context.SaveChanges();
@@ -400,9 +415,9 @@ namespace EasyHRMS_Angular.Controllers
             return result;
         }
 
-        // DELETE api/SalaryStructure/DeleteSalaryStructureById/5
-        [HttpGet, Route("DeleteSalaryStructureById/{id}")]
-        public object DeleteSalaryStructureById(int id)
+        // DELETE api/LeaveStructure/DeleteLeaveStructureById/5
+        [HttpGet, Route("DeleteLeaveStructureById/{id}")]
+        public object DeleteLeaveStructureById(int id)
         {
             object result = null;
             string message = "";
@@ -414,21 +429,21 @@ namespace EasyHRMS_Angular.Controllers
                 {
                     try
                     {
-                        List<SalaryStructureDepartmentMapping> RemoveDepartmentList = _context.SalaryStructureDepartmentMapping.Where(y => y.SalaryStructureId == id).ToList();
+                        List<LeaveStructureDepartmentMapping> RemoveDepartmentList = _context.LeaveStructureDepartmentMapping.Where(y => y.LeaveStructureId == id).ToList();
                         if (RemoveDepartmentList.Count > 0)
                         {
-                            _context.SalaryStructureDepartmentMapping.RemoveRange(RemoveDepartmentList);
+                            _context.LeaveStructureDepartmentMapping.RemoveRange(RemoveDepartmentList);
                         }
-                        List<SalaryStructurePayrollCategoryMapping> RemovePayrollCategoryList = _context.SalaryStructurePayrollCategoryMapping.Where(y => y.SalaryStructureId == id).ToList();
-                        if (RemovePayrollCategoryList.Count > 0)
+                        List<LeaveStructureLeaveTypeMapping> RemoveLeaveTypeList = _context.LeaveStructureLeaveTypeMapping.Where(y => y.LeaveStructureId == id).ToList();
+                        if (RemoveLeaveTypeList.Count > 0)
                         {
-                            _context.SalaryStructurePayrollCategoryMapping.RemoveRange(RemovePayrollCategoryList);
+                            _context.LeaveStructureLeaveTypeMapping.RemoveRange(RemoveLeaveTypeList);
                         }
                         _context.SaveChanges();
-                        var idToRemove = _context.SalaryStructure.SingleOrDefault(x => x.Id == id);
+                        var idToRemove = _context.LeaveStructure.SingleOrDefault(x => x.Id == id);
                         if (idToRemove != null)
                         {
-                            _context.SalaryStructure.Remove(idToRemove);
+                            _context.LeaveStructure.Remove(idToRemove);
                             _context.SaveChanges();
                         }
                         _ctxTransaction.Commit();
@@ -454,7 +469,7 @@ namespace EasyHRMS_Angular.Controllers
             return result;
         }
 
-        // GET api/SalaryStructure/GetLookupDepartmentDataByLookupID/5
+        // GET api/LeaveStructure/GetLookupDepartmentDataByLookupID/5
         [HttpGet("GetLookupDepartmentDataByLookupID/{id?}"), Produces("application/json")]
         public object GetLookupDepartmentDataByLookupID(int id = 6)
         {
@@ -464,7 +479,7 @@ namespace EasyHRMS_Angular.Controllers
             {
                 using (_context)
                 {
-                    List<int?> DepartmentIds = _context.SalaryStructureDepartmentMapping.Select(x => x.DepartmentId).Distinct().ToList();
+                    List<int?> DepartmentIds = _context.LeaveStructureDepartmentMapping.Select(x => x.DepartmentId).Distinct().ToList();
                     //if (DepartmentIds.Count > 0)
                     //{
                         list = _context.LookupData.Where(x => x.LookupId == id && !DepartmentIds.Contains(x.RowId) && x.FieldName != "DepartmentCode").Select(x => new LookupDataVM()

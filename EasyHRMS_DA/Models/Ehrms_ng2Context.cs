@@ -16,6 +16,9 @@ namespace EasyHRMS_DA.Models
         public virtual DbSet<FormField> FormField { get; set; }
         public virtual DbSet<FormTab> FormTab { get; set; }
         public virtual DbSet<Forms> Forms { get; set; }
+        public virtual DbSet<LeaveStructure> LeaveStructure { get; set; }
+        public virtual DbSet<LeaveStructureDepartmentMapping> LeaveStructureDepartmentMapping { get; set; }
+        public virtual DbSet<LeaveStructureLeaveTypeMapping> LeaveStructureLeaveTypeMapping { get; set; }
         public virtual DbSet<ListAction> ListAction { get; set; }
         public virtual DbSet<ListSearch> ListSearch { get; set; }
         public virtual DbSet<LookupData> LookupData { get; set; }
@@ -39,6 +42,7 @@ namespace EasyHRMS_DA.Models
         public Ehrms_ng2Context(DbContextOptions<Ehrms_ng2Context> options)
             : base(options) { }
         public Ehrms_ng2Context() { }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -233,6 +237,25 @@ namespace EasyHRMS_DA.Models
                 entity.Property(e => e.FormName)
                     .IsRequired()
                     .HasMaxLength(50);
+            });
+
+            modelBuilder.Entity<LeaveStructure>(entity =>
+            {
+                entity.Property(e => e.IsCarryForward).HasMaxLength(10);
+
+                entity.Property(e => e.LeaveStructureName).HasMaxLength(50);
+
+                entity.Property(e => e.Status).HasMaxLength(10);
+            });
+
+            modelBuilder.Entity<LeaveStructureDepartmentMapping>(entity =>
+            {
+                entity.ToTable("LeaveStructure_Department_Mapping");
+            });
+
+            modelBuilder.Entity<LeaveStructureLeaveTypeMapping>(entity =>
+            {
+                entity.ToTable("LeaveStructure_LeaveType_Mapping");
             });
 
             modelBuilder.Entity<ListAction>(entity =>
