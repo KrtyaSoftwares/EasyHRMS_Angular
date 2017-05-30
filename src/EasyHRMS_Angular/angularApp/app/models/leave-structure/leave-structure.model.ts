@@ -1,4 +1,4 @@
-export class SalaryStructureModel {
+export class LeaveStructureModel {
     id: number;
     name: string;
     description: string;

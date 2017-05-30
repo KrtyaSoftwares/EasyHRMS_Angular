@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { SalaryStructureService } from './../../../../core/services/salary-structure/salary-structure.service';
-import { SalaryStructureModule } from './../../../../models/salary-structure/salary-structure.model';
+import { SalaryStructureModel } from './../../../../models/salary-structure/salary-structure.model';
 
 import { PagerService } from '../../../../core/services/common/pager.service';
 import {ConfirmationService} from 'primeng/primeng';

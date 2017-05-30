@@ -12,9 +12,7 @@ export class PayrollCategoriesService {
     private headers: Headers;
 
     constructor(private http: Http, private configuration: Configuration) {
-
         this.actionUrl = configuration.Server + 'api/';
-
         this.headers = new Headers();
         this.headers.append('Content-Type', 'application/json');
         this.headers.append('Accept', 'application/json');

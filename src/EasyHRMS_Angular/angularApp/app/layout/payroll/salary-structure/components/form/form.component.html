@@ -1,3 +1,5 @@
+<p-growl [value]="msgs"></p-growl>
+<p-confirmDialog width="425"></p-confirmDialog>
 <div id="main-content" >
     <div class="row m-t-10">
       <div class="col-md-12">
@@ -8,7 +10,7 @@
           <div class="panel-body">
            <div class="row">
 			        <div class="col-md-12 col-sm-12 col-xs-12">
-                  <form class="form-horizontal">
+                  <form [formGroup]="form" (ngSubmit)="onSubmit(form.value,form.valid)" novalidate class="form-horizontal">
                       <div class="boder-btm">
 										    <h3 class="panel-title">Employee Salary Structure</h3>
 										  </div>
@@ -16,14 +18,29 @@
                           <div class="form-group">
                             <label class="col-sm-2 control-label"> Name  </label>
                             <div class="col-sm-4">
-                              <input type="text" class="form-control">
+                              <input type="text" class="form-control" formControlName="name" [(ngModel)]="_salaryStructureModel.name">
+                              <div [hidden]="form.get('name').valid || (form.get('name').pristine && !submitted)" class="alert alert-danger">
+                                  Name is required.
+                              </div>
                             </div>
                           </div>
                           <div class="form-group">
                             <label class="col-sm-2 control-label"> Department </label>
                             <div class="col-sm-4">
-                              <p-multiSelect [options]="cars" class="form-control"></p-multiSelect>
-                              <p>Selected Cars: {{selectedCars}}</p>
+                              <p-multiSelect (onChange)="onChange($event)" [options]="_departments" class="form-control" formControlName="department" [(ngModel)]="_salaryStructureModel.department"></p-multiSelect>
+                              <!--<p>Selected Department: {{_salaryStructureModel.department}}</p>-->
+                              <div [hidden]="form.get('department').valid || (form.get('department').pristine && !submitted)" class="alert alert-danger">
+                                  Department is required.
+                              </div>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="col-sm-2 control-label"> Active  </label>
+                            <div class="col-sm-4">
+                              <p-inputSwitch class="form-control" onLabel="Yes" offLabel="No" formControlName="isActive" [(ngModel)]="_salaryStructureModel.isActive"></p-inputSwitch>
+                              <div [hidden]="form.get('isActive').valid || (form.get('isActive').pristine && !submitted)" class="alert alert-danger">
+                                  Active is required.
+                              </div>
                             </div>
                           </div>
                           <div>
@@ -44,36 +61,31 @@
                                   <th><strong>Period</strong></th>
                                   <th><strong>Amount</strong></th>
                                   <th><strong>Deduction</strong></th>
-                                  <th><strong>Action</strong></th>        
+                                  <th><strong>Action</strong></th>
                                 </tr>
                               </thead>
                               <tbody class="no-bd-y">
-                                <tr>                                                
-                                  <td>Kailashnagar</td>
-                                  <td>302/B, Indo World Commecial Complex </td>
-                                  <td>Surat </td>
-                                  <td>Gujarat</td>
-                                  <td>Gujarat</td>
-                                  <td><button type="button" class="btn btn-sm btn-success" title="Check"><i class="fa fa-check"></i></button></td>                        
-                                  <td><button type="button" class="btn btn-sm btn-danger" title="Delete"><i class="fa fa-remove" ></i></button></td>                       
+                                <tr *ngFor="let cat of _selectedPayrollCat">                                                
+                                  <td>{{cat.categoryName}}</td>
+                                  <td> {{cat.percentage}} </td>
+                                  <td> {{cat.percentageOf}} </td>
+                                  <td>{{cat.period}}</td>
+                                  <td>{{cat.amount}}</td>
+                                  <td> 
+                                    <button *ngIf="cat.isDeduction" type="button" class="btn btn-sm btn-success" title="Check"><i class="fa fa-check"></i></button>
+                                    <button *ngIf="!cat.isDeduction" type="button" class="btn btn-sm btn-danger" title="Delete"><i class="fa fa-remove" ></i></button>
+                                  </td>
+                                  <td><button (click)="removeEvent(cat.id)" type="button" class="btn btn-sm btn-danger" title="Delete"><i class="fa fa-remove" ></i></button></td>                       
                                 </tr>
-                                <tr>                                                
-                                  <td>Kailashnagar</td>
-                                  <td>A 01/02 Milstone Habitat </td>
-                                  <td>Surat </td>
-                                  <td>Gujarat</td>
-                                   <td>Gujarat</td>
-                                  <td><button type="button" class="btn btn-sm btn-success" title="Check"><i class="fa fa-check"></i></button></td>                        
-                                  <td><button type="button" class="btn btn-sm btn-danger" title="Delete"><i class="fa fa-remove" ></i></button></td>                       
-                                </tr>
-                                
                               </tbody>
                             </table>
+                            <p-messages [(value)]="ErrorMsgs"></p-messages>
                           </div>
+                          <button type="button" id="clear" pButton (click)="clear()" icon="fa-close" style="float:right;display:none" label="Clear"></button>
                           <div class="form-group">                                            
                             <div class="col-sm-10 col-sm-offset-2">
                                 <button class="btn btn-primary m-b-10" type="submit">Submit</button>
-                                <button [routerLink]="['/payroll/categories']" class="btn btn-default m-b-10">Cancel</button>
+                                <button [routerLink]="['/payroll/salary-structure']" class="btn btn-default m-b-10">Cancel</button>
                             </div>
                           </div> 
 										  </div>
@@ -92,44 +104,38 @@
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <button type="button" class="close" id="closePayType" data-dismiss="modal">&times;</button>
         <h4 class="modal-title">Payroll Categories</h4>
       </div>
       <div class="modal-body">
         <table class="table table-bordered table-striped table-hover">
             <thead class="no-bd">
               <tr>
-                <th><strong> <input type="checkbox"> </strong> </th>
+                <th><strong></strong> </th>
                 <th><strong width="30%">Pay Type</strong> </th>
                 <th><strong>Percentage</strong> </th>
                 <th><strong>Percentage Of</strong> </th>
                 <th><strong>Period</strong></th>
                 <th><strong>Amount</strong></th>
-                <th><strong>Is Deduction</strong></th>                        
+                <th><strong>Is Deduction</strong></th>
               </tr>
             </thead>
             <tbody class="no-bd-y">
-              <tr>                                                
-                <td> <input type="checkbox"> </td>
-                <td>Kailashnagar</td>
-                <td>302/B, Indo World Commecial Complex, Opp.Narmada Complex, Nr. Kadiwala School, Nr. Center Point, Ring Road, Majura Gate, SURAT - 395002 (GUJARAT) INDIA. Telephone : 0261-4002247 </td>
-                <td>Surat </td>
-                <td>Gujarat</td>
-                <td><button type="button" class="btn btn-sm btn-success" title="Check"><i class="fa fa-check"></i></button></td>                        
-                <td><button type="button" class="btn btn-sm btn-warning" title="Edit"><i class="fa fa-pencil"></i></button>  <button type="button" class="btn btn-sm btn-danger" title="Delete"><i class="fa fa-remove" ></i></button></td>                       
-              </tr>
-              <tr>
-                <td> <input type="checkbox"> </td>                                                
-                <td>Kailashnagar</td>
-                <td>A 01/02 Milstone Habitat, Kailash Nagar, Sagrampura, SURAT - 395002 (GUJARAT) INDIA. Telephone : 0261-4002247 </td>
-                <td>Surat </td>
-                <td>Gujarat</td>
-                <td><button type="button" class="btn btn-sm btn-success" title="Check"><i class="fa fa-check"></i></button></td>                        
-                <td><button type="button" class="btn btn-sm btn-warning" title="Edit"><i class="fa fa-pencil"></i></button>  <button type="button" class="btn btn-sm btn-danger" title="Delete"><i class="fa fa-remove" ></i></button></td>                       
-              </tr>
-              
+               <tr *ngFor="let cat of _categories">
+                  <td> <input id="cat_{{cat.id}}" type="checkbox" (change)="handleChange(cat.id, $event)" [checked]="cat.checked"> </td>
+                  <td>{{cat.categoryName}}</td>
+                  <td> {{cat.percentage}} </td>
+                  <td> {{cat.percentageOf}} </td>
+                  <td>{{cat.period}}</td>
+                  <td>{{cat.amount}}</td>
+                  <td> 
+                    <button *ngIf="cat.isDeduction" type="button" class="btn btn-sm btn-success" title="Check"><i class="fa fa-check"></i></button>
+                    <button *ngIf="!cat.isDeduction" type="button" class="btn btn-sm btn-danger" title="Delete"><i class="fa fa-remove" ></i></button>
+                  </td>
+                </tr>
             </tbody>
           </table>
+          <button type="button" class="btn btn-primary m-b-10" (click)="addPayType('message')">Add Pay Type</button>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
