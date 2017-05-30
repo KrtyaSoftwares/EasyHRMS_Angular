@@ -516,6 +516,7 @@ namespace EasyHRMS_Angular.Controllers
             }
             return result;
         }
+        
 
     }
 }
