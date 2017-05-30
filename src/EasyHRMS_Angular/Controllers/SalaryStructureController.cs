@@ -456,18 +456,21 @@ namespace EasyHRMS_Angular.Controllers
 
         // GET api/SalaryStructure/GetLookupDepartmentDataByLookupID/5
         [HttpGet("GetLookupDepartmentDataByLookupID/{id?}"), Produces("application/json")]
-        public object GetLookupDepartmentDataByLookupID(int id = 6)
+        public object GetLookupDepartmentDataByLookupID(int id)
         {
+            int DepartmentLookupID = 6;
             object result = null;
             List<LookupDataVM> list = new List<LookupDataVM>();
             try
             {
                 using (_context)
                 {
-                    List<int?> DepartmentIds = _context.SalaryStructureDepartmentMapping.Select(x => x.DepartmentId).Distinct().ToList();
-                    //if (DepartmentIds.Count > 0)
-                    //{
-                        list = _context.LookupData.Where(x => x.LookupId == id && !DepartmentIds.Contains(x.RowId) && x.FieldName != "DepartmentCode").Select(x => new LookupDataVM()
+                    if(id > 0 )
+                    {
+                        List<int?> DepartmentIds = _context.SalaryStructureDepartmentMapping.Where(x =>x.SalaryStructureId != id).Select(x => x.DepartmentId).Distinct().ToList();
+                        //if (DepartmentIds.Count > 0)
+                        //{
+                        list = _context.LookupData.Where(x => x.LookupId == DepartmentLookupID && !DepartmentIds.Contains(x.RowId) && x.FieldName != "DepartmentCode").Select(x => new LookupDataVM()
                         {
                             Id = x.Id,
                             LookupId = x.LookupId,
@@ -475,7 +478,24 @@ namespace EasyHRMS_Angular.Controllers
                             FieldName = x.FieldName,
                             Value = x.Value,
                         }).OrderBy(x => x.Id).ToList();
-                    //}
+                        //}
+                    }
+                    else
+                    {
+                        List<int?> DepartmentIds = _context.SalaryStructureDepartmentMapping.Select(x => x.DepartmentId).Distinct().ToList();
+                        //if (DepartmentIds.Count > 0)
+                        //{
+                        list = _context.LookupData.Where(x => x.LookupId == DepartmentLookupID && !DepartmentIds.Contains(x.RowId) && x.FieldName != "DepartmentCode").Select(x => new LookupDataVM()
+                        {
+                            Id = x.Id,
+                            LookupId = x.LookupId,
+                            RowId = x.RowId,
+                            FieldName = x.FieldName,
+                            Value = x.Value,
+                        }).OrderBy(x => x.Id).ToList();
+                        //}
+                    }
+
                     result = new
                     {
                         list,
