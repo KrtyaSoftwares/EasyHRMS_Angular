@@ -1,10 +1,12 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;  // Added By Bhoomi Gandhi - 26-05-2017
 
 namespace EasyHRMS_DA.Models
 {
-    public partial class Ehrms_ng2Context : DbContext
+     public partial class Ehrms_ng2Context : IdentityDbContext<ApplicationUser>
+  //  public partial class Ehrms_ng2Context : DbContext
     {
         public virtual DbSet<CheckList> CheckList { get; set; }
         public virtual DbSet<EmailTemplate> EmailTemplate { get; set; }
@@ -46,6 +48,8 @@ namespace EasyHRMS_DA.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+
             modelBuilder.Entity<CheckList>(entity =>
             {
                 entity.Property(e => e.ChecklistName)

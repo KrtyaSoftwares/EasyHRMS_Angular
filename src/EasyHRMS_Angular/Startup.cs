@@ -16,9 +16,9 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
-using EasyHRMS_Angular.Models;
 using Microsoft.AspNetCore.Diagnostics;
 using Newtonsoft.Json;
+using EasyHRMS_Angular.ModelsVM.TokenModel;
 
 namespace Angular2WebpackVisualStudio
 {
@@ -79,7 +79,12 @@ namespace Angular2WebpackVisualStudio
                     .AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme‌​)
                     .RequireAuthenticatedUser().Build());
             });
-
+            // [Start] bhoomi
+            // Add Identity services to the services container.
+            services.AddIdentity<ApplicationUser, IdentityRole>()
+              .AddEntityFrameworkStores<Ehrms_ng2Context>();
+          
+            // [End] bhoomi
             services.AddMvc();
 
           
@@ -112,9 +117,9 @@ namespace Angular2WebpackVisualStudio
             app.UseDefaultFiles();
             app.UseStaticFiles();
 
-            //Identity 
-            //app.UseIdentity();
-
+            // [Start] Bhoomi - Identity 
+            app.UseIdentity();
+          
             //start token settings
             #region Handle Exception 
             app.UseExceptionHandler(appBuilder =>
@@ -165,6 +170,7 @@ namespace Angular2WebpackVisualStudio
             #endregion
 
             //end token settings
+            // [End] Bhoomi
 
             app.UseMvc(routes =>
             {
