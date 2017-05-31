@@ -10,8 +10,8 @@ namespace EasyHRMS_Angular.ModelsVM
         public int Id { get; set; }
         public string LeaveStructureName { get; set; }
         public int? MaxLeaveCount { get; set; }
-        public string IsCarryForward { get; set; }
-        public string Status { get; set; }
+        public bool? IsCarryForward { get; set; }
+        public bool? Status { get; set; }
         public bool? IsAllowLeave { get; set; }
         public bool? IsDefault { get; set; }
 
