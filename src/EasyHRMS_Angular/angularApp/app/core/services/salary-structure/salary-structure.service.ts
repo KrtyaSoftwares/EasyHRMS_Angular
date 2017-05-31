@@ -1,4 +1,4 @@
-import { SalaryStructureModule } from './../../../models/salary-structure/salary-structure.model';
+import { SalaryStructureModel } from './../../../models/salary-structure/salary-structure.model';
 import { Configuration } from './../../../app.constants';
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers } from '@angular/http';
@@ -20,34 +20,39 @@ export class SalaryStructureService {
         this.headers.append('Accept', 'application/json');
     }
 
-    public GetAll = (): Observable<SalaryStructureModule[]> => {
+    public GetAllDepartmentData = (id: number): Observable<SalaryStructureModel> => {
+        return this.http
+            .get(this.actionUrl + 'SalaryStructure/GetLookupDepartmentDataByLookupID/' + id)
+            .map(res => <SalaryStructureModel>res.json());
+    }
+    public GetAll = (): Observable<SalaryStructureModel[]> => {
         return this.http
            .get(this.actionUrl + 'SalaryStructure/GetAllSalaryStructure')
-           .map(res => <SalaryStructureModule[]>res.json());
+           .map(res => <SalaryStructureModel[]>res.json());
     }
 
-    public GetSingle = (id: number): Observable<SalaryStructureModule> => {
+    public GetSingle = (id: number): Observable<SalaryStructureModel> => {
         return this.http
-            .get(this.actionUrl + 'EmailTemplate/GetEmailTemplateById/' + id)
-            .map(res => <SalaryStructureModule>res.json());
+            .get(this.actionUrl + 'SalaryStructure/GetSalaryStructureById/' + id)
+            .map(res => <SalaryStructureModel>res.json());
     }
 
-    public Add = (data: any): Observable<SalaryStructureModule> => {
+    public Add = (data: any): Observable<SalaryStructureModel> => {
         let toAdd = JSON.stringify(data);
         return this.http
-                    .post(this.actionUrl + 'EmailTemplate/CreateEmailTemplate', toAdd, { headers: this.headers })
-                    .map(res => <SalaryStructureModule>res.json());
+                    .post(this.actionUrl + 'SalaryStructure/CreateSalaryStructure', toAdd, { headers: this.headers })
+                    .map(res => <SalaryStructureModel>res.json());
     }
 
-    public Update = (id: number, data: any): Observable<SalaryStructureModule> => {
+    public Update = (id: number, data: any): Observable<SalaryStructureModel> => {
         let toAdd = JSON.stringify(data);
-        return this.http.post(this.actionUrl + 'EmailTemplate/UpdateEmailTemplate/' + id, toAdd, { headers: this.headers })
-            .map(res => <SalaryStructureModule>res.json());
+        return this.http.post(this.actionUrl + 'SalaryStructure/UpdateSalaryStructure/' + id, toAdd, { headers: this.headers })
+            .map(res => <SalaryStructureModel>res.json());
     }
 
     public Delete = (id: number): Observable<any> => {
         return this.http
             .get(this.actionUrl + 'SalaryStructure/DeleteSalaryStructureById/' + id)
-            .map(res => <SalaryStructureModule>res.json());
+            .map(res => <SalaryStructureModel>res.json());
     }
 }

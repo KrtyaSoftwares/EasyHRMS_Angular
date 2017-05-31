@@ -1,0 +1,82 @@
+<p-growl [value]="msgs"></p-growl>
+<p-confirmDialog width="425"></p-confirmDialog>
+<div id="main-content" >
+	<div class="row m-t-10">
+      <div class="col-md-12">
+        <div class="panel panel-default">
+          <div class="panel-heading text-right">
+            <button type="button" class="btn btn-sm btn-icon btn-rounded btn-default"><i class="fa fa-question"></i> </button>
+          </div>
+          <div class="panel-body">
+           <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12 text-right">
+                <button [routerLink]="['/leaveandattendance/leave-structure/form']" class="btn btn-primary m-b-10" >Add Leave Structure</button>
+              </div>
+           </div>
+           <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="table-responsive">
+                  <table class="table table-bordered table-striped table-hover">
+                    <thead class="no-bd">
+                      <tr>
+                        <th><strong>Name</strong> </th>
+                        <th><strong>Max Leave-count</strong> </th>
+                        <th><strong>CarryForward</strong></th>
+                        <th><strong>Status</strong></th>
+                        <th><strong>Allow Leave</strong></th>
+                        <th><strong>Default</strong></th>
+                        <th><strong>Action</strong></th>                        
+                      </tr>
+                    </thead>
+                    <tbody class="no-bd-y">
+                      <tr *ngFor="let leave of pagedItems">                                                
+                        <td>{{leave.leaveStructureName}}</td>
+                        <td>{{leave.maxLeaveCount}}</td>
+                        <td>
+                            <button *ngIf="leave.isCarryForward" type="button" class="btn btn-sm btn-success" title="Check"><i class="fa fa-check"></i></button>
+                            <button *ngIf="!leave.isCarryForward" type="button" class="btn btn-sm btn-danger" title="Delete"><i class="fa fa-remove" ></i></button>
+                        </td>
+                        <td>
+                            <button *ngIf="leave.status" type="button" class="btn btn-sm btn-success" title="Check"><i class="fa fa-check"></i></button>
+                            <button *ngIf="!leave.status" type="button" class="btn btn-sm btn-danger" title="Delete"><i class="fa fa-remove" ></i></button>
+                        </td>
+                        <td>
+                            <button *ngIf="leave.isAllowLeave" type="button" class="btn btn-sm btn-success" title="Check"><i class="fa fa-check"></i></button>
+                            <button *ngIf="!leave.isAllowLeave" type="button" class="btn btn-sm btn-danger" title="Delete"><i class="fa fa-remove" ></i></button>
+                        </td>
+                        <td>
+                            <button *ngIf="leave.isDefault" type="button" class="btn btn-sm btn-success" title="Check"><i class="fa fa-check"></i></button>
+                            <button *ngIf="!leave.isDefault" type="button" class="btn btn-sm btn-danger" title="Delete"><i class="fa fa-remove" ></i></button>
+                        </td>                        
+                        <td>
+                            <button [routerLink]="['/leaveandattendance/leave-structure/form/' + leave.id ]" type="button" class="btn btn-sm btn-warning" title="Edit"><i class="fa fa-pencil"></i></button>
+                            <button (click)="delete(leave.id)" type="button" class="btn btn-sm btn-danger" title="Delete"><i class="fa fa-remove" ></i></button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+                      <li [ngClass]="{disabled:pager.currentPage === 1}">
+                          <a (click)="setPage(1)">First</a>
+                      </li>
+                      <li [ngClass]="{disabled:pager.currentPage === 1}">
+                          <a (click)="setPage(pager.currentPage - 1)">Previous</a>
+                      </li>
+                      <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+                          <a (click)="setPage(page)">{{page}}</a>
+                      </li>
+                      <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                          <a (click)="setPage(pager.currentPage + 1)">Next</a>
+                      </li>
+                      <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                          <a (click)="setPage(pager.totalPages)">Last</a>
+                      </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
