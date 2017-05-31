@@ -130,7 +130,7 @@ namespace EasyHRMS_Angular.Controllers
         {
             object result = null;
 
-            List<EmployeePayrollSalaryDetail> list= new List<EmployeePayrollSalaryDetail>();
+            List<EmployeePayrollSalaryDetail> list = new List<EmployeePayrollSalaryDetail>();
             try
             {
                 using (_context)
@@ -234,7 +234,7 @@ namespace EasyHRMS_Angular.Controllers
                         Decimal? GrossSalary = 0;
                         foreach (var EmployeeSalary in model)
                         {
-                            if(EmployeeSalary.Amount != null)
+                            if (EmployeeSalary.Amount != null)
                             {
                                 GrossSalary += EmployeeSalary.Amount;
                             }
@@ -485,66 +485,72 @@ namespace EasyHRMS_Angular.Controllers
             return result;
         }
 
-        // GET api/EmployeePayrollSalaryDetail/GetEmployeeSalaryDetailsList/5
+        // GET api/EmployeePayrollSalaryDetail/GetEmployeeSalaryDetailsList
         [HttpGet("GetEmployeeSalaryDetailsList"), Produces("application/json")]
         public object GetEmployeeSalaryDetailsList()
         {
-            int DepartmentLookupID = 6;
             object result = null;
-            //List<LookupDataVM> list = new List<LookupDataVM>();
-            //try
-            //{
-            //    using (_context)
-            //    {
-            //        if (id > 0)
-            //        {
-            //            List<int?> DepartmentIds = _context.SalaryStructureDepartmentMapping.Where(x => x.SalaryStructureId != id).Select(x => x.DepartmentId).Distinct().ToList();
-            //            //if (DepartmentIds.Count > 0)
-            //            //{
-            //            list = _context.LookupData.Where(x => x.LookupId == DepartmentLookupID && !DepartmentIds.Contains(x.RowId) && x.FieldName != "DepartmentCode").Select(x => new LookupDataVM()
-            //            {
-            //                Id = x.Id,
-            //                LookupId = x.LookupId,
-            //                RowId = x.RowId,
-            //                FieldName = x.FieldName,
-            //                Value = x.Value,
-            //            }).OrderBy(x => x.Id).ToList();
-            //            //}
-            //        }
-            //        else
-            //        {
-            //            List<int?> DepartmentIds = _context.SalaryStructureDepartmentMapping.Select(x => x.DepartmentId).Distinct().ToList();
-            //            //if (DepartmentIds.Count > 0)
-            //            //{
-            //            list = _context.LookupData.Where(x => x.LookupId == DepartmentLookupID && !DepartmentIds.Contains(x.RowId) && x.FieldName != "DepartmentCode").Select(x => new LookupDataVM()
-            //            {
-            //                Id = x.Id,
-            //                LookupId = x.LookupId,
-            //                RowId = x.RowId,
-            //                FieldName = x.FieldName,
-            //                Value = x.Value,
-            //            }).OrderBy(x => x.Id).ToList();
-            //            //}
-            //        }
+            List<EmployeeSalaryDetailsListVM> list = new List<EmployeeSalaryDetailsListVM>();
+            try
+            {
+                using (_context)
+                {
+                    list = _context.EmployeeDetails.Select(x => new
+                    {
+                        Id = x.EmployeeId,
+                        EmployeeId = x.EmployeeId,
+                        EmployeeCode = x.F1,
+                        FullName = x.F2 + " " + x.F3,
+                        JoiningDate = x.F17,
+                        Department = x.F12,
+                        Position = x.F19,
+                        Ctc = _context.EmployeePayrollSalaryDetail.Where(y => y.EmployeeId == x.EmployeeId).FirstOrDefault().GrossSalary,
+                        //Ctc = _context.EmployeePayrollCategory.Where(q => _context.SalaryStructurePayrollCategoryMapping.Where(z => z.SalaryStructureId == _context.SalaryStructureDepartmentMapping.Where(y => y.DepartmentId == int.Parse(x.F12)).FirstOrDefault().SalaryStructureId).Select(p => p.PayrollCategoryId).ToList().Contains(q.Id)).ToList().Sum(r => r.Amount),
+                        //ProfessionalTax
+                    }).OrderBy(x => x.Id).ToList().Select(x => new EmployeeSalaryDetailsListVM()
+                    {
+                        Id = x.Id,
+                        EmployeeId = x.EmployeeId,
+                        EmployeeCode = x.EmployeeCode,
+                        FullName = x.FullName,
+                        JoiningDate = x.JoiningDate,
+                        Department = x.Department,
+                        Position = x.Position,
+                        Ctc = x.Ctc,
+                        //ProfessionalTax
+                    }).OrderBy(x => x.Id).ToList();
 
-            //        result = new
-            //        {
-            //            list,
-            //            error = "0",
-            //            msg = "Success"
-            //        };
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    ex.ToString();
-            //    result = new
-            //    {
-            //        list,
-            //        error = "1",
-            //        msg = "Error"
-            //    };
-            //}
+                    foreach (var SalaryDetail in list)
+                    {
+                        if(SalaryDetail.Department != null && SalaryDetail.Department != "")
+                        {
+                            var SalaryStructureId = _context.SalaryStructureDepartmentMapping.Where(y => y.DepartmentId == int.Parse(SalaryDetail.Department)).FirstOrDefault().SalaryStructureId;
+                            if (SalaryStructureId != null)
+                            {
+                                List<int?> PayrollCategoryIds = _context.SalaryStructurePayrollCategoryMapping.Where(z => z.SalaryStructureId == SalaryStructureId).Select(p => p.PayrollCategoryId).ToList();
+                                var TotalAmount = _context.EmployeePayrollCategory.Where(q => PayrollCategoryIds.Contains(q.Id)).ToList().Sum(r => r.Amount);
+                                SalaryDetail.Ctc = TotalAmount;
+                            }
+                        }
+                    }
+                    result = new
+                    {
+                        list,
+                        error = "0",
+                        msg = "Success"
+                    };
+                }
+            }
+            catch (Exception ex)
+            {
+                ex.ToString();
+                result = new
+                {
+                    list,
+                    error = "1",
+                    msg = ex.ToString()
+                };
+            }
             return result;
         }
 
