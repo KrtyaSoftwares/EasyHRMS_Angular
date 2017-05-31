@@ -14,7 +14,10 @@ namespace EasyHRMS_Angular.ModelsVM
         public string EmployeeCode { get; set; }
         public string FullName { get; set; }
         public string Branch { get; set; }
+        public string BranchName { get; set; }
         public string Department { get; set; }
+        public string DepartmentName { get; set; }
+
         public int ClCount { get; set; }
         public int TotalLeaveMonthly { get; set; }
         public int TotalLeaveYearly { get; set; }
