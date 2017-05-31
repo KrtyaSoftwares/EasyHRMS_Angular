@@ -365,6 +365,7 @@
     <PackageReference Include="System.ComponentModel.Annotations" Version="4.3.0" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="ModelsVM\TokenModel\" />
     <Folder Include="wwwroot\assets\plugins\icheck\skin\flat\" />
   </ItemGroup>
   <ItemGroup>

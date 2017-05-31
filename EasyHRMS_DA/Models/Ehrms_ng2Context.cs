@@ -1,10 +1,12 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;  // Added By Bhoomi Gandhi - 26-05-2017
 
 namespace EasyHRMS_DA.Models
 {
-    public partial class Ehrms_ng2Context : DbContext
+     public partial class Ehrms_ng2Context : IdentityDbContext<ApplicationUser>
+  //  public partial class Ehrms_ng2Context : DbContext
     {
         public virtual DbSet<AspNetRoleClaims> AspNetRoleClaims { get; set; }
         public virtual DbSet<AspNetRoles> AspNetRoles { get; set; }
@@ -144,6 +146,8 @@ namespace EasyHRMS_DA.Models
 
                 entity.Property(e => e.UserName).HasMaxLength(256);
             });
+
+            base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<CheckList>(entity =>
             {

@@ -1,10 +1,10 @@
-﻿using Microsoft.IdentityModel.Tokens;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.IdentityModel.Tokens;
 
-namespace EasyHRMS_Angular.ModelsVM
+namespace EasyHRMS_Angular.ModelsVM.TokenModel
 {
     public class TokenAuthOption
     {
