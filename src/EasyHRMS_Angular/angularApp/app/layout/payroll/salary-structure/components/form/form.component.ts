@@ -122,32 +122,41 @@ export class FormComponent implements OnInit {
           this._needToSave.name = value.name;
           this._needToSave.description = '';
           this._needToSave.isActive = value.isActive;
-          if (this._needToSave['payrollCategoryIds'].length == 0 ) {
+          this._needToSave.departmentIds = value.department;
+          if (this._needToSave['payrollCategoryIds']) {
+              if (this._needToSave['payrollCategoryIds'].length == 0 ) {
+                  this.ErrorMsgs = [];
+                  this.ErrorMsgs.push({severity: 'error', summary: 'Error Message', detail: 'Please choose atleast one PayType Category'});
+                  setTimeout(function() {
+                    document.getElementById('clear').click();
+                  }, 2000);
+              } else {
+                  if (!this.bindId) {
+                    this._salaryStructureService
+                        .Add(this._needToSave)
+                        .subscribe(
+                        data => {
+                          this.msgs = [];
+                          this.msgs.push ( { severity: 'info', summary: 'Insert Message', detail: 'Salary Structure has been added Successfully!!!' } );
+                          this._router.navigate(['/payroll/salary-structure']);
+                      });
+                  } else {
+                    this._salaryStructureService
+                        .Update(this.bindId, this._needToSave)
+                        .subscribe(
+                        data => {
+                          this.msgs = [];
+                          this.msgs.push ( { severity: 'info', summary: 'Update Message', detail: 'Salary Structure has been Updated Successfully!!!' } );
+                          this._router.navigate(['/payroll/salary-structure']);
+                      });
+                  }
+              }
+          } else {
               this.ErrorMsgs = [];
               this.ErrorMsgs.push({severity: 'error', summary: 'Error Message', detail: 'Please choose atleast one PayType Category'});
               setTimeout(function() {
                 document.getElementById('clear').click();
               }, 2000);
-          } else {
-              if (!this.bindId) {
-                this._salaryStructureService
-                    .Add(this._needToSave)
-                    .subscribe(
-                    data => {
-                      this.msgs = [];
-                      this.msgs.push ( { severity: 'info', summary: 'Insert Message', detail: 'Salary Structure has been added Successfully!!!' } );
-                      this._router.navigate(['/payroll/salary-structure']);
-                  });
-              } else {
-                this._salaryStructureService
-                    .Update(this.bindId, this._needToSave)
-                    .subscribe(
-                    data => {
-                      this.msgs = [];
-                      this.msgs.push ( { severity: 'info', summary: 'Update Message', detail: 'Salary Structure has been Updated Successfully!!!' } );
-                      this._router.navigate(['/payroll/salary-structure']);
-                  });
-              }
           }
         }
   }

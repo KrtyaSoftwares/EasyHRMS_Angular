@@ -1,0 +1,172 @@
+<p-growl [value]="msgs"></p-growl>
+<p-confirmDialog width="425"></p-confirmDialog>
+<div id="main-content" >
+	<div class="row m-t-10">
+      <div class="col-md-12">
+        <div class="panel panel-default">
+          <div class="panel-heading text-right">
+            <button type="button" class="btn btn-sm btn-icon btn-rounded btn-default"><i class="fa fa-question"></i> </button>
+          </div>
+          	<div class="panel-body">
+           		<div class="row">
+			          <div class="col-md-12 col-sm-12 col-xs-12">
+                    <form [formGroup]="form" (ngSubmit)="onSubmit(form.value,form.valid)" novalidate class="form-horizontal">
+                        <div class="boder-btm">
+                            <h3 class="panel-title">Employee Leave Structure</h3>
+                        </div>
+                        <div class="m-b-30">
+                            <div class="form-group">
+                              <label class="col-sm-2 control-label">Name  </label>
+                              <div class="col-sm-4">
+                                <input type="text" class="form-control" formControlName="leaveStructureName" [(ngModel)]="_leaveStructureModel.leaveStructureName">
+                                <div [hidden]="form.get('leaveStructureName').valid || (form.get('leaveStructureName').pristine && !submitted)" class="alert alert-danger">
+                                  Name is required.
+                                </div>
+                              </div>
+                              <label class="col-sm-2 control-label">Max Leave Count  </label>
+                              <div class="col-sm-4">
+											          <input type="text" class="form-control" formControlName="maxLeaveCount" [(ngModel)]="_leaveStructureModel.maxLeaveCount">
+                                <div [hidden]="form.get('maxLeaveCount').valid || (form.get('maxLeaveCount').pristine && !submitted)" class="alert alert-danger">
+                                  Leave Count is required.
+                                </div>
+											        </div>
+                            </div>
+                        </div>
+                        <div class="m-b-30">
+                            <div class="form-group">
+                              <label class="col-sm-2 control-label">Department  </label>
+                              <div class="col-sm-4">
+                                <p-multiSelect (onChange)="onChange($event)" [options]="_departments" class="form-control" formControlName="department" [(ngModel)]="_leaveStructureModel.department"></p-multiSelect>
+                                <div [hidden]="form.get('department').valid || (form.get('department').pristine && !submitted)" class="alert alert-danger">
+                                  Department is required.
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+                        <div class="m-b-30">
+                            <div class="form-group">
+                              <label class="col-sm-2 control-label"> Carry Forward</label>
+                              <div class="col-sm-4">
+                                <p-inputSwitch class="form-control" formControlName="isCarryForward" [(ngModel)]="_leaveStructureModel.isCarryForward"></p-inputSwitch>
+                                <div [hidden]="form.get('isCarryForward').valid || (form.get('isCarryForward').pristine && !submitted)" class="alert alert-danger">
+                                  carryForward is required.
+                                </div>
+                              </div>
+                              <label class="col-sm-2 control-label"> Status</label>
+                              <div class="col-sm-4">
+                                <p-inputSwitch class="form-control" formControlName="status" [(ngModel)]="_leaveStructureModel.status"></p-inputSwitch>
+                                <div [hidden]="form.get('status').valid || (form.get('status').pristine && !submitted)" class="alert alert-danger">
+                                  Status is required.
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+                        <div class="m-b-30">
+                            <div class="form-group">
+                              <label class="col-sm-2 control-label"> Allow Leave</label>
+                              <div class="col-sm-4">
+                                <p-inputSwitch class="form-control" formControlName="isAllowLeave" [(ngModel)]="_leaveStructureModel.isAllowLeave"></p-inputSwitch>
+                                <div [hidden]="form.get('isAllowLeave').valid || (form.get('isAllowLeave').pristine && !submitted)" class="alert alert-danger">
+                                  Allow Leave is required.
+                                </div>
+                              </div>
+                              <label class="col-sm-2 control-label"> Default</label>
+                              <div class="col-sm-4">
+                                <p-inputSwitch class="form-control" formControlName="isDefault" [(ngModel)]="_leaveStructureModel.isDefault"></p-inputSwitch>
+                                <div [hidden]="form.get('isDefault').valid || (form.get('isDefault').pristine && !submitted)" class="alert alert-danger">
+                                  default is required.
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+                        <div>
+                          <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12 text-right">
+                              <button type="button" class="btn btn-primary m-b-10" data-toggle="modal" data-target="#myModalLeaveType">Add Leave Type</button>
+                            </div>
+                          </div>
+                          <div class="boder-btm">
+                              <h3 class="panel-title">Leave Type :</h3>
+                          </div>
+                          <table class="table table-bordered table-striped table-hover">
+                              <thead class="no-bd">
+                                <tr>
+                                  <th><strong>Leave Type Title</strong> </th>
+                                  <th><strong>Leave Period</strong> </th>
+                                  <th><strong>Number of Leave</strong> </th>
+                                  <th><strong>Carry Forward</strong></th>
+                                  <th><strong>Action</strong></th>                        
+                                </tr>
+                              </thead>
+                              <tbody class="no-bd-y">
+                                <tr *ngFor="let ltype of _selectedleaveTypeCat">                                                
+                                  <td>{{ltype.LeaveTypeTitle}} </td>
+                                  <td>{{ltype.LeavePeriod}} </td>
+                                  <td>{{ltype.NumberOfLeave}} </td>
+                                  <td>
+                                      <button *ngIf="ltype.IsCarryForward == 1" type="button" class="btn btn-sm btn-success" title="Check"><i class="fa fa-check"></i></button>
+                                      <button *ngIf="ltype.IsCarryForward == 2" type="button" class="btn btn-sm btn-danger" title="Delete"><i class="fa fa-remove" ></i></button>
+                                  </td>
+                                  <td><button (click)="removeEvent(ltype.rowId)" type="button" class="btn btn-sm btn-danger" title="Delete"><i class="fa fa-remove" ></i></button></td>                       
+                                </tr>
+                              </tbody>
+                          </table>
+                          <p-messages [(value)]="ErrorMsgs"></p-messages>
+                        </div>
+                        <button type="button" id="clear" pButton (click)="clear()" icon="fa-close" style="float:right;display:none" label="Clear"></button>
+                        <div class="form-group">                                            
+                            <div class="col-sm-10 col-sm-offset-2">
+                                <button class="btn btn-primary m-b-10" type="submit">Submit</button>
+                                <button [routerLink]="['/leaveandattendance/leave-structure']" class="btn btn-default m-b-10">Cancel</button>
+                            </div>
+                          </div> 
+                    </form>
+					      </div>
+          		</div>
+        	</div>
+      </div>
+    </div>
+  </div>  
+</div>
+
+<!-- Modal -->
+<div id="myModalLeaveType" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" id="closeLeaveType" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Leave Type</h4>
+      </div>
+      <div class="modal-body">
+        <table class="table table-bordered table-striped table-hover">
+          <thead class="no-bd">
+            <tr>
+              <th><strong></strong> </th>
+              <th><strong>Leave Type Title</strong> </th>
+              <th><strong>Leave Period</strong> </th>
+              <th><strong>Number of Leave</strong> </th>
+              <th><strong>Carry Forward</strong></th>
+            </tr>
+          </thead>
+          <tbody class="no-bd-y">
+            <tr *ngFor="let ltype of _leaveTypeLists"> 
+              <td> <input id="cat_{{ltype.rowId}}" type="checkbox" (change)="handleChange(ltype.rowId, $event)">  </td>
+              <td>{{ltype.LeaveTypeTitle}} </td>
+              <td>{{ltype.LeavePeriod}} </td>
+              <td>{{ltype.NumberOfLeave}} </td>
+              <td>
+                  <button *ngIf="ltype.IsCarryForward == 1" type="button" class="btn btn-sm btn-success" title="Check"><i class="fa fa-check"></i></button>
+                  <button *ngIf="ltype.IsCarryForward == 2" type="button" class="btn btn-sm btn-danger" title="Delete"><i class="fa fa-remove" ></i></button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <button type="button" class="btn btn-primary m-b-10" (click)="addLeaveType('message')">Add Pay Type</button>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

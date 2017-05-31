@@ -1,9 +1,12 @@
 export class LeaveStructureModel {
     id: number;
-    name: string;
-    description: string;
-    isActive: boolean;
+    leaveStructureName: string;
+    maxLeaveCount: string;
+    isCarryForward: boolean;
+    status: boolean;
+    isAllowLeave: boolean;
+    isDefault: boolean;
     department: string[];
     departmentIds: string[];
-    payrollCategoryIds: string[];
+    leaveTypeIds: string[];
 }
