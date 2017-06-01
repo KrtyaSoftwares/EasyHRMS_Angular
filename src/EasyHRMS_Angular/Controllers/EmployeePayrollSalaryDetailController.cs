@@ -503,7 +503,7 @@ namespace EasyHRMS_Angular.Controllers
                         FullName = x.F2 + " " + x.F3,
                         JoiningDate = x.F17,
                         Department = x.F12,
-                        DepartmentName = _context.LookupData.Where(z => z.RowId == int.Parse(x.F12) && z.FieldName == "DepartmentName").Select(p => p.FieldName).ToString(),
+                        //DepartmentName = _context.LookupData.Where(z => z.RowId == int.Parse(x.F12) && z.FieldName == "DepartmentName").FirstOrDefault().FieldName,
                         Position = x.F19,
                         Ctc = _context.EmployeePayrollSalaryDetail.Where(y => y.EmployeeId == x.EmployeeId).FirstOrDefault().GrossSalary,
                         //Ctc = _context.EmployeePayrollCategory.Where(q => _context.SalaryStructurePayrollCategoryMapping.Where(z => z.SalaryStructureId == _context.SalaryStructureDepartmentMapping.Where(y => y.DepartmentId == int.Parse(x.F12)).FirstOrDefault().SalaryStructureId).Select(p => p.PayrollCategoryId).ToList().Contains(q.Id)).ToList().Sum(r => r.Amount),
@@ -516,7 +516,7 @@ namespace EasyHRMS_Angular.Controllers
                         FullName = x.FullName,
                         JoiningDate = x.JoiningDate,
                         Department = x.Department,
-                        DepartmentName = x.DepartmentName,
+                        //DepartmentName = x.DepartmentName,
                         Position = x.Position,
                         Ctc = x.Ctc,
                         //ProfessionalTax
