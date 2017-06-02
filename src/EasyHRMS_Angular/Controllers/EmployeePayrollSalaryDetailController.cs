@@ -155,6 +155,7 @@ namespace EasyHRMS_Angular.Controllers
 
                             if(objSalary != null)
                             {
+                                SalaryDetail.PayrollCategoryName = objSalary.CategoryName;
                                 SalaryDetail.Percentage = objSalary.Percentage;
                                 SalaryDetail.PercentageOf = objSalary.PercentageOf;
                                 SalaryDetail.Period = objSalary.Period;
@@ -223,6 +224,7 @@ namespace EasyHRMS_Angular.Controllers
                                     objSalaryDetail.Amount = Pay.Amount;
                                     objSalaryDetail.IsDeduction = Pay.IsDeduction;
                                     objSalaryDetail.IsBasedOnAttandance = Pay.IsBasedOnAttandance;
+                                    objSalaryDetail.PayrollCategoryName = Pay.CategoryName;
                                     objSalaryDetail.Percentage = Pay.Percentage;
                                     objSalaryDetail.PercentageOf = Pay.PercentageOf;
                                     objSalaryDetail.PercentageOfNameList = Pay.PercentageOfNameList;
@@ -386,8 +388,8 @@ namespace EasyHRMS_Angular.Controllers
         }
 
         // POST api/EmployeePayrollSalaryDetail/CreateUpdateEmployeePayrollSalaryDetail
-        [HttpPost, Route("CreateUpdateEmployeePayrollSalaryDetail/{id}"), Produces("application/json")]
-        public object CreateUpdateEmployeePayrollSalaryDetail(int id, [FromBody]List<EmployeePayrollSalaryDetail> model)
+        [HttpPost, Route("CreateUpdateEmployeePayrollSalaryDetail"), Produces("application/json")]
+        public object CreateUpdateEmployeePayrollSalaryDetail([FromBody]List<EmployeePayrollSalaryDetail> model)
         {
             object result = null;
             string message = "";
@@ -403,74 +405,59 @@ namespace EasyHRMS_Angular.Controllers
                 {
                     try
                     {
-                        if (id != 0)
+                        foreach (var PayrollSalaryDetail in model)
                         {
-                            Decimal? GrossSalary = 0;
-                            foreach (var EmployeeSalary in model)
+                            if (PayrollSalaryDetail.Id != 0)
                             {
-                                if (EmployeeSalary.Amount != null)
+                                Decimal? GrossSalary = 0;
+                                foreach (var EmployeeSalary in model)
                                 {
-                                    GrossSalary += EmployeeSalary.Amount;
+                                    if (EmployeeSalary.Amount != null)
+                                    {
+                                        GrossSalary += EmployeeSalary.Amount;
+                                    }
                                 }
-                            }
 
-                            foreach (var EmployeeSalary in model)
-                            {
-                                var entityUpdate = _context.EmployeePayrollSalaryDetail.FirstOrDefault(x => x.Id == EmployeeSalary.Id);
+                                var entityUpdate = _context.EmployeePayrollSalaryDetail.FirstOrDefault(x => x.Id == PayrollSalaryDetail.Id);
 
                                 if (entityUpdate != null)
                                 {
-                                    entityUpdate.EmployeeId = EmployeeSalary.EmployeeId;
-                                    entityUpdate.DepartmentId = EmployeeSalary.DepartmentId;
-                                    entityUpdate.SalaryStructureId = EmployeeSalary.SalaryStructureId;
-                                    entityUpdate.PayrollCategoryId = EmployeeSalary.PayrollCategoryId;
-                                    entityUpdate.Amount = EmployeeSalary.Amount;
+                                    entityUpdate.EmployeeId = PayrollSalaryDetail.EmployeeId;
+                                    entityUpdate.DepartmentId = PayrollSalaryDetail.DepartmentId;
+                                    entityUpdate.SalaryStructureId = PayrollSalaryDetail.SalaryStructureId;
+                                    entityUpdate.PayrollCategoryId = PayrollSalaryDetail.PayrollCategoryId;
+                                    entityUpdate.Amount = PayrollSalaryDetail.Amount;
                                     entityUpdate.GrossSalary = GrossSalary;
-                                    entityUpdate.IsDeduction = EmployeeSalary.IsDeduction;
-                                    entityUpdate.IsBasedOnAttandance = EmployeeSalary.IsBasedOnAttandance;
-                                    entityUpdate.CreatedDate = EmployeeSalary.CreatedDate;
+                                    entityUpdate.IsDeduction = PayrollSalaryDetail.IsDeduction;
+                                    entityUpdate.IsBasedOnAttandance = PayrollSalaryDetail.IsBasedOnAttandance;
+                                    entityUpdate.CreatedDate = PayrollSalaryDetail.CreatedDate;
 
                                     _context.SaveChanges();
                                 }
+                                
+                                _ctxTransaction.Commit();
+                                message = "Entry Updated";
+                                errorcode = "0";
                             }
-
-                            _ctxTransaction.Commit();
-                            message = "Entry Updated";
-                            errorcode = "0";
-                        }
-                        else
-                        {
-                            Decimal? GrossSalary = 0;
-                            foreach (var EmployeeSalary in model)
+                            else
                             {
-                                if (EmployeeSalary.Amount != null)
+                                Decimal? GrossSalary = 0;
+                                foreach (var EmployeeSalary in model)
                                 {
-                                    GrossSalary += EmployeeSalary.Amount;
+                                    if (EmployeeSalary.Amount != null)
+                                    {
+                                        GrossSalary += EmployeeSalary.Amount;
+                                    }
                                 }
+
+                                 PayrollSalaryDetail.CreatedDate = DateTime.Now;
+                                PayrollSalaryDetail.GrossSalary = GrossSalary;
+                                _context.EmployeePayrollSalaryDetail.Add(PayrollSalaryDetail);
+                                _ctxTransaction.Commit();
+                                message = "Saved Successfully";
+                                errorcode = "0";
                             }
 
-                            foreach (var EmployeeSalary in model)
-                            {
-                                var entityUpdate = _context.EmployeePayrollSalaryDetail.FirstOrDefault(x => x.Id == EmployeeSalary.Id);
-
-                                if (entityUpdate != null)
-                                {
-                                    entityUpdate.EmployeeId = EmployeeSalary.EmployeeId;
-                                    entityUpdate.DepartmentId = EmployeeSalary.DepartmentId;
-                                    entityUpdate.SalaryStructureId = EmployeeSalary.SalaryStructureId;
-                                    entityUpdate.PayrollCategoryId = EmployeeSalary.PayrollCategoryId;
-                                    entityUpdate.Amount = EmployeeSalary.Amount;
-                                    entityUpdate.GrossSalary = GrossSalary;
-                                    entityUpdate.IsDeduction = EmployeeSalary.IsDeduction;
-                                    entityUpdate.IsBasedOnAttandance = EmployeeSalary.IsBasedOnAttandance;
-                                    entityUpdate.CreatedDate = EmployeeSalary.CreatedDate;
-
-                                    _context.SaveChanges();
-                                }
-                            }
-                            _ctxTransaction.Commit();
-                            message = "Saved Successfully";
-                            errorcode = "0";
                         }
 
                     }

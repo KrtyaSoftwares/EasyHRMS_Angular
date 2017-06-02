@@ -19,6 +19,7 @@ namespace EasyHRMS_Angular.ModelsVM
         public DateTime? CreatedDate { get; set; }
 
         //public EmployeePayrollCategoryVM PayrollCategory { get; set; }
+        public string PayrollCategoryName { get; set; }
         public decimal? Percentage { get; set; }
         public string PercentageOf { get; set; }
         public string PercentageOfNameList { get; set; }
