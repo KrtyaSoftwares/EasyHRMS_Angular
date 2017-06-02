@@ -583,13 +583,14 @@ namespace EasyHRMS_Angular.Controllers
         public object GetEmployeeSalaryDetailsList()
         {
             object result = null;
+            List<EmployeeSalaryDetailsListVM> list1 = new List<EmployeeSalaryDetailsListVM>();
             List<EmployeeSalaryDetailsListVM> list = new List<EmployeeSalaryDetailsListVM>();
             try
             {
                 using (_context)
                 {
                     var abc = _context.EmployeePayrollSalaryDetail.Where(y => y.EmployeeId == 1).FirstOrDefault();
-                    list = _context.EmployeeDetails.Select(x => new
+                    list1 = _context.EmployeeDetails.Select(x => new
                     {
                         Id = x.EmployeeId,
                         EmployeeId = x.EmployeeId,
@@ -617,7 +618,7 @@ namespace EasyHRMS_Angular.Controllers
                         //ProfessionalTax
                     }).OrderBy(x => x.Id).ToList();
 
-                    foreach (var SalaryDetail in list)
+                    foreach (var SalaryDetail in list1)
                     {
                         Decimal? CTCAmount = _context.EmployeePayrollSalaryDetail.Where(y => y.EmployeeId == SalaryDetail.EmployeeId).FirstOrDefault() != null ? _context.EmployeePayrollSalaryDetail.Where(y => y.EmployeeId == SalaryDetail.EmployeeId).FirstOrDefault().GrossSalary : null;
                         if(CTCAmount != null)
@@ -639,7 +640,20 @@ namespace EasyHRMS_Angular.Controllers
                         }
                        
                     }
-                    result = new
+
+                    foreach (var SalaryDetail in list1)
+                    {
+                        if (SalaryDetail.Department != null && SalaryDetail.Department != "")
+                        {
+                            SalaryStructureDepartmentMapping SalaryStructureDMapp = _context.SalaryStructureDepartmentMapping.Where(y => y.DepartmentId == int.Parse(SalaryDetail.Department)).FirstOrDefault();
+                            if (SalaryStructureDMapp != null)
+                            {
+                                list.Add(SalaryDetail);
+                            }
+                        }
+                    }
+
+                        result = new
                     {
                         list,
                         error = "0",
