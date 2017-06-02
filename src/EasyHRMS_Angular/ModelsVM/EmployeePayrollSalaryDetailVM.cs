@@ -24,6 +24,8 @@ namespace EasyHRMS_Angular.ModelsVM
         public string PercentageOf { get; set; }
         public string PercentageOfNameList { get; set; }
         public int? Period { get; set; }
+
+        public string SalaryStructureName { get; set; }
     }
 
     public class EmployeeSalaryDetailsListVM
