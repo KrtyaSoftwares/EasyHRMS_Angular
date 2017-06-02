@@ -17,6 +17,12 @@ namespace EasyHRMS_Angular.ModelsVM
         public bool? IsDeduction { get; set; }
         public bool? IsBasedOnAttandance { get; set; }
         public DateTime? CreatedDate { get; set; }
+
+        //public EmployeePayrollCategoryVM PayrollCategory { get; set; }
+        public decimal? Percentage { get; set; }
+        public string PercentageOf { get; set; }
+        public string PercentageOfNameList { get; set; }
+        public int? Period { get; set; }
     }
 
     public class EmployeeSalaryDetailsListVM

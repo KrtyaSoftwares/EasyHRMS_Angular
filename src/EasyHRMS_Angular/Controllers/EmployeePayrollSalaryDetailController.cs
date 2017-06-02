@@ -130,21 +130,46 @@ namespace EasyHRMS_Angular.Controllers
         {
             object result = null;
 
-            List<EmployeePayrollSalaryDetail> list = new List<EmployeePayrollSalaryDetail>();
-            List<EmployeePayrollCategory> Defaultlist = new List<EmployeePayrollCategory>();
+            List<EmployeePayrollSalaryDetailVM> list = new List<EmployeePayrollSalaryDetailVM>();
+            List<EmployeePayrollCategoryVM> Defaultlist = new List<EmployeePayrollCategoryVM>();
             try
             {
                 using (_context)
                 {
-                    list = _context.EmployeePayrollSalaryDetail.Where(x => x.EmployeeId == id).ToList();
+                    list = _context.EmployeePayrollSalaryDetail.Where(x => x.EmployeeId == id).Select(y => new EmployeePayrollSalaryDetailVM
+                    {
+                       Id = y.Id,
+                       EmployeeId = y.EmployeeId,
+                       DepartmentId = y.DepartmentId,
+                       SalaryStructureId = y.SalaryStructureId,
+                       PayrollCategoryId = y.PayrollCategoryId,
+                       Amount = y.Amount,
+                       IsDeduction = y.IsDeduction,
+                       IsBasedOnAttandance = y.IsBasedOnAttandance
+                    }).ToList();
                     if(list.Count > 0)
                     {
-                        //result = new
-                        //{
-                        //    list,
-                        //    error = "0",
-                        //    msg = "Success"
-                        //};
+                        foreach (var SalaryDetail in list)
+                        {
+                            EmployeePayrollCategory objSalary = _context.EmployeePayrollCategory.Where(y => y.Id == SalaryDetail.PayrollCategoryId).FirstOrDefault();
+
+                            if(objSalary != null)
+                            {
+                                SalaryDetail.Percentage = objSalary.Percentage;
+                                SalaryDetail.PercentageOf = objSalary.PercentageOf;
+                                SalaryDetail.Period = objSalary.Period;
+                            }
+
+                            if (objSalary.PercentageOf != null)
+                            {
+
+                                List<string> PayIdlist = objSalary.PercentageOf.Split(',').ToList();
+                                List<int> PayIds = PayIdlist.Select(y => int.Parse(y)).ToList();
+
+                                List<string> PayName = _context.EmployeePayrollCategory.Where(y => PayIds.Contains(y.Id)).Select(p => p.CategoryName).ToList();
+                                SalaryDetail.PercentageOfNameList = string.Join(",", PayName);
+                            }
+                        }
                     }
                     else
                     {
@@ -156,8 +181,55 @@ namespace EasyHRMS_Angular.Controllers
                             if(SalaryStructureId != null)
                             {
                                 List<int?> PayrollCategoryIds = _context.SalaryStructurePayrollCategoryMapping.Where(z => z.SalaryStructureId == SalaryStructureId).Select(p => p.PayrollCategoryId).ToList();
-                                Defaultlist = _context.EmployeePayrollCategory.Where(q => PayrollCategoryIds.Contains(q.Id)).ToList();
-                               
+                                Defaultlist = _context.EmployeePayrollCategory.Where(q => PayrollCategoryIds.Contains(q.Id)).Select(z => new EmployeePayrollCategoryVM{
+                                    Id = z.Id,
+                                    CategoryName = z.CategoryName,
+                                    Type = z.Type,
+                                    Percentage = z.Percentage,
+                                    PercentageOf = z.PercentageOf,
+                                    Amount = z.Amount,
+                                    Status = z.Status,
+                                    IsDeduction = z.IsDeduction,
+                                    Description = z.Description,
+                                    IsDefault = z.IsDefault,
+                                    TaxDeducted = z.TaxDeducted,
+                                    Insurationdeducted = z.Insurationdeducted,
+                                    Pensiondeducted = z.Pensiondeducted,
+                                    IsBasedOnAttandance = z.IsBasedOnAttandance,
+                                    Total = z.Total,
+                                    Period = z.Period,
+                                    Inbuilt = z.Inbuilt
+
+                                }).ToList();
+
+
+                                foreach (var Pay in Defaultlist)
+                                {
+                                    if(Pay.PercentageOf != null)
+                                    {
+                                        
+                                        List<string> PayIdlist = Pay.PercentageOf.Split(',').ToList();
+                                        List<int> PayIds = PayIdlist.Select(y => int.Parse(y)).ToList();
+
+                                        List<string> PayName = _context.EmployeePayrollCategory.Where(y => PayIds.Contains(y.Id)).Select(p => p.CategoryName).ToList();
+                                        Pay.PercentageOfNameList = string.Join(",", PayName);
+                                    }
+
+                                    EmployeePayrollSalaryDetailVM objSalaryDetail = new EmployeePayrollSalaryDetailVM();
+                                    objSalaryDetail.EmployeeId = id;
+                                    objSalaryDetail.DepartmentId = int.Parse(DepartmentId);
+                                    objSalaryDetail.SalaryStructureId = SalaryStructureId;
+                                    objSalaryDetail.PayrollCategoryId = Pay.Id;
+                                    objSalaryDetail.Amount = Pay.Amount;
+                                    objSalaryDetail.IsDeduction = Pay.IsDeduction;
+                                    objSalaryDetail.IsBasedOnAttandance = Pay.IsBasedOnAttandance;
+                                    objSalaryDetail.Percentage = Pay.Percentage;
+                                    objSalaryDetail.PercentageOf = Pay.PercentageOf;
+                                    objSalaryDetail.PercentageOfNameList = Pay.PercentageOfNameList;
+                                    objSalaryDetail.Period = Pay.Period;
+                                    list.Add(objSalaryDetail);
+
+                                }
                             }
 
                         }
@@ -167,7 +239,7 @@ namespace EasyHRMS_Angular.Controllers
                     result = new
                     {
                         list,
-                        Defaultlist,
+                        //Defaultlist,
                         error = "0",
                         msg = "Success"
                     };
@@ -180,9 +252,9 @@ namespace EasyHRMS_Angular.Controllers
                 result = new
                 {
                     list,
-                    Defaultlist,
+                    //Defaultlist,
                     error = "1",
-                    msg = "Error"
+                    msg = ex.ToString()
                 };
             }
             return result;
