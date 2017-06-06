@@ -7,5 +7,6 @@ namespace EasyHRMS_DA.Models
 {
     public class ApplicationUser : IdentityUser
     {
+        public string Password { get; set; }
     }
 }
