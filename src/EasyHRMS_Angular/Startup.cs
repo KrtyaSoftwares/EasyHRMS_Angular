@@ -80,10 +80,20 @@ namespace Angular2WebpackVisualStudio
                     .RequireAuthenticatedUser().Build());
             });
             // [Start] bhoomi
+            //// Add Identity services to the services container.
+            //services.AddIdentity<ApplicationUser, IdentityRole>()
+            //  .AddEntityFrameworkStores<Ehrms_ng2Context>();
+
             // Add Identity services to the services container.
-            services.AddIdentity<ApplicationUser, IdentityRole>()
-              .AddEntityFrameworkStores<Ehrms_ng2Context>();
-          
+            // Email Service : on
+            services.AddIdentity<ApplicationUser, IdentityRole>(config =>
+            {
+                config.SignIn.RequireConfirmedEmail = true;
+            })
+              .AddEntityFrameworkStores<Ehrms_ng2Context>()
+              .AddDefaultTokenProviders();   // Added For token 
+
+
             // [End] bhoomi
             services.AddMvc();
 

@@ -17,6 +17,16 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Principal;
 using Newtonsoft.Json;
+// [Start] Below used for Email and SMS
+using MimeKit;
+using MailKit.Net.Smtp;
+using MailKit.Security;
+using System.Net.Http;
+using System.Text;
+using System.Net.Http.Headers;
+using EasyHRMS_Angular.Services;
+using Microsoft.Extensions.Options;
+// [End]
 
 namespace EasyHRMS_Angular.Controllers
 {
@@ -32,13 +42,15 @@ namespace EasyHRMS_Angular.Controllers
         //private readonly ISmsSender _smsSender;
         private readonly ILogger _logger;
 
+        private IOptions<ApplicationSettings> _settings; // used for SMS
         public IdentityTokenController(
            UserManager<ApplicationUser> userManager,
            SignInManager<ApplicationUser> signInManager,
            //IEmailSender emailSender,
            //ISmsSender smsSender,
            ILoggerFactory loggerFactory,
-           Ehrms_ng2Context context)
+           Ehrms_ng2Context context,
+           IOptions<ApplicationSettings> settings)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -46,13 +58,14 @@ namespace EasyHRMS_Angular.Controllers
             //_smsSender = smsSender;
             _logger = loggerFactory.CreateLogger<IdentityTokenController>();
             _context = context;
+            _settings = settings;  // used for SMS
         }
 
         #region Login
         // POST : api/IdentityToken/Login
         [HttpPost("Login"), Produces("application/json")]
         //public async Task<string> Login([FromBody]LoginViewModel model, [FromBody]AspNetRoles rolemodel, [FromBody]AspNetUserRoles userrolemodel, [FromBody]AspNetUsers usermodel)
-        public async Task<string> Login([FromBody]LoginViewModel model)
+        public async Task<IActionResult> Login([FromBody]LoginViewModel model)
         {
             if (ModelState.IsValid)
             {
@@ -125,7 +138,7 @@ namespace EasyHRMS_Angular.Controllers
                     };
                     var token = GenerateToken(tokenUser, expiresIn);
 
-                    return JsonConvert.SerializeObject(new RequestResult
+                    return Json(new RequestResult
                     {
                         State = RequestState.Success,
                         Data = new
@@ -139,35 +152,46 @@ namespace EasyHRMS_Angular.Controllers
                     // End
                     // return RedirectToAction("Index", "Home");
                 }
+                //else
+                //{
+                //    return Json(new RequestResult
+                //    {
+                //        State = RequestState.Failed,
+                //        Msg = "Username or password is invalid."
+                //    });
+
+                //}
+                #region
+                if (result.RequiresTwoFactor)
+                {
+                    // return RedirectToAction(nameof(SendCode), new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
+                    return RedirectToAction(nameof(SendCode), new { RememberMe = model.RememberMe });
+                }
+                if (result.IsLockedOut)
+                {
+                    // _logger.LogWarning(2, "User account locked out.");
+                    // return View("Lockout");
+                    return Json(new RequestResult
+                    {
+                        State = RequestState.Failed,
+                        Msg = "User account locked out."
+                    });
+                }
                 else
                 {
-                    return JsonConvert.SerializeObject(new RequestResult
+                    //  ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                    return Json(new RequestResult
                     {
                         State = RequestState.Failed,
                         Msg = "Username or password is invalid."
                     });
-
+                    //  return View(model);
                 }
-                #region
-                //if (result.RequiresTwoFactor)
-                //{
-                //    return RedirectToAction(nameof(SendCode), new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
-                //}
-                //if (result.IsLockedOut)
-                //{
-                //    _logger.LogWarning(2, "User account locked out.");
-                //    return View("Lockout");
-                //}
-                //else
-                //{
-                //    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
-                //    return View(model);
-                //}
                 #endregion
             }
             // If we got this far, something failed, redisplay form
             //  return View(model);
-            return JsonConvert.SerializeObject(new RequestResult
+            return Json(new RequestResult
             {
                 State = RequestState.Failed,
                 Msg = "Invalid login attempt."
@@ -254,36 +278,20 @@ namespace EasyHRMS_Angular.Controllers
                 {
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=532713
                     // Send an email with this link
-                    //var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                    //var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: HttpContext.Request.Scheme);
+                    var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                    var callbackUrl = Url.Action("ConfirmEmail", "IdentityToken", new { userId = user.Id, code = code }, protocol: HttpContext.Request.Scheme);
                     //await _emailSender.SendEmailAsync(model.Email, "Confirm your account",
                     //    $"Please confirm your account by clicking this link: <a href='{callbackUrl}'>link</a>");
-                    await _signInManager.SignInAsync(user, isPersistent: false);
-                    _logger.LogInformation(3, "User created a new account with password.");
+                    await SendEmailAsync(model.Email, "Confirm your account", $"Please confirm your account by clicking this link: <a href='{callbackUrl}'>link</a>");
 
-                    // start
-                    var requestAt = DateTime.Now;
-                    var expiresIn = requestAt + TokenAuthOption.ExpiresSpan;
-                    User tokenUser = new User()
-                    {
-                        Username = model.Email,
-                        Password = model.Password
-                    };
-                    var token = GenerateToken(tokenUser, expiresIn);
+                    await _signInManager.SignInAsync(user, isPersistent: false);
 
                     return JsonConvert.SerializeObject(new RequestResult
                     {
                         State = RequestState.Success,
-                        Data = new
-                        {
-                            requertAt = requestAt,
-                            expiresIn = TokenAuthOption.ExpiresSpan.TotalSeconds,
-                            tokeyType = TokenAuthOption.TokenType,
-                            accessToken = token
-                        }
+                        Msg = "Please check your email to confirm your account."
                     });
-                    // End
-
+                    //  _logger.LogInformation(3, "User created a new account with password.");
                     //   return RedirectToLocal(returnUrl);
                 }
                 string message = null;
@@ -318,6 +326,51 @@ namespace EasyHRMS_Angular.Controllers
                 State = RequestState.Success,
                 Msg = "User logged out."
             });
+        }
+        #endregion
+
+        #region Confirm Email
+        // GET: /api/IdentityToken/ConfirmEmail
+        [HttpGet("ConfirmEmail")]
+        public async Task<IActionResult> ConfirmEmail([FromQuery]string userId, [FromQuery]string code)
+        {
+            if (userId == null || code == null)
+            {
+                // return View("Error");
+                return Json(new RequestResult
+                {
+                    State = RequestState.Failed,
+                    Msg = "An error has occurred."
+                });
+            }
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user == null)
+            {
+                // return View("Error");
+                return Json(new RequestResult
+                {
+                    State = RequestState.Failed,
+                    Msg = "An error has occurred."
+                });
+            }
+            var result = await _userManager.ConfirmEmailAsync(user, code);
+            if (result.Succeeded)
+            {
+                return Json(new RequestResult
+                {
+                    State = RequestState.Success,
+                    Msg = "Email Confirmation Done."
+                });
+            }
+            else
+            {
+                return Json(new RequestResult
+                {
+                    State = RequestState.Failed,
+                    Msg = "An error has occurred."
+                });
+            }
+            //  return View(result.Succeeded ? "ConfirmEmail" : "Error");
         }
         #endregion
 
@@ -367,87 +420,286 @@ namespace EasyHRMS_Angular.Controllers
         }
         #endregion
 
-
-        #region Not Used
-
-        //
-        // GET: /Account/SendCode
-        [HttpGet]
-        [AllowAnonymous]
-        public async Task<ActionResult> SendCode(string returnUrl = null, bool rememberMe = false)
+        #region Forgot Password
+        // POST: /api/IdentityToken/ForgotPassword
+        [HttpPost("ForgotPassword"), Produces("application/json")]
+        public async Task<string> ForgotPassword([FromBody]ForgotPasswordViewModel model)
         {
-            var user = await _signInManager.GetTwoFactorAuthenticationUserAsync();
-            if (user == null)
+            if (ModelState.IsValid)
             {
-                return View("Error");
+                var user = await _userManager.FindByNameAsync(model.Email);
+                if (user == null || !(await _userManager.IsEmailConfirmedAsync(user)))
+                // if (user == null)
+                {
+                    // Don't reveal that the user does not exist or is not confirmed
+                    //ViewData["Message"] = "Please check your email to reset your password.";
+                    //return View("ForgotPassword");
+                    return JsonConvert.SerializeObject(new RequestResult
+                    {
+                        State = RequestState.Failed,
+                        Msg = "Please check your email to reset your password."
+                    });
+                }
+
+                // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=532713
+                //  Send an email with this link
+                var code = await _userManager.GeneratePasswordResetTokenAsync(user);
+                var callbackUrl = Url.Action("ResetPassword", "IdentityToken", new { userId = user.Id, code = code }, protocol: HttpContext.Request.Scheme);
+                //   await _emailSender.SendEmailAsync(model.Email, "Reset Password", $"Please reset your password by clicking here: <a href='{callbackUrl}'>link</a>");
+                await SendEmailAsync(model.Email, "Reset Password", $"Please reset your password by clicking here: <a href='{callbackUrl}'>link</a>");
+                return JsonConvert.SerializeObject(new RequestResult
+                {
+                    State = RequestState.Success,
+                    Msg = "Please check your email to reset your password."
+                });
+                // return View("ForgotPasswordConfirmation");
             }
-            var userFactors = await _userManager.GetValidTwoFactorProvidersAsync(user);
-            var factorOptions = userFactors.Select(purpose => new SelectListItem { Text = purpose, Value = purpose }).ToList();
-            return View(new SendCodeViewModel { Providers = factorOptions, ReturnUrl = returnUrl, RememberMe = rememberMe });
+
+            // If we got this far, something failed, redisplay form
+            //   return View(model);
+            return JsonConvert.SerializeObject(new RequestResult
+            {
+                State = RequestState.Failed,
+                Msg = "An error has occurred."
+            });
+        }
+        #endregion
+
+        #region Reset Password
+        // GET: api/IdentityToken/ResetPassword
+        [HttpGet("ResetPassword")]
+        public IActionResult ResetPassword(string code = null)
+        {
+            if (code == null)
+            {
+                return Json(new RequestResult
+                {
+                    State = RequestState.Failed,
+                    Msg = "An error has occurred."
+                });
+            }
+            else
+            {
+                return Json(new RequestResult
+                {
+                    State = RequestState.Success,
+                    Msg = "Reset Your Password."
+                });
+            }
+            //  return code == null ? View("Error") : View();
         }
 
-        //
-        // POST: /Account/SendCode
-        [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> SendCode(SendCodeViewModel model)
+        // POST: /api/IdentityToken/ResetPassword
+        [HttpPost("ResetPassword"), Produces("application/json")]
+        public async Task<IActionResult> ResetPassword([FromBody]ResetPasswordViewModel model)
         {
             if (!ModelState.IsValid)
             {
-                return View();
+                // return View(model);
+                return Json(new RequestResult
+                {
+                    State = RequestState.Failed,
+                    Msg = "An error has occurred."
+                });
+            }
+            var user = await _userManager.FindByNameAsync(model.Email);
+            if (user == null)
+            {
+                // Don't reveal that the user does not exist
+                //  return RedirectToAction(nameof(IdentityTokenController.ResetPasswordConfirmation), "IdentityToken");
+                return Json(new RequestResult
+                {
+                    State = RequestState.Failed,
+                    Msg = "An error has occurred."
+                });
+            }
+            var result = await _userManager.ResetPasswordAsync(user, model.Code, model.Password);
+            if (result.Succeeded)
+            {
+                return RedirectToAction(nameof(IdentityTokenController.ResetPasswordConfirmation), "IdentityToken");
+                //return JsonConvert.SerializeObject(new RequestResult
+                //{
+                //    State = RequestState.Failed,
+                //    Msg = "Reset Password Confirmation."
+                //});
+            }
+            string message = null;
+            message = AddErrors(result);
+            //  return View();
+            return Json(new RequestResult
+            {
+                State = RequestState.Failed,
+                Msg = message
+            });
+        }
+
+        // GET: api/IdentityToken/ResetPasswordConfirmation
+        [HttpGet("ResetPasswordConfirmation")]
+        public IActionResult ResetPasswordConfirmation()
+        {
+            return Json(new RequestResult
+            {
+                State = RequestState.Success,
+                Msg = "Your password has been reset."
+            });
+
+            // return View();
+        }
+
+        #endregion
+
+        #region Email Sending Code
+        public async Task SendEmailAsync(string email, string subject, string message)
+        {
+            var emailMessage = new MimeMessage();
+
+            emailMessage.From.Add(new MailboxAddress("", "krtya.test00@gmail.com"));
+            emailMessage.To.Add(new MailboxAddress("", email));
+            emailMessage.Subject = subject;
+
+            emailMessage.Body = new TextPart("html")
+            {
+                Text = message
+            };
+
+            using (var client = new SmtpClient())
+            {
+                await client.ConnectAsync("smtp.gmail.com", 587, false);
+                client.AuthenticationMechanisms.Remove("XOAUTH2"); // Must be removed for Gmail SMTP  Note: since we don't have an OAuth2 token, disable 	// the XOAUTH2 authentication mechanism. 
+                client.Authenticate("krtya.test00@gmail.com", "Pass#123");
+                await client.SendAsync(emailMessage);
+                await client.DisconnectAsync(true);
+            }
+        }
+        #endregion
+
+        #region SMS Sending Code
+        //[HttpGet("SendSms", Name = "SendSms")]
+        //public async Task<IActionResult> SendSms()
+        [HttpGet("SendSms", Name = "SendSms")]
+        public async Task<IActionResult> SendSms(string phone, string code)
+        {
+            using (var client = new HttpClient())
+            {
+                var byteArray = Encoding.ASCII.GetBytes($"{_settings.Value.TwilioId}:{_settings.Value.TwilioToken}");
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
+
+                var content = new FormUrlEncodedContent(new[]
+                {
+                    new KeyValuePair<string, string>("To","$+91" + phone),
+                    new KeyValuePair<string, string>("From", _settings.Value.TwilioPhoneNumber),
+                    new KeyValuePair<string, string>("Body", code)
+                });
+
+                await client.PostAsync(_settings.Value.TwilioUrl, content);
+            }
+            return new OkObjectResult(true);
+        }
+        #endregion
+
+
+        // GET: /api/IdentityToken/SendCode
+        [HttpGet("SendCode")]
+        public async Task<ActionResult> SendCode(bool rememberMe = false)
+        {
+            var user = await _signInManager.GetTwoFactorAuthenticationUserAsync();
+            if (user == null)
+            {
+                //return View("Error");
+                return Json(new RequestResult
+                {
+                    State = RequestState.Failed,
+                    Msg = "An error has occurred."
+                });
+            }
+            var userFactors = await _userManager.GetValidTwoFactorProvidersAsync(user);
+            var factorOptions = userFactors.Select(purpose => new SelectListItem { Text = purpose, Value = purpose }).ToList();
+            return View(new SendCodeViewModel { Providers = factorOptions, RememberMe = rememberMe });
+        }
+
+        // POST: /api/IdentityToken/SendCode
+        [HttpPost("SendCode"), Produces("application/json")]
+        public async Task<IActionResult> SendCode([FromBody]SendCodeViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                //return View();
+                return Json(new RequestResult
+                {
+                    State = RequestState.Failed,
+                    Msg = "An error has occurred."
+                });
             }
 
             var user = await _signInManager.GetTwoFactorAuthenticationUserAsync();
             if (user == null)
             {
-                return View("Error");
+                // return View("Error");
+                return Json(new RequestResult
+                {
+                    State = RequestState.Failed,
+                    Msg = "An error has occurred."
+                });
             }
 
             // Generate the token and send it
             var code = await _userManager.GenerateTwoFactorTokenAsync(user, model.SelectedProvider);
             if (string.IsNullOrWhiteSpace(code))
             {
-                return View("Error");
+                // return View("Error");
+                return Json(new RequestResult
+                {
+                    State = RequestState.Failed,
+                    Msg = "An error has occurred."
+                });
             }
 
             var message = "Your security code is: " + code;
             if (model.SelectedProvider == "Email")
             {
                 // await _emailSender.SendEmailAsync(await _userManager.GetEmailAsync(user), "Security Code", message);
+                await SendEmailAsync(await _userManager.GetEmailAsync(user), "Security Code", message);
             }
             else if (model.SelectedProvider == "Phone")
             {
                 // await _smsSender.SendSmsAsync(await _userManager.GetPhoneNumberAsync(user), message);
+                string UserPhone = await _userManager.GetPhoneNumberAsync(user);
+                await SendSms(UserPhone, message);
             }
 
             return RedirectToAction(nameof(VerifyCode), new { Provider = model.SelectedProvider, ReturnUrl = model.ReturnUrl, RememberMe = model.RememberMe });
         }
-        //
-        // GET: /Account/VerifyCode
-        [HttpGet]
-        [AllowAnonymous]
+
+        // GET: /api/IdentityToken/VerifyCode
+        [HttpGet("VerifyCode")]
         public async Task<IActionResult> VerifyCode(string provider, bool rememberMe, string returnUrl = null)
         {
             // Require that the user has already logged in via username/password or external login
             var user = await _signInManager.GetTwoFactorAuthenticationUserAsync();
             if (user == null)
             {
-                return View("Error");
+                // return View("Error");
+                return Json(new RequestResult
+                {
+                    State = RequestState.Failed,
+                    Msg = "An error has occurred."
+                });
             }
             return View(new VerifyCodeViewModel { Provider = provider, ReturnUrl = returnUrl, RememberMe = rememberMe });
         }
 
-        //
-        // POST: /Account/VerifyCode
-        [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> VerifyCode(VerifyCodeViewModel model)
+        // POST: /api/IdentityToken/VerifyCode
+        [HttpPost("VerifyCode"), Produces("application/json")]
+        public async Task<IActionResult> VerifyCode([FromBody]VerifyCodeViewModel model)
         {
             if (!ModelState.IsValid)
             {
-                return View(model);
+                //  return View(model);
+                return Json(new RequestResult
+                {
+                    State = RequestState.Failed,
+                    Msg = "An error has occurred."
+                });
             }
 
             // The following code protects for brute force attacks against the two factor codes.
@@ -457,19 +709,37 @@ namespace EasyHRMS_Angular.Controllers
             if (result.Succeeded)
             {
                 // return RedirectToLocal(model.ReturnUrl);
+
+                if (Url.IsLocalUrl(model.ReturnUrl))
+                {
+                    return Redirect(model.ReturnUrl);
+                }
+                else
+                {
+                    //  return RedirectToAction(nameof(HomeController.Index), "Home");
+                }
             }
             if (result.IsLockedOut)
             {
-                _logger.LogWarning(7, "User account locked out.");
-                return View("Lockout");
+                //  _logger.LogWarning(7, "User account locked out.");
+                //  return View("Lockout");
+                return Json(new RequestResult
+                {
+                    State = RequestState.Failed,
+                    Msg = "User account locked out."
+                });
             }
             else
             {
-                ModelState.AddModelError(string.Empty, "Invalid code.");
-                return View(model);
+                // ModelState.AddModelError(string.Empty, "Invalid code.");
+                // return View(model);
+                return Json(new RequestResult
+                {
+                    State = RequestState.Failed,
+                    Msg = "Invalid code."
+                });
             }
         }
-        #endregion
 
         #region Helpers
 
