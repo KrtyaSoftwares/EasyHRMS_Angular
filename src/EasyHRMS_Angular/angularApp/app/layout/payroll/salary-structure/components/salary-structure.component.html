@@ -30,7 +30,10 @@
                       <tr *ngFor="let struct of pagedItems">                                                
                         <td>{{struct.name}}</td>
                         <td>{{struct.description}}</td>
-                        <td><!-- <p-inputSwitch onLabel="Yes" offLabel="No" [(ngModel)]="struct.isActive" disabled></p-inputSwitch>--> </td>
+                        <td>
+                            <button *ngIf="struct.isActive" type="button" class="btn btn-sm btn-success" title="Check"><i class="fa fa-check"></i></button>
+                            <button *ngIf="!struct.isActive" type="button" class="btn btn-sm btn-danger" title="Delete"><i class="fa fa-remove" ></i></button> 
+                        </td>
                         <td>
                           <button [routerLink]="['/payroll/salary-structure/form/' + struct.id]" type="button" class="btn btn-sm btn-warning" title="Edit"><i class="fa fa-pencil"></i></button>  
                           <button (click)="delete(struct.id)" type="button" class="btn btn-sm btn-danger" title="Delete"><i class="fa fa-remove" ></i></button>

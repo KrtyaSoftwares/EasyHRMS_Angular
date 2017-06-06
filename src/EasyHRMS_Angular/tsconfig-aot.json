@@ -39,6 +39,7 @@
     "angularApp/app/layout/employee/employee.module.ts",
     "angularApp/app/layout/lookup/lookup.module.ts",
     "angularApp/app/layout/leaveandattendance/leaveandattendance.module.ts",
+    "angularApp/app/layout/leaveandattendance/leave-structure/leave-structure.module.ts",
     "angularApp/app/layout/templates/templates.module.ts",
     "angularApp/app/layout/templates/email-template/email-template.module.ts",
     "angularApp/app/layout/templates/record-template/record-template.module.ts",

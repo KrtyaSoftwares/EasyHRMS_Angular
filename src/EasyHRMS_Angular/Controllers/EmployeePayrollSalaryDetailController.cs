@@ -130,19 +130,126 @@ namespace EasyHRMS_Angular.Controllers
         {
             object result = null;
 
-            List<EmployeePayrollSalaryDetail> list = new List<EmployeePayrollSalaryDetail>();
+            List<EmployeePayrollSalaryDetailVM> list = new List<EmployeePayrollSalaryDetailVM>();
+            List<EmployeePayrollCategoryVM> Defaultlist = new List<EmployeePayrollCategoryVM>();
             try
             {
                 using (_context)
                 {
-                    list = _context.EmployeePayrollSalaryDetail.Where(x => x.EmployeeId == id).ToList();
+                    list = _context.EmployeePayrollSalaryDetail.Where(x => x.EmployeeId == id).Select(y => new EmployeePayrollSalaryDetailVM
+                    {
+                       Id = y.Id,
+                       EmployeeId = y.EmployeeId,
+                       DepartmentId = y.DepartmentId,
+                       SalaryStructureId = y.SalaryStructureId,
+                       PayrollCategoryId = y.PayrollCategoryId,
+                       Amount = y.Amount,
+                       IsDeduction = y.IsDeduction,
+                       IsBasedOnAttandance = y.IsBasedOnAttandance
+                    }).ToList();
+                    if(list.Count > 0)
+                    {
+                        foreach (var SalaryDetail in list)
+                        {
+                            EmployeePayrollCategory objSalary = _context.EmployeePayrollCategory.Where(y => y.Id == SalaryDetail.PayrollCategoryId).FirstOrDefault();
+
+                            if(objSalary != null)
+                            {
+                                SalaryDetail.PayrollCategoryName = objSalary.CategoryName;
+                                SalaryDetail.Percentage = objSalary.Percentage;
+                                SalaryDetail.PercentageOf = objSalary.PercentageOf;
+                                SalaryDetail.Period = objSalary.Period;
+                            }
+
+                            if (objSalary.PercentageOf != null)
+                            {
+
+                                List<string> PayIdlist = objSalary.PercentageOf.Split(',').ToList();
+                                List<int> PayIds = PayIdlist.Select(y => int.Parse(y)).ToList();
+
+                                List<string> PayName = _context.EmployeePayrollCategory.Where(y => PayIds.Contains(y.Id)).Select(p => p.CategoryName).ToList();
+                                SalaryDetail.PercentageOfNameList = string.Join(",", PayName);
+                            }
+
+                            SalaryDetail.SalaryStructureName = SalaryDetail.SalaryStructureId != null ? _context.SalaryStructure.Where(p => p.Id == SalaryDetail.SalaryStructureId).FirstOrDefault().Name : null;
+                        }
+                    }
+                    else
+                    {
+                        var DepartmentId = _context.EmployeeDetails.Where(x => x.EmployeeId == id).FirstOrDefault() != null ? _context.EmployeeDetails.Where(x => x.EmployeeId == id).FirstOrDefault().F12 : null;
+
+                        if(DepartmentId != null)
+                        {
+                            var SalaryStructureId = _context.SalaryStructureDepartmentMapping.Where(y => y.DepartmentId == int.Parse(DepartmentId)).FirstOrDefault() != null ? _context.SalaryStructureDepartmentMapping.Where(y => y.DepartmentId == int.Parse(DepartmentId)).FirstOrDefault().SalaryStructureId : null;
+                            if(SalaryStructureId != null)
+                            {
+                                List<int?> PayrollCategoryIds = _context.SalaryStructurePayrollCategoryMapping.Where(z => z.SalaryStructureId == SalaryStructureId).Select(p => p.PayrollCategoryId).ToList();
+                                Defaultlist = _context.EmployeePayrollCategory.Where(q => PayrollCategoryIds.Contains(q.Id)).Select(z => new EmployeePayrollCategoryVM{
+                                    Id = z.Id,
+                                    CategoryName = z.CategoryName,
+                                    Type = z.Type,
+                                    Percentage = z.Percentage,
+                                    PercentageOf = z.PercentageOf,
+                                    Amount = z.Amount,
+                                    Status = z.Status,
+                                    IsDeduction = z.IsDeduction,
+                                    Description = z.Description,
+                                    IsDefault = z.IsDefault,
+                                    TaxDeducted = z.TaxDeducted,
+                                    Insurationdeducted = z.Insurationdeducted,
+                                    Pensiondeducted = z.Pensiondeducted,
+                                    IsBasedOnAttandance = z.IsBasedOnAttandance,
+                                    Total = z.Total,
+                                    Period = z.Period,
+                                    Inbuilt = z.Inbuilt
+
+                                }).ToList();
+
+
+                                foreach (var Pay in Defaultlist)
+                                {
+                                    if(Pay.PercentageOf != null)
+                                    {
+                                        
+                                        List<string> PayIdlist = Pay.PercentageOf.Split(',').ToList();
+                                        List<int> PayIds = PayIdlist.Select(y => int.Parse(y)).ToList();
+
+                                        List<string> PayName = _context.EmployeePayrollCategory.Where(y => PayIds.Contains(y.Id)).Select(p => p.CategoryName).ToList();
+                                        Pay.PercentageOfNameList = string.Join(",", PayName);
+                                    }
+
+                                    EmployeePayrollSalaryDetailVM objSalaryDetail = new EmployeePayrollSalaryDetailVM();
+                                    objSalaryDetail.EmployeeId = id;
+                                    objSalaryDetail.DepartmentId = int.Parse(DepartmentId);
+                                    objSalaryDetail.SalaryStructureId = SalaryStructureId;
+                                    objSalaryDetail.PayrollCategoryId = Pay.Id;
+                                    objSalaryDetail.Amount = Pay.Amount;
+                                    objSalaryDetail.IsDeduction = Pay.IsDeduction;
+                                    objSalaryDetail.IsBasedOnAttandance = Pay.IsBasedOnAttandance;
+                                    objSalaryDetail.PayrollCategoryName = Pay.CategoryName;
+                                    objSalaryDetail.Percentage = Pay.Percentage;
+                                    objSalaryDetail.PercentageOf = Pay.PercentageOf;
+                                    objSalaryDetail.PercentageOfNameList = Pay.PercentageOfNameList;
+                                    objSalaryDetail.Period = Pay.Period;
+
+                                    objSalaryDetail.SalaryStructureName = objSalaryDetail.SalaryStructureId != null ? _context.SalaryStructure.Where(p => p.Id == objSalaryDetail.SalaryStructureId).FirstOrDefault().Name : null;
+
+                                    list.Add(objSalaryDetail);
+                                }
+                            }
+
+                        }
+                        
+                    }
 
                     result = new
                     {
                         list,
+                        //Defaultlist,
                         error = "0",
                         msg = "Success"
                     };
+
                 }
             }
             catch (Exception ex)
@@ -151,8 +258,9 @@ namespace EasyHRMS_Angular.Controllers
                 result = new
                 {
                     list,
+                    //Defaultlist,
                     error = "1",
-                    msg = "Error"
+                    msg = ex.ToString()
                 };
             }
             return result;
@@ -284,8 +392,8 @@ namespace EasyHRMS_Angular.Controllers
         }
 
         // POST api/EmployeePayrollSalaryDetail/CreateUpdateEmployeePayrollSalaryDetail
-        [HttpPost, Route("CreateUpdateEmployeePayrollSalaryDetail/{id}"), Produces("application/json")]
-        public object CreateUpdateEmployeePayrollSalaryDetail(int id, [FromBody]List<EmployeePayrollSalaryDetail> model)
+        [HttpPost, Route("CreateUpdateEmployeePayrollSalaryDetail"), Produces("application/json")]
+        public object CreateUpdateEmployeePayrollSalaryDetail([FromBody]List<EmployeePayrollSalaryDetail> model)
         {
             object result = null;
             string message = "";
@@ -301,74 +409,59 @@ namespace EasyHRMS_Angular.Controllers
                 {
                     try
                     {
-                        if (id != 0)
+                        foreach (var PayrollSalaryDetail in model)
                         {
-                            Decimal? GrossSalary = 0;
-                            foreach (var EmployeeSalary in model)
+                            if (PayrollSalaryDetail.Id != 0)
                             {
-                                if (EmployeeSalary.Amount != null)
+                                Decimal? GrossSalary = 0;
+                                foreach (var EmployeeSalary in model)
                                 {
-                                    GrossSalary += EmployeeSalary.Amount;
+                                    if (EmployeeSalary.Amount != null)
+                                    {
+                                        GrossSalary += EmployeeSalary.Amount;
+                                    }
                                 }
-                            }
 
-                            foreach (var EmployeeSalary in model)
-                            {
-                                var entityUpdate = _context.EmployeePayrollSalaryDetail.FirstOrDefault(x => x.Id == EmployeeSalary.Id);
+                                var entityUpdate = _context.EmployeePayrollSalaryDetail.FirstOrDefault(x => x.Id == PayrollSalaryDetail.Id);
 
                                 if (entityUpdate != null)
                                 {
-                                    entityUpdate.EmployeeId = EmployeeSalary.EmployeeId;
-                                    entityUpdate.DepartmentId = EmployeeSalary.DepartmentId;
-                                    entityUpdate.SalaryStructureId = EmployeeSalary.SalaryStructureId;
-                                    entityUpdate.PayrollCategoryId = EmployeeSalary.PayrollCategoryId;
-                                    entityUpdate.Amount = EmployeeSalary.Amount;
+                                    entityUpdate.EmployeeId = PayrollSalaryDetail.EmployeeId;
+                                    entityUpdate.DepartmentId = PayrollSalaryDetail.DepartmentId;
+                                    entityUpdate.SalaryStructureId = PayrollSalaryDetail.SalaryStructureId;
+                                    entityUpdate.PayrollCategoryId = PayrollSalaryDetail.PayrollCategoryId;
+                                    entityUpdate.Amount = PayrollSalaryDetail.Amount;
                                     entityUpdate.GrossSalary = GrossSalary;
-                                    entityUpdate.IsDeduction = EmployeeSalary.IsDeduction;
-                                    entityUpdate.IsBasedOnAttandance = EmployeeSalary.IsBasedOnAttandance;
-                                    entityUpdate.CreatedDate = EmployeeSalary.CreatedDate;
+                                    entityUpdate.IsDeduction = PayrollSalaryDetail.IsDeduction;
+                                    entityUpdate.IsBasedOnAttandance = PayrollSalaryDetail.IsBasedOnAttandance;
+                                    entityUpdate.CreatedDate = PayrollSalaryDetail.CreatedDate;
 
                                     _context.SaveChanges();
                                 }
+                                
+                                _ctxTransaction.Commit();
+                                message = "Entry Updated";
+                                errorcode = "0";
                             }
-
-                            _ctxTransaction.Commit();
-                            message = "Entry Updated";
-                            errorcode = "0";
-                        }
-                        else
-                        {
-                            Decimal? GrossSalary = 0;
-                            foreach (var EmployeeSalary in model)
+                            else
                             {
-                                if (EmployeeSalary.Amount != null)
+                                Decimal? GrossSalary = 0;
+                                foreach (var EmployeeSalary in model)
                                 {
-                                    GrossSalary += EmployeeSalary.Amount;
+                                    if (EmployeeSalary.Amount != null)
+                                    {
+                                        GrossSalary += EmployeeSalary.Amount;
+                                    }
                                 }
+
+                                 PayrollSalaryDetail.CreatedDate = DateTime.Now;
+                                PayrollSalaryDetail.GrossSalary = GrossSalary;
+                                _context.EmployeePayrollSalaryDetail.Add(PayrollSalaryDetail);
+                                _ctxTransaction.Commit();
+                                message = "Saved Successfully";
+                                errorcode = "0";
                             }
 
-                            foreach (var EmployeeSalary in model)
-                            {
-                                var entityUpdate = _context.EmployeePayrollSalaryDetail.FirstOrDefault(x => x.Id == EmployeeSalary.Id);
-
-                                if (entityUpdate != null)
-                                {
-                                    entityUpdate.EmployeeId = EmployeeSalary.EmployeeId;
-                                    entityUpdate.DepartmentId = EmployeeSalary.DepartmentId;
-                                    entityUpdate.SalaryStructureId = EmployeeSalary.SalaryStructureId;
-                                    entityUpdate.PayrollCategoryId = EmployeeSalary.PayrollCategoryId;
-                                    entityUpdate.Amount = EmployeeSalary.Amount;
-                                    entityUpdate.GrossSalary = GrossSalary;
-                                    entityUpdate.IsDeduction = EmployeeSalary.IsDeduction;
-                                    entityUpdate.IsBasedOnAttandance = EmployeeSalary.IsBasedOnAttandance;
-                                    entityUpdate.CreatedDate = EmployeeSalary.CreatedDate;
-
-                                    _context.SaveChanges();
-                                }
-                            }
-                            _ctxTransaction.Commit();
-                            message = "Saved Successfully";
-                            errorcode = "0";
                         }
 
                     }
@@ -490,12 +583,14 @@ namespace EasyHRMS_Angular.Controllers
         public object GetEmployeeSalaryDetailsList()
         {
             object result = null;
+            List<EmployeeSalaryDetailsListVM> list1 = new List<EmployeeSalaryDetailsListVM>();
             List<EmployeeSalaryDetailsListVM> list = new List<EmployeeSalaryDetailsListVM>();
             try
             {
                 using (_context)
                 {
-                    list = _context.EmployeeDetails.Select(x => new
+                    var abc = _context.EmployeePayrollSalaryDetail.Where(y => y.EmployeeId == 1).FirstOrDefault();
+                    list1 = _context.EmployeeDetails.Select(x => new
                     {
                         Id = x.EmployeeId,
                         EmployeeId = x.EmployeeId,
@@ -503,8 +598,10 @@ namespace EasyHRMS_Angular.Controllers
                         FullName = x.F2 + " " + x.F3,
                         JoiningDate = x.F17,
                         Department = x.F12,
+                        DepartmentName = x.F12 != null ? _context.LookupData.Where(z => z.RowId == int.Parse(x.F12) && z.FieldName == "DepartmentName").FirstOrDefault().Value : null,
                         Position = x.F19,
-                        Ctc = _context.EmployeePayrollSalaryDetail.Where(y => y.EmployeeId == x.EmployeeId).FirstOrDefault().GrossSalary,
+                        //Ctc = _context.EmployeePayrollSalaryDetail.Where(y => y.EmployeeId == x.EmployeeId).FirstOrDefault() != null ? _context.EmployeePayrollSalaryDetail.Where(y => y.EmployeeId == x.EmployeeId).FirstOrDefault().GrossSalary : null
+                        //Ctc = _context.EmployeePayrollSalaryDetail.Where(y => y.EmployeeId == x.EmployeeId).FirstOrDefault() != null ? _context.EmployeePayrollSalaryDetail.Where(y => y.EmployeeId == x.EmployeeId).FirstOrDefault().GrossSalary : null,
                         //Ctc = _context.EmployeePayrollCategory.Where(q => _context.SalaryStructurePayrollCategoryMapping.Where(z => z.SalaryStructureId == _context.SalaryStructureDepartmentMapping.Where(y => y.DepartmentId == int.Parse(x.F12)).FirstOrDefault().SalaryStructureId).Select(p => p.PayrollCategoryId).ToList().Contains(q.Id)).ToList().Sum(r => r.Amount),
                         //ProfessionalTax
                     }).OrderBy(x => x.Id).ToList().Select(x => new EmployeeSalaryDetailsListVM()
@@ -515,25 +612,48 @@ namespace EasyHRMS_Angular.Controllers
                         FullName = x.FullName,
                         JoiningDate = x.JoiningDate,
                         Department = x.Department,
+                        DepartmentName = x.DepartmentName,
                         Position = x.Position,
-                        Ctc = x.Ctc,
+                        //Ctc = x.Ctc,
                         //ProfessionalTax
                     }).OrderBy(x => x.Id).ToList();
 
-                    foreach (var SalaryDetail in list)
+                    foreach (var SalaryDetail in list1)
                     {
-                        if(SalaryDetail.Department != null && SalaryDetail.Department != "")
+                        Decimal? CTCAmount = _context.EmployeePayrollSalaryDetail.Where(y => y.EmployeeId == SalaryDetail.EmployeeId).FirstOrDefault() != null ? _context.EmployeePayrollSalaryDetail.Where(y => y.EmployeeId == SalaryDetail.EmployeeId).FirstOrDefault().GrossSalary : null;
+                        if(CTCAmount != null)
                         {
-                            var SalaryStructureId = _context.SalaryStructureDepartmentMapping.Where(y => y.DepartmentId == int.Parse(SalaryDetail.Department)).FirstOrDefault().SalaryStructureId;
-                            if (SalaryStructureId != null)
+                            SalaryDetail.Ctc = CTCAmount;
+                        }
+                        else
+                        {
+                            if (SalaryDetail.Department != null && SalaryDetail.Department != "")
                             {
-                                List<int?> PayrollCategoryIds = _context.SalaryStructurePayrollCategoryMapping.Where(z => z.SalaryStructureId == SalaryStructureId).Select(p => p.PayrollCategoryId).ToList();
-                                var TotalAmount = _context.EmployeePayrollCategory.Where(q => PayrollCategoryIds.Contains(q.Id)).ToList().Sum(r => r.Amount);
-                                SalaryDetail.Ctc = TotalAmount;
+                                var SalaryStructureId = _context.SalaryStructureDepartmentMapping.Where(y => y.DepartmentId == int.Parse(SalaryDetail.Department)).FirstOrDefault() == null ? null : _context.SalaryStructureDepartmentMapping.Where(y => y.DepartmentId == int.Parse(SalaryDetail.Department)).FirstOrDefault().SalaryStructureId;
+                                if (SalaryStructureId != null)
+                                {
+                                    List<int?> PayrollCategoryIds = _context.SalaryStructurePayrollCategoryMapping.Where(z => z.SalaryStructureId == SalaryStructureId).Select(p => p.PayrollCategoryId).ToList();
+                                    var TotalAmount = _context.EmployeePayrollCategory.Where(q => PayrollCategoryIds.Contains(q.Id)).ToList().Sum(r => r.Amount);
+                                    SalaryDetail.Ctc = TotalAmount;
+                                }
+                            }
+                        }
+                       
+                    }
+
+                    foreach (var SalaryDetail in list1)
+                    {
+                        if (SalaryDetail.Department != null && SalaryDetail.Department != "")
+                        {
+                            SalaryStructureDepartmentMapping SalaryStructureDMapp = _context.SalaryStructureDepartmentMapping.Where(y => y.DepartmentId == int.Parse(SalaryDetail.Department)).FirstOrDefault();
+                            if (SalaryStructureDMapp != null)
+                            {
+                                list.Add(SalaryDetail);
                             }
                         }
                     }
-                    result = new
+
+                        result = new
                     {
                         list,
                         error = "0",

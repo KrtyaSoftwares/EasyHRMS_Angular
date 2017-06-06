@@ -24,5 +24,7 @@ namespace EasyHRMS_Angular.ModelsVM
         public double? Total { get; set; }
         public int? Period { get; set; }
         public bool? Inbuilt { get; set; }
+
+        public string PercentageOfNameList { get; set; }
     }
 }
