@@ -75,7 +75,19 @@ namespace EasyHRMS_Angular.Controllers
 
                     }).ToList();
 
-                    result = new
+                    foreach (var Pay in list)
+                    {
+                        if (Pay.PercentageOf != null)
+                        {
+
+                            List<string> PayIdlist = Pay.PercentageOf.Split(',').ToList();
+                            List<int> PayIds = PayIdlist.Select(y => int.Parse(y)).ToList();
+
+                            List<string> PayName = _context.EmployeePayrollCategory.Where(y => PayIds.Contains(y.Id)).Select(p => p.CategoryName).ToList();
+                            Pay.PercentageOfNameList = string.Join(",", PayName);
+                        }
+                    }
+                        result = new
                     {
                         list,
                         error = "0",
