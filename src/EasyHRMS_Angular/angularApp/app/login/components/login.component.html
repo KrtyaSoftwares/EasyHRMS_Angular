@@ -13,17 +13,34 @@
                         <div class="alert alert-danger hide">
                             <button type="button" class="close" data-dismiss="alert">×</button>
                             <h4>Error!</h4>
-                            Your Error Message goes here
+                            <!--Your Error Message goes here-->
+                            <!--<div class="alert alert-danger"
+                                 [hidden]="employeeLeaveForm.get('leaveTypeId').valid || (employeeLeaveForm.get('leaveTypeId').pristine && !submitted)">
+                                * Leave Type is required
+                            </div>-->
+                        </div>
+                        <div class="alert alert-danger"
+                             [hidden]="userLoginForm.get('email').valid || (userLoginForm.get('email').pristine && !submitted && !Invalid)">
+                             User Email & Password is Invalid
                         </div>
                         <!-- END ERROR BOX -->
-                        <form action="#" method="post">
-                            <input type="text" placeholder="Username" class="input-field form-control user" />
-                            <input type="password" placeholder="Password" class="input-field form-control password" />
-                            <button type="submit" class="btn btn-login">Login</button>
+                        <!--<form action="#" method="post">-->
+                        <form id="loginform" name="loginform" [formGroup]="userLoginForm" (ngSubmit)="onSubmit(userLoginForm.value, userLoginForm.valid)" novalidate>
+                            <input type="text" placeholder="Username" class="input-field form-control user" formControlName="email" [(ngModel)]="_UserLoginModel.email" />
+                            <div class="alert alert-danger"
+                                 [hidden]="userLoginForm.get('email').valid || (userLoginForm.get('email').pristine && !submitted)">
+                                * User Email is required
+                            </div>
+                            <input type="password" placeholder="Password" class="input-field form-control password" formControlName="password" [(ngModel)]="_UserLoginModel.password" />
+                            <div class="alert alert-danger"
+                                 [hidden]="userLoginForm.get('password').valid || (userLoginForm.get('password').pristine && !submitted)">
+                                * User Password is required
+                            </div>
+                            <button type="submit" class="btn btn-login" (click)="onSubmit(userLoginForm.value, userLoginForm.valid)">Login</button>
                         </form>
                         <div class="login-links">
                             <a [routerLink]="['/forgotpassword']">Forgot password?</a>
-                           
+
                         </div>
                     </div>
                 </div>
@@ -31,3 +48,5 @@
             </div>
         </div>
     </div>
+
+<p-growl [value]="msgs"></p-growl>

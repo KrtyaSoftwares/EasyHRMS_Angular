@@ -9,6 +9,7 @@ import { CommonDataService } from './../../../core/services/common/common-data.s
 export class HeaderComponent implements OnInit {
     showSelfServiceLink: any;
     mainHeader: string;
+    userName: string;
 
     constructor(public router: Router, private commondataservice: CommonDataService) {
 
@@ -23,6 +24,11 @@ export class HeaderComponent implements OnInit {
             this.showSelfServiceLink = true;
             this.mainHeader = 'Control Panel';
         }
+        console.log(JSON.parse(sessionStorage.getItem('currentUser')));
+        if (JSON.parse(sessionStorage.getItem('currentUser')) != null) {
+            this.userName = JSON.parse(sessionStorage.getItem('currentUser')).username;
+        }
+        console.log(this.userName);
     }
     showEmployeeLinkV(con: any) {
         this.showSelfServiceLink = con;

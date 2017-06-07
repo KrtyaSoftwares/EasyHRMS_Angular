@@ -131,12 +131,13 @@ namespace EasyHRMS_Angular.Controllers
             object result = null;
 
             List<EmployeePayrollSalaryDetailVM> list = new List<EmployeePayrollSalaryDetailVM>();
+            List<EmployeePayrollSalaryDetailVM> listTemp = new List<EmployeePayrollSalaryDetailVM>();
             List<EmployeePayrollCategoryVM> Defaultlist = new List<EmployeePayrollCategoryVM>();
             try
             {
                 using (_context)
                 {
-                    list = _context.EmployeePayrollSalaryDetail.Where(x => x.EmployeeId == id).Select(y => new EmployeePayrollSalaryDetailVM
+                    listTemp = _context.EmployeePayrollSalaryDetail.Where(x => x.EmployeeId == id).Select(y => new EmployeePayrollSalaryDetailVM
                     {
                        Id = y.Id,
                        EmployeeId = y.EmployeeId,
@@ -147,35 +148,35 @@ namespace EasyHRMS_Angular.Controllers
                        IsDeduction = y.IsDeduction,
                        IsBasedOnAttandance = y.IsBasedOnAttandance
                     }).ToList();
-                    if(list.Count > 0)
-                    {
-                        foreach (var SalaryDetail in list)
-                        {
-                            EmployeePayrollCategory objSalary = _context.EmployeePayrollCategory.Where(y => y.Id == SalaryDetail.PayrollCategoryId).FirstOrDefault();
+                    //if(list.Count > 0)
+                    //{
+                        //foreach (var SalaryDetail in list)
+                        //{
+                        //    EmployeePayrollCategory objSalary = _context.EmployeePayrollCategory.Where(y => y.Id == SalaryDetail.PayrollCategoryId).FirstOrDefault();
 
-                            if(objSalary != null)
-                            {
-                                SalaryDetail.PayrollCategoryName = objSalary.CategoryName;
-                                SalaryDetail.Percentage = objSalary.Percentage;
-                                SalaryDetail.PercentageOf = objSalary.PercentageOf;
-                                SalaryDetail.Period = objSalary.Period;
-                            }
+                        //    if(objSalary != null)
+                        //    {
+                        //        SalaryDetail.PayrollCategoryName = objSalary.CategoryName;
+                        //        SalaryDetail.Percentage = objSalary.Percentage;
+                        //        SalaryDetail.PercentageOf = objSalary.PercentageOf;
+                        //        SalaryDetail.Period = objSalary.Period;
+                        //    }
 
-                            if (objSalary.PercentageOf != null)
-                            {
+                        //    if (objSalary.PercentageOf != null)
+                        //    {
 
-                                List<string> PayIdlist = objSalary.PercentageOf.Split(',').ToList();
-                                List<int> PayIds = PayIdlist.Select(y => int.Parse(y)).ToList();
+                        //        List<string> PayIdlist = objSalary.PercentageOf.Split(',').ToList();
+                        //        List<int> PayIds = PayIdlist.Select(y => int.Parse(y)).ToList();
 
-                                List<string> PayName = _context.EmployeePayrollCategory.Where(y => PayIds.Contains(y.Id)).Select(p => p.CategoryName).ToList();
-                                SalaryDetail.PercentageOfNameList = string.Join(",", PayName);
-                            }
+                        //        List<string> PayName = _context.EmployeePayrollCategory.Where(y => PayIds.Contains(y.Id)).Select(p => p.CategoryName).ToList();
+                        //        SalaryDetail.PercentageOfNameList = string.Join(",", PayName);
+                        //    }
 
-                            SalaryDetail.SalaryStructureName = SalaryDetail.SalaryStructureId != null ? _context.SalaryStructure.Where(p => p.Id == SalaryDetail.SalaryStructureId).FirstOrDefault().Name : null;
-                        }
-                    }
-                    else
-                    {
+                        //    SalaryDetail.SalaryStructureName = SalaryDetail.SalaryStructureId != null ? _context.SalaryStructure.Where(p => p.Id == SalaryDetail.SalaryStructureId).FirstOrDefault().Name : null;
+                        //}
+                    //}
+                    //else
+                    //{
                         var DepartmentId = _context.EmployeeDetails.Where(x => x.EmployeeId == id).FirstOrDefault() != null ? _context.EmployeeDetails.Where(x => x.EmployeeId == id).FirstOrDefault().F12 : null;
 
                         if(DepartmentId != null)
@@ -239,9 +240,22 @@ namespace EasyHRMS_Angular.Controllers
                             }
 
                         }
-                        
-                    }
 
+                    //}
+
+                    if (listTemp.Count > 0)
+                    {
+                        foreach (var PaySalary in list)
+                        {
+                            EmployeePayrollSalaryDetailVM PaySalaryTemp = listTemp.Where(y => y.EmployeeId == PaySalary.EmployeeId && y.DepartmentId == PaySalary.DepartmentId && y.SalaryStructureId == PaySalary.SalaryStructureId && y.PayrollCategoryId == PaySalary.PayrollCategoryId).FirstOrDefault();
+
+                            if (PaySalaryTemp != null)
+                            {
+                                PaySalary.Id = PaySalaryTemp.Id;
+                                PaySalary.Amount = PaySalaryTemp.Amount;
+                            }
+                        }
+                    }
                     result = new
                     {
                         list,
@@ -287,6 +301,30 @@ namespace EasyHRMS_Angular.Controllers
                         Decimal? GrossSalary = 0;
                         foreach (var EmployeeSalary in model)
                         {
+                            if(EmployeeSalary.PayrollCategoryId != null)
+                            {
+                                EmployeePayrollCategory objPayrollCategory = _context.EmployeePayrollCategory.Where(y => y.Id == EmployeeSalary.PayrollCategoryId).FirstOrDefault();
+                                if(objPayrollCategory.Type == true)
+                                {
+                                    List<int?> PayrollIds = objPayrollCategory.PercentageOf.Split(',').Select(x => (int?)int.Parse(x)).ToList();
+                                    Decimal? AmountTemp = 0;
+                                    foreach (var EmployeeSal in model)
+                                    {
+                                        if(PayrollIds.Contains(EmployeeSal.PayrollCategoryId))
+                                        {
+                                            AmountTemp += EmployeeSal.Amount;
+                                        }
+                                    }
+                                    if(AmountTemp != 0)
+                                    {
+                                        EmployeeSalary.Amount = AmountTemp * objPayrollCategory.Percentage / 100;
+                                    }
+                                    else
+                                    {
+                                        EmployeeSalary.Amount = AmountTemp;
+                                    }
+                                }
+                            }
                             if (EmployeeSalary.Amount != null)
                             {
                                 GrossSalary += EmployeeSalary.Amount;
