@@ -35,7 +35,7 @@ export class UserLoginService {
                     if (res.json().state == '1') {
                         this.token = res.json().data.accessToken;
                         if (this.token) {
-                            localStorage.setItem('currentUser', JSON.stringify({ username: userName, token: this.token }));
+                            sessionStorage.setItem('currentUser', JSON.stringify({ username: userName, token: this.token }));
                         }
                         return true;
                     }
@@ -46,7 +46,7 @@ export class UserLoginService {
 
     logout(): void {
         this.token = null;
-        localStorage.removeItem('currentUser');
+        sessionStorage.removeItem('currentUser');
     }
 
     //public UserLogin = (data: any): Observable<any> => {

@@ -24,8 +24,11 @@ export class HeaderComponent implements OnInit {
             this.showSelfServiceLink = true;
             this.mainHeader = 'Control Panel';
         }
-        this.userName = JSON.parse(localStorage.getItem('currentUser')).username;
-        //console.log(this.userName);
+        console.log(JSON.parse(sessionStorage.getItem('currentUser')));
+        if (JSON.parse(sessionStorage.getItem('currentUser')) != null) {
+            this.userName = JSON.parse(sessionStorage.getItem('currentUser')).username;
+        }
+        console.log(this.userName);
     }
     showEmployeeLinkV(con: any) {
         this.showSelfServiceLink = con;
