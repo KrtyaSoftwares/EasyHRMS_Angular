@@ -269,7 +269,7 @@ namespace EasyHRMS_Angular.Controllers
         #region Registration
         //POST : api/IdentityToken/Register
         [HttpPost("Register"), Produces("application/json")]
-        public async Task<string> Register([FromBody]RegisterViewModel model)
+        public async Task<IActionResult> Register([FromBody]RegisterViewModel model)
         {
             if (ModelState.IsValid)
             {
@@ -287,7 +287,7 @@ namespace EasyHRMS_Angular.Controllers
 
                     await _signInManager.SignInAsync(user, isPersistent: false);
 
-                    return JsonConvert.SerializeObject(new RequestResult
+                    return Json(new RequestResult
                     {
                         State = RequestState.Success,
                         Msg = "Please check your email to confirm your account."
@@ -297,7 +297,7 @@ namespace EasyHRMS_Angular.Controllers
                 }
                 string message = null;
                 message = AddErrors(result);
-                return JsonConvert.SerializeObject(new RequestResult
+                return Json(new RequestResult
                 {
                     State = RequestState.Failed,
                     Msg = message
@@ -306,7 +306,7 @@ namespace EasyHRMS_Angular.Controllers
 
             // If we got this far, something failed, redisplay form
             // return View(model);
-            return JsonConvert.SerializeObject(new RequestResult
+            return Json(new RequestResult
             {
                 State = RequestState.Failed,
                 Msg = "Registration Falied."
@@ -317,12 +317,12 @@ namespace EasyHRMS_Angular.Controllers
         #region LogOff
         // POST: api/IdentityToken/LogOff
         [HttpPost("LogOff"), Produces("application/json")]
-        public async Task<string> LogOff()
+        public async Task<IActionResult> LogOff()
         {
             await _signInManager.SignOutAsync();
             //  _logger.LogInformation(4, "User logged out.");
             //return RedirectToAction("Login");
-            return JsonConvert.SerializeObject(new RequestResult
+            return Json(new RequestResult
             {
                 State = RequestState.Success,
                 Msg = "User logged out."
@@ -378,11 +378,11 @@ namespace EasyHRMS_Angular.Controllers
         #region Change Password
         // POST: /api/IdentityToken/ChangePassword
         [HttpPost("ChangePassword"), Produces("application/json")]
-        public async Task<string> ChangePassword([FromBody]ChangePasswordViewModel model)
+        public async Task<IActionResult> ChangePassword([FromBody]ChangePasswordViewModel model)
         {
             if (!ModelState.IsValid)
             {
-                return JsonConvert.SerializeObject(new RequestResult
+                return Json(new RequestResult
                 {
                     State = RequestState.Failed,
                     Msg = "An error has occurred."
@@ -399,7 +399,7 @@ namespace EasyHRMS_Angular.Controllers
                     //  _logger.LogInformation(3, "User changed their password successfully.");
                     //  return RedirectToAction(nameof(Index), new { Message = ManageMessageId.ChangePasswordSuccess });
 
-                    return JsonConvert.SerializeObject(new RequestResult
+                    return Json(new RequestResult
                     {
                         State = RequestState.Success,
                         Msg = "Your password has been changed."
@@ -407,14 +407,14 @@ namespace EasyHRMS_Angular.Controllers
                 }
                 string message = null;
                 message = AddErrors(result);
-                return JsonConvert.SerializeObject(new RequestResult
+                return Json(new RequestResult
                 {
                     State = RequestState.Failed,
                     Msg = message
                 });
             }
             //  return RedirectToAction(nameof(Index), new { Message = ManageMessageId.Error });
-            return JsonConvert.SerializeObject(new RequestResult
+            return Json(new RequestResult
             {
                 State = RequestState.Failed,
                 Msg = "An error has occurred."
@@ -425,7 +425,7 @@ namespace EasyHRMS_Angular.Controllers
         #region Forgot Password
         // POST: /api/IdentityToken/ForgotPassword
         [HttpPost("ForgotPassword"), Produces("application/json")]
-        public async Task<string> ForgotPassword([FromBody]ForgotPasswordViewModel model)
+        public async Task<IActionResult> ForgotPassword([FromBody]ForgotPasswordViewModel model)
         {
             if (ModelState.IsValid)
             {
@@ -436,7 +436,7 @@ namespace EasyHRMS_Angular.Controllers
                     // Don't reveal that the user does not exist or is not confirmed
                     //ViewData["Message"] = "Please check your email to reset your password.";
                     //return View("ForgotPassword");
-                    return JsonConvert.SerializeObject(new RequestResult
+                    return Json(new RequestResult
                     {
                         State = RequestState.Failed,
                         Msg = "Please check your email to reset your password."
@@ -449,7 +449,7 @@ namespace EasyHRMS_Angular.Controllers
                 var callbackUrl = Url.Action("ResetPassword", "IdentityToken", new { userId = user.Id, code = code }, protocol: HttpContext.Request.Scheme);
                 //   await _emailSender.SendEmailAsync(model.Email, "Reset Password", $"Please reset your password by clicking here: <a href='{callbackUrl}'>link</a>");
                 await SendEmailAsync(model.Email, "Reset Password", $"Please reset your password by clicking here: <a href='{callbackUrl}'>link</a>");
-                return JsonConvert.SerializeObject(new RequestResult
+                return Json(new RequestResult
                 {
                     State = RequestState.Success,
                     Msg = "Please check your email to reset your password."
@@ -459,7 +459,7 @@ namespace EasyHRMS_Angular.Controllers
 
             // If we got this far, something failed, redisplay form
             //   return View(model);
-            return JsonConvert.SerializeObject(new RequestResult
+            return Json(new RequestResult
             {
                 State = RequestState.Failed,
                 Msg = "An error has occurred."
