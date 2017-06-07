@@ -1,6 +1,7 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonDataService } from './../../../core/services/common/common-data.service';
+import { UserLoginService } from './../../../core/services/user-login/userlogin.service';
 
 @Component({
     selector: 'app-header',
@@ -11,14 +12,15 @@ export class HeaderComponent implements OnInit {
     mainHeader: string;
     userName: string;
 
-    constructor(public router: Router, private commondataservice: CommonDataService) {
+    constructor(public router: Router,
+        private commondataservice: CommonDataService,
+        private userLoginService: UserLoginService) {
 
     }
     ngOnInit() {
         if (this.router.url.includes('/selfservice')) {
             this.showSelfServiceLink = false;
             this.mainHeader = 'Self Service';
-
         }
         if (!this.router.url.includes('/selfservice')) {
             this.showSelfServiceLink = true;
@@ -47,5 +49,13 @@ export class HeaderComponent implements OnInit {
     rltAndLtr() {
         const dom: any = document.querySelector('body');
         dom.classList.toggle('rtl');
+    }
+    logout() {
+        this.userLoginService.Logout().subscribe(
+            data => {
+                if (data == true) {
+                    this.router.navigate(['/login']);
+                }
+            });
     }
 }

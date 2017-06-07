@@ -44,10 +44,32 @@ export class UserLoginService {
             });
     }
 
-    logout(): void {
-        this.token = null;
-        sessionStorage.removeItem('currentUser');
+    public Logout = (): Observable<any> => {
+        return this.http
+            .post(this.actionUrl + 'IdentityToken/LogOff', { headers: this.headers })
+            .map(res => { //<any>res.json()
+                console.log(res.json());
+                if (res.json().state == '1') {
+                    console.log(res.json().state);
+                     this.token = null;
+                     sessionStorage.removeItem('currentUser');
+                     console.log(JSON.parse(sessionStorage.getItem('currentUser')));
+                     return true;
+                } else {
+                    if (res.json().state == '-1') {
+                        console.log(res.json().state);
+                        return false;
+                    }
+                    return false;
+                    //this._router.navigate(['/selfservice/dashboard']);
+                }
+            });
     }
+
+    //logout(): void {
+    //    this.token = null;
+    //    sessionStorage.removeItem('currentUser');
+    //}
 
     //public UserLogin = (data: any): Observable<any> => {
     //   return this.Login(data).map(res => {

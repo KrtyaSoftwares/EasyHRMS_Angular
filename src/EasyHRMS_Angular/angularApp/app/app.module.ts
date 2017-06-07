@@ -9,6 +9,7 @@ import { Configuration } from './app.constants';
 import { AppRoutes } from './app.routes';
 import { AppComponent } from './app.component';
 import { CommonDataService } from './core/services/common/common-data.service';
+import { UserLoginService } from './core/services/user-login/userlogin.service'
  //import { HeaderComponent } from './shared';
 @NgModule({
     imports: [
@@ -23,7 +24,7 @@ import { CommonDataService } from './core/services/common/common-data.service';
         AppComponent,
         //HeaderComponent
     ],
-    providers: [CommonDataService],
+    providers: [CommonDataService, UserLoginService],
     bootstrap: [AppComponent],
 })
 export class AppModule { }

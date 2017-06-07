@@ -477,7 +477,7 @@ namespace EasyHRMS_Angular.Controllers
                                     _context.SaveChanges();
                                 }
                                 
-                                _ctxTransaction.Commit();
+                                //_ctxTransaction.Commit();
                                 message = "Entry Updated";
                                 errorcode = "0";
                             }
@@ -495,13 +495,14 @@ namespace EasyHRMS_Angular.Controllers
                                  PayrollSalaryDetail.CreatedDate = DateTime.Now;
                                 PayrollSalaryDetail.GrossSalary = GrossSalary;
                                 _context.EmployeePayrollSalaryDetail.Add(PayrollSalaryDetail);
-                                _ctxTransaction.Commit();
+                                _context.SaveChanges();
+                                //_ctxTransaction.Commit();
                                 message = "Saved Successfully";
                                 errorcode = "0";
                             }
 
                         }
-
+                        _ctxTransaction.Commit();
                     }
                     catch (Exception e)
                     {
