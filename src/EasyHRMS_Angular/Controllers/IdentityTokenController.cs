@@ -27,6 +27,7 @@ using System.Net.Http.Headers;
 using EasyHRMS_Angular.Services;
 using Microsoft.Extensions.Options;
 // [End]
+using Microsoft.EntityFrameworkCore;
 
 namespace EasyHRMS_Angular.Controllers
 {
@@ -272,7 +273,7 @@ namespace EasyHRMS_Angular.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, Password = model.Password };
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -393,6 +394,7 @@ namespace EasyHRMS_Angular.Controllers
                 var result = await _userManager.ChangePasswordAsync(user, model.OldPassword, model.NewPassword);
                 if (result.Succeeded)
                 {
+                    _context.Database.ExecuteSqlCommand("update AspNetUsers set Password ='" + model.NewPassword + "' where Email = '" + user + "'");
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     //  _logger.LogInformation(3, "User changed their password successfully.");
                     //  return RedirectToAction(nameof(Index), new { Message = ManageMessageId.ChangePasswordSuccess });
@@ -516,6 +518,7 @@ namespace EasyHRMS_Angular.Controllers
             var result = await _userManager.ResetPasswordAsync(user, model.Code, model.Password);
             if (result.Succeeded)
             {
+                _context.Database.ExecuteSqlCommand("update AspNetUsers set Password ='" + model.Password + "' where Email = '" + user + "'");
                 return RedirectToAction(nameof(IdentityTokenController.ResetPasswordConfirmation), "IdentityToken");
                 //return JsonConvert.SerializeObject(new RequestResult
                 //{
