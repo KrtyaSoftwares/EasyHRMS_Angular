@@ -77,10 +77,10 @@ namespace EasyHRMS_Angular.Controllers
                 if (result.Succeeded)
                 {
                     // [Start] 31-03-2017 added by bhoomi : set session for email ID
-                    //  HttpContext.Session.SetString("EmailID", model.Email);
+                     //  HttpContext.Session.SetString("EmailID", model.Email);
                     // [End] 31-03-2017 added by bhoomi
 
-                    #region Role Wise response
+                    #region Role Wise response [OLD Way]
                     // [Start] 29-03-2017 added by bhoomi
                     //var q = from m in _context.Users
                     //        where m.Email == model.Email
@@ -127,9 +127,30 @@ namespace EasyHRMS_Angular.Controllers
                     // [End] 29-03-2017 added by bhoomi
                     #endregion
 
+                    #region Role Management
+                    // [Start] 08-06-2017 added by bhoomi
+                    var UserDetail = from m in _context.Users
+                                     where m.Email == model.Email
+                                     select new
+                                     {
+                                         m.Id
+                                     };
+
+                    foreach (var item in UserDetail)
+                    {
+                        userid = item.Id;
+                    }
+
+                    var roleList = from CD in _context.Roles
+                                   join BD in _context.UserRoles on CD.Id equals BD.RoleId
+                                   join AD in _context.Users on BD.UserId equals AD.Id
+                                   where (AD.Email == model.Email) && (AD.Id == userid)
+                                   select CD.Name;
+                    // [End] 08-06-2017 added by bhoomi
+                    #endregion
                     // _logger.LogInformation(1, "User logged in.");
 
-                    // start
+                    // start - Access Token Code
                     var requestAt = DateTime.Now;
                     var expiresIn = requestAt + TokenAuthOption.ExpiresSpan;
                     User tokenUser = new User()
@@ -147,7 +168,9 @@ namespace EasyHRMS_Angular.Controllers
                             requertAt = requestAt,
                             expiresIn = TokenAuthOption.ExpiresSpan.TotalSeconds,
                             tokeyType = TokenAuthOption.TokenType,
-                            accessToken = token
+                            accessToken = token,
+                            userid = userid,
+                            roleList = roleList
                         }
                     });
                     // End
