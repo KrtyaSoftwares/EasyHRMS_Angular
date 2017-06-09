@@ -8,13 +8,12 @@ import { EditComponent } from './edit/edit.component';
 import { EmployeeRoutingModule } from './employee-routing.module';
 import { PageHeaderModule } from './../../shared';
 
-import { LeaveComponent } from './leave/leave.component';
-import { SalaryComponent } from './salary/salary.component';
 import { ReportComponent } from './report/report.component';
 
 import { ActiveemployeeComponent } from './report/activeemployee/activeemployee.component';
 import { WorkanniversaryComponent } from './report/workanniversary/workanniversary.component';
 import { BirthdayComponent } from './report/birthday/birthday.component';
+import { EmployeeComponent } from './components/employee.component';
 
 import { EmployeeService } from '../../core/services/employee/employee.service';
 import { GeneralFormsService } from '../../core/services/general/general-forms.service';
@@ -39,12 +38,11 @@ import { GeneralListingModule } from '../general-listing/general-listing.module'
   declarations: [
     ListsComponent,
     EditComponent,
-    LeaveComponent,
-    SalaryComponent,
     ReportComponent,
     ActiveemployeeComponent,
     WorkanniversaryComponent,
-    BirthdayComponent
+    BirthdayComponent,
+    EmployeeComponent
   ],
   providers: [
     EmployeeService,

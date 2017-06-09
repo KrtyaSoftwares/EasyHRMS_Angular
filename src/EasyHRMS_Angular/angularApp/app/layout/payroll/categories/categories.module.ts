@@ -11,6 +11,7 @@ import { PayrollCategoriesService } from '../../../core/services/payroll-categor
 import {InputSwitchModule} from 'primeng/primeng';
 import {ConfirmDialogModule, ConfirmationService} from 'primeng/primeng';
 import {GrowlModule} from 'primeng/primeng';
+import {MessagesModule} from 'primeng/primeng';
 
 @NgModule({
   imports: [
@@ -20,7 +21,8 @@ import {GrowlModule} from 'primeng/primeng';
     ReactiveFormsModule,
     InputSwitchModule,
     ConfirmDialogModule,
-    GrowlModule
+    GrowlModule,
+    MessagesModule
   ],
   declarations: [
     CategoriesComponent,

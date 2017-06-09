@@ -61,7 +61,7 @@
                                 <label class="col-sm-2 control-label"></label>
                                 <div class="col-sm-4">
                                   <div *ngFor="let cat of _categories">
-                                   <div *ngIf="cat.id != bindId"> 
+                                   <div *ngIf="cat.id != bindId && (!cat.type)"> 
                                      <input (change)="percentageChange(cat.id, $event)" type="checkbox" [checked]="cat.checked"> &nbsp;&nbsp; {{cat.categoryName}} <br>
                                    </div>
                                   </div>
@@ -70,9 +70,14 @@
                               <div class="form-group">
                                 <label class="col-sm-2 control-label"></label>
                                 <div class="col-sm-4">
-                                  <input type="text" class="form-control" (ngModelChange)="mychange('percentage', $event)" formControlName="percentage" [(ngModel)]="_payrollCategoriesModel.percentage">
+                                  <input 
+                                    type="text" 
+                                    class="form-control" 
+                                    (keypress)="mychange('percentage', $event)" 
+                                    formControlName="percentage" 
+                                    [(ngModel)]="_payrollCategoriesModel.percentage">
                                   <div *ngIf="_percentageError" class="alert alert-danger">
-                                    percentage is required.
+                                    percentage is not valid.
                                   </div>
                                 </div>
                               </div>
@@ -80,9 +85,14 @@
                           <div class="form-group" *ngIf="!checkPerctage">
                             <label class="col-sm-2 control-label">Amount</label>
                             <div class="col-sm-4">
-                              <input type="text" class="form-control" (ngModelChange)="mychange('amount', $event)" formControlName="amount" [(ngModel)]="_payrollCategoriesModel.amount">
+                              <input 
+                                type="text" 
+                                class="form-control" 
+                                (keypress)="mychange('amount', $event)" 
+                                formControlName="amount"
+                                [(ngModel)]="_payrollCategoriesModel.amount">
                               <div *ngIf="_amountError" class="alert alert-danger">
-                                Amount is required.
+                                Amount is not valid.
                               </div>
                             </div>
                           </div>
@@ -90,8 +100,6 @@
                             <label class="col-sm-2 control-label">Allowed deductions</label>
                             <div class="col-sm-4">
                               <input type="checkbox" formControlName="taxDeducted" [(ngModel)]="_payrollCategoriesModel.taxDeducted" value="Taxcanbededucted"> &nbsp;&nbsp; Tax can be deducted <br>
-                              <!--<input type="checkbox" formControlName="pensiondeducted" [(ngModel)]="_payrollCategoriesModel.pensiondeducted" value="NationalInsurancecontributionscanbededucted"> &nbsp;&nbsp; National Insurance contributions can be deducted <br>
-                              <input type="checkbox" formControlName="insurationdeducted" [(ngModel)]="_payrollCategoriesModel.insurationdeducted" value="Basedonattendance"> &nbsp;&nbsp; Based on attendance<br>-->
                               <input type="checkbox" formControlName="isBasedOnAttandance" [(ngModel)]="_payrollCategoriesModel.isBasedOnAttandance" value="Pensionschemedeductionscanbededucted"> &nbsp;&nbsp; Pension scheme deductions can be deducted <br>
                             </div>
                           </div>

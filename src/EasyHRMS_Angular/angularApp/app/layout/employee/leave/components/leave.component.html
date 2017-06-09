@@ -1,16 +1,23 @@
-<p-confirmDialog header="Confirmation" icon="fa fa-question-circle" width="425"></p-confirmDialog>
-<p-growl [(value)]="msgs"></p-growl>
 <div id="main-content" >
-	<div class="row m-t-10">
+    <div class="row m-t-10">
       <div class="col-md-12">
         <div class="panel panel-default">
           <div class="panel-heading text-right">
             <button type="button" class="btn btn-sm btn-icon btn-rounded btn-default"><i class="fa fa-question"></i> </button>
           </div>
           <div class="panel-body">
-           <div class="row">
-              <div class="col-md-12 col-sm-12 col-xs-12 text-right">
-                <button [routerLink]="['/payroll/salary-structure/form']" class="btn btn-primary m-b-10" >Add Salary Structure </button>
+            <div class="row">
+              <div class="col-md-3 col-sm-3 col-xs-12 ">
+                <label class="bold" >Employee</label>
+                <select class="form-control">
+                  <option>-- Select --</option>
+                </select>
+              </div>
+              <div class="col-md-3 col-sm-3 col-xs-12 ">
+                <label class="bold" >Leave Structure</label>
+                <select class="form-control">
+                  <option>-- Select --</option>
+                </select>
               </div>
             </div>
             <div class="row">
@@ -19,29 +26,27 @@
                   <table class="table table-bordered table-striped table-hover">
                     <thead class="no-bd">
                       <tr>
-                        
-                        <th  width="30%"><strong>Name</strong> </th>
-                        <th><strong>Description</strong> </th>
-                        <th><strong>Is Active</strong></th>
-                        <th><strong>Action</strong></th>                        
+                        <th><strong>Employee Name</strong> </th>
+                        <th><strong>Branch</strong> </th>
+                        <th><strong>Department</strong> </th>
+                        <th><strong>CL(Monthly)</strong></th>
+                        <th><strong>Total Leave(Monthly)</strong></th>
+                        <th><strong>Total Leave(Yearly)</strong></th>
+                        <th><strong>CF</strong></th>
                       </tr>
                     </thead>
                     <tbody class="no-bd-y">
-                      <tr *ngFor="let struct of pagedItems">                                        
-                        <td>{{struct.name}}</td>
-                        <td>{{struct.description}}</td>
-                        <td>
-                            <button *ngIf="struct.isActive" type="button" class="btn btn-sm btn-success" title="Check"><i class="fa fa-check"></i></button>
-                            <button *ngIf="!struct.isActive" type="button" class="btn btn-sm btn-danger" title="Delete"><i class="fa fa-remove" ></i></button> 
-                        </td>
-                        <td>
-                          <button [routerLink]="['/payroll/salary-structure/form/' + struct.id]" type="button" class="btn btn-sm btn-warning" title="Edit"><i class="fa fa-pencil"></i></button>  
-                          <button (click)="delete(struct.id)" type="button" class="btn btn-sm btn-danger" title="Delete"><i class="fa fa-remove" ></i></button>
-                        </td> 
+                      <tr *ngFor="let lev of pagedItems">
+                        <td> {{lev.fullName}} </td>
+                        <td> {{lev.branchName}} </td>
+                        <td> {{lev.departmentName}} </td>
+                        <td> - </td>
+                        <td> {{lev.totalLeaveMonthly}} </td>
+                        <td> {{lev.totalLeaveYearly}} </td>
+                        <td> {{lev.cf}} </td>
                       </tr>
                     </tbody>
                   </table>
-
                   <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
                       <li [ngClass]="{disabled:pager.currentPage === 1}">
                           <a (click)="setPage(1)">First</a>
@@ -66,4 +71,4 @@
         </div>
       </div>
     </div>
-</div>
+  </div>
