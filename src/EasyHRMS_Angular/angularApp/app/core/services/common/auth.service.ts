@@ -128,10 +128,12 @@ export class AuthService {
             this.auth_token = JSON.parse(localStorage.getItem('currentUser')).token;
             this.headers.append('Authorization', 'Bearer ' + this.auth_token);
         }
-        //console.log(this.auth_token);
+        console.log(this.auth_token);
+        console.log(this.headers);
         return this.http.get(url, { headers: this.headers }).map(response => {
+            console.log(response.json());
             if (response.status == 200) {
-                //console.log(response.json());
+                console.log(response.json());
                 return response.json();
             } else if (response.status == 401) {
                 let res = response.json();
@@ -142,6 +144,7 @@ export class AuthService {
             }
         }).catch(e => {
             if (e.status === 401) {
+                console.log(e);
                 this.router.navigateByUrl('/login');
                 //this.msgs.push({ severity: 'error', summary: 'Error Message', detail: 'User is not Valid' });
                 return Observable.throw('Unauthorized');

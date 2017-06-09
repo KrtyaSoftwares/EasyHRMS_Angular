@@ -1,12 +1,12 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;  // Added By Bhoomi Gandhi - 26-05-2017
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace EasyHRMS_DA.Models
 {
-     public partial class Ehrms_ng2Context : IdentityDbContext<ApplicationUser>
-  //  public partial class Ehrms_ng2Context : DbContext
+    public partial class Ehrms_ng2Context : IdentityDbContext<ApplicationUser>
+    //public partial class Ehrms_ng2Context : DbContext
     {
         //public virtual DbSet<AspNetRoleClaims> AspNetRoleClaims { get; set; }
         //public virtual DbSet<AspNetRoles> AspNetRoles { get; set; }
@@ -20,7 +20,9 @@ namespace EasyHRMS_DA.Models
         public virtual DbSet<EmployeeClaimAdvanceRequest> EmployeeClaimAdvanceRequest { get; set; }
         public virtual DbSet<EmployeeDetails> EmployeeDetails { get; set; }
         public virtual DbSet<EmployeeLeave> EmployeeLeave { get; set; }
+        public virtual DbSet<EmployeeOverTime> EmployeeOverTime { get; set; }
         public virtual DbSet<EmployeePayrollCategory> EmployeePayrollCategory { get; set; }
+        public virtual DbSet<EmployeePayrollMain> EmployeePayrollMain { get; set; }
         public virtual DbSet<EmployeePayrollSalaryDetail> EmployeePayrollSalaryDetail { get; set; }
         public virtual DbSet<FormField> FormField { get; set; }
         public virtual DbSet<FormTab> FormTab { get; set; }
@@ -43,6 +45,7 @@ namespace EasyHRMS_DA.Models
         public virtual DbSet<WorkFlowAction> WorkFlowAction { get; set; }
         public virtual DbSet<WorkFlowTask> WorkFlowTask { get; set; }
 
+
         //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         //{
         //    #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
@@ -51,7 +54,6 @@ namespace EasyHRMS_DA.Models
         public Ehrms_ng2Context(DbContextOptions<Ehrms_ng2Context> options)
             : base(options) { }
         public Ehrms_ng2Context() { }
-
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -144,10 +146,10 @@ namespace EasyHRMS_DA.Models
 
             //    entity.Property(e => e.NormalizedUserName).HasMaxLength(256);
 
+            //    entity.Property(e => e.Password).HasMaxLength(128);
+
             //    entity.Property(e => e.UserName).HasMaxLength(256);
             //});
-
-            base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<CheckList>(entity =>
             {
@@ -285,6 +287,45 @@ namespace EasyHRMS_DA.Models
                 entity.Property(e => e.ToDate).HasColumnType("date");
             });
 
+            modelBuilder.Entity<EmployeeOverTime>(entity =>
+            {
+                entity.ToTable("Employee_OverTime");
+
+                entity.Property(e => e.BreakDuration).HasMaxLength(500);
+
+                entity.Property(e => e.EarlierTime).HasMaxLength(50);
+
+                entity.Property(e => e.FixCost)
+                    .HasColumnName("Fix_Cost")
+                    .HasColumnType("decimal");
+
+                entity.Property(e => e.IsTdsenabled).HasColumnName("IsTDSEnabled");
+
+                entity.Property(e => e.LateTime).HasMaxLength(50);
+
+                entity.Property(e => e.OverTimeCost).HasColumnType("decimal");
+
+                entity.Property(e => e.OverTimeDeviation)
+                    .HasColumnName("OverTime_Deviation")
+                    .HasColumnType("varchar(50)");
+
+                entity.Property(e => e.PercentageOverTime).HasColumnType("decimal");
+
+                entity.Property(e => e.PercentageUnderCut).HasColumnType("decimal");
+
+                entity.Property(e => e.UnderDeviation)
+                    .HasColumnName("Under_Deviation")
+                    .HasColumnType("varchar(50)");
+
+                entity.Property(e => e.UnderFixCost)
+                    .HasColumnName("Under_Fix_Cost")
+                    .HasColumnType("decimal");
+
+                entity.Property(e => e.UnderTimeCost).HasColumnType("decimal");
+
+                entity.Property(e => e.WorkingHours).HasColumnType("varchar(50)");
+            });
+
             modelBuilder.Entity<EmployeePayrollCategory>(entity =>
             {
                 entity.ToTable("Employee_PayrollCategory");
@@ -296,6 +337,19 @@ namespace EasyHRMS_DA.Models
                 entity.Property(e => e.Percentage).HasColumnType("numeric");
 
                 entity.Property(e => e.Period).HasColumnName("period");
+            });
+
+            modelBuilder.Entity<EmployeePayrollMain>(entity =>
+            {
+                entity.ToTable("Employee_PayrollMain");
+
+                entity.Property(e => e.Holidays).HasColumnType("decimal");
+
+                entity.Property(e => e.TotalPayment).HasColumnType("money");
+
+                entity.Property(e => e.WeekOff).HasColumnType("decimal");
+
+                entity.Property(e => e.WorkingDays).HasColumnType("decimal");
             });
 
             modelBuilder.Entity<EmployeePayrollSalaryDetail>(entity =>

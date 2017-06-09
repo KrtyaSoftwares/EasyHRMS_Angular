@@ -27,6 +27,7 @@ namespace EasyHRMS_DA.Models
         public string SecurityStamp { get; set; }
         public bool TwoFactorEnabled { get; set; }
         public string UserName { get; set; }
+        public string Password { get; set; }
 
         public virtual ICollection<AspNetUserClaims> AspNetUserClaims { get; set; }
         public virtual ICollection<AspNetUserLogins> AspNetUserLogins { get; set; }

@@ -26,7 +26,8 @@ namespace EasyHRMS_Angular.Controllers
 
         // GET: api/EmailTemplate/GetAllEmailTemplate
         [HttpGet("GetAllEmailTemplate"), Produces("application/json")]
-        [Authorize("Bearer", Roles = "Admin")]
+        //[Authorize("Bearer", Roles = "Admin")]
+        [Authorize("Bearer")]
         public object GetAllEmailTemplate()
         {
             //List<EmailTemplate> list = new List<EmailTemplate>();
