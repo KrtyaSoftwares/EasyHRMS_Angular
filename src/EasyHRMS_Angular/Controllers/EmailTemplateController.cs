@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using EasyHRMS_DA.Models;
 using EasyHRMS_Angular.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace EasyHRMS_Angular.Controllers
 {
@@ -25,6 +26,7 @@ namespace EasyHRMS_Angular.Controllers
 
         // GET: api/EmailTemplate/GetAllEmailTemplate
         [HttpGet("GetAllEmailTemplate"), Produces("application/json")]
+        [Authorize("Bearer", Roles = "Admin")]
         public object GetAllEmailTemplate()
         {
             //List<EmailTemplate> list = new List<EmailTemplate>();
@@ -79,6 +81,7 @@ namespace EasyHRMS_Angular.Controllers
 
         // GET api/EmailTemplate/GetEmailTemplateById/5
         [HttpGet("GetEmailTemplateById/{id}"), Produces("application/json")]
+        [Authorize("Bearer")]
         public object GetEmailTemplateById(int id)
         {
             object result = null;

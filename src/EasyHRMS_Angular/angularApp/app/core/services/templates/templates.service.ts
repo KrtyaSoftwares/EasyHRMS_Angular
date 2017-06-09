@@ -5,13 +5,15 @@ import { Http, Response, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs/Observable';
 
+import { AuthService } from './../common/auth.service';
+
 @Injectable()
 export class TemplatesService {
 
     private actionUrl: string;
     private headers: Headers;
 
-    constructor(private http: Http, private configuration: Configuration) {
+    constructor(private http: Http, private configuration: Configuration, private authService: AuthService) {
 
         this.actionUrl = configuration.Server + 'api/';
 
@@ -20,10 +22,16 @@ export class TemplatesService {
         this.headers.append('Accept', 'application/json');
     }
 
+    //public GetAll = (): Observable<Templates[]> => {
+    //    return this.http
+    //       .get(this.actionUrl + 'EmailTemplate/GetAllEmailTemplate')
+    //       .map(res => <Templates[]>res.json());
+    //}
     public GetAll = (): Observable<Templates[]> => {
-        return this.http
-           .get(this.actionUrl + 'EmailTemplate/GetAllEmailTemplate')
-           .map(res => <Templates[]>res.json());
+        return this.authService.authGet(this.actionUrl + 'EmailTemplate/GetAllEmailTemplate/')
+        //return this.http
+        //    .get(this.actionUrl + 'EmailTemplate/GetAllEmailTemplate')
+        //    .map(res => <Templates[]>res.json());
     }
 
     public GetSingle = (id: number): Observable<Templates> => {

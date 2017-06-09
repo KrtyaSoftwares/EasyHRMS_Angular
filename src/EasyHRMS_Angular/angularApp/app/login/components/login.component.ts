@@ -53,12 +53,11 @@ export class LoginComponent implements OnInit {
         this._userLoginService.Login(this._UserLoginModel)
             .subscribe(
             data => {
-                console.log(data);
                 if (data == false) {
                     this.Invalid = true;
                 } else {
                     this.Invalid = false;
-                    this._router.navigate(['/dashboard']);
+                    this._router.navigate(['/selfservice/dashboard']);
                 }
                 //if (data.state == '-1') {
                 //    this.Invalid = true;
@@ -74,12 +73,6 @@ export class LoginComponent implements OnInit {
                 //    //this._router.navigate(['/selfservice/dashboard']);
                 //}
                 this.submitted = false;
-                //this.msgs_success = [];
-                //if (isValid) {
-                    //this.msgs.push({ severity: 'success', summary: 'Saved.', detail: 'Info has been Saved Successfully.' });
-                //} else {
-                    //this.msgs.push({ severity: 'error', summary: 'Error Message', detail: 'Validation failed' });
-                //}
                 this.userLoginForm.reset();
             }, response => {
                 if (response.status == 404) {

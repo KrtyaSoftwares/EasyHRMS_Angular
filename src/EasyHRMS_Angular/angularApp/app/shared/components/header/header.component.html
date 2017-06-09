@@ -42,7 +42,7 @@
                         <li> <a href="calendar.html"> <i class="glyph-icon flaticon-calendar"></i> My Calendar </a> </li>
                         <li> <a href="calendar.html"> <i class="glyph-icon flaticon-settings21"></i> Account Settings </a> </li>
                         <li *ngIf="showSelfServiceLink" > <a [routerLink]="['/selfservice/dashboard']" (click)="showEmployeeLinkV(false)"> <i class="glyph-icon flaticon-settings21"></i> SelfService </a> </li>
-                        <li *ngIf="!showSelfServiceLink"> <a [routerLink]="['/dashboard']" (click)="showEmployeeLinkV(true)"> <i class="glyph-icon flaticon-settings21"></i> Employee </a> </li>
+                        <li *ngIf="!showSelfServiceLink"> <a [routerLink]="['/dashboard']" (click)="showEmployeeLinkV(true)"> <i class="glyph-icon flaticon-settings21"></i> Admin </a> </li>
                         <li class="dropdown-footer clearfix"> <a href="javascript:;" class="toggle_fullscreen" title="Fullscreen"> <i class="glyph-icon flaticon-fullscreen3"></i> </a> <a href="lockscreen.html" title="Lock Screen"> <i class="glyph-icon flaticon-padlock23"></i> </a> <a title="Logout" (click) ="logout()"> <i class="fa fa-power-off"></i> </a> </li>
                     </ul>
                 </li>

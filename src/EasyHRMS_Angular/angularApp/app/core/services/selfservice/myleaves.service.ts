@@ -5,13 +5,15 @@ import { Http, Response, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs/Observable';
 
+import { AuthService } from './../common/auth.service';
+
 @Injectable()
 export class MyLeaveService {
 
     private actionUrl: string;
     private headers: Headers;
 
-    constructor(private http: Http, private configuration: Configuration) {
+    constructor(private http: Http, private configuration: Configuration, private authService: AuthService) {
 
         this.actionUrl = configuration.Server + 'api/';
 
@@ -26,16 +28,24 @@ export class MyLeaveService {
     //         .map(res => <Lookup[]>res.json());
     // }
 
+    //public GetAllEmployeeLeave = (): Observable<any> => {
+    //    return this.http
+    //        .get(this.actionUrl + 'EmployeeLeave/GetAllEmployeeLeave')
+    //        .map(res => <any>res.json());
+    //}
+
     public GetAllEmployeeLeave = (): Observable<any> => {
-        return this.http
-            .get(this.actionUrl + 'EmployeeLeave/GetAllEmployeeLeave')
-            .map(res => <any>res.json());
+        return this.authService.authGet(this.actionUrl + 'EmployeeLeave/GetAllEmployeeLeave')
+        //return this.http
+        //    .get(this.actionUrl + 'EmployeeLeave/GetAllEmployeeLeave')
+        //    .map(res => <any>res.json());
     }
 
     public GetEmployeeLeaveByEmployeeId = (id: number): Observable<any> => {
-        return this.http
-            .get(this.actionUrl + 'EmployeeLeave/GetEmployeeLeaveByEmployeeId/' + id)
-            .map(res => <any>res.json());
+        return this.authService.authGet(this.actionUrl + 'EmployeeLeave/GetEmployeeLeaveByEmployeeId/' + id)
+        //return this.http
+        //    .get(this.actionUrl + 'EmployeeLeave/GetEmployeeLeaveByEmployeeId/' + id)
+        //    .map(res => <any>res.json());
     }
 
     public AddEmployeeLeave = (data: any): Observable<any> => {

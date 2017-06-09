@@ -7,6 +7,7 @@ using EasyHRMS_DA.Models;
 using EasyHRMS_Angular.Models;
 using System.Reflection;
 using System.Diagnostics;
+using Microsoft.AspNetCore.Authorization;
 
 namespace EasyHRMS_Angular.Controllers
 {
@@ -27,6 +28,7 @@ namespace EasyHRMS_Angular.Controllers
 
         // GET: api/EmployeeLeave/GetAllEmployeeLeave
         [HttpGet("GetAllEmployeeLeave"), Produces("application/json")]
+        [Authorize("Bearer")]
         public object GetAllEmployeeLeave()
         {
             //List<EmployeeLeaveVM> list = new List<EmployeeLeaveVM>();
@@ -64,6 +66,7 @@ namespace EasyHRMS_Angular.Controllers
 
         // GET api/EmployeeLeave/GetEmployeeLeaveByEmployeeId/5
         [HttpGet("GetEmployeeLeaveByEmployeeId/{id}"), Produces("application/json")]
+        [Authorize("Bearer")]
         public object GetEmployeeLeaveByEmployeeId(int id)
         {
             object result = null;

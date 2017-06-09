@@ -5,7 +5,6 @@ import {
     RouterStateSnapshot
 } from '@angular/router';
 import { AuthService } from './auth.service';
-//import { UserModel } from './shared/model/user.model';
 
 @Injectable()
 export class AuthGuard implements CanActivate {

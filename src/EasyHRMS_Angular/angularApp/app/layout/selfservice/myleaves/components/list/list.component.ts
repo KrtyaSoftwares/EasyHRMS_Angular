@@ -7,6 +7,8 @@ import {
     FormBuilder,
     Validators
 } from '@angular/forms';
+import { Router } from '@angular/router';
+
 import { Message } from 'primeng/primeng';
 import { ConfirmDialogModule, ConfirmationService } from 'primeng/primeng';
 
@@ -96,6 +98,11 @@ export class ListComponent implements OnInit {
               //this._employeeLeaveListGroupByMonth.forEach(function (item: any, index: any) {
               //console.log(item);
               //})
+          }, (err) => {
+              if (err === 'Unauthorized') {
+                  //this.router.navigateByUrl('/login');
+                  //this.msgs.push({ severity: 'error', summary: 'Error Message', detail: 'User is not Valid' });
+              }
           });
   }
 

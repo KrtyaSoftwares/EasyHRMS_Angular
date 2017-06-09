@@ -1,10 +1,13 @@
 ﻿import { Injectable } from '@angular/core';
-import { Headers, Http } from "@angular/http";
+import { Headers, Http } from '@angular/http';
+import { Router } from '@angular/router';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/delay';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/throw';
 
 import { Message } from 'primeng/primeng';
 
@@ -15,18 +18,24 @@ export class AuthService {
     auth_token: string;
     auth_role: string;
     auth_id: string;
-    customer_servicer_id: string;
-    customer_servicer_urlname: string;
+    //customer_servicer_id: string;
     // store the URL so we can redirect after logging in
     redirectUrl: string;
     currentUser: any;
+    private headers: Headers;
+
     msgs: Message[] = [];
 
     constructor(
-        private http: Http
-    ) { }
+        private http: Http,
+        public router: Router
+    ) {
+        this.headers = new Headers();
+        this.headers.append('Content-Type', 'application/json');
+        this.headers.append('Accept', 'application/json');
+    }
 
-    login(user:any) {
+    login( user: any ) {
         localStorage.setItem('currentUser', JSON.stringify(user));
         this.auth_email = user.username;
         this.auth_token = user.token;
@@ -36,12 +45,12 @@ export class AuthService {
 
     isLoggedIn() {
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-
         if (this.currentUser) {
             //this.setBodyClass();
             return true;
-        }
-        else return false;
+        } else {
+            return false
+        };
     }
 
     //setBodyClass() {
@@ -65,10 +74,8 @@ export class AuthService {
         return this.currentUser;
 
     }
-
     //getUserProfile(user_data) {
     //    this.customer_servicer_id = user_data._id;
-    //    this.customer_servicer_urlname = user_data.urlname;
     //}
 
     logout(): void {
@@ -79,20 +86,33 @@ export class AuthService {
         //this.auth_role = '';
         //this.auth_id = '';
         //this.customer_servicer_id = '';
-        //this.customer_servicer_urlname = '';
     }
 
     authPost(url: string, body: any, headers: any): Observable<any> {
         //let headers = this.initAuthHeaders();
-        if (JSON.parse(sessionStorage.getItem('currentUser')) != null) {
-            this.auth_token = JSON.parse(sessionStorage.getItem('currentUser')).token;
+        this.headers = new Headers();
+        this.headers.append('Content-Type', 'application/json');
+        this.headers.append('Accept', 'application/json');
+        if (JSON.parse(localStorage.getItem('currentUser')) != null) {
+            this.auth_token = JSON.parse(localStorage.getItem('currentUser')).token;
+            this.headers.append('Authorization', 'Bearer ' + this.auth_token);
         }
-        headers.append('Authorization', "Bearer " + this.auth_token);
-        return this.http.post(url, body, { headers: headers }).map(response => {
+        return this.http.post(url, body, { headers: this.headers }).map(response => {
             if (response.status == 200) {
-                response.json()
+                return response.json();
             } else if (response.status == 401) {
-                this.msgs.push({ severity: 'error', summary: 'Error Message', detail: 'User is not Valid' });
+                let res = response.json();
+                res.error = '1';
+                res.msg = 'User is UnAthorised';
+                return res;
+                //this.msgs.push({ severity: 'error', summary: 'Error Message', detail: 'User is not Valid' });
+            }
+        }).catch(e => {
+            if (e.status === 401) {
+                //console.log(e);
+                this.router.navigateByUrl('/login');
+                //this.msgs.push({ severity: 'error', summary: 'Error Message', detail: 'User is not Valid' });
+                return Observable.throw('Unauthorized');
             }
         });
         //return this.http.post(url, body, { headers: headers }).toPromise()
@@ -100,17 +120,31 @@ export class AuthService {
         //    .catch(this.handleError);
     }
 
-    authGet(url: string, headers: any): Observable<any> {
-        //let headers = this.initAuthHeaders();
-        if (JSON.parse(sessionStorage.getItem('currentUser')) != null) {
-            this.auth_token = JSON.parse(sessionStorage.getItem('currentUser')).token;
+    authGet(url: string): Observable<any> {
+        this.headers = new Headers();
+        this.headers.append('Content-Type', 'application/json');
+        this.headers.append('Accept', 'application/json');
+        if (JSON.parse(localStorage.getItem('currentUser')) != null) {
+            this.auth_token = JSON.parse(localStorage.getItem('currentUser')).token;
+            this.headers.append('Authorization', 'Bearer ' + this.auth_token);
         }
-        headers.append('Authorization', "Bearer " + this.auth_token);
-        return this.http.get(url, { headers: headers }).map(response => {
+        //console.log(this.auth_token);
+        return this.http.get(url, { headers: this.headers }).map(response => {
             if (response.status == 200) {
-                response.json()
+                //console.log(response.json());
+                return response.json();
             } else if (response.status == 401) {
-                this.msgs.push({ severity: 'error', summary: 'Error Message', detail: 'User is not Valid' });
+                let res = response.json();
+                res.error = '1';
+                res.msg = 'User is UnAthorised';
+                return res;
+                //this.msgs.push({ severity: 'error', summary: 'Error Message', detail: 'User is not Valid' });
+            }
+        }).catch(e => {
+            if (e.status === 401) {
+                this.router.navigateByUrl('/login');
+                //this.msgs.push({ severity: 'error', summary: 'Error Message', detail: 'User is not Valid' });
+                return Observable.throw('Unauthorized');
             }
         });
         //return this.http.get(url, { headers: headers }).toPromise()
