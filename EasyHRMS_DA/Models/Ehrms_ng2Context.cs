@@ -151,6 +151,9 @@ namespace EasyHRMS_DA.Models
             //    entity.Property(e => e.UserName).HasMaxLength(256);
             //});
 
+
+            base.OnModelCreating(modelBuilder);
+
             modelBuilder.Entity<CheckList>(entity =>
             {
                 entity.Property(e => e.ChecklistName)
