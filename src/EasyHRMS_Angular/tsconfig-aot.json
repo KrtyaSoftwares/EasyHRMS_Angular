@@ -37,6 +37,8 @@
     "angularApp/app/layout/payroll/salary-structure/salary-structure.module.ts",
     "angularApp/app/layout/recruitment/recruitment.module.ts",
     "angularApp/app/layout/employee/employee.module.ts",
+    "angularApp/app/layout/employee/salary/salary.module.ts",
+    "angularApp/app/layout/employee/leave/leave.module.ts",
     "angularApp/app/layout/lookup/lookup.module.ts",
     "angularApp/app/layout/leaveandattendance/leaveandattendance.module.ts",
     "angularApp/app/layout/leaveandattendance/leave-structure/leave-structure.module.ts",
