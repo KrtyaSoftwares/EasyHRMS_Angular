@@ -1,0 +1,181 @@
+<p-growl [(value)]="msgs" sticky="sticky"></p-growl>
+<div id="main-content" >
+    <div class="row m-t-10">
+      <div class="col-md-12">
+        <div class="panel panel-default">
+          <div class="panel-heading text-right">
+            <button type="button" class="btn btn-sm btn-icon btn-rounded btn-default"><i class="fa fa-question"></i> </button>
+          </div>
+          <div class="panel-body">
+           	<div class="row">
+              <div class="col-md-3 col-sm-3 col-xs-12 ">
+                <label class="bold" >Employee</label>
+                <select class="form-control">
+                  <option>-- Select --</option>
+                </select>
+              </div>
+              <div class="col-md-3 col-sm-3 col-xs-12 ">
+                <label class="bold" >Salary Structure</label>
+                <select class="form-control">
+                  <option>-- Select --</option>
+                </select>
+              </div>
+              <div class="col-md-3 col-sm-3 col-xs-12 ">
+                <label class="bold" >Department</label>
+                <select class="form-control">
+                  <option>-- Select --</option>
+                </select>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="table-responsive">
+                  <table class="table table-bordered table-striped table-hover">
+                    	<thead class="no-bd">
+                        <tr>
+                          <th><strong>Employee Name</strong> </th>
+                          <th><strong>Joinig Date</strong> </th>
+                          <th><strong>Department</strong> </th>
+                          <th><strong>Position</strong></th>
+                          <th><strong>CTC</strong></th>
+                          <th><strong>Professional Tax</strong></th>
+                          <th><strong>Action</strong></th>
+                        </tr>
+                    	</thead>
+                      <tbody class="no-bd-y">
+                        <tr *ngFor="let empSal of pagedItems">
+                          <td> {{empSal.fullName}} </td>
+                          <td> {{empSal.joiningDate}} </td>
+                          <td> {{empSal.departmentName}} </td>
+                          <td> {{empSal.position}} </td>
+                          <td> {{empSal.ctc}} </td>
+                          <td>200.00</td>
+                          <td>
+                            <button type="button" (click)="editSalary(empSal)" class="btn btn-sm btn-warning" title="Edit"><i class="fa fa-pencil"></i></button>
+                            <button data-toggle="modal" id="editSalarymodal" data-target="#modal-basic" style="display: none"></button>
+                          </td>
+                        </tr>
+                      </tbody>
+                  </table>
+                  <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+                      <li [ngClass]="{disabled:pager.currentPage === 1}">
+                          <a (click)="setPage(1)">First</a>
+                      </li>
+                      <li [ngClass]="{disabled:pager.currentPage === 1}">
+                          <a (click)="setPage(pager.currentPage - 1)">Previous</a>
+                      </li>
+                      <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+                          <a (click)="setPage(page)">{{page}}</a>
+                      </li>
+                      <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                          <a (click)="setPage(pager.currentPage + 1)">Next</a>
+                      </li>
+                      <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                          <a (click)="setPage(pager.totalPages)">Last</a>
+                      </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="modal fade text-left" id="modal-basic" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" id="close" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				        <h4 class="modal-title" id="myModalLabel"><strong>Employee Salary</strong> </h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-horizontal">
+                    <div class="m-b-30">
+                  		<div class="form-group">
+                    		<label class="col-sm-2 control-label">Department: </label>
+                    		<div class="col-sm-3">
+                          {{_selectedEmpDept}}
+                        </div>
+                    		<label class="col-sm-2 control-label">Salary Structure:  </label>
+                    		<div class="col-sm-3">
+                          {{_selectedEmpSal}}
+                        </div>
+                  		</div>
+                	  </div>
+                    <div class="row">
+                      <div class="col-md-12 col-sm-12 col-xs-12 table-responsive">
+                          <table class="table table-bordered table-striped table-hover">
+                              <thead class="no-bd">
+                                <tr>
+                                  <th><strong>Category Name</strong> </th>
+                                  <th><strong>Category wise Amount</strong> </th>
+                                  <th><strong>Percentage</strong> </th>
+                                  <th><strong>Percentage Of</strong> </th>
+                                  <th><strong>Duration</strong> </th>
+                                  <th><strong>Deduction</strong> </th>
+                                </tr>
+                              </thead>
+                              <tbody class="no-bd-y">
+                                  <tr *ngFor="let payCat of _payrollCategories; let i = index">
+                                    <td> {{payCat.payrollCategoryName}} </td>
+                                    <td>
+                                        <div class="form-inline">
+                                          <div class="input-group">
+                                              <div class="input-group-addon">₹</div>
+                                              <input 
+                                                  type="text" 
+                                                  class="form-control" 
+                                                  id="amt_{{payCat.payrollCategoryId}}"  
+                                                  placeholder="Amount"
+                                                  (keypress)="mychange($event)" 
+                                                  (blur)="eventEmitBlur($event)"
+                                                  value="{{payCat.amount}}"
+                                                  [disabled]="payCat.percentage">
+                                                <input 
+                                                  type="hidden" 
+                                                  class="form-control" 
+                                                  id="per_{{payCat.payrollCategoryId}}"  
+                                                  [value]="payCat.percentage">
+                                                <input 
+                                                  type="hidden" 
+                                                  class="form-control" 
+                                                  id="perOf_{{payCat.payrollCategoryId}}"  
+                                                  [value]="payCat.percentageOf">
+                                          </div>
+                                        </div>
+                                    </td>
+                                    <td> {{payCat.percentage}} </td>
+                                    <td> {{payCat.percentageOfNameList}}</td>
+                                    <td>
+                                        <span *ngIf="payCat.period == 1"> Monthly </span>
+                                        <span *ngIf="payCat.period == 2"> Yearly </span>
+                                        <span *ngIf="payCat.period == 3"> Daily </span>
+                                        <span *ngIf="payCat.period == 4"> ShiftWise </span>
+                                    </td>
+                                    <td> 
+                                      <button *ngIf="payCat.taxDeducted" type="button" class="btn btn-sm btn-success" title="Check"><i class="fa fa-check"></i></button>
+                                      <button *ngIf="!payCat.taxDeducted" type="button" class="btn btn-sm btn-danger" title="Delete"><i class="fa fa-remove" ></i></button>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td>Gross Salary</td>
+                                    <td> ₹ {{gross_salary}} </td>
+                                    <td> </td>
+                                    <td> </td>
+                                    <td></td>
+                                    <td></td>
+                                  </tr>
+                              </tbody>
+                          </table>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+				        <button type="button" class="btn btn-primary" (click)="Submit()" >Save</button>
+			      </div>
+        </div>
+    </div>
+</div>

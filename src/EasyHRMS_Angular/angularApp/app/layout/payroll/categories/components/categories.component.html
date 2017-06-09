@@ -1,5 +1,6 @@
 <p-confirmDialog header="Confirmation" icon="fa fa-question-circle" width="425"></p-confirmDialog>
 <p-growl [(value)]="msgs"></p-growl>
+
 <div id="main-content" >
 	<div class="row m-t-10">
       <div class="col-md-12">
@@ -16,6 +17,8 @@
             <div class="row">
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="table-responsive">
+                  <p-messages [(value)]="Errormsgs"></p-messages>
+                  <button type="button" style="display: none" id="errorMsgClose" pButton (click)="clear()" icon="fa-close" label="Clear"></button>
                   <table class="table table-bordered table-striped table-hover">
                     <thead class="no-bd">
                       <tr>
@@ -34,7 +37,10 @@
                         <td>{{cat.percentage}}</td>
                         <td>{{cat.customPeriod}} </td>
                         <td> <span *ngIf="cat.amount"> INR </span> {{cat.amount}}</td>
-                        <td><p-inputSwitch onLabel="Yes" offLabel="No" [(ngModel)]="cat.isDeduction" disabled></p-inputSwitch></td>
+                        <td>
+                          <button *ngIf="cat.isDeduction" type="button" class="btn btn-sm btn-success" title="Check"><i class="fa fa-check"></i></button>
+                          <button *ngIf="!cat.isDeduction" type="button" class="btn btn-sm btn-danger" title="Delete"><i class="fa fa-remove" ></i></button> 
+                        </td>
                         <td>
                           <button [routerLink]="['/payroll/categories/form/' + cat.id]" type="button" class="btn btn-sm btn-warning" title="Edit"><i class="fa fa-pencil"></i></button>  
                           <button (click)="delete(cat.id)" type="button" class="btn btn-sm btn-danger" title="Delete"><i class="fa fa-remove" ></i></button>

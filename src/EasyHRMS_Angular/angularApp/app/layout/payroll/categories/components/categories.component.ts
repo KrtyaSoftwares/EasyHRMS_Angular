@@ -15,6 +15,7 @@ export class CategoriesComponent implements OnInit {
   _allCategories: any = {};
   _categories: any= [];
   msgs: Message[] = [];
+  Errormsgs: Message[] = [];
 
   // pager object
     pager: any = {};
@@ -58,16 +59,38 @@ export class CategoriesComponent implements OnInit {
     this._confirmationService.confirm({
             message: 'Are you sure that you want to perform this action?',
             accept: () => {
-            this._payrollCategoriesService
-                .Delete(id)
-                .subscribe(
-                data => {
-                  this.msgs = [];
-                  this.msgs.push({severity: 'success', summary: 'success Message', detail: 'PayRoll Category has been deleted Successfully.!!'});
-                  this.getAllCategories();
+            let cnt = 0;
+            this._categories.forEach((element: any) => {
+              if (element.percentage != null) {
+                let dependedCategory = element.percentageOf.split(',');
+                dependedCategory.forEach((ele: any) => {
+                  if ( ele == id ) {
+                    cnt++;
+                  }
                 });
+              }
+            });
+            if (cnt == 0) {
+                this._payrollCategoriesService
+                    .Delete(id)
+                    .subscribe(
+                    data => {
+                      this.msgs = [];
+                      this.msgs.push({severity: 'success', summary: 'success Message', detail: 'PayRoll Category has been deleted Successfully.!!'});
+                      this.getAllCategories();
+                  });
+            } else {
+                this.Errormsgs = [];
+                this.Errormsgs.push( { severity: 'error', summary: 'Error Message', detail: 'You cannot delete. first you need to remove all dependency' } );
+                setTimeout(function() {
+                  document.getElementById('errorMsgClose').click();
+                }, 3000);
+            }
             }
         });
+  }
+  clear() {
+      this.Errormsgs = [];
   }
   setPage(page: number) {
       if (page < 1 || page > this.pager.totalPages) {

@@ -70,6 +70,7 @@ export class FormComponent implements OnInit {
           this._payrollCategoriesModel = this._objEmployeePayrollCategory['objEmployeePayrollCategory'];
           if (this._payrollCategoriesModel['percentageOf']) {
             this._checkedArray = this._payrollCategoriesModel['percentageOf'].split(',');
+            this._percentageLists = this._payrollCategoriesModel['percentageOf'].split(',');
           }
           // Checkbox checked based on db.
           this._checkedArray.forEach((element: any) => {
@@ -101,6 +102,7 @@ export class FormComponent implements OnInit {
           this._categories.forEach((element: any) => {
             element.checked = false;
           });
+          console.log(this._categories);
           if (this.bindId) {
               this.getCategoryDataBasedonId(this.bindId);
               this.setControl('type', false);
@@ -124,27 +126,27 @@ export class FormComponent implements OnInit {
       if (target.checked) {
         this._percentageLists.push(id);
       } else {
-        let index = this._percentageLists.indexOf(id);
-        if (index > -1) {
-            this._percentageLists.splice(index, 1);
-        }
+        this.remove(id, this._percentageLists);
       }
   }
+  remove(id: number, array: any, ) {
+    for (let i in array) {
+      if (array[i] == id) {
+        array.splice(i, 1);
+      }
+    }
+  }
 // Custom Validation for Amount and Percentage
-mychange(action: any, val: any) {
-   if (action == 'percentage') {
-      if (val == '') {
-        this._percentageError = true;
-      } else {
-        this._percentageError = false;
-      }
-   } else {
-      if (val == '') {
-        this._amountError = true;
-      } else {
-        this._amountError = false;
-      }
-   }
+mychange(action: any, evt: any) {
+    let charCode = (evt.which) ? evt.which : evt.keyCode;
+    if ( charCode == 46 && evt.srcElement.value.split('.').length > 1) {
+        return false;
+    }
+    if (charCode != 46 && charCode > 31 && (charCode < 48 || charCode > 57) ) {
+        return false;
+    } else {
+      return true;
+    }
 }
   onSubmit(value: any, isValid: boolean) {
       this.submitted = true;
@@ -167,7 +169,7 @@ mychange(action: any, val: any) {
         let cnt = 0;
         if (this.checkPerctage) {
           if (typeof value.percentage != 'undefined') {
-            if (value.percentage.trim() != '') {
+            if (value.percentage != '') {
               let percentageOf = this._percentageLists.join();
               this._payrollCategoriesModel.percentageOf = percentageOf;
               this._payrollCategoriesModel.type = true;
@@ -182,7 +184,7 @@ mychange(action: any, val: any) {
           }
         } else {
           if (typeof value.amount != 'undefined') {
-            if (value.amount.trim() != '') {
+            if (value.amount != '') {
               this._payrollCategoriesModel.amount = value.amount;
               this._payrollCategoriesModel.type = false;
               cnt++;

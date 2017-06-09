@@ -16,6 +16,12 @@ const routes: Routes = [
         children: [
             { path: 'categories', loadChildren: './categories/categories.module#CategoriesModule' },
             { path: 'salary-structure', loadChildren: './salary-structure/salary-structure.module#SalaryStructureModule' },
+            { path: 'lists', component: ListsComponent },
+            { path: 'alert', component: AlertComponent },
+            { path: 'setting', component: SettingComponent },
+            { path: 'adjustment', component: AdjustmentComponent },
+            { path: 'claim', component: ClaimComponent },
+            { path: 'reports', component: ReportsComponent },
         ]
     },
 ];

@@ -27,8 +27,7 @@
                           <div class="form-group">
                             <label class="col-sm-2 control-label"> Department </label>
                             <div class="col-sm-4">
-                              <p-multiSelect (onChange)="onChange($event)" [options]="_departments" class="form-control" formControlName="department" [(ngModel)]="_salaryStructureModel.department"></p-multiSelect>
-                              <!--<p>Selected Department: {{_salaryStructureModel.department}}</p>-->
+                              <p-multiSelect (onChange)="onDepartmentChange($event)" [options]="_departments" class="form-control" formControlName="department" [(ngModel)]="_salaryStructureModel.department"></p-multiSelect>
                               <div [hidden]="form.get('department').valid || (form.get('department').pristine && !submitted)" class="alert alert-danger">
                                   Department is required.
                               </div>
@@ -52,6 +51,8 @@
                             <div class="boder-btm">
                               <h3 class="panel-title">Pay Type :</h3>
                             </div>
+                            <button type="button" id="closeErrormsgs" pButton (click)="errorClear()" icon="fa-close" style="display:none" label="Clear"></button>
+                            <p-messages [(value)]="removeErrormsgs"></p-messages>
                             <table class="table table-bordered table-striped table-hover">
                               <thead class="no-bd">
                                 <tr>
@@ -65,17 +66,32 @@
                                 </tr>
                               </thead>
                               <tbody class="no-bd-y">
-                                <tr *ngFor="let cat of _selectedPayrollCat">                                                
-                                  <td>{{cat.categoryName}}</td>
+                                <tr *ngFor="let cat of _payrollCategoryIds">                                                
+                                  <td>{{cat.categoryName}} </td>
                                   <td> {{cat.percentage}} </td>
                                   <td> {{cat.percentageOf}} </td>
-                                  <td>{{cat.period}}</td>
+                                  <td>
+                                    <span *ngIf="cat.period == 1">Monthly</span>
+                                    <span *ngIf="cat.period == 2">Yearly</span>
+                                    <span *ngIf="cat.period == 3">Daily</span>
+                                    <span *ngIf="cat.period == 4">ShiftWise</span>
+                                  </td>
                                   <td>{{cat.amount}}</td>
                                   <td> 
                                     <button *ngIf="cat.isDeduction" type="button" class="btn btn-sm btn-success" title="Check"><i class="fa fa-check"></i></button>
                                     <button *ngIf="!cat.isDeduction" type="button" class="btn btn-sm btn-danger" title="Delete"><i class="fa fa-remove" ></i></button>
                                   </td>
-                                  <td><button (click)="removeEvent(cat.id)" type="button" class="btn btn-sm btn-danger" title="Delete"><i class="fa fa-remove" ></i></button></td>                       
+                                  <td>
+                                    <button 
+                                        [disabled]="cat.inherit"
+                                        id="del_{{cat.id}}"
+                                        (click)="removeCat(cat.id, $event)" 
+                                        type="button" 
+                                        class="btn btn-sm btn-danger" 
+                                        title="Delete">
+                                      <i class="fa fa-remove" ></i>
+                                    </button>
+                                  </td>
                                 </tr>
                               </tbody>
                             </table>
@@ -122,11 +138,16 @@
             </thead>
             <tbody class="no-bd-y">
                <tr *ngFor="let cat of _categories">
-                  <td> <input id="cat_{{cat.id}}" type="checkbox" (change)="handleChange(cat.id, $event)" [checked]="cat.checked"> </td>
-                  <td>{{cat.categoryName}}</td>
+                  <td> <input id="cat_{{cat.id}}" type="checkbox" (change)="categoryChange(cat.id, $event)" [checked]="cat.checked"> </td>
+                  <td>{{cat.categoryName}} </td>
                   <td> {{cat.percentage}} </td>
-                  <td> {{cat.percentageOf}} </td>
-                  <td>{{cat.period}}</td>
+                  <td> {{cat.percentageOfNameList}} </td>
+                  <td>
+                      <span *ngIf="cat.period == 1">Monthly</span>
+                      <span *ngIf="cat.period == 2">Yearly</span>
+                      <span *ngIf="cat.period == 3">Daily</span>
+                      <span *ngIf="cat.period == 4">ShiftWise</span>
+                  </td>
                   <td>{{cat.amount}}</td>
                   <td> 
                     <button *ngIf="cat.isDeduction" type="button" class="btn btn-sm btn-success" title="Check"><i class="fa fa-check"></i></button>
@@ -135,7 +156,7 @@
                 </tr>
             </tbody>
           </table>
-          <button type="button" class="btn btn-primary m-b-10" (click)="addPayType('message')">Add Pay Type</button>
+          <button type="button" class="btn btn-primary m-b-10" (click)="addPayType()">Add Pay Type</button>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
