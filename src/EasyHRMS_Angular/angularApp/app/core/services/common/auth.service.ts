@@ -16,7 +16,7 @@ export class AuthService {
 
     auth_email: string;
     auth_token: string;
-    auth_role: string;
+    auth_role: string[];
     auth_id: string;
     //customer_servicer_id: string;
     // store the URL so we can redirect after logging in
@@ -41,6 +41,14 @@ export class AuthService {
         this.auth_token = user.token;
         //this.auth_role = user.role;
         //this.auth_id = user._id;
+    }
+
+    loginStore() {
+        this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        this.auth_email = this.currentUser.username;
+        this.auth_token = this.currentUser.token;
+        this.auth_role = this.currentUser.roleList;
+        this.auth_id = this.currentUser.userId;
     }
 
     isLoggedIn() {
@@ -69,8 +77,8 @@ export class AuthService {
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
         this.auth_email = this.currentUser.username;
         this.auth_token = this.currentUser.token;
-        //this.auth_role = this.currentUser.role;
-        //this.auth_id = this.currentUser._id;
+        this.auth_role = this.currentUser.roleList;
+        this.auth_id = this.currentUser.userId;
         return this.currentUser;
 
     }
@@ -83,12 +91,12 @@ export class AuthService {
         localStorage.removeItem('currentUser');
         this.auth_email = '';
         this.auth_token = '';
-        //this.auth_role = '';
-        //this.auth_id = '';
+        this.auth_role = [];
+        this.auth_id = '';
         //this.customer_servicer_id = '';
     }
 
-    authPost(url: string, body: any, headers: any): Observable<any> {
+    authPost(url: string, body: any): Observable<any> {
         //let headers = this.initAuthHeaders();
         this.headers = new Headers();
         this.headers.append('Content-Type', 'application/json');
@@ -128,12 +136,12 @@ export class AuthService {
             this.auth_token = JSON.parse(localStorage.getItem('currentUser')).token;
             this.headers.append('Authorization', 'Bearer ' + this.auth_token);
         }
-        console.log(this.auth_token);
-        console.log(this.headers);
+        //console.log(this.auth_token);
+        //console.log(this.headers);
         return this.http.get(url, { headers: this.headers }).map(response => {
-            console.log(response.json());
+            //console.log(response.json());
             if (response.status == 200) {
-                console.log(response.json());
+                //console.log(response.json());
                 return response.json();
             } else if (response.status == 401) {
                 let res = response.json();

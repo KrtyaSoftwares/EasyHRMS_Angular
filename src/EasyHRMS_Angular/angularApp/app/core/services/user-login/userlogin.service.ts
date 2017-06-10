@@ -13,6 +13,8 @@ export class UserLoginService {
     private actionUrl: string;
     private headers: Headers;
     public token: string;
+    public rolelist: string[];
+    public userId: string;
     constructor(private http: Http, private configuration: Configuration, private authService: AuthService) {
 
         this.actionUrl = configuration.Server + 'api/';
@@ -32,9 +34,13 @@ export class UserLoginService {
                     return false;
                 } else {
                     if (res.json().state == '1') {
+                        console.log(res.json());
                         this.token = res.json().data.accessToken;
+                        this.rolelist = res.json().data.roleList;
+                        this.userId = res.json().data.userid;
                         if (this.token) {
-                            localStorage.setItem('currentUser', JSON.stringify({ username: userName, token: this.token }));
+                            localStorage.setItem('currentUser', JSON.stringify({ username: userName, token: this.token, roleList: this.rolelist, userId: this.userId }));
+                            this.authService.loginStore();
                         }
                         return true;
                     }

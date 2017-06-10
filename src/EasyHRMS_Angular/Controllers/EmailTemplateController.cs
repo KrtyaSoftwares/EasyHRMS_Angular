@@ -117,6 +117,7 @@ namespace EasyHRMS_Angular.Controllers
 
         // POST api/EmailTemplate/CreateEmailTemplate
         [HttpPost, Route("CreateEmailTemplate"), Produces("application/json")]
+        [Authorize("Bearer")]
         public object CreateEmailTemplate([FromBody]EmailTemplate model)
         {
 
