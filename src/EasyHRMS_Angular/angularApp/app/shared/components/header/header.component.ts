@@ -11,6 +11,8 @@ export class HeaderComponent implements OnInit {
     showSelfServiceLink: any;
     mainHeader: string;
     userName: string;
+    roleList: string[];
+    isAdmin = false;
 
     constructor(public router: Router,
         private commondataservice: CommonDataService,
@@ -28,6 +30,14 @@ export class HeaderComponent implements OnInit {
         }
         if (JSON.parse(localStorage.getItem('currentUser')) != null) {
             this.userName = JSON.parse(localStorage.getItem('currentUser')).username;
+            this.roleList = JSON.parse(localStorage.getItem('currentUser')).roleList;
+        }
+        if (this.router.url.includes('/selfservice')) {
+            if (this.roleList.indexOf('Admin') > -1) {
+                this.isAdmin = true;
+            } else {
+                this.isAdmin = false;
+            }
         }
         console.log(this.userName);
     }

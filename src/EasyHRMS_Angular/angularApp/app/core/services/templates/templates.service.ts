@@ -42,9 +42,10 @@ export class TemplatesService {
 
     public Add = (data: any): Observable<Templates> => {
         let toAdd = JSON.stringify(data);
-        return this.http
-                    .post(this.actionUrl + 'EmailTemplate/CreateEmailTemplate', toAdd, { headers: this.headers })
-                    .map(res => <Templates>res.json());
+        return this.authService.authPost(this.actionUrl + 'EmailTemplate/CreateEmailTemplate', toAdd)
+        //return this.http
+        //            .post(this.actionUrl + 'EmailTemplate/CreateEmailTemplate', toAdd, { headers: this.headers })
+        //            .map(res => <Templates>res.json());
     }
 
     public Update = (id: number, data: any): Observable<Templates> => {
