@@ -370,11 +370,9 @@
     <Folder Include="wwwroot\assets\plugins\icheck\skin\flat\" />
   </ItemGroup>
   <ItemGroup>
-    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="1.0.0-msbuild3-final" />
+    <ProjectReference Include="..\..\EasyHRMS_DA\EasyHRMS_DA.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="EasyHRMS_DA">
-      <HintPath>..\..\EasyHRMS_DA\bin\Debug\netcoreapp1.0\EasyHRMS_DA.dll</HintPath>
-    </Reference>
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="1.0.0-msbuild3-final" />
   </ItemGroup>
 </Project>

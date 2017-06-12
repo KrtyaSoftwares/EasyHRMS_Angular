@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Angular2WebpackVisualStudio.ModelsVM;
+using Angular2WebpackVisualStudio.Models;
 
 namespace Angular2WebpackVisualStudio.Repositories.Things
 {
