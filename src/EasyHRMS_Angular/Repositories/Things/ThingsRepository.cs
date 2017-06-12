@@ -2,7 +2,7 @@
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
-using Angular2WebpackVisualStudio.Models;
+using Angular2WebpackVisualStudio.ModelsVM;
 
 namespace Angular2WebpackVisualStudio.Repositories.Things
 {

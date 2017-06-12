@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using EasyHRMS_DA.Models;
-using EasyHRMS_Angular.Models;
+using EasyHRMS_Angular.ModelsVM;
 
 namespace EasyHRMS_Angular.Controllers
 {
