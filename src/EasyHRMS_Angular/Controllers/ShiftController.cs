@@ -4,13 +4,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using EasyHRMS_DA.Models;
-using EasyHRMS_Angular.Models;
-using Microsoft.AspNetCore.Authorization;
+using EasyHRMS_Angular.ModelsVM;
 
 namespace EasyHRMS_Angular.Controllers
 {
     [Route("api/[controller]")]
-    public class EmailTemplateController : Controller
+    public class ShiftController : Controller
     {
         //public IActionResult Index()
         //{
@@ -19,41 +18,49 @@ namespace EasyHRMS_Angular.Controllers
 
         private readonly Ehrms_ng2Context _context;
 
-        public EmailTemplateController(Ehrms_ng2Context context)
+        public ShiftController(Ehrms_ng2Context context)
         {
             _context = context;
         }
 
-        // GET: api/EmailTemplate/GetAllEmailTemplate
-        [HttpGet("GetAllEmailTemplate"), Produces("application/json")]
-        //[Authorize("Bearer", Roles = "Admin")]
-        [Authorize("Bearer")]
-        public object GetAllEmailTemplate()
+        // GET: api/Shift/GetAllShift
+        [HttpGet("GetAllShift"), Produces("application/json")]
+        public object GetAllShift()
         {
-            //List<EmailTemplate> list = new List<EmailTemplate>();
-            List<EmailTemplateVM> list = new List<EmailTemplateVM>();
+            //List<TaskTemplate> list = new List<TaskTemplate>();
+            List<ShiftVM> list = new List<ShiftVM>();
             object result = null;
             try
             {
                 using (_context)
                 {
-                    //list = _context.EmailTemplate.ToList();
-                    list = _context.EmailTemplate.Select(x => new
-                    {
-                        Id = x.Id,
-                        TemplateName = x.TemplateName,
-                        FormName = x.FormName,
-                        Message = x.Message,
-                        CustomFormName = _context.Forms.Where(z => z.Id == x.FormName).FirstOrDefault().FormName,
-                       
-                    }).ToList().Select(y => new EmailTemplateVM
+                    //list = _context.TaskTemplate.ToList();
+                    list = _context.Shift.Select(y => new
                     {
                         Id = y.Id,
-                        TemplateName = y.TemplateName,
-                        FormName = y.FormName,
-                        Message = y.Message,
-                        CustomFormName = y.CustomFormName
-
+                        ShiftName = y.ShiftName,
+                        TimeIn = y.TimeIn,
+                        TimeOut = y.TimeOut,
+                        BreakTimeIn = y.BreakTimeIn,
+                        BreakTimeOut = y.BreakTimeOut,
+                        LateTime = y.LateTime,
+                        EarlierTime = y.EarlierTime,
+                        HalfdayTime = y.HalfdayTime,
+                        IsShiftEnabled = y.IsShiftEnabled,
+                        Inbuilt = y.Inbuilt
+                    }).ToList().Select(y => new ShiftVM
+                    {
+                        Id = y.Id,
+                        ShiftName = y.ShiftName,
+                        TimeIn = y.TimeIn,
+                        TimeOut = y.TimeOut,
+                        BreakTimeIn = y.BreakTimeIn,
+                        BreakTimeOut = y.BreakTimeOut,
+                        LateTime = y.LateTime,
+                        EarlierTime = y.EarlierTime,
+                        HalfdayTime = y.HalfdayTime,
+                        IsShiftEnabled = y.IsShiftEnabled,
+                        Inbuilt = y.Inbuilt
                     }).ToList();
 
                     result = new
@@ -77,24 +84,23 @@ namespace EasyHRMS_Angular.Controllers
             }
             return result;
         }
-        
-        // GET api/EmailTemplate/GetEmailTemplateById/5
-        [HttpGet("GetEmailTemplateById/{id}"), Produces("application/json")]
-        [Authorize("Bearer")]
-        public object GetEmailTemplateById(int id)
+
+
+        // GET api/Shift/GetShiftById/5
+        [HttpGet("GetShiftById/{id}"), Produces("application/json")]
+        public object GetShiftById(int id)
         {
             object result = null;
-
-            EmailTemplate objEmailTemplate = new EmailTemplate();
+            Shift objShift = new Shift();
             try
             {
                 using (_context)
                 {
-                    objEmailTemplate = _context.EmailTemplate.FirstOrDefault(x => x.Id == id);
+                    objShift = _context.Shift.FirstOrDefault(x => x.Id == id);
 
                     result = new
                     {
-                        objEmailTemplate,
+                        objShift,
                         error = "0",
                         msg = "Success"
                     };
@@ -105,7 +111,7 @@ namespace EasyHRMS_Angular.Controllers
                 ex.ToString();
                 result = new
                 {
-                    objEmailTemplate,
+                    objShift,
                     error = "1",
                     msg = "Error"
                 };
@@ -113,12 +119,10 @@ namespace EasyHRMS_Angular.Controllers
             return result;
         }
 
-        // POST api/EmailTemplate/CreateEmailTemplate
-        [HttpPost, Route("CreateEmailTemplate"), Produces("application/json")]
-        [Authorize("Bearer")]
-        public object CreateEmailTemplate([FromBody]EmailTemplate model)
+        // POST api/Shift/CreateShift
+        [HttpPost, Route("CreateShift"), Produces("application/json")]
+        public object CreateShift([FromBody]Shift model)
         {
-
             object result = null;
             string message = "";
             string errorcode = "";
@@ -133,7 +137,7 @@ namespace EasyHRMS_Angular.Controllers
                 {
                     try
                     {
-                        _context.EmailTemplate.Add(model);
+                        _context.Shift.Add(model);
                         //await _ctx.SaveChangesAsync();
                         _context.SaveChanges();
                         _ctxTransaction.Commit();
@@ -161,9 +165,9 @@ namespace EasyHRMS_Angular.Controllers
         }
 
 
-        // PUT api/EmailTemplate/UpdateEmailTemplate/5
-        [HttpPost, Route("UpdateEmailTemplate/{id}")]
-        public object UpdateEmailTemplate(int id, [FromBody]EmailTemplate model)
+        // PUT api/Shift/UpdateShift/5
+        [HttpPost, Route("UpdateShift/{id}")]
+        public object UpdateShift(int id, [FromBody]Shift model)
         {
             object result = null; string message = ""; string errorcode = ""; string excp = "";
             if (model == null)
@@ -176,21 +180,20 @@ namespace EasyHRMS_Angular.Controllers
                 {
                     try
                     {
-                        var entityUpdate = _context.EmailTemplate.FirstOrDefault(x => x.Id == id);
+                        var entityUpdate = _context.Shift.FirstOrDefault(x => x.Id == id);
 
                         if (entityUpdate != null)
                         {
-                            entityUpdate.FormName = model.FormName;
-                            entityUpdate.TemplateName = model.TemplateName;
-                            entityUpdate.Message = model.Message;
-                            //entityUpdate.FromAddress = model.FromAddress;
-                            //entityUpdate.ToAddress = model.ToAddress;
-                            //entityUpdate.Ccaddress = model.Ccaddress;
-                            //entityUpdate.Bccaddress = model.Bccaddress;
-                            //entityUpdate.ReplyToAddress = model.ReplyToAddress;
-                            //entityUpdate.EmailSubject = model.EmailSubject;
-                            //entityUpdate.Attachment = model.Attachment;
-
+                            entityUpdate.ShiftName = model.ShiftName;
+                            entityUpdate.TimeIn = model.TimeIn;
+                            entityUpdate.TimeOut = model.TimeOut;
+                            entityUpdate.BreakTimeIn = model.BreakTimeIn;
+                            entityUpdate.BreakTimeOut = model.BreakTimeOut;
+                            entityUpdate.LateTime = model.LateTime;
+                            entityUpdate.EarlierTime = model.EarlierTime;
+                            entityUpdate.HalfdayTime = model.HalfdayTime;
+                            entityUpdate.IsShiftEnabled = model.IsShiftEnabled;
+                            entityUpdate.Inbuilt = model.Inbuilt;
                             _context.SaveChanges();
                         }
 
@@ -218,9 +221,9 @@ namespace EasyHRMS_Angular.Controllers
         }
 
 
-        // POST api/EmailTemplate/CreateUpdateEmailTemplate
-        [HttpPost, Route("CreateUpdateEmailTemplate/{id}"), Produces("application/json")]
-        public object CreateUpdateEmailTemplate(int id, [FromBody]EmailTemplate model)
+        // POST api/Shift/CreateUpdateShift
+        [HttpPost, Route("CreateUpdateShift/{id}"), Produces("application/json")]
+        public object CreateUpdateShift(int id, [FromBody]Shift model)
         {
             object result = null;
             string message = "";
@@ -238,21 +241,20 @@ namespace EasyHRMS_Angular.Controllers
                     {
                         if (id != 0)
                         {
-                            var entityUpdate = _context.EmailTemplate.FirstOrDefault(x => x.Id == id);
+                            var entityUpdate = _context.Shift.FirstOrDefault(x => x.Id == id);
 
                             if (entityUpdate != null)
                             {
-                                entityUpdate.FormName = model.FormName;
-                                entityUpdate.TemplateName = model.TemplateName;
-                                entityUpdate.Message = model.Message;
-                                //entityUpdate.FromAddress = model.FromAddress;
-                                //entityUpdate.ToAddress = model.ToAddress;
-                                //entityUpdate.Ccaddress = model.Ccaddress;
-                                //entityUpdate.Bccaddress = model.Bccaddress;
-                                //entityUpdate.ReplyToAddress = model.ReplyToAddress;
-                                //entityUpdate.EmailSubject = model.EmailSubject;
-                                //entityUpdate.Attachment = model.Attachment;
-
+                                entityUpdate.ShiftName = model.ShiftName;
+                                entityUpdate.TimeIn = model.TimeIn;
+                                entityUpdate.TimeOut = model.TimeOut;
+                                entityUpdate.BreakTimeIn = model.BreakTimeIn;
+                                entityUpdate.BreakTimeOut = model.BreakTimeOut;
+                                entityUpdate.LateTime = model.LateTime;
+                                entityUpdate.EarlierTime = model.EarlierTime;
+                                entityUpdate.HalfdayTime = model.HalfdayTime;
+                                entityUpdate.IsShiftEnabled = model.IsShiftEnabled;
+                                entityUpdate.Inbuilt = model.Inbuilt;
                                 _context.SaveChanges();
                             }
                             _ctxTransaction.Commit();
@@ -261,14 +263,13 @@ namespace EasyHRMS_Angular.Controllers
                         }
                         else
                         {
-                            _context.EmailTemplate.Add(model);
+                            _context.Shift.Add(model);
                             //await _ctx.SaveChangesAsync();
                             _context.SaveChanges();
                             _ctxTransaction.Commit();
                             message = "Saved Successfully";
                             errorcode = "0";
                         }
-
                     }
                     catch (Exception e)
                     {
@@ -278,7 +279,6 @@ namespace EasyHRMS_Angular.Controllers
                         errorcode = "1";
                         excp = e.ToString();
                     }
-
                     result = new
                     {
                         error = errorcode,
@@ -290,9 +290,9 @@ namespace EasyHRMS_Angular.Controllers
             return result;
         }
 
-        // DELETE api/EmailTemplate/DeleteEmailTemplateById/5
-        [HttpGet, Route("DeleteEmailTemplateById/{id}")]
-        public object DeleteEmailTemplateById(int id)
+        // DELETE api/Shift/DeleteShiftById/5
+        [HttpGet, Route("DeleteShiftById/{id}")]
+        public object DeleteShiftById(int id)
         {
             object result = null;
             string message = "";
@@ -304,10 +304,10 @@ namespace EasyHRMS_Angular.Controllers
                 {
                     try
                     {
-                        var idToRemove = _context.EmailTemplate.SingleOrDefault(x => x.Id == id);
+                        var idToRemove = _context.Shift.SingleOrDefault(x => x.Id == id);
                         if (idToRemove != null)
                         {
-                            _context.EmailTemplate.Remove(idToRemove);
+                            _context.Shift.Remove(idToRemove);
                             _context.SaveChanges();
                         }
                         _ctxTransaction.Commit();
@@ -332,7 +332,5 @@ namespace EasyHRMS_Angular.Controllers
             }
             return result;
         }
-        
-        
     }
 }
