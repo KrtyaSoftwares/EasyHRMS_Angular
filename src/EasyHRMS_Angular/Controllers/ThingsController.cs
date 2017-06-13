@@ -1,5 +1,5 @@
 ﻿using System.Linq;
-using Angular2WebpackVisualStudio.Models;
+using Angular2WebpackVisualStudio.ModelsVM;
 using Angular2WebpackVisualStudio.Repositories.Things;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
