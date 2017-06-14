@@ -7,7 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Angular2WebpackVisualStudio.Repositories.Things;
-using Angular2WebpackVisualStudio.Models;
+using Angular2WebpackVisualStudio.ModelsVM;
 using Microsoft.EntityFrameworkCore;
 using EasyHRMS_DA.Models;
 //using Microsoft.IdentityModel.Tokens;
