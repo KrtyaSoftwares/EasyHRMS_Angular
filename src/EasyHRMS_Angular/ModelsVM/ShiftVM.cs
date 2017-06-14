@@ -18,5 +18,7 @@ namespace EasyHRMS_Angular.ModelsVM
         public TimeSpan? HalfdayTime { get; set; }
         public bool? IsShiftEnabled { get; set; }
         public bool? Inbuilt { get; set; }
+
+        public int ShiftScheduleCount { get; set; }
     }
 }

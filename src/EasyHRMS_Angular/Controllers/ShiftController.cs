@@ -304,6 +304,24 @@ namespace EasyHRMS_Angular.Controllers
                 {
                     try
                     {
+                        List<ShiftSchedule> listToRemove = new List<ShiftSchedule>();
+
+                        listToRemove = _context.ShiftSchedule.Where(y => y.ShiftId == id).ToList();
+                        if (listToRemove.Count > 0)
+                        {
+                            _context.ShiftSchedule.RemoveRange(listToRemove);
+                            _context.SaveChanges();
+                        }
+
+                        List<ShiftScheduleDetail> listToRemoveDetail = new List<ShiftScheduleDetail>();
+
+                        listToRemoveDetail = _context.ShiftScheduleDetail.Where(y => y.ShiftId == id).ToList();
+                        if (listToRemove.Count > 0)
+                        {
+                            _context.ShiftScheduleDetail.RemoveRange(listToRemoveDetail);
+                            _context.SaveChanges();
+                        }
+
                         var idToRemove = _context.Shift.SingleOrDefault(x => x.Id == id);
                         if (idToRemove != null)
                         {

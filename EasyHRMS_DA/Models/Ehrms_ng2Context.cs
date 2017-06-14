@@ -5,8 +5,8 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace EasyHRMS_DA.Models
 {
-    public partial class Ehrms_ng2Context : IdentityDbContext<ApplicationUser>
     //public partial class Ehrms_ng2Context : DbContext
+    public partial class Ehrms_ng2Context : IdentityDbContext<ApplicationUser>
     {
         //public virtual DbSet<AspNetRoleClaims> AspNetRoleClaims { get; set; }
         //public virtual DbSet<AspNetRoles> AspNetRoles { get; set; }
@@ -41,10 +41,14 @@ namespace EasyHRMS_DA.Models
         public virtual DbSet<SalaryStructureDepartmentMapping> SalaryStructureDepartmentMapping { get; set; }
         public virtual DbSet<SalaryStructurePayrollCategoryMapping> SalaryStructurePayrollCategoryMapping { get; set; }
         public virtual DbSet<Shift> Shift { get; set; }
+        public virtual DbSet<ShiftSchedule> ShiftSchedule { get; set; }
+        public virtual DbSet<ShiftScheduleDetail> ShiftScheduleDetail { get; set; }
+        public virtual DbSet<ShiftScheduleEmployeeMapping> ShiftScheduleEmployeeMapping { get; set; }
         public virtual DbSet<TaskTemplate> TaskTemplate { get; set; }
         public virtual DbSet<WorkFlow> WorkFlow { get; set; }
         public virtual DbSet<WorkFlowAction> WorkFlowAction { get; set; }
         public virtual DbSet<WorkFlowTask> WorkFlowTask { get; set; }
+        public virtual DbSet<WorkingDays> WorkingDays { get; set; }
 
         //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         //{
@@ -151,8 +155,8 @@ namespace EasyHRMS_DA.Models
             //    entity.Property(e => e.UserName).HasMaxLength(256);
             //});
 
-            base.OnModelCreating(modelBuilder);
 
+            base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<CheckList>(entity =>
             {
                 entity.Property(e => e.ChecklistName)
@@ -522,6 +526,25 @@ namespace EasyHRMS_DA.Models
                 entity.Property(e => e.ShiftName).HasColumnType("varchar(100)");
             });
 
+            modelBuilder.Entity<ShiftSchedule>(entity =>
+            {
+                entity.Property(e => e.ScheduleDate).HasColumnType("datetime");
+            });
+
+            modelBuilder.Entity<ShiftScheduleDetail>(entity =>
+            {
+                entity.Property(e => e.EndDate).HasColumnType("datetime");
+
+                entity.Property(e => e.ScheduleType).HasMaxLength(50);
+
+                entity.Property(e => e.StartDate).HasColumnType("datetime");
+            });
+
+            modelBuilder.Entity<ShiftScheduleEmployeeMapping>(entity =>
+            {
+                entity.ToTable("ShiftSchedule_Employee_Mapping");
+            });
+
             modelBuilder.Entity<TaskTemplate>(entity =>
             {
                 entity.Property(e => e.Priority).HasMaxLength(10);
@@ -570,6 +593,17 @@ namespace EasyHRMS_DA.Models
                 entity.Property(e => e.TaskName)
                     .IsRequired()
                     .HasMaxLength(100);
+            });
+
+            modelBuilder.Entity<WorkingDays>(entity =>
+            {
+                entity.Property(e => e.IsMonHalfDay).HasColumnName("IsMonHAlfDay");
+
+                entity.Property(e => e.IsWedHalfDay).HasColumnName("IsWedHAlfDay");
+
+                entity.Property(e => e.WorkingDays1)
+                    .HasColumnName("WorkingDays")
+                    .HasColumnType("decimal");
             });
         }
     }
