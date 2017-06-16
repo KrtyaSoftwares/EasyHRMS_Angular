@@ -304,48 +304,48 @@ namespace EasyHRMS_Angular.Controllers
         }
         public bool IsWorkingDay(DayOfWeek Name)
         {
-            using (_context)
-            {
+            //using (_context)
+            //{
                 var data = _context.WorkingDays.FirstOrDefault();
 
-                if (data.Mon == false)
+                if (data.Mon == true)
                 {
                     if (DayOfWeek.Monday == Name)
                         return true;
                 }
-                else if (data.Tue == false)
+                else if (data.Tue == true)
                 {
                     if (DayOfWeek.Tuesday == Name)
                         return true;
                 }
-                else if (data.Wed == false)
+                else if (data.Wed == true)
                 {
                     if (DayOfWeek.Wednesday == Name)
                         return true;
                 }
-                else if (data.Thers == false)
+                else if (data.Thers == true)
                 {
                     if (DayOfWeek.Thursday == Name)
                         return true;
                 }
-                else if (data.Fri == false)
+                else if (data.Fri == true)
                 {
                     if (DayOfWeek.Friday == Name)
                         return true;
                 }
-                else if (data.Sat == false)
+                else if (data.Sat == true)
                 {
                     if (DayOfWeek.Saturday == Name)
                         return true;
                 }
-                else if (data.Sun == false)
+                else if (data.Sun == true)
                 {
                     if (DayOfWeek.Sunday == Name)
                         return true;
                 }
 
                 return false;
-            }
+            //}
         }
 
         [HttpPost, Route("CreateShiftSchedule"), Produces("application/json")]
@@ -833,6 +833,75 @@ namespace EasyHRMS_Angular.Controllers
             }
             return result;
         }
+
+        // PUT api/ShiftSchedule/GetShiftScheduleDDListData/
+        [HttpPost, Route("GetShiftScheduleDDListData")]
+        public object GetShiftScheduleDDListData([FromQuery]int year, [FromQuery]int month, [FromQuery]int scheduletypeid)
+        {
+            object result = null; string message = ""; string errorcode = ""; string excp = "";
+            if (year == 0 && month == 0 && scheduletypeid == 0)
+            {
+                return BadRequest();
+            }
+            using (_context)
+            {
+                
+                    try
+                    {
+                    //int iYear = year;
+                    //int iMonth = month;
+                    //List<string> list = new List<string>();
+                    //    int countDays = DateTime.DaysInMonth(iYear, iMonth);
+                    //    DateTime StartDate, EndDate;
+                    //string sStartDate = iMonth.ToString()
+                    //       + "/1" + "/" + iYear.ToString();
+                    //string eEndDate = iMonth.ToString() + "/"
+                    //   + countDays + "/" + iYear.ToString();
+
+                    //if (rcbschedule.SelectedValue == "4")
+                    //{
+                    //    StartDate = DateTime.Parse(sStartDate);
+                    //    if (countDays == 30 || countDays == 31)
+                    //    {
+                    //        string Sweek = StartDate.ToString("dd/MMM") + " - " + StartDate.AddDays(14).ToString("dd/MMM");
+                    //        dt.Rows.Add("1", Sweek);
+                    //        EndDate = DateTime.Parse(eEndDate);
+                    //        string Eweek = StartDate.AddDays(15).ToString("dd/MMM") + " - " + EndDate.ToString("dd/MMM");
+                    //        dt.Rows.Add("2", Eweek);
+                    //    }
+                    //    else if (countDays == 28 || countDays == 29)
+                    //    {
+                    //        string Sweek = StartDate.ToString("dd/MMM") + " - " + StartDate.AddDays(13).ToString("dd/MMM");
+                    //        dt.Rows.Add("1", Sweek);
+                    //        EndDate = DateTime.Parse(eEndDate);
+                    //        string Eweek = StartDate.AddDays(14).ToString("dd/MMM") + " - " + EndDate.ToString("dd/MMM");
+                    //        dt.Rows.Add("2", Eweek);
+                    //    }
+                    //}
+
+                    message = "Success!!";
+                        errorcode = "0";
+                    }
+                    catch (Exception e)
+                    {
+                         e.ToString();
+                        message = "Error!!";
+                        errorcode = "1";
+                        excp = e.ToString();
+                    }
+
+                    result = new
+                    {
+                        error = errorcode,
+                        msg = message,
+                        excp = excp
+                    };
+               
+            }
+            return result;
+        }
+
+
 
     }
 }

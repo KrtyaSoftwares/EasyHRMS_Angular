@@ -15,8 +15,10 @@ namespace EasyHRMS_DA.Models
         //public virtual DbSet<AspNetUserRoles> AspNetUserRoles { get; set; }
         //public virtual DbSet<AspNetUserTokens> AspNetUserTokens { get; set; }
         //public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
+        public virtual DbSet<AttendanceLog> AttendanceLog { get; set; }
         public virtual DbSet<CheckList> CheckList { get; set; }
         public virtual DbSet<EmailTemplate> EmailTemplate { get; set; }
+        public virtual DbSet<EmployeeAttendance> EmployeeAttendance { get; set; }
         public virtual DbSet<EmployeeClaimAdvanceRequest> EmployeeClaimAdvanceRequest { get; set; }
         public virtual DbSet<EmployeeDetails> EmployeeDetails { get; set; }
         public virtual DbSet<EmployeeLeave> EmployeeLeave { get; set; }
@@ -37,6 +39,7 @@ namespace EasyHRMS_DA.Models
         public virtual DbSet<LookupList> LookupList { get; set; }
         public virtual DbSet<Lookups> Lookups { get; set; }
         public virtual DbSet<MailAlert> MailAlert { get; set; }
+        public virtual DbSet<PayrollShiftWiseAttendance> PayrollShiftWiseAttendance { get; set; }
         public virtual DbSet<SalaryStructure> SalaryStructure { get; set; }
         public virtual DbSet<SalaryStructureDepartmentMapping> SalaryStructureDepartmentMapping { get; set; }
         public virtual DbSet<SalaryStructurePayrollCategoryMapping> SalaryStructurePayrollCategoryMapping { get; set; }
@@ -58,6 +61,7 @@ namespace EasyHRMS_DA.Models
         public Ehrms_ng2Context(DbContextOptions<Ehrms_ng2Context> options)
             : base(options) { }
         public Ehrms_ng2Context() { }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -155,8 +159,21 @@ namespace EasyHRMS_DA.Models
             //    entity.Property(e => e.UserName).HasMaxLength(256);
             //});
 
-
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<AttendanceLog>(entity =>
+            {
+                entity.Property(e => e.AttendanceDate).HasColumnType("date");
+
+                entity.Property(e => e.EmpId).HasColumnName("EmpID");
+
+                entity.Property(e => e.InTime).HasColumnType("datetime");
+
+                entity.Property(e => e.LogHours).HasMaxLength(50);
+
+                entity.Property(e => e.OutTime).HasColumnType("datetime");
+            });
+
             modelBuilder.Entity<CheckList>(entity =>
             {
                 entity.Property(e => e.ChecklistName)
@@ -171,6 +188,21 @@ namespace EasyHRMS_DA.Models
                 entity.Property(e => e.TemplateName)
                     .IsRequired()
                     .HasMaxLength(100);
+            });
+
+            modelBuilder.Entity<EmployeeAttendance>(entity =>
+            {
+                entity.Property(e => e.CreatedDate).HasColumnType("datetime");
+
+                entity.Property(e => e.FromDate).HasColumnType("datetime");
+
+                entity.Property(e => e.IsOnHalfDay).HasColumnType("decimal");
+
+                entity.Property(e => e.ToDate).HasColumnType("datetime");
+
+                entity.Property(e => e.UpdatedDate)
+                    .HasColumnName("updatedDate")
+                    .HasColumnType("datetime");
             });
 
             modelBuilder.Entity<EmployeeClaimAdvanceRequest>(entity =>
@@ -504,6 +536,15 @@ namespace EasyHRMS_DA.Models
                     .HasMaxLength(100);
 
                 entity.Property(e => e.ReplyToAddress).HasMaxLength(100);
+            });
+
+            modelBuilder.Entity<PayrollShiftWiseAttendance>(entity =>
+            {
+                entity.Property(e => e.AttendanceDate).HasColumnType("datetime");
+
+                entity.Property(e => e.InTime).HasColumnType("datetime");
+
+                entity.Property(e => e.OutTime).HasColumnType("datetime");
             });
 
             modelBuilder.Entity<SalaryStructure>(entity =>
