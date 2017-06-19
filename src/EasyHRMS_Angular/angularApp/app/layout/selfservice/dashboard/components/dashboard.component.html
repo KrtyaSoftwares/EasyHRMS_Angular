@@ -89,17 +89,20 @@
                         </div>
                         <div class="col-xs-9">
                             <small class="stat-title">This Year Holidays</small>
-                            <h1 class="m-0 w-500">18</h1>
+                            <!--<h1 class="m-0 w-500">18</h1>-->
+                            <h1 class="m-0 w-500">{{CurrentYearHolidayCount}}</h1>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-xs-6">
                             <small class="stat-title">This month</small>
-                            <h3 class="m-0 w-500">5</h3>
+                            <!--<h3 class="m-0 w-500">5</h3>-->
+                            <h3 class="m-0 w-500">{{CurrentYearHolidayCount}}</h3>
                         </div>
                         <div class="col-xs-6	">
                             <small class="stat-title">Next Holiday</small>
-                            <h3 class="m-0 w-500">27 Feb 17</h3>
+                            <!--<h3 class="m-0 w-500">27 Feb 17</h3>-->
+                            <h3 class="m-0 w-500">{{NextHolidayDate | date:'d MMM y'}}</h3>
                         </div>
                     </div>
                 </div>

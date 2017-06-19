@@ -102,6 +102,10 @@ namespace EasyHRMS_Angular.Controllers
                                     _EmployeeAttendance.IsChanged = false;
                                     _EmployeeAttendance.CreatedDate = DateTime.Now;
                                     _EmployeeAttendance.ShiftId = model.SelectedShiftId;
+
+                                    _context.EmployeeAttendance.Add(_EmployeeAttendance);
+
+
                                 }
                             }
                         }
