@@ -888,7 +888,10 @@ namespace EasyHRMS_Angular.Controllers
                     }
                     else
                     {
-                        StartDate = StartOfWeek(DateTime.Parse(sStartDate), DayOfWeek.Monday);
+                        //StartDate = StartOfWeek(DateTime.Parse(sStartDate), DayOfWeek.Monday);
+
+                        StartDate = StartOfWeek(new DateTime(iYear, iMonth, 1), DayOfWeek.Monday);
+
                         EndDate = StartDate.AddDays(6);
                         //dt.Rows.Add(j.ToString(), StartDate.ToString("dd/MMM") + " - " + EndDate.ToString("dd/MMM"));
                         list.Add(StartDate.ToString("dd/MMM") + " - " + EndDate.ToString("dd/MMM"));
@@ -900,12 +903,17 @@ namespace EasyHRMS_Angular.Controllers
                             //+ "/" + i.ToString()
                             //+ "/" + iYear.ToString();
 
-                            sStartDate = i.ToString()
-                            + "/" + iMonth.ToString()
-                            + "/" + iYear.ToString();
+                            //sStartDate = i.ToString()
+                            //+ "/" + iMonth.ToString()
+                            //+ "/" + iYear.ToString();
+
+                            //sStartDate = new DateTime(iYear, iMonth, 1)
 
                             DateTime temp = DateTime.Parse(sStartDate);
-                            DateTime dt_start = DateTime.Parse(sStartDate).AddDays(1);
+
+                            //DateTime dt_start = DateTime.Parse(sStartDate).AddDays(1);
+
+                            DateTime dt_start = new DateTime(iYear, iMonth, i).AddDays(1);
 
                             DateTime dt_finish = dt_start.AddDays(6);
                             string sReturn = dt_start.ToString("dd/MMM") + " - " + dt_finish.ToString("dd/MMM");
@@ -941,6 +949,7 @@ namespace EasyHRMS_Angular.Controllers
         }
         public DateTime StartOfWeek(DateTime dt, DayOfWeek startofweek)
         {
+            //startofweek = CultureInfo.CurrentCulture.DateTimeFormat.FirstDayOfWeek;
             int diff = dt.DayOfWeek - startofweek;
             if (diff < 0)
             {

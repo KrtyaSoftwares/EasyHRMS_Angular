@@ -26,13 +26,10 @@ export class SelfServiceDashboardService {
     //        .map(res => <any>res.json());
     //    //return this.authService.authGet(this.actionUrl + 'SelfServiceDashboard/GetHolidayDetail');
     //}
-
     public GetHoliDayDetails = (): Observable<any> => {
         return this.authService.authGet(this.actionUrl + 'SelfServiceDashboard/GetHolidayDetail')
         //return this.http
         //    .get(this.actionUrl + 'EmployeeLeave/GetAllEmployeeLeave')
         //    .map(res => <any>res.json());
     }
-
-   
 }
