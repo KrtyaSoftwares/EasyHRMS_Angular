@@ -835,8 +835,8 @@ namespace EasyHRMS_Angular.Controllers
             return result;
         }
 
-        // PUT api/ShiftSchedule/GetShiftScheduleDDListData/
-        [HttpPost, Route("GetShiftScheduleDDListData")]
+        // GET api/ShiftSchedule/GetShiftScheduleDDListData
+        [HttpGet, Route("GetShiftScheduleDDListData")]
         public object GetShiftScheduleDDListData([FromQuery]int year, [FromQuery]int month, [FromQuery]int scheduletypeid)
         {
             object result = null; string message = ""; string errorcode = ""; string excp = "";
