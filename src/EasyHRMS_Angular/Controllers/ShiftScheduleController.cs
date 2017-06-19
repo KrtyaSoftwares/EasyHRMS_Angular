@@ -309,39 +309,39 @@ namespace EasyHRMS_Angular.Controllers
             //{
             var data = _context.WorkingDays.FirstOrDefault();
 
-            if (data.Mon == true)
+            if (DayOfWeek.Monday == Name)
             {
-                if (DayOfWeek.Monday == Name)
+                if (data.Mon == true)
                     return true;
             }
-            else if (data.Tue == true)
+            else if (DayOfWeek.Tuesday == Name)
             {
-                if (DayOfWeek.Tuesday == Name)
+                if (data.Tue == true)
                     return true;
             }
-            else if (data.Wed == true)
+            else if (DayOfWeek.Wednesday == Name)
             {
-                if (DayOfWeek.Wednesday == Name)
+                if (data.Wed == true)
                     return true;
             }
-            else if (data.Thers == true)
+            else if (DayOfWeek.Thursday == Name)
             {
-                if (DayOfWeek.Thursday == Name)
+                if (data.Thers == true)
                     return true;
             }
-            else if (data.Fri == true)
+            else if (DayOfWeek.Friday == Name)
             {
-                if (DayOfWeek.Friday == Name)
+                if (data.Fri == true)
                     return true;
             }
-            else if (data.Sat == true)
+            else if (DayOfWeek.Saturday == Name)
             {
-                if (DayOfWeek.Saturday == Name)
+                if (data.Sat == true)
                     return true;
             }
-            else if (data.Sun == true)
+            else if (DayOfWeek.Sunday == Name)
             {
-                if (DayOfWeek.Sunday == Name)
+                if (data.Sun == true)
                     return true;
             }
 
@@ -398,7 +398,7 @@ namespace EasyHRMS_Angular.Controllers
                                         objShiftSchedule.Year = model.Year;
                                         objShiftSchedule.Month = model.Month;
                                         objShiftSchedule.ScheduleDate = model.ScheduleDate;
-                                        objShiftSchedule.EmployeeId = model.EmployeeId;
+                                        objShiftSchedule.EmployeeId = Empid;
                                         objShiftSchedule.ScheduleDetailId = objShiftscheduleDetail.Id;
                                         //objShiftSchedule.StartDate = model.StartDate;
                                         //objShiftSchedule.EndDate = model.EndDate;
@@ -419,7 +419,7 @@ namespace EasyHRMS_Angular.Controllers
                                                 objShiftSchedule.Year = model.Year;
                                                 objShiftSchedule.Month = model.Month;
                                                 objShiftSchedule.ScheduleDate = date;
-                                                objShiftSchedule.EmployeeId = model.EmployeeId;
+                                                objShiftSchedule.EmployeeId = Empid;
                                                 objShiftSchedule.ScheduleDetailId = objShiftscheduleDetail.Id;
                                                 //objShiftSchedule.StartDate = model.StartDate;
                                                 //objShiftSchedule.EndDate = model.EndDate;
