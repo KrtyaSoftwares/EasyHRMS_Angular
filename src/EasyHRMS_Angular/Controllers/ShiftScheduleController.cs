@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using EasyHRMS_DA.Models;
 using EasyHRMS_Angular.ModelsVM;
+using System.Globalization;
 
 namespace EasyHRMS_Angular.Controllers
 {
@@ -306,45 +307,45 @@ namespace EasyHRMS_Angular.Controllers
         {
             //using (_context)
             //{
-                var data = _context.WorkingDays.FirstOrDefault();
+            var data = _context.WorkingDays.FirstOrDefault();
 
-                if (data.Mon == true)
-                {
-                    if (DayOfWeek.Monday == Name)
-                        return true;
-                }
-                else if (data.Tue == true)
-                {
-                    if (DayOfWeek.Tuesday == Name)
-                        return true;
-                }
-                else if (data.Wed == true)
-                {
-                    if (DayOfWeek.Wednesday == Name)
-                        return true;
-                }
-                else if (data.Thers == true)
-                {
-                    if (DayOfWeek.Thursday == Name)
-                        return true;
-                }
-                else if (data.Fri == true)
-                {
-                    if (DayOfWeek.Friday == Name)
-                        return true;
-                }
-                else if (data.Sat == true)
-                {
-                    if (DayOfWeek.Saturday == Name)
-                        return true;
-                }
-                else if (data.Sun == true)
-                {
-                    if (DayOfWeek.Sunday == Name)
-                        return true;
-                }
+            if (data.Mon == true)
+            {
+                if (DayOfWeek.Monday == Name)
+                    return true;
+            }
+            else if (data.Tue == true)
+            {
+                if (DayOfWeek.Tuesday == Name)
+                    return true;
+            }
+            else if (data.Wed == true)
+            {
+                if (DayOfWeek.Wednesday == Name)
+                    return true;
+            }
+            else if (data.Thers == true)
+            {
+                if (DayOfWeek.Thursday == Name)
+                    return true;
+            }
+            else if (data.Fri == true)
+            {
+                if (DayOfWeek.Friday == Name)
+                    return true;
+            }
+            else if (data.Sat == true)
+            {
+                if (DayOfWeek.Saturday == Name)
+                    return true;
+            }
+            else if (data.Sun == true)
+            {
+                if (DayOfWeek.Sunday == Name)
+                    return true;
+            }
 
-                return false;
+            return false;
             //}
         }
 
@@ -839,68 +840,115 @@ namespace EasyHRMS_Angular.Controllers
         public object GetShiftScheduleDDListData([FromQuery]int year, [FromQuery]int month, [FromQuery]int scheduletypeid)
         {
             object result = null; string message = ""; string errorcode = ""; string excp = "";
+
+            List<string> list = new List<string>();
             if (year == 0 && month == 0 && scheduletypeid == 0)
             {
                 return BadRequest();
             }
             using (_context)
             {
-                
-                    try
-                    {
-                    //int iYear = year;
-                    //int iMonth = month;
-                    //List<string> list = new List<string>();
-                    //    int countDays = DateTime.DaysInMonth(iYear, iMonth);
-                    //    DateTime StartDate, EndDate;
-                    //string sStartDate = iMonth.ToString()
-                    //       + "/1" + "/" + iYear.ToString();
-                    //string eEndDate = iMonth.ToString() + "/"
-                    //   + countDays + "/" + iYear.ToString();
+                try
+                {
+                    int iYear = year;
+                    int iMonth = month;
+                   
+                    int countDays = DateTime.DaysInMonth(iYear, iMonth);
+                    DateTime StartDate, EndDate;
+                    //int j = 1;
+                    string sStartDate = iMonth.ToString()
+                           + "/1" + "/" + iYear.ToString();
+                    string eEndDate = iMonth.ToString() + "/"
+                       + countDays + "/" + iYear.ToString();
 
-                    //if (rcbschedule.SelectedValue == "4")
-                    //{
-                    //    StartDate = DateTime.Parse(sStartDate);
-                    //    if (countDays == 30 || countDays == 31)
-                    //    {
-                    //        string Sweek = StartDate.ToString("dd/MMM") + " - " + StartDate.AddDays(14).ToString("dd/MMM");
-                    //        dt.Rows.Add("1", Sweek);
-                    //        EndDate = DateTime.Parse(eEndDate);
-                    //        string Eweek = StartDate.AddDays(15).ToString("dd/MMM") + " - " + EndDate.ToString("dd/MMM");
-                    //        dt.Rows.Add("2", Eweek);
-                    //    }
-                    //    else if (countDays == 28 || countDays == 29)
-                    //    {
-                    //        string Sweek = StartDate.ToString("dd/MMM") + " - " + StartDate.AddDays(13).ToString("dd/MMM");
-                    //        dt.Rows.Add("1", Sweek);
-                    //        EndDate = DateTime.Parse(eEndDate);
-                    //        string Eweek = StartDate.AddDays(14).ToString("dd/MMM") + " - " + EndDate.ToString("dd/MMM");
-                    //        dt.Rows.Add("2", Eweek);
-                    //    }
-                    //}
+                    if (scheduletypeid == 4)
+                    {
+                        StartDate = DateTime.Parse(sStartDate);
+                        if (countDays == 30 || countDays == 31)
+                        {
+                            string Sweek = StartDate.ToString("dd/MMM") + " - " + StartDate.AddDays(14).ToString("dd/MMM");
+                            //dt.Rows.Add("1", Sweek);
+                            list.Add(Sweek);
+                            //EndDate = DateTime.Parse(eEndDate);
+                            EndDate = DateTime.Parse(eEndDate, CultureInfo.InvariantCulture);
+                            string Eweek = StartDate.AddDays(15).ToString("dd/MMM") + " - " + EndDate.ToString("dd/MMM");
+                            //dt.Rows.Add("2", Eweek);
+                            list.Add(Eweek);
+                        }
+                        else if (countDays == 28 || countDays == 29)
+                        {
+                            string Sweek = StartDate.ToString("dd/MMM") + " - " + StartDate.AddDays(13).ToString("dd/MMM");
+                            //dt.Rows.Add("1", Sweek);
+                            list.Add(Sweek);
+                            EndDate = DateTime.Parse(eEndDate);
+                            string Eweek = StartDate.AddDays(14).ToString("dd/MMM") + " - " + EndDate.ToString("dd/MMM");
+                            //dt.Rows.Add("2", Eweek);
+                            list.Add(Eweek);
+                        }
+                    }
+                    else
+                    {
+                        StartDate = StartOfWeek(DateTime.Parse(sStartDate), DayOfWeek.Monday);
+                        EndDate = StartDate.AddDays(6);
+                        //dt.Rows.Add(j.ToString(), StartDate.ToString("dd/MMM") + " - " + EndDate.ToString("dd/MMM"));
+                        list.Add(StartDate.ToString("dd/MMM") + " - " + EndDate.ToString("dd/MMM"));
+                        //j++;
+
+                        for (int i = EndDate.Day; i <= countDays; i = i + 7)
+                        {
+                            //sStartDate = iMonth.ToString()
+                            //+ "/" + i.ToString()
+                            //+ "/" + iYear.ToString();
+
+                            sStartDate = i.ToString()
+                            + "/" + iMonth.ToString()
+                            + "/" + iYear.ToString();
+
+                            DateTime temp = DateTime.Parse(sStartDate);
+                            DateTime dt_start = DateTime.Parse(sStartDate).AddDays(1);
+
+                            DateTime dt_finish = dt_start.AddDays(6);
+                            string sReturn = dt_start.ToString("dd/MMM") + " - " + dt_finish.ToString("dd/MMM");
+                            //dt.Rows.Add(j.ToString(), sReturn);
+                            list.Add(sReturn);
+                            //j++;
+                            if ((dt_finish.AddDays(1)).Month != iMonth)
+                                break;
+                        }
+                    }
 
                     message = "Success!!";
-                        errorcode = "0";
-                    }
-                    catch (Exception e)
-                    {
-                         e.ToString();
-                        message = "Error!!";
-                        errorcode = "1";
-                        excp = e.ToString();
-                    }
+                    errorcode = "0";
+                }
+                catch (Exception e)
+                {
+                    e.ToString();
+                    message = "Error!!";
+                    errorcode = "1";
+                    excp = e.ToString();
+                }
 
-                    result = new
-                    {
-                        error = errorcode,
-                        msg = message,
-                        excp = excp
-                    };
-               
+                result = new
+                {
+                    list ,
+                    error = errorcode,
+                    msg = message,
+                    excp = excp
+                };
+
             }
             return result;
         }
+        public DateTime StartOfWeek(DateTime dt, DayOfWeek startofweek)
+        {
+            int diff = dt.DayOfWeek - startofweek;
+            if (diff < 0)
+            {
+                diff += 7;
+            }
 
+            return dt.AddDays(-1 * diff).Date;
+        }
 
 
     }
